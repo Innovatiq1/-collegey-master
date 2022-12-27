@@ -1,6 +1,6 @@
 export const DEFAULT_CONFIG = {
 
-/* */ 
+/* * / 
 // Localhost server API connection URL 
   frontEndUrl: 'http://localhost:4200/',
   apiEndpoint: 'http://localhost:3000/api/',
@@ -16,12 +16,12 @@ export const DEFAULT_CONFIG = {
   apiNewEndpoint: 'http://3.0.100.217/api1/',
 /* */   
 
-/* *  /  
+/* */  
 // UAT server API connection URL 
-  frontEndUrl: 'http://18.141.230.170/',
-  apiEndpoint: 'http://18.141.230.170/api/',
-  apiEndpointNew: 'http://18.141.230.170/x-api/v1/',
-  apiNewEndpoint: 'http://18.141.230.170/api1/',
+frontEndUrl: 'https://collegey.com/',
+apiEndpoint: 'https://collegey.com/api/',
+apiEndpointNew: 'https://collegey.com/x-api/v1/',
+apiNewEndpoint: 'https://collegey.com/api1/',
 /* */   
   keys: {
     FACEBOOK_APP_ID: '726332021874244',  

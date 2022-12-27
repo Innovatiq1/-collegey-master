@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="collegey-magazine-wrapper">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="collegey-magazine-text">
+                    <p class="collegey-magazine-title">Get access to the<br>Collegey Dashboard</p>
+                    <p class="collegey-magazine-subtitle">Build your portfolio, read projects, listen to conference
+                        panel discussions, webinars, and much more.</p>
+                    <button class="explore-more" (click)="onRegister()">Sign up for Collegey now, it’s free</button>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="collegey-graphics">
+                    <img src="/assets/images/graphics1.svg" alt="Collegey Graphics">
+                    <div class="graphics-box">
+                        <img src="/assets/images/graphics2.svg" alt="Collegey Graphics">
+                        <img src="/assets/images/graphics3.svg" alt="Collegey Graphics">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

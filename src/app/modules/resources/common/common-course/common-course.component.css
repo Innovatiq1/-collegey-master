@@ -1,0 +1,13 @@
+@media screen and (max-width:991px) {
+    .webinar-box {
+        margin-bottom: 30px;
+    }
+
+    .post-description.webinar-desc {
+        margin-top: 0;
+    }
+
+    .posted-date {
+        margin-top: 10px;
+    }
+}

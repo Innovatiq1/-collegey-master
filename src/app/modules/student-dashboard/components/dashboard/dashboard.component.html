@@ -1,0 +1,2042 @@
+<style>
+    @font-face {
+        font-family: "CooperHewitt";
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Light.otf");
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Light.otf") format("opentype");
+        font-style: normal;
+        font-weight: 300;
+    }
+
+    @font-face {
+        font-family: "CooperHewitt";
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Medium.otf");
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Medium.otf") format("opentype");
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    @font-face {
+        font-family: "CooperHewitt";
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Semibold.otf");
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Semibold.otf") format("opentype");
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    @font-face {
+        font-family: "CooperHewitt";
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Bold.otf");
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Bold.otf") format("opentype");
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    @font-face {
+        font-family: "CooperHewitt";
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Heavy.otf");
+        src: url("/assets/fonts/cooper-hewitt/CooperHewitt-Heavy.otf") format("opentype");
+        font-style: normal;
+        font-weight: 800;
+    }
+
+    #contentToConvert * {
+        font-family: "CooperHewitt";
+    }
+</style>
+<app-dash-header></app-dash-header>
+<!-- -->
+<!--  <app-dash-header></app-dash-header>  -->
+<div class="container second-section">
+    <h2 class="title"><span>{{firstname}} {{lastname}}, </span></h2>
+    <p class="subtitle">Benefits of choosing Collegey:</p>
+    <div class="benefits">
+        <div class="benefits-item">
+            <p class="mr-r20">
+                <img src="assets/images/student_dashboard_icons/1.png" alt="">
+                Prepare for career success
+            </p>
+        </div>
+        <div class="benefits-item">
+            <p class="mr-r20">
+                <img src="assets/images/student_dashboard_icons/2.png" alt="">
+                Gain real-world project experience
+            </p>
+        </div>
+        <div class="benefits-item">
+            <p>
+                <img src="assets/images/student_dashboard_icons/3.png" alt="">
+                Share your portfolio for college applications and future careers
+            </p>
+        </div>
+        <div class="benefits-item">
+            <p class="mr-r20">
+                <img src="assets/images/student_dashboard_icons/4.png" alt="">
+                Connect with global universities, mentors, and organizations
+            </p>
+        </div>
+        <div class="benefits-item">
+            <p class="mr-r20">
+                <img src="assets/images/student_dashboard_icons/5.png" alt="">
+                Earn digital badge and letter of recommendation
+            </p>
+        </div>
+        <div class="benefits-item">
+            <p>
+                <img src="assets/images/student_dashboard_icons/6.png" alt="">
+                Make an impact
+            </p>
+        </div>
+    </div>
+    <div class="getmore-btndiv" *ngIf="createProject">
+        <p>As Collegey’s early adopter, here is your first project for free.</p>
+        <button (click)="openGiveProjectIdeaModal(projectIdeaModal)" class="get-start">GET STARTED WITH YOUR
+            PROJECT</button>
+    </div>
+</div>
+
+<div class="container third-section">
+    <div class="portfolio-progress">
+        <p style="text-align: left;font: normal normal normal 14px/14px Nunito;
+          letter-spacing: 0px;color: #141414;">PORTFOLIO STRENGTH: <span class="text-align: left;
+font: normal normal bold 18px/22px Nunito;letter-spacing: 0px;color: #141414; font-weight: bold;
+font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
+                <span *ngIf="!dashboard?.profile?.profile_completion?.profile_text">Beginner</span></span></p>
+        <ul>
+            <li [class.is-active]="dashboard?.profile?.profile_completion?.profile_percentage >= 25">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                    fill="#ffffff" data-original="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+            </li>
+            <li [class.is-active]="dashboard?.profile?.profile_completion?.profile_percentage >= 50">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                    fill="#ffffff" data-original="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+            <li [class.is-active]="dashboard?.profile?.profile_completion?.profile_percentage >= 75">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                    fill="#ffffff" data-original="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+            <li [class.is-active]="dashboard?.profile?.profile_completion?.profile_percentage >= 100">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path
+                                        d="m15.399 17c-.083 0-.166-.021-.242-.062l-3.157-1.746-3.157 1.745c-.169.094-.374.083-.53-.029-.156-.11-.236-.3-.205-.489l.608-3.731-2.573-2.638c-.131-.134-.176-.33-.117-.508.06-.178.214-.307.399-.335l3.537-.541 1.585-3.379c.166-.351.74-.351.906 0l1.585 3.379 3.537.541c.186.028.34.158.399.335.059.178.014.374-.117.508l-2.573 2.638.608 3.731c.031.189-.049.379-.205.489-.085.061-.186.092-.288.092zm-3.399-2.879c.083 0 .167.021.242.062l2.498 1.381-.483-2.964c-.025-.157.024-.316.136-.43l2.07-2.122-2.839-.434c-.165-.025-.307-.131-.378-.282l-1.246-2.655-1.246 2.657c-.071.151-.213.257-.378.282l-2.839.434 2.07 2.122c.111.114.161.273.136.43l-.483 2.962 2.498-1.381c.075-.041.159-.062.242-.062z"
+                                        fill="#ffffff" data-original="#000000" class="" />
+                                </g>
+                            </g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path
+                                        d="m12 24c-.043 0-.086-.005-.127-.017-.099-.025-9.873-2.703-9.873-11.804v-8.179c0-.209.131-.397.327-.469l9.5-3.5c.111-.041.234-.041.346 0l9.5 3.5c.196.072.327.26.327.469v8.179c0 9.102-9.774 11.779-9.873 11.805-.041.011-.084.016-.127.016zm-9-19.651v7.83c0 7.882 7.85 10.466 9 10.802 1.15-.336 9-2.92 9-10.802v-7.83l-9-3.316z"
+                                        fill="#ffffff" data-original="#000000" class="" />
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="portfolio-progress-text">
+        <a [routerLink]="['/student/profile']">
+            <h6>COMPLETE YOUR PROFILE</h6>
+        </a>
+        <p class="port-desc">A complete portfolio enhances your chances of building winning applications for
+            colleges and
+            universities, and help us recommend best-fit projects for you.</p>
+    </div>
+</div>
+
+<div class="container fourth-section">
+    <!-- <ng-container *ngIf="myProjects.length > 0"> -->
+    <ng-container>
+
+        <h4 class="slider-title">My Projects in Progress
+            <button class="clg-filterbtn" (click)="showFilters()"><i class="fa fa-sliders fa-rotate-270"
+                    aria-hidden="true"></i>
+                FILTERS</button>
+        </h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="projectInProgressData?.projectDashboardProjects?.length == 0">
+            <ng-template carouselSlide class="webinar-content-box1">
+                <p class="post-title1 webinar-title1"> No in-progress project found!</p>
+            </ng-template>
+        </owl-carousel-o>
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+            <ng-template carouselSlide *ngFor="let project of projectInProgressData?.projectDashboardProjects">
+                <div class="webinar-box1 article-box1">
+                    <div class="webinar-image-box1">
+                        <div class="webinar-imageas"
+                            [ngStyle]="{'background-image': project?.project?.image ? 'url(' + project?.project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
+                            (click)="openModalWithClass(addDialog,project?.project,true)"></div>
+                        <span *ngIf="project?.project?.projectfees == 0" class="clg-freetag">Free</span>
+                        <a class="watchlist"
+                            (click)="project?.project?.watchlist ? onAddOrRemoveWatchlist('Remove',project?.project?._id) : onAddOrRemoveWatchlist('Add',project?.project?._id) ">Add
+                            to Watchlist <i class="fa fa-heart" title="Add to your project watchlist"
+                                [class.active]="project?.project?.watchlist" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="webinar-content-box1" (click)="openModalWithClass(addDialog,project?.project,true)">
+                        <a class="post-title1 webinar-title1" href="javascript:;">{{project?.project?.title}}</a>
+                        <p class="tags-box1">
+                            <span class="article-tags1" *ngFor="let tag of project?.project?.keyword">{{tag}}</span>
+                            <!-- <span class="article-tags1">UI/UX </span> -->
+                        </p>
+                        <p class="post-description1 webinar-desc1 top-gap1">
+                            <span class="description">{{project?.project?.description}}</span>
+                        </p>
+                        <div style="display: flex;align-items: center;">
+                            <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                            <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">
+                                {{project?.project?.remainingSlot-project?.project?.projectAvailableSlot}} spots
+                                available</p>
+                        </div>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.project?.end_date |
+                                date}}</span></p>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </ng-container>
+
+    <!-- PROJECT I CREATED -->
+
+    <ng-container>
+        <h4 class="slider-title">Projects I Created
+        </h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="projectData?.length == 0">
+            <ng-template carouselSlide class="webinar-content-box1">
+                <p class="post-title1 webinar-title1"> No Projects</p>
+            </ng-template>
+        </owl-carousel-o>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="projectData">
+            <ng-template carouselSlide *ngFor="let project of projectData">
+                <div class="webinar-box1 article-box1">
+                    <div class="webinar-image-box1">
+                        <div class="webinar-imageas"
+                            [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
+                            (click)="openModalWithClass(addDialog,project,true)"></div>
+                        <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
+                        <!-- <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}"
+                            aria-hidden="true"
+                            (click)="project?.project.watchlist ? onAddOrRemoveWatchlist('Remove',project.project._id) : onAddOrRemoveWatchlist('Add',project.project._id) "></i> -->
+                    </div>
+                    <div class="webinar-content-box1" (click)="openModalWithClass(addDialog,project,true)">
+                        <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                        <p class="tags-box1">
+                            <span class="article-tags1" *ngFor="let tag of project.keyword">{{tag}}</span>
+                        </p>
+                        <p class="post-description1 webinar-desc1 top-gap1">
+                            <span class="description">{{project?.description}}</span>
+                        </p>
+                        <div style="display: flex;align-items: center;">
+                            <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                            <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot-project?.projectAvailableSlot}} spots
+                                available</p>
+                        </div>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                                date}}</span></p>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </ng-container>
+
+    <!-- END PROJECT I CREATED -->
+
+    <!-- PROJECT PENDING -->
+
+    <ng-container>
+        <h4 class="slider-title">My Pending Projects</h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="pendingProjects?.projectDashboardProjects?.length == 0">
+            <ng-template carouselSlide class="webinar-content-box1">
+                <p class="post-title1 webinar-title1"> No pending project found!</p>
+            </ng-template>
+        </owl-carousel-o>
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+            <ng-template carouselSlide *ngFor="let project of pendingProjects?.projectDashboardProjects">
+                <div class="webinar-box1 article-box1">
+                    <div class="webinar-image-box1">
+                        <div class="webinar-imageas"
+                            [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
+                            (click)="openModalWithClass(addDialog,project,false)"></div>
+                        <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
+                        <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                            alt="Article Image"> -->
+                        <a class="watchlist"
+                            (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) ">Add
+                            to Watchlist <i class="fa fa-heart" title="Add to your project watchlist"
+                                [class.active]="project?.watchlist" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="webinar-content-box1" (click)="openModalWithClass(addDialog,project,false)">
+                        <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                        <p class="tags-box1">
+                            <span class="article-tags1" *ngFor="let tag of project.keyword">{{tag}}</span>
+                            <!-- <span class="article-tags1">UI/UX </span> -->
+                        </p>
+                        <p class="post-description1 webinar-desc1 top-gap1"><span
+                                class="description">{{project?.description}}</span></p>
+                        <div style="display: flex;align-items: center;">
+                            <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                            <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot-project?.projectAvailableSlot}} spots
+                                available</p>
+                        </div>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                                date}}</span></p>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </ng-container>
+
+    <!-- END PROJECT PENDING -->
+
+    <ng-container>
+        <h4 class="slider-title">Projects by Collegey</h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="collegeyProjectData?.length == 0">
+            <ng-template carouselSlide class="webinar-content-box1">
+                <p class="post-title1 webinar-title1"> No Collegey project found!</p>
+            </ng-template>
+        </owl-carousel-o>
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+            <ng-template carouselSlide *ngFor="let project of collegeyProjectData">
+                <div class="webinar-box1 article-box1">
+                    <div class="webinar-image-box1">
+                        <div class="webinar-imageas"
+                            [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
+                            (click)="openModalWithClass(addDialog,project,false)"></div>
+                        <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
+                        <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                            alt="Article Image"> -->
+                        <a class="watchlist"
+                            (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) ">Add
+                            to Watchlist <i class="fa fa-heart" title="Add to your project watchlist"
+                                [class.active]="project?.watchlist" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="webinar-content-box1" (click)="openModalWithClass(addDialog,project,false)">
+                        <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                        <p class="tags-box1">
+                            <span class="article-tags1" *ngFor="let tag of project?.keyword">{{tag}}</span>
+                            <!-- <span class="article-tags1">UI/UX </span> -->
+                        </p>
+                        <p class="post-description1 webinar-desc1 top-gap1"><span
+                                class="description">{{project?.description}}</span></p>
+                        <div style="display: flex;align-items: center;">
+                            <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                            <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot-project?.projectAvailableSlot}} spots
+                                available</p>
+                        </div>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                                date}}</span></p>
+                    </div>
+                </div>
+            </ng-template>
+
+
+        </owl-carousel-o>
+    </ng-container>
+
+    <!-- <ng-container>
+        <h4 class="slider-title">Collegey Projects by Impact partners</h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+            <ng-template carouselSlide *ngFor="let project of impactPartnerProjectsData">
+                <div class="webinar-box1 article-box1" (click)="openModalWithClass(addDialog,project)">
+                    <div class="webinar-image-box1"
+                        style="background-image: url(/assets/images/resources/programs-banner_1.jpg)">
+                        <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true"
+                            (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
+                    </div>
+                    <div class="webinar-content-box1">
+                        <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                        <p class="tags-box1">
+                            <span class="article-tags1" *ngFor="let tag of project.keyword">{{tag}}</span>
+                        </p>
+                        <p class="post-description1 webinar-desc1 top-gap1"><span
+                                class="description">{{project?.description}}</span></p>
+                        <div style="display: flex;align-items: center;">
+                            <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                            <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+                        </div>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                                date}}</span></p>
+                    </div>
+                </div>
+            </ng-template>
+
+        </owl-carousel-o>
+    </ng-container> -->
+    <ng-container>
+        <h4 class="slider-title">Collegey Projects by Mentors</h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="mentorsProjectData?.length == 0">
+            <ng-template carouselSlide class="webinar-content-box1">
+                <p class="post-title1 webinar-title1"> No  project found!</p>
+            </ng-template>
+        </owl-carousel-o>
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+            <ng-template carouselSlide *ngFor="let project of mentorsProjectData">
+                <div class="webinar-box1 article-box1">
+                    <div class="webinar-image-box1">
+                        <div class="webinar-imageas"
+                            [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
+                            (click)="openModalWithClass(addDialog,project,false)"></div>
+                        <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
+                        <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                            alt="Article Image"> -->
+                        <a class="watchlist">Add to Watchlist <i class="fa fa-heart"
+                                title="Add to your project watchlist" [class.active]="project?.watchlist"
+                                aria-hidden="true"
+                                (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i></a>
+                    </div>
+                    <div class="webinar-content-box1" (click)="openModalWithClass(addDialog,project,false)">
+                        <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                        <p class="tags-box1">
+                            <span class="article-tags1" *ngFor="let tag of project?.keyword">{{tag}}</span>
+                            <!-- <span class="article-tags1">UI/UX </span> -->
+                        </p>
+                        <p class="post-description1 webinar-desc1 top-gap1"><span
+                                class="description">{{project?.description}}</span></p>
+                        <div style="display: flex;align-items: center;">
+                            <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                            <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot-project?.projectAvailableSlot}} spots
+                                available</p>
+                        </div>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                                date}}</span></p>
+                    </div>
+                </div>
+            </ng-template>
+
+        </owl-carousel-o>
+    </ng-container>
+    <ng-container>
+        <h4 class="slider-title">My Projects Watchlist</h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="watchlistProjects.length == 0">
+            <ng-template carouselSlide class="webinar-content-box1">
+                <p class="post-title1 webinar-title1"> No Projects in Watchlist</p>
+            </ng-template>
+        </owl-carousel-o>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="watchlistProjects.length > 0">
+            <ng-template carouselSlide *ngFor="let project of watchlistProjects">
+                <div class="webinar-box1 article-box1">
+                    <div class="webinar-image-box1">
+                        <div class="webinar-imageas"
+                            [ngStyle]="{'background-image': project?.project?.image ? 'url(' + project?.project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
+                            (click)="openModalWithClass(addDialog,project?.project,false)"></div>
+                        <span *ngIf="project?.project?.projectfees == 0" class="clg-freetag">Free</span>
+                        <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                            alt="Article Image"> -->
+                        <i class="fa fa-heart fav-projects active" title="Remove from your watchlist" aria-hidden="true"
+                            (click)="onAddOrRemoveWatchlist('Remove',project.project._id)"></i>
+                    </div>
+                    <div class="webinar-content-box1" (click)="openModalWithClass(addDialog,project?.project,false)">
+                        <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.project?.title}}</a>
+                        <p class="tags-box1">
+                            <span class="article-tags1" *ngFor="let tag of project?.project?.keyword">{{tag}}</span>
+                            <!-- <span class="article-tags1">UI/UX </span> -->
+                        </p>
+                        <p class="post-description1 webinar-desc1 top-gap1">
+                            <span class="description">{{project?.project?.description}}</span>
+                        </p>
+                        <div style="display: flex;align-items: center;">
+                            <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                            <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.project?.remainingSlot -
+                                project?.projectAvailableSlot}} spots available</p>
+                        </div>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.project?.end_date |
+                                date}}</span></p>
+                    </div>
+                </div>
+            </ng-template>
+
+        </owl-carousel-o>
+    </ng-container>
+    <ng-container>
+        <div class="clg-findboxx-div">
+            <div class="clg-findboxx">
+                <img src="/assets/images/counselor-handshake.svg" alt="">
+                <div>
+                    <h4>Didn’t find any project of your interest? Design your own!</h4>
+                    <p>Once you pitch your project idea, we will curate resources, team, and a mentor for you.</p>
+                </div>
+            </div>
+            <button class="btn btn-design" (click)="openGiveProjectIdeaModal(projectIdeaModal)">DESIGN NOW</button>
+        </div>
+    </ng-container>
+    <ng-container>
+        <h4 class="slider-title">My Completed Projects</h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="completedProjectsData?.length == 0">
+            <ng-template carouselSlide class="webinar-content-box1">
+                <p class="post-title1 webinar-title1"> No Completed project found!</p>
+            </ng-template>
+        </owl-carousel-o>
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+            <ng-template carouselSlide *ngFor="let project of completedProjectsData">
+                <div class="webinar-box1 article-box1">
+                    <div class="webinar-box1 article-box1">
+                        <div class="webinar-image-box1">
+                            <div class="webinar-imageas"
+                                [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
+                                (click)="openModalWithClass(addDialog,project,false)"></div>
+                            <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
+                            <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                            alt="Article Image"> -->
+                            <!-- <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist"
+                            aria-hidden="true"
+                            (click)="project?.project.watchlist ? onAddOrRemoveWatchlist('Remove',project.project._id) : onAddOrRemoveWatchlist('Add',project.project._id) "></i> -->
+                            <a class="watchlist"
+                                (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) ">Add
+                                to Watchlist <i class="fa fa-heart" title="Add to your project watchlist"
+                                    [class.active]="project?.watchlist" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="webinar-content-box1" (click)="openModalWithClass(addDialog,project,false)">
+                            <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                            <p class="tags-box1">
+                                <span class="article-tags1" *ngFor="let tag of project?.project?.keyword">{{tag}}</span>
+                                <!-- <span class="article-tags1">UI/UX </span> -->
+                            </p>
+                            <p class="post-description1 webinar-desc1 top-gap1">
+                                <span class="description">{{project?.description}}</span>
+                            </p>
+                            <div style="display: flex;align-items: center;">
+                                <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                                <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot-project?.projectAvailableSlot}} spots
+                                    available</p>
+                            </div>
+                            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                                    date}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+
+        </owl-carousel-o>
+    </ng-container>
+    <ng-container>
+        <h4 class="slider-title">My Programs in Progress</h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="programesData?.length == 0">
+            <ng-template carouselSlide class="webinar-content-box1">
+                <p class="post-title1 webinar-title1"> Not found Programs in Progress</p>
+            </ng-template>
+        </owl-carousel-o>
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+            <ng-template carouselSlide *ngFor="let project of programesData">
+                <div class="webinar-box1 article-box1">
+                    <div class="webinar-box1 article-box1">
+                        <div class="webinar-image-box1">
+                            <div class="webinar-imageas"
+                            
+                            
+                                [ngStyle]="{'background-image': project?.Programdata?.image ? 'url(' +commonService.imagePathS3( project?.Programdata?.image )+ ')' : 'url(/assets/images/default-blog.svg)' }"
+                                (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')"></div>
+                            <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
+                            <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                            alt="Article Image"> -->
+                            <!-- <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist"
+                            aria-hidden="true"
+                            (click)="project?.project.watchlist ? onAddOrRemoveWatchlist('Remove',project.project._id) : onAddOrRemoveWatchlist('Add',project.project._id) "></i> -->
+                            <!-- <a class="watchlist"
+                                (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) ">Add
+                                to Watchlist <i class="fa fa-heart" title="Add to your project watchlist"
+                                    [class.active]="project?.watchlist" aria-hidden="true"></i>
+                            </a> -->
+                        </div>
+                        <div class="webinar-content-box1" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')">
+                            <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.Programdata?.title}}</a>
+                            <p class="tags-box1">
+                                <span class="article-tags1" *ngFor="let tag of project?.project?.keyword">{{tag}}</span>
+                                <!-- <span class="article-tags1">UI/UX </span> -->
+                            </p>
+                            <!-- <p class="post-description1 webinar-desc1 top-gap1">
+                                <span class="description">{{project?.description}}</span>
+                            </p> -->
+                            <!-- <div style="display: flex;align-items: center;">
+                                <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                                <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot-project?.projectAvailableSlot}} spots
+                                    available</p>
+                            </div> -->
+                            <!-- <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                                    date}}</span></p> -->
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+
+        </owl-carousel-o>
+    </ng-container>
+    <ng-container>
+        <h4 class="slider-title">My Completed Programs</h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="completedProgramesData?.length == 0">
+            <ng-template carouselSlide class="webinar-content-box1">
+                <p class="post-title1 webinar-title1"> Not Completed Programs found!</p>
+            </ng-template>
+        </owl-carousel-o>
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+            <ng-template carouselSlide *ngFor="let project of completedProgramesData">
+                <div class="webinar-box1 article-box1">
+                    <div class="webinar-box1 article-box1">
+                        <div class="webinar-image-box1">
+                            <div class="webinar-imageas"
+                            
+                            
+                                [ngStyle]="{'background-image': project?.Programdata?.image ? 'url(' +commonService.imagePathS3( project?.Programdata?.image )+ ')' : 'url(/assets/images/default-blog.svg)' }"
+                                (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'Completed')"></div>
+                            <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
+                            <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                            alt="Article Image"> -->
+                            <!-- <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist"
+                            aria-hidden="true"
+                            (click)="project?.project.watchlist ? onAddOrRemoveWatchlist('Remove',project.project._id) : onAddOrRemoveWatchlist('Add',project.project._id) "></i> -->
+                            <!-- <a class="watchlist"
+                                (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) ">Add
+                                to Watchlist <i class="fa fa-heart" title="Add to your project watchlist"
+                                    [class.active]="project?.watchlist" aria-hidden="true"></i>
+                            </a> -->
+                        </div>
+                        <div class="webinar-content-box1" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'Completed')">
+                            <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.Programdata?.title}}</a>
+                            <p class="tags-box1">
+                                <span class="article-tags1" *ngFor="let tag of project?.project?.keyword">{{tag}}</span>
+                                <!-- <span class="article-tags1">UI/UX </span> -->
+                            </p>
+                            <!-- <p class="post-description1 webinar-desc1 top-gap1">
+                                <span class="description">{{project?.description}}</span>
+                            </p> -->
+                            <!-- <div style="display: flex;align-items: center;">
+                                <img src="/assets/images/office-chair.png" style="width: 12px;" alt="">
+                                <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot-project?.projectAvailableSlot}} spots
+                                    available</p>
+                            </div> -->
+                            <!-- <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                                    date}}</span></p> -->
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+
+        </owl-carousel-o>
+    </ng-container>
+   
+   
+
+</div>
+
+<!-- filter siderbar start  Web 1366 – 45-->
+<div class="filter-siderbar" *ngIf="isFilterBy">
+    <div class="closeClass">
+        <h5>Filter by :</h5>
+        <img width=11 height=11 (click)="showFilters()" src="./../../../assets/images/Close.svg" alt=""
+            class="close-filter">
+    </div>
+
+    <form class="" [formGroup]="projectFilterFormGroup" method="post" novalidate>
+        <div class="location-filter">
+            <p>By Location</p>
+
+            <select class="selCountry" name="country" id="" formControlName="country">
+                <option value="">Select Country*</option>
+                <option [value]="countr?.name" *ngFor="let countr of countries">{{countr?.name}}</option>
+            </select>
+
+            <!-- <div class="selected-location">
+                <span class="selected-item">
+                    <span class="seleted-item-title">India</span>
+                    <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
+                </span>
+                <span class="selected-item">
+                    <span class="seleted-item-title">Sri Lanka</span>
+                    <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
+                </span>
+                <span class="selected-item">
+                    <span class="seleted-item-title">Nepal</span>
+                    <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
+                </span>
+            </div> -->
+        </div>
+
+        <div class="location-filter">
+            <p>Project Type</p>
+            <div class="questionOptionBox">
+                <label *ngFor="let choice of Productchecks; let i=index">
+                    <input type="radio" name="projectTypeArray" formControlName="projectTypeArray"
+                        [value]="choice?.value">
+                    <span class="questionOptionTitle">{{choice?.label}}</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- <div class="location-filter">
+            <p>Industry Type</p>
+            <div class="questionOptionBox">
+                <label>
+                    <input type="checkbox" name="IndustryOption" formControlName="IndustryOption">
+                    <span class="questionOptionTitle">Industry 1</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="IndustryOption" formControlName="IndustryOption">
+                    <span class="questionOptionTitle">Industry 2</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="IndustryOption" formControlName="IndustryOption">
+                    <span class="questionOptionTitle">Industry 3</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="IndustryOption" formControlName="IndustryOption">
+                    <span class="questionOptionTitle">Industry 4</span>
+                </label>
+            </div>
+        </div> -->
+
+        <div class="location-filter">
+            <p>Project Tags</p>
+            <div class="questionOptionBox">
+                <tag-input [ngModel]="" class="keyword_input form-control" [formControlName]="'projectTag'"
+                    [maxItems]='3' [separatorKeyCodes]="[188,9]"></tag-input>
+                <!-- <label>
+                    <input type="checkbox" name="questionOption">
+                    <span class="questionOptionTitle">Technology</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="questionOption">
+                    <span class="questionOptionTitle">Enterpeneurships</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="questionOption">
+                    <span class="questionOptionTitle">Arts & Humanities</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="questionOption">
+                    <span class="questionOptionTitle">Design</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="questionOption">
+                    <span class="questionOptionTitle">Creative Arts</span>
+                </label> -->
+            </div>
+        </div>
+
+        <div class="filter-action">
+            <a class="cancel-fliter-btn" (click)="closeFilters()" href="javascript:;">Cancel</a>
+            <a class="reset-fliter-btn" (click)="ProjectFilterReset()" href="javascript:;">RESET FILTER</a>
+            <a class="show-result-btn" (click)="onSubmitProjectFilter()" href="javascript:;">SHOW RESULTS</a>
+        </div>
+    </form>
+</div>
+<!-- filter siderbar end  Web 1366 – 45-->
+
+<!-- Web 1366 – 70 start-->
+<ng-template #addDialog>
+    <div class="project-modal">
+        <div class="project-box">
+            <div class="project-header">
+                <div class="project-img">
+                    <img *ngIf="projectDialog?.image" [src]="projectDialog?.image" alt="">
+                    <img *ngIf="!projectDialog?.image" src="/assets/images/resources/programs-banner_1.jpg" alt="">
+                </div>
+                <div class="project-content">
+                    <h5 class="project--title">{{projectDialog?.title}} <i
+                            *ngIf="userid == projectDialog?.projectOwner?._id && projectDialog?.projectStatus != 'completed'"
+                            class="fa fa-edit cursor-pointer"
+                            (click)="openModalProjectEdit(projectEditDialog,projectDialog,projectDialog?._id)"></i></h5>
+
+                    <p class="tags-box1">
+                        <span class="article-tags1" *ngFor="let tag of projectDialog.keyword">{{tag}}</span>
+                        <!-- <span class="article-tags1">UI/UX </span> -->
+                    </p>
+                    <!-- <p [ngbTooltip]="tipContent"><b>Mentor By : </b>{{projectDialog?.mentor?.name}}</p> -->
+
+                    <div *ngIf="projectDialog?.mentor" class="position-relative d-inline-block p-0"
+                        (mouseover)="MentoyByToolTrip=true" (mouseout)="MentoyByToolTrip=false"><b>Mentor By :
+                        </b>{{projectDialog?.mentor?.name}}
+                        <div class="custom_tooltip" *ngIf="MentoyByToolTrip">
+                            <h6 class="nam">{{projectDialog?.mentor?.name}}</h6>
+                            <span class="ratings"><span
+                                    class="start-rat">{{projectDialog?.mentor?.mentor_profile?.profile?.rating}} <i
+                                        class="fa fa-star"></i></span>{{projectDialog?.mentor?.mentor_profile?.profile?.experience}}
+                                yr of experience</span>
+                            <span
+                                class="degree">{{projectDialog?.mentor?.mentor_profile?.profile?.professionalTitle}}</span>
+                            <div class="taglist">
+                                <span>{{projectDialog?.mentor?.mentor_profile?.profile?.industry}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ng-template placement="right" #tipContent>{{projectDialog?.mentor?.name}}<br />
+                        {{projectDialog?.mentor?.mentor_profile?.profile?.rating}}
+                        {{projectDialog?.mentor?.profile?.experience}}<br />
+                        {{projectDialog?.mentor?.profile?.industry}}
+                    </ng-template>
+                    <p class="price-box">
+                        <span *ngIf="projectDialog?.projectfees == 1"
+                            style="font-weight: 600;">{{projectDialog?.projectPrice?.currencySymbol}}{{projectDialog?.projectPrice?.amount}}</span>
+                        <span *ngIf="projectDialog?.projectfees == 0" style="font-weight: 600;">Free</span>
+                    </p>
+                    <p>Including taxes</p>
+                    <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
+                            style="vertical-align: middle;"> | </span> <img
+                            src="./../../../assets/images/office-chair.png" width="15" alt=""> <span
+                            style="color: #25E66D;margin-left: 7px;">{{projectDialog?.availableSlot}} Spots
+                            available</span>
+                    </p>
+                </div>
+                <div class="button_div">
+                    <p class="timing-box"> {{projectDialog?.projectPlan?.projectDuration}} hours/week for 4 weeks</p>
+                    <p class="date-box">Last date of joining : {{projectDialog?.end_date | date}}</p>
+
+                    <button
+                        *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 1 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0"
+                        style="margin-bottom: -16px;" class="get-started-btn"
+                        (click)="paymentForProject(projectDialog._id,projectDialog?.title)">GET STARTED</button>
+
+                    <button
+                        *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 0 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0"
+                        style="margin-bottom: -16px;" class="get-started-btn"
+                        (click)="paymentForFreeProject(projectDialog._id,false,'free',0)">GET STARTED</button>
+
+                    <!-- <button tyle="margin-bottom: -16px;" class="get-started-btn"
+                    (click)="openPaymentModal(projectDialog._id)">GET Pay</button> -->
+
+                    <a *ngIf="includeInJoinProject && projectDialog?.projectStatus != 'completed'" href="javascript:;"
+                        routerLink="/student-dashboard/$/project" [state]="{ projectId: projectDialog?._id}"
+                        style="margin-bottom: -16px;" class="get-started-btn">PROJECT MANAGEMENT</a>
+
+                    <!-- <a *ngIf="projectDialog?.projectStatus == 'completed'" (click)="genratePdf()" href="javascript:;"
+                        style="margin-bottom: -16px;" class="get-started-btn">Certificate</a> -->
+
+                    <div class="dropdown clg-share-certificate" *ngIf="projectDialog?.projectStatus == 'completed'">
+                        <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Certificate
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{completeProjectCertificate}}" download="">Download1</a>
+                            <a class="dropdown-item" href="javascript:;"
+                                (click)="CopyCertificateUrl(completeProjectCertificate)">Copy Url</a>
+                        </div>
+                    </div>
+
+                    <a *ngIf="projectDialog?.projectStatus == 'completed' && !includeProjectReview" href="javascript:;"
+                        class="get-started-btn"
+                        (click)="openModalProjectReview(projectReview,projectDialog,projectDialog?._id)">Add Review</a>
+                </div>
+                <img (click)="modalRef.hide()" src="./../../../assets/images/Close.svg" alt=""
+                    class="project-modal-close">
+            </div>
+        </div>
+        <div class="project-modal-tabs">
+            <ngb-tabset>
+                <ngb-tab title="Project Plan">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week3Duration">
+                                <p class="week-number">Week 3</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week3Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week4Duration">
+                                <p class="week-number">Week 4</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week4Duration}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="About project">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div>
+                                <p class="week-desc">{{projectDialog?.description}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="Project Members">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <!-- <div>
+                                <p class="week-desc">{{projectDialog?.projectMembers[0].name ? projectDialog?.projectMembers[0].name :
+                                    "No Members Found"}}</p>
+                            </div> -->
+                            <div class="member_list" *ngFor="let project_memberlist of projectDialog?.projectMembers">
+                                <div class="imgsdiv">
+                                    <img *ngIf="project_memberlist?.avatar" class="imgs"
+                                        [src]="commonService.imagePathS3(project_memberlist?.avatar)" alt=""
+                                        title="{{project_memberlist?.name}}">
+                                    <img *ngIf="!project_memberlist.avatar" class="imgs"
+                                        src='assets/images/user-icon.png' alt="" title="{{project_memberlist?.name}}">
+                                </div>
+                                <h5 class="name_txt">{{project_memberlist?.name}} {{project_memberlist?.last_name}}<span
+                                        class="tags"></span></h5>
+                                <span class="tags">{{project_memberlist?.type}}</span>
+                            </div>
+                            <!-- <div class="member_list">
+                                <div class="imgsdiv">
+                                    <img class="imgs" src="/assets/images/resources/programs-banner_1.jpg" />
+                                </div>
+                                <h5 class="name_txt">Nivanshi Gupta <span class="tags">Mentore</span></h5>
+                                <span class="degree_txt">Bachelor of Science . University of Delh</span>
+                            </div> -->
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="Project Comments">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div>
+                                <p class="week-desc">{{projectDialog?.projectComments?.comment ?
+                                    projectDialog?.projectComments?.comment :
+                                    "No Comments Found"}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="Project Review" *ngIf="projectDialog?.projectReview">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div class="project_review_list" *ngFor="let review_list of projectDialog?.projectReview">
+                                <div class="imgsdiv">
+                                    <img *ngIf="!review_list?.reviewByimage" class="imgs"
+                                        src='assets/images/user-icon.png' alt="" title="test">
+                                    <img *ngIf="review_list?.reviewByimage" class="imgs"
+                                        [src]="commonService.imagePathS3(review_list?.reviewByimage)">
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '1'">
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '1.5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '2'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '2.5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '3'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '3.5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '4'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '4.5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+
+                                <h5 class="name_txt">{{review_list?.reviewByname}}</h5>
+                                <span class="degree_txt">{{review_list?.reviewtext}}</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+            </ngb-tabset>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Web 1366 – 70 end-->
+<ng-template #addDialog1>
+    <div class="project-modal">
+        <div class="project-box">
+            <div class="project-header">
+                <div class="project-img">
+                    <img *ngIf="projectDialog?.image" [src]="commonService.imagePathS3(projectDialog?.image)" alt="">
+                    <img *ngIf="!projectDialog?.image" src="/assets/images/resources/programs-banner_1.jpg" alt="">
+                </div>
+                <div class="project-content">
+                    <h5 class="project--title">{{projectDialog?.title}} <i
+                            *ngIf="userid == projectDialog?.projectOwner?._id && projectDialog?.projectStatus != 'completed'"
+                            class="fa fa-edit cursor-pointer"
+                            (click)="openModalProjectEdit(projectEditDialog,projectDialog,projectDialog?._id)"></i></h5>
+
+                    <!-- <p class="tags-box1">
+                        <span class="article-tags1" *ngFor="let tag of projectDialog.keyword">{{tag}}</span>
+                         <span class="article-tags1">UI/UX </span> -->
+                    <!-- </p> -->
+                    <!-- <p [ngbTooltip]="tipContent"><b>Mentor By : </b>{{projectDialog?.mentor?.name}}</p> -->
+
+                    <!-- <div *ngIf="projectDialog?.mentor" class="position-relative d-inline-block p-0"
+                        (mouseover)="MentoyByToolTrip=true" (mouseout)="MentoyByToolTrip=false"><b>Mentor By :
+                        </b>{{projectDialog?.mentor?.name}}
+                        <div class="custom_tooltip" *ngIf="MentoyByToolTrip">
+                            <h6 class="nam">{{projectDialog?.mentor?.name}}</h6>
+                            <span class="ratings"><span
+                                    class="start-rat">{{projectDialog?.mentor?.mentor_profile?.profile?.rating}} <i
+                                        class="fa fa-star"></i></span>{{projectDialog?.mentor?.mentor_profile?.profile?.experience}}
+                                yr of experience</span>
+                            <span
+                                class="degree">{{projectDialog?.mentor?.mentor_profile?.profile?.professionalTitle}}</span>
+                            <div class="taglist">
+                                <span>{{projectDialog?.mentor?.mentor_profile?.profile?.industry}}</span>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <ng-template placement="right" #tipContent>{{projectDialog?.mentor?.name}}<br />
+                        {{projectDialog?.mentor?.mentor_profile?.profile?.rating}}
+                        {{projectDialog?.mentor?.profile?.experience}}<br />
+                        {{projectDialog?.mentor?.profile?.industry}}
+                    </ng-template>
+                    <p class="price-box">
+                        <span *ngIf="projectDialog?.projectfees == 1"
+                            style="font-weight: 600;">{{projectDialog?.projectPrice?.currencySymbol}}{{projectDialog?.projectPrice?.amount}}</span>
+                        <span *ngIf="projectDialog?.projectfees == 0" style="font-weight: 600;">Free</span>
+                    </p>
+                    <p>Including taxes</p>
+                    <!-- <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
+                            style="vertical-align: middle;"> | </span> <img
+                            src="./../../../assets/images/office-chair.png" width="15" alt=""> <span
+                            style="color: #25E66D;margin-left: 7px;">{{projectDialog?.availableSlot}} Spots
+                            available</span>
+                    </p> -->
+                </div>
+                <div class="button_div">
+                    <!-- <p class="timing-box"> {{projectDialog?.projectPlan?.projectDuration}} hours/week for 4 weeks</p>
+                    <p class="date-box">Last date of joining : {{projectDialog?.end_date | date}}</p> -->
+
+                    <button
+                        *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 1 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0"
+                        style="margin-bottom: -16px;" class="get-started-btn"
+                        (click)="paymentForProject(projectDialog._id,projectDialog?.title)">GET STARTED</button>
+
+                    <button
+                        *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 0 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0"
+                        style="margin-bottom: -16px;" class="get-started-btn"
+                        (click)="paymentForFreeProject(projectDialog._id,false,'free',0)">GET STARTED</button>
+
+                    <!-- <button tyle="margin-bottom: -16px;" class="get-started-btn"
+                    (click)="openPaymentModal(projectDialog._id)">GET Pay</button> -->
+
+                    <a  *ngIf= "programStatus != 'Completed'" href="javascript:;"
+                        routerLink="/student-dashboard/$/program" [state]="{ projectId: projectDialog?._id}"
+                        style="margin-bottom: -16px;" class="get-started-btn">PROGRAM MANAGEMENT</a>
+
+                    <!-- <a *ngIf="projectDialog?.projectStatus == 'completed'" (click)="genratePdf()" href="javascript:;"
+                        style="margin-bottom: -16px;" class="get-started-btn">Certificate</a> -->
+
+                    <div class="dropdown clg-share-certificate" *ngIf="programStatus == 'Completed'">
+                        <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Certificate
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{completeProgramCertificate}}" download="">Download</a>
+                            <a class="dropdown-item" href="javascript:;"
+                                (click)="CopyCertificateUrl(completeProgramCertificate)">Copy Url</a>
+                        </div>
+                    </div>
+
+                    <!-- <a *ngIf="programStatus == 'Completed'&& !includeProgramReview " href="javascript:;"
+                        class="get-started-btn"
+                        (click)="openModalProgramReview(programReview,projectDialog,projectDialog?._id)">Add Review</a> -->
+                </div>
+                <img (click)="modalRef.hide()" src="./../../../assets/images/Close.svg" alt=""
+                    class="project-modal-close">
+            </div>
+        </div>
+        <div class="project-modal-tabs">
+            <ngb-tabset>
+                <ngb-tab title="Program Plan">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week3Duration">
+                                <p class="week-number">Week 3</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week3Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week4Duration">
+                                <p class="week-number">Week 4</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week4Duration}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="About program">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div>
+                                <p class="week-desc">{{projectDialog?.description}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="Program Members">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <!-- <div>
+                                <p class="week-desc">{{projectDialog?.projectMembers[0].name ? projectDialog?.projectMembers[0].name :
+                                    "No Members Found"}}</p>
+                            </div> -->
+                            <div class="member_list" *ngFor="let project_memberlist of projectDialog?.programMembers">
+                                <div class="imgsdiv">
+                                    <img *ngIf="project_memberlist?.avatar" class="imgs"
+                                        [src]="commonService.imagePathS3(project_memberlist?.avatar)" alt=""
+                                        title="{{project_memberlist?.name}}">
+                                    <img *ngIf="!project_memberlist.avatar" class="imgs"
+                                        src='assets/images/user-icon.png' alt="" title="{{project_memberlist?.name}}">
+                                </div>
+                                <h5 class="name_txt">{{project_memberlist?.name}} {{project_memberlist?.last_name}}<span
+                                        class="tags"></span></h5>
+                                <span class="tags">{{project_memberlist?.type}}</span>
+                            </div>
+                            <!-- <div class="member_list">
+                                <div class="imgsdiv">
+                                    <img class="imgs" src="/assets/images/resources/programs-banner_1.jpg" />
+                                </div>
+                                <h5 class="name_txt">Nivanshi Gupta <span class="tags">Mentore</span></h5>
+                                <span class="degree_txt">Bachelor of Science . University of Delh</span>
+                            </div> -->
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="Program Comments">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div>
+                                <p class="week-desc">{{projectDialog?.projectComments?.comment ?
+                                    projectDialog?.projectComments?.comment :
+                                    "No Comments Found"}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="Project Review" *ngIf="projectDialog?.projectReview">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div class="project_review_list" *ngFor="let review_list of projectDialog?.projectReview">
+                                <div class="imgsdiv">
+                                    <img *ngIf="!review_list?.reviewByimage" class="imgs"
+                                        src='assets/images/user-icon.png' alt="" title="test">
+                                    <img *ngIf="review_list?.reviewByimage" class="imgs"
+                                        [src]="commonService.imagePathS3(review_list?.reviewByimage)">
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '1'">
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '1.5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '2'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '2.5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '3'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '3.5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '4'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '4.5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <div class="project_rating" *ngIf="review_list?.rating == '5'">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+
+                                <h5 class="name_txt">{{review_list?.reviewByname}}</h5>
+                                <span class="degree_txt">{{review_list?.reviewtext}}</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+            </ngb-tabset>
+        </div>
+    </div>
+</ng-template>
+
+
+
+<!-- Web 1366 – 46 start-->
+<ng-template #openBingo>
+    <div class="bingo-modal">
+        <div class="text-box">
+            <p class="p1">Bingo!</p>
+            <p class="p2">You have just joined Project X! Congratulations!</p>
+            <p class="p3">Starting today, you have 30 days to complete the project before the offer expires.</p>
+            <button style="background: #FF971A 0% 0% no-repeat padding-box;
+        border-radius: 4px;font: normal normal bold 12px/16px Nunito;
+  letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProjectSection()">START NOW</button>
+        </div>
+        <div class="bingo-img">
+            <img src="./../../../assets/images/bingo.png" alt="">
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #openPayment>
+    <section class="section-mr">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="blog-right-side" style="margin-top: 36px; margin-right: 53px;
+                    margin-left: -47px;
+ background-color:#F0F0F0">
+                    <p style="background-color: white;border-radius: 5px;" class="p3">Credit/Debit Card</p>
+                    <p class="p3">Netbanking</p>
+                    <p class="p3">Wallet</p>
+                    <p class="p3">EMI</p>
+
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="blog-left-side">
+                    <div class="d-flex" style="margin-bottom: 20px;">
+                        <img src="../../../assets/images/left-arrow.png" alt="">
+                        <p style="margin-left:-268px;color:black;" class="head-text">Payment</p>
+                    </div>
+                    <div class="info-box " style="margin-left:-54px;
+                    margin-top: -33px;">
+                        <div class="info-header">
+                            <p>Credit/Debit Card</p>
+                        </div>
+                        <form class="login-form lead-form">
+                            <div class="row" style="margin: 0;">
+                                <div class="group col-sm-6" style="padding-right:13px">
+                                    <div>
+                                        <input type="text" id="name" formControlName="name" required="required"
+                                            value="8765 3457 9765 6278" />
+                                        <label class="login-label">Card Number</label>
+                                    </div>
+                                </div>
+                                <div class="group col-sm-6" style="padding-left:13px">
+                                    <div>
+                                        <input type="date" id="email" formControlName="email" required="required"
+                                            value="06-09-2030" />
+                                        <label class="login-label" style="left: 25px;">Expiry</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 0;">
+                                <div class="group col-sm-6" style="padding-right:13px">
+                                    <div>
+                                        <input type="text" id="number" formControlName="nuumber" required="required"
+                                            value="Dushyant Tyagi" />
+                                        <label class="login-label"> Full Name</label>
+                                    </div>
+                                </div>
+                                <div class="group col-sm-6" style="padding-left:13px">
+                                    <div>
+                                        <input type="password" id="number" formControlName="nuumber" required="required"
+                                            value="435" />
+                                        <label class="login-label">CVV</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="!promoEnable" style="background-color: #F0F0F0
+                            ;border-radius: 5px;">
+                                <button (click)="hideAndShowPromo('promo')">Have A Promo Code?</button>
+                            </div>
+                            <div *ngIf="promoEnable" class="group col-sm-6" style="padding-right:13px">
+                                <div>
+                                    <input type="text" id="number" formControlName="nuumber" value="" />
+                                    <label class="login-label">Enter The Promo Code</label>
+                                </div>
+                            </div>
+                            <div class="action-div">
+                                <button style="margin-top: 30px;" (click)="openBingoDialog(openBingo)">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</ng-template>
+
+<ng-template #opencreateproject>
+    <div class=" schedule-event-modal" style="width: 109%;">
+        <div class="schedule-form">
+            <h5>
+                Create Student Project
+            </h5>
+            <form [formGroup]="createformDatas">
+                <div class="form-group">
+                    <label><span style="color: red;">*</span>&nbsp; Project Title</label>
+                    <input type="text" formControlName="title" placeholder="Enter*">
+                </div>
+                <div class="form-group">
+                    <label><span style="color: red;">*</span>&nbsp;Location</label>
+                    <input type="text" formControlName="can_be_done" placeholder="Enter*">
+                </div>
+                <div class="form-group">
+                    <label><span style="color: red;">*</span>&nbsp;Choose Number of Students</label>
+                    <input type="text" formControlName="projectMembers" placeholder="Enter*">
+                </div>
+                <div class="form-group">
+                    <label><span style="color: red;">*</span>&nbsp;Choose teh UNSDG</label>
+                    <input type="text" formControlName="sdg" placeholder="Enter*">
+                </div>
+                <div class="form-group">
+                    <label><span style="color: red;">*</span>&nbsp;Write 2 Milestones Of Your Project</label>
+                    <input type="text" formControlName="milestones" placeholder="Enter*">
+                </div>
+                <div class="form-group">
+                    <label><span style="color: red;">*</span>&nbsp;Write The Final Outcomes For Your Project</label>
+                    <input type="text" formControlName="studentOutcome" placeholder="Enter*">
+                </div>
+                <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+                <button (click)="submitStudent()">Create</button>
+            </form>
+        </div>
+        <hr>
+
+    </div>
+</ng-template>
+<!-- Web 1366 – 46 end-->
+
+<ng-template #projectIdeaModal>
+    <div class="modal-form-wrap">
+        <button type="button" class="close-button" (click)="modalRef.hide()"><img
+                src="/assets/images/on-boarding/cross-button.png"></button>
+        <div class="modal-form-header">
+            <p class="heading">Describe any project idea that you wish to work on. Don’t hold yourself.</p>
+            <p class="sub-heading">Based on your idea, our team will work with you to get you signed up and started with
+                mentoring, peer-to-peer advising, and all possible support.</p>
+        </div>
+        <form>
+            <div class="modal-form-body" [formGroup]="projectIdeaForm">
+                <div class="form-box">
+                    <div class="form-group fields">
+                        <label class="field-label" for="projectTitle">Title</label>
+                        <input type="text" class="form-control field-control" placeholder="Title"
+                            formControlName="title">
+
+                    </div>
+                    <div class="form-group fields">
+                        <label class="field-label" for="projectDescription">Project Description</label>
+                        <textarea class="form-control textarea-field" id="projectDescription" placeholder="Description"
+                            formControlName="description"></textarea>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-form-footer">
+                <button type="button" (click)="onSubmitForm()">Submit</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<div class="container" style="margin-top: 100px">
+    <div *ngIf="dafaultGenratepdf" id="contentToConvert" style="padding: 30px 0">
+        <table width="800px" style="
+            margin: 0 auto;
+            background-image: url(../../assets/images/resources/pdf-bg.jpeg);
+            background-repeat: no-repeat;
+            background-position: center right;
+            background-size: 100% 100%;
+          ">
+            <tbody>
+                <tr>
+                    <td width="11%"></td>
+                    <td width="59%" style="padding: 30px 0">
+                        <table style="width: 100%">
+                            <tr>
+                                <td>
+                                    <img src="../../assets/images/resources/label.png" width="96px"
+                                        style="margin-bottom: 10px;" />
+                                </td>
+                                <td style="text-align: right; padding-right: 30px;">
+                                    <p style="
+                          font-weight: 600;
+                          font-size: 28px;
+                          margin-bottom: 10px;
+                          line-height: 1.2;
+                        ">
+                                        www.collegey.com
+                                    </p>
+                                    <p style="
+                          font-weight: 300;
+                          font-size: 21px;
+                          margin-bottom: 5px;
+                          line-height: 1.2;
+                        ">
+                                        India | USA
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p style="
+                          font-weight: 700;
+                          font-size: 32px;
+                          margin-bottom: 0;
+                          line-height: 1.2;
+                          text-transform: uppercase;
+                        ">
+                                        collegey INC.
+                                    </p>
+                                    <p style="
+                          font-weight: 500;
+                          font-size: 15px;
+                          margin: 8px 0;
+                          line-height: 1.2;
+                          font-style: italic;
+                        ">
+                                        hereby recognizes that
+                                    </p>
+                                    <p style="
+                          font-weight: 700;
+                          font-size: 32px;
+                          margin-bottom: 8px;
+                          line-height: 1.2;
+                          font-style: italic;
+                        ">
+                                        {{pdfData?.student_name}}
+                                    </p>
+                                    <p style="
+                          font-weight: 400;
+                          font-size: 15px;
+                          margin-bottom: 5px;
+                          line-height: 1.2;
+                          letter-spacing: 0.5px;
+                        ">
+                                        from <b>{{pdfData?.student_school_name}}</b>
+                                    </p>
+                                    <p style="
+                          font-weight: 400;
+                          font-size: 15px;
+                          margin-bottom: 10px;
+                          line-height: 1.2;
+                          font-style: italic;
+                        ">
+                                        has successfully completed the <b>{{pdfData?.student_projectname}}</b> project
+                                        on <b>{{pdfData?.project_completed_date | date: 'dd/MM/yyyy'}}.</b>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%">
+                            <tr>
+                                <td width="70%">
+                                    <p style="
+                          font-weight: 400;
+                          font-size: 15px;
+                          margin-bottom: 40px;
+                          line-height: 1.2;
+                          font-style: italic;
+                          max-width: 276px;
+                        ">
+                                        {{pdfData?.student_projectname}} Project is a rigorous
+                                        {{pdfData?.project_week}}, UN SDG-aligned
+                                        project that includes training and mentorship with
+                                        peer-to-peer feedback, project management experience, and
+                                        design thinking pedagogy.
+                                    </p>
+                                    <p style="
+                          font-weight: normal;
+                          font-size: 12px;
+                          margin-bottom: 8px;
+                          line-height: 1.2;
+                        ">
+                                        Authorized and issued by:
+                                    </p>
+                                    <p style="
+                          font-weight: 600;
+                          font-size: 15px;
+                          margin-bottom: 8px;
+                          line-height: 1.2;
+                          text-transform: uppercase;
+                        ">
+                                        collegey inc.
+                                    </p>
+                                    <p style="
+                          font-weight: normal;
+                          font-size: 12px;
+                          margin-bottom: 8px;
+                          line-height: 1.2;
+                        ">
+                                        Tacoma, Washington, USA | Noida, UP, India
+                                    </p>
+                                </td>
+                                <td width="30%" style="text-align: right; vertical-align: bottom; padding-right: 30px;">
+                                    <img src="../../assets/images/resources/stamp.png" width="140px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="30%"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container" style="margin-top: 100px">
+    <div *ngIf="dafaultGenratepdf" id="contentToConvert1" style="padding: 30px 0">
+        <table width="800px" style="
+            margin: 0 auto;
+            background-image: url(../../assets/images/resources/pdf-bg.jpeg);
+            background-repeat: no-repeat;
+            background-position: center right;
+            background-size: 100% 100%;
+          ">
+            <tbody>
+                <tr>
+                    <td width="11%"></td>
+                    <td width="59%" style="padding: 30px 0">
+                        <table style="width: 100%">
+                            <tr>
+                                <td>
+                                    <img src="../../assets/images/resources/label.png" width="96px"
+                                        style="margin-bottom: 10px;" />
+                                </td>
+                                <td style="text-align: right; padding-right: 30px;">
+                                    <p style="
+                          font-weight: 600;
+                          font-size: 28px;
+                          margin-bottom: 10px;
+                          line-height: 1.2;
+                        ">
+                                        www.collegey.com
+                                    </p>
+                                    <p style="
+                          font-weight: 300;
+                          font-size: 21px;
+                          margin-bottom: 5px;
+                          line-height: 1.2;
+                        ">
+                                        India | USA
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p style="
+                          font-weight: 700;
+                          font-size: 32px;
+                          margin-bottom: 0;
+                          line-height: 1.2;
+                          text-transform: uppercase;
+                        ">
+                                        collegey INC.
+                                    </p>
+                                    <p style="
+                          font-weight: 500;
+                          font-size: 15px;
+                          margin: 8px 0;
+                          line-height: 1.2;
+                          font-style: italic;
+                        ">
+                                        hereby recognizes that
+                                    </p>
+                                    <p style="
+                          font-weight: 700;
+                          font-size: 32px;
+                          margin-bottom: 8px;
+                          line-height: 1.2;
+                          font-style: italic;
+                        ">
+                                        {{pdfData?.student_name}}
+                                    </p>
+                                    <p style="
+                          font-weight: 400;
+                          font-size: 15px;
+                          margin-bottom: 5px;
+                          line-height: 1.2;
+                          letter-spacing: 0.5px;
+                        ">
+                                        from <b>{{pdfData?.student_school_name}}</b>
+                                    </p>
+                                    <p style="
+                          font-weight: 400;
+                          font-size: 15px;
+                          margin-bottom: 10px;
+                          line-height: 1.2;
+                          font-style: italic;
+                        ">
+                                        has successfully completed the <b>{{pdfData?.student_projectname}}</b> project
+                                        on <b>{{pdfData?.project_completed_date | date: 'dd/MM/yyyy'}}.</b>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%">
+                            <tr>
+                                <td width="70%">
+                                    <p style="
+                          font-weight: 400;
+                          font-size: 15px;
+                          margin-bottom: 40px;
+                          line-height: 1.2;
+                          font-style: italic;
+                          max-width: 276px;
+                        ">
+                                        {{pdfData?.student_projectname}} Project is a rigorous
+                                        {{pdfData?.project_week}}, UN SDG-aligned
+                                        project that includes training and mentorship with
+                                        peer-to-peer feedback, project management experience, and
+                                        design thinking pedagogy.
+                                    </p>
+                                    <p style="
+                          font-weight: normal;
+                          font-size: 12px;
+                          margin-bottom: 8px;
+                          line-height: 1.2;
+                        ">
+                                        Authorized and issued by:
+                                    </p>
+                                    <p style="
+                          font-weight: 600;
+                          font-size: 15px;
+                          margin-bottom: 8px;
+                          line-height: 1.2;
+                          text-transform: uppercase;
+                        ">
+                                        collegey inc.
+                                    </p>
+                                    <p style="
+                          font-weight: normal;
+                          font-size: 12px;
+                          margin-bottom: 8px;
+                          line-height: 1.2;
+                        ">
+                                        Tacoma, Washington, USA | Noida, UP, India
+                                    </p>
+                                </td>
+                                <td width="30%" style="text-align: right; vertical-align: bottom; padding-right: 30px;">
+                                    <img src="../../assets/images/resources/stamp.png" width="140px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="30%"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div *ngIf="show_loader == true" class="collegy_loader">
+    <img src="assets/images/loading-buffering.gif">
+</div>
+
+<ng-template #testimonail>
+    <div class="schedule-event-modal">
+        <div class="schedule-form">
+            <h5> Please write your Testimonial ! </h5>
+            <form [formGroup]="testimonialFormGroup" (ngSubmit)="addTestimonial()" method="post">
+                <div class="form-row">
+                    <!-- <div class="col-md-12">
+                            <label for="name">Enter name</label>
+                            <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter name"/>
+                            <span *ngIf="testimonialFormGroup.get('name').errors?.required" class="d-block" style="color: red;">
+                                Name is required.
+                            </span>
+                        </div>
+                        <div class="col-md-12" style="padding-top:10px;">
+                            <label for="qualification">Qualification</label>
+                            <input type="text" class="form-control" formControlName="qualification" id="qualification" placeholder="Enter Qualification"/>
+                            <span *ngIf="testimonialFormGroup.get('qualification').errors?.required" class="d-block" style="color: red;">
+                                Qualification is required.
+                            </span>
+                        </div>
+                        <div class="col-md-12" style="padding-top:10px;">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" formControlName="country" id="country" placeholder="Country"/>
+                            <span *ngIf="testimonialFormGroup.get('country').errors?.required" class="d-block" style="color: red;">
+                                Country is required.
+                            </span>
+                        </div> -->
+                    <div class="col-md-12" style="padding-top:10px;">
+                        <label for="testimonal">Testimonal <span style="color: red;">*</span></label>
+                        <textarea name="testimonal" class="form-control" formControlName="testimonal" rows="3"
+                            class="form-control" placeholder="Please write your testimonal."></textarea>
+                        <div *ngIf="submittedTestimonial && hasError('testimonal','required')"
+                            style="text-align: center;margin-top: 10px;"
+                            class="alert alert-danger alert-dismissable mb-0 w-100">
+                            Testimonal is required
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding-top:10px; padding-bottom: 10px;">
+                        <label for="url">Youtube Embeded Url</label>
+                        <input type="text" class="form-control" formControlName="url" id="url"
+                            placeholder="Enter Youtube Video Embeded Url" />
+                    </div>
+                </div>
+                <div class="schedule-event-action">
+                    <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+                    <a href="javascript:;" (click)="addTestimonial()" class="show-result-btn">Submit</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #projectEditDialog>
+    <div class="schedule-event-modal edit_project_dialog">
+        <div class="schedule-form">
+            <i class="fa fa-times custClose_model" (click)="modalProjectEdit.hide()" aria-hidden="true"></i>
+            <h4 class="mb-4">{{editProjectTitle}}</h4>
+            <h5 class="mb-2">Update Project</h5>
+            <form [formGroup]="editProjectForm" method="post">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                            <label><span style="color: red;">*</span>&nbsp; Start date</label>
+                            <input type="date" class="form-control" min="{{projectStartDate}}" id="date1" placeholder=""
+                                style="height: 29px;" formControlName="startDate"
+                                (change)="onChangeProjectStart($event)">
+                            <span *ngIf="submitProjectData && hasErrorDate('startDate','required')" class="d-block"
+                                style="color: red;">Start date is required</span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                            <label><span style="color: red;">*</span>&nbsp; Last date of join</label>
+                            <input type="date" class="form-control" min="{{projectSetLastDate}}" id="date1"
+                                placeholder="" style="height: 29px;" formControlName="lastDate">
+                            <span *ngIf="submitProjectData && hasErrorDate('lastDate','required')" class="d-block"
+                                style="color: red;">Last date is required</span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12">
+                        <div class="form-group" *ngIf="!acceptMentorInvitation">
+                            <label>Select Mentor</label>
+                            <select formControlName="requestMentor" name="requestMentor" class="form-control">
+                                <option value="">Choose Mentor</option>
+                                <option *ngFor="let mentor of mentorList" value="{{mentor?.id}}">{{mentor?.name}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" *ngIf="acceptMentorInvitation">
+                            <label><strong>Mentor :</strong></label>
+                            {{acceptMentorName}}
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                            <label>Start date</label>
+                            <input type="date" class="form-control" id="date1" placeholder="" formControlName="startDate" min="{{projectStartDate}}" (change)="onChangeProjectStart($event)">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-6">
+                        <div class="form-group">
+                            <label>Last date of join</label>
+                            <input type="date" class="form-control" id="date1" placeholder="" formControlName="lastDate" min="{{projectSetLastDate}}">
+                        </div>
+                    </div> -->
+
+                </div>
+            </form>
+        </div>
+        <div class="schedule-event-action">
+            <button (click)="modalProjectEdit.hide()" class="reset-fliter-btn">Cancel</button>
+            <a class="show-result-btn" href="javascript:;" (click)="updateProjectData()">Update</a>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #projectReview>
+    <div class="schedule-event-modal cl-project-review">
+        <div class="schedule-form">
+            <h4 class="mb-4">{{editProjectTitle}}</h4>
+            <h5>write a review here </h5>
+            <form [formGroup]="addReviewForm" method="post">
+
+                <div id="half-stars-example">
+                    <div class="rating-group">
+
+                        <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-05"
+                            value="0.5" type="radio">
+
+                        <label aria-label="1 star" class="rating__label" for="rating2-10"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-10" value="1"
+                            type="radio">
+
+                        <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating2-15"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-15"
+                            value="1.5" type="radio">
+                        <label aria-label="2 stars" class="rating__label" for="rating2-20"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-20" value="2"
+                            type="radio">
+                        <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating2-25"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-25"
+                            value="2.5" type="radio" checked>
+                        <label aria-label="3 stars" class="rating__label" for="rating2-30"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-30" value="3"
+                            type="radio">
+                        <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating2-35"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-35"
+                            value="3.5" type="radio">
+                        <label aria-label="4 stars" class="rating__label" for="rating2-40"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-40" value="4"
+                            type="radio">
+                        <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating2-45"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-45"
+                            value="4.5" type="radio">
+                        <label aria-label="5 stars" class="rating__label" for="rating2-50"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-50" value="5"
+                            type="radio">
+                    </div>
+                    <div *ngIf="submitProjectReview && reviewhasError('rating2','required')"
+                        style="text-align: center;margin-top: 10px;padding: 0;"
+                        class="alert alert-danger alert-dismissable mb-0 w-100">
+                        Select Review is required
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-12" style="padding-top:10px;">
+                        <label for="reviewtext">Message <span style="color: red;">*</span></label>
+                        <textarea name="reviewtext" formControlName="reviewtext" class="form-control" rows="3"
+                            class="form-control" placeholder="Please write message."></textarea>
+                        <div *ngIf="submitProjectReview && reviewhasError('reviewtext','required')"
+                            style="text-align: center;margin-top: 10px;padding: 0;"
+                            class="alert alert-danger alert-dismissable mb-0 w-100">
+                            Please enter message
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-event-action">
+                    <button (click)="modalReviewRef.hide()" class="reset-fliter-btn">Cancel</button>
+                    <a href="javascript:;" class="show-result-btn" (click)="addProjectReview()">Submit</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #programReview>
+    <div class="schedule-event-modal cl-project-review">
+        <div class="schedule-form">
+            <h4 class="mb-4">{{editProgramTitle}}</h4>
+            <h5>write a review here </h5>
+            <form [formGroup]="addReviewForm" method="post">
+
+                <div id="half-stars-example">
+                    <div class="rating-group">
+
+                        <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating2-05"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-05"
+                            value="0.5" type="radio">
+
+                        <label aria-label="1 star" class="rating__label" for="rating2-10"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-10" value="1"
+                            type="radio">
+
+                        <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating2-15"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-15"
+                            value="1.5" type="radio">
+                        <label aria-label="2 stars" class="rating__label" for="rating2-20"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-20" value="2"
+                            type="radio">
+                        <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating2-25"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-25"
+                            value="2.5" type="radio" checked>
+                        <label aria-label="3 stars" class="rating__label" for="rating2-30"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-30" value="3"
+                            type="radio">
+                        <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating2-35"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-35"
+                            value="3.5" type="radio">
+                        <label aria-label="4 stars" class="rating__label" for="rating2-40"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-40" value="4"
+                            type="radio">
+                        <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating2-45"><i
+                                class="rating__icon rating__icon--star fa fa-star-half"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-45"
+                            value="4.5" type="radio">
+                        <label aria-label="5 stars" class="rating__label" for="rating2-50"><i
+                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+
+                        <input class="rating__input" name="rating2" formControlName="rating2" id="rating2-50" value="5"
+                            type="radio">
+                    </div>
+                    <div *ngIf="submitProjectReview && reviewhasError('rating2','required')"
+                        style="text-align: center;margin-top: 10px;padding: 0;"
+                        class="alert alert-danger alert-dismissable mb-0 w-100">
+                        Select Review is required
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-12" style="padding-top:10px;">
+                        <label for="reviewtext">Message <span style="color: red;">*</span></label>
+                        <textarea name="reviewtext" formControlName="reviewtext" class="form-control" rows="3"
+                            class="form-control" placeholder="Please write message."></textarea>
+                        <div *ngIf="submitProjectReview && reviewhasError('reviewtext','required')"
+                            style="text-align: center;margin-top: 10px;padding: 0;"
+                            class="alert alert-danger alert-dismissable mb-0 w-100">
+                            Please enter message
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-event-action">
+                    <button (click)="modalReviewRef.hide()" class="reset-fliter-btn">Cancel</button>
+                    <a href="javascript:;" class="show-result-btn" (click)="addProgramReview()">Submit</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

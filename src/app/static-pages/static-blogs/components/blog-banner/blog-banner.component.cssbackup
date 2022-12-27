@@ -1,0 +1,163 @@
+.collegey-magazine-wrapper {
+    width: 100%;
+    height: 335px;
+    border-radius: 6px;
+    background-image: linear-gradient(to top, #2258e1, #1c7ff1);
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 130px;
+    margin-bottom: 168px;
+}
+
+.collegey-magazine-wrapper::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 294px;
+    height: 59px;
+    background-image: url(/assets/images/resources/dots.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.collegey-magazine-text {
+    width: 100%;
+    height: auto;
+    padding: 60px 25px 0px 100px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.collegey-magazine-title {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #e1ebfe;
+    margin-bottom: 6px;
+}
+
+.collegey-magazine-subtitle {
+    font-size: 15px;
+    font-weight: 200;
+    line-height: 1.6;
+    letter-spacing: 0.9px;
+    text-align: left;
+    color: #e1ebfe;
+    margin-bottom: 0;
+}
+
+.explore-more {
+    width: 265px;
+    height: 45px;
+    border-radius: 6.5px;
+    background-color: #ff062f;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.31;
+    letter-spacing: 0.26px;
+    text-align: center;
+    color: #ffffff;
+    margin: 24px 0 0;
+    transition: all 0.4s;
+}
+
+.explore-more:hover {
+    background-color: #f1072e;
+}
+
+.collegey-graphics {
+    width: 512px;
+    position: relative;
+    float: right;
+}
+
+.collegey-graphics>img {
+    position: absolute;
+    width: 245px;
+    height: 206px;
+    border-radius: 6.5px;
+    top: 89px;
+}
+
+.collegey-graphics .graphics-box img {
+    width: 220px;
+    height: 185px;
+    border-radius: 6.5px;
+    position: absolute;
+    right: 39px;
+    top: -20px;
+}
+
+.collegey-graphics .graphics-box img:last-child {
+    top: 185px;
+    right: 29px;
+}
+
+@media screen and (max-width:1199px) {
+    .collegey-magazine-text {
+        padding: 70px 0px 0px 40px;
+    }
+    .collegey-magazine-title {
+        font-size: 38px;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .collegey-magazine-text {
+        padding: 40px 20px 0px 40px;
+    }
+    .collegey-magazine-wrapper {
+        height: auto;
+        margin-top: 0;
+    }
+    .collegey-graphics {
+        display: none;
+    }
+    .explore-more {
+        margin: 23px 0 60px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .collegey-magazine-wrapper {
+        padding: 0;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    .collegey-magazine-text {
+        padding: 30px 30px 0px 35px;
+    }
+    .collegey-magazine-title {
+        font-size: 32px;
+    }
+    .explore-more {
+        margin: 23px 0 60px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .collegey-magazine-wrapper {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+    .collegey-magazine-wrapper::before {
+        width: 270px;
+        height: 50px;
+    }
+    .collegey-magazine-text {
+        padding: 25px 15px 0px 20px;
+    }
+    .collegey-magazine-title {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+    .explore-more {
+        margin: 23px 0 30px;
+        width: 240px;
+        font-size: 12px;
+    }
+}

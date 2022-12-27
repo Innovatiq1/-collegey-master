@@ -1,0 +1,89 @@
+<app-dash-header></app-dash-header>
+<div class="container  first-section">
+    <div class="messaging">
+      <div class="inbox_msg">
+        <div class="inbox_people">
+          <div class="headind_srch">
+            <div class="recent_heading">
+              <h4>Recent</h4>
+            </div>
+            <div class="srch_bar">
+              <div class="stylish-input-group">
+                <input type="text" class="search-bar" placeholder="Search" (keyup)="searchTextFilter($event)">
+                <span class="input-group-addon">
+                  <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="inbox_chat">
+  
+            <div class="chat_list" *ngFor="let listUser of userDatalist; let i = index" [ngClass]="{open_chats: isActive(listUser?._id)}">
+              <div class="chat_people" (click)="studentfetchChat(listUser?._id);">
+                <div class="chat_img">
+                  <img *ngIf="listUser?.avatar" [src]="commonService.imagePathS3(listUser?.avatar)" alt="sunil"
+                    class="rounded-circle">
+                  <img *ngIf="!listUser?.avatar" src="assets/images/user-icon.png" alt="sunil"
+                    class="rounded-circle">
+                </div>
+                <div class="chat_ib">
+                  <h5>{{listUser?.name}} {{listUser?.last_name}}</h5>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+        <div class="mesgs">
+  
+          <div *ngIf="fetchstudentChat" class="no_msgfetch text-center">
+            <p>No message available</p>
+          </div>
+  
+          <div *ngIf="fetchstudentChat == false" class="msg_history">
+  
+            <div *ngFor="let listMessage of chatmessageList?.chatmessage; let i = index"
+              [class]="listMessage?.userid == userid ? 'outgoing_msg' : 'incoming_msg'">
+  
+              <!-- <div *ngIf="listMessage?.userid != userid" class="incoming_msg_img"> 
+                          <img src="assets/images/user-icon.png" alt="sunil" class="rounded-circle"> 
+                        </div> -->
+  
+              <div *ngIf="listMessage?.userid != userid" class="received_msg">
+                <div class="received_withd_msg">
+                  <p *ngIf="listMessage?.msgType == 'text'">{{listMessage?.msgText}}</p>
+                  <img *ngIf="listMessage?.msgType == 'media'" [src]="listMessage?.msgText" alt="">
+                  <span class="time_date"> {{listMessage?.createdAt | date: 'h:mm a | MMM d, y'}}</span>
+                </div>
+              </div>
+  
+              <div *ngIf="listMessage?.userid == userid" class="sent_msg">
+                <p *ngIf="listMessage?.msgType == 'text'">{{listMessage?.msgText}}</p>
+                <img *ngIf="listMessage?.msgType == 'media'" [src]="listMessage?.msgText" alt="">
+                <div class="imgtimediv">
+                  <!-- <img src="assets/images/user-icon.png" alt="sunil" class="rounded-circle"> -->
+                  <span class="time_date"> {{listMessage?.createdAt | date: 'h:mm a | MMM d, y'}}</span>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+          <div *ngIf="fetchstudentChat == false" class="type_msg">
+            <form [formGroup]="chatFormGroup" method="post" (ngSubmit)="onSubmitChat()" novalidate>
+              <div class="input_msg_write">
+                <input type="text" class="write_msg" formControlName="chatMsg" name="chatMsg"
+                  placeholder="Type a message" />
+                <div class="attachdoc">
+                  <i class="fa fa-paperclip"></i>
+                  <input type="file" (change)="onFileUpload($event)"
+                  accept=".png,.jpeg,.jpg,.pdf,.docx,.xls,.xlsx,.doc,.ppt,.pptx" />
+                </div>
+                <span *ngIf="submittedChat && hasError('chatMsg','required')" class="alert alert-danger text-center d-block p-1">Please type message</span>
+                <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

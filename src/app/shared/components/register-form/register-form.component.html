@@ -1,0 +1,99 @@
+<div class="auth-modal-body center-shift">
+    <button type="submit" (click)="onClose()" class="close-button"><img src="/assets/images/cross-button.png"></button>
+    <div class="box-container">
+        <div class="modal-left-side-wrap">
+            <div class="modal-left-side">
+                <h2>Register now. <span>It’s free.</span></h2>
+                <p>Take the first step towards many meaningful engagements by signing up with Collegey.</p>
+            </div>
+            <img src="assets/images/signup-user.svg" class="student-image" alt="student image">
+        </div>
+        <form [formGroup]="studentForm">
+            <div class="modal-right-side first-box" *ngIf="showBox1">
+                <div class="student-heading">
+                    <p>Please select one option:
+                        <p>
+                </div>
+                <div class="student-form-wrap">
+                    <div class="form-group">
+                        <div class="custom_radio">
+                            <div class="radio-option">
+                                <input type="radio" id="studentType1" [value]="qualificationType.HIGHT_SCHOOL_STUDENT" formControlName="qualification" (change)="handleChange(false)">
+                                <label for="studentType1">I'm a high school student</label></div>
+                        </div>
+                        <div class="custom_radio">
+                            <div class="radio-option">
+                                <input type="radio" id="studentType2" [value]="qualificationType.HIGHT_SCHOOL_GRADUATE" formControlName="qualification" (change)="handleChange(false)">
+                                <label for="studentType2">I'm a high school graduate</label></div>
+                        </div>
+                        <div class="custom_radio">
+                            <div class="radio-option"><input type="radio" id="studentType3" [value]="qualificationType.COLLEGE_STUDENT" formControlName="qualification" (change)="handleChange(false)">
+                                <label for="studentType3">I'm a college student</label></div>
+                        </div>
+                        <div class="custom_radio">
+                            <div class="radio-option"><input type="radio" id="studentType4" [value]="qualificationType.COLLEGE_GRADUATE" formControlName="qualification" (change)="handleChange(false)">
+                                <label for="studentType4">I'm a college graduate</label></div>
+                        </div>
+                        <div class="custom_radio">
+                            <div class="radio-option"><input type="radio" id="studentType5" formControlName="other" value="Others" (change)="handleChange(true)">
+                                <label for="studentType5">Other</label></div>
+                        </div>
+                    </div>
+                    <div class="form-group others-field" *ngIf="studentForm.get('other').value">
+                        <input type="text" formControlName="qualification" placeholder="Please specify" class="form-control other-text">
+                        <span class="error-message" *ngIf="showOtherErrorMessage && studentForm.get('qualification').invalid">This field can not be blank</span>
+                    </div>
+                    <div class="studentType-form">
+                        <button class="next-btn" [class.next-btn-space]="studentForm.get('other').value === 'Others'" (click)="changeForm()">Continue</button>
+                        <p class="have-an-acount top-space">Already have an account? <button type="submit" (click)="openLoginForm(null)">Login</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-right-side" *ngIf="showBox2">
+                <div class="login-steps" [class.fb-login]="socialUserInfo">
+                    <ng-container *ngIf="!socialUserInfo">
+                        <div class="social-box">
+                            <app-social-login (onSuccess)="onLoginEvent()" [authType]="authType"></app-social-login>
+                        </div>
+                        <p class="seperator"><span>or</span></p>
+                    </ng-container>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="name" placeholder="First Name">
+                        <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="studentForm.controls.name">
+                        </app-input-validation>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="last_name" name="lastName" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" formControlName="email" class="form-control" placeholder="Email ID">
+                        <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="studentForm.controls.email">
+                        </app-input-validation>
+                        <span *ngIf="emailErrorMessage" class="error-message">{{emailErrorMessage}}</span>
+                    </div>
+                    <div class="form-group bottom-margin">
+                        <input type="password" formControlName="password" class="form-control bottom-gap" placeholder="Password (Atleast 8 characters)">
+                        <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="studentForm.controls.password">
+                        </app-input-validation>
+                        <span class="note-span small">Create a password for Collegey. This is <b>not</b> your email password.</span>
+                    </div>
+                    <div class="form-group bottom-margin">
+                        <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Re-enter Password">
+                        <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="studentForm.controls.confirmPassword"></app-input-validation>
+                        <app-input-validation *ngIf="studentForm.get('confirmPassword')?.value" [isShowErrorMsg]="showErrorMessage" [control]="studentForm">
+                        </app-input-validation>
+                    </div>
+                    <div class="form-group bottom-margin">
+                        <input class="terms-conditions" type="checkbox" id="termsConditions" name="termsConditions" formControlName="shouldAgree">
+                        <label for="termsConditions" class="label-terms-conditions">By signing up you agree to our <a
+              target="_blank" class="terms-anchortext" [routerLink]="['/terms-condition']">Terms & Conditions</a>
+            </label>
+                        <span class="error-message" *ngIf="studentForm.get('shouldAgree').touched && (studentForm.get('shouldAgree').invalid ||
+          !studentForm.get('shouldAgree').value)">Please accept our terms and conditions to proceed.</span>
+                    </div>
+                    <button class="next-btn margin-top-zero" (click)="onSubmit()">Let's get started</button>
+                    <p class="have-an-acount">Have an account? <button type="button" (click)="openLoginForm()">Login</button></p>
+                </div>
+            </div>
+        </form>
+    </div>

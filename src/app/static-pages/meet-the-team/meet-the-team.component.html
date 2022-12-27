@@ -1,0 +1,191 @@
+<!-- code for meet the team screen  Start-->
+<section class="team_member section-padding">
+  <div class="py-5 team4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-12 text-center">
+          <a [routerLink]="['../meet-our-team']" class="text-center btn btn-success m-1">Meet Our Team</a>
+          <a class="text-center btnText btn btn-info m-1" style="cursor: auto;">Board of Advisors</a>
+          <a class="text-center btnText btn btn-info m-1" style="cursor: auto;">Board of Directors</a>
+          <!-- <a [routerLink]="['../advisors']" class="text-center btn btn-info m-1">Board of Advisors</a>
+              <a [routerLink]="['../directors']" class="text-center btn btn-success m-1">Board of Directors</a> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-12 col-md-12">
+          <h2 class="mb-3 mt-5 text-center">{{teamTitle?.mainTitle}}</h2>
+          <h5 class="mb-3">{{teamTitle?.subTitle1}}</h5>
+          <h6 class="subtitle">{{teamTitle?.subTitle2}}</h6>
+        </div>
+      </div>
+      <div class="row">
+        <!-- column  -->
+        <div class="col-12 col-md-4 col-xl-3 mb-4 text-center" *ngFor="let team of response; let ind = index;">
+          <div class="user-image">
+            <img *ngIf="team.image" [src]="commonService.imagePathS3(team.image)" alt="{{team.name}}"
+              class="img-fluid rounded-circle">
+            <img *ngIf="!team.image" src="assets/images/user-icon.png" alt="user-icon" class="img-fluid rounded-circle">
+            <!-- <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/team/t1.jpg" alt="{{team.name}}" class="img-fluid rounded-circle" /> -->
+          </div>
+          <div class="pt-2">
+            <h5 class="mt-4 font-weight-medium">{{team.name}}</h5>
+            <h6 class="subtitle mb-3">{{team.position}} - {{team.designation}}</h6>
+            <a href="{{team.lindkin}}" target="_blank" style="cursor: pointer;"><img
+                src="/assets/images/linkedin-full.svg" width="18px" alt=""></a>
+            <p class="mt-2">{{team.description}}</p>
+            <ul class="list-inline">
+              <li class="list-inline-item"><a href="{{team.lindkin}}" class="text-decoration-none d-block px-1"><i
+                    class="icon-social-facebook"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="text-decoration-none d-block px-1"><i
+                    class="icon-social-facebook"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="text-decoration-none d-block px-1"><i
+                    class="icon-social-twitter"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="text-decoration-none d-block px-1"><i
+                    class="icon-social-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- - ->
+<section class="team-section text-center my-5">
+    <h2 class="h1-responsive font-weight-bold my-5">Meet Our Team</h2>
+    <h5 class="mb-3">Collegey teams up with students, educators, and key influencers for impact projects leading to impact careers. With ed-tech, we scale impact and meaning.</h5>
+    <p class="grey-text w-responsive mx-auto mb-5">We’re a growing team of digital marketing experts and thought leaders — full of personality minus the
+      ego. We’re the wearer of many hats dedicated to helping companies likes yours grow.</p>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 mb-lg-0 mb-5"  *ngFor="let team of response; let ind = index;">
+        <div class="avatar mx-auto">
+          <img src="{{team.image}}" alt="{{team.name}}" class="rounded-circle z-depth-1"
+          alt="{{team.name}}" style="width:270px; height: 270px;"/> 
+        </div>
+        <h5 class="font-weight-bold mt-4 mb-3">{{team.name}}</h5>
+        <p class="text-uppercase blue-text"><strong>{{team.position}} - {{team.designation}}</strong></p>
+        <p class="grey-text">{{team.description}}</p>
+        <ul class="list-unstyled mb-0">
+          <a href="{{team.lindkin}}" class="p-2 fa-lg fb-ic"><i class="icon-social-linkedin"></i></a>
+                    
+          <a class="p-2 fa-lg fb-ic">
+            <i class="fab fa-facebook-f blue-text"> </i>
+          </a>
+          <a class="p-2 fa-lg tw-ic">
+            <i class="fab fa-twitter blue-text"> </i>
+          </a>
+          <a class="p-2 fa-lg ins-ic">
+            <i class="fab fa-instagram blue-text"> </i>
+          </a>
+        </ul>
+      </div>
+      
+      <div class="col-lg-3 col-md-6 mb-lg-0 mb-5">
+        <div class="avatar mx-auto">
+          <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).webp" class="rounded-circle z-depth-1"
+            alt="Sample avatar">
+        </div>
+        <h5 class="font-weight-bold mt-4 mb-3">John Doe</h5>
+        <p class="text-uppercase blue-text"><strong>Web developer</strong></p>
+        <p class="grey-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem ipsa accusantium
+          doloremque rem laudantium totam aperiam.</p>
+        <ul class="list-unstyled mb-0">
+          <a class="p-2 fa-lg fb-ic">
+            <i class="fab fa-facebook-f blue-text"> </i>
+          </a>
+          
+          <a class="p-2 fa-lg ins-ic">
+            <i class="fab fa-instagram blue-text"> </i>
+          </a>
+        </ul>
+      </div>
+      
+      <div class="col-lg-3 col-md-6 mb-md-0 mb-5">
+        <div class="avatar mx-auto">
+          <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).webp" class="rounded-circle z-depth-1"
+            alt="Sample avatar">
+        </div>
+        <h5 class="font-weight-bold mt-4 mb-3">Maria Smith</h5>
+        <p class="text-uppercase blue-text"><strong>Photographer</strong></p>
+        <p class="grey-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+          mollit anim est fugiat nulla id eu laborum.</p>
+        <ul class="list-unstyled mb-0">
+          
+          <a class="p-2 fa-lg fb-ic">
+            <i class="fab fa-facebook-f blue-text"> </i>
+          </a>
+          
+          <a class="p-2 fa-lg ins-ic">
+            <i class="fab fa-instagram blue-text"> </i>
+          </a>
+          
+          <a class="p-2 fa-lg ins-ic">
+            <i class="fab fa-dribbble blue-text"> </i>
+          </a>
+        </ul>
+      </div>
+      
+      <div class="col-lg-3 col-md-6">
+        <div class="avatar mx-auto">
+          <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).webp" class="rounded-circle z-depth-1"
+            alt="Sample avatar">
+        </div>
+        <h5 class="font-weight-bold mt-4 mb-3">Tom Adams</h5>
+        <p class="text-uppercase blue-text"><strong>Backend developer</strong></p>
+        <p class="grey-text">Perspiciatis repellendus ad odit consequuntur, eveniet earum nisi qui consectetur
+          totam officia voluptates perferendis voluptatibus aut.</p>
+        <ul class="list-unstyled mb-0">
+          
+          <a class="p-2 fa-lg fb-ic">
+            <i class="fab fa-facebook-f blue-text"> </i>
+          </a>
+          
+          <a class="p-2 fa-lg ins-ic">
+            <i class="fab fa-github blue-text"> </i>
+          </a>
+        </ul>
+      </div>
+  
+    </div>
+
+  </section>
+ <!- - -->
+
+<!-- <section class="resources-wrap">
+    <div class="row">
+        <div class="container-fluid no-pad">
+            <div class="col-md-12 col-sm-12 terms-header">
+                <h1>Meet Our Team</h1>
+                <h6>Collegey teams up with students, educators, and key influencers for impact projects leading to
+                    impact
+                    careers. With ed-tech, we scale impact and meaning.</h6>
+                <p>We’re a growing team of digital marketing experts and thought leaders — full of personality minus the
+                    ego. We’re the wearer of many hats dedicated to helping companies likes yours grow.</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="module lr" *ngFor="let team of response; let ind = index;" >
+            <h3 class="team-member-name">{{team.name}}</h3>
+            <p class="team-member-title">{{team.designation}}</p>
+            <div class="lrt" *ngIf="ind % 4 == 0 || ind % 4 == 1" style="width: 200%;z-index: 99;position: absolute;margin-left: 100%;height: 100%;">
+                <h3>{{team.name}}</h3>
+                <p>{{team.designation}}</p>
+                <p class="desc">{{team.description}}</p>
+                <a href="{{team.lindkin}}" target="_blank" style="cursor: pointer;"><img src="/assets/images/linkedin-full.svg" width="18px" alt=""></a>
+            </div> 
+            <div class="lrt" *ngIf="ind % 4 == 2 || ind % 4 == 3 " style="width: 200%;z-index: 99;position: absolute;height: 100%;right: 341px;">
+                <h3>{{team.name}}</h3>
+                <p>{{team.designation}}</p>
+                <p class="desc">{{team.description}}</p>
+                <a href="{{team.lindkin}}" target="_blank" style="cursor: pointer;"><img src="/assets/images/linkedin-full.svg" width="18px" alt=""></a>
+            </div>
+        </div>
+    </div>
+</section>   -->

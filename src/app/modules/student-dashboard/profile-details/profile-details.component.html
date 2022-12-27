@@ -1,0 +1,875 @@
+<div class="container-fluid nav-bar active design" *ngIf="isPublic== true">
+
+    <a routerLink="/" *ngIf="isBannerScrolled">
+        <img src="assets/images/logo_image/new-collegylogo-22.png" width="100" />
+    </a>
+
+    <a routerLink="/" *ngIf="!isBannerScrolled">
+        <img src="assets/images/Collegey_Logo_White.svg" width="100" />
+    </a>
+    <div class="col-8 col-md-9 col-lg-10" *ngIf="!isBannerScrolled && !appConfig?.blueLogo">
+        <div class="search-box d-flex align-items-center">
+            <input class="search" type="text" placeholder="What do you want to learn…" />
+            <img src="assets/images/search-2-line.svg" class="search-icon" />
+        </div>
+    </div>
+    <div class="col-6 col-md-6 col-lg-6" *ngIf="!isBannerScrolled && appConfig?.blueLogo">
+        <div class="search-box d-flex align-items-center">
+            <input class="search" type="text" placeholder="What do you want to learn…" />
+            <img src="assets/images/search-2-line.svg" class="search-icon" />
+        </div>
+    </div>
+    <div style="display: flex;align-items: center;" *ngIf="!loggedInUser">
+        <p class="nav-bar-invite">Have an invite? <a href="">Join now!</a></p>
+        <a href="" class="btn nav-bar-login-btn">LOG IN</a>
+        <a href="" class="btn nav-bar-signup-btn">SIGN UP</a>
+    </div>
+</div>
+
+<app-dash-header *ngIf="isPublic == false"></app-dash-header>
+
+<meta *ngIf="isPublic == true" property="og:image:type" content="image/jpg">
+
+<div *ngIf="isPublic == true" class="pubclic_header">
+    <!-- <div class="container first-section1 p-3" style="text-align: center !important;">
+        <span>
+            Don’t complete this now if you don’t have the time! Pros on competition: You’ll get a better experience &
+            get what you truly need from Collegey! &nbsp;&nbsp; &nbsp;&nbsp;
+
+            <a [routerLink]="['/student/profile']" class="btn btn-sm btn-primary">
+                <strong> YES </strong>
+            </a>
+        </span> &nbsp;&nbsp; &nbsp;&nbsp;
+        <span class="btn btn-sm btn-danger">
+            <strong> NO </strong>
+        </span>
+    </div> -->
+    <div class="container first-section">
+        <div class="terms-header" style="background-image: url({{CurrentBanner}});">
+        </div>
+        <div class="student-info">
+            <div class="student-info-profile">
+                <ng-container *ngIf="ProfileData?.avatar; then avatarImage; else  placeholder">
+                </ng-container>
+                <ng-template #placeholder>
+                    <img src="assets/images/user-icon.png" alt="" class="profile-img">
+                </ng-template>
+                <ng-template #avatarImage>
+                    <img [src]="commonService.imagePathS3(ProfileData?.avatar)" alt="" class="profile-img">
+                </ng-template>
+                <div class="clg-tophead1">
+                    <h5>{{firstname}} {{lastname}}</h5>
+                    <p style="text-transform: capitalize;">{{ProfileData?.type}}</p>
+                    <p *ngIf="ProfileData?.cityname" class="location">
+                        <img src="assets/images/location.svg" width="11" height="13" alt="" style="margin-right: 7px;">
+                        <span *ngIf="ProfileData?.cityname">{{ProfileData?.cityname}}, </span>
+                        <span *ngIf="ProfileData?.statename">{{ProfileData?.statename}}, </span>
+                        <span>{{ProfileData?.countryname}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="fb-share-button"
+                data-href="https://blogs.worldbank.org/eastasiapacific/indonesia-has-passed-100-million-covid-19-vaccine-doses-what-can-we-learn"
+                data-layout="button" data-size="large">
+                <!-- <a target="_blank"  href="http://www.facebook.com/sharer/sharer.php?u=http://taghunger.com/student-dashboard"
+                    class="fb-xfbml-parse-ignore share-profile">SHARE YOUR PROFILE</a> -->
+
+                <div ngbDropdown class="d-inline-block">
+                    <a class="fb-xfbml-parse-ignore share-profile" ngbDropdownToggle>
+                        SHARE PROFILE
+                    </a>
+                    <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic01">
+                        <a class="buttons"
+                            href="https://www.facebook.com/sharer/sharer.php?u={{siteurl}}profile/{{id}}/{{userComboname}}">
+                            <i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+                        <a class="buttons"
+                            href="https://www.linkedin.com/shareArticle?mini=true&url={{siteurl}}profile/{{id}}/{{userComboname}}">
+                            <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin</a>
+                        <a class="buttons" href="https://wa.me/?text={{siteurl}}profile/{{id}}/{{userComboname}}"> <i
+                                class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp</a>
+                        <a class="buttons" (click)="CopyClipboardUrl()"> <i class="fa fa-link" aria-hidden="true"></i>
+                            Copy Url</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- <div class="dashboard-menu">
+            <ul>
+                <li>
+                    <a [routerLinkActiveOptions]="{ exact: true }" [routerLinkActive]="['active']"
+                        [routerLink]="['/student-dashboard/$']">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/feed']">
+                        Collegey Feed
+                    </a>
+                </li>
+                <li>
+                    <div ngbDropdown class="d-inline-block">
+                        <a [routerLinkActive]="['active']" [class.parentLink]="isActive==true" id="academyLink"
+                            [routerLink]="['/student-dashboard/$/academy']">
+                            Academy
+                        </a>
+                        <button id="dropdownBasic1" ngbDropdownToggle></button>
+                        <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic1">
+                            <a [routerLinkActive]="['active']" ngbDropdownItem
+                                [routerLink]="['/student-dashboard/$/blog']">
+                                Blogs
+                            </a>
+                            <a [routerLinkActive]="['active']" ngbDropdownItem
+                                [routerLink]="['/student-dashboard/$/vlog']">
+                                Vlogs
+                            </a>
+                            <a [routerLinkActive]="['active']" ngbDropdownItem
+                                [routerLink]="['/student-dashboard/$/Programs']">
+                                Programs
+                            </a>
+                            <a [routerLinkActive]="['active']" ngbDropdownItem
+                                [routerLink]="['/student-dashboard/$/course']">
+                                Courses
+                            </a>
+                            <a [routerLinkActive]="['active']" ngbDropdownItem
+                                [routerLink]="['/student-dashboard/$/store']">
+                                Collegey Store <span style="color: red; font-size: small;">(Upcoming)</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/qaforms']">
+                        Q&A Forum
+                    </a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/events']">
+                        Events
+                    </a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/mentor']">
+                        Mentor
+                    </a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/mentor-chat']">
+                        Mentor Chat
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="dark">
+                        <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/university']">
+                            Universities
+                        </a>
+                    </a>
+                </li>
+                <li>
+                    <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/news-resource']">
+                        News & Resources
+                    </a>
+                </li>
+            </ul>
+        </div> -->
+    </div>
+</div>
+
+<!-- <div class="container third-section">
+    <div class="portfolio-progress">
+        <p style="text-align: left;font: normal normal normal 14px/14px Nunito;
+          letter-spacing: 0px;color: #141414;">PORTFOLIO STRENGTH: <span class="text-align: left;
+font: normal normal bold 18px/22px Nunito;letter-spacing: 0px;color: #141414; font-weight: bold;
+font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
+                <span *ngIf="!dashboard?.profile?.profile_completion?.profile_text">Beginner</span></span></p>
+        <ul>
+            <li [class.is-active]="dashboard?.profile?.profile_completion?.profile_percentage >= 25">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                    fill="#ffffff" data-original="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+            </li>
+            <li [class.is-active]="dashboard?.profile?.profile_completion?.profile_percentage >= 50">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                    fill="#ffffff" data-original="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+            <li [class.is-active]="dashboard?.profile?.profile_completion?.profile_percentage >= 75">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                    fill="#ffffff" data-original="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+            <li [class.is-active]="dashboard?.profile?.profile_completion?.profile_percentage >= 100">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path
+                                        d="m15.399 17c-.083 0-.166-.021-.242-.062l-3.157-1.746-3.157 1.745c-.169.094-.374.083-.53-.029-.156-.11-.236-.3-.205-.489l.608-3.731-2.573-2.638c-.131-.134-.176-.33-.117-.508.06-.178.214-.307.399-.335l3.537-.541 1.585-3.379c.166-.351.74-.351.906 0l1.585 3.379 3.537.541c.186.028.34.158.399.335.059.178.014.374-.117.508l-2.573 2.638.608 3.731c.031.189-.049.379-.205.489-.085.061-.186.092-.288.092zm-3.399-2.879c.083 0 .167.021.242.062l2.498 1.381-.483-2.964c-.025-.157.024-.316.136-.43l2.07-2.122-2.839-.434c-.165-.025-.307-.131-.378-.282l-1.246-2.655-1.246 2.657c-.071.151-.213.257-.378.282l-2.839.434 2.07 2.122c.111.114.161.273.136.43l-.483 2.962 2.498-1.381c.075-.041.159-.062.242-.062z"
+                                        fill="#ffffff" data-original="#000000" class="" />
+                                </g>
+                            </g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path
+                                        d="m12 24c-.043 0-.086-.005-.127-.017-.099-.025-9.873-2.703-9.873-11.804v-8.179c0-.209.131-.397.327-.469l9.5-3.5c.111-.041.234-.041.346 0l9.5 3.5c.196.072.327.26.327.469v8.179c0 9.102-9.774 11.779-9.873 11.805-.041.011-.084.016-.127.016zm-9-19.651v7.83c0 7.882 7.85 10.466 9 10.802 1.15-.336 9-2.92 9-10.802v-7.83l-9-3.316z"
+                                        fill="#ffffff" data-original="#000000" class="" />
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="!isPublic" class="portfolio-progress-text">
+        <a [routerLink]="['/student/profile']">
+            <h6>COMPLETE YOUR PROFILE</h6>
+        </a>
+        <p class="port-desc">Completing your portfolio will provide you with more broad and relevant experiences,
+            allowing you to make more informed and happy decisions.</p>
+    </div>
+</div> -->
+<div class="profile-details-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-9 profile-space">
+                <!-- My Badges -->
+                <div class="profile-detail-main" *ngIf="showbadges">
+                    <div class="profile-details-header">
+                        <h1>My Badges</h1>
+                    </div>
+                    <div class="profile-info badges_list">
+                        <img *ngFor="let listbadgemaster of badgeMastersList; let i=index;" class="badgemasters-img "
+                            alt="{{listbadgemaster?.title}}" title="{{listbadgemaster?.title}}"
+                            [src]="commonService.imagePathS3(listbadgemaster?.imageName)">
+                    </div>
+                </div>
+                <!-- Student Geography -->
+                <div class="profile-detail-main">
+                    <div class="profile-details-header">
+                        <h1>Location</h1>
+                        <a *ngIf="isPublic == false" [routerLink]="['/student/profile']">EDIT</a>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-detail">
+                            <h2>Location - <span>{{ProfileData?.cityname}}, {{ProfileData?.statename}},
+                                    {{ProfileData?.countryname}}</span></h2>
+                            <h2>Citizenship - <span>{{ProfileData?.student_profile?.geography?.citizenship}}</span></h2>
+                            <h2>Timezone - <span>{{ProfileData?.student_profile?.geography?.timezone}}</span></h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- Student Education -->
+                <div class="profile-detail-main">
+                    <div class="profile-details-header">
+                        <h1>Education</h1>
+                        <a *ngIf="isPublic == false" [routerLink]="['/student/profile']">EDIT</a>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-detail"
+                            *ngFor="let listeducation of ProfileData?.student_profile?.history_updated?.education; let i=index;">
+                            <h2 *ngIf="listeducation?.name">{{listeducation?.name}} <span
+                                    *ngIf="listeducation?.locationCity">| {{listeducation?.locationCity}} </span> <span
+                                    *ngIf="listeducation?.locationState">|
+                                    {{getStateName(listeducation?.locationState)}}
+                                </span> <span *ngIf="listeducation?.locationCountry">|
+                                    {{getCountryName(listeducation?.locationCountry)}}</span></h2>
+
+                            <div *ngIf="listeducation?.type != 'college student'">
+                                <p *ngFor="let gradeChosen of listeducation?.grade">
+                                    <span *ngIf="gradeChosen?.tbd == undefined || gradeChosen?.tbd == false">
+                                        Grade {{gradeChosen.name}} |
+                                        {{gradeChosen.start_year}} - {{gradeChosen.end_year}} |
+                                        grade -
+                                        <span
+                                            *ngIf="gradeChosen.scoreType == 'Percentage'">{{gradeChosen.score}}%</span>
+                                        <span *ngIf="gradeChosen.scoreType == 'GPA'">{{gradeChosen.score}} GPA</span>
+                                        <span *ngIf="gradeChosen.scoreType == 'Score'">{{gradeChosen.score}}
+                                            Score</span>
+                                        <span *ngIf="gradeChosen.scoreType == 'Points'">{{gradeChosen.score}}
+                                            Points</span>
+
+                                        <a *ngIf="gradeChosen?.school_fileName != null"
+                                            class="fa fa-file-text-o mx-2 mt-3 h4" aria-hidden="true" target="_blank"
+                                            [href]="gradeChosen?.school_fileName"></a>
+
+                                        <span style="display: block;"
+                                            *ngFor="let listesubject of gradeChosen.field_of_study; let i=index;">
+                                            {{listesubject}}
+                                        </span>
+                                    </span>
+
+                                    <span *ngIf="gradeChosen.tbd == true">
+                                        Grade {{gradeChosen.name}} |
+                                        {{gradeChosen.start_year}} - {{gradeChosen.end_year}} |
+                                        grade - TBD
+
+                                        <a *ngIf="gradeChosen?.school_fileName != null"
+                                            class="fa fa-file-text-o mx-2 mt-3 h4" aria-hidden="true" target="_blank"
+                                            [href]="gradeChosen?.school_fileName"></a>
+
+                                        <span style="display: block;"
+                                            *ngFor="let listesubject of gradeChosen.field_of_study; let i=index;">
+                                            {{listesubject}}
+                                        </span>
+                                    </span>
+
+                                </p>
+                            </div>
+
+                            <div *ngIf="listeducation?.type == 'college student'">
+                                <p *ngFor="let gradeChosen of listeducation?.collegegrade">
+                                    {{gradeChosen.name}} |
+                                    grade -
+                                    <span *ngIf="gradeChosen.scoreType == 'Percentage'">{{gradeChosen.score}}%</span>
+                                    <span *ngIf="gradeChosen.scoreType == 'GPA'">{{gradeChosen.score}} gpa</span>
+                                    <span *ngIf="gradeChosen.scoreType == 'Score'">{{gradeChosen.score}} Score</span>
+                                    <span *ngIf="gradeChosen.scoreType == 'Points'">{{gradeChosen.score}} Points</span>
+
+                                    <a *ngIf="gradeChosen?.college_fileName != null"
+                                        class="fa fa-file-text-o mx-2 mt-3 h4" aria-hidden="true" target="_blank"
+                                        [href]="gradeChosen?.college_fileName"></a>
+
+                                    <span style="display: block;"
+                                        *ngFor="let listesubject of gradeChosen.field_of_study; let i=index;">
+                                        {{listesubject}}
+                                    </span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Students Interests -->
+                <div class="profile-detail-main">
+                    <div class="profile-details-header">
+                        <h1>Interests</h1>
+                        <a *ngIf="isPublic == false" [routerLink]="['/student/profile']">EDIT</a>
+                    </div>
+                    <div class="profile-info">
+                        <div>
+                            <h6 class="px-3 pt-3">What are your main interest areas?</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p
+                                    *ngFor="let interests of ProfileData?.student_profile?.interest.interest_area; let i=index;">
+                                    {{interests}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <h6 class="px-3">List your favorite subjects</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p
+                                    *ngFor="let subjects of ProfileData?.student_profile?.interest.fav_subjects; let i=index;">
+                                    {{subjects}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Student Favorites -->
+                <div class="profile-detail-main">
+                    <div class="profile-details-header">
+                        <h1>Favorites</h1>
+                        <a *ngIf="isPublic == false" [routerLink]="['/student/profile']">EDIT</a>
+                    </div>
+                    <div class="profile-info">
+                        <div>
+                            <h6 class="px-3 pt-3">Name 2 people who inspire you</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p
+                                    *ngFor="let person of ProfileData?.student_profile?.know_you_better?.people_who_inspire_you; let i=index;">
+                                    {{person.name}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <h6 class="px-3">List 2 of your favourite books</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p
+                                    *ngFor="let books of ProfileData?.student_profile?.know_you_better?.fav_books; let i=index;">
+                                    {{books.name}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <h6 class="px-3">List 2 of your favourite documentaries/ movies</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p
+                                    *ngFor="let movies of ProfileData?.student_profile?.know_you_better?.fav_movies; let i=index;">
+                                    {{movies.name}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <h6 class="px-3">List 2 of your favorite activities on the internet</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p
+                                    *ngFor="let web of ProfileData?.student_profile?.know_you_better?.fav_websites; let i=index;">
+                                    {{web.name}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <h6 class="px-3">Your 3 favourite websites</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p>{{ProfileData?.student_profile?.know_you_better?.fav_websites1}}</p>
+                                <p>{{ProfileData?.student_profile?.know_you_better?.fav_websites2}}</p>
+                                <p>{{ProfileData?.student_profile?.know_you_better?.fav_websites3}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <h6 class="px-3">Your favorite text messaging service</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p
+                                    *ngFor="let chat of ProfileData?.student_profile?.know_you_better?.fav_message_service; let i=index;">
+                                    {{chat}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Student Projects -->
+                <div class="profile-detail-main publish-journal">
+                    <div class="profile-details-header">
+                        <h1>Projects & Accomplishments</h1>
+                    </div>
+                    <div class="profile-info">
+
+                        <div>
+                            <h6 class="px-3 pt-3">Describe any independent or class project that you have done</h6>
+                            <hr>
+                            <div class="profile-detail"
+                                *ngFor="let listeProject of ProfileData?.student_profile?.projects?.describe_any_project; let i=index;">
+                                <h2>{{listeProject?.title}}</h2>
+                                <p>{{listeProject?.description}}</p>
+                                <p>Project Link:<a href="listeProject?.project_url"> {{listeProject?.project_url}}</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <hr>
+                            <h6 class="px-3">Share any writing sample, essays or any of your published or in-progress
+                                work
+                                that you wish to share</h6>
+                            <hr>
+                            <div class="profile-detail"
+                                *ngFor="let listeProject of ProfileData?.student_profile?.projects?.writing_sample; let i=index;">
+                                <h2>{{listeProject?.title}}</h2>
+                                <p>{{listeProject?.description}}</p>
+                                <ul>
+                                    <li *ngFor="let image of listeProject?.file">
+                                        <p class="document-uploaded">
+                                            <a [href]="commonService.imagePathS3(image)"
+                                                style="color: #007bff;">{{sliceImageName(image)}}</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div>
+                            <hr>
+                            <h6 class="px-3">Upload your Letters of Recommendation (LoRs) or References.</h6>
+                            <hr>
+                            <div class="published-journal"
+                                *ngFor="let listeProjectFile of ProfileData?.student_profile?.projects?.someone_said_something_or_recommendation; let i=index;">
+                                <h3>{{listeProjectFile?.title}}</h3>
+                                <ul>
+                                    <li *ngFor="let image of listeProjectFile?.file">
+                                        <p class="document-uploaded">
+                                            <a [href]="commonService.imagePathS3(image)"
+                                                style="color: #007bff;">{{sliceImageName(image)}}</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <hr>
+                            <h6 class="px-3">Let’s showcase your credentials</h6>
+                            <hr>
+                            <div class="profile-detail"
+                                *ngFor="let award of ProfileData?.student_profile?.projects?.award; let i=index;">
+                                <h2>{{award?.title}} ({{award?.type}})</h2>
+                                <p>{{award?.duration[0]}} , {{award?.duration[1]}}</p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <!-- Future Education Plans-->
+                <div class="profile-detail-main">
+                    <div class="profile-details-header">
+                        <h1>Future Education Plans</h1>
+                        <a *ngIf="isPublic == false" [routerLink]="['/student/profile']">EDIT</a>
+                    </div>
+                    <div class="profile-info">
+
+                        <div>
+                            <h6 class="px-3 pt-3">Help us curate events, conversations, and resources for your better
+                                future
+                                options</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <h2>I want to pursue</h2>
+                                <p>{{ProfileData?.student_profile?.headed?.expected_year_to_start?.grade}}</p>
+                                <span>In {{ProfileData?.student_profile?.headed?.expected_year_to_start?.year}}</span>
+                                <div class="list_counry">
+                                    <span
+                                        *ngFor="let listecountry of ProfileData?.student_profile?.headed?.preferred_countries; let i=index;">{{listecountry?.item_text}},</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <h6 class="px-3">Have you taken or plan to take any of the following tests?</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <div *ngFor="let test of ProfileData?.student_profile?.headed?.test_info; let i=index;">
+                                    <p>{{test?.test_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <h6 class="px-3">What do you wish to study?</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <h2>I want to pursue </h2>
+                                <div
+                                    *ngFor="let liststudy of ProfileData?.student_profile?.headed?.wish_to_study; let i=index;">
+                                    <p>{{liststudy?.subjects}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Preferences -->
+                <div class="profile-detail-main">
+                    <div class="profile-details-header">
+                        <h1>Preferences</h1>
+                        <a *ngIf="isPublic == false" [routerLink]="['/student/profile']">EDIT</a>
+                    </div>
+                    <div class="profile-info">
+                        <div>
+                            <h6 class="px-3 pt-3">Do you wish to apply for scholarships?</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <!-- <p>{{ProfileData?.student_profile?.prefrences?.wish_to_apply_for_scholarships?.answer}}</p> -->
+                                <p
+                                    *ngIf="ProfileData?.student_profile?.prefrences?.wish_to_apply_for_scholarships?.answer">
+                                    Yes</p>
+                                <p
+                                    *ngIf="!ProfileData?.student_profile?.prefrences?.wish_to_apply_for_scholarships?.answer">
+                                    No</p>
+                            </div>
+                        </div>
+                        <div *ngIf="ProfileData?.student_profile?.prefrences?.wish_to_apply_for_scholarships?.answer">
+                            <hr>
+                            <h6 class="px-3">How Important is it?</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p>{{ProfileData?.student_profile?.prefrences?.wish_to_apply_for_scholarships?.imoprtance}}
+                                </p>
+                            </div>
+                        </div>
+                        <div *ngIf="ProfileData?.student_profile?.prefrences?.future_privacy != 'Private Profile'">
+                            <hr>
+                            <h6 class="px-3">How much you would like to pay per year for your future education?</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p>{{ProfileData?.student_profile?.prefrences?.how_would_like_to_pay}}</p>
+                            </div>
+                        </div>
+                        <div *ngIf="ProfileData?.student_profile?.prefrences?.privacy != 'Private Profile'">
+                            <hr>
+                            <h6 class="px-3">Approximate family income per year</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p>{{ProfileData?.student_profile?.prefrences?.family_income}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <h6 class="px-3">Are you interested in taking a Gap Year or a Summer Program?</h6>
+                            <hr>
+                            <div class="profile-detail">
+                                <p>{{ProfileData?.student_profile?.prefrences?.interested_in_gap}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Personal-->
+                <div class="profile-detail-main">
+                    <div class="profile-details-header">
+                        <h1>Personal</h1>
+                        <a *ngIf="isPublic == false" [routerLink]="['/student/profile']">EDIT</a>
+                    </div>
+                    <div class="personal-profile profile_border">
+                        <div class="personal-contact-details">
+                            <div class="information">
+                                <h2>Personal Contact Details</h2>
+                                <div class="personal-information">
+                                    <h3>Email</h3>
+                                    <p>{{ProfileData?.email}}</p>
+                                </div>
+                                <div class="personal-information">
+                                    <h3>Date of Birth</h3>
+                                    <p>{{ProfileData?.student_profile?.ways_to_be_in_touch?.dob | date: 'd MMM yy'}}</p>
+                                </div>
+                                <div class="personal-information">
+                                    <h3>Mobile Number</h3>
+                                    <p>{{ProfileData?.student_profile?.ways_to_be_in_touch?.phone_number?.number}}</p>
+                                </div>
+                                <div class="personal-information">
+                                    <h3>Age</h3>
+                                    <p>{{ProfileData?.student_profile?.ways_to_be_in_touch?.age}}</p>
+                                </div>
+                            </div>
+                            <div class="social-media-connect">
+                                <h2>Social media channels</h2>
+                                <p
+                                    *ngFor="let listesocial of ProfileData?.student_profile?.ways_to_be_in_touch?.social_media; let i=index;">
+                                    {{listesocial?.channel_name}} : <a
+                                        href="listesocial?.channel_link">{{listesocial?.channel_link}}</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="personal-profile personal-profile-custom-space"
+                        *ngIf="ProfileData?.student_profile?.ways_to_be_in_touch?.parents_details?.privacy == 'Public'">
+                        <div class="personal-contact-details">
+                            <div class="information ins">
+                                <h2>Family Contact Details</h2>
+                                <div class="personal-information"
+                                    *ngIf="ProfileData?.student_profile?.ways_to_be_in_touch?.parents_details?.relation == 'father'">
+                                    <h3>Father’s Name</h3>
+                                    <p>{{ProfileData?.student_profile?.ways_to_be_in_touch?.parents_details?.name}}</p>
+                                </div>
+                                <div class="personal-information"
+                                    *ngIf="ProfileData?.student_profile?.ways_to_be_in_touch?.parents_details?.relation == 'mother'">
+                                    <h3>Mother’s Name</h3>
+                                    <p>{{ProfileData?.student_profile?.ways_to_be_in_touch?.parents_details?.name}}</p>
+                                </div>
+                                <div class="personal-information">
+                                    <h3>Mobile Number</h3>
+                                    <p>{{ProfileData?.student_profile?.ways_to_be_in_touch?.parents_details?.phone_number?.extension}}
+                                        {{ProfileData?.student_profile?.ways_to_be_in_touch?.parents_details?.phone_number?.number}}
+                                    </p>
+                                </div>
+                                <div class="personal-information">
+                                    <h3>Email ID</h3>
+                                    <p>{{ProfileData?.student_profile?.ways_to_be_in_touch?.parents_details?.email}}</p>
+                                </div>
+
+                            </div>
+
+                            <!-- <div class="information social-media-connect">
+                             <h2>Family Contact Details</h2>
+                            <div class="personal-information">
+                                <h3>Father’s Name</h3>
+                                <p>{{ProfileData?.student_profile?.ways_to_be_in_touch?.school_counselor?.name}}</p>
+                            </div>
+                             
+                            <div class="personal-information">
+                                <h3>Email ID</h3>
+                                <p>{{ProfileData?.student_profile?.ways_to_be_in_touch?.school_counselor?.email}}</p>
+                            </div>
+
+                        </div> -->
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="personal-profile personal-profile-custom-space">
+                        <div class="personal-contact-details">
+                            <div class="information ins">
+                                <h2>School Counselor Details</h2>
+                                <div class="personal-information">
+                                    <h3>Counselor’s Name</h3>
+                                    <p style="line-break: anywhere;">
+                                        {{ProfileData?.student_profile?.ways_to_be_in_touch?.school_counselor[0]?.name}}
+                                    </p>
+                                </div>
+
+                                <div class="personal-information">
+                                    <h3>Email ID</h3>
+                                    <p style="line-break: anywhere;">
+                                        {{ProfileData?.student_profile?.ways_to_be_in_touch?.school_counselor[0]?.email}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="profile-detail-main">
+                <div class="profile-details-header">
+                    <h1>Projects</h1>
+                    <a href="">EDIT</a>
+                </div>
+                <div class="profile-info items-wrap">
+
+                    <div class="items">
+                        <img src="https://image.shutterstock.com/image-vector/vector-set-diverse-college-university-600w-1150054505.jpg"
+                            alt="" title="item-1">
+                        <div class="items-content">
+                            <h2>City Prototype</h2>
+                            <a href="">UI/UX Interface</a>
+                            <a href="">Google Search</a>
+                            <p>This project picks three existing infrastructural elements that...</p>
+                            <h4>2 spot available</h4>
+                            <span>Last date of joining : 22 May 2021</span>
+                        </div>
+
+                    </div>
+                    <div class="items">
+                        <img src="https://image.shutterstock.com/image-vector/vector-set-diverse-college-university-600w-1150054505.jpg"
+                            alt="" title="item-1">
+                        <div class="items-content">
+                            <h2>City Prototype</h2>
+                            <a href="">UI/UX Interface</a>
+                            <a href="">Google Search</a>
+                            <p>This project picks three existing infrastructural elements that...</p>
+                            <h4>2 spot available</h4>
+                            <span>Last date of joining : 22 May 2021</span>
+                        </div>
+                    </div>
+                    <div class="items">
+                        <img src="https://image.shutterstock.com/image-vector/vector-set-diverse-college-university-600w-1150054505.jpg"
+                            alt="" title="item-1">
+                        <div class="items-content">
+                            <h2>City Prototype</h2>
+                            <a href="">UI/UX Interface</a>
+                            <a href="">Google Search</a>
+                            <p>This project picks three existing infrastructural elements that...</p>
+                            <h4>2 spot available</h4>
+                            <span>Last date of joining : 22 May 2021</span>
+                        </div>
+                    </div>
+                    <div class="items">
+                        <img src="https://image.shutterstock.com/image-vector/vector-set-diverse-college-university-600w-1150054505.jpg"
+                            alt="" title="item-1">
+                        <div class="items-content">
+                            <h2>City Prototype</h2>
+                            <a href="">UI/UX Interface</a>
+                            <a href="">Google Search</a>
+                            <p>This project picks three existing infrastructural elements that...</p>
+                            <h4>2 spot available</h4>
+                            <span>Last date of joining : 22 May 2021</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+
+            </div>
+            <div class="col-12 col-lg-3 profile-headline">
+                <div class="profile-details-right"
+                    *ngIf="ProfileData?.student_profile?.interest?.interest_area?.length > 0 || ProfileData?.student_profile?.interest?.fav_subjects?.length > 0">
+                    <h2>Other Details</h2>
+                    <div class="other-details"
+                        *ngIf="ProfileData?.student_profile?.interest?.interest_area?.length > 0">
+                        <h3>Interested Areas</h3>
+                        <ul>
+                            <li
+                                *ngFor="let listeinArea of ProfileData?.student_profile?.interest?.interest_area; let i=index;">
+                                <a href="javascript:;">{{listeinArea}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="other-details" *ngIf="ProfileData?.student_profile?.interest?.fav_subjects?.length > 0">
+                        <h3>Favorite Subject</h3>
+                        <ul>
+                            <li
+                                *ngFor="let listeinSubject of ProfileData?.student_profile?.interest?.fav_subjects; let i=index;">
+                                <a href="">{{listeinSubject}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="profile-details-right">
+                    <h2>Preferences</h2>
+
+                    <div class="other-details">
+                        <div class="prefernce_content">
+                            <p>I interested in taking a Summer Program</p>
+                            <h2>{{ProfileData?.student_profile?.prefrences?.interested_in_gap}}</h2>
+                        </div>
+                        <div class="prefernce_content">
+                            <p>I wish to apply for scholarships</p>
+                            <h2
+                                *ngIf="ProfileData?.student_profile?.prefrences?.wish_to_apply_for_scholarships?.answer == true">
+                                Yes</h2>
+                            <h2
+                                *ngIf="ProfileData?.student_profile?.prefrences?.wish_to_apply_for_scholarships?.answer == false">
+                                No</h2>
+                        </div>
+                        <div class="prefernce_content"
+                            *ngIf="ProfileData?.student_profile?.prefrences?.privacy == 'Public Profile'">
+                            <p>I would like to pay per year for my future education.</p>
+                            <h2>{{ProfileData?.student_profile?.prefrences?.how_would_like_to_pay}}</h2>
+                        </div>
+                        <div class="prefernce_content"
+                            *ngIf="ProfileData?.student_profile?.prefrences?.future_privacy == 'Public Profile'">
+                            <p>Approximate family income/year</p>
+                            <h2>{{ProfileData?.student_profile?.prefrences?.family_income}}</h2>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

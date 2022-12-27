@@ -1,0 +1,25 @@
+<div class="project-modal">
+  <div class="project-box">
+    <form [formGroup]="paymentForm" (ngSubmit)="createToken()" autocomplete="off" novalidate>
+      <div class="project-header">
+        <h6>Payment</h6>
+        <img (click)="closeModel()" src="./../../../assets/images/Close.svg" alt="" class="project-modal-close">
+      </div>
+      <div class="project-body">
+        <div class="modal_name_filed">
+          <input type="text" class="form-control" placeholder="Name on card">
+        </div>
+        <ngx-stripe-card class="form-control" [options]="cardOptions" [elementsOptions]="elementsOptions"
+          (change)="onChangeCardDetails($event)"></ngx-stripe-card>
+        <!-- STRIPE ERROR -->
+        <span class="text-danger mt-1" *ngIf="stripeError">
+          {{ stripeError }}
+        </span>
+      </div>
+      <div class="cardpay_footer">
+        <button type="button" class="btn-cancel">Cancel</button>
+        <button (click)="onPayAction()" type="button" class="btn-pay">Pay</button>
+      </div>
+    </form>
+  </div>
+</div>

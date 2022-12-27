@@ -1,0 +1,219 @@
+@import "../../../../assets/css/dashboard.css";
+.welcome-modal-wrap {
+    background: #fff;
+    border-radius: 22px;
+    padding: 0px 100px 59px 68px;
+    box-sizing: border-box;
+}
+
+.welcome-modal-content {
+    position: relative;
+}
+
+.handshake-image {
+    position: absolute;
+    top: 27px;
+    right: 0;
+    width: 200px;
+    height: 176px;
+}
+
+.heading-box {
+    width: 435px;
+    padding-top: 60px;
+    margin-bottom: 35px;
+}
+
+.heading-box .welcome-modal-heading {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: #161616;
+    margin-bottom: 8px;
+}
+
+.heading-box .welcome-modal-subheading {
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.85;
+    letter-spacing: 0.52px;
+    text-align: left;
+    color: #666666;
+    margin-bottom: 0;
+}
+
+.check-pointers {
+    width: 100%;
+}
+
+.check-pointers p {
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.69;
+    letter-spacing: 0.52px;
+    text-align: left;
+    color: #666666;
+    padding-left: 26px;
+    margin-bottom: 23px;
+    position: relative;
+}
+
+.check-pointers p:before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.check-pointers p:first-child:before {
+    background-image: url(/assets/images/Magazine.svg);
+    width: 15px;
+    height: 14px;
+    top: 4px;
+}
+
+.check-pointers p:nth-child(2):before {
+    background-image: url(/assets/images/Global-icon.svg);
+}
+
+.check-pointers p:nth-child(3):before {
+    background-image: url(/assets/images/small-play-icon.svg);
+}
+
+.check-pointers p:nth-child(4):before {
+    top: 2px;
+    background-image: url(/assets/images/whatsapp-icon.svg);
+}
+
+.check-pointers p:last-child:before {
+    width: 18px;
+    height: 12px;
+    top: 4px;
+    background-image: url(/assets/images/Invite.svg);
+}
+
+.check-pointers p:last-child {
+    margin-bottom: 0;
+}
+
+.check-pointers p span {
+    font-weight: 500;
+    color: #111111;
+}
+
+.check-pointers p a {
+    color: #4b92ef;
+}
+
+.check-pointers p a:hover,
+.check-pointers p a:active,
+.check-pointers p a:focus {
+    text-decoration: none;
+    color: #4b92ef;
+}
+
+@media screen and (max-width:991px) {
+    .welcome-modal-wrap {
+        padding: 0px 50px 55px 55px;
+    }
+    .handshake-image {
+        width: 180px;
+        height: 156px;
+    }
+    .heading-box {
+        width: 400px;
+    }
+    .heading-box .welcome-modal-heading {
+        font-size: 32px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .welcome-modal-wrap {
+        padding: 0px 30px 40px 40px;
+    }
+    .heading-box {
+        width: 100%;
+        padding-top: 42px;
+        margin-bottom: 20px;
+        padding-right: 120px;
+    }
+    .handshake-image {
+        top: 50px;
+        width: 120px;
+        height: auto;
+    }
+    .heading-box .welcome-modal-heading {
+        font-size: 26px;
+    }
+    .check-pointers p {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .heading-box .welcome-modal-heading {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .welcome-modal-wrap {
+        padding: 0px 20px 25px;
+        max-height: 560px;
+        overflow: auto;
+        border-radius: 15px;
+    }
+    .heading-box {
+        width: 100%;
+        padding-top: 35px;
+        margin-bottom: 15px;
+        padding-right: 0;
+    }
+    .handshake-image {
+        top: 16px;
+        width: 110px;
+        height: auto;
+    }
+    .heading-box .welcome-modal-heading {
+        font-size: 28px;
+        width: 200px;
+        margin-bottom: 12px;
+    }
+    .heading-box .welcome-modal-subheading {
+        line-height: 1.70;
+    }
+    .check-pointers p {
+        margin-bottom: 10px;
+    }
+    .check-pointers p a {
+        word-break: break-all;
+    }
+}
+
+@media screen and (max-width:374px) {
+    .welcome-modal-wrap {
+        max-height: 500px;
+    }
+    .heading-box {
+        padding-top: 28px;
+        margin-bottom: 10px;
+    }
+    .heading-box .welcome-modal-heading {
+        font-size: 24px;
+        width: 160px;
+        margin-bottom: 12px;
+    }
+    .handshake-image {
+        top: 15px;
+        width: 90px;
+    }
+    .check-pointers p {
+        margin-bottom: 10px;
+    }
+}

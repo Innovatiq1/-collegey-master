@@ -1,0 +1,2386 @@
+/*css for parent component */
+
+.profile-picture-wrap {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.profile-picture-banner {
+    width: 100%;
+    height: 377px;
+    box-sizing: border-box;
+    background-image: url(/assets/images/on-boarding/profile-banner1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding-top: 210px;
+}
+
+.profile-content-wrap {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    position: relative;
+    top: -166px;
+    margin-bottom: 0px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 37px;
+}
+
+.user-profile p {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2.8px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    text-align: left;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.user-profile p span {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    display: block;
+    text-transform: capitalize;
+    line-height: 1;
+}
+
+
+/*css for parent component ends*/
+
+
+/* onboarding question sections css starts */
+
+::ng-deep .question-box-inner {
+    width: 439px;
+    margin-bottom: 61px;
+    position: relative;
+    top: -62px;
+}
+
+::ng-deep .question-box-inner>p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.43;
+    letter-spacing: 1.12px;
+    text-align: left;
+    color: #222222;
+    margin-bottom: 35px;
+    padding-right: 60px;
+}
+
+::ng-deep .question-box-inner>p.question-box-subtext {
+    padding-right: 0px;
+}
+
+::ng-deep .field-label {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    text-align: left;
+    color: #444444;
+    margin-bottom: 6px;
+}
+
+::ng-deep .fields {
+    margin-bottom: 26px;
+}
+
+::ng-deep .fields2 {
+    margin-bottom: 20px;
+}
+
+::ng-deep .field-control {
+    height: 46px;
+    font-weight: 400;
+    color: #212121;
+}
+
+::ng-deep .other-text {
+    margin-top: 12px;
+}
+
+::ng-deep .field-label+.other-text {
+    margin-top: 0;
+}
+
+::ng-deep .note-span {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 2.55;
+    letter-spacing: 0.44px;
+    text-align: left;
+    color: #777777;
+}
+
+::ng-deep .fields button {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2.33;
+    letter-spacing: 1.2px;
+    text-align: left;
+    color: #3f8def;
+}
+
+::ng-deep .fields button:hover,
+::ng-deep .fields button:active,
+::ng-deep .fields button:focus {
+    text-decoration: none;
+    color: #1b75d7;
+}
+
+::ng-deep .group-label {
+    display: flex;
+    justify-content: space-between;
+}
+
+::ng-deep .group-label.margin-remove {
+    margin-bottom: -12px;
+}
+
+::ng-deep .group-field {
+    /*getting use by history section */
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+::ng-deep .group-field .cross-button {
+    position: absolute;
+    font-weight: 300;
+    right: -20px;
+    top: 8px;
+}
+
+::ng-deep .group-field .cross-button img {
+    width: 10px;
+    height: 10px;
+}
+
+::ng-deep .group-field .educationType {
+    position: relative;
+    width: 55%;
+}
+
+::ng-deep .group-field .educationType::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 30px;
+    top: 8px;
+    right: 3px;
+    border-right: 1px solid #dfdfdf;
+    z-index: 2;
+}
+
+::ng-deep .group-field .field-control {
+    position: relative;
+    left: -2px;
+    border-left: none;
+    border-radius: 0 3px 3px 0;
+}
+
+::ng-deep .group-field .field-control.left-border {
+    left: 0;
+    border-left: 1px solid #dfdfdf;
+    border-radius: 3px;
+}
+
+::ng-deep .group-field .field-control.left-border:focus {
+    border-left: 1px solid #6c757d;
+    border-radius: 3px;
+}
+
+::ng-deep .save-btn-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+::ng-deep .save-and-exit,
+::ng-deep .save-btn {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.21;
+    letter-spacing: 0.28px;
+    text-align: center;
+    width: 48%;
+    height: 51px;
+    border-radius: 6.5px;
+    transition: all 0.4s;
+}
+
+::ng-deep .save-and-exit {
+    border: solid 1px rgba(0, 0, 0, 0.07);
+    background-color: #f9f9f9;
+    color: #000;
+}
+
+::ng-deep .save-btn {
+    color: #fff;
+    opacity: 1;
+    background-color: #ff062f;
+    border: solid 1px #ff062f;
+}
+
+::ng-deep .save-btn:hover,
+.save-btn:focus,
+::ng-deep .save-btn:active {
+    background: #f1072e;
+    border: 1px solid #f1072e;
+}
+
+::ng-deep .save-and-exit:hover,
+::ng-deep .save-and-exit:focus,
+::ng-deep .save-and-exit:active {
+    border: solid 1px rgba(0, 0, 0, 0.07);
+    background-color: #f7f7f7;
+}
+
+
+/* getting use by history section css starts*/
+
+::ng-deep .save-information {
+    width: 610px;
+    height: auto;
+    border-radius: 6px;
+    border: solid 1px rgba(215, 215, 216, 0.5);
+    background-color: #fcfcfc;
+    padding: 24px 30px 0px;
+    margin-bottom: 32px;
+}
+
+::ng-deep .college-name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.64px;
+    text-align: left;
+    color: #111111;
+    margin-bottom: 2px;
+    padding-right: 40px;
+    text-transform: capitalize;
+}
+
+::ng-deep .college-name.space-bottom {
+    margin-bottom: 30px;
+}
+
+::ng-deep .college-branch {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #111111;
+    margin-bottom: 0px;
+}
+
+::ng-deep .batch-year {
+    color: #444444;
+    margin-bottom: 5px;
+    font-weight: 300;
+}
+
+::ng-deep .college-desc {
+    margin-bottom: 0;
+    color: #777777;
+    font-weight: 300;
+}
+
+::ng-deep .add-more-education {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.28px;
+    text-align: left;
+    color: #3f8def;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+
+::ng-deep .add-more-education:hover,
+::ng-deep .add-more-education:focus,
+::ng-deep .add-more-education:active {
+    text-decoration: none;
+    color: #1b75d7;
+}
+
+::ng-deep .add-details-btn {
+    width: 610px;
+    height: auto;
+    border-radius: 6px;
+    border: solid 1px rgba(215, 215, 216, 0.5);
+    background: #fcfcfc;
+    padding: 15.8px 18px 13px;
+    margin-bottom: 31px;
+}
+
+::ng-deep .add-details-btn span {
+    margin-left: 14px;
+    margin-right: 14px;
+    color: #3f8def;
+}
+
+::ng-deep .remove-margin {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+::ng-deep .remove-margin2 {
+    margin-bottom: 0;
+}
+
+::ng-deep .curious-wrap ::ng-deep .add-details-btn {
+    width: 100%;
+    padding: 16.8px 30px 15px;
+}
+
+::ng-deep textarea.field-control {
+    padding-top: 8px;
+    height: 196px;
+    box-shadow: inset 0px 1px 5px 0 rgba(0, 0, 0, 0.04);
+}
+
+::ng-deep .education-title {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: 0.64px;
+    text-align: left;
+    color: #444444;
+    margin-bottom: 18px;
+}
+
+::ng-deep .save-information.pad {
+    padding-top: 5px;
+}
+
+
+/* getting use by history section css ends*/
+
+::ng-deep .bottom-margin {
+    margin-bottom: 39px;
+}
+
+::ng-deep .textarea-field {
+    min-height: 87px;
+}
+
+::ng-deep .fields.bottom-space {
+    margin-bottom: 35px;
+}
+
+
+/* onboarding Question sections css ends*/
+
+.profile-strength-box {
+    width: 100%;
+    margin-top: 200px;
+}
+
+.build-profile {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.56;
+    letter-spacing: 0.32px;
+    text-align: left;
+    color: #585858;
+    padding-bottom: 8px;
+    display: inline-block;
+    margin-bottom: 33px;
+    border-bottom: 1.2px dotted rgba(0, 0, 0, 0.2);
+}
+
+.profile-strength {
+    font-size: 10px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #848484;
+    margin-bottom: 13px;
+    text-transform: uppercase;
+}
+
+.profile-strength span {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1.3px;
+    color: #444444;
+    display: block;
+    text-transform: capitalize;
+}
+
+.complete-profile {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #929292;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.profile-question-wrap {
+    width: 100%;
+    border-top: 1.2px dotted rgba(0, 0, 0, 0.2);
+    padding-top: 42px;
+}
+
+.profile-question-wrap.fixed {
+    position: fixed;
+    top: 100px;
+    height: auto;
+    min-height: 430px;
+    padding-top: 0;
+    padding-bottom: 0px;
+    border-top: none;
+}
+
+.end-block {
+    width: 100%;
+    height: 10px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: -170px;
+}
+
+.profile-question-list {
+    list-style-type: none;
+    width: 100%;
+    position: relative;
+}
+
+.profile-question-list li {
+    position: relative;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.23;
+    letter-spacing: 0.78px;
+    text-align: left;
+    color: rgba(53, 56, 63, 0.6);
+    padding-left: 40px;
+    margin-bottom: 39px;
+}
+
+.profile-question-list li::before {
+    content: '1';
+    position: absolute;
+    top: -6px;
+    left: 0;
+    width: 26px;
+    height: 26px;
+    font-size: 13.5px;
+    font-weight: normal;
+    line-height: 1.9;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+    background: #e6e6e6;
+    border-radius: 50%;
+}
+
+.profile-question-list li::after {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 12px;
+    width: 0px;
+    height: 20px;
+    border-left: 1.2px dotted #e6e6e6;
+}
+
+.profile-question-list li:nth-child(2)::before {
+    content: '2';
+}
+
+.profile-question-list li:nth-child(3)::before {
+    content: '3';
+}
+
+.profile-question-list li:nth-child(4)::before {
+    content: '4';
+}
+
+.profile-question-list li:nth-child(5)::before {
+    content: '5';
+}
+
+.profile-question-list li:nth-child(6)::before {
+    content: '6';
+}
+
+.profile-question-list li:nth-child(7)::before {
+    content: '7';
+}
+
+.profile-question-list li:nth-child(8)::before {
+    content: '8';
+}
+
+.profile-question-list li:nth-child(8)::after {
+    content: '';
+    border-left: none;
+}
+
+.profile-question-list li.profile-completed {
+    font-weight: 600;
+    color: #444444;
+}
+
+.profile-question-list li.profile-completed::before {
+    content: '';
+    background-image: url(/assets/images/on-boarding/green-tick.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.profile-question-list li.profile-completed::after {
+    border-left: 1.2px dotted #2ad95a;
+}
+
+.profile-question-list li.profile-completed:last-child::after {
+    border-left: none
+}
+
+.profile-question-list li.profile-active {
+    font-weight: 600;
+    line-height: 1.23;
+    letter-spacing: 0.78px;
+    color: #444444;
+}
+
+.profile-question-list li.profile-active::before {
+    top: -10px;
+    left: -4px;
+    width: 34px;
+    height: 34px;
+    line-height: 2.5;
+    font-size: 14.5px;
+    color: rgba(0, 0, 0, 0.6);
+    background: #fff;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.profile-question-list li.profile-active p::before {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: -4px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.2px solid;
+    border-color: #2ad95a #2ad95a #2ad95a transparent;
+    -webkit-transform: rotate(47deg);
+    -moz-transform: rotate(47deg);
+    -ms-transform: rotate(47deg);
+    -o-transform: rotate(47deg);
+    transform: rotate(47deg);
+}
+
+.profile-question-list li.profile-active::after {
+    height: 17px;
+    top: 28px;
+}
+
+
+/* Profile sidebar css ends*/
+
+
+/* modal css */
+
+::ng-deep .modal-form-wrap {
+    width: 100%;
+    border-radius: 24px;
+    background-color: #fcfcfc;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+::ng-deep .close-button {
+    position: absolute;
+    top: 0px;
+    right: -48px;
+}
+
+::ng-deep .close-button img {
+    width: 30px;
+    height: 31px;
+    object-fit: contain;
+}
+
+::ng-deep .modal-form-header {
+    padding: 29px 40px 23px;
+    border-bottom: solid 1px rgba(215, 215, 216, 0.5);
+}
+
+::ng-deep .modal-form-header p {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.44;
+    letter-spacing: 0.72px;
+    text-align: left;
+    color: #444444;
+    margin-bottom: 0;
+    padding-right: 50px;
+}
+
+/* ::ng-deep .modal-form-body {
+    padding: 29px 40px 15px;
+    max-height: 440px;
+    height: auto;
+    overflow: auto;
+    min-height: 250px;
+} */
+
+/* ::ng-deep .modal-form-footer {
+    padding: 24px 40px 15px;
+    text-align: right;
+    border-top: solid 1px rgba(215, 215, 216, 0.5);
+    background-color: #f9f7f7;
+    border-radius: 0 0 24px 24px;
+}
+
+::ng-deep .modal-form-footer button {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.31;
+    letter-spacing: 0.78px;
+    text-align: center;
+    display: inline-block;
+    width: 101px;
+    height: 49px;
+    border-radius: 6.5px;
+    color: #fff;
+    background-color: #ff062f;
+    border: solid 1px #ff062f;
+    transition: all 0.4s;
+}
+
+::ng-deep .modal-form-footer button:hover,
+::ng-deep .modal-form-footer button:focus,
+::ng-deep .modal-form-footer button:active {
+    background: #f1072e;
+    border: 1px solid #f1072e;
+} */
+
+::ng-deep .edit-details-button {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    border: solid 1px rgba(215, 215, 216, 0.5);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 1px 5px 0px rgba(215, 215, 216, 0.5);
+    transition: all 0.4s ease;
+}
+
+::ng-deep .edit-details-button img {
+    width: 15px;
+    height: 14px;
+    object-fit: contain;
+}
+
+::ng-deep .edit-details-button:hover {
+    background: #f7f7f7;
+}
+
+::ng-deep .edit-details-button.top-shift {
+    top: 48px;
+}
+
+::ng-deep .edit-details-button.top-shift2 {
+    top: 12px;
+}
+
+::ng-deep .edit-details-button.top-shift3 {
+    top: 58px;
+}
+
+.progress-bar-wrap {
+    padding: 0 18px 0 0;
+}
+
+::ng-deep .label-margin {
+    margin-bottom: 10px;
+}
+
+::ng-deep .custom_radio {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+::ng-deep .custom_radio input[type="radio"] {
+    display: none;
+}
+
+::ng-deep .custom_radio input[type="radio"]+label {
+    position: relative;
+    font-size: 13px;
+    display: inline-block;
+    padding-left: 1.7em;
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 19px;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 0;
+}
+
+::ng-deep .custom_radio input[type="radio"]+label:before,
+::ng-deep .custom_radio input[type="radio"]+label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    transition: all .2s ease;
+}
+
+::ng-deep .custom_radio input[type="radio"]+label:before {
+    transition: all .2s ease;
+    box-shadow: inset 0 0 0 0.24em #fff, inset 0 0 0 1em #fff;
+    border: 1px solid #ddd;
+}
+
+::ng-deep .custom_radio input[type="radio"]+label:hover:before {
+    transition: all .2s ease;
+    box-shadow: inset 0 0 0 0.3em fff, inset 0 0 0 1em #fff;
+}
+
+::ng-deep .custom_radio input[type="radio"]:checked+label:before {
+    transition: all .2s ease;
+    box-shadow: inset 0 0 0 0.24em white, inset 0 0 0 1em #ff062f;
+    border: 1px solid #bbb;
+}
+
+::ng-deep .custom_radio .radio-option {
+    text-align: left;
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+
+::ng-deep .custom_radio label {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: 0.56px;
+    text-align: left;
+    color: #444444;
+}
+
+::ng-deep .custom_radio input[type="radio"]:checked .radio-option {
+    border-bottom: 3px solid #ff062f;
+}
+
+@media screen and (max-width:1199px) {
+    ::ng-deep .question-box-inner {
+        width: 100%;
+    }
+
+    ::ng-deep .save-information,
+    ::ng-deep .add-details-btn {
+        width: 100%;
+    }
+
+    ::ng-deep .question-box-inner>p.question-box-subtext {
+        padding-right: 60px;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .profile-picture-banner {
+        height: auto;
+        padding-top: 160px;
+    }
+
+    .profile-question-wrap {
+        display: none;
+    }
+
+    .progress-bar-box {
+        margin-left: 0;
+    }
+
+    .profile-content-box {
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    ::ng-deep .close-button {
+        top: -40px;
+        right: 0px;
+    }
+
+    ::ng-deep .modal-form-header p {
+        font-size: 16px;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width:575px) {
+    ::ng-deep .custom_radio {
+        flex-direction: column;
+    }
+
+    ::ng-deep .custom_radio .radio-option {
+        margin-bottom: 15px;
+    }
+
+    ::ng-deep .custom_radio .radio-option:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width:479px) {
+    ::ng-deep .modal-form-header {
+        padding: 29px 25px 23px;
+    }
+
+    ::ng-deep .modal-form-header p {
+        font-size: 14px;
+        padding-right: 20px;
+    }
+
+    ::ng-deep .modal-form-body {
+        padding: 29px 25px 15px;
+    }
+
+    ::ng-deep .modal-form-footer {
+        padding: 24px 25px 15px;
+        text-align: center;
+    }
+
+    ::ng-deep .modal-form-footer button {
+        height: 46px;
+    }
+
+    .profile-picture-banner {
+        padding-top: 140px;
+    }
+
+    .user-profile {
+        margin-bottom: 25px;
+        display: block;
+    }
+
+    .user-profile p {
+        margin-top: 20px;
+    }
+
+    .user-profile p span {
+        font-size: 26px;
+        line-height: 1.1;
+    }
+
+    .build-profile {
+        margin-bottom: 26px;
+    }
+
+    ::ng-deep .question-box-inner {
+        margin-bottom: 10px;
+    }
+
+    ::ng-deep .bottom-margin {
+        margin-bottom: 10px;
+    }
+
+    ::ng-deep .question-box-inner>p {
+        margin-bottom: 25px;
+        padding-right: 45px;
+    }
+
+    ::ng-deep .save-information {
+        padding: 20px 20px 0;
+        margin-bottom: 28px;
+    }
+
+    ::ng-deep .save-information.pad {
+        padding-top: 2px;
+    }
+
+    ::ng-deep .college-name {
+        font-size: 15px;
+    }
+
+    ::ng-deep .save-history {
+        padding: 25px 0 22px;
+    }
+
+    ::ng-deep .fields {
+        margin-bottom: 18px;
+    }
+
+    ::ng-deep .edit-details-button {
+        top: 18px;
+        width: 28px;
+        height: 28px;
+    }
+
+    ::ng-deep .edit-details-button img {
+        width: 13px;
+        height: 12px;
+    }
+
+    ::ng-deep .save-and-exit,
+    ::ng-deep .save-btn {
+        height: 48px;
+    }
+
+    ::ng-deep .edit-details-button.top-shift {
+        top: 50px;
+    }
+
+    ::ng-deep .edit-details-button.top-shift2 {
+        top: 18px;
+    }
+
+    ::ng-deep .group-field .cross-button {
+        right: -11px;
+    }
+
+    ::ng-deep .close-button {
+        top: 14px;
+        right: 15px;
+        z-index: 9;
+        background: url(/assets/images/CloseMobile.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 17px;
+        height: 18px;
+    }
+
+    ::ng-deep .close-button img {
+        display: none;
+    }
+
+    ::ng-deep .add-more-education {
+        font-size: 13px;
+    }
+
+    ::ng-deep .add-details-btn {
+        padding: 15.7px 15px 13px;
+        margin-bottom: 28px;
+    }
+
+    ::ng-deep textarea.field-control {
+        height: 130px;
+    }
+
+    ::ng-deep .education-title {
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
+    ::ng-deep .fields.bottom-space {
+        margin-bottom: 18px;
+    }
+}
+
+@media screen and (max-width:414px) {
+    ::ng-deep .question-box-inner>p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 13px;
+        line-height: 1.3;
+        letter-spacing: 1px;
+    }
+
+    ::ng-deep .question-box-inner {
+        margin-bottom: 0px;
+    }
+
+    ::ng-deep .bottom-margin {
+        margin-bottom: 0px;
+    }
+
+    .complete-profile {
+        margin-bottom: 25px;
+    }
+
+    ::ng-deep .save-history {
+        padding: 20px 0 20px;
+    }
+
+    ::ng-deep .modal-form-header {
+        padding: 25px 20px 20px;
+    }
+
+    ::ng-deep .modal-form-header p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    ::ng-deep .modal-form-body {
+        padding: 20px 20px 10px;
+        max-height: 400px;
+        height: auto;
+        overflow: auto;
+    }
+
+    ::ng-deep .modal-form-footer {
+        padding: 15px 20px;
+    }
+
+    ::ng-deep .college-name {
+        font-size: 14px;
+    }
+
+    ::ng-deep .add-more-education.remove-margin {
+        margin-bottom: 7px;
+        display: block;
+    }
+
+    ::ng-deep .add-details-btn,
+    ::ng-deep .curious-wrap ::ng-deep .add-details-btn {
+        padding: 12px 15px 5px;
+    }
+
+    ::ng-deep .add-details-btn span {
+        display: none;
+    }
+}
+
+@media screen and (max-width:374px) {
+    .user-profile {
+        margin-bottom: 20px;
+    }
+
+    .user-profile p span {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width:330px) {
+    ::ng-deep .modal-form-body {
+        max-height: 300px;
+    }
+}
+
+
+/*New student profile  */
+
+
+.student-profile-wrapper {
+    margin-top: 0px;
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    padding: 100px 85px;
+}
+
+*/ .student-profile p {
+    font: normal normal 600 16px/22px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 0;
+}
+
+.student-profile h5 {
+    font: normal normal normal 32px/36px Georgia;
+    letter-spacing: 0px;
+    color: #141414;
+}
+
+.file-input {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+}
+
+.file-input__input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-input__label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 25px;
+    padding: 5px;
+    background-color: #f7f7f7;
+}
+
+.file-input__label svg {
+    width: 30px;
+    height: 30px;
+    padding: 6px;
+    background-color: #ffffff;
+    border-radius: 25px;
+}
+
+.portfolio-user p {
+    font: normal normal normal 10px/14px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 0;
+}
+
+.portfolio-user h5 {
+    font: normal normal bold 16px/22px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+}
+
+.port-desc {
+    font: normal normal normal 12px/16px Nunito;
+    letter-spacing: 0px;
+    color: #AFAFAF;
+    margin-bottom: 0;
+}
+
+.portfolio-progress ul {
+    list-style: none;
+    z-index: 1;
+    position: relative;
+    display: flex;
+}
+
+.portfolio-progress li {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.portfolio-progress li div {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000014;
+    border: 1px solid #D6E6FF;
+    display: inline;
+    padding: 5px 7px;
+    border-radius: 25px;
+    position: relative;
+}
+
+.portfolio-progress hr {
+    width: 70px;
+    background-color: #D3D3D3;
+    height: 5px;
+    border: none;
+    border-radius: 10px;
+    margin: 0;
+    margin-right: 5px;
+}
+
+.portfolio-progress li div svg {
+    background: #D3D3D3;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    border-radius: 25px;
+}
+
+.portfolio-progress li.is-active div svg {
+    background: #FF971A 0% 0% no-repeat padding-box;
+}
+
+.portfolio-progress li.is-active hr {
+    background: #FF971A 0% 0% no-repeat padding-box;
+}
+
+.steps-p {
+    font: normal normal 600 14px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 30px;
+}
+
+.portfolio-steps ul {
+    list-style: none;
+    z-index: 1;
+    position: relative;
+    margin-left: 15px;
+}
+
+.portfolio-steps li {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.portfolio-steps li a {
+    text-decoration: none;
+    letter-spacing: 0px;
+    color: #141414;
+    cursor: pointer;
+}
+
+.portfolio-steps li div {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000014;
+    border: 1px solid #ffffff;
+    display: inline;
+    padding: 7px 16px;
+    border-radius: 25px;
+    position: relative;
+    margin-left: -15px;
+}
+
+.portfolio-steps li div p {
+    background: url('/assets/images/icons_set.png');
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    position: absolute;
+    background-repeat: no-repeat;
+    left: 7px;
+}
+
+.portfolio-steps li:nth-child(1) div p {
+    background-position: -36px -138px;
+}
+
+.portfolio-steps li:nth-child(2) div p {
+    background-position: -38px -189px;
+    left: 9px;
+    top: 9px;
+}
+
+.portfolio-steps li:nth-child(3) div p {
+    background-position: -41px -240px;
+    left: 10px;
+    top: 9px;
+}
+
+.portfolio-steps li:nth-child(4) div p {
+    background-position: -36px -287px;
+    left: 7px;
+    top: 8px;
+}
+
+.portfolio-steps li:nth-child(5) div p {
+    background-position: -38px -337px;
+    left: 8px;
+    top: 7px;
+}
+
+.portfolio-steps li:nth-child(6) div p {
+    background-position: -35px -389px;
+    left: 5px;
+    top: 10px;
+}
+
+.portfolio-steps li:nth-child(7) div p {
+    background-position: -36px -437px;
+    left: 7px;
+    top: 8px;
+}
+
+.portfolio-steps li:nth-child(8) div p {
+    background-position: -36px -487px;
+    left: 7px;
+    top: 8px;
+}
+
+.portfolio-steps hr {
+    height: 25px;
+    border-radius: 10px;
+    margin: 0;
+    border: 1px dashed #D3D3D3;
+    width: 0px;
+}
+
+.portfolio-steps li div svg {
+    background: #D3D3D3;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    border-radius: 25px;
+}
+
+.portfolio-steps li a.active div {
+    border: 1px solid #FF971A;
+}
+
+.portfolio-steps li a.active {
+    color: #FF971A;
+}
+
+.portfolio-steps span {
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.portfolio-steps li a.completed div {
+    background: #10E66D 0% 0% no-repeat padding-box;
+    border: 1px solid #10E66D;
+}
+
+.portfolio-steps li:nth-child(1) a.completed div p {
+    background-position: -76px -138px;
+}
+
+.portfolio-steps li:nth-child(2) a.completed div p {
+    background-position: -78px -189px;
+}
+
+.portfolio-steps li:nth-child(3) a.completed div p {
+    background-position: -81px -240px;
+}
+
+.portfolio-steps li:nth-child(4) a.completed div p {
+    background-position: -76px -287px;
+}
+
+.portfolio-steps li:nth-child(5) a.completed div p {
+    background-position: -78px -337px;
+}
+
+.portfolio-steps li:nth-child(6) a.completed div p {
+    background-position: -75px -389px;
+}
+
+.portfolio-steps li:nth-child(7) a.completed div p {
+    background-position: -76px -437px;
+}
+
+.portfolio-steps li:nth-child(8) a.completed div p {
+    background-position: -76px -487px;
+}
+
+.portfolio-steps li a.active div {
+    border: 1px solid #3f89fc;
+    background-color: #3f89fc;
+}
+
+.portfolio-steps li a.active {
+    color: #3f89fc;
+}
+
+.lead-form-wrapper {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 16px #00000014;
+    border: 1px solid #3F89FC;
+    border-radius: 12px;
+    padding: 0;
+}
+
+.lead-form {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 12px 12px 0px 0px;
+}
+
+.lead-form .steps-login {
+    font: normal normal 300 12px/15px Nunito;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.lead-form-wrapper .btn-wrapper {
+    padding: 20px 30px;
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    border-radius: 0px 0px 12px 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lead-form .login-form {
+    margin: 0;
+}
+
+.lead-form .heading {
+    font: normal normal bold 18px/18px Nunito;
+    letter-spacing: 0px;
+    color: #023147;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f5f5f5;
+    padding-bottom: 20px;
+}
+
+.lead-form input,
+.lead-form textarea {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    text-align: left;
+    font: normal normal normal 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+}
+
+.btn-wrapper .backbutton {
+    border-radius: 6px;
+    font: normal normal bold 12px/19px Nunito;
+    letter-spacing: 0px;
+    width: 90px;
+    padding: 10px;
+    text-transform: uppercase;
+    border: 0.5px solid #141414;
+}
+
+.btn-wrapper .submitbutton {
+    background: #3F89FC 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    font: normal normal bold 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    width: 130px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.btn-wrapper .savebtn {
+    font: normal normal bold 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-right: 30px;
+    text-transform: uppercase;
+}
+
+.lead-form input::placeholder,
+.lead-form textarea::placeholder {
+    text-align: left;
+    font: normal normal normal 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #DBDBDB;
+}
+
+.group {
+    position: relative;
+    padding: 0;
+}
+
+.group div {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #979797;
+    border-radius: 6px;
+    padding: 9px 0 5px 0;
+    margin-bottom: 30px;
+}
+
+.lead-form textarea {
+    resize: none;
+}
+
+.lead-form input {
+    background: none;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding: 10px 10px 0 10px;
+}
+
+.lead-form textarea {
+    background: none;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding: 0px 10px;
+}
+
+.lead-form .group:nth-child(odd) {
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+.lead-form .group:nth-child(even) {
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+.lead-form input:focus,
+.lead-form textarea:focus {
+    outline: none;
+}
+
+.lead-form input:focus~label,
+.lead-form textarea:focus~label,
+.lead-form input:valid~label,
+.lead-form textarea:valid~label {
+    top: 5px;
+    font: normal normal bold 10px/14px Nunito;
+    letter-spacing: 0px;
+    color: #D3D3D3;
+}
+
+input:focus~.bar:before,
+textarea:focus~.bar:before {
+    width: 100%;
+}
+
+.lead-form input[type="password"] {
+    letter-spacing: 0.3em;
+}
+
+.lead-form label {
+    position: absolute;
+    pointer-events: none;
+    transition: 300ms ease all;
+    font: normal normal normal 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #DBDBDB;
+    top: 17px;
+    margin: 0;
+    left: 10px;
+}
+
+.lead-form .group:nth-child(even) label {
+    left: 20px;
+}
+
+.lead-form select {
+    width: 100%;
+    border: none;
+    font: normal normal 300 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    background: none;
+    padding-left: 5px;
+    padding-top: 11px;
+    outline: none;
+}
+
+.lead-form .select-label {
+    top: 5px;
+    font: normal normal bold 10px/14px Nunito;
+    letter-spacing: 0px;
+    color: #D3D3D3;
+}
+
+.lead-form .textarea-label {
+    font: normal normal normal 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 10px;
+}
+
+.pd-lr0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.portfolio-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.portfolio-progress-wrapper {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.user-img {
+    width: 130px;
+    margin-right: 20px;
+    border-radius: 100px;
+}
+
+.no-pad {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.hides {
+    display: none;
+}
+
+.flex-div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.school--grade {
+    font: normal normal bold 16px/22px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.grade-imp-msg {
+    font: normal normal normal 10px/14px Nunito;
+    letter-spacing: 0px;
+    color: #AFAFAF;
+    display: block;
+    width: 100%;
+    margin-top: -25px;
+}
+
+.pd-r15 {
+    padding-right: 15px !important;
+}
+
+.pd-l15 {
+    padding-left: 15px !important;
+}
+
+.pd-r10 {
+    padding-right: 10px !important;
+}
+
+.pd-l10 {
+    padding-left: 10px !important;
+}
+
+.label-pad-designleft {
+    left: 10px !important;
+}
+
+.label-pad-designright {
+    left: 25px !important;
+}
+
+.add-item-btn {
+    margin-bottom: 10px;
+}
+
+.add-item-btn a {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #3F89FC;
+    border-radius: 6px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    font: normal normal bold 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #3F89FC;
+}
+
+.final-education-details {
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    border: 0.5px solid #D3D3D3;
+    border-radius: 6px;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.final-education-details h3 {
+    font: normal normal bold 16px/22px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 0;
+}
+
+.final-education-details .edit-link {
+    font: normal normal bold 12px/16px Nunito;
+    letter-spacing: 0px;
+    color: #3F89FC;
+}
+
+.final-education-details .year-details {
+    display: flex;
+}
+
+.final-education-details hr {
+    border-top: 1px solid rgb(85 85 85 / 10%);
+}
+
+.final-education-details ul {
+    list-style: none;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.final-education-details ul li {
+    font: normal normal normal 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+}
+
+.flex-start {
+    align-items: flex-start !important;
+    width: 100%;
+    display: flex;
+}
+
+.flex-start .flex-width {
+    width: 50%;
+}
+
+.interest-points {
+    list-style: none;
+    flex-flow: wrap;
+    display: flex;
+}
+
+.interest-points li {
+    margin-bottom: 10px;
+}
+
+.interest-points li a {
+    font: normal normal 600 11px/16px Nunito;
+    letter-spacing: 0px;
+    color: #3F89FC;
+    padding: 3px;
+    background: #D6E6FF 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.interest-points li:last-child a {
+    margin-right: 0;
+}
+
+.interest-points li a span {
+    color: #000000;
+    font-size: 10px;
+    padding-left: 5px;
+}
+
+.interest-points li a span img {
+    width: 7px;
+}
+
+.grade-imp-msg-height {
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.favorites-details {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.favorites-details .full-width {
+    width: 50%;
+}
+
+.favorites-details .full-width .groupleftpad {
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+.favorites-details .full-width .groupleftpad label {
+    left: 10px;
+}
+
+.favorites-details .full-width .grouprightpad {
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+.favorites-details .full-width .grouprightpad label {
+    left: 20px;
+}
+
+.favorites-details .full-width .group div {
+    margin-bottom: 20px;
+}
+
+.add-more-website-btn {
+    float: right;
+    padding-right: 10px;
+    margin-top: -10px;
+}
+
+.pd-r0 {
+    padding-right: 0 !important;
+}
+
+.select-without-label div {
+    padding: 12px 0;
+}
+
+.select-without-label div select {
+    padding-top: 0px;
+}
+
+.selectdiv {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.selectdiv hr {
+    width: 100%;
+    border-color: #f5f5f5;
+}
+
+.selectdiv span {
+    width: 200px;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    font: normal normal 300 14px/19px Nunito;
+}
+
+.selectdiv:after {
+    content: '\f078';
+    font: normal normal normal 10px/1 FontAwesome;
+    color: #3F89FC;
+    right: 10px;
+    top: 11px;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+.selectdiv select::-ms-expand {
+    display: none;
+}
+
+.selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-top: 0;
+    font: normal normal 300 14px/19px Nunito;
+    color: #3F89FC;
+}
+
+.image-upload>input {
+    display: none;
+}
+
+.image-upload {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.image-upload .kyc-label {
+    letter-spacing: 0px;
+    color: #838383;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.image-upload .upload-profile-img div {
+    border: 0.5px solid #D3D3D3;
+    border-radius: 6px;
+    padding: 0 22px 17px 21px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.image-upload .upload-profile-img {
+    cursor: pointer;
+    pointer-events: auto;
+    position: inherit;
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    border: 0.5px solid #D3D3D3;
+    border-radius: 6px;
+    padding: 66px 0 55px;
+    width: 100%;
+}
+
+.image-upload .upload-profile-img div img {
+    margin-top: -24px;
+    z-index: 1;
+    background: #F7F7F7;
+    padding: 0 10px;
+    width: 38px;
+}
+
+.mg-b20 {
+    margin-bottom: 20px !important;
+}
+
+.mg-b10 {
+    margin-bottom: 10px !important;
+}
+
+.head-title {
+    font: normal normal bold 16px/22px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+}
+
+.change-pass-link {
+    font: normal normal bold 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #3F89FC;
+    text-decoration: none;
+}
+
+.selectdiv-with-p {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.selectdiv-with-p span {
+    width: 150px;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    font: normal normal 300 14px/19px Nunito;
+}
+
+.selectdiv-with-p:after {
+    content: '\f078';
+    font: normal normal normal 10px/1 FontAwesome;
+    color: #3F89FC;
+    right: 10px;
+    top: 19px;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+.selectdiv-with-p select::-ms-expand {
+    display: none;
+}
+
+.selectdiv-with-p select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-top: 0;
+    font: normal normal 300 14px/19px Nunito;
+    color: #3F89FC;
+}
+
+.selects-label {
+    left: 0 !important;
+    display: block;
+    position: relative !important;
+    padding-left: 25px;
+    margin-right: 50px !important;
+    cursor: pointer;
+    font-size: 13px !important;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none !important;
+    margin-bottom: 20px !important;
+    pointer-events: visible !important;
+    top: 0 !important;
+    color: #141414 !important;
+    font-weight: 300 !important;
+    font: normal normal 300 12px/19px Nunito;
+
+}
+
+/* Hide the browser's default radio button */
+.selects-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #838383;
+}
+
+/* When the radio button is checked, add a blue background */
+.selects-label input:checked~.checkmark {
+    background-color: #FFFFFF;
+    border: 2px solid #3F89FC;
+
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.selects-label input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.selects-label .checkmark:after {
+    top: 3px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3F89FC;
+}
+
+.add-more-link {
+    text-align: right;
+    width: 100%;
+    margin-top: -10px;
+}
+
+.add-more-link a {
+    font: normal normal bold 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #3F89FC;
+    text-decoration: none;
+}
+
+.password-eye::after {
+    display: block;
+    content: ' ';
+    background-image: url('/assets/images/eye.svg');
+    background-size: 16px 20px;
+    height: 18px;
+    width: 18px;
+    margin-top: -20px;
+    margin-right: 10px;
+    float: right;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.portfolio-steps .active-step a {
+    color: #1982d4;
+}
+
+.portfolio-steps .active-step .progress-cust {
+    background-color: #1982d4;
+}
+
+@media screen and (max-width: 990px) {
+    .clg-portfolio {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .lead-form {
+        margin-top: 0;
+        padding: 20px;
+    }
+
+    .lead-form .form-group {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .lead-form button {
+        width: 100%;
+    }
+
+    .no-xs-pad {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .lead-form .group:nth-child(odd) {
+        padding-left: 0;
+        padding-right: 0px;
+    }
+
+    .lead-form .group:nth-child(even) {
+        padding-right: 0;
+        padding-left: 0px;
+    }
+
+    .lead-form .group:nth-child(even) label {
+        left: 10px;
+    }
+
+    .portfolio-progress hr {
+        width: 60px;
+    }
+
+    .portfolio-progress {
+        padding: 0px;
+    }
+
+    .portfolio-progress-wrapper {
+        margin-top: 10px;
+    }
+
+    .lead-form-wrapper {
+        margin-top: 20px;
+    }
+
+    .flex-div {
+        display: block;
+        align-items: center;
+        width: 100%;
+    }
+
+    .login-form .group {
+        padding: 0 !important;
+    }
+
+    .add-item-btn {
+        margin-bottom: 30px;
+    }
+
+    .group div {
+        margin-bottom: 20px;
+    }
+
+    .grade-imp-msg {
+        margin-top: -15px;
+    }
+
+    .flex-start {
+        flex-direction: column;
+    }
+
+    .flex-start .flex-width {
+        padding-left: 0 !important;
+        width: 100%;
+    }
+
+    .favorites-details {
+        flex-direction: column;
+    }
+
+    .favorites-details .full-width {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .lead-form {
+        margin-top: 0px;
+        padding: 20px 10px;
+    }
+
+    .lead-form .form-group {
+        margin-bottom: 10px;
+    }
+
+    .lead-form .heading {
+        margin-bottom: 10px;
+        font: normal normal bold 14px/24px Nunito;
+    }
+
+    .no-sm-right-pad {
+        padding-right: 0 !important;
+    }
+
+    .no-sm-pad {
+        padding: 0 !important;
+    }
+
+    .portfolio-progress hr {
+        width: 30px;
+    }
+
+    .user-img {
+        width: 70px;
+        margin-right: 10px;
+    }
+
+    .file-input {
+        right: 0px;
+    }
+
+    .student-profile h5 {
+        font: normal normal normal 28px/3px Georgia;
+        letter-spacing: 0px;
+        color: #141414;
+    }
+
+    .portfolio-progress ul {
+        margin-bottom: 5px;
+    }
+
+    .portfolio-user h5 {
+        margin-bottom: 0;
+    }
+
+    .port-desc[_ngcontent-thl-c60] {
+        font: normal normal normal 10px/15px Nunito;
+    }
+
+    .btn-wrapper {
+        padding: 20px 10px !important;
+    }
+
+    .btn-wrapper .savebtn {
+        margin-right: 15px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .user-img {
+        width: 90px;
+        margin-right: 10px;
+    }
+
+    .file-input {
+        right: 0px;
+    }
+
+    .student-profile h5 {
+        font: normal normal normal 28px/3px Georgia;
+        letter-spacing: 0px;
+        color: #141414;
+    }
+
+    .portfolio-progress hr {
+        width: 60px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .portfolio-steps span {
+        padding-left: 6px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .portfolio-steps span {
+        padding-left: 10px;
+        font-size: 11px;
+    }
+
+    .lead-form-wrapper .btn-wrapper {
+        flex-direction: column;
+    }
+
+    .btn-wrapper button {
+        border: none;
+        background: none;
+        width: 100% !important;
+        height: 40px;
+        margin: 0;
+    }
+
+    .btn-wrapper .savebtn {
+        margin: 15px 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .portfolio-steps span {
+        padding-left: 5px;
+        font-size: 10px;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .student-profile-wrapper {
+        padding: 30px 10px;
+    }
+
+    .portfolio-wrapper {
+        display: block;
+    }
+
+    .portfolio-progress-wrapper {
+        padding: 10px;
+    }
+
+    .portfolio-steps span {
+        padding-left: 6px;
+        font-size: 12px;
+    }
+
+    .pd-sm-l0 {
+        padding-left: 0 !important;
+    }
+
+    .pd-sm-r10 {
+        padding-right: 10px !important;
+    }
+
+    .change-pass-link {
+        margin-top: 0;
+        margin-left: 0;
+        margin-bottom: 15px;
+        float: right;
+    }
+
+    .select-input-added .col-sm-2 {
+        width: 30%;
+    }
+
+    .select-input-added .col-sm-4 {
+        width: 70%;
+    }
+
+    .select-input-added .col-sm-3 {
+        width: 35%;
+    }
+
+    .select-input-added .col-sm-9 {
+        width: 65%;
+    }
+
+    .portfolio-steps ul {
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .lead-form {
+        margin-top: 0px;
+    }
+
+    .no-md-right-pad {
+        padding-right: 0 !important;
+    }
+
+    .student-profile-wrapper {
+        padding: 40px 10px 40px 0;
+    }
+
+    .pd-sm-l0 {
+        padding-left: 0 !important;
+    }
+
+    .pd-sm-r10 {
+        padding-right: 10px !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .portfolio-progress hr {
+        width: 50px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .portfolio-progress hr {
+        width: 35px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .portfolio-progress hr {
+        width: 30px;
+    }
+}

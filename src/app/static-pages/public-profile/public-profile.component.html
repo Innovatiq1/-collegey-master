@@ -1,0 +1,220 @@
+<section class="public-profile-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="public-profile-content-wrap">
+          <div class="public-profile-heading-box">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="profile-details-box">
+                  <img *ngIf="studentProfile.avatar" [src]="commonService.imagePathMaker(studentProfile.avatar)"
+                    alt="profile-picture">
+                  <div class="default-profile-box" *ngIf="!studentProfile.avatar">
+                    <span>{{studentProfile?.name?.charAt(0).toUpperCase()}}</span>
+                  </div>
+                  <div class="profile-name-box">
+                    <h2>{{studentProfile?.name}} {{studentProfile?.last_name}} </h2>
+                    <p>{{studentProfile?.cityObj?.name}}, {{studentProfile?.stateObj?.name}},
+                      {{studentProfile?.countryObj?.name}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="social-details-box">
+                  <ul>
+                    <ng-container *ngFor="let social of basicSocialMedialHandlesList; let i = index">
+                      <li *ngIf="social.channel_link">
+                        <a [href]="social.channel_link" target="_blank"><img [src]="social.channel_icon"></a>
+                      </li>
+                    </ng-container>
+
+
+                    <li *ngIf="socialHandleList.length > 0">
+                      <div class="btn-group shift-dropdown" dropdown>
+                        <button dropdownToggle type="button"><img src="/assets/images/3-dots-menu.svg"
+                            class="three-dots-menu"></button>
+                        <div id="dropdown-animated" *dropdownMenu class="dropdown-menu">
+                          <div class="share-on">
+                            <p>Social Links</p>
+                          </div>
+                          <ng-container *ngFor="let social of socialHandleList; let i = index">
+                            <ul class="social-media-list" *ngIf="social.channel_link">
+                              <li>
+                                <a [href]="social.channel_link" target="_blank">{{social.channel_name}}</a>
+                              </li>
+                            </ul>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="btn-box" *ngIf="userInfo._id === studentProfile?._id">
+                    <div class="btn-group" dropdown>
+                      <button dropdownToggle type="button" class="share-profile-btn">Share Your Portfolio
+                      </button>
+                      <div id="dropdown-animated" *dropdownMenu class="dropdown-menu">
+                        <div class="share-on">
+                          <p>Share on</p>
+                        </div>
+                        <div class="copy-btn-box">
+                          <button (click)="copyUrl()" class="copy-profile-btn">Copy
+                            Portfolio Link <img src="/assets/images/copy.svg"></button>
+                        </div>
+                        <ul class="social-media-list">
+                          <li>
+                            <a (click)="getFbShareUrl()">Facebook</a>
+                          </li>
+                          <li>
+                            <a (click)="getTwitterShareUrl()">Twitter</a>
+                          </li>
+                          <li>
+                            <a (click)="getLinkedInShareUrl()">LinkedIn</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <button type="button" class="edit-profile-btn" [routerLink]="['/student/profile']">Edit
+                      Portfolio</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="public-profile-detail-box">
+            <div class="row">
+              <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="education-wrap">
+                  <div class="education-box">
+                    <h2 class="education-title">Education</h2>
+                    <div class="education-details-box"
+                      *ngFor="let education of studentProfile?.student_profile?.history_updated.education">
+                      <p class="college-name">{{education?.name}}, {{education?.location}}</p>
+                      <ng-container *ngIf="education?.type == qualificationType.HIGHT_SCHOOL_GRADUATE ||
+                                            education?.type === qualificationType.HIGHT_SCHOOL_STUDENT">
+                        <ng-container *ngFor="let grade of education?.grade">
+                          <p class="course-name">
+                            {{grade.name}}<span> - {{grade.score}}</span>
+                          </p>
+                          <p class="course-duration">{{grade.start_year}} - {{grade?.end_year}}</p>
+                          <p class="college-desc">
+                            <span *ngFor="let studyField of grade?.field_of_study; let index= index">{{studyField}}
+                              <span *ngIf="index<grade?.field_of_study.length-1">,</span>
+                            </span>
+                          </p>
+                        </ng-container>
+
+
+
+                      </ng-container>
+                      
+                      <ng-container *ngIf="education?.type == qualificationType.COLLEGE_STUDENT ||
+                      education?.type == qualificationType.COLLEGE_GRADUATE">
+                        <p class="course-name">{{education?.degree}}
+                        </p>
+                        <p class="course-duration">{{education.start_year}} - {{education?.end_year}}</p>
+                        <p class="college-desc">
+                            <span *ngFor="let studyField of education?.field_of_study; let index= index">{{studyField}}
+                              <span *ngIf="index<education?.field_of_study.length-1">,</span>
+                            </span>
+                        </p>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <div class="education-box">
+                    <h2 class="education-title">Experience</h2>
+                    <div class="education-details-box">
+                      <span class="work-type">Projects</span>
+                      <div *ngFor="let project of studentProfile?.student_profile?.projects?.describe_any_project">
+                        <p class="work-name">{{project?.title}}</p>
+                        <p class="work-desc">{{project?.description}}</p>
+                      </div>
+                    </div>
+                    <div class="education-details-box">
+                      <span class="work-type">Writing/Published work</span>
+                      <div *ngFor="let sampleWork of studentProfile?.student_profile?.projects?.writing_sample">
+                        <p class="work-name">{{sampleWork.title}}</p>
+                        <p class="work-desc">{{sampleWork.description}}</p>
+                        <p class="work-document" *ngFor="let file of sampleWork.file"><button type="button"
+                            (click)="downloadDocuments(file)">{{_getDocumentName(file)}}</button></p>
+                      </div>
+                    </div>
+                    <div class="education-details-box" *ngFor="let key of credentialKeys">
+                      <span class="work-type" *ngIf="userCredentials[key].length > 0">{{key}}</span>
+                      <div *ngFor="let credential of userCredentials[key]">
+                        <p class="work-name">{{credential.title}}</p>
+                        <p class="course-name">{{credential.role}}</p>
+                        <p class="course-duration">{{dateParser(credential.duration)}}</p>
+                        <p class="work-desc top-margin">{{credential.description}}</p>
+                        <p class="work-document" *ngFor="let file of credential.file"><button type="button"
+                            (click)="downloadDocuments(file)">{{_getDocumentName(file)}}</button></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="education-box">
+                    <h2 class="education-title">Recommendation</h2>
+                    <div class="education-details-box"
+                      *ngFor="let recommendation of studentProfile?.student_profile?.projects.someone_said_something_or_recommendation">
+                      <p class="work-name">{{recommendation.title}}</p>
+                      <p class="work-desc">{{recommendation.description}}</p>
+                      <p class="work-document" *ngFor="let file of recommendation.file">
+                        <button type="button"><span
+                            (click)="downloadDocuments(file)">{{_getDocumentName(file)}}</span></button></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12 left-border">
+                <div class="other-details-wrap">
+                  <div class="other-details-box">
+                    <h2 class="education-title others">Other Details</h2>
+                    <div class="other-details-inner">
+                      <p class="college-name">Interested Areas</p>
+                      <div class="other-details-tags">
+                        <div class="other-details-span"
+                          *ngFor="let interestedArea of studentProfile?.student_profile?.interest.interest_area">
+                          <span>{{interestedArea}}</span></div>
+                      </div>
+                    </div>
+                    <div class="other-details-inner">
+                      <p class="college-name">Favorite Subjects</p>
+                      <div class="other-details-tags">
+                        <div class="other-details-span"
+                          *ngFor="let interestedSubjects of studentProfile?.student_profile?.interest.fav_subjects">
+                          <span>{{interestedSubjects}}</span></div>
+                      </div>
+                    </div>
+                    <div class="other-details-inner">
+                      <p class="college-name">Favorite Books</p>
+                      <div class="other-details-tags">
+                        <div class="other-details-span"
+                          *ngFor="let book of studentProfile?.student_profile?.know_you_better.fav_books">
+                          <span>{{book.name}}</span></div>
+                      </div>
+                    </div>
+                    <div class="other-details-inner">
+                      <p class="college-name">Favorite Documentaries</p>
+                      <div class="other-details-tags">
+                        <div class="other-details-span"
+                          *ngFor="let documentary of studentProfile?.student_profile?.know_you_better.fav_movies">
+                          <span>{{documentary.name}}</span></div>
+                      </div>
+                    </div>
+                    <div class="other-details-inner">
+                      <p class="college-name">Favorite Website</p>
+                      <div class="other-details-tags">
+                        <div class="other-details-span"
+                          *ngFor="let website of studentProfile?.student_profile?.know_you_better.fav_websites">
+                          <span>{{website.name}}</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

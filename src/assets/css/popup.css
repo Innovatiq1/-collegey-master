@@ -1,0 +1,196 @@
+/* Profile complete and Project Signup modal css  */
+
+.modal-form-wrap.reset-link-sent {
+    background: #fff;
+    border-radius: 24px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 58px 40px;
+    position: relative;
+    max-height: 433px;
+    text-align: center;
+    border: solid 1px rgba(215, 215, 216, 0.5);
+}
+
+.modal-form-wrap.reset-link-sent.gap-remove {
+    padding: 68px 40px 62px;
+}
+
+.modal-form-wrap.reset-link-sent.space {
+    padding: 55px 30px;
+}
+
+.close-button1 {
+    position: absolute;
+    top: 0px;
+    right: -45px;
+}
+
+.close-button1 img {
+    width: 30px;
+    height: 31px;
+}
+
+.forgot-password-heading {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1.17;
+    letter-spacing: normal;
+    text-align: center;
+    color: #161616;
+    margin-bottom: 8px;
+}
+
+.forgot-password-heading.title {
+    font-size: 25px;
+    line-height: 1.40;
+}
+
+.forgot-password-heading.title.space,
+.forgot-password-subheading.subhead {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.forgot-password-subheading {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.57;
+    letter-spacing: normal;
+    text-align: center;
+    color: #161616;
+    margin-bottom: 0px;
+}
+
+.View-full-profile {
+    display: block;
+    border-radius: 6.5px;
+    background-color: #ff062f;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: 0.78px;
+    text-align: center;
+    color: #fff;
+    height: 49px;
+    width: 215px;
+    border: 1px solid #ff062f;
+    margin: 20px auto;
+    transition: 0.3s all ease-in;
+}
+
+.View-full-profile:hover,
+.View-full-profile:focus,
+.View-full-profile:active {
+    background: #f1072e;
+    border: 1px solid #f1072e;
+}
+
+.link-sent-image {
+    width: 107px;
+    height: 105px;
+    object-fit: contain;
+}
+
+.email-sent-image {
+    width: 102px;
+    height: 102px;
+    object-fit: contain;
+}
+
+.forgot-password-heading.title .email-subheading {
+    font-size: 14px;
+    font-weight: 300;
+    display: block;
+}
+
+.View-full-profile.sent {
+    margin-top: 21px;
+    margin-bottom: 0;
+}
+
+.modal-form-wrap.reset-link-sent .forgot-password-heading {
+    margin-top: 13px;
+    margin-bottom: 11px;
+}
+
+.forgot-password-heading.title.gap {
+    line-height: 1.71;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+.modal-form-wrap.reset-link-sent.upload-sheet {
+    padding: 48px 42px 60px;
+    background: #fff;
+    max-height: 511px;
+}
+
+.modal-form-wrap.reset-link-sent .forgot-password-heading.upload-file {
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 28px;
+}
+
+@media screen and (max-width:767px) {
+    .modal-form-wrap.reset-link-sent.space {
+        padding: 50px 20px 48px;
+    }
+    .forgot-password-heading.title.gap {
+        line-height: 1.40;
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .close-button1 {
+        top: -38px;
+        right: 4px;
+    }
+    .forgot-password-heading.title.space,
+    .forgot-password-subheading.subhead {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .forgot-password-heading {
+        font-size: 26px;
+    }
+    .forgot-password-heading.title {
+        font-size: 20px;
+    }
+    .modal-form-wrap.reset-link-sent,
+    .modal-form-wrap.reset-link-sent.gap-remove {
+        padding: 40px 20px 30px;
+    }
+    .modal-form-wrap.reset-link-sent.upload-sheet {
+        padding: 30px 25px 40px;
+        max-height: initial;
+    }
+    .modal-form-wrap.reset-link-sent .forgot-password-heading.upload-file {
+        margin-bottom: 20px;
+    }
+    .modal-form-wrap.reset-link-sent.space {
+        padding: 40px 20px 38px;
+    }
+    .email-sent-image {
+        width: 92px;
+        height: 92px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .link-sent-image {
+        width: 92px;
+        height: 90px;
+    }
+    .forgot-password-heading.title {
+        font-size: 20px;
+    }
+}

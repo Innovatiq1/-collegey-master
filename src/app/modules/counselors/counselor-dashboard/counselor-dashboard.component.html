@@ -1,0 +1,141 @@
+<section class="dashboard-wrap counselor-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <div class="dashboard-profile-wrap counselor-wrap">
+                    <div class="dashboard-profile-bg"></div>
+                    <div class="dashboard-profile-content counselor">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                                <div class="profile-details box-shift">
+                                    <app-avatar-upload></app-avatar-upload>
+                                    <h3 class="student-name reduce-space">{{counselorDetails?.profile?.name}} {{counselorDetails?.profile?.last_name}}</h3>
+                                    <p class="student-location padding-remove">{{counselorDetails?.profile?.organization}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 invite-count-wrap">
+                                <div class="student-invite-count">
+                                    <p class="invite-count">{{counselorDetails?.total_invitations}}</p>
+                                    <p class="student-invited">Students Invited</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="invite-students-wrap">
+                    <div class="invite-students-inner">
+                        <h2 class="big-picture-project invite-students">Invite your students to Collegey.</h2>
+                        <p class="big-picture-subheading invite-subheading">Invite students to become part of the Collegey community, where they can build portfolios to showcase their skills to the world, work on interdisciplinary impact projects, and much more.</p>
+                        <div class="invite-form">
+                            <form [formGroup]="invitationWithEmail">
+                                <div class="form-group">
+                                    <label class="field-label" for="emailId">Email ID:</label>
+                                    <input type="text" formControlName="emails" class="form-control bottom-gap" placeholder="Ex: abc@gmail.com, xyz@outlook.com">
+                                    <span class="error-message" *ngIf="emailValidateMsg && invitationWithEmail.get('emails').value">Invalid Email</span>
+                                    <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="invitationWithEmail.get('emails')"></app-input-validation>
+                                    <span class="note-span">You can add or paste multiple email ids separated by a comma. Scroll down to upload in bulk</span>
+                                </div>
+                                <div class="form-group fields2">
+                                    <label class="field-label" for="message">Message</label>
+                                    <textarea name="message" class="form-control question-field message" formControlName="message" placeholder="Write Message here..."></textarea>
+                                    <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="invitationWithEmail.get('message')"></app-input-validation>
+                                </div>
+                                <button type="button" (click)="sendInvitation('email', inviteStudentThankyouModal)" class="complete-your-profile invite-btn">Send Student Invite</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="import-excel-wrap">
+                        <p class="or-circle">OR</p>
+                        <p class="download-sample">You can choose to send invitations in bulk. <button type="button" (click)="downloadSampleFile()">Download Sample
+                File here</button>. Simply upload a file containing all the information and send invitations instantly.
+                        </p>
+                        <button type="button" (click)="openInviteStudentModal(studentInviteModal)" class="complete-your-profile import-btn">Upload & Invite</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 event-box">
+                <div class="get-learnig-wrap height-reduce" [routerLink]="['/magazine']">
+                    <h2 class="get-learnig-lighthead">#Get Learning</h2>
+                    <h4 class="get-learnig-head">#Get Learning</h4>
+                    <p class="get-learnig-resources">The Collegey Magazine</p>
+                    <p style="font-size: 15px;" class="resources-desc">Everything you need to stay on top of things. From webinars to conferences, student opportunities, articles, reports, and more.
+                    </p>
+                    <a [routerLink]="['/magazine']" class="view-resources">View Magazine</a>
+                </div>
+                <div class="get-learnig-wrap connect-box">
+                    <h2 class="get-learnig-lighthead connect">#Connect</h2>
+                    <p class="get-learnig-resources connect">Your Key Resources</p>
+                    <a href="https://intled.typeform.com/to/D0yjDT" target="_blank" class="connect-button">Global Educator Program</a>
+                    <a href="https://intled.typeform.com/to/BY9TXL" target="_blank" class="connect-button play">The Collegey Webinar Series</a>
+                    <a href="https://chat.whatsapp.com/EmKjVUXTdyQ4uOqsUPGriz" target="_blank" class="connect-button whatsapp">Counselors WhatsApp Group</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Upload Invite Excel Modal  -->
+<ng-template #studentInviteModal>
+    <div class="modal-form-wrap reset-link-sent upload-sheet">
+        <button type="button" class="close-button1" (click)="modalRef.hide()"><img
+        src="/assets/images/cross-button.png"></button>
+        <div class="modal-form-body1">
+            <p class="forgot-password-heading upload-file">Upload File</p>
+            <form [formGroup]="invitationWithFile">
+                <div class="form-group fields3">
+                    <input type="file" class="uploads" id="uploadSheet" (change)="onSelectFile($event.target.files)" name="uploadSheet" accept=".xls, .xlsx" />
+                    <label for="uploadSheet" class="btn-2 form-control document-not-upload" *ngIf="!selectedFile; else selectFile">Drop file here or <a>Click Upload</a> (10 MB Max) <span>Upload .xlsx
+              file</span></label>
+                    <ng-template #selectFile>
+                        <label for="uploadSheet" class="btn-2 btn-3 form-control document-not-upload">
+              {{selectedFile}} <button type="button">
+                <img src="/assets/images/on-boarding/cross-button.svg" (click)="removeFile()"></button></label>
+                    </ng-template>
+                    <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="invitationWithFile.get('file')"></app-input-validation>
+                </div>
+                <div class="form-group fields3">
+                    <textarea name="message" class="form-control question-field message2" formControlName="message" placeholder="Write Message here..."></textarea>
+                    <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="invitationWithFile.get('message')"></app-input-validation>
+                </div>
+                <button type="button" class="complete-your-profile invite-btn2" (click)="sendInvitation('file', inviteStudentThankyouModal)">Invite Now</button>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+
+<!-- Student Invite Thankyou Modal  -->
+<ng-template #inviteStudentThankyouModal>
+    <div class="modal-form-wrap reset-link-sent gap-remove">
+        <button type="button" class="close-button1" (click)="modalRef.hide()"><img src="/assets/images/cross-button.png"></button>
+        <div class="modal-form-body1">
+            <img src="/assets/images/green-circle-tick.svg" class="link-sent-image">
+            <p class="forgot-password-heading title">Thank you for inviting your student (s) to Collegey.</p>
+            <p class="forgot-password-subheading">An email has been sent with details of the next steps.</p>
+        </div>
+    </div>
+</ng-template>
+<div class="modal fade" *ngIf="isWelcomeModalShown" [config]="{ show: true }" bsModal #welcomeCounselorModal="bs-modal" role="dialog" aria-labelledby="dialog-auto-name" (onHidden)="onHiddenWelcomeModal()">
+    <div class="modal-dialog modal-extralarge">
+        <div class="modal-content">
+            <div class="welcome-modal-wrap">
+                <button type="button" class="close-button1" (click)="onHiddenWelcomeModal()"><img src="/assets/images/cross-button.png"></button>
+                <div class="welcome-modal-content">
+                    <img src="/assets/images/counselor-handshake.svg" class="handshake-image">
+                    <div class="heading-box">
+                        <p class="welcome-modal-heading">Welcome to Collegey!</p>
+                        <p class="welcome-modal-subheading">We're happy to partner with you to support your professional development goals as well as to help your students build their portfolio and do impact projects. Let's start</p>
+                    </div>
+                    <div class="check-pointers">
+                        <p>Check out the Collegey Magazine with many resources for you and your students</p>
+                        <p>Apply for Collegey's Global Educator Program 2020. If selected, you will visit the US on a fully-funded program in November 2020. Read more and <a href="https://intled.typeform.com/to/D0yjDT" target="_blank">apply here</a></p>
+                        <p>Sign up for the <a href="https://intled.typeform.com/to/BY9TXL" target="_blank">Collegey Webinar Series</a> to attend important sessions and present on topics of your expertise</p>
+                        <p>Sign up for the <a href="https://chat.whatsapp.com/EmKjVUXTdyQ4uOqsUPGriz" target="_blank">Counselors WhatsApp group</a> here</p>
+                        <p>Invite your students to Collegey to help them build their portfolio (free) and sign up for impact projects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

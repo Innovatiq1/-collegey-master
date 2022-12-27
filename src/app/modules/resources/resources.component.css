@@ -1,0 +1,252 @@
+.resources-wrap {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.resources-tab-content {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    margin-top: 35px;
+    margin-bottom: 0px;
+}
+
+
+/* All tab banner section css  */
+
+.banner-box {
+    position: relative;
+    max-width: 1170px;
+    width: 100%;
+    height: 545px;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+}
+
+.banner-box>img {
+    position: relative;
+    width: 100%;
+    height: 545px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.banner-content {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 493px;
+    min-height: 312px;
+    height: auto;
+    padding: 49px 75px 40px 40px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 16.8px 4.2px rgba(0, 0, 0, 0.06);
+    border: solid 1px rgba(238, 236, 238, 0.5);
+}
+
+.latest-article {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ff163c;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.post-title {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: left;
+    color: #0d0d0d;
+    margin-bottom: 16px;
+}
+
+.post-description {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+    letter-spacing: 0.26px;
+    text-align: left;
+    color: #555555;
+    max-height: 110px;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+
+/* All tab webinar section css  */
+
+
+/* webinar and article section css  */
+
+.webinars-wrap {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 98px 0 100px;
+}
+
+::ng-deep .play-button-image {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 2;
+    width: 59px;
+}
+
+::ng-deep .play-button-image .play-btn {
+    width: 59px;
+    height: 51px;
+    object-fit: contain;
+}
+
+::ng-deep .load-more {
+    text-align: center;
+}
+
+::ng-deep .load-more-btn {
+    width: 133px;
+    height: 45px;
+    border-radius: 6.5px;
+    background-color: #ff062f;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.31;
+    letter-spacing: 0.26px;
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+    transition: all 0.4s ease;
+}
+
+::ng-deep .load-more-btn:hover,
+::ng-deep .load-more-btn:focus,
+::ng-deep .load-more-btn:active {
+    background: #f1072e;
+}
+
+::ng-deep .webinars-wrap.bottom-space {
+    padding-bottom: 0;
+}
+
+::ng-deep .webinars-wrap.box-bg {
+    background: #fbfbfd;
+    padding-bottom: 120px;
+}
+
+
+/* our programmes section css  */
+
+.our-programmes-wrap {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 87px 0 100px;
+    background: #fad65e;
+}
+
+.our-programmes-wrap h2 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #292411;
+    margin-bottom: 41px;
+}
+
+::ng-deep .programmes-tab-content {
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 170px;
+}
+
+::ng-deep .programmes-box:hover {
+    box-shadow: 0px 3px 12.5px 1.5px rgba(167, 162, 148, .07);
+}
+
+::ng-deep .our-programmes-wrap .programmes-tab-content {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width:991px) {
+     ::ng-deep .programmes-tab-content {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .banner-box,
+    .banner-box>img {
+        height: 445px;
+    }
+    .banner-content {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 90%;
+        height: 390px;
+        padding: 30px 45px 30px 30px;
+    }
+     ::ng-deep .webinar-box {
+        margin-bottom: 60px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .banner-box {
+        padding: 0;
+    }
+    .banner-box,
+    .banner-box>img {
+        height: 400px;
+    }
+    .banner-content {
+        padding: 30px 25px;
+        height: 350px;
+    }
+    .post-title {
+        font-size: 22px;
+    }
+    .webinars-wrap {
+        padding: 60px 0;
+    }
+     ::ng-deep .webinar-box {
+        margin-bottom: 45px;
+    }
+    .our-programmes-wrap {
+        padding: 60px 0;
+    }
+    .our-programmes-wrap h2 {
+        font-size: 32px;
+    }
+    .resources-tab-content {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width:374px) {
+    .banner-box,
+    .banner-box>img {
+        height: 335px;
+    }
+    .banner-content {
+        padding: 20px 20px 18px;
+        height: 300px;
+        min-height: auto;
+    }
+    .post-title {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+}

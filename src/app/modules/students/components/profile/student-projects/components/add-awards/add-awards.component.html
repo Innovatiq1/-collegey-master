@@ -1,0 +1,88 @@
+<div class="modal-form-wrap">
+    <!-- <button type="button" class="close-button" (click)="bsModalRef.hide()"><img
+        src="/assets/images/on-boarding/cross-button.png"></button> -->
+    <div class="modal-form-header">
+        <p>Let’s showcase your credentials</p>
+    </div>
+    <form [formGroup]="awardsForm" *ngIf="awardsForm">
+        <div class="modal-form-body height-reduce" formGroupName="award">
+            <div class="form-box">
+                <div style="display:block;">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group fields">
+                                <label class="field-label" for="projectTitle">Let's add your<span
+                                        style="color: #f00;">*</span></label>
+                                <ng-select class="educationType" name="educationType"
+                                    (ngModelChange)="valuechange($event)" [searchable]="false" placeholder="Select"
+                                    [items]="studentDocuments" formControlName="type">
+                                </ng-select>
+                                <span id="citierror1" style="color: red;"> {{ type_error }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group fields">
+                                <div class="titletop">
+                                    <label class="field-label" for="projectTitle">Project Title<span
+                                            style="color: #f00;">*</span></label>
+                                    <input type="text" class="form-control field-control"
+                                        (ngModelChange)="valuechange1($event)" formControlName="title"
+                                        placeholder="Title">
+                                </div>
+                            </div>
+                            <span id="citierror1" style="color: red;"> {{ title_error }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6" *ngIf="awardsForm.get('award').get('type').value == 'awards'">
+                            <div class="form-group fields">
+                                <label class="field-label" for="issuingOrganisaton">Issuing Organisaton</label>
+                                <input type="text" class="form-control field-control"
+                                    formControlName="issuing_organisation" placeholder="Organisaton Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6" *ngIf="awardsForm.get('award').get('type').value != 'awards'">
+                            <div class="form-group fields">
+                                <label class="field-label" for="role">Role<span style="color: #f00;">*</span></label>
+                                <input type="text" class="form-control field-control"
+                                    (ngModelChange)="valuechange2($event)" formControlName="role" placeholder="Role">
+                            </div>
+                            <span id="citierror1" style="color: red;"> {{ role_error }}</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6" *ngIf="awardsForm.get('award').get('type').value != 'awards'">
+                            <div class="form-group fields">
+                                <label class="field-label" for="duration">Duration:(MM/DD/YYYY)<span
+                                        style="color: #f00;">*</span></label>
+                                <input type="text" class="form-control field-control"
+                                    (ngModelChange)="valuechange3($event)" formControlName="duration"
+                                    placeholder="Duration" bsDaterangepicker [bsConfig]="{showWeekNumbers:false}">
+                            </div>
+                            <span id="citierror1" style="color: red;"> {{ duration_error }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group fields">
+                        <label class="field-label" for="projectDescription">Add Project Description<span
+                                style="color: #f00;">*</span></label>
+                        <textarea class="form-control textarea-field" (ngModelChange)="valuechange4($event)"
+                            id="projectDescription" placeholder="Tell us about your project..."
+                            formControlName="description"></textarea>
+                    </div>
+                    <span id="citierror1" style="color: red;"> {{ description_error }}</span>
+                    <div class="row">
+                        <app-document-upload [documentList]="documentList" (onFileUploadSuccess)="onFileUpload($event)"
+                            class="w-100"></app-document-upload>
+                        <!-- <span id="citierror1" style="color: red;"> {{ title_error }}</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-form-footer">
+            <div class="btn-wrapper">
+                <button class="backbutton" (click)="bsModalRef.hide()">Cancel</button>
+                <button class="submitbutton" type="submit" (click)="onSubmitForm()">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

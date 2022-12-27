@@ -1,0 +1,22 @@
+<div class="tabs-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let programme of programmes;">
+                <div class="webinar-box article-box"> 
+                    <a [routerLink]="['/single-program/',programme.id]" href="javascript:;" target="_blank">
+                    </a>
+                    <div class="webinar-image-box">
+                        <img class="zoom-image" [src]="commonService.imagePathS3(programme?.image, '/assets/images/default-blog.svg')" alt="Programme Image">
+                    </div>
+                    <div class="webinar-content-box">
+                        <a class="post-title webinar-title">{{programme?.title}}</a>
+                        <p class="post-description webinar-desc top-gap">{{programme.short_description}}</p>
+                        <p class="tags-box"><span class="article-tags" *ngFor="let tag of programme.tags">{{tag}}</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

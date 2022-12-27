@@ -1,0 +1,150 @@
+section.panel#full-screen-nav {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #3b42d9, #046ef2);
+    opacity: 0;
+    -webkit-transition: all 800ms;
+    transition: all 800ms;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: 0;
+    margin: 0;
+    z-index: 99999;
+}
+
+section.panel#full-screen-nav.active {
+    opacity: 0.97;
+    pointer-events: auto;
+}
+
+section.panel#full-screen-nav.active nav#nav ul li {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+section.panel#full-screen-nav.active nav#nav ul li:nth-child(2) {
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s;
+}
+
+section.panel#full-screen-nav.active nav#nav ul li:nth-child(3) {
+    -webkit-transition-delay: .4s;
+    transition-delay: .4s;
+}
+
+section.panel#full-screen-nav.active nav#nav ul li:nth-child(4) {
+    -webkit-transition-delay: .6s;
+    transition-delay: .6s;
+}
+
+section.panel#full-screen-nav.active nav#nav ul li:nth-child(5) {
+    -webkit-transition-delay: .8s;
+    transition-delay: .8s;
+}
+
+nav#nav {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    min-height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+nav#nav ul {
+    margin: 0;
+    padding: 50px 0;
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+}
+
+nav#nav ul li {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    width: 100%;
+}
+
+nav#nav ul li a {
+    display: block;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 20px 0 19px;
+    color: #fff;
+    position: relative;
+    font-family: 'Rubik', sans-serif;
+    text-decoration: none;
+    letter-spacing: 0.8px;
+}
+
+nav#nav ul li a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 30px;
+    margin-left: -15px;
+    height: 1px;
+    background: hsla(0, 0%, 100%, .2)
+}
+
+nav#nav ul li:first-child a:before {
+    display: none;
+}
+
+.menu__close {
+    position: absolute;
+    z-index: 50;
+    top: 1px;
+    right: 0;
+    width: 72px;
+    height: 72px;
+    cursor: pointer
+}
+
+.menu__close-bar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    margin-top: -1px;
+    margin-left: -7px
+}
+
+.menu__close-bar:after,
+.menu__close-bar:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff
+}
+
+.menu__close-bar:before {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.menu__close-bar:after {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}

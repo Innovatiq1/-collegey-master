@@ -1,0 +1,221 @@
+/* .all-programs {
+    width: 100%;
+    position: relative;
+    height: 1050px;
+}
+
+.banner-wrap {
+    max-width: 1305px;
+    width: 100%;
+    height: 570px;
+    background: rgba(0, 0, 0, 0.4);
+    padding-left: 222px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.banner-wrap:before {
+    content: '';
+    position: absolute;
+    width: 222px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #afd3ff;
+}
+
+.banner-wrap img {
+    max-width: 1083px;
+    width: 100%;
+    height: 570px;
+}
+
+.banner-wrap.fixed {
+    position: fixed;
+    top: 95px;
+    min-height: 570px;
+    padding-top: 0;
+    padding-bottom: 0px;
+    border-top: none;
+    z-index: -1;
+}
+
+.end-block {
+    width: 100%;
+    height: 10px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
+    background: transparent;
+}
+
+.programs-wrap {
+    max-width: 604px;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 23px 50px 50px 134px;
+    border-radius: 0 50px 0 0;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50px;
+}
+
+.programs-wrap-inner {
+    padding: 45px 0 42px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.programs-wrap-inner h3 {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.23;
+    letter-spacing: 1.04px;
+    color: #38393c;
+    text-transform: capitalize;
+    margin: 0 0 15px;
+}
+
+.programs-wrap-inner:hover h3 {
+    font-weight: bold;
+    color: #09a2f3;
+}
+
+.programs-wrap-inner button {
+    display: block;
+}
+
+.programs-wrap-inner button a {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: 0.6px;
+    text-align: left;
+    color: #222222;
+    display: inline-block;
+    position: relative;
+    margin: 0 0 15px;
+}
+
+.programs-wrap-inner button:last-child a {
+    margin: 0;
+}
+
+.programs-wrap-inner button a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: -17px;
+    background-image: url(/assets/images/resources/arrow-right.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 11px;
+    height: 11px;
+}
+
+.programs-wrap-inner button a:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    width: 0;
+    border-bottom: 1px solid;
+    transition: width .35s;
+}
+
+.programs-wrap-inner button a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.programs-wrap-inner button a:hover,
+.programs-wrap-inner button a:active,
+.programs-wrap-inner button a:focus {
+    text-decoration: none;
+    color: #222222;
+}
+
+@media screen and (max-width:1310px) {
+    .banner-wrap {
+        max-width: 1190px;
+    }
+}
+
+@media screen and (max-width:1199px) {
+    .banner-wrap {
+        max-width: 980px;
+        padding-left: 100px;
+    }
+    .banner-wrap:before {
+        width: 100px;
+    }
+    .programs-wrap {
+        max-width: 554px;
+        padding: 23px 50px 50px 80px;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .banner-wrap {
+        max-width: 100%;
+        background-color: #fff;
+        padding-left: 0;
+        height: 100%;
+    }
+    .banner-wrap:before {
+        display: none;
+    }
+    .banner-wrap img {
+        height: auto;
+    }
+    .programs-wrap {
+        max-width: 525px;
+        padding: 23px 50px 50px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .all-programs {
+        height: 850px;
+    }
+    .programs-wrap {
+        max-width: 450px;
+        padding: 18px 40px 10px;
+    }
+    .programs-wrap-inner {
+        padding: 35px 0 32px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .all-programs {
+        height: 760px;
+    }
+    .programs-wrap {
+        max-width: 310px;
+        padding: 15px 22px 130px 20px;
+    }
+    .programs-wrap-inner {
+        padding: 18px 0;
+    }
+    .programs-wrap-inner h3 {
+        font-size: 21px;
+        margin: 0 0 10px;
+    }
+    .programs-wrap-inner button a {
+        font-size: 14px;
+        margin: 0 0 11px;
+    }
+    .programs-wrap-inner button a:after {
+        right: -14px;
+    }
+}
+
+@media screen and (max-width: 374px) {
+    .all-programs {
+        height: 700px;
+    }
+} */

@@ -1,0 +1,328 @@
+<!-- <div [formGroup]="historyForm" *ngIf="historyForm">
+    <ng-container formGroupName="history_updated">
+        <ng-container formArrayName="education" *ngFor="let education of educationFormArray?.controls; let educationIndex = index">
+            <ng-container *ngIf="education.get('degree').value || education.get('grade').value.length > 0 ">
+                <div class="save-information pad" [formGroup]="historyForm" *ngIf="historyForm">
+                    <div class="save-history" *ngIf="(education.get('type')?.value == qualification.COLLEGE_GRADUATE || 
+        education.get('type')?.value == qualification.COLLEGE_STUDENT
+        || education.get('type')?.value == qualification.HIGHT_SCHOOL_STUDENT || education.get('type')?.value == qualification.HIGHT_SCHOOL_GRADUATE)">
+                        <p class="college-name" *ngIf="education.get('name')?.value">{{education.get('name')?.value}}, {{education.get('location')?.value}}
+                        </p>
+                        <button type="button" class="edit-details-button top-shift2" (click)="onOpenAddHistoryModal(education,education.get('type')?.value)"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+                        <button type="button" class="edit-details-button top-shift" (click)="onRemoveEducation(educationIndex, education.get('_id').value)"><img
+                src="assets/images/delete.svg"></button>
+                        <button class="add-more-education remove-margin2" (click)="onOpenAddHistoryModal(education, qualification.HIGHT_SCHOOL_GRADUATE)" *ngIf="education.get('grade_choosen')?.value.length>0">+
+              Add another Grade</button>
+                        <ng-container *ngIf="education.get('degree').value">
+                            <p class="batch-year">{{education.get('start_year').value}}
+                                <span *ngIf="education.get('start_year').value && education.get('end_year')">-</span> {{education.get('end_year').value}}
+                            </p>
+
+                            <p class="college-branch">
+                                {{education.get('degree').value}} -
+                                <span>{{education.get('score').value}}</span>
+                            </p>
+                            <p class="college-desc"><span *ngFor="let subject of education.get('field_of_study').value; let i =index">{{subject}}<span
+                    *ngIf="i < education.get('field_of_study').value.length -1"> , </span></span>
+                            </p>
+                        </ng-container>
+                    </div>
+                    <ng-container *ngIf="education.get('grade')?.value.length > 0">
+                        <ng-container *ngFor="let grade of education.get('grade')?.value; let i = index">
+                            <div class="save-history">
+                                <button type="button" class="edit-details-button" (click)="onRemoveGrade(i,educationIndex,education.get('_id').value, grade)"><img
+                    src="assets/images/delete.svg"></button>
+                                <p class="college-branch">
+                                    {{grade?.name}}<span *ngIf="grade?.name != 'Others'">th</span>
+                                    <span *ngIf="grade?.name && grade?.score"> - </span><span>{{grade?.score}}</span></p>
+
+
+                                <p class="batch-year">{{grade.start_year}}
+                                    <span *ngIf="grade.start_year && grade.end_year">-</span> {{grade.end_year}}</p>
+                                <p class="college-desc">{{grade.board}}</p>
+
+                                <p class="college-desc"><span *ngFor="let subject of grade.field_of_study; let i =index">{{subject}}<span
+                      *ngIf="i < grade.field_of_study?.length -1"> , </span></span>
+                                </p>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </ng-container>
+        <pre>{{historyForm.value | json}}</pre>
+
+    </ng-container>
+</div>
+<div class="add-details-btn"><button type="button" class="add-more-education remove-margin" (click)="onOpenAddHistoryModal(null, qualification.HIGHT_SCHOOL_STUDENT)">+ Add another High School</button>
+    <span>|</span>
+    <button type="button" class="add-more-education remove-margin" (click)="onOpenAddHistoryModal(null , qualification.COLLEGE_STUDENT)">+ Add
+    College</button></div> -->
+
+<div class="lead-form" [formGroup]="historyForm" *ngIf="historyForm">
+    <ng-container formGroupName="history_updated">
+        <ng-container formArrayName="education"
+            *ngFor="let education of sortedEducationCollegyFormArray; let educationIndex = index">
+            <ng-container *ngIf="education.get('degree').value || education.get('grade').value.length > 0 ">
+                <div class="final-education-details">
+                    <!-- <button type="button" class="edit-details-button top-shiftt1" (click)="onRemoveEducation(educationIndex, education.get('_id').value,'collegyremove')"><img
+                            src="assets/images/delete.svg"></button> -->
+                    <button type="button" class="edit-details-button top-shiftt1"
+                        (click)="removeEducationConfirmation(openDeleteEducationDialog,educationIndex,education.get('_id').value, 'collegyremove')"><img
+                            src="assets/images/delete.svg"></button>
+                    <button type="button" class="edit-details-button top-shiftt2"
+                        (click)="onOpenAddHistoryModal(education,education.get('type')?.value)"><img
+                            src="assets/images/on-boarding/pencil-icon.svg"></button>
+                    <h3 *ngIf="education.get('name')?.value"><span>{{education.get('name')?.value}} </span> <span
+                            *ngIf="education.get('locationCity')?.value">| {{education.get('locationCity')?.value}}
+                        </span> <span *ngIf="education.get('locationState')?.value">|
+                            {{getStateName(education.get('locationState')?.value)}} </span> <span
+                            *ngIf="education.get('locationCountry')?.value">|
+                            {{getCountryName(education.get('locationCountry')?.value)}}</span>
+                    </h3>
+                    <!-- <button type="button" class="edit-link"><span (click)="onOpenAddHistoryModal(education, qualification.HIGHT_SCHOOL_GRADUATE)" *ngIf="education.get('grade_choosen')?.value.length>0">+ ADD ANOTHER GRADE</span>
+                            </button> -->
+                    <hr>
+                    <div class="year-details">
+                        <ng-container *ngIf="education.get('degree').value">
+                            <ul>
+                                <li>
+                                    <p class="batch-year">{{education.get('start_year').value}}
+                                        <span
+                                            *ngIf="education.get('start_year').value && education.get('end_year')">-</span>
+                                        {{education.get('end_year').value}}
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="college-branch">
+                                        {{education.get('degree').value}}
+                                        <!-- <span>{{education.get('score').value}} %</span> -->
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="college-desc">
+                                        <span
+                                            *ngFor="let subject of education.get('collegegrade').controls; let i =index"
+                                            style="padding-bottom: 10px;display: block;">
+                                            {{subject.get('name').value}} -
+                                            <span
+                                                *ngIf="subject.get('scoreType').value == 'Percentage'">{{subject.get('score').value}}
+                                                % <br></span>
+                                            <span
+                                                *ngIf="subject.get('scoreType').value == 'GPA'">{{subject.get('score').value}}
+                                                GPA</span>
+                                            <span
+                                                *ngIf="subject.get('scoreType').value == 'Score'">{{subject.get('score').value}}
+                                                Score</span>
+                                            <span
+                                                *ngIf="subject.get('scoreType').value == 'Points'">{{subject.get('score').value}}
+                                                Points</span>
+                                            <a *ngIf="subject.get('college_fileName').value != null"
+                                                class="fa fa-file-text-o" [href]="subject.get('college_fileName').value"
+                                                aria-hidden="true" target="_blank"></a><br>
+
+                                            <span
+                                                *ngFor="let subjectlist of subject.get('field_of_study').value; let j =index">{{subjectlist}},
+                                            </span>
+                                            <!-- <span
+                                            *ngIf="i < education.get('field_of_study').value.length -1">, </span> -->
+                                        </span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </ng-container>
+                        <ng-container *ngIf="education.get('grade')?.value.length > 0">
+                            <ng-container *ngFor="let grade of education.get('grade')?.value; let i = index">
+                                <ul>
+                                    <li>
+                                        <p class="batch-year">{{grade.start_year}}
+                                            <span *ngIf="grade.start_year && grade.end_year">-</span> {{grade.end_year}}
+                                        </p>
+                                    </li>
+                                    <li *ngIf="grade?.name != ''">
+                                        <p *ngIf="grade?.tbd == undefined || grade?.tbd == false"
+                                            class="college-branch">
+                                            {{grade?.name}}<span *ngIf="grade?.name != 'Others'">th</span>
+                                            <span *ngIf="grade?.name && grade?.score"> - </span>
+                                            <span *ngIf="grade?.scoreType == 'Percentage'">{{grade?.score}} %</span>
+                                            <span *ngIf="grade?.scoreType == 'GPA'">{{grade?.score}} GPA</span>
+                                            <span *ngIf="grade?.scoreType == 'Score'">{{grade?.score}} Score</span>
+                                            <span *ngIf="grade?.scoreType == 'Points'">{{grade?.score}} Points</span>
+                                        </p>
+                                        <p *ngIf="grade?.tbd == true" class="college-branch">
+                                            {{grade?.name}}<span *ngIf="grade?.name != 'Others'">th</span>
+                                            <span *ngIf="grade?.name && grade?.score"> - </span>
+                                            <span>Result TBD</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="college-desc">{{grade.board}}</p>
+                                        <p class="college-desc"><span
+                                                *ngFor="let subject of grade.field_of_study; let i =index">{{subject}}<span
+                                                    *ngIf="i < grade.field_of_study?.length -1">, </span></span></p>
+                                    </li>
+
+                                </ul>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+
+        <ng-container formArrayName="education"
+            *ngFor="let education of sortedEducationSchoolFormArray; let educationIndex = index">
+            <ng-container *ngIf="education.get('degree').value || education.get('grade').value.length > 0 ">
+                <div class="final-education-details">
+                    <!-- <button type="button" class="edit-details-button top-shiftt1" (click)="onRemoveEducation(educationIndex, education.get('_id').value,'schoolremove')"><img
+                            src="assets/images/delete.svg"></button> -->
+                    <button type="button" class="edit-details-button top-shiftt1"
+                        (click)="removeEducationConfirmation(openDeleteEducationDialog,educationIndex,education.get('_id').value, 'schoolremove')"><img
+                            src="assets/images/delete.svg"></button>
+                    <button type="button" class="edit-details-button top-shiftt2"
+                        (click)="onOpenAddHistoryModal(education,education.get('type')?.value)"><img
+                            src="assets/images/on-boarding/pencil-icon.svg"></button>
+
+                    <h3 *ngIf="education.get('name')?.value"><span>{{education.get('name')?.value}} </span><span
+                            *ngIf="education.get('locationCity')?.value">| {{education.get('locationCity')?.value}}
+                        </span> <span *ngIf="education.get('locationState')?.value">|
+                            {{getStateName(education.get('locationState')?.value)}} </span> <span
+                            *ngIf="education.get('locationCountry')?.value">|
+                            {{getCountryName(education.get('locationCountry')?.value)}}</span>
+                    </h3>
+                    <!-- <button type="button" class="edit-link"><span (click)="onOpenAddHistoryModal(education, qualification.HIGHT_SCHOOL_GRADUATE)" *ngIf="education.get('grade_choosen')?.value.length>0">+ ADD ANOTHER GRADE</span>
+                            </button> -->
+                    <hr>
+                    <div class="year-details">
+                        <ng-container *ngIf="education.get('degree').value">
+                            <ul>
+                                <li>
+                                    <p class="batch-year">{{education.get('start_year').value}}
+                                        <span
+                                            *ngIf="education.get('start_year').value && education.get('end_year')">-</span>
+                                        {{education.get('end_year').value}}
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="college-branch">
+                                        {{education.get('degree').value}}
+                                        <!-- <span>{{education.get('score').value}} %</span> -->
+                                    </p>
+                                </li>
+
+                                <ul style="width: auto;">
+                                    <li>
+                                        <p class="college-desc">
+                                            <span
+                                                *ngFor="let subject of education.get('collegegrade').controls; let i =index"
+                                                style="padding-bottom: 10px;display: block;">
+                                                {{subject.get('name').value}}
+                                                <span
+                                                    *ngIf="subject.get('scoreType').value == 'Percentage'">{{subject.get('score').value}}
+                                                    % <br></span>
+                                                <span
+                                                    *ngIf="subject.get('scoreType').value == 'GPA'">{{subject.get('score').value}}
+                                                    GPA<br></span>
+                                                <span
+                                                    *ngIf="subject.get('scoreType').value == 'Score'">{{subject.get('score').value}}
+                                                    Score<br></span>
+                                                <span
+                                                    *ngIf="subject.get('scoreType').value == 'Points'">{{subject.get('score').value}}
+                                                    Points<br></span>
+
+                                                <span
+                                                    *ngFor="let subjectlist of subject.get('field_of_study').value; let j =index">{{subjectlist}},
+                                                </span>
+                                                <!-- <span
+                                            *ngIf="i < education.get('field_of_study').value.length -1">, </span> -->
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </ng-container>
+                        <ng-container *ngIf="education.get('grade')?.value.length > 0">
+                            <ng-container *ngFor="let grade of education.get('grade')?.value; let i = index">
+                                <ul>
+                                    <li>
+                                        <p class="batch-year">{{grade.start_year}}
+                                            <span *ngIf="grade.start_year && grade.end_year">-</span> {{grade.end_year}}
+                                        </p>
+                                    </li>
+                                    <li *ngIf="grade?.name != ''">
+                                        <p *ngIf="grade?.tbd == undefined || grade?.tbd == false"
+                                            class="college-branch d-inline-block">
+                                            Grade Level - {{grade?.name}}<span *ngIf="grade?.name != 'Others'">th</span>
+                                            -
+                                            <span *ngIf="grade?.scoreType == 'Percentage'">{{grade?.score}} %</span>
+                                            <span *ngIf="grade?.scoreType == 'GPA'">{{grade?.score}} GPA</span>
+                                            <span *ngIf="grade?.scoreType == 'Score'">{{grade?.score}} Score</span>
+                                            <span *ngIf="grade?.scoreType == 'Points'">{{grade?.score}} Points</span>
+                                        </p>
+                                        <p *ngIf="grade?.tbd == true" class="college-branch d-inline-block">
+                                            {{grade?.name}}<span *ngIf="grade?.name != 'Others'">th</span>
+                                            <span *ngIf="grade?.name && grade?.score"> - </span>
+                                            <span>Result TBD</span>
+                                        </p>
+
+                                        <a *ngIf="grade?.school_fileName != null" class="fa fa-file-text-o m-2"
+                                            [href]="grade?.school_fileName" aria-hidden="true" target="_blank"></a>
+
+                                        <!-- <p class="college-branch">
+                                            </p> -->
+                                    </li>
+                                    <li>
+                                        <p class="college-desc">{{grade.board}}</p>
+                                    </li>
+                                    <li>
+                                        <p class="college-desc"><span
+                                                *ngFor="let subject of grade.field_of_study; let i =index">{{subject}}<span
+                                                    *ngIf="i < grade.field_of_study?.length -1">, </span></span></p>
+                                    </li>
+                                </ul>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+
+
+    </ng-container>
+    <div class="lead-form-wrapper2">
+        <div class="col-12">
+            <!-- <a href="">+ ADD ANOTHER HIGH SCHOOL | + ADD COLLEGE</a> -->
+            <button type="button" class="add-more-education remove-margin"
+                (click)="onOpenAddHistoryModal(null, qualification.HIGHT_SCHOOL_STUDENT)">+ ADD ANOTHER HIGH
+                SCHOOL</button>
+            &nbsp;<span style="color:blue;">|</span>&nbsp;
+            <button type="button" class="add-more-education remove-margin"
+                (click)="onOpenAddHistoryModal(null , qualification.COLLEGE_STUDENT)">+ ADD COLLEGE</button>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #openDeleteEducationDialog>
+    <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+        <i class="fa fa-times custClose_model" (click)="modalDelete.hide()" aria-hidden="true"></i>
+        <div class="modal-form-header bottom-border">
+            <h5 class="heading">Are you sure you want to delete this education?</h5>
+        </div>
+        <div class="modal-form-footer">
+            <div class="row top-box">
+                <div class="footer-texteditor">
+                    <div class="row feed-item">
+                        <button type="button" style="border: 1px;
+                                color: #141414;font-weight: 600; margin-right: 10px;"
+                            (click)="modalDelete.hide()">No</button>&nbsp;&nbsp;
+                        <button
+                            (click)="onRemoveEducation(deleteEducationIndex,deleteEducationValue,deleteEducationType)"
+                            type="submit" id="btn" class="btn" style="color: white;border: none;">YES</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

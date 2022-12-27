@@ -1,0 +1,6 @@
+<app-nav-bar></app-nav-bar>
+<app-common-webinar [webinars]="webinars"></app-common-webinar>
+<div class="pagination-container" *ngIf="totalWebinars">
+    <pagination [totalItems]="totalWebinars" [itemsPerPage]="12" [(ngModel)]="currentPage" (pageChanged)="loadMore($event)">
+    </pagination>
+</div>

@@ -1,0 +1,17 @@
+<section class="terms-and-conditions-wrap">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 terms-header">
+                <h1>{{agreegateData?.title}}</h1>
+                <p>Last Updated: {{agreegateData?.updatedAt | date:'MMM d, y'}}</p> 
+            </div>
+            <div class="col-md-12 col-sm-12 terms-content-box">
+                <div class="container">
+                    <div class="terms-content" [innerHTML]="agreegateData?.description">
+                        <p class="space-reduce2">LAST UPDATED: {{agreegateData?.updatedAt | date:'MMM d, y'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

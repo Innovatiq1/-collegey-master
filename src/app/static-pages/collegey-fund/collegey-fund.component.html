@@ -1,0 +1,127 @@
+<section class="resources-wrap">
+    <div class="terms-header" style="background-image: url({{dynamicValue?.bannerImg}});">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <!-- <h6>Collegey Fund</h6>
+                    <h1>Thank you for your interest<br> in Collegey Inc.</h1>
+                    <p>We are happy to have you here.</p> -->
+                    <h6>{{dynamicValue.mainTitle}}</h6>
+                    <h1>{{dynamicValue.title}}</h1>
+                    <p>{{dynamicValue.subTitle}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="thanks-div">
+        <div class="row">
+            <div class="col-12 col-lg-7 col-md-6">
+                <!-- <h6>Collegey's mission is to enable people to become the best that they can be in the context that
+                    matters most to them. Its unique methodology is focused on collaboration and impact.</h6>
+                <p>We will be delighted to get on a call to learn more about your mission and what drives your
+                    investment theory. Please share the following information. </p>
+                <p>Thank you.</p> -->
+                <div class="clg-investDes" [innerHTML]="dynamicValue?.description"></div>
+            </div>
+            <div class="col-12 col-lg-5 col-md-6">
+                <div class="lead-form">
+                    <p class="heading">Please fill in the required details</p>
+                    <form class="login-form" [formGroup]="fundForm">
+                        <div class="group">
+                            <div>
+                                <input type="text" required="required" formControlName="name"
+                                    [ngClass]="{'is-invalid': submitted && f.name.errors}" placeholder="Name*"/>
+                            </div>
+                            <span *ngIf="submitted && f.name.errors" class="error">
+                                <span *ngIf="f.name.errors.required">Name is required .</span>
+                            </span>
+                        </div>
+
+                        <div class="group">
+                            <div>
+                                <input type="text" required="required" formControlName="email"
+                                    [ngClass]="{'is-invalid': submitted && f.email.errors}" placeholder="Email ID*"/>
+                            </div>
+                            <span *ngIf="submitted && f.email.errors" class="error">
+                                <span *ngIf="f.email.errors.required">Email is required .</span>
+                                <span *ngIf="f.email.errors.pattern">Email is Invalid .</span>
+                            </span>
+                        </div>
+                        <!-- <div class="group">
+                            <div>
+                                <input type="text" required="required" formControlName="mobile"
+                                    [ngClass]="{'is-invalid': submitted && f.mobile.errors}" />
+                                <label>Contact No*</label>
+                            </div>
+                            <span *ngIf="submitted && f.mobile.errors" class="error">
+                                <span *ngIf="f.mobile.errors.required">Contact no is required .</span>
+                                <span *ngIf="f.mobile.errors.pattern">Contact no is Invalid .</span>
+                            </span>
+                        </div> -->
+                        <div class="group">
+                            <div class="selectedCountryCode">
+                              <!-- <select formControlName="countryCode" required="required"  class="clg-countryCode-select">
+                                <option value=""  selected>Select Country Code</option>
+                                <option [value]="code.value" *ngFor="let code of countryPhoneCode">{{code.label}}</option>
+                              </select> -->
+
+                                <ng-select [(ngModel)]="selectedCountryCode" formControlName="countryCode" class="clg-countryCode-select">
+                                    <ng-option [value]="">Select Country Code</ng-option>
+                                    <ng-option *ngFor="let item of countryPhoneCode" [value]="item?.value">
+                                     {{item?.label}}
+                                     </ng-option>
+                                </ng-select>
+                            </div>
+                            <span *ngIf="submitted && f.countryCode.errors" class="error">
+                                <span *ngIf="f.countryCode.errors.required">Country Code is required .</span>
+                            </span>
+                        </div>
+                        <div class="group">
+                            <div>
+                                <input type="text" required="required" formControlName="mobile"
+                                    [ngClass]="{'is-invalid': submitted && f.mobile.errors}" placeholder="Contact No*"/>
+                            </div>
+                            <span *ngIf="submitted && f.mobile.errors" class="error">
+                                <span *ngIf="f.mobile.errors.required">Contact no is required .</span>
+                                <span *ngIf="f.mobile.errors.pattern">Contact no is Invalid .</span>
+                            </span>
+                        </div>
+                        <div class="group">
+                            <div>
+                                <input type="text" required="required" formControlName="city"
+                                    [ngClass]="{'is-invalid': submitted && f.city.errors}" placeholder="City*"/>
+                            </div>
+                            <span *ngIf="submitted && f.city.errors" class="error">
+                                <span *ngIf="f.city.errors.required">City is required .</span>
+                                <span *ngIf="f.city.errors.pattern">City is Invalid .</span>
+                            </span>
+                        </div>
+                        <div class="group">
+                            <div>
+                                <input type="text" required="required" formControlName="country"
+                                    [ngClass]="{'is-invalid': submitted && f.country.errors}" placeholder="Country*"/>
+                            </div>
+                            <span *ngIf="submitted && f.country.errors" class="error">
+                                <span *ngIf="f.country.errors.required">Country is required .</span>
+                                <span *ngIf="f.country.errors.pattern">Country is Invalid .</span>
+                            </span>
+                        </div>
+                        <div class="group">
+                            <div>
+                                <input type="number" required="required" formControlName="fundAmount"
+                                    [ngClass]="{'is-invalid': submitted && f.fundAmount.errors}" placeholder="Amount*"/>
+                            </div>
+                            <span *ngIf="submitted && f.fundAmount.errors" class="error">
+                                <span *ngIf="f.fundAmount.errors.required">Fund amount is required .</span>
+                                <span *ngIf="f.fundAmount.errors.pattern">Fund amount no is Invalid .</span>
+                            </span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block login-btn mt-60"
+                            (click)="save()">Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

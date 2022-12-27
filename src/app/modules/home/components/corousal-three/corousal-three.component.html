@@ -1,0 +1,47 @@
+<div class="container-fluid d-flex flex-column align-items-center h-100 frame">
+  <div class="content" *ngIf="!mobileView">
+    With Collegey, 21st-century <br />partnerships come together
+  </div>
+  <div class="content" *ngIf="mobileView">
+    With Collegey,<br />
+    21st-century partnerships <br />come together
+  </div>
+
+
+  <div class="container">
+    <div class="co-partners-list">
+      <span class="co-partner" *ngFor="let listdata of homepageContent; let i=index;">{{listdata?.name}}</span>
+    </div>
+  </div>
+
+
+  <div class="box" *ngIf="mobileView">
+    <div class="block-box">
+      <span class="block"
+        >Students become changemakers with real-world projects</span
+      >
+    </div>
+    <div class="block-box">
+      <span class="block">Mentors build global communities</span>
+    </div>
+  </div>
+ 
+  <div class="box" *ngIf="mobileView">
+    <div class="block-box">
+      <span class="block">High schools fuel active citizenry</span>
+    </div>
+    <div class="block-box">
+      <span class="block"
+        >Higher ed institutions add knowledge stream and pathways</span
+      >
+    </div>
+  </div>
+  
+  <div class="box" *ngIf="mobileView">
+    <div class="block-box">
+      <span class="block"
+        >Impact partners galvanize young people into necessary action</span
+      >
+    </div>
+  </div>
+</div>

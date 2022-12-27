@@ -1,0 +1,6 @@
+<app-nav-bar></app-nav-bar>
+<app-common-course [Courses]="Courses"></app-common-course>
+<div class="pagination-container"  *ngIf="totalCourses">
+    <pagination [totalItems]="totalCourses" [itemsPerPage]="12" [(ngModel)]="currentPage" (pageChanged)="loadMore($event)">
+    </pagination>
+</div>

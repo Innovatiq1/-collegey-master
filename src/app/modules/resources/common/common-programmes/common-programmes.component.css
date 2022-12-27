@@ -1,0 +1,9 @@
+@media screen and (max-width:991px) {
+    .webinar-box {
+        margin-bottom: 30px;
+    }
+}
+
+.webinar-desc{
+    font-size: 14px;
+}

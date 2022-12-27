@@ -1,0 +1,82 @@
+<section class="resources-wrap">
+    <div class="terms-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <h1>{{typeOfProgramTitle}} Collegey Programs</h1>
+                    <div class="header-button">
+                        <a class="explore" *ngFor="let text of homepageContent.bottomButton"
+                            href="{{text.link}}">{{text.text}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <div class="resources-content">
+                <div class="row resources-tabs underline-from-left">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="tabs-wrap">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let programme of programmes;">
+                                        <div class="webinar-box article-box">
+                                            <!-- <a [href]="programme.redirect_link" target="_blank">
+                                            </a> -->
+                                            <div class="webinar-image-box">
+                                                <a [routerLink]="['/single-program/',programme.id]"
+                                                    href="javascript:void(0)">
+                                                    <img class="zoom-image"
+                                                        [src]="commonService.imagePathS3(programme?.image, '/assets/images/default-blog.svg')"
+                                                        alt="Programme Image">
+                                                </a>
+                                            </div>
+                                            <div class="webinar-content-box">
+                                                <a [routerLink]="['/single-program/',programme.id]"
+                                                    class="post-title webinar-title"
+                                                    href="javascript:void(0)">{{programme?.title}}</a>
+                                                <p class="post-description webinar-desc top-gap">
+                                                    {{programme.short_description}}</p>
+                                                <p class="tags-box">
+                                                    <span class="article-tags"
+                                                        *ngFor="let tag of programme.tags">{{tag}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination-container" *ngIf="totalProgrammes">
+                    <pagination [totalItems]="totalProgrammes" [itemsPerPage]="12" [(ngModel)]="currentPage"
+                        (pageChanged)="loadMore($event)">
+                    </pagination>
+                </div>
+                <div class="container">
+                    <div class="row promo-box">
+                        <div class="col-sm-12 col-md-6 promo-slider hide-md">
+                            <div class="slider-item">
+                                <img src="assets/images/man.jpg">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-9 promo-content">
+                            <h5>{{programBelowData?.title}}</h5>
+                            <p>{{programBelowData?.program_content}}</p>
+                            <a href="{{programBelowData?.button_link}}"
+                                class="btn">{{programBelowData?.button_text}}</a>
+                        </div>
+                        <div class="col-sm-12 col-md-6 promo-slider hide-sm">
+                            <div class="slider-item">
+                                <img src="{{programBelowData?.imagePath}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

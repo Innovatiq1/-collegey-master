@@ -1,0 +1,100 @@
+<app-mentor-globaldashboard activeTab="tab2"></app-mentor-globaldashboard>
+<div class="container" style="padding: 0px;">
+  <div class="second-section">
+    <!-- <div class="container" *ngFor="let perks of mentorFeaturedPerksData; let i=index">
+        <div class="row">
+            <div class="mentor-block-main">
+                <div class="mentor-block">
+                    <div class="mentor-block-logo">
+                        <img *ngIf="perks?.image" [src]="commonService.imagePathS3(perks?.image) ">
+                    </div>
+                    <div class="mentor-block-content">
+                        <div class="mentor-header">
+                            <h2>{{ perks.title}}</h2>
+                            <a href="javascript:;" *ngIf="perks?.featured == 'Yes'"> Featured Opportunity</a>
+                        </div>
+                        <div class="mentor-full">
+                            <span>{{ perks.short_description}}</span>
+                            
+                            <div class="parkDesc" [innerHTML]="perks.description" [ngClass]="{'readLess': perks.readLess}"></div> <br> <br>
+
+                            <a href="javascript:;" (click)="readMoreClass(perks)" *ngIf="perks?.description">
+                                {{perks.readLess ? 'read less' : 'read more'}}
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mentor-bottom">
+                    <div class="mentor-block-btn">
+                        <span class="mentor-topic" *ngFor="let tag of perks.tags">{{tag}}</span>
+                    </div>
+                </div>
+                <div class="mentor-bottom-faviourte">
+                    <div *ngIf="CheckPerklike(perks?.favorite)" class="favorite"
+                        (click)="addToFavoritePerk(i,perks?._id,'removefavorite')"><span class="fa fa-star"></span>
+                        Favorite</div>
+                    <div *ngIf="!CheckPerklike(perks?.favorite)" class="favorite"
+                        (click)="addToFavoritePerk(i,perks?._id,'addfavorite')"><span class="fa fa-star-o"></span>
+                        Favorite</div>
+                    <div class="favorite">{{ perks?.favorite.length}} Favorite</div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container" *ngFor="let perks of mentorPerksData; let i = index">
+      <div class="row">
+        <div class="mentor-block-main">
+          <div class="mentor-block">
+            <div class="mentor-block-logo">
+              <img *ngIf="perks?.image" [src]="commonService.imagePathS3(perks?.image)" />
+            </div>
+            <div class="mentor-block-content">
+              <div class="mentor-header">
+                <h2>{{ perks.title }}</h2>
+                <a href="javascript:;" *ngIf="perks?.featured == 'Yes'">
+                  Featured Opportunity</a>
+              </div>
+              <div class="mentor-full">
+                <span>{{ perks.short_description }}</span>
+
+                <div class="parkDesc" [innerHTML]="perks.description" [ngClass]="{ readLess: perks.readLess }"></div>
+
+                <a href="javascript:;" (click)="readMoreClass(perks)"
+                  *ngIf="perks?.description && countWords(perks.description)">
+                  {{ perks.readLess ? "read less" : "read more" }}
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mentor-bottom">
+            <div class="mentor-block-btn">
+              <span class="mentor-topic" *ngFor="let tag of perks.tags">{{
+                tag
+                }}</span>
+            </div>
+          </div>
+          <div class="mentor-bottom-faviourte">
+            <div *ngIf="CheckPerklike(perks?.favorite)" class="favorite"
+              (click)="addToFavoritePerk(i, perks?._id, 'removefavorite')">
+              <span class="fa fa-star"></span> Favorite
+            </div>
+            <div *ngIf="!CheckPerklike(perks?.favorite)" class="favorite"
+              (click)="addToFavoritePerk(i, perks?._id, 'addfavorite')">
+              <span class="fa fa-star-o"></span> Favorite
+            </div>
+            <div class="favorite">{{ perks?.favorite.length }} Favorite</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button (click)="loadMoreData()" [hidden]="isLoading" class="clg-loadmore">
+        Load More
+      </button>
+      <p class="noFoundData" *ngIf="isLoading">No More Data Found</p>
+    </div>
+  </div>
+</div>

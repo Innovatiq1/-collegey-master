@@ -1,0 +1,96 @@
+/* Custom Css */
+.clg-ecosystem-section {
+  padding: 100px 40px 350px 40px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.clg-ecosystem-section h2 {
+  text-align: center;
+  color: #c9e265;
+  font-size: 55px;
+  font-weight: 600;
+}
+
+.clg-ecosystem-section .clg-ecosystem-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 200px 0 0 0;
+}
+
+.clg-ecosystem-section .clg-ecosystem-data {
+  width: 33.33%;
+  display: inline-block;
+  text-align: center;
+  padding: 15px;
+}
+
+.clg-ecosystem-section .clg-ecosystem-data h5 {
+  font-size: 45px;
+  color: #fff;
+  font-weight: 600;
+  padding-bottom: 30px;
+}
+
+.clg-ecosystem-section .clg-ecosystem-data p {
+  font-size: 34px;
+  color: #fff;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+@media screen and (min-width:1400px) {
+  .clg-content {
+    max-width: 1600px;
+  }
+}
+
+@media screen and (max-width:1400px) {
+  .clg-ecosystem-section {
+    padding: 100px 40px 150px 40px;
+  }
+
+  .clg-ecosystem-section h2 {
+    font-size: 40px;
+  }
+
+  .clg-ecosystem-section .clg-ecosystem-content {
+    padding: 50px 0 0 0;
+  }
+
+  .clg-ecosystem-section .clg-ecosystem-data h5 {
+    font-size: 35px;
+  }
+
+  .clg-ecosystem-section .clg-ecosystem-data p {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .clg-ecosystem-section {
+    padding: 60px 0px;
+  }
+
+  .clg-ecosystem-section .clg-ecosystem-data {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .clg-ecosystem-section h2 {
+    font-size: 30px;
+  }
+
+  .clg-ecosystem-section .clg-ecosystem-data h5 {
+    font-size: 20px;
+  }
+
+  .clg-ecosystem-section .clg-ecosystem-data p {
+    font-size: 18px;
+  }
+
+}

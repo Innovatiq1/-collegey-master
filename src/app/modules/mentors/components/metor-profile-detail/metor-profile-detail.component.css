@@ -1,0 +1,433 @@
+
+.mentor-profile-detail{
+    margin-top: 30px;
+}
+
+.portfolio-progress ul{
+    list-style: none;
+    z-index: 1;
+    position: relative;
+    display: flex;
+}
+.portfolio-progress li{
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+.portfolio-progress li div{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000014;
+    border: 1px solid #D6E6FF;
+    display: inline;
+    padding: 5px 7px;
+    border-radius: 25px;
+    position: relative;
+}
+.portfolio-progress hr{
+    width: 70px;
+    background-color: #D3D3D3;
+    height: 5px;
+    border: none;
+    border-radius: 10px;
+    margin: 0;
+    margin-right: 5px;
+}
+.portfolio-progress li div svg{
+    background: #D3D3D3;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    border-radius: 25px;
+}
+.portfolio-progress li.is-active div svg{
+    background: #FF971A 0% 0% no-repeat padding-box;
+}
+.portfolio-progress li.is-active hr{
+    background: #FF971A 0% 0% no-repeat padding-box;
+}
+.steps-p{
+    font: normal normal 600 14px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 30px;
+}
+.third-section{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 15px #0000001a;
+    border-radius: 12px;
+    padding: 25px 40px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.third-section .portfolio-progress{
+    width: 65%;
+}
+.third-section .portfolio-progress ul{
+    margin-bottom: 0;
+}
+.third-section .portfolio-progress li{
+    width: 25%;
+}
+.third-section .portfolio-progress hr{
+    width: 100%;
+}
+.third-section .portfolio-progress-text{
+    width: 35%;
+    padding-left: 20px;
+    border-left: 1px solid #f5f5f5;
+    margin-left: 30px;
+}
+.portfolio-progress-text h6{
+    font: normal normal bold 13px/19px Nunito;
+    letter-spacing: 0px;
+    color: #FF971A;
+}
+.portfolio-progress-text p{
+    font: normal normal normal 11px/16px Nunito;
+    letter-spacing: 0px;
+    color: #AFAFAF;
+    margin-bottom: 0;
+}
+
+/*education*/
+.profile-details-wrap {
+
+    display: flex;
+   
+    
+    
+    margin-bottom: 20px;
+}
+.profile-details-left{
+    border-radius: 12px;
+    box-shadow: 0px 3px 15px #0000001a;
+    background: #fff;
+    padding: 25px 40px;
+    
+}
+.profile-details-right{
+    border-radius: 12px;
+    box-shadow: 0px 3px 15px #0000001a;
+    background: #fff;
+    padding: 20px 20px;
+    max-height: 100vh;
+    margin-bottom: 20px;
+    
+}
+.profile-details-wrap h1 {
+    font-size: 20px;
+    color: #141414;
+    /* padding-bottom: 15px; */
+}
+
+.profile-details-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-details-header a {
+    font-size: 16px;
+    color: #3F89FC;
+}
+
+.profile-detail-main {
+    border-radius: 5px;
+    /* border: 0.5px solid #D3D3D3; */
+    margin-bottom: 25px;
+    background: #fff;
+    padding: 20px 20px;
+    box-shadow: 0px 3px 15px #0000001a;
+}
+
+.profile-detail h2 {
+    font-size: 16px;
+    margin-bottom: 0px;
+    color: #4E4E4E;
+    padding-bottom: 5px;
+    
+}
+
+.profile-detail p {
+    font-size: 16px;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+}
+
+.profile-detail span {
+    font-size: 12px;
+    color: #838383;
+    display: block;
+    padding-bottom: 10px;
+}
+
+.profile-detail {
+    padding: 0px 15px;
+    border-bottom: 0.5px solid #D3D3D3;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    /* margin-bottom: 25px; */
+}
+.profile-detail:last-child {
+    border-bottom:none ;
+}
+.profile-space {
+    padding-left: 0px;
+}
+.profile-info {
+    border: 0.5px solid #D3D3D3;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+.publish-journal p {
+    font-size: 14px !important;
+    color: #838383;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.published-journal h3 {
+    font-size: 14px;
+    color: #141414;
+    padding-bottom: 11px;
+}
+
+.published-journal ul {display: flex;}
+
+.published-journal ul li {margin: 0px 20px;}
+
+.published-journal ul li a img {
+    display: block;
+}
+
+.published-journal ul li a img {
+    text-align: center;
+    margin: 0px auto;
+    padding-bottom: 10px;
+}
+
+.published-journal ul li a {
+    font-size: 12px;
+    color: #141414;
+}
+
+.published-journal {
+    padding: 10px 15px 15px;
+}
+
+.information {
+    width: 100%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.information h3 {
+    font-size: 14px;
+}
+
+.personal-contact-details h2 {
+    font-size: 16px;
+    color: #838383;
+    width: 100%;
+    clear: both;
+}
+
+.social-media-connect {
+    width: 100%;
+    max-width: 35%;
+    /* display: flex; */
+}
+
+.personal-contact-details {
+    display: flex;
+    justify-content: space-between;
+}
+.personal-profile h2{ font-size: 16px;
+    color: #838383;
+    width: 100%;
+    clear: both;
+    padding-bottom:10px;}
+.personal-information {
+    width: 100%;
+    /* display: flex; */
+    border-bottom: 1px solid #d3d3d3;
+    margin-bottom: 10px;
+}
+
+.social-media-connect p {
+    font-size: 16px;
+    color: #838383;
+    padding-bottom: 10px;
+}
+
+.social-media-connect p a {
+    font-size: 14px;
+    padding-top: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.information:after {content: "";border: 1px solid #d3d3d3;top: 0px;position: absolute;width: 1px;height: 100%;left: 121%;}
+
+.information.social-media-connect p {
+    font-size: 13px !important;
+    color: #333;
+    margin: 0px;
+}
+.personal-profile.profile_border {
+    border-bottom: 1px solid #d3d3d3; 
+    padding-bottom: 20px;
+}
+
+.personal-profile.personal-profile-custom-space {
+    margin-top: 15px;
+}
+.items-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+}
+.items {
+    margin: 10px;
+    /* background: #d8e4c3; */
+    /* padding: 15px 10px 5px; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.items img {
+    width: 100%;
+}
+
+.items-content h2 {
+    font-size: 16px;
+    color: #3F89FC;
+}
+
+.items-content a {
+    background: #F2F2F2;
+    margin: 0px 2px 0px 0px;
+    padding: 0px 5px;
+    font-size: 11px;
+    color: #000;
+}
+
+.items-content p {
+    font-size: 12px;
+    color: #838383;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.items-content h4 {
+    color: #141414;
+    font-size: 12px;
+    margin: 5px 0px;
+}
+
+.items-content span {
+    font-size: 12px;
+    color: #000;
+    padding-bottom: 15px;
+}
+
+.profile-details-right h2 {
+    font-size: 18px;
+    color: #141414;
+    padding-bottom: 10px;
+}
+
+.profile-details-right h3 {
+    font-size: 16px;
+    color: #4E4E4E;
+}
+
+.other-details ul {
+    display: flex;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.other-details ul li a {
+    background: #F2F2F2;
+    padding: 4px 10px;
+    color: #141414;
+    pointer-events: none;
+    cursor: default;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.information.social-media-connect:after {
+    border: none;
+}
+.prefernce_content p {
+    font-size: 13px;
+    color: #838383;
+    margin: 0px;
+}
+
+.prefernce_content h2 {
+    font-size: 16px !important;
+    color: #4E4E4E !important;
+    margin: 0px;
+}
+
+.prefernce_content {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dcdcdc;
+}
+.progile-other-details-rightSide{
+    padding-right: 0px;
+}
+@media only screen and (max-width: 1220px){ 
+    .third-section{
+      margin: 15px;
+    }
+    .profile-details-wrap{
+        padding: 15px;
+    }
+  
+  }
+  @media only screen and (max-width: 980px){
+    .profile-space{
+        padding: 0px !important;
+    }
+  }
+  @media only screen and (max-width: 790px){
+    .third-section{
+        flex-wrap: wrap;
+      }
+    .portfolio-progress p{
+        text-align: center !important;
+        margin-bottom: 15px !important;
+    }
+    .portfolio-progress ul{
+        margin: 15px  0px!important;
+    }
+    .portfolio-progress-text{
+        border-left: 0px !important;
+        margin-top: 15px;
+        width: 100% !important;
+        text-align: center;
+        padding: 0px !important;
+        margin-left: 0px !important;
+    }
+    .progile-other-details-rightSide{
+        padding: 0px;
+    }
+   }
+  @media only screen and (max-width: 595px){
+    .personal-contact-details{
+        flex-wrap: wrap !important;
+    }
+    .information{
+        max-width: 100% !important;
+    }
+   }
+  

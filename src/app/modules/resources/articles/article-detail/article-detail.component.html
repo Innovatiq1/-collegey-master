@@ -1,0 +1,275 @@
+<section class="article-detail-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 article-details-box">
+        <h1>
+          {{ articleDetails?.title }}
+        </h1>
+        <div class="post-date-like">
+          <span class="blog-date-span" *ngIf="articleDetails?.author">
+            <img src="assets/images/new-star.svg" />
+            Posted by
+            <span> {{ articleDetails?.author }} </span> on
+            {{ articleDetails?.createdAt | date }}
+          </span>
+          <!-- <span class="icons">
+              <img src="assets/images/facebook.svg" />
+            </span> -->
+        </div>
+        <!-- <p class="post-read-time">4 mins Read</p> -->
+        <hr style="border-top: 1px solid rgb(0 0 0 / 0.05)" />
+        <p class="tags-box">
+          <span (click)="getBlogsByTag(tags)" class="article-tags" *ngFor="let tags of articleDetails?.tags">{{
+            tags
+            }}</span>
+        </p>
+        <div class="article-content-box">
+          <ng-container *ngIf="articleDetails?.image">
+            <img [src]="commonService.imagePathMaker(articleDetails?.image)" alt="Article Banner Image"
+              class="img-fluid" />
+          </ng-container>
+          <article [innerHTML]="articleDetails?.description" class="clg-blog-description"></article>
+        </div>
+        <p class="blog-like-span">
+          <img src="assets/images/like.svg" />
+          <span> {{blogCommentData?.length}} Comments</span>
+        </p>
+        <hr style="border-top: 1px solid rgb(0 0 0 / 0.05)" />
+        <div class="user-comment">
+
+          <div *ngIf="showAllCommentData == false">
+            <div class="user-comment-item" *ngFor="let commentList of blogCommentData | slice:0:2; let i=index;">
+              <img *ngIf="!commentList?.userData?.avatar" src="assets/images/profile-picture.png" class="user-img"
+                alt="" />
+              <img *ngIf="commentList?.userData?.avatar"
+                [src]="commonService.imagePathS3(commentList?.userData?.avatar)" class="user-img" alt="" />
+              <div class="user-comment-info">
+                <p class="user-name">{{commentList?.name}}</p>
+                <p class="user-email">{{commentList?.email}}</p>
+                <p class="user-submitted-comment">
+                  {{commentList?.comment}}
+                </p>
+                <div class="d-inline-block w-100 text-left">
+                  <button (click)="addReply(openReplyLink, commentList)" type="button" class="addIntrest">Reply</button>
+                  <!-- <a class="reply-btn">Reply</a> -->
+                </div>
+                <div>
+                  <div class="user-comment-item" *ngFor="let replyList of commentList?.reply; let i=index;">
+                    <img *ngIf="!commentList?.userData?.avatar" src="assets/images/profile-picture.png" class="user-img"
+                      alt="" />
+                    <img *ngIf="commentList?.userData?.avatar"
+                      [src]="commonService.imagePathS3(commentList?.userData?.avatar)" class="user-img" alt="" />
+                    <div class="user-comment-info">
+                      <p class="user-name">{{replyList?.name}}</p>
+                      <p class="user-email">{{replyList?.email}}</p>
+                      <p class="user-submitted-comment">
+                        {{replyList?.comment}}
+                      </p><br>
+                      <!-- <button (click)="addReply(openReplyLink, commentList)" type="button" class="addIntrest pull-right">Reply</button> -->
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #openReplyLink>
+            <div class=" schedule-event-modal">
+              <div *ngIf="userid"  class="schedule-form">
+                <form [formGroup]="AddReply" (ngSubmit)="onSubmitCommentReply()" method="post">
+                  <div class="form-row">
+                    <div class="col-md-12">
+                      <label for="replyText">Add Comment</label>
+                      <input type="text" class="form-control" placeholder="" formControlName="replyText"
+                        name="replyText" id="replyText">
+                      <span *ngIf="submittedCommentReplay && hasErrorReplayComment('replyText','required')" class="d-block"
+                  style="color: red;">Please add comment</span>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- <div *ngIf="!userid" class="schedule-form without_loginText">
+                  Please login first to access add blog comment. <a href="/">( Login )</a>
+                </div> -->
+
+              </div>
+
+              <div *ngIf="!userid" class="schedule-form without_loginText">
+                     Please login first to access add blog comment. <a href="/">( Login )</a>
+              </div>
+              
+              <div class="schedule-event-action">
+                <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button> &nbsp;&nbsp;
+                <button *ngIf="userid" (click)="onSubmitCommentReply()" class="add-btn">Comment</button>
+
+              </div>
+            </div>
+          </ng-template>
+
+          <div *ngIf="showAllCommentData == true">
+            <div class="user-comment-item" *ngFor="let commentList of blogCommentData; let i=index;">
+              <img *ngIf="!commentList?.userData?.avatar" src="assets/images/profile-picture.png" class="user-img"
+                alt="" />
+              <img *ngIf="commentList?.userData?.avatar"
+                [src]="commonService.imagePathS3(commentList?.userData?.avatar)" class="user-img" alt="" />
+              <div class="user-comment-info">
+                <p class="user-name">{{commentList?.name}}</p>
+                <p class="user-email">{{commentList?.email}}</p>
+                <p class="user-submitted-comment">
+                  {{commentList?.comment}}
+                </p>
+                <div class="d-inline-block w-100 text-left">
+                  <button (click)="addReply(openReplyLink, commentList)" type="button" class="addIntrest">Reply</button>
+                </div>
+                <div>
+                  <div class="user-comment-item" *ngFor="let replyList of commentList?.reply; let i=index;">
+                    <img *ngIf="!replyList.avatar" src="assets/images/profile-picture.png" class="user-img" alt="" />
+                    <img *ngIf="replyList.avatar" [src]="commonService.imagePathS3(replyList?.avatar)" class="user-img"
+                      alt="" />
+                    <div class="user-comment-info">
+                      <p class="user-name">{{replyList?.name}}</p>
+                      <p class="user-email">{{replyList?.email}}</p>
+                      <p class="user-submitted-comment">
+                        {{replyList?.comment}}
+                      </p><br>
+                      <!-- <button (click)="addReply(openReplyLink, commentList)" type="button" class="addIntrest pull-right">Reply</button> -->
+
+                    </div>
+                  </div>
+                </div>
+                <!-- <a class="reply-btn">Reply</a> -->
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <div class="user-comment-item">
+              <img
+                src="assets/images/profile-picture.png"
+                class="user-img"
+                alt=""
+              />
+              <div class="user-comment-info">
+                <p class="user-name">How To make Super Website Design</p>
+                <p class="user-email">singh.rohit@gmail.com</p>
+                <p class="user-submitted-comment">
+                  Student Account Creation / Registration. When you create an
+                  account on Collegey Site, you are asked to provide certain
+                  information, such as name, address, phone number, e-mail
+                  address, password, date of birth and other academic and
+                  demographic variables relevant to the portfolio building,
+                  project completion, and the college selection/admission process.
+                  You may update this information at any time after your initial
+                  registration.
+                </p>
+                <a class="reply-btn">Reply</a>
+              </div>
+            </div> -->
+
+        </div>
+        <div *ngIf="showAllCommentData == false" class="all-comments">
+          <a style="cursor:pointer;" (click)="showAllComment()">SHOW ALL {{blogCommentData?.length}} COMMENTS</a>
+        </div>
+        <div class="comment-form">
+          <p class="title">Write a response</p>
+          <div *ngIf="!userid" class="without_loginText">
+            Please login first to access add blog comment. <a href="/">( Login )</a>
+          </div>
+          <form *ngIf="userid" [formGroup]="blogCommentForm" method="post" (ngSubmit)="onSubmitBlogComment()"
+            novalidate>
+            <div class="row">
+              <div *ngIf="!userid" class="col-sm-6">
+                <div class="border-box">
+                  <label>Name</label>
+                  <input type="text" placeholder="Enter Name" formControlName="name" name="name" disabled />
+                </div>
+                <span *ngIf="submittedComment && hasErrorEvent('name','required')" class="d-block"
+                  style="color: red;">Name is required.</span>
+              </div>
+              <div *ngIf="!userid" class="col-sm-6">
+                <div class="border-box">
+                  <label>Enter Email ID</label>
+                  <input type="text" placeholder="Email Address" formControlName="email" name="email" disabled />
+                </div>
+                <span *ngIf="submittedComment && hasErrorEvent('email','required')" class="d-block"
+                  style="color: red;">Email is required.</span>
+              </div>
+              <div class="col-sm-12">
+                <div class="border-box">
+                  <label>Add Comments</label>
+                  <textarea placeholder="Start writing from here..." formControlName="comments"
+                    name="comments"></textarea>
+                </div>
+                <span *ngIf="submittedComment && hasErrorEvent('comments','required')" class="d-block"
+                  style="color: red;">Please add comment</span>
+              </div>
+              <div class="col-sm-12 post-comment-btn">
+                <button class="" type="submit">POST COMMENT</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <div class="col-md-5 post-right-sidebar">
+        <div class="right-sidebar-tags">
+          <p class="subheading">All Tags</p>
+          <p class="tags-box">
+            <span class="article-tags" *ngFor="let tags of articleDetails?.tags" (click)="getBlogsByTag(tags)">{{ tags
+              }}
+            </span>
+          </p>
+        </div>
+        <div class="recent-post-box">
+          <p class="subheading">Recent Post</p>
+          <div class="postlists" *ngFor="let article of similarArticles; let i = index">
+            <div class="recent-post-item" *ngIf="i < 8" (click)="onNavigate(article.slug)">
+              <img [src]="commonService.imagePathMaker(article?.image)" alt="Article Image" class="post-img" alt="" />
+              <div class="post-info">
+                <p class="postlink">{{ article?.title }}</p>
+                <div class="post-date-like">
+                  <span class="blog-date-span" *ngIf="article?.author">
+                    <img src="assets/images/new-star.svg" />
+                    Posted by
+                    <span> {{ article?.author }}</span> on
+                    {{ article?.createdAt | date }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="collegey-magazine-wrapper">
+          <div class="collegey-magazine-text">
+            <!-- <p class="collegey-magazine-title">
+              Subcribe to our Collegey Newsletter
+            </p> -->
+            <p class="collegey-magazine-title">
+              Subscribe to  Collegey updates.
+            </p>
+            <!-- <p class="collegey-magazine-subtitle">
+              Get the latest updates and news lorem ipsum dolor sit
+              amet.
+            </p> -->
+            <p class="collegey-magazine-subtitle">
+              Receive actionable insights in your inbox. 
+            </p>
+          </div>
+          <div class="collegey-graphics" [formGroup]="form">
+            <div>
+              <label>Enter Email ID</label>
+              <input type=" text" class="form-control" value="admin@gmail.com" aria-label="admin@gmail.com"
+                formControlName="email" />
+            </div>
+            <button class="btn" type="button" (click)="save()">Subscribe</button>
+          </div>
+          <div class="collegey-graphics" *ngIf="submitted && f.email.errors">
+            <span class="text-danger" *ngIf="f.email.errors.required">Email Id is required .</span>
+            <span class="text-danger" *ngIf="f.email.errors.pattern">Email Id is invalid .</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+<app-dash-header></app-dash-header>
+<section class="resources-wrap">
+    <div class="row">
+       <div class="col-md-12" style="background-color: #ecf0fe;" *ngIf="tagarticles">
+            <div class="resources-content">
+                <div class="row resources-tabs underline-from-left">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="tabs-wrap">
+                            <div class="container"> 
+                                <p style="text-align: center !important; font: normal normal normal 25px/52px Georgia;">
+                                   <strong> <u> Selected Tag List </u></strong> 
+                                </p> 
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let article of tagarticles;">
+                                        <div class="webinar-box article-box" (click)="onNavigate(article.slug)">
+                        
+                                            <div class="webinar-image-box">
+                                                <img class="zoom-image" [src]="commonService.imagePathMaker(article.image, '/assets/images/default-blog.svg')" alt="Article Image">
+                                            </div>
+                                            <div class="webinar-content-box1">
+                                                <a class="post-title webinar-title" href="javascript:void(0)">{{article.title}}</a>
+                                                <p class="post-description webinar-desc top-gap">{{article.short_description}}</p>
+                                                <p class="tags-box"><span class="article-tags" *ngFor="let tag of article.tags">{{tag}}</span></p>
+                                                <p class="posted-date top-gap"><span *ngIf="article.author" class="blog-date-span">By {{article.author}} </span><span>{{article.createdAt | date}}</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+</section>

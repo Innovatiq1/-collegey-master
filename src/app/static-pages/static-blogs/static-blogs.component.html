@@ -1,0 +1,67 @@
+<section class="resources-wrap">
+    <div class="row">
+        <div class="container">
+            <div class="row banner-blog">
+                <!-- image box for mobile hidden above sm -->
+                <div class="col-sm hide-md no-pad">
+                    <img [src]="commonService.imagePathMaker(currentBlog?.image, '/assets/images/default-blog.svg')" class="full-width">
+                </div>
+                <div class="col-sm">
+                    <div class="webinar-content-box">
+                        <p class="tags-box">
+                            <span class="article-tags" *ngFor="let tag of currentBlog?.tags" (click)="getBlogsByTag(tag)">{{tag}}</span>
+                        </p>
+                        <a class="post-title webinar-title" href="javascript:void(0)">{{currentBlog?.title}}</a>
+                        <div class="post-date-like">
+                            <span class="blog-date-span">
+                                <img src="assets/images/new-star.svg"> Posted by
+                                <span>{{currentBlog?.author}}</span> on {{currentBlog?.createdAt | date}}
+                            </span>
+                            <span class="hide-xs">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </span>
+                            <!-- <span class="blog-like-span">
+                                <img src="assets/images/like.svg"> <span> 1,556 Likes</span>
+                            </span> -->
+                        </div>
+                        <p class="post-description webinar-desc top-gap">{{currentBlog?.short_description}}</p>
+                        <a style="
+                            cursor: default;"
+                         class="read-more" (click)="onNavigate(currentBlog.slug)">Read More <span> ></span></a>
+                        <button class="btn slider-btn previous-btn hide-xs" *ngIf="prevPage" (click)="loadPrev($event)">
+                            Previous
+                        </button>
+                    </div>
+                </div>
+                <!-- image box for above sm -->
+                <div class="col-sm hide-xs" style="padding: 0;">
+                    <img [src]="commonService.imagePathMaker(currentBlog?.image, '/assets/images/default-blog.svg')" class="full-width">
+                    <button class="btn slider-btn next-btn" *ngIf="nextPage" (click)="loadNext($event)">
+                        Next
+                    </button>
+                </div>
+                <!-- next prevoius button box for mobile hidden above sm -->
+                <div class="btnOnMobile hide-md">
+                    <button class="btn slider-btn previous-btn" *ngIf="prevPage" (click)="loadPrev($event)">
+                        Previous
+                    </button>
+                    <button class="btn slider-btn next-btn" *ngIf="nextPage" (click)="loadNext($event)">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="resources-content">
+                <div class="row resources-tabs underline-from-left">
+                    <div class="col-md-12 col-sm-12">
+                        <app-common-articles>
+                        </app-common-articles>
+                        <!-- <app-blog-banner>
+                        </app-blog-banner> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

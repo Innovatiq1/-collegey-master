@@ -1,0 +1,127 @@
+.meet {
+  display: flex;
+  padding-top: 72px;
+  justify-content: center;
+  font-size: 50px;
+  font-family: Georgia;
+  font-weight: Regular;
+  color: #ffffff;
+  opacity: 1;
+  line-height: 32px;
+}
+
+.clg-meetour-team .small-text {
+  display: block;
+  max-width: 1180px;
+  font-size: 38px;
+  font-weight: 300;
+  color: #000000;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  line-height: 1.5;
+}
+
+::ng-deep .clg-meetour-team .small-text span {
+  color: #fff;
+  display: inline-block;
+}
+
+.box {
+  height: 100%;
+  text-align: center;
+}
+
+.img-beh {
+  height: inherit;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  padding-top: 42px;
+}
+
+.clg-meetour-team .shw-btn {
+  background: #ffffff;
+  border-radius: 4px;
+  opacity: 1;
+  font-size: 17px;
+  font-family: Nunito;
+  line-height: 20px;
+  font-weight: Bold;
+  color: #3f89fc;
+  outline: none;
+  border: none;
+  margin-top: 20px;
+  padding: 15px 35px;
+}
+
+.clg-meetour-team {
+  display: inline-block;
+  width: 100%;
+  padding: 100px 40px;
+  background-color: #3f89fc;
+}
+
+.clg-meetour-team h2 {
+  text-align: center;
+  font-size: 70px;
+  color: #fff;
+  font-weight: 700;
+}
+
+
+@media only screen and (min-height: 700px) {
+  .meet {
+    font-size: 46px;
+    line-height: 52px;
+  }
+}
+
+@media only screen and (min-height: 1000px) {
+  .meet {
+    font-size: 46px;
+    line-height: 52px;
+  }
+}
+
+@media screen and (min-width:1400px) {
+  .clg-content {
+    max-width: 1600px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .clg-meetour-team h2 {
+    font-size: 50px;
+  }
+
+  .clg-meetour-team .small-text {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .clg-meetour-team {
+    padding: 40px 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .clg-meetour-team h2 {
+    font-size: 40px;
+  }
+
+  .clg-meetour-team .small-text {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .clg-meetour-team h2 {
+    font-size: 30px;
+  }
+}
+.shw-btn:hover{
+  text-decoration: none;
+}

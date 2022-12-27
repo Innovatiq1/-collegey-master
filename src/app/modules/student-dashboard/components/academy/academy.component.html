@@ -1,0 +1,51 @@
+<app-dash-header></app-dash-header>
+<section class="section-mr">
+    <div class="social-feed-container" style="margin-top: -65px;">
+        <div class="blog-leftside-dashboard">
+            <div class="webinar-box article-box" *ngFor="let article of articles; let i=index;">
+                <div class="webinar-image-box">
+                    <img class="zoom-image"
+                        [src]="commonService.imagePathMaker(article?.image, '/assets/images/default-blog.svg')"
+                        alt="Article Image">
+                </div>
+                <div class="webinar-content-box">
+                    <a class="post-title webinar-title" href="javascript:void(0)">{{article?.title}}</a>
+                    <p class="posted-date top-gap">Posted by<span class="blog-date-span"> {{article?.author}}</span>
+                        {{article?.createdAt | date: 'd MMM, y'}}</p>
+                    <p class="post-description webinar-desc top-gap">{{article?.short_description}}</p>
+                    <a href="javascript:;" (click)="onNavigate(article?.slug)" class="read-more">Read More
+                        <span>></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="right-sidebar">
+            <div class="learn-box">
+                <p>#Get Learning</p>
+                <h6>Collegey Academy</h6>
+                <h5 style="font-size: 15px;">Everything you need to stay on top of things. From webinars to conferences,
+                    student opportunities,
+                    articles, reports, and more.</h5>
+                <a href="student-dashboard/$/academy"><button type="button" class="btn">Click Here</button></a>
+            </div>
+            <div class="recommended-profile-box">
+                <form [formGroup]="recommendationForm">
+                    <p>Ask for a recommendation to add to your Collegey Profile.</p>
+
+                    <span
+                        *ngIf="submitted && (hasErrorRecommendedForm('name','required') || hasErrorRecommendedForm('name','pattern'))"
+                        class="d-block" style="color: red;">Name
+                        is required.</span>
+                    <input type="text" name="" id="" placeholder="Enter Name *" formControlName="name">
+
+                    <span *ngIf="submitted && hasErrorRecommendedForm('email_id','required')" class="d-block"
+                        style="color: red;">Email is required.</span>
+                    <span *ngIf="submitted && hasErrorRecommendedForm('email_id','pattern')" class="d-block"
+                        style="color: red;">Incorrect Email Format.</span>
+                    <input type="email" name="" id="" placeholder="Enter Email ID *" formControlName="email_id">
+
+                    <button type="button" class="btn" (click)="recommendationFormSubmit()">SEND</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

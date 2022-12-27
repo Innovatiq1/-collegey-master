@@ -1,0 +1,147 @@
+/* Projects popup upload file css */
+
+[type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+}
+
+[type="file"]+.document-not-upload {
+    background: transparent;
+    border: none;
+    border-radius: 3px;
+    color: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 0;
+    outline: none;
+    padding: 1rem 40px;
+    position: relative;
+    vertical-align: middle;
+}
+
+[type="file"]+.document-not-upload:hover {
+    background-color: transparent;
+}
+
+[type="file"]+.document-not-upload.btn-2 {
+    border-radius: 3px;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.35);
+    font-weight: 500;
+    height: 46px;
+    border: solid 1px #dfdfdf;
+    box-shadow: none;
+    position: relative;
+    letter-spacing: 0.52px;
+    line-height: 14px;
+    width: 100%;
+}
+
+[type="file"]+.document-not-upload.btn-2::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 15px;
+    left: 15px;
+    top: 15.5px;
+    background: url(/assets/images/on-boarding/document-uploaded.svg);
+    background-repeat: no-repeat;
+    border: none;
+}
+
+[type="file"]+.document-not-upload.btn-2:hover {
+    background-color: transparent;
+}
+
+
+/* [type="file"]+.document-not-upload.btn-2.btn-3 {
+    background-color: #faf5f5;
+    border: solid 1px #dfdfdf;
+} */
+.add-more-link{
+    text-align: right;
+    width: 100%;
+    margin-top: -10px;
+}
+.add-more-link a{
+  font: normal normal bold 12px/19px Nunito;
+  letter-spacing: 0px;
+  color: #3F89FC;
+  text-decoration: none;
+}
+
+.document-wrap {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.uploaded-document-name {
+    list-style-type: none;
+}
+
+.uploaded-document-name li {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 0.26px;
+    text-align: left;
+    color: #217ced;
+    position: relative;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+    padding: 8px 30px 8px 15px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    max-width: 331px;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    background-color: #f5f4f4;
+    word-break: break-all;
+}
+
+.uploaded-document-name li::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 15px;
+    left: 15px;
+    top: 12px;
+    background: url(/assets/images/on-boarding/document-uploaded.svg);
+    background-repeat: no-repeat;
+    display: none;
+}
+
+.delete-file {
+    position: absolute;
+    right: 14px;
+    top: 0;
+    bottom: 0;
+}
+
+.delete-file img {
+    width: 10px;
+    height: 10px;
+}
+
+.no-m-b {
+    margin-bottom: 0px;
+}
+
+.upload-document-tooltip img {
+    width: 14px;
+    position: relative;
+    top: -1px;
+}
+
+@media screen and (max-width:400px) {
+    [type="file"]+.document-not-upload.btn-2,
+    .uploaded-document-name li {
+        width: 100%;
+        font-size: 12px;
+    }
+}

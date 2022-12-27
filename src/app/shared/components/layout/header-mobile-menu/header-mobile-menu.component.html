@@ -1,0 +1,16 @@
+<section id="full-screen-nav" class="panel" [class.active]="navbarService.visible === true">
+    <div class="menu__close" (click)="navbarService.toggleMenu();"><span class="menu__close-bar"></span></div>
+    <nav id="nav">
+        <ul>
+            <li>
+                <a (click)="onRegister(USER_TYPES.COUNSELOR)">For Counselors</a>
+            </li>
+            <li>
+                <a (click)="onRegister(USER_TYPES.STUDENTS)">For Students</a>
+            </li>
+            <li>
+                <a (click)="openLoginModal()">Login</a>
+            </li>
+        </ul>
+    </nav>
+</section>

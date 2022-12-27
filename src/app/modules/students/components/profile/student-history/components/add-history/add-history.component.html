@@ -1,0 +1,38 @@
+<div class="modal-form-wrap">
+    <button type="button" class="close-button" (click)="bsModalRef.hide()"><img
+            src="/assets/images/on-boarding/cross-button.png"></button>
+    <div class="modal-form-header">
+        <p>{{addedEducation ? 'Update Your Education': 'Add Your Education'}}</p>
+    </div>
+    <form [formGroup]="educationForm">
+        <div class="modal-form-body">
+            <div class="form-box">
+                <app-history-form
+                    [educationForm]="educationForm" 
+                    [error]="error" 
+                    [end_year_error]="end_year_error"
+                    [start_year_error]="start_year_error" 
+                    (_emitter)="getFormType($event)"
+                    [showErrorMessage]="showErrorMessage" 
+                    [board_error]="board_error" 
+                    [subject_error]="subject_error"
+                    [scoreType_error]="scoreType_error" 
+                    [score_error]="score_error" 
+                    [school_error]="school_error"
+                    [locationCity_error]="locationCity_error" 
+                    [locationState_error]="locationState_error" 
+                    [locationCountry_error]="locationCountry_error" 
+                    [degree_error]="degree_error" 
+                    [year_error]="year_error"
+                    >
+                </app-history-form>
+            </div>
+        </div>
+        <div class="modal-form-footer">
+            <div class="btn-wrapper">
+                <button class="backbutton" (click)="bsModalRef.hide()">cancel</button>
+                <button class="submitbutton" type="submit" (click)="onSubmitForm()">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

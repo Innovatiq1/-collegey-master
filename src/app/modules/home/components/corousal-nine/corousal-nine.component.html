@@ -1,0 +1,27 @@
+<div class="clg-partner-section">
+  <div class="container clg-content">
+    <div class="row">
+      <div class="col-12 col-lg-12">
+        <!-- <h3 class="clg-heading">Collegey proudly partners and works with:</h3> -->
+        <h3 class="clg-heading">We proudly partner with:</h3>
+
+        <!-- <marquee behavior="scroll" direction="right" class="marqueeImg w-100" scrollamount="10">
+          <img *ngFor="let partnerLogo of homepageContent" [src]="partnerLogo?.imagePath"
+            alt="{{partnerLogo?.name}}" class="marqueeImg-img" />
+        </marquee> -->
+        
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+          <div class="clg-slides" *ngFor="let partnerLogo of homepageContent">
+            <img ngxSlickItem class="slide marqueeImg-img" [src]="partnerLogo?.imagePath" alt="{{partnerLogo?.name}}" width="100%">
+          </div>
+        </ngx-slick-carousel>
+
+        <!-- <marquee behavior="scroll" direction="left" class="marqueeImg w-100" scrollamount="10">
+          <img *ngFor="let universityLogo of homepageContent1" [src]="universityLogo?.imagePath"
+            alt="{{universityLogo?.name}}" class="marqueeImg-img" />
+        </marquee> -->
+
+      </div>
+    </div>
+  </div>
+</div>

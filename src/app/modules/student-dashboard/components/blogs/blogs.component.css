@@ -1,0 +1,269 @@
+.webinar-box {
+  margin-bottom: 45px;
+}
+
+.posted-date.top-gap {
+  margin-top: 0px;
+}
+
+.resources-wrap {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 0px 0 0;
+}
+
+.pagination-container {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.resources-content h1 {
+  text-align: left;
+  font: normal normal bold 28px/46px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  opacity: 1;
+}
+
+.blog-date-span span {
+  color: #000000;
+}
+
+.blog-date-span {}
+
+.blog-date-span img,
+.blog-like-span img {
+  width: 15px;
+  vertical-align: middle;
+}
+
+.blog-like-span {
+  margin: 0;
+}
+
+.banner-blog {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 40px #1D7FAB17;
+  margin: 0;
+  padding: 0 15px;
+}
+
+.webinar-content-box {
+  padding: 20px 20px 0 10px;
+  height: 470px;
+}
+
+.webinar-content-box .article-tags {
+  background: #3F89FC 0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  text-align: left;
+  font: normal normal 600 10px/14px Nunito;
+  letter-spacing: 0px;
+  color: #fff;
+  opacity: 1;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.webinar-content-box .post-title.webinar-title {
+  font-size: 46px;
+  letter-spacing: 0px;
+  color: #141414;
+  opacity: 1;
+  font: normal normal normal 46px/52px Georgia;
+}
+
+.webinar-content-box .post-date-like {
+  margin: 20px 0 10px 0;
+}
+
+.webinar-content-box .post-description.webinar-desc.top-gap {
+  text-align: left;
+  letter-spacing: 0px;
+  color: #141414;
+  font-size: 14px;
+}
+
+.webinar-content-box .read-more {
+  color: #3F89FC;
+  padding-top: 40px;
+  display: block;
+}
+
+.webinar-content-box .read-more span {
+  color: #000;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+.banner-blog .slider-btn {
+  width: 134px;
+  height: 50px;
+  font: normal normal bold 12px/16px Nunito;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  opacity: 1;
+  position: absolute;
+  bottom: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.banner-blog .previous-btn {
+  right: 0;
+  background: #F3F3F3 0% 0% no-repeat padding-box;
+  color: #000000;
+}
+
+.banner-blog .next-btn {
+  background: #3F89FC 0% 0% no-repeat padding-box;
+  color: #FFFFFF;
+  left: 0;
+}
+
+.no-pad {
+  padding: 0;
+}
+
+.full-width {
+  width: 100%;
+  height: 80%;
+}
+.webinar-image-box {
+  margin-bottom: 15px;
+}
+.webinar-content-box1 {
+  height: 200px;
+}
+
+.webinar-content-box1 .article-tags {
+  background: #3F89FC 0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  text-align: justify;
+  font: normal normal 600 10px/14px Nunito;
+  letter-spacing: 0px;
+  color: #fff;
+  opacity: 1;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.webinar-content-box1 .post-title.webinar-title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #0d0d0d;
+  transition: color 0.5s ease;
+}
+
+.webinar-content-box1 .post-date-like {
+  margin: 20px 0 10px 0;
+}
+
+.webinar-content-box1 .post-description.webinar-desc.top-gap {
+  margin-top: 10px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+  max-height: 85px;
+  height: auto;
+  overflow: hidden;
+}
+
+.padding-cus {
+  padding: 0;
+}
+
+@media screen and (max-width: 1300px) {
+  .padding-cus {
+    max-width: 97%;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .webinar-content-box1 {
+    height: auto;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .resources-heading h1 {
+    font-size: 44px;
+  }
+
+  .banner-blog {
+    height: auto;
+  }
+
+  .webinar-content-box {
+    padding: 15px 0;
+  }
+
+  .webinar-content-box .post-title.webinar-title {
+    font-size: 25px !important;
+    line-height: 30px;
+  }
+
+  .webinar-content-box .post-date-like {
+    display: grid;
+  }
+
+  .blog-date-span {
+    margin-bottom: 3px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .hide-md {
+    display: none;
+  }
+}
+
+@media screen and (max-width:479px) {
+  .resources-heading h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+  }
+
+  .resources-wrap {
+    padding: 50px 0 0;
+  }
+}
+
+@media screen and (max-width:374px) {
+  .resources-heading h1 {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width:575px) {
+  .hide-xs {
+    display: none;
+  }
+
+  .btnOnMobile {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+
+  .banner-blog .btnOnMobile .previous-btn {
+    left: 0;
+    right: auto;
+  }
+
+  .banner-blog .btnOnMobile .next-btn {
+    right: 0;
+    left: auto;
+  }
+}
+
+@media screen and (min-width:576px) {
+  .hide-md {
+    display: none;
+  }
+}

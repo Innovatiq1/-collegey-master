@@ -1,0 +1,49 @@
+<div
+  class="container-fluid d-flex justify-content-center align-items-center background"
+>
+  <div class="row board">
+    <div class="col-sm">
+      <div class="welcome">Welcome to Collegey!</div>
+      <p class="content">
+        Take the first step towards many meaningful engagements by signing up
+        with Collegey.
+      </p>
+      <img src="assets/images/invite/Group.svg" />
+    </div>
+    <div class="col-sm d-flex flex-column justify-content-center">
+      <div class="information">Add your information</div>
+      <!-- <mat-form-field appearance="fill" style="margin: 20px 0">
+        <mat-label>Enter Invite Code</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Email ID</mat-label>
+        <input matInput />
+      </mat-form-field> -->
+
+      <form class="login-form" [formGroup]="form">
+        <!-- <div class="group" style="margin: 20px 0">
+          <div>
+            <input type="text" formControlName="activation_code" required="required" style="width: 304px" />
+            <label>Enter Invite Code</label>
+          </div>
+        </div> -->
+        <div class="group">
+          <div>
+            <input type="text" formControlName="email" required="required" />
+            <label>Enter Email ID</label>
+          </div>
+          <span *ngIf="inviteEmail && hasError('email','required')" style="text-align: center;" class="alert alert-danger alert-dismissable d-block w-100">
+            Please enter email
+          </span>
+          <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="form.controls.email">
+          </app-input-validation>
+        </div>
+      </form>
+      <p class="email-invite">
+        Enter email ID on which you received the Invite Code
+      </p>
+      <button class="continue" (click)="continue()">CONTINUE</button>
+    </div>
+  </div>
+</div>

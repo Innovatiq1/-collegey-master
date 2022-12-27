@@ -1,0 +1,26 @@
+<div
+  class="container-fluid d-flex justify-content-center align-items-center background"
+>
+  <div class="row board">
+    <div class="col-sm d-flex flex-column align-items-center">
+      <img
+        class="student"
+        src="assets/images/invite/student/student.svg"
+        (click)="studentSelection()"
+      />
+      <p class="desc">I'm a student</p>
+    </div>
+    <div class="col-sm d-flex flex-column align-items-center">
+      <img
+        src="assets/images/invite/other/other.png"
+        (click)="otherSelection()"
+      />
+      <p class="desc">Other</p>
+      <p class="addition-desc">
+        For mentor, university, school, impact partner or a parent
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- [ngClass]="student ? 'selected' : none" -->

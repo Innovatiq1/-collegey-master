@@ -1,0 +1,189 @@
+.top-spacing {
+    padding-top: 27px;
+    padding-bottom: 24px;
+    margin-top: 43px;
+}
+
+.information-heading {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.64px;
+    text-align: left;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.information-heading span {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.68;
+    letter-spacing: 0.48px;
+    text-align: left;
+    color: #777777;
+    display: block;
+}
+
+.save-projects {
+    border-top: 1px dotted rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding-top: 29px;
+    margin-top: 28px;
+}
+
+.save-projects button {
+    position: absolute;
+    right: 0;
+}
+
+.save-projects button img {
+    width: 32px;
+    height: 33px;
+    object-fit: contain;
+}
+
+.remove-margin {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.project-desc {
+    width: 443px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.57;
+    letter-spacing: normal;
+    text-align: left;
+    color: #777777;
+    margin-top: 9px;
+    margin-bottom: 0;
+}
+
+
+.year-fonts {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.field-control {
+    margin-top: 0px;
+}
+
+.titletop {
+    margin-top: 0px;
+}
+
+.modal-form-wrap {
+    width: 100%;
+    border-radius: 24px;
+    background-color: #fcfcfc;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 0px;
+    right: -48px;
+}
+
+.close-button img {
+    width: 30px;
+    height: 31px;
+    object-fit: contain;
+}
+
+.modal-form-header {
+    padding: 20px 30px 20px;
+    border-bottom: solid 1px rgba(215, 215, 216, 0.5);
+}
+
+.modal-form-header p {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.44;
+    letter-spacing: 0.72px;
+    text-align: left;
+    color: #444444;
+    margin-bottom: 0;
+}
+
+.modal-form-body {
+    padding: 25px;
+}
+
+.modal-form-footer {
+    padding: 20px 25px 20px;
+    text-align: right;
+    border-top: solid 1px rgba(215, 215, 216, 0.5);
+    background-color: #f9f7f7;
+    border-radius: 0 0 24px 24px;
+}
+
+.modal-form-footer button {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.31;
+    letter-spacing: 0.78px;
+    text-align: center;
+    display: inline-block;
+    width: 101px;
+    height: 40px;
+    border-radius: 6.5px;
+    color: #fff;
+    background-color: #ff062f;
+    border: solid 1px #ff062f;
+    transition: all 0.4s;
+}
+
+.btn-wrapper .backbutton {
+    margin-right: 20px;
+    background: none !important;
+    color: #141414;
+    border-radius: 6px;
+    font: normal normal bold 12px/19px Nunito;
+    letter-spacing: 0px;
+    width: 90px;
+    padding: 10px;
+    text-transform: uppercase;
+    border: 0.5px solid #141414;
+}
+
+.btn-wrapper .submitbutton {
+    background: #3F89FC 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    font: normal normal bold 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    width: 130px;
+    padding: 10px;
+    text-transform: uppercase;
+    border: none;
+}
+
+.btn-wrapper .savebtn {
+    font: normal normal bold 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-right: 30px;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 500px) {
+    .modal-form-header {
+        padding: 20px;
+    }
+
+    .modal-form-header p {
+        font-size: 16px;
+    }
+
+    .modal-form-body {
+        padding: 20px;
+    }
+
+    .btn-wrapper button {
+        width: 100% !important;
+    }
+}

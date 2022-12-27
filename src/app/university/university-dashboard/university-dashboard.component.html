@@ -1,0 +1,362 @@
+<section class="section-mr">
+    <div class="container first-section">
+        <div class="terms-header">
+        </div>
+        <div class="student-info">
+            <div class="student-info-profile">
+                <img src="assets/images/profile-picture.png" alt="" class="profile-img">
+                <div>
+                    <h5>Ashish Kumar</h5>
+                    <p>2nd year . Bachelor of Science . University of Delhi</p>
+                    <p class="location"><img src="assets/images/location.svg" width="11" height="13" alt=""
+                            style="margin-right: 7px;">Hisar,
+                        Haryana</p>
+                </div>
+            </div>
+            <a [routerLink]="['/university']" class="share-profile">SHARE YOUR PROFILE</a>
+        </div>
+        <div class="dashboard-menu">
+            <ul>
+                <li>
+                    <a (click)="dashboard()">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a (click)="openEventModal(eventmodal)" class="dark">
+                        Events
+                    </a>
+                </li>
+                <li>
+                    <a (click)="opentravelModal(travelmodal)" class="dark">
+                       Travel Plans
+                    </a>
+                </li>
+                <li>
+                    <a (click)="openfeedbackModal(feedbackmodal)">
+                        Collegey Feed
+                    </a>
+                </li>
+                <li>
+                    <a (click)="opennetworkModal(networkmodal)">
+                       Network Collegey
+                    </a>
+                </li>
+                <li>
+                    <a (click)="openinvitestudentModal(invitestudentmodal)" >
+                        Academy
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="disabled">
+                        Highlights <img src="assets/images/arrow-down-sign-to-navigate.svg" width="7"
+                            style="margin-left:10px" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="dashboard-menu" style="margin-top: 3%;background: #FFFFFF 0% 0% no-repeat padding-box; box-shadow: 0px 3px 15px #0000001a;">
+        <div class="col-8 col-md-9 col-lg-10">
+            <img src="assets/images/search-2-line.svg" class="search-icon" />
+
+            <div class="search-box d-flex align-items-center">
+              <input
+                class="search"
+                type="text"
+                placeholder="Search and Recurit Students"
+              />
+            </div >
+          </div>
+    </div>
+
+    <div class="social-feed-container">
+        <div class="blog-leftside-dashboard" *ngIf="Dashboard==true">
+            <div class="webinar-box article-box">
+
+                <div class="webinar-image-box">
+                    <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
+                </div>
+                <div class="webinar-content-box">
+                    <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                    <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
+                            Bojan Sandic </span> 02 July, 2019</p>
+                    <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
+                        explained. Another as studied it to evident. Merry sense given he be arise. Conduct at an
+                        replied removal an amongst. ut perspiciatis unde omnis
+                    </p>
+                    <a href="" class="read-more">Read More <span>></span></a>
+
+                </div>
+            </div>
+            <div class="webinar-box article-box">
+
+                <div class="webinar-image-box">
+                    <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
+                </div>
+                <div class="webinar-content-box">
+                    <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                    <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
+                            Bojan Sandic </span> 02 July, 2019</p>
+                    <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
+                        explained. Another as studied it to evident. Merry sense given he be arise. Conduct at an
+                        replied removal an amongst. ut perspiciatis unde omnis
+                    </p>
+                    <a href="" class="read-more">Read More <span>></span></a>
+
+                </div>
+            </div>
+            <div class="webinar-box article-box">
+
+                <div class="webinar-image-box">
+                    <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
+                </div>
+                <div class="webinar-content-box">
+                    <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                    <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
+                            Bojan Sandic </span> 02 July, 2019</p>
+                    <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
+                        explained. Another as studied it to evident. Merry sense given he be arise. Conduct at an
+                        replied removal an amongst. ut perspiciatis unde omnis
+                    </p>
+                    <a href="" class="read-more">Read More <span>></span></a>
+
+                </div>
+            </div>
+            <div class="webinar-box article-box">
+
+                <div class="webinar-image-box">
+                    <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
+                </div>
+                <div class="webinar-content-box">
+                    <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                    <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
+                            Bojan Sandic </span> 02 July, 2019</p>
+                    <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
+                        explained. Another as studied it to evident. Merry sense given he be arise. Conduct at an
+                        replied removal an amongst. ut perspiciatis unde omnis
+                    </p>
+                    <a href="" class="read-more">Read More <span>></span></a>
+
+                </div>
+            </div>
+        </div>
+        <div class="blog-leftside-dashboard" *ngIf="events==true">
+        <div class="recommended-profile-box" >
+            <p>Add type of events </p>
+            <input type="text" name="" id="" placeholder="Types of Events">
+            <input type="text" name="" id="" placeholder="Audience">
+            <input type="text" name="" id="" placeholder="Expected date and Time">
+            <input type="text" name="" id="" placeholder="Region">
+            <button type="button" class="btn">SEND</button>
+        </div>
+    </div>
+    <div class="blog-leftside-dashboard" *ngIf="plan==true">
+        <div class="recommended-profile-box" >
+            <p>Add type of Travel Plans </p>
+            <input type="text" name="" id="" placeholder="Country">
+            <input type="text" name="" id="" placeholder="City">
+            <input type="text" name="" id="" placeholder="Expected date and Travel">
+            <input type="text" name="" id="" placeholder="Audience to meet">
+            <input type="text" name="" id="" placeholder="# of days in city">
+                <a href="" class="edit-link">+ ADD More</a>
+                <br>
+                <br>
+            <button type="button" class="btn">SEND</button>
+        </div>
+    </div>
+    <div class="blog-leftside-dashboard" *ngIf="collegefeedback==true">
+        <div class="recommended-profile-box" >
+            <p>Add type of Travel Plans </p>
+            <input type="text" name="" id="" placeholder="Country">
+            <input type="text" name="" id="" placeholder="City">
+            <input type="text" name="" id="" placeholder="Expected date and Travel">
+            <input type="text" name="" id="" placeholder="Audience to meet">
+            <input type="text" name="" id="" placeholder="# of days in city">
+                <a href="" class="edit-link">+ ADD More</a>
+                <br>
+                <br>
+            <button type="button" class="btn">SEND</button>
+        </div>
+    </div>
+        <div class="right-sidebar">
+            <div class="learn-box">
+                <p>#Get Learning</p>
+                <h6>Collegey Academy</h6>
+                <h5 style="font-size: 15px;">Everything you need to stay on top of things. From webinars to conferences, student opportunities,
+                    articles, reports, and more.</h5>
+                    <a href="student-dashboard/$/academy"><button type="button" class="btn">Click Here</button></a>
+            </div>
+            <div class="recommended-profile-box">
+                <p>Ask for a recommendation to add to your Collegey Profile.</p>
+                <input type="text" name="" id="" placeholder="Enter Name">
+                <input type="text" name="" id="" placeholder="Enter Email ID">
+                <button type="button" class="btn">SEND</button>
+            </div>
+
+        </div>
+    </div>
+    <ng-template #eventmodal>
+        <div class="modal-form-wrap">
+            <button type="button" class="close-button" (click)="modalRef.hide()"><img
+            src="/assets/images/on-boarding/cross-button.png"></button>
+            <div class="modal-form-header bottom-border">
+                <p class="heading">online events you are interested in</p>
+            </div>
+            <form>
+                <div class="modal-form-body">
+                    <div class="form-box">
+                        <form>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Types of Events</label>
+                                <input class="form-control field-control" type="text" name="" id="" placeholder="Types of Events">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Audience</label>
+                                <input class="form-control field-control" type="text" name="" id="" placeholder="Audience">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Expected date and Time</label>
+                                <input class="form-control field-control" type="text" name="" id="" placeholder="Expected date and Time">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Region</label>
+                                <input class="form-control field-control" type="text" name="" id="" placeholder="Region">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-form-footer">
+                    <button>Save</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+    <!-- 2nd travel plans -->
+    <ng-template #travelmodal>
+        <div class="modal-form-wrap">
+            <button type="button" class="close-button" (click)="modalRef.hide()"><img
+            src="/assets/images/on-boarding/cross-button.png"></button>
+            <div class="modal-form-header bottom-border">
+                <p class="heading">Add type of Travel Plans </p>
+            </div>
+            <form>
+                <div class="modal-form-body">
+                    <div class="form-box">
+                        <form>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Country</label>
+                                <input class="form-control field-control" type="text" name="" id="" placeholder="Country">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label strong">City</label>
+                                <input  class="form-control field-control" type="text" name="" id="" placeholder="City">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Expected date and Travel</label>
+                                <input class="form-control field-control" type="text" name="" id="" placeholder="Expected date and Travel">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Audience to meet</label>
+                                <input class="form-control field-control" type="text" name="" id="" placeholder="Audience to meet">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label-strong"># of days in city</label>
+                                <input  class="form-control field-control" type="text" name="" id="" placeholder="# of days in city">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label-strong">Add More</label>
+                                <br>
+                                <a href="" class="edit-link">+ ADD More</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-form-footer">
+                    <button>Save</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+    <ng-template #feedbackmodal>
+        <div class="modal-form-wrap">
+            <button type="button" class="close-button" (click)="modalRef.hide()"><img
+            src="/assets/images/on-boarding/cross-button.png"></button>
+            <div class="modal-form-header bottom-border">
+                <p class="heading">Messege Collegey</p>
+            </div>
+            <form>
+                <div class="modal-form-body">
+                    <div class="form-box">
+                        <form>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Say Something about Collegey</label>
+                                 <textarea class="form-control textarea" placeholder="Say Something about Collegey"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-form-footer">
+                    <button>Save</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+    <ng-template #networkmodal>
+        <div class="modal-form-wrap">
+            <button type="button" class="close-button" (click)="modalRef.hide()"><img
+            src="/assets/images/on-boarding/cross-button.png"></button>
+            <div class="modal-form-header bottom-border">
+                <p class="heading">Invite someone in your higher ed network to Collegey </p>
+            </div>
+            <form>
+                <div class="modal-form-body">
+                    <div class="form-box">
+                        <form>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Name</label>
+                                <input class="form-control field-control" type="text" name="" id="" placeholder="Name">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Email</label>
+                                <input type="text" name="" id="" placeholder="Email">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-form-footer">
+                    <button>Save</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+    <ng-template #invitestudentmodal>
+        <div class="modal-form-wrap">
+            <button type="button" class="close-button" (click)="modalRef.hide()"><img
+            src="/assets/images/on-boarding/cross-button.png"></button>
+            <div class="modal-form-header bottom-border">
+                <p class="heading">Invite your students to Collegey for professionals development and for projects </p>
+            </div>
+            <form>
+                <div class="modal-form-body">
+                    <div class="form-box">
+                        <form>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Email</label>
+                                <input class="form-control field-control" type="text" name="" id="" placeholder="Email">
+                            </div>
+                            <div class="form-group fields">
+                                <label class="field-label strong">Upload csv</label>
+                                <br>
+                             <a href="" class="edit-link">+ upload csv</a>
+                             </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-form-footer">
+                    <button>Save</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+</section>

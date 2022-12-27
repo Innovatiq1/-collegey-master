@@ -1,0 +1,54 @@
+<div class="clg-mission-section">
+  <div class="container clg-content">
+    <div class="row">
+      <div class="col-12 col-lg-12">
+        <h3 class="clg-heading1">{{homepageContent?.mainTitle}}</h3>
+        <h4 class="clg-heading2">{{homepageContent?.subTitle}}</h4>
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+          <ng-template carouselSlide *ngFor="let listvideo of homepageContent?.videoData; let i=index;">
+            <div class="card-item">
+              <div class="card-box">
+                <div class="profile-pic"> 
+                  <iframe width="100%" height="250" allow=autoplay title="{{listvideo?.title}}" [src]="listvideo?.videoLink | safe" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                </div>
+                <div class="profile-pic"> 
+                </div>
+                <div class="flag-icon clg-video-bgimg clg-youbox" *ngIf="listvideo?.videoLink" [ngStyle]="{'background-image': listvideo?.layerImg ? 'url(' + listvideo?.layerImg + ')' : 'url(/assets/images/resources/article-image1.png)' }" (click)="currentVideoPlay(clickVideo, listvideo?.videoLink)"></div>
+              </div>
+              <div class="row card-box text">
+                {{listvideo.title}}
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+
+        <div class="clg-footer-text">{{homepageContent?.bottomTitle}}</div>
+        <div class="d-flex align-items-center">
+          <button [routerLink]="['blog']" class="explore">{{homepageContent?.bottomButtonText}}</button>
+          <div class="d-flex align-items-center navigator">
+            <img class="prev" (click)="previousSlide()" />
+            <div class="first-bl"></div>
+            <div class="second-bl"></div>
+            <img class="next" (click)="nextSlide()" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #clickVideo>
+  <div class="clickVideo-modal" style="width: 100%;">
+    <div class="clickVideo-form">
+      <iframe width="100%" height="450" allow=autoplay title="{{currentvideoUrl}}" [src]="currentvideoUrl"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <hr>
+      <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+    </div>
+    <hr>
+  </div>
+</ng-template>

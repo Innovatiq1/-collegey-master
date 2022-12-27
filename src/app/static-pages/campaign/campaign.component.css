@@ -1,0 +1,285 @@
+.terms-header {
+    /* background: url('/assets/images/campaign.png'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 316px;
+    margin-top: 70px;
+    position: relative;
+    color: #ffffff;
+    padding: 80px 100px;
+}
+
+.terms-header h6 {
+    background: #3F89FC 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    text-align: left;
+    font: normal normal bold 20px/27px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    width: fit-content;
+    padding: 2px 5px;
+}
+
+.terms-header h1 {
+    font-size: 46px;
+    font-family: Nunito;
+    line-height: 1.2;
+    letter-spacing: 0px;
+}
+
+.terms-header p {
+    text-align: left;
+    font: normal normal 600 20px/27px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.thanks-div {
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    padding: 80px 100px;
+}
+
+.thanks-div h6 {
+    text-align: left;
+    font: normal normal 600 20px/35px Nunito;
+    letter-spacing: 0px;
+    color: #838383;
+    margin-bottom: 20px;
+}
+
+.thanks-div p {
+    text-align: left;
+    font: normal normal 600 16px/28px Nunito;
+    letter-spacing: 0px;
+    color: #AFAFAF;
+}
+
+.lead-form {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 16px #3F89FC14;
+    border-radius: 12px;
+    max-width: 364px;
+    margin: 0 auto;
+    padding: 30px;
+    margin-top: -140px;
+}
+
+.lead-form .heading {
+    text-align: left;
+    font: normal normal bold 18px/24px Nunito;
+    letter-spacing: 0px;
+    color: #023147;
+    margin-bottom: 30px;
+}
+
+.lead-form input,
+.lead-form textarea {
+    text-align: left;
+    font: normal normal normal 14px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+}
+
+.lead-form button {
+    background: #3F89FC 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    border: none;
+    height: 40px;
+}
+
+.lead-form input::placeholder,
+.lead-form textarea::placeholder {
+    text-align: left;
+    font: normal normal normal 14px/19px Nunito;
+    letter-spacing: 0px;
+    color: #DBDBDB;
+}
+
+.lead-form .form-group {
+    margin-bottom: 20px;
+}
+
+.group {
+    position: relative;
+    padding-top: 10px;
+}
+
+.group div {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #979797;
+    border-radius: 6px;
+    padding: 9px 0 5px 0;
+    margin-bottom: 20px;
+}
+
+.error {
+    position: absolute;
+    bottom: -18px;
+    line-height: 1.2;
+    height: 16px;
+    color: red;
+}
+
+textarea {
+    resize: none;
+}
+
+input,
+textarea {
+    background: none;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding: 0px 10px 5px 10px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+input:focus~label,
+textarea:focus~label,
+input:valid~label,
+textarea:valid~label {
+    top: 5px;
+    font: normal normal bold 10px/14px Nunito;
+    letter-spacing: 0px;
+    color: #D3D3D3;
+}
+
+input:focus~.bar:before,
+textarea:focus~.bar:before {
+    width: 100%;
+}
+
+input[type="password"] {
+    letter-spacing: 0.3em;
+}
+
+label {
+    position: absolute;
+    pointer-events: none;
+    transition: 300ms ease all;
+    font: normal normal normal 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #DBDBDB;
+    top: 17px;
+    margin: 0;
+    left: 10px;
+}
+
+.mt-60 {
+    margin-top: 60px;
+}
+
+@media screen and (max-width: 1199px) {
+    .terms-header h1 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .terms-header {
+        padding: 10px;
+        height: auto;
+    }
+
+    .terms-header h1 {
+        font-size: 24px;
+        letter-spacing: 0px;
+    }
+
+    .terms-header p {
+        font: normal normal 600 15px/27px Nunito;
+        margin-bottom: 0;
+    }
+
+    .thanks-div {
+        padding: 20px 10px;
+        margin: 0;
+    }
+
+    .thanks-div h6 {
+        font: normal normal 600 17px/25px Nunito;
+    }
+
+    .thanks-div p {
+        font: normal normal 600 13px/20px Nunito;
+    }
+
+    .lead-form {
+        margin-top: 0;
+        padding: 20px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .terms-header {
+        padding: 10px;
+        height: auto;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+
+    .thanks-div {
+        padding: 20px 10px;
+        margin: 0;
+    }
+
+    .terms-header h1 {
+        letter-spacing: 0px;
+    }
+
+    .terms-header p {
+        font: normal normal 600 15px/27px Nunito;
+        margin-bottom: 0;
+    }
+
+    .thanks-div h6 {
+        font: normal normal 600 17px/25px Nunito;
+    }
+
+    .thanks-div p {
+        font: normal normal 600 13px/20px Nunito;
+    }
+
+    .lead-form {
+        margin-top: 0px;
+        padding: 20px;
+    }
+
+    .lead-form input {
+        height: 40px;
+    }
+
+    .lead-form .form-group {
+        margin-bottom: 10px;
+    }
+
+    .lead-form .heading {
+        margin-bottom: 10px;
+        font: normal normal bold 14px/24px Nunito;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .terms-header {
+        padding: 30px;
+        height: auto;
+    }
+
+    .thanks-div {
+        padding: 20px 30px;
+        margin: 0;
+    }
+
+    .lead-form {
+        margin-top: -80px;
+    }
+}
+
+.clg-investDes{
+    font-size: 17px;
+}

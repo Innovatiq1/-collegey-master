@@ -1,0 +1,1541 @@
+/* start your journey css */
+
+.advantage-content-box div,
+.toolkit-box div,
+.ready-to-build-inner div,
+.how-collegey-works-box div,
+.collegey-your-story-box div {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.advantage-content-box.animated div,
+.toolkit-box.animated div,
+.ready-to-build-inner.animated div,
+.how-collegey-works-box.animated div,
+.collegey-your-story-box.animated div {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeInUp 1s ease-in both;
+}
+
+.collegey-your-story-box.animated .create-it-box {
+    animation-delay: .5s;
+}
+
+.collegey-your-story-box.animated .collegey-your-space {
+    animation-delay: 1.5s;
+}
+
+.collegey-your-story-box.animated .bottom-text2 {
+    animation-delay: 2s;
+}
+
+.advantage-content-box.animated .advantage-shade-text {
+    animation-delay: .5s;
+}
+
+.advantage-content-box.animated .collegey-heading h2 {
+    animation-delay: .5s;
+}
+
+.advantage-content-box.animated .advantage-box-wrapper div:nth-child(1) {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 1s;
+}
+
+.advantage-content-box.animated .advantage-box-wrapper div:nth-child(2) {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 1.4s;
+}
+
+.advantage-content-box.animated .advantage-box-wrapper div:nth-child(3) {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 1.8s;
+}
+
+.toolkit-box.animated .toolkit-heading-wrap {
+    animation-delay: .5s;
+}
+
+.toolkit-box.animated .toolkit-heading {
+    animation-delay: .5s;
+}
+
+.toolkit-box.animated.animated .toolkit-content-box div:nth-child(1) {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 1s;
+}
+
+.toolkit-box.animated.animated .toolkit-content-box div:nth-child(2) {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 1.4s;
+}
+
+.toolkit-box.animated.animated .toolkit-content-box div:nth-child(3) {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 1.8s;
+}
+
+.ready-to-build-inner.animated .girl-image-wrapper .girl-image-wrap {
+    animation-delay: .5s;
+}
+
+.ready-to-build-inner.animated .ready-to-build-box .ready-to-build {
+    animation-delay: 1.5s;
+}
+
+.ready-to-build-inner.animated .ready-to-build-box .lets-start {
+    animation-delay: 2s;
+}
+
+.ready-to-build-inner.animated .bottom-text3 {
+    animation-delay: 2.5s;
+}
+
+.how-collegey-works-box.animated .collegey-heading {
+    animation-delay: .5s;
+}
+
+.how-collegey-works-box.animated .works-shade {
+    animation-delay: .5s;
+}
+
+.how-collegey-works-box.animated .how-collegey-steps-content div:first-child {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 1s;
+}
+
+.how-collegey-works-box.animated .how-collegey-steps-content div:nth-child(2) {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 1.4s;
+}
+
+.how-collegey-works-box.animated .how-collegey-steps-content div:nth-child(3) {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 1.8s;
+}
+
+.how-collegey-works-box.animated .how-collegey-steps-content.content-space div:first-child {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 2.6s;
+}
+
+.how-collegey-works-box.animated .how-collegey-steps-content.content-space div:nth-child(2) {
+    animation: fadeInUp 0.6s ease-in both;
+    animation-delay: 2.2s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 28%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.content-wrapper {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0;
+    position: relative;
+}
+
+.start-your-journey-wrap {
+    width: 100%;
+    height: 100vh;
+    background-image: url(/assets/images/home/collegey-bg-banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.start-your-journey-box {
+    position: relative;
+    text-align: center;
+}
+
+.ordinary-stuff {
+    font-size: 68px;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: 1.36px;
+    text-align: center;
+    color: #eff2ff;
+    margin-bottom: 12px;
+}
+
+.Challenge-the-ordinary {
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: 0.68px;
+    text-align: center;
+    color: #eff2ff;
+    margin-bottom: 22px;
+}
+
+.start-your-journey {
+    width: 225px;
+    height: 49px;
+    border-radius: 6.5px;
+    background: #ff062f;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.28;
+    letter-spacing: 0.26px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #ff062f;
+    transition: all 0.4s;
+}
+
+.start-your-journey:hover,
+.start-your-journey:active,
+.start-your-journey:focus {
+    background: #f1072e;
+    border: 1px solid #f1072e;
+}
+
+.bottom-text {
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.93px;
+    text-align: center;
+    color: #dadcff;
+    position: absolute;
+    right: 39px;
+    bottom: 31px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #fff;
+}
+
+
+/* collegey your story css */
+
+
+/* start your journey css */
+
+.collegey-your-story-wrap {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    opacity: 1;
+    background-image: linear-gradient(to top, #3b42d9, #046ef2);
+    position: relative;
+    /* margin-bottom: -20px; */
+}
+
+.collegey-your-story-box {
+    width: 100%;
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/assets/images/home/dots-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 85px 85px 0 0;
+    position: relative;
+    margin-top: 100px;
+}
+
+.collegey-your-story-content {
+    width: auto;
+    box-sizing: border-box;
+}
+
+.advantage-box-wrapper {
+    display: flex;
+}
+
+.create-it-box {
+    width: auto;
+    height: 70px;
+    line-height: 1.1;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+}
+
+.create-it-box span {
+    width: auto;
+    font-size: 68px;
+    font-weight: 700;
+    letter-spacing: 1.36px;
+    color: #fe5356;
+    letter-spacing: normal;
+    white-space: nowrap;
+    animation: topToBottom 6s linear infinite 0s;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.create-it-box span:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.create-it-box span:nth-child(3) {
+    animation-delay: 4s;
+}
+
+@keyframes topToBottom {
+    0% {
+        opacity: 0;
+    }
+    5% {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    25% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    30% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.collegey-your-space {
+    font-size: 50px;
+    font-weight: 100;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+}
+
+.bottom-text2 {
+    position: relative;
+    bottom: -20vh;
+    left: 0;
+    right: 0;
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.93px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+
+/* collegey your story css ends */
+
+
+/* collegey student advantage css */
+
+.collegey-student-advantage-wrap {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: #fad24c;
+    position: relative;
+}
+
+.collegey-student-advantage-box {
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    border-radius: 85px 0 0;
+    position: relative;
+    margin-top: 100px;
+    padding: 130px 102px 0px 102px;
+}
+
+.advantage-shade-text {
+    position: relative;
+}
+
+.advantage-shade-text::before {
+    content: 'Advantage';
+    position: absolute;
+    top: -100px;
+    right: -290px;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: normal;
+    line-height: 0.8;
+    font-size: 200px;
+    font-weight: 900;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.04);
+}
+
+.advantage-content-box {
+    width: 100%;
+    display: block;
+    justify-content: flex-start;
+}
+
+.collegey-heading h2 {
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 1.20;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 90px;
+}
+
+.collegey-heading h2 .span-block {
+    display: block;
+}
+
+.advantage-box {
+    width: 392px;
+}
+
+.advantage-box img {
+    width: 159px;
+    height: 129px;
+    margin-bottom: 24px;
+}
+
+.advantage-box.bottom-space2 img {
+    width: 159px;
+    height: 134px;
+}
+
+.advantage-text {
+    width: 210px;
+    font-size: 18px;
+    font-weight: 200;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.72px;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.advantage-text span {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.55;
+    letter-spacing: 0.8px;
+    display: block;
+}
+
+
+/* collegey student advantage css ends */
+
+
+/* how collegey works css */
+
+.how-collegey-works-wrap {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.how-collegey-works-wrap:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 538px;
+    height: 100%;
+    background: #fafafc;
+    border-radius: 0 0 95px 0;
+}
+
+.how-collegey-works-box {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-top: 215px;
+    padding: 0px 0px 0px 102px;
+    margin-bottom: 246px;
+    box-sizing: border-box;
+}
+
+.works-shade {
+    position: relative;
+}
+
+.works-shade::before {
+    content: 'Works';
+    position: absolute;
+    top: -45px;
+    right: -300px;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: normal;
+    line-height: 0.8;
+    font-size: 200px;
+    font-weight: 900;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.04);
+}
+
+.collegey-heading h2.bottom-space3 {
+    margin-bottom: 110px;
+}
+
+.how-collegey-steps-wrap {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.how-collegey-steps-wrap:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -130px;
+    width: 100%;
+    height: 402px;
+    background-image: url(/assets/images/home/dotted-border.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: none;
+}
+
+.how-collegey-steps-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 0px;
+}
+
+.how-collegey-steps-content.content-space {
+    justify-content: space-around;
+    margin-top: 175px;
+}
+
+.collegey-steps-box {
+    text-align: center;
+    /* background: #fff; */
+    padding: 0 0px;
+    position: relative;
+}
+
+.collegey-steps-box:first-child {
+    background: transparent;
+}
+
+.collegey-steps-box:first-child img {
+    width: 163px;
+    height: 186px;
+    margin-bottom: 27px;
+}
+
+.collegey-steps-box:nth-child(2) img {
+    width: 190px;
+    height: 169px;
+    margin-bottom: 44px;
+    z-index: 1;
+    position: relative;
+}
+
+.collegey-steps-box:last-child img {
+    width: 152px;
+    height: 155px;
+    margin-bottom: 59px;
+    position: relative;
+    top: 10px;
+}
+
+.how-collegey-steps-content.content-space .collegey-steps-box:first-child img {
+    width: 218px;
+    height: 171px;
+    margin-bottom: 27px;
+    z-index: 1;
+    position: relative;
+}
+
+.how-collegey-steps-content.content-space .collegey-steps-box:last-child img {
+    width: 171px;
+    height: 167px;
+    margin-bottom: 33px;
+    z-index: 1;
+    position: relative;
+}
+
+.how-collegey-steps-content.content-space .collegey-steps-box:first-child {
+    /* background: #fff; */
+    position: relative;
+}
+
+.collegey-steps-text {
+    font-size: 20px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: 0.8px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 0;
+    padding-left: 0;
+    position: relative;
+}
+
+.collegey-steps-box .collegey-steps-text span {
+    position: relative;
+    top: 6px;
+    left: 0px;
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    font-weight: 900;
+    line-height: 0;
+    letter-spacing: 1px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* how collegey works css ends */
+
+
+/* toolkit css */
+
+.toolkit-wrap {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    background: #fad24c;
+    position: relative;
+}
+
+.toolkit-box {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-top: 180px;
+    padding: 0;
+}
+
+.toolkit-heading-wrap {
+    position: relative;
+}
+
+.toolkit-heading-wrap::before {
+    content: 'Toolkit';
+    position: absolute;
+    top: -75px;
+    right: -280px;
+    font-family: 'Playfair Display', serif;
+    font-size: 220px;
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.03);
+}
+
+.toolkit-heading {
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: 1.36px;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 241px;
+    padding-left: 102px;
+}
+
+.toolkit-content-box {
+    width: 100vw;
+    display: flex;
+    height: 66vh;
+    justify-content: flex-start;
+    background: #fff;
+    border-radius: 65px 0 0 0;
+    padding-left: 103px;
+    position: relative;
+}
+
+.toolkit-box-inner {
+    width: 368px;
+    position: relative;
+    top: -120px;
+}
+
+.profile-builder-image {
+    width: 222px;
+    height: 190px;
+    margin-bottom: 30px;
+}
+
+.impact-project-image {
+    width: 244px;
+    height: 182px;
+    margin-bottom: 38px;
+}
+
+.global-connection-image {
+    width: 257px;
+    height: 194px;
+    margin-bottom: 28px;
+}
+
+.toolkit-text {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 0.86;
+    letter-spacing: 1.12px;
+    color: #000000;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+
+/* toolkit css ends */
+
+
+/* ready to build css */
+
+.ready-to-build-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.ready-to-build-inner {
+    width: 100%;
+    position: relative;
+}
+
+.ready-to-build-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ready-to-build-box {
+    padding-left: 0;
+    width: 48%;
+    position: relative;
+    z-index: 9;
+}
+
+.ready-to-build {
+    font-size: 68px;
+    font-weight: bold;
+    line-height: 1.25;
+    letter-spacing: 2.72px;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 17px;
+    width: 602px;
+}
+
+.lets-start {
+    width: 204px;
+    height: 49px;
+    border-radius: 6.5px;
+    background-color: #ff062f;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.31;
+    letter-spacing: 0.26px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #ff062f;
+    transition: all 0.4s;
+}
+
+.lets-start:hover,
+.lets-start:active,
+.lets-start:focus {
+    background: #f1072e;
+    border: 1px solid #f1072e;
+}
+
+.girl-image-wrapper {
+    width: 52%;
+}
+
+.girl-image-wrap {
+    position: relative;
+    background-image: url(/assets/images/home/girl-image.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #fe5356;
+    background-blend-mode: multiply;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.92;
+    overflow: hidden;
+}
+
+.girl-image-wrap img {
+    width: 100vw;
+    height: 800px;
+    object-fit: contain;
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+    position: relative;
+    right: 185px;
+}
+
+.bottom-text3 {
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.93px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 0;
+    border-bottom: 1px solid #000;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+}
+
+
+/* ready to build css ends */
+
+.social-icons-box {
+    position: fixed;
+    top: 40%;
+    left: 42px;
+    width: auto;
+    height: auto;
+}
+
+.social-icons-list {
+    list-style-type: none;
+    margin-bottom: 0;
+}
+
+.social-icons-list li {
+    margin-bottom: 20px;
+}
+
+.social-icons-list li a {
+    color: #fff;
+    font-size: 19px;
+}
+
+.social-icons-list li a:hover,
+.social-icons-list li a:active,
+.social-icons-list li a:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.scrollbar-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 30px;
+    right: 0;
+    width: 100%;
+    height: auto;
+}
+
+.header-scroll-indicator {
+    display: block;
+    margin-left: 0;
+    width: 2.120rem;
+    height: calc(3.5rem + 3.75vw);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.header-scroll-indicator>span {
+    display: block;
+    background-color: #fff;
+    height: 100%;
+    animation: scrollDown 2.5s cubic-bezier(1, 0, 0, 1) infinite;
+}
+
+@keyframes scrollDown {
+    0% {
+        transform-origin: 0 0;
+        transform: translate3d(-50%, 0, 0) scaleY(0);
+    }
+    25% {
+        transform-origin: 0 0;
+        transform: translate3d(-50%, 0, 0) scaleY(1);
+    }
+    25.1% {
+        transform-origin: 0 100%;
+        transform: translate3d(-50%, 0, 0) scaleY(1);
+    }
+    75% {
+        transform-origin: 0 100%;
+        transform: translate3d(-50%, 0, 0) scaleY(1);
+    }
+    100% {
+        transform-origin: 0 100%;
+        transform: translate3d(-50%, 0, 0) scaleY(0);
+    }
+}
+
+@media screen and (max-width:1199px) {
+    .advantage-shade-text::before {
+        top: -90px;
+        right: -400px;
+        font-size: 180px;
+    }
+    .toolkit-content-box {
+        padding-left: 80px;
+    }
+    .toolkit-box-inner {
+        width: 290px;
+    }
+    .girl-image-wrap {
+        height: 100vh;
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .social-icons-box {
+        display: none;
+    }
+    .header-scroll-indicator {
+        display: none;
+    }
+    .collegey-student-advantage-box {
+        padding: 120px 102px 0px 60px;
+    }
+    .advantage-shade-text::before {
+        top: -70px;
+        right: -380px;
+        font-size: 150px;
+    }
+    .advantage-box {
+        margin-right: 15px;
+    }
+    .advantage-box.bottom-space2 img {
+        margin-bottom: 26px;
+    }
+    .toolkit-wrap {
+        height: auto;
+    }
+    .toolkit-box {
+        margin-top: 150px;
+    }
+    .toolkit-heading-wrap::before {
+        top: -52px;
+        right: -266px;
+        font-size: 160px;
+    }
+    .toolkit-heading {
+        margin-bottom: 210px;
+        padding-left: 82px;
+    }
+    .toolkit-content-box {
+        padding-left: 80px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        height: 650px;
+    }
+    .toolkit-box-inner {
+        width: 290px;
+        margin-bottom: 55px;
+    }
+    .ready-to-build-box {
+        padding-left: 0;
+    }
+    .ready-to-build {
+        font-size: 55px;
+    }
+    .bottom-text3 {
+        left: 0;
+    }
+    .girl-image-wrap {
+        height: 100vh;
+    }
+    .how-collegey-works-wrap::before {
+        width: 420px;
+    }
+    .how-collegey-works-box {
+        margin-top: 100px;
+        padding: 0px;
+        margin-bottom: 60px;
+    }
+    .works-shade::before {
+        top: -35px;
+        font-size: 180px;
+    }
+    .collegey-heading.bottom-space3 {
+        margin-bottom: 100px;
+    }
+    .how-collegey-steps-content {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        top: 0px;
+    }
+    .collegey-steps-box {
+        margin-bottom: 60px;
+    }
+    .collegey-steps-text {
+        text-align: center;
+    }
+    .how-collegey-steps-content.content-space {
+        margin-top: 0;
+    }
+    .collegey-heading h2.bottom-space3 {
+        margin-bottom: 90px;
+    }
+    .how-collegey-steps-content.content-space div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .ordinary-stuff {
+        font-size: 50px;
+    }
+    .bottom-text {
+        font-size: 13px;
+        right: 20px;
+    }
+    .bottom-text2 {
+        bottom: -20vh;
+    }
+    .create-it-box {
+        height: 65px;
+    }
+    .create-it-box span {
+        font-size: 60px;
+    }
+    .collegey-your-space {
+        font-size: 38px;
+    }
+    .collegey-student-advantage-box {
+        height: auto;
+        padding: 60px 80px 0px 60px;
+        border-radius: 65px 0 0;
+        margin-top: 135px;
+    }
+    .collegey-heading h2 {
+        font-size: 44px;
+        margin-bottom: 60px;
+    }
+    .advantage-shade-text:before {
+        top: -50px;
+        right: -350px;
+        font-size: 120px;
+    }
+    .advantage-box-wrapper {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    .advantage-box {
+        margin-right: 0;
+        margin-bottom: 40px;
+        width: 100%;
+    }
+    .toolkit-heading-wrap::before {
+        top: -45px;
+        right: -260px;
+        font-size: 140px;
+    }
+    .toolkit-heading {
+        padding-left: 5px;
+        margin-bottom: 80px;
+    }
+    .toolkit-content-box {
+        padding-left: 0;
+        display: block;
+        height: auto;
+        text-align: center;
+        padding-top: 65px;
+        padding-right: 15px;
+    }
+    .toolkit-box-inner {
+        width: 100%;
+        padding-bottom: 60px;
+        margin-bottom: 0;
+        top: 0;
+    }
+    .impact-project-image {
+        margin-bottom: 30px;
+    }
+    .toolkit-text {
+        text-align: center;
+    }
+    .ready-to-build-wrap {
+        background: #fefaf8;
+    }
+    .ready-to-build-content {
+        flex-direction: column-reverse;
+        padding-top: 100px;
+    }
+    .ready-to-build-box {
+        width: 100%;
+        padding: 40px 0 120px;
+    }
+    .ready-to-build {
+        font-size: 45px;
+        letter-spacing: 1.4px;
+        width: 100%;
+    }
+    .girl-image-wrapper {
+        width: 100%;
+    }
+    .girl-image-wrap {
+        height: 55vh;
+        background-size: cover;
+        width: 100%;
+        border-radius: 10px;
+    }
+    .how-collegey-works-wrap::before {
+        width: 51%;
+    }
+    .works-shade::before {
+        top: -25px;
+        font-size: 160px;
+    }
+}
+
+@media screen and (max-width:599px) {
+    .collegey-student-advantage-box {
+        padding: 60px 60px 1px 40px;
+    }
+    .advantage-shade-text::before {
+        top: -20px;
+        right: -150px;
+        font-size: 70px;
+    }
+    .collegey-heading h2 {
+        font-size: 36px;
+        margin-bottom: 50px;
+    }
+    .advantage-box-wrapper {
+        display: block;
+    }
+    .advantage-content-box {
+        display: block;
+        text-align: center;
+    }
+    .advantage-text {
+        width: 100%;
+        text-align: center;
+    }
+    .toolkit-heading-wrap::before {
+        top: -25px;
+        font-size: 100px;
+        right: -150px;
+    }
+    .ready-to-build {
+        font-size: 40px;
+    }
+    .how-collegey-works-box {
+        margin-bottom: 50px;
+    }
+    .how-collegey-steps-content {
+        display: block;
+    }
+    .how-collegey-steps-content.content-space {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .collegey-steps-box {
+        padding: 0;
+    }
+    .how-collegey-works-box::before {
+        font-size: 140px;
+    }
+    .how-collegey-works-box {
+        margin-bottom: 80px;
+    }
+    .collegey-steps-box:last-child img.shift-to-bottom {
+        margin-bottom: 15px;
+    }
+    .collegey-steps-text {
+        padding-left: 0;
+    }
+    .collegey-works-box::before {
+        right: -180px;
+        font-size: 120px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .ordinary-stuff {
+        font-size: 38px;
+    }
+    .collegey-your-story-box {
+        height: 90vh;
+        margin-top: 120px;
+        border-radius: 55px 55px 0 0;
+    }
+    .Challenge-the-ordinary {
+        font-size: 26px;
+    }
+    .start-your-journey {
+        width: 210px;
+        height: 46px;
+    }
+    .create-it-box {
+        height: 55px;
+    }
+    .create-it-box span {
+        font-size: 50px;
+    }
+    .collegey-your-space {
+        font-size: 28px;
+        font-weight: 200;
+    }
+    .advantage-shade-text::before {
+        top: -20px;
+        right: -160px;
+        font-size: 65px;
+    }
+    .collegey-heading h2 {
+        font-size: 28px;
+    }
+    .collegey-student-advantage-box {
+        padding: 50px 40px 1px 22px;
+        border-radius: 50px 0 0;
+    }
+    .advantage-box img {
+        width: 149px;
+        height: 119px;
+        margin-bottom: 25px;
+    }
+    .toolkit-box {
+        margin-top: 120px;
+    }
+    .toolkit-heading-wrap::before {
+        top: -55px;
+        right: -80px;
+        font-size: 70px;
+    }
+    .toolkit-heading {
+        margin-bottom: 48px;
+        font-size: 45px;
+    }
+    .toolkit-content-box {
+        border-radius: 40px 0 0;
+    }
+    .toolkit-text {
+        font-size: 24px;
+    }
+    .girl-image-wrap {
+        height: 57vh;
+    }
+    .ready-to-build {
+        font-size: 34px;
+    }
+    .ready-to-build-content {
+        padding-top: 60px;
+    }
+    .works-shade::before {
+        top: -55px;
+        right: -120px;
+        font-size: 80px;
+    }
+    .collegey-heading h2.bottom-space3 {
+        margin-bottom: 60px;
+    }
+    .collegey-steps-text {
+        font-size: 18px;
+    }
+    .collegey-student-advantage-box {
+        margin-top: 120px;
+    }
+    .profile-builder-image {
+        width: 212px;
+        height: 180px;
+    }
+    .impact-project-image {
+        width: 234px;
+        height: 176px;
+    }
+    .global-connection-image {
+        width: 250px;
+        height: 190px;
+    }
+    .collegey-steps-box {
+        margin-bottom: 50px;
+    }
+    .collegey-steps-box:first-child img {
+        width: 133px;
+        height: 142px;
+        margin-bottom: 25px;
+    }
+    .collegey-steps-box:nth-child(2) img {
+        width: 160px;
+        height: 125px;
+        margin-bottom: 25px;
+    }
+    .collegey-steps-box:last-child img {
+        width: 132px;
+        height: 130px;
+        margin-bottom: 35px;
+    }
+    .how-collegey-steps-content.content-space .collegey-steps-box:last-child img {
+        width: 141px;
+        height: 123px;
+        margin-bottom: 35px;
+    }
+    .how-collegey-steps-content.content-space .collegey-steps-box:first-child img {
+        width: 188px;
+        height: 129px;
+        margin-bottom: 30px;
+    }
+    .collegey-steps-box .collegey-steps-text span {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .girl-image-wrap {
+        height: 44vh;
+    }
+}
+
+@media screen and (max-width:374px) {
+    .ordinary-stuff {
+        font-size: 30px;
+    }
+    .Challenge-the-ordinary {
+        font-size: 22px;
+    }
+    .create-it-box {
+        height: 51px;
+    }
+    .create-it-box span {
+        font-size: 44px;
+    }
+    .collegey-your-space {
+        font-size: 25px;
+    }
+    .advantage-shade-text::before {
+        top: -10px;
+        right: -100px;
+        font-size: 45px;
+    }
+    .collegey-heading h2 {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+    .collegey-student-advantage-box {
+        padding: 45px 38px 1px 22px;
+        border-radius: 40px 0 0;
+        margin-top: 115px;
+    }
+    .advantage-box img {
+        width: 130px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+    .advantage-text span {
+        line-height: 1.35;
+    }
+    .advantage-box.bottom-space2 img {
+        width: 140px;
+        height: 118px;
+    }
+    .toolkit-heading {
+        margin-bottom: 35px;
+        font-size: 42px;
+    }
+    .toolkit-content-box {
+        padding-top: 55px;
+    }
+    .toolkit-box-inner {
+        margin-bottom: 0px;
+        padding-bottom: 50px;
+    }
+    .profile-builder-image {
+        width: 180px;
+        height: 146px;
+        margin-bottom: 25px;
+    }
+    .impact-project-image {
+        width: 195px;
+        height: 149px;
+        margin-bottom: 25px;
+    }
+    .global-connection-image {
+        width: 210px;
+        height: 160px;
+        margin-bottom: 25px;
+    }
+    .toolkit-heading-wrap::before {
+        right: -100px;
+        font-size: 65px;
+    }
+    .toolkit-text {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    .girl-image-wrap {
+        height: 44vh;
+    }
+    .ready-to-build-box {
+        padding: 30px 0 80px;
+    }
+    .ready-to-build {
+        font-size: 25px;
+    }
+    .lets-start {
+        width: 180px;
+        height: 45px;
+    }
+    .bottom-text3 {
+        font-size: 14px;
+        bottom: 20px;
+    }
+    .works-shade::before {
+        right: -70px;
+        font-size: 65px;
+    }
+    .collegey-heading h2.bottom-space3 {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .collegey-your-story-box {
+        height: 90vh;
+        margin-top: 100px;
+    }
+}
+
+@media screen and (min-width:1540px) {
+    .advantage-shade-text::before {
+        right: 120px;
+    }
+    .collegey-your-story-box {
+        margin-top: 150px;
+    }
+    .collegey-student-advantage-box {
+        margin-top: 250px;
+    }
+    .toolkit-heading {
+        margin-bottom: 350px;
+    }
+}
+
+
+/* 
+  Border Transition
+*/
+
+.draw-border::before,
+.draw-border::after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    transition: color 0.25s;
+    border: 1.2px dotted transparent;
+    width: 0;
+    height: 0;
+    border-left: 0;
+    border-radius: 0 30px 30px 0;
+}
+
+.draw::before {
+    top: 0;
+    left: 0;
+}
+
+.draw::after {
+    bottom: 0;
+    right: 0;
+}
+
+.draw::before,
+.draw::after {
+    width: 100%;
+    height: 100%;
+}
+
+.draw::before {
+    border-top-color: #dfdfdf;
+    border-right-color: #dfdfdf;
+    transition: width 1500ms ease-out 1500ms, height 1500ms ease-out 3000ms;
+}
+
+.draw::after {
+    border-bottom-color: #dfdfdf;
+    border-left-color: #dfdfdf;
+    transition: height 1500ms ease-out, width 1500ms ease-out 4500ms;
+}
+
+.border-box.draw {
+    transition-delay: 1500ms;
+}
+
+.border-box {
+    position: absolute;
+    top: 120px;
+    right: -60px;
+    width: 85%;
+    height: 400px;
+}
+
+.hide-bg,
+.hide-bg2,
+.hide-bg3,
+.hide-bg4 {
+    position: relative;
+}
+
+.hide-bg:before,
+.hide-bg2:before,
+.hide-bg3:before,
+.hide-bg4:before {
+    content: '';
+    position: absolute;
+    height: 50%;
+    background: #fff;
+}
+
+.hide-bg:before {
+    top: 40px;
+    right: -20px;
+    width: 40%;
+}
+
+.hide-bg2:before {
+    top: 40px;
+    right: 0px;
+    width: 100%;
+}
+
+.hide-bg3:before {
+    top: 40px;
+    right: 30px;
+    width: 95%;
+}
+
+.hide-bg4:before {
+    top: 40px;
+    left: -10px;
+    right: 0px;
+    width: 100%;
+}
+
+@media screen and (max-width:1366px) {
+    .border-box {
+        display: none;
+    }
+    .hide-bg:before,
+    .hide-bg2:before,
+    .hide-bg3:before,
+    .hide-bg4:before {
+        display: none;
+    }
+}

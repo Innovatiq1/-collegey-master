@@ -1,0 +1,199 @@
+.terms-header {
+  background: url('/assets/images/faq-21.png');
+  /* background-size: cover; */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 300px;
+  margin-top: 70px;
+  position: relative;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terms-header h1 {
+  font: normal normal normal 46px/57px Poppins;
+}
+
+.thanks-div {
+  padding: 60px 0px;
+}
+
+.mt-60 {
+  margin-top: 60px;
+}
+
+@media screen and (max-width: 575px) {
+  .terms-header {
+    padding: 30px 10px;
+    height: 125px;
+  }
+
+  .terms-header h1 {
+    font: normal normal normal 24px/36px Poppins;
+  }
+
+  .thanks-div {
+    padding: 20px 10px;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .terms-header {
+    padding: 30px 10px;
+    height: 150px;
+  }
+
+  .thanks-div {
+    padding: 20px 10px;
+    margin: 0;
+  }
+
+  .terms-header h1 {
+    font: normal normal 600 24px/36px Poppins;
+  }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .terms-header {
+    padding: 30px;
+    height: 150px;
+  }
+
+  .terms-header h1 {
+    font: normal normal 600 28px/30px Poppins;
+  }
+
+  .thanks-div {
+    padding: 20px 30px;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 998px) {
+  .terms-header {
+    margin-top: 125px;
+  }
+}
+
+.main-link {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 50px;
+  text-align: justify;
+}
+
+.category-tree {
+  margin-bottom: 20px;
+}
+
+.category-tree .section {
+  margin: 10px 0;
+  cursor: pointer;
+  background-color: #f4f4f4;
+  padding: 10px 0 10px 12px;
+}
+
+.category-tree a~* {
+  background-color: #f4f4f4;
+  padding: 10px 0 10px 12px;
+}
+
+.category-tree .section h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #141414;
+}
+
+.category-tree .article-list {
+  margin: 20px;
+}
+
+.category-tree .article-list li {
+  margin-bottom: 10px;
+  color: #838383;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.category-tree .section a {
+  color: #141414;
+}
+
+.category-tree section a {
+  text-decoration: none;
+}
+
+.category-tree section a:hover {
+  text-decoration: underline;
+}
+
+.category-tree .see-all-articles {
+  position: relative;
+  top: -10px;
+  left: 10px;
+}
+
+.hides {
+  display: none;
+}
+
+ngb-accordion /deep/ .card /deep/ {
+  background-color: yellow;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid #ffff;
+  border-radius: .25rem;
+}
+
+ngb-accordion::ng-deep.card::ng-deep .btn {
+  color: #666666;
+  text-align: justify;
+  font-size: revert;
+  min-height: 1px;
+  font-weight: 800;
+}
+
+span {
+  font-size: 1.2rem;
+  color: #666666;
+}
+
+ngb-accordion /deep/ .card-header /deep/ {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid #ffff;
+  border-radius: .25rem;
+  padding: 0.25rem 1.25rem;
+}
+
+ngb-accordion /deep/ .btn-link /deep/ {
+  color: #ffff;
+  text-decoration: none;
+}
+
+ngb-accordion /deep/ .card-body /deep/ {
+  text-align: center;
+  padding: 1.2rem;
+  padding-top: 0;
+}
+
+.category-tree /deep/ .card .btn-link {
+  text-align: center;
+  box-shadow: none;
+}

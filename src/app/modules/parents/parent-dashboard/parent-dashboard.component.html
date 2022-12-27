@@ -1,0 +1,484 @@
+<section class="section-mr">
+    <div class="container first-section">
+        <div class="terms-header">
+        </div>
+        <div class="student-info">
+            <div class="student-info-profile">
+                <img src="assets/images/profile-picture.png" alt="" class="profile-img">
+                <div>
+                    <h5>Welcome Parent Dashboard</h5>
+                </div>
+            </div>
+            <a class="share-profile">Add Testimonial</a>
+        </div>
+        <div class="dashboard-menu">
+            <ul style="margin-left: -2%;">
+                <li>
+                    <a [ngClass]=" tab==='tab1' ? 'active' : 'dark'" (click)="impactproject(1)">
+                       Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        Create a Project
+                    </a>
+                </li>
+                <li [ngClass]=" tab==='tab2' ? 'active' : 'dark'" (click)="Event(2)">
+                    <a class="dark">
+                        Events
+                    </a>
+                </li>
+                <li>
+                    <a [ngClass]=" tab==='tab3' ? 'active' : 'dark'" (click)="collegeyperks(3)">
+                        Collegey Perks
+                    </a>
+                </li>
+                <li>
+                    <a [ngClass]=" tab==='tab4' ? 'active' : 'dark'" (click)="collegeyoppo(4)">
+                        Collegey Oppertunities
+                    </a>
+                </li>
+                <li>
+                    <a (click)="invitecollegey(invitedcollegey)" class="dark">
+                       Invite Someone Collegey
+                    </a>
+                </li>
+                <li>
+                    <select class="dropdownClass" style="width: 14%;border: none;">
+                        <i class="fa fa-angle-down"></i>
+                        <option value="2">Parents Community</option>
+                        <option class="dropdownClass" value="2" style="border: none;">Highschool Impact Moms</option>
+                        <option  value="1">Highschool Impact Dads</option>
+                        <option class="dropdownClass" value="1">Parent Resource</option>
+                        <option  value="1">Parent Ambassador</option>
+    
+                  </select>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="container third-section" *ngIf="statusproject==true">
+        <div class="portfolio-progress">
+            <p style="text-align: left;font: normal normal normal 14px/14px Nunito;
+              letter-spacing: 0px;color: #141414;">PORTFOLIO STRENGTH: <span class="text-align: left;
+    font: normal normal bold 18px/22px Nunito;letter-spacing: 0px;color: #141414; font-weight: bold;
+    font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
+    <span *ngIf="!dashboard?.profile?.profile_completion?.profile_text">Beginner</span></span></p>
+            <ul>
+                <li class="is-active">
+                    <hr>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                            viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                            <g>
+                                <g xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                        fill="#ffffff" data-original="#000000" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+    
+                </li>
+                <li class="is-active">
+                    <hr>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                            viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                            <g>
+                                <g xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                        fill="#ffffff" data-original="#000000" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </li>
+                <li class="">
+                    <hr>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                            viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                            <g>
+                                <g xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                        fill="#ffffff" data-original="#000000" />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </li>
+                <li>
+                    <hr>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                            viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                            <g>
+                                <g xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path
+                                            d="m15.399 17c-.083 0-.166-.021-.242-.062l-3.157-1.746-3.157 1.745c-.169.094-.374.083-.53-.029-.156-.11-.236-.3-.205-.489l.608-3.731-2.573-2.638c-.131-.134-.176-.33-.117-.508.06-.178.214-.307.399-.335l3.537-.541 1.585-3.379c.166-.351.74-.351.906 0l1.585 3.379 3.537.541c.186.028.34.158.399.335.059.178.014.374-.117.508l-2.573 2.638.608 3.731c.031.189-.049.379-.205.489-.085.061-.186.092-.288.092zm-3.399-2.879c.083 0 .167.021.242.062l2.498 1.381-.483-2.964c-.025-.157.024-.316.136-.43l2.07-2.122-2.839-.434c-.165-.025-.307-.131-.378-.282l-1.246-2.655-1.246 2.657c-.071.151-.213.257-.378.282l-2.839.434 2.07 2.122c.111.114.161.273.136.43l-.483 2.962 2.498-1.381c.075-.041.159-.062.242-.062z"
+                                            fill="#ffffff" data-original="#000000"  class="" />
+                                    </g>
+                                </g>
+                                <g xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path
+                                            d="m12 24c-.043 0-.086-.005-.127-.017-.099-.025-9.873-2.703-9.873-11.804v-8.179c0-.209.131-.397.327-.469l9.5-3.5c.111-.041.234-.041.346 0l9.5 3.5c.196.072.327.26.327.469v8.179c0 9.102-9.774 11.779-9.873 11.805-.041.011-.084.016-.127.016zm-9-19.651v7.83c0 7.882 7.85 10.466 9 10.802 1.15-.336 9-2.92 9-10.802v-7.83l-9-3.316z"
+                                            fill="#ffffff" data-original="#000000" class="" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="portfolio-progress-text">
+            <h6><a [routerLink]="['/mentors/profile']">COMPLETE YOUR PROFILE</a></h6>
+            <p class="port-desc">A complete portfolio enhances your chances of building winning applications for
+                colleges and
+                universities, and help us recommend best-fit projects for you.</p>
+        </div>
+    </div>
+    <div class="container fourth-section">
+        <ng-container *ngIf="myProjects.length > 0 && statusproject==true">
+            <h4 class="slider-title">Collegey Impact Project<button style="background: #FF971A 0% 0% no-repeat padding-box;
+            border-radius: 20px;font: normal normal bold 12px/16px Nunito;
+  letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px; margin-left:770px;" (click)="showFilters()">FILTERS</button>
+            </h4>
+
+            <owl-carousel-o [options]="customOptions" class="mg-b40">
+                <ng-template carouselSlide *ngFor="let project of myProjects">
+                    <div class="webinar-box1 article-box1">
+                        <div class="webinar-image-box1">
+                            <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                                alt="Article Image">
+                            <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}"
+                                aria-hidden="true"
+                                (click)="project?.project.watchlist ? onAddOrRemoveWatchlist('Remove',project.project._id) : onAddOrRemoveWatchlist('Add',project.project._id) "></i>
+                        </div>
+                        <div class="webinar-content-box1">
+                            <a class="post-title1 webinar-title1"
+                                href="javascript:void(0)">{{project?.project.title}}</a>
+                            <p class="tags-box1">
+                                <span class="article-tags1" *ngFor="let tag of project.project.hash_tags">{{tag}}</span>
+                                <!-- <span class="article-tags1">UI/UX </span> -->
+                            </p>
+                            <p class="post-description1 webinar-desc1 top-gap1">
+                                <span>{{project?.project.description}}</span></p>
+                            <div style="display: flex;align-items: center;">
+                                <img src="/assets/images/office-chair.svg" style="width: 12px;" alt="">
+                                <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.project.remainingSlot}} spots available</p>
+                            </div>
+                            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.project.start_date
+                                    | date}}</span></p>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </ng-container>
+        <ng-container *ngIf="statusproject==true">
+            <h4 class="slider-title">In Progress Project</h4>
+            <owl-carousel-o [options]="customOptions" class="mg-b40">
+                <ng-template carouselSlide *ngFor="let project of collegeyProjects">
+                    <div class="webinar-box1 article-box1">
+                        <div class="webinar-image-box1">
+                            <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                                alt="Article Image">
+                            <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true"
+                                (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
+                        </div>
+                        <div class="webinar-content-box1">
+                            <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                            <p class="tags-box1">
+                                <span class="article-tags1" *ngFor="let tag of project.hash_tags">{{tag}}</span>
+                                <!-- <span class="article-tags1">UI/UX </span> -->
+                            </p>
+                            <p class="post-description1 webinar-desc1 top-gap1"><span>{{project?.description}}</span>
+                            </p>
+                            <div style="display: flex;align-items: center;">
+                                <img src="/assets/images/office-chair.svg" style="width: 12px;" alt="">
+                                <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+                            </div>
+                            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date |
+                                    date}}</span></p>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </owl-carousel-o>
+        </ng-container>
+        <ng-container *ngIf="statusproject==true">
+            <h4 class="slider-title">See Completed Project</h4>
+            <owl-carousel-o [options]="customOptions" class="mg-b40">
+                <ng-template carouselSlide *ngFor="let project of collegeyProjects">
+                    <div class="webinar-box1 article-box1">
+                        <div class="webinar-image-box1">
+                            <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                                alt="Article Image">
+                            <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true"
+                                (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
+                        </div>
+                        <div class="webinar-content-box1">
+                            <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                            <p class="tags-box1">
+                                <span class="article-tags1" *ngFor="let tag of project.hash_tags">{{tag}}</span>
+                                <!-- <span class="article-tags1">UI/UX </span> -->
+                            </p>
+                            <p class="post-description1 webinar-desc1 top-gap1"><span>{{project?.description}}</span>
+                            </p>
+                            <div style="display: flex;align-items: center;">
+                                <img src="/assets/images/office-chair.svg" style="width: 12px;" alt="">
+                                <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+                            </div>
+                            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date |
+                                    date}}</span></p>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </owl-carousel-o>
+        </ng-container> 
+           <ng-container *ngIf="statusproject==true">
+            <h4 class="slider-title">WatchList</h4>
+            <owl-carousel-o [options]="customOptions" class="mg-b40">
+                <ng-template carouselSlide *ngFor="let project of collegeyProjects">
+                    <div class="webinar-box1 article-box1">
+                        <div class="webinar-image-box1">
+                            <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                                alt="Article Image">
+                            <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true"
+                                (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
+                        </div>
+                        <div class="webinar-content-box1">
+                            <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                            <p class="tags-box1">
+                                <span class="article-tags1" *ngFor="let tag of project.hash_tags">{{tag}}</span>
+                                <!-- <span class="article-tags1">UI/UX </span> -->
+                            </p>
+                            <p class="post-description1 webinar-desc1 top-gap1"><span>{{project?.description}}</span>
+                            </p>
+                            <div style="display: flex;align-items: center;">
+                                <img src="/assets/images/office-chair.svg" style="width: 12px;" alt="">
+                                <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+                            </div>
+                            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date |
+                                    date}}</span></p>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </owl-carousel-o>
+        </ng-container>
+        <ng-container *ngIf="statusproject==true">
+            <h4 class="slider-title">Recommend Project</h4>
+            <owl-carousel-o [options]="customOptions" class="mg-b40">
+                <ng-template carouselSlide *ngFor="let project of collegeyProjects">
+                    <div class="webinar-box1 article-box1">
+                        <div class="webinar-image-box1">
+                            <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
+                                alt="Article Image">
+                            <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true"
+                                (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
+                        </div>
+                        <div class="webinar-content-box1">
+                            <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
+                            <p class="tags-box1">
+                                <span class="article-tags1" *ngFor="let tag of project.hash_tags">{{tag}}</span>
+                                <!-- <span class="article-tags1">UI/UX </span> -->
+                            </p>
+                            <p class="post-description1 webinar-desc1 top-gap1"><span>{{project?.description}}</span>
+                            </p>
+                            <div style="display: flex;align-items: center;">
+                                <img src="/assets/images/office-chair.svg" style="width: 12px;" alt="">
+                                <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+                            </div>
+                            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date |
+                                    date}}</span></p>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </owl-carousel-o>
+        </ng-container>
+    </div>
+
+</section>
+<ng-template #invitedcollegey>
+    <div class="modal-form-wrap" style="background: white;">
+        <div class="modal-form-header bottom-border" style="padding: 20px 54px;">
+            <h5 class="heading">Invite Someone to Collegey</h5>
+        </div>
+        <form>
+            <div class="modal-form-body" style="padding: 20px 54px;">
+                <div class="form-box">
+                    <form>
+                        <div class="form-group fields">
+                            <input class="form-control field-control" type="text" name="" id="" placeholder="Name">
+                        </div>
+                        <div class="form-group fields">
+                            <input  class="form-control field-control" type="text" name="" id="" placeholder="Email">
+                        </div>
+                        <div class="form-group fields">
+                            <input  class="form-control field-control" type="text" name="" id="" placeholder="Relationship">
+                        </div>
+                    </form>
+                </div>
+            </div>
+          <div class= "modal-form-footer">
+            <div class="row top-box" style="margin-left: 75%;">
+                        <div class="footer-texteditor">
+                            <div class="row feed-item">
+                                <button style="border: 1px;
+                                color: #141414;"  (click)="modalRef.hide()">CANCEL</button>&nbsp;&nbsp;
+                                <button type="button" id="btn" class="btn">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+        </form>
+    </div>
+</ng-template>
+<div class="container fourth-section" *ngIf="events==true">
+    <div class="lead-form-wrapper">
+        <div class="lead-form container">
+            <p class="heading">Add online events are you intersted in?
+            </p>
+            <form class="login-form row">
+                <div class="group col-sm-6">
+                    <div>
+                        <label class="select-label">Types of events</label>
+                        <select>
+                            <option value="1">Select SDGs*</option>
+                            <option value="2">a</option>
+                            <option value="1">b</option>
+                            <option value="1">c</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="group col-sm-6">
+                    <div>
+                        <label class="select-label">Select Date</label>
+                        <input type="number" placeholder="DD-MM-YY">
+                    </div>
+                </div>
+                <div class="group col-sm-6">
+                    <div>
+                        <label class="select-label">Select Time</label>
+                        <input type="number" placeholder="hh:mm:ss">
+                    </div>
+                </div>
+                <div class="group col-sm-6">
+                    <div>
+                        <label class="select-label">Region</label>
+                        <input type="number" placeholder="region">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="btn-wrapper">
+            <div>
+                <button class="submitbutton">SAVE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container  fourth-section" *ngIf="Mentorperks==true">
+    <table id="t01">
+        <tr>
+          <th>Mentor Name</th>
+          <th>Payments</th> 
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>Jill</td>
+          <td>Smith</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+        </tr>
+        <tr>
+          <td>John</td>
+          <td>Doe</td>
+          <td>80</td>
+        </tr>
+      </table>  
+    </div>
+    <div class="container second-section" *ngIf="opportunities==true">
+        <h2 class="title"><span>collegey Opportunities  </span></h2>
+        <p class="subtitle">landing page with a list of additional opportunities </p>
+        <div class="benefits">
+            <div class="social-feed-container">
+                <div class="blog-leftside-dashboard">
+                    <div class="webinar-box article-box">
+        
+                        <div class="webinar-image-box">
+                            <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
+                        </div>
+                        <div class="webinar-content-box">
+                            <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                            <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
+                                    Bojan Sandic </span> 02 July, 2019</p>
+                            <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
+                                explained. Another as studied it to evident. Merry sense given he be arise. Conduct at an
+                                replied removal an amongst. ut perspiciatis unde omnis
+                            </p>
+                            <a href="" class="read-more">Read More <span>></span></a>
+        
+                        </div>
+                    </div>
+                    <div class="webinar-box article-box">
+        
+                        <div class="webinar-image-box">
+                            <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
+                        </div>
+                        <div class="webinar-content-box">
+                            <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                            <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
+                                    Bojan Sandic </span> 02 July, 2019</p>
+                            <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
+                                explained. Another as studied it to evident. Merry sense given he be arise. Conduct at an
+                                replied removal an amongst. ut perspiciatis unde omnis
+                            </p>
+                            <a href="" class="read-more">Read More <span>></span></a>
+        
+                        </div>
+                    </div>
+                    <div class="webinar-box article-box">
+        
+                        <div class="webinar-image-box">
+                            <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
+                        </div>
+                        <div class="webinar-content-box">
+                            <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                            <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
+                                    Bojan Sandic </span> 02 July, 2019</p>
+                            <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
+                                explained. Another as studied it to evident. Merry sense given he be arise. Conduct at an
+                                replied removal an amongst. ut perspiciatis unde omnis
+                            </p>
+                            <a href="" class="read-more">Read More <span>></span></a>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>

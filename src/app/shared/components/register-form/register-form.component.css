@@ -1,0 +1,599 @@
+h1 {
+    letter-spacing: .3px;
+    font-size: 32px;
+    color: #000;
+    margin: 0 0 20px;
+    line-height: 32px;
+}
+
+h1 span {
+    color: #f44c47;
+}
+
+.link-btn {
+    font-size: 13px;
+    color: #888;
+    font-weight: 400;
+}
+
+.link-btn span {
+    color: #f44c47;
+}
+
+
+/* register.scss file css ends*/
+
+.auth-modal-body {
+    display: flex;
+    background: #f3f3f3;
+    border-radius: 25px;
+    box-sizing: border-box;
+    margin: 40px 0;
+    align-items: center;
+    position: relative;
+    max-height: 510px;
+}
+
+.close-button {
+    position: absolute;
+    top: -50px;
+    right: -45px;
+}
+
+.close-button img {
+    width: 30px;
+    height: 31px;
+    object-fit: contain;
+}
+
+.modal-left-side-wrap {
+    text-align: left;
+    width: 326px;
+    margin: 57px 0px 61px 60px;
+    position: relative;
+}
+
+.modal-left-side {
+    max-width: 320px;
+    margin-bottom: 42px;
+}
+
+.modal-left-side h2,
+.modal-left-side p {
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #161616;
+}
+
+.modal-left-side h2 {
+    font-size: 34px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.modal-left-side h2 span {
+    display: block;
+}
+
+.modal-left-side p {
+    font-size: 14px;
+    line-height: 1.44;
+    letter-spacing: 0.64px;
+}
+
+.student-image {
+    width: 250px;
+    height: 238px;
+    object-fit: contain;
+}
+
+.modal-right-side {
+    width: 434px;
+    background: #fff;
+    border-radius: 25px;
+    box-sizing: border-box;
+    margin-left: auto;
+    height: auto;
+    /* 595px */
+    position: absolute;
+    right: 0;
+    top: -52px;
+}
+
+.modal-right-side.first-box {
+    height: 580px;
+    top: -35px;
+}
+
+.custom_radio {
+    line-height: 62px;
+    height: 60px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.custom_radio input[type="radio"] {
+    display: none;
+}
+
+.custom_radio input[type="radio"]+label {
+    position: relative;
+    display: inline-block;
+    padding-left: 1.8em;
+    cursor: pointer;
+    line-height: 1.2em;
+    transition: all 0.2s ease-in-out;
+}
+
+.custom_radio input[type="radio"]+label:before,
+.custom_radio input[type="radio"]+label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    transition: all .2s ease;
+}
+
+.custom_radio input[type="radio"]+label:before {
+    transition: all .2s ease;
+    box-shadow: inset 0 0 0 0.22em #fff, inset 0 0 0 1em #fff;
+    border: 1px solid #ddd;
+}
+
+.custom_radio input[type="radio"]+label:hover:before {
+    transition: all .2s ease;
+    box-shadow: inset 0 0 0 0.3em fff, inset 0 0 0 1em #fff;
+}
+
+.custom_radio input[type="radio"]:checked+label:before {
+    transition: all .2s ease;
+    box-shadow: inset 0 0 0 0.22em white, inset 0 0 0 1em #ff062f;
+    border: 1px solid #ddd;
+}
+
+.custom_radio .radio-option {
+    width: 100%;
+    text-align: left;
+    padding-left: 40px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.custom_radio .radio-option:nth-child(2) {
+    border-right: none;
+}
+
+.custom_radio label {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.56px;
+    text-align: left;
+    color: #5d5d5d;
+}
+
+.custom_radio input[type="radio"]:checked .radio-option {
+    border-bottom: 3px solid #ff062f;
+}
+
+.studentType-form {
+    padding: 0px 40px 0px;
+}
+
+.next-btn {
+    display: block;
+    border-radius: 6.5px;
+    background-color: #ff062f;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.31;
+    letter-spacing: 0.78px;
+    text-align: center;
+    color: #fff;
+    height: 49px;
+    width: 100%;
+    border: 1px solid #ff062f;
+    margin-top: 25px;
+}
+
+.next-btn:hover,
+.next-btn:focus,
+.next-btn:active {
+    background: #f1072e;
+    border: 1px solid #f1072e;
+}
+
+.login-steps {
+    padding: 32px 42px 16px;
+}
+
+.seperator {
+    position: relative;
+    border-top: 1px solid #e7e8e9;
+    margin: 28px auto;
+    text-align: center;
+}
+
+.seperator span {
+    background: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.87;
+    letter-spacing: 0.15px;
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+    width: 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.have-an-acount {
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: 0.48px;
+    text-align: center;
+    color: #424141;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.have-an-acount button {
+    color: #ff062f;
+    border-bottom: 1px solid transparent;
+}
+
+.have-an-acount button:hover,
+.have-an-acount button:active,
+.have-an-acount button:focus {
+    color: #f1072e;
+    text-decoration: none;
+    border-bottom: 1px solid #ff062f;
+}
+
+.have-an-acount.top-space {
+    margin-top: 20px;
+}
+
+.student-heading {
+    padding: 60px 20px 32px 40px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.student-heading p {
+    font-size: 24px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.17;
+    letter-spacing: 0.96px;
+    text-align: left;
+    color: #ff062f;
+    margin-bottom: 0;
+}
+
+.form-group.others-field {
+    padding: 0;
+    margin-top: 0px;
+    position: relative;
+    top: -38px;
+}
+
+.form-group.others-field input {
+    height: 47px;
+    border: 0;
+    border-bottom: 1px solid #e9e9e9;
+    border-radius: 0;
+    padding-left: 65px;
+    padding-top: 10px;
+}
+
+::ng-deep .form-group.others-field .error-message {
+    left: 64px;
+}
+
+.form-group.others-field+.studentType-form {
+    padding: 0 40px 12px;
+}
+
+.others-field+.studentType-form .next-btn-space {
+    margin-top: -35px;
+}
+
+.login-steps.fb-login {
+    padding: 55px 42px 16px;
+}
+
+.login-steps.fb-login .next-btn.margin-top-zero {
+    margin-top: 30px;
+    margin-bottom: 75px;
+}
+
+.modal-right-side.first-box .next-btn {
+    margin-top: 0px;
+}
+
+@media screen and (max-width:991px) {
+    .modal-left-side-wrap {
+        width: 280px;
+        margin: 57px 0px 53px 35px;
+    }
+    .modal-right-side {
+        width: 390px;
+    }
+    .close-button {
+        top: -80px;
+        right: 0px;
+    }
+    .modal-left-side {
+        margin-bottom: 32px;
+    }
+    .login-steps.fb-login .next-btn.margin-top-zero {
+        margin-bottom: 55px;
+    }
+}
+
+@media screen and (min-width:767px) and (max-width:991px) {
+    .form-group.bottom-margin {
+        margin-bottom: 10px;
+    }
+    .have-an-acount {
+        margin-top: 6px;
+    }
+    .next-btn {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .auth-modal-body {
+        display: block;
+        min-height: auto;
+        max-height: initial;
+    }
+    .modal-left-side-wrap {
+        width: 100%;
+        margin: 0;
+        padding-top: 25px;
+    }
+    .modal-left-side {
+        max-width: 90%;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .modal-left-side h2,
+    .modal-left-side p {
+        text-align: left;
+    }
+    .modal-left-side h2 span {
+        display: inline-block;
+    }
+    .student-image {
+        display: none;
+    }
+    .modal-right-side,
+    .modal-right-side.first-box {
+        width: 100%;
+        position: relative;
+        height: auto;
+        top: 0;
+    }
+    .login-steps,
+    .login-steps.fb-login {
+        padding: 40px 35px 25px;
+    }
+    .custom_radio .radio-option {
+        flex: 1;
+    }
+    .close-button {
+        top: -40px;
+        right: 4px;
+    }
+    .student-heading {
+        padding: 35px 20px 25px 40px;
+    }
+    .studentType-form {
+        padding: 0px 40px 16px;
+    }
+    .login-steps.fb-login .next-btn.margin-top-zero {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .modal-left-side h2 {
+        font-size: 26px;
+    }
+    .student-heading {
+        padding: 25px 20px 20px 40px;
+    }
+    .custom_radio {
+        line-height: 57px;
+        height: 55px;
+    }
+    .seperator {
+        margin: 28px auto;
+    }
+    .modal-left-side {
+        margin-bottom: 16px;
+    }
+    .modal-left-side-wrap {
+        padding-top: 22px;
+    }
+    .close-button img {
+        display: none;
+    }
+    .box-container::-webkit-scrollbar {
+        background-color: transparent;
+        width: 5px;
+    }
+    .box-container::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 5px;
+    }
+    .box-container::-webkit-scrollbar-thumb {
+        background-color: #babac0;
+        border-radius: 6px;
+    }
+    .box-container::-webkit-scrollbar-thumb:hover {
+        background-color: #a0a0a5;
+    }
+    .login-steps.fb-login .next-btn.margin-top-zero {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .terms-anchortext {
+        display: block;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width:374px) {
+    .modal-left-side h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .login-steps,
+    .login-steps.fb-login {
+        padding: 30px 20px 25px;
+    }
+    .seperator {
+        margin: 25px auto;
+    }
+    .studentType-form {
+        padding: 10px 20px 25px;
+    }
+    .next-btn {
+        margin-top: 28px;
+    }
+    .student-heading p {
+        font-size: 20px;
+    }
+    .modal-left-side p {
+        letter-spacing: 0.3px;
+    }
+    .custom_radio .radio-option {
+        padding-left: 38px;
+    }
+    .form-group.others-field input {
+        padding-left: 63px;
+    }
+    .form-group.others-field .error-message {
+        left: 62px;
+    }
+    .form-group.others-field+.studentType-form {
+        padding: 0 20px 12px;
+    }
+    .form-group.bottom-margin span {
+        bottom: -15px;
+        line-height: 1.3;
+    }
+}
+.background {
+    background-color: #f7f7f7;
+  }
+  .board {
+    background: white;
+    padding: 53px 50px;
+    height: fit-content;
+    margin: 100px;
+    border-radius: 12px;
+  }
+  .welcome {
+    font-size: 32px;
+    font-family: Georgia;
+    line-height: 36px;
+    color: #141414;
+  }
+  .content {
+    font-size: 16px;
+    font-family: Nunito;
+    font-weight: 600;
+    line-height: 22px;
+    color: #838383;
+    margin-top: 20px;
+    margin-bottom: 36px;
+  }
+  
+  .information {
+    font-size: 20px;
+    font-family: Nunito;
+    font-weight: 600;
+    line-height: 27px;
+    color: #141414;
+    margin-bottom: 20px;
+  }
+  .group {
+    position: relative;
+    padding: 0;
+    width: 304px;
+  }
+  .group div {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #979797;
+    border-radius: 6px;
+    padding: 9px 0 5px 0;
+    margin-bottom: 20px;
+  }
+  .radio {
+    height: 40px;
+    width: 304px;
+    padding: 15px 0 15px 11px;
+    border: 1px solid #d6e6ff;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .radio-box {
+    margin-right: 10px;
+  }
+  .radio-label {
+    margin-bottom: 0;
+  }
+  .radio-item input[type="radio"]:checked + label:after {
+    border-radius: 11px;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    content: " ";
+    display: block;
+    background: #004c97;
+  }
+  .continue {
+    background-color: #3f89fc;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: Nunito;
+    font-weight: bold;
+    line-height: 19px;
+    border-radius: 6px;
+    height: 40px;
+    width: 304px;
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,64 @@
+.clg-partner-section {
+  padding: 60px 0 0;
+  background-color: #fff;
+}
+.clg-partner-section ::ng-deep .slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.clg-heading {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.marqueeImg {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+}
+
+.marqueeImg-img {
+  padding-right: 10px;
+  padding-left: 10px;
+  margin: 10px;
+  font-family: "Poppins", sans-serif;
+  max-width: 220px;
+  max-height: 100px;
+}
+
+.clg-partner-section .clg-slides {
+  padding: 10px;
+}
+
+.clg-partner-section .clg-slides .slide {
+  max-width: 200px;
+  max-height: 100px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+@media screen and (min-width:1400px) {
+  .clg-content {
+    max-width: 1600px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .clg-heading {
+    font-size: 30px;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .clg-partner-section .clg-slides {
+    min-width: 100px;
+  }
+}

@@ -1,0 +1,54 @@
+.clg-journey-section {
+  padding: 140px 40px;
+  text-align: center;
+}
+
+.clg-heading1 {
+  font-size: 60px;
+  font-weight: 300;
+  color: #000;
+  margin-bottom: 40px;
+}
+
+.clg-heading2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 60px;
+}
+
+@media screen and (min-width:1400px) {
+  .clg-content {
+    max-width: 1600px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .clg-heading1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  .clg-heading2 {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .clg-journey-section {
+    padding: 40px 10px;
+  }
+
+  .clg-heading1 {
+    font-size: 30px;
+  }
+
+  .clg-heading2 {
+    font-size: 20px;
+  }
+
+  .clg-journey-section img.w-75 {
+    width: 100% !important;
+  }
+}

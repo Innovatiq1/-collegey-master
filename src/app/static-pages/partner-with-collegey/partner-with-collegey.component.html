@@ -1,0 +1,110 @@
+<section class="resources-wrap">
+  <div class="terms-header" style="background-image: url({{dynamicValue?.bannerImg}});">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <!-- <h6>Partner with Collegey</h6>
+          <h1>Thank you for thinking of Collegey.</h1>
+          <p>We love building partnerships. Tell us more.</p> -->
+          <h6>{{dynamicValue.mainTitle}}</h6>
+          <h1>{{dynamicValue.title}}</h1>
+          <p>{{dynamicValue.subTitle}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="thanks-div">
+    <div class="row">
+      <div class="col-12 col-lg-7 col-md-6">
+        <!-- <h6>
+          Collegey's mission is to enable people to become the best that they
+          can be in the context that matters most to them. Its unique
+          methodology is focused on collaboration and impact.
+        </h6>
+        <p>
+          We will be delighted to get on a call to learn more about your mission
+          and what drives your investment theory. Please share the following
+          information.
+        </p>
+        <p>Thank you.</p> -->
+        <div class="clg-investDes" [innerHTML]="dynamicValue?.description"></div>
+      </div>
+      <div class="col-12 col-lg-5 col-md-6">
+        <div class="lead-form">
+          <p class="heading">Please fill in the required details</p>
+          <form class="login-form" [formGroup]="collegeyPartnerForm">
+            <div class="group">
+              <div style="border: none; padding: none">
+                <select formControlName="organisation" style="
+                    width: 100%;
+                    border-radius: 6px;
+                    padding: 13px 0px 13px 0;
+                    font-family: Nunito;
+                    color: #000;
+                    outline: none;
+                  ">
+                  <option style="color: black" value="">
+                    You wish to partner with Collegey as a:
+                  </option>
+                  <option style="color: black">You’re a High school</option>
+                  <option style="color: black">You’re a College/university</option>
+                  <option style="color: black">You’re a Mentor</option>
+                  <option style="color: black">You’re a IEC</option>
+                  <option style="color: black">
+                    You’re a Nonprofit/Media/Corporate organization
+                  </option>
+                  <option style="color: black">Other (please specify)</option>
+                </select>
+              </div>
+              <span *ngIf="submitted && f.organisation.errors" class="error">
+                <span *ngIf="f.organisation.errors.required">Organization is required .</span>
+                <span *ngIf="f.organisation.errors.pattern">Organization is invalid .</span>
+              </span>
+            </div>
+            <div class="group">
+              <div>
+                <input type="text" required="required" formControlName="name" placeholder="Name*"/>
+              </div>
+              <span *ngIf="submitted && f.name.errors" class="error">
+                  <span *ngIf="f.name.errors.required">Name is required .</span>
+              </span>
+            </div>
+            <div class="group">
+              <div>
+                <input type="text" required="required" formControlName="email" placeholder="Email ID*"/>
+              </div>
+              <span *ngIf="submitted && f.email.errors" class="error">
+                <span *ngIf="f.email.errors.required">Email Id is required .</span>
+                <span *ngIf="f.email.errors.pattern">Email Id is invalid .</span>
+              </span>
+            </div>
+            <div class="group">
+              <div>
+                <input type="text" required="required" formControlName="city" placeholder="City*"/>
+              </div>
+              <span *ngIf="submitted && f.city.errors" class="error">
+                <span *ngIf="f.city.errors.required">City is required .</span>
+              </span>
+            </div>
+            <div class="group">
+              <div>
+                <input type="text" required="required" formControlName="country" placeholder="Country*"/>
+              </div>
+              <span *ngIf="submitted && f.country.errors" class="error">
+                <span *ngIf="f.country.errors.required">Country is required .</span>
+              </span>
+            </div>
+            <div class="group">
+              <div>
+                <input type="text" required="required" formControlName="bestText" placeholder="Best # to text you (optional)"/>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block login-btn mt-60" (click)="save()">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

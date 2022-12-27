@@ -1,0 +1,92 @@
+<!-- <div class="question-box-inner">
+  <p class="question-box-subtext">Enter your academic information, current and past. Add all school grades from grade 9
+    onwards. For college, add all years from the first year onwards.</p>
+  <div class="user-type-box" *ngIf="!hideQualificationChangeOption">
+    <p>I'm a <span>{{qualification}}</span> <button type="button" *ngIf="collapsed" (click)="expand()"><img
+          src="assets/images/on-boarding/edit-button-image.svg"></button> 
+          <button type="button" *ngIf="!collapsed"
+        (click)="collapse()"><img src="assets/images/on-boarding/green-tick.svg" class="tick-image"></button>
+    </p>
+    <div class="edit-user-type" [class.collapsible]="collapsed" [@collapse]="collapsed">
+      <div class="form-group fields edit-user-type-inner">
+        <label class="field-label" for="userType">Please select one option:</label>
+        <ng-select class="educationType" id="userType" placeholder="Select" [addTag]="addTagFn" bindLabel="name" bindValue="value"
+        [clearable]="true" [closeOnSelect]="false"
+        [items]="userTypeList" (change) ="onChangeQualification($event)">
+        </ng-select>
+      </div>
+    </div>
+  </div>
+  <form class="education-form" [formGroup]="studentHistoryForm" *ngIf="studentHistoryForm">
+    <div class="form-box" formGroupName="history_updated">
+      <ng-container formArrayName="education">
+        <ng-container formGroupName="0">
+          <ng-container *ngIf=" 
+                !educationFormArray.controls[0]?.value._id">
+            <app-history-form  [educationForm]="educationFormArray.controls[0]"
+            (onHideQualificationChangeOption) = "hideQualificationChangeOption = false" [showErrorMessage] = "showErrorMessage"></app-history-form>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <div class="curious-wrap" *ngIf = "qualification != qualificationType.COLLEGE_GRADUATE && qualification != qualificationType.COLLEGE_STUDENT
+        && qualification != qualificationType.HIGHT_SCHOOL_STUDENT && qualification != qualificationType.HIGHT_SCHOOL_GRADUATE">
+     
+        <div class="form-group fields">
+          <label class="field-label" for="curiousAbout">What are you curious about? Tell us what you like to read, learn,
+            and do.</label>
+          <textarea type="text" class="form-control field-control" formControlName = "curious_about" placeholder="Write here..."></textarea>
+          <app-input-validation [control]="studentHistoryForm.get('history_updated').get('curious_about')" [isShowErrorMsg] = "showErrorMessage"></app-input-validation>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="educationFormArray.controls[0]?.value._id">
+      <app-history-view [historyForm]="studentHistoryForm" (onHideQualificationChangeOption) = "hideQualificationChangeOption = true" (onDeleteEducation)="showEducationForm($event)">
+      </app-history-view>
+    </ng-container>
+      
+    <pre>{{studentHistoryForm.value | json}}</pre>
+    
+    <div class="save-btn-box">
+      <button type="button" class="save-and-exit" (click)="onSubmitForm(true, studentHistoryForm)">Save & Exit</button>
+      <button type="button" class="save-btn dark-btn" (click)="onSubmitForm(false, studentHistoryForm)">
+        {{educationFormArray.controls[0]?.value._id ? 'Submit' : 'Save'}}</button>
+    </div>
+  </form>
+</div> -->
+<div class="lead-form-wrapper">
+    <div class="lead-form container">
+        <p class="steps-login">2 of 8</p>
+        <p class="heading">Education</p>
+        <form class="login-form row" [formGroup]="studentHistoryForm" *ngIf="studentHistoryForm">
+            <p>Let's put some  traditional number (grades, for example) together to include in your portfolio story.</p>
+            <div class="flex-div" formGroupName="history_updated">
+                <ng-container formArrayName="education">
+                    <ng-container formGroupName="0">
+                      <ng-container *ngIf="!educationFormArray.controls[0]?.value._id">
+                        <!-- <app-history-form  [educationForm]="educationFormArray.controls[0]" (onHideQualificationChangeOption) = "hideQualificationChangeOption = false" [showErrorMessage] = "showErrorMessage" (onQualificationChange)="onChangeQualification($event)"></app-history-form> -->
+                        <div class="lead-form-wrapper2">
+                          <div class="group col-sm-12 no-pad add-item-btn" style="margin-bottom: 20px;">
+                              <!-- <a href="">+ ADD ANOTHER HIGH SCHOOL | + ADD COLLEGE</a> -->
+                              <button type="button" class="add-more-education remove-margin" (click)="onOpenAddHistoryModal(null, qualificationType.HIGHT_SCHOOL_STUDENT)" >+ ADD HIGH SCHOOL</button>
+                              &nbsp;<span style="color:blue;">|</span>&nbsp;          
+                             <button type="button" class="add-more-education remove-margin" (click)="onOpenAddHistoryModal(null , qualificationType.COLLEGE_STUDENT)">+ ADD COLLEGE</button>
+                          </div>
+                          </div>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                  <ng-container *ngIf="educationFormArray.controls[0]?.value._id">
+                    <app-history-view [historyForm]="studentHistoryForm" (onHideQualificationChangeOption) = "hideQualificationChangeOption = true" (onDeleteEducation)="showEducationForm($event)" (_emitter)="getIndex($event)"  class="custHistory_view">
+                    </app-history-view>
+                  </ng-container>
+            </div>
+        </form>
+    </div>
+    <div class="btn-wrapper">
+        <button class="backbutton" (click)="onFormBack()">Back</button>
+        <div>
+            <button class="savebtn" (click)="onSubmitForm(false,studentHistoryForm)">Save and Complete Later</button>
+            <button class="submitbutton" (click)="onSubmitForm(true,studentHistoryForm)">SAVE and CONTINUE</button>
+        </div>
+    </div>
+</div>

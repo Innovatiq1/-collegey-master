@@ -1,0 +1,21 @@
+<div class="tabs-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let courseslist of Courses;">
+                <div class="webinar-box article-box">
+                    <a [href]="courseslist?.externalLink" target="_blank">
+                    </a>
+                    <div class="webinar-image-box">
+                        <img class="zoom-image" [src]="commonService.imagePathS3(courseslist?.image, '/assets/images/logo_image/collegy-default-img.jpg')" alt="Course Image">
+                    </div>
+                    <div class="webinar-content-box">
+                        <a class="post-title webinar-title">{{courseslist?.title}}</a>
+                        <p class="post-description webinar-desc top-gap">{{courseslist.short_description}}</p>
+                        <p class="tags-box"><span class="article-tags" *ngFor="let tag of courseslist?.tags">{{tag}}</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

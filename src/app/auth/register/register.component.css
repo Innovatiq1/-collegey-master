@@ -1,0 +1,48 @@
+.login-section {
+    width: 100%;
+    height: 100vh;
+    background-image: url(/assets/images/blue-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-section {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+}
+
+::ng-deep .form-section .auth-modal-body.center-shift {
+    margin: 40px auto;
+    width: 880px;
+    max-width: 100%;
+}
+
+::ng-deep .form-section .close-button {
+    display: none;
+}
+
+@media screen and (max-width:991px) {
+     ::ng-deep .form-section .auth-modal-body.center-shift {
+        width: calc(100% - 3em);
+    }
+}
+
+@media screen and (min-width:768px) {
+    .form-section .container.pad-remove {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .login-section {
+        height: 100%;
+    }
+     ::ng-deep .form-section .auth-modal-body.center-shift {
+        width: 100%;
+    }
+}

@@ -1,0 +1,10 @@
+<section id="login-page-block" class="login-section">
+  <div class="bg"></div>
+  <div class="form-section">
+    <div class="container pad-remove">
+      <app-reset-password-form *ngIf="isTokenValid" [resetPasswordResponse]="resetPasswordResponse">
+      </app-reset-password-form>
+      <app-page-not-found *ngIf="!isTokenValid && isServerResponse"></app-page-not-found>
+    </div>
+  </div>
+</section>

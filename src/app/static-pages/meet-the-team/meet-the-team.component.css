@@ -1,0 +1,230 @@
+.team_member {
+    padding-top: 60px;
+}
+
+.terms-header {
+    height: 340px;
+    margin-top: 70px;
+    position: relative;
+    padding: 80px 100px;
+    max-width: 1366px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.terms-header h1 {
+    text-align: left;
+    font: normal normal normal 46px/57px Georgia;
+    letter-spacing: 0px;
+    color: #141414;
+}
+
+.terms-header h6 {
+    text-align: left;
+    font: normal normal 600 20px/27px Nunito;
+    letter-spacing: 0px;
+    color: #838383;
+    margin: 30px 0 20px;
+}
+
+.terms-header p {
+    text-align: left;
+    font: normal normal 600 16px/22px Nunito;
+    letter-spacing: 0px;
+    color: #AFAFAF;
+}
+
+.lrt p {
+    font: normal normal 600 18px/24px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    opacity: 0.6;
+}
+
+.lrt .desc {
+    font: normal normal 600 12px/16px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    opacity: 0.6;
+    margin: 20px 0 44px;
+}
+
+.resources-wrap .module:hover .right {
+    width: 200%;
+    background: #f7f7f7;
+    display: block;
+    position: absolute;
+    left: -200%;
+    z-index: 1;
+    height: 324px;
+    right: inherit;
+}
+
+.user-image .rounded-circle {
+    width: 250px;
+    height: 250px;
+}
+
+
+.btnText {
+    color: white;
+    cursor: default;
+}
+
+.btnText:hover {
+    color: white;
+}
+
+@media screen and (max-width: 575px) {
+    .terms-header {
+        padding: 10px;
+        height: auto;
+    }
+
+    .terms-header h1 {
+        font: normal normal 600 24px/36px Georgia;
+        letter-spacing: 0px;
+    }
+
+    .terms-header p {
+        font: normal normal 600 15px/27px Nunito;
+        margin-bottom: 0;
+    }
+
+    .module {
+        width: 100%;
+    }
+
+    .module:hover .lrt {
+        width: 100%;
+        background: #f7f7f7;
+        display: block;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+        height: 324px;
+        padding: 25px;
+    }
+
+    .lrt h3 {
+        font: normal normal bold 20px/25px Nunito;
+    }
+
+    .lrt .desc {
+        margin: 10px 0 20px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .terms-header {
+        padding: 10px;
+        height: auto;
+    }
+
+    .terms-header h1 {
+        font: normal normal 600 24px/36px Georgia;
+        letter-spacing: 0px;
+    }
+
+    .terms-header p {
+        font: normal normal 600 15px/27px Nunito;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .terms-header {
+        padding: 30px;
+        height: auto;
+    }
+
+    .module {
+        width: 50%;
+    }
+
+    .module:hover .lrt {
+        width: 100%;
+        background: #f7f7f7;
+        display: block;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+        height: 324px;
+        padding: 25px;
+    }
+
+    .lrt h3 {
+        font: normal normal bold 20px/25px Nunito;
+    }
+
+    .lrt .desc {
+        margin: 10px 0 20px;
+    }
+
+    @import url(//fonts.googleapis.com/css?family=Montserrat:300,500);
+    /*
+    @import url(https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css);*/
+
+    .team_member {
+        /*background: rgba(199,201,209,.09);*/
+        padding-bottom: 50px;
+        /*overflow: hidden;*/
+    }
+
+    .team4 {
+        font-family: "Montserrat", sans-serif;
+        color: #8d97ad;
+        font-weight: 300;
+    }
+
+    .team4 h1,
+    .team4 h2,
+    .team4 h3,
+    .team4 h4,
+    .team4 h5,
+    .team4 h6 {
+        color: #3e4555;
+    }
+
+    .team4 .font-weight-medium {
+        font-weight: 500;
+    }
+
+    .team4 h5 {
+        line-height: 22px;
+        font-size: 18px;
+    }
+
+    .team4 .subtitle {
+        color: #8d97ad;
+        line-height: 24px;
+        font-size: 13px;
+    }
+
+    .team4 ul li a {
+        color: #8d97ad;
+        padding-right: 15px;
+        -webkit-transition: 0.1s ease-in;
+        -o-transition: 0.1s ease-in;
+        transition: 0.1s ease-in;
+    }
+
+    .team4 ul li a:hover {
+        -webkit-transform: translate3d(0px, -5px, 0px);
+        transform: translate3d(0px, -5px, 0px);
+        color: #316ce8;
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .user-image .rounded-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+}
+
+.mt-2{
+    font-size: 16px;
+}

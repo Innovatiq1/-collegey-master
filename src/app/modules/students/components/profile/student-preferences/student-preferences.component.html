@@ -1,0 +1,195 @@
+<!-- <div class="question-box-inner bottom-margin">
+    <p>Quick practical questions to keep you on the best-fit track.</p>
+    <form *ngIf="studentPreferencesForm" [formGroup]="studentPreferencesForm">
+        <div class="form-box" formGroupName="prefrences">
+            <div class="form-group fields">
+                <label class="field-label" for="gapYear">Are you interested in taking a Gap Year or a Summer Program?</label>
+                <ng-select class="educationType" id="gapYear" placeholder="Select" formControlName="interested_in_gap" [searchable]="false">
+                    <ng-option value="Yes">Yes</ng-option>
+                    <ng-option value="No">No</ng-option>
+                    <ng-option value="I am thinking about it">I am thinking about it</ng-option>
+                </ng-select>
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="payPerYear">How much you/your family would like to pay per year for your future education?</label>
+                <ng-select class="educationType" formControlName="how_would_like_to_pay" id="payPerYear" name="payPerYear" placeholder="Select" bindLabel="name" bindValue="name" [searchable]="false" [items]="payPerYears">
+                </ng-select>
+            </div>
+            <ng-container formGroupName="wish_to_apply_for_scholarships">
+                <div class="form-group fields">
+                    <label class="field-label" for="applyscholarships">Do you wish to apply for scholarships?</label>
+                    <ng-select class="educationType" id="applyscholarships" placeholder="Select" formControlName="answer" [searchable]="false">
+                        <ng-option [value]="true">Yes</ng-option>
+                        <ng-option [value]="false">No</ng-option>
+                    </ng-select>
+                </div>
+                <div class="form-group fields" *ngIf="studentPreferencesForm.get('prefrences').get('wish_to_apply_for_scholarships').get('answer').value===true">
+                    <label class="field-label label-margin" for="importantScholarships1">How important is this for you:</label>
+                    <div class="custom_radio">
+                        <div class="radio-option"><input type="radio" id="importantScholarships1" value="Very important" formControlName="imoprtance"><label for="importantScholarships1">Very important</label></div>
+                        <div class="radio-option"><input type="radio" id="importantScholarships2" value="Good to have" formControlName="imoprtance"><label for="importantScholarships2">Good to have</label></div>
+                        <div class="radio-option"><input type="radio" id="importantScholarships3" value="don’t care much" formControlName="imoprtance"><label for="importantScholarships3">Don’t care much</label></div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="form-group fields">
+                <label class="field-label" for="familyIncome">Approximate family income (per year)</label>
+                <ng-select class="educationType" formControlName="family_income" id="familyIncome" placeholder="Select" bindLabel="name" bindValue="name" [searchable]="false" [items]="familyIncomes">
+                </ng-select>
+            </div>
+        </div>
+        <div class="save-btn-box">
+            <button type="button" class="save-and-exit" (click)="onSubmitForm(true)">Save & Exit</button>
+            <button type="button" class="save-btn" (click)="onSubmitForm(false)">Submit</button>
+        </div>
+    </form>
+</div> -->
+<div class="lead-form-wrapper" >
+    <div class="lead-form container" *ngIf="studentPreferencesForm" [formGroup]="studentPreferencesForm">
+        <p class="steps-login">7 of 8</p>
+        <p class="heading">Preferences</p>
+        <p>Quick practical questions to keep you on the best-fit track.</p>
+        <form class="login-form row" formGroupName="prefrences">
+            <!-- <div class="flex-start">
+                <div class="flex-width w-100">
+                    <div class="group col-sm-12 select-without-label">
+                        <p style="min-height: 25px;margin-bottom: 0;">Are you interested in
+                            taking a Gap Year or
+                            a Summer Program? <span style="color: #f00;">*</span></p>
+                           
+                        <div class="mg-b10">
+                            <select aria-placeholder="Select" formControlName="interested_in_gap"  (ngModelChange)="saveFunction($event)">
+                                <option value="" >Select</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                <option value="I am thinking about it">I am thinking about it</option>
+                            </select>
+                        </div>
+                        <span   id="citierror1" style="color: red;"> {{ programe_error }}</span>
+                    </div>
+                </div>
+                </div> -->
+                <div class="flex-start">
+                <div class="flex-width w-100" formGroupName="wish_to_apply_for_scholarships">
+                    <div class="group col-sm-12 select-without-label">
+                        <p class="" style="min-height: 25px;margin-bottom: 0;">For your education, Do you wish to apply for
+                            scholarships?</p>
+                        <div class="mg-b10">
+                            <select aria-placeholder="Select" formControlName="answer" (change)="onChange($event.target.value)">
+                                <option value="" disabled selected>Select</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <div *ngIf="scholarshipStatus" class="flex-start">
+                <div class="flex-width w-100" formGroupName="wish_to_apply_for_scholarships">
+                    <div class="group col-sm-12 select-without-label">
+                        <p class="" style="min-height: 25px;margin-bottom: 0;">How Important is it?
+                            </p>
+                        <div class="mg-b10">
+                            <select aria-placeholder="Select" formControlName="imoprtance" >
+                                <option value="" disabled selected>Select</option>
+                                <option value="imoprtance">Important</option>
+                                <option value="SomeWhat important">SomeWhat important</option>
+                                <option value="I don’t care">I don’t care</option>
+                            </select>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+           
+            <h6 class="pt-3 pb-2">Do you want to share this on your public profile? If not, select private</h6>
+            
+            <div class="flex-start">
+                <div class="flex-width w-100">
+                    <div class="group col-sm-12 select-without-label">
+                        <p class="" style="min-height: 25px;margin-bottom: 0;">How much you would like
+                            to pay per year for your future education? <span style="color: #f00;">*</span></p>
+                        <div class="mg-b10">
+                            <select aria-placeholder="Select" formControlName="how_would_like_to_pay" (ngModelChange)="saveFunction1($event)">
+                                <option value="" >Select</option>
+                                <option [value]="pay" *ngFor="let pay of payPerYears">{{pay}}</option>
+                            </select>
+                        </div>
+                        <span id="citierror1" style="color: red;"> {{ pay_error }}</span>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="group col-sm-12 select-without-label" style="margin-top: 5px;">
+                        <p class="" style="margin-bottom: 0;">Privacy </p>
+                        <div class="mg-b10">
+                            <select aria-placeholder="Select" formControlName="future_privacy">
+                                <option value="" disabled>Select</option>
+                                <option [value]="pp" *ngFor="let pp of privacy">{{pp}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-start">
+                <div class="flex-width w-100">
+                    <div class="group col-sm-12 select-without-label">
+                        <p class="" style="min-height: 25px;margin-bottom: 0;">Approximate family income per year
+                            (For records only. Collegey does not sell your data) <span style="color: #f00;">*</span></p>
+                        <div class="mg-b10">
+                            <select aria-placeholder="Select" formControlName="family_income" (ngModelChange)="saveFunction2($event)">
+                                <option value="">Select</option>
+                                <option [value]="income" *ngFor="let income of familyIncomes">{{income}}</option>
+                            </select>
+                        </div>
+                        <span   id="citierror1" style="color: red;"> {{ family_income_error }}</span>
+                    </div>
+                </div> 
+            <div class="d-flex">
+                <div class="group col-sm-12 select-without-label" style="margin-top: 5px;">
+                    <p class="" style="margin-bottom: 0;">Privacy </p>
+                    <div class="mg-b10">
+                        <select aria-placeholder="Select" formControlName="privacy">
+                            <option value="" disabled>Select</option>
+                            <option [value]="pp" *ngFor="let pp of privacy">{{pp}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-start">
+            <div class="flex-width w-100">
+                <div class="group col-sm-12 select-without-label">
+                    <p style="min-height: 25px;margin-bottom: 0;">Are you interested in
+                        taking a Gap Year or
+                        a Summer Program? <span style="color: #f00;">*</span></p>
+                       
+                    <div class="mg-b10">
+                        <select aria-placeholder="Select" formControlName="interested_in_gap">
+                            <option value="" disabled selected>Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="I am thinking about it">I am thinking about it</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="selectdiv">
+        <hr>
+        <span>Privacy:
+            <select  formControlName="privacy">
+                <option value="" disabled>Select</option>
+                <option [value]="pp" *ngFor="let pp of privacy">{{pp}}</option>
+            </select>
+        </span>
+    </div> -->
+    <div class="btn-wrapper">
+        <button class="backbutton" (click)="onFormBack()">Back</button>
+        <div>
+            <button (click)="onSubmitForm(false)" class="savebtn">Save and Complete later</button>
+            <button (click)="onSubmitForm(true)" class="submitbutton">SAVE AND CONTINUE</button>
+        </div>
+    </div>
+</div>

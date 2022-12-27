@@ -1,0 +1,33 @@
+<app-nav-bar></app-nav-bar>
+<app-common-conferences [showRecords]="showRecords"></app-common-conferences>
+<!-- <div class="tabs-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let conference of conferences;">
+                <div class="webinar-box" (click)="openModal(videoModal, conference)">
+                    <div class="webinar-image-box">
+                        <img [src]="commonService.imagePathMaker(conference.image, '/assets/images/resources/internatinal-students.png')" alt="Conference Image">
+                        <button type="button" class="play-button-image"><img class="play-btn" src="/assets/images/resources/play.svg"
+                alt="Video play"></button>
+                    </div>
+                    <div class="webinar-content-box">
+                        <a class="post-title webinar-title" href="javascript:void(0)">{{conference.title}}</a>
+                        <p class="post-description webinar-desc">{{conference.short_description}}</p>
+                        <p class="tags-box"><span class="article-tags" *ngFor="let tag of conference.tags">{{tag}}</span></p>
+                        <p class="posted-date">POSTED ON <span>{{conference.updatedAt | date}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #videoModal>
+    <div class="modal-form-wrap">
+        <button type="button" class="close-button" (click)="modalRef.hide()"><img
+            src="/assets/images/on-boarding/cross-button.png"></button>
+        <div class="form-box">
+            <iframe [src]="conferenceVideoUrl" style="border: 0;" allow="fullscreen" data-mce-fragment="1">
+     </iframe>
+        </div>
+    </div>
+</ng-template> -->

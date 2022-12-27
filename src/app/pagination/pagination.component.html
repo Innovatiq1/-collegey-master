@@ -1,0 +1,46 @@
+<ul *ngIf="pager.pages && pager.pages.length && count > limit" class="pagination">
+    <li
+      [ngClass]="{ disabled: pager.currentPage === 1 }"
+      class="page-item first-item pointer"
+    >
+      <a (click)="setPage(1)" class="page-link pointer">
+        <span class="fa fa-step-backward"></span>
+      </a>
+    </li>
+  
+    <li
+      [ngClass]="{ disabled: pager.currentPage === 1 }"
+      class="page-item previous-item pointer re-mr-right"
+    >
+      <a (click)="setPage(pager.currentPage - 1)" class="page-link">
+        <span class="fa fa-chevron-left"></span>
+      </a>
+    </li>
+  
+    <li
+      *ngFor="let page of pager.pages"
+      [ngClass]="{ active: pager.currentPage === page }"
+      class="page-item number-item pointer re-number"
+    >
+      <a (click)="setPage(page)" class="page-link pointer">{{ page }}</a>
+    </li>
+  
+    <li
+      [ngClass]="{ disabled: pager.currentPage === pager.totalPages }"
+      class="page-item next-item pointer re-mr-left"
+    >
+      <a (click)="setPage(pager.currentPage + 1)" class="page-link">
+        <span class="fa fa-chevron-right"></span>
+      </a>
+    </li>
+  
+    <li
+      [ngClass]="{ disabled: pager.currentPage === pager.totalPages }"
+      class="page-item last-item pointer"
+    >
+      <a (click)="setPage(pager.totalPages)" class="page-link pointer">
+        <span class="fa fa-step-forward"></span>
+      </a>
+    </li>
+  </ul>
+  

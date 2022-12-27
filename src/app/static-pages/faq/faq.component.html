@@ -1,0 +1,27 @@
+<section class="resources-wrap">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="col-md-12 col-sm-12 terms-header">
+                <!-- <h1>Collegey Help Center / FAQs</h1> -->
+                <h1 style="display: none;">Frequently Asked Questions</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row thanks-div">
+                <div class="col-sm-12 category-tree" *ngFor="let recipient of faqData">
+                    <div *ngIf="recipient?.faqdata.length > 0">
+                        <div style="color:#3F89FC" class="main-link text-center">{{recipient?.name}}</div>
+                        <ngb-accordion #acc="ngbAccordion" *ngFor="let quesdata of recipient?.faqdata">
+                            <ngb-panel *ngIf="quesdata?.active == true" class="text-center" id="toggle-1"
+                                title={{quesdata.ques}}>
+                                <ng-template ngbPanelContent>
+                                    {{quesdata.answer}}
+                                </ng-template>
+                            </ngb-panel>
+                        </ngb-accordion>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

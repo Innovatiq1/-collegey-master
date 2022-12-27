@@ -1,0 +1,101 @@
+<div class="modal-form-wrap">
+    <!-- <button type="button" class="close-button" (click)="bsModalRef.hide()"><img
+      src="/assets/images/on-boarding/cross-button.png"></button> -->
+    <div class="modal-form-header">
+        <p>Share any writing sample, essays or any of your published or in-progress work that you wish to share</p>
+    </div>
+    <form [formGroup]="writingSampleForm" *ngIf="writingSampleForm">
+        <div class="modal-form-body" formGroupName="writing_sample">
+            <div class="form-box">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group fields">
+                            <label class="field-label" for="projectTitle">Do you have any writing samples?<span
+                                    style="color: #f00;">*</span></label>
+                            <ng-select class="educationType" name="educationType" (ngModelChange)="valuechange3($event)"
+                                formControlName="answer" placeholder="Select" [searchable]="false"
+                                (change)="onSelectEducationType($event)">
+                                <ng-option value="Yes">Yes</ng-option>
+                                <ng-option value="No">No</ng-option>
+                                <ng-option value="I am thinking about it">I am thinking about it</ng-option>
+                            </ng-select>
+                            <span id="citierror1" style="color: red;"> {{ sample_error }}</span>
+                        </div>
+
+                    </div>
+
+                    <ng-container *ngIf="writingSampleForm.get('writing_sample').get('answer').value == 'Yes' || 
+                    writingSampleForm.get('writing_sample').get('answer').value == 'Am thinking about it'">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group fields">
+                                <input type="text" formControlName="title" (ngModelChange)="valuechange($event)"
+                                    class="form-control field-control" placeholder=" EnterTitle">
+                            </div>
+                            <span id="citierror1" style="color: red;"> {{ title_error }}</span>
+                        </div>
+
+                    </ng-container>
+
+                </div>
+                <div style="display:block;" *ngIf="writingSampleForm.get('writing_sample').get('answer').value == 'Yes' || 
+                writingSampleForm.get('writing_sample').get('answer').value == 'Am thinking about it'">
+                    <div class="form-group fields">
+                        <label class="field-label" for="description">Add Description<span
+                                style="color: #f00;">*</span></label>
+                        <textarea class="form-control textarea-field" id="description"
+                            (ngModelChange)="valuechange1($event)" placeholder="Tell us about your project..."
+                            formControlName="description"></textarea>
+                    </div>
+                    <span id="citierror1" style="color: red;"> {{ description_error }}</span>
+
+                    <div class="row">
+                        <app-document-upload [documentList]="documentList" (ngModelChange)="valuechange2($event)"
+                            (onFileUploadSuccess)="onFileUpload($event)">
+                        </app-document-upload>
+                        <!-- <span id="citierror1" style="color: red;"> {{ file_error }}</span> -->
+
+                    </div>
+                </div>
+                <div style="display:block;" *ngIf="writingSampleForm.get('writing_sample').get('answer').value == 'No' || 
+                writingSampleForm.get('writing_sample').get('answer').value == 'Am thinking about it'">
+                    <div class="form-group fields">
+                        <label class="field-label" for="description">Add Description<span
+                                style="color: #f00;">*</span></label>
+                        <textarea class="form-control textarea-field" id="description"
+                            (ngModelChange)="valuechange1($event)" placeholder="Tell us about your project..."
+                            formControlName="description"></textarea>
+                    </div>
+                    <span id="citierror1" style="color: red;"> {{ description_error }}</span>
+
+                    <!-- <div class="row">
+                        <app-document-upload [documentList]="documentList"  (ngModelChange)="valuechange2($event)"(onFileUploadSuccess)="onFileUpload($event)">
+                        </app-document-upload>
+                        
+                    </div> -->
+                </div>
+                <div style="display:block;" *ngIf="writingSampleForm.get('writing_sample').get('answer').value == 'I am thinking about it' || 
+                writingSampleForm.get('writing_sample').get('answer').value == 'Am thinking about it'">
+                    <div class="form-group fields">
+                        <label class="field-label" for="title">Add Tentative Topic<span
+                                style="color: #f00;">*</span></label>
+                        <textarea class="form-control textarea-field" id="title" (ngModelChange)="valuechange($event)"
+                            placeholder="Add Tentative Topic..." formControlName="title"></textarea>
+                    </div>
+                    <span id="citierror1" style="color: red;"> {{ title_error }}</span>
+
+                    <!-- <div class="row">
+                        <app-document-upload [documentList]="documentList"  (ngModelChange)="valuechange2($event)"(onFileUploadSuccess)="onFileUpload($event)">
+                        </app-document-upload>
+                        
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="modal-form-footer">
+            <div class="btn-wrapper">
+                <button class="backbutton" (click)="bsModalRef.hide()">Cancel</button>
+                <button class="submitbutton" type="submit" (click)="onSubmitForm()">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

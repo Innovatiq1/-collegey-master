@@ -1,0 +1,882 @@
+<div class="container first-section1 p-3" *ngIf="showCompleteProfile" style="text-align: center !important;">
+    <span>
+        Don’t complete this now if you don’t have the time! Pros on competition: You’ll get a better experience & get
+        what you truly need from Collegey! &nbsp;&nbsp; &nbsp;&nbsp;
+        <a [routerLink]="['/student/profile']" class="btn btn-sm btn-primary">
+            <strong> YES </strong>
+        </a>
+    </span> &nbsp;&nbsp; &nbsp;&nbsp;
+    <span (click)="hideCompleteProfile()" class="btn btn-sm btn-danger">
+        <strong> NO </strong>
+    </span>
+</div>
+<div class="container first-section">
+
+    <div class="terms-header" style="background-image: url({{CurrentBanner}});">
+        <!-- <div class="banner-upload">
+            <label class="mb-0" (click)="openAddBannerDialog(openAddBannerimage)">
+                <img src="assets/images/camera--v2.png" />
+            </label>
+        </div> -->
+    </div>
+
+    <div class="student-info">
+        <div class="student-info-profile">
+
+            <div class="mentorprofile_image">
+                <!-- <app-global-profile-upload [redBorderImage]="true"></app-global-profile-upload> -->
+                <div style="position: relative;">
+
+                    <img class="default-profile" [src]="profileInfo.avatar ?commonService.imagePathS3(profileInfo.avatar)  : 'assets/images/user-icon.png'" class="user-img"
+                        alt="profile picture" alt="student profile picture">
+                
+                    <!-- <div class="file-input">
+                        <input #Image type="file" name="file-input" accept=".png,.jpeg,.jpg" id="file-input"
+                            class="file-input__input" />
+                        <label class="file-input__label" for="file-input">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                                viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                                <g>
+                                    <path xmlns="http://www.w3.org/2000/svg"
+                                        d="m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0"
+                                        fill="#ff971a" data-original="#2196f3" class="" />
+                                    <path xmlns="http://www.w3.org/2000/svg"
+                                        d="m368 277.332031h-90.667969v90.667969c0 11.777344-9.554687 21.332031-21.332031 21.332031s-21.332031-9.554687-21.332031-21.332031v-90.667969h-90.667969c-11.777344 0-21.332031-9.554687-21.332031-21.332031s9.554687-21.332031 21.332031-21.332031h90.667969v-90.667969c0-11.777344 9.554687-21.332031 21.332031-21.332031s21.332031 9.554687 21.332031 21.332031v90.667969h90.667969c11.777344 0 21.332031 9.554687 21.332031 21.332031s-9.554687 21.332031-21.332031 21.332031zm0 0"
+                                        fill="#fafafa" data-original="#fafafa" />
+                                </g>
+                            </svg>
+                        </label>
+                    </div> -->
+                </div>
+            </div>
+            
+            <div>
+                <h5>{{profileInfo.name}}</h5>
+                <!-- <p *ngIf="MentorProfileInfo.location" class="location"><img src="assets/images/location.svg" width="11"
+                        height="13" alt="" style="margin-right: 7px;"><span
+                        *ngIf="MentorProfileInfo.location">{{MentorProfileInfo.location}},</span>
+                    <span *ngIf="dashboard.profile[0].stateObj">{{dashboard?.profile[0]?.stateObj}}, </span>
+                    {{dashboard?.profile[0]?.countryObj && dashboard?.profile[0]?.countryObj}}
+                </p> -->
+            </div>
+        </div>
+
+        <!-- <a class="share-profile">SHARE YOUR PROFILE</a> -->
+        <div class="fb-share-button"
+            data-href="https://blogs.worldbank.org/eastasiapacific/indonesia-has-passed-100-million-covid-19-vaccine-doses-what-can-we-learn"
+            data-layout="button" data-size="large">
+            <!-- <a (click)="showShareProfile()" href="javascript:;" class="fb-xfbml-parse-ignore share-profile">SHARE YOUR
+                PROFILE</a> -->
+            <div ngbDropdown class="d-inline-block">
+                <a class="fb-xfbml-parse-ignore share-profile" ngbDropdownToggle>SHARE YOUR PROFILE</a>
+                <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic01">
+                    <a class="buttons" (click)="goToLink('https://www.facebook.com/sharer/sharer.php?u=')"> <i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+                    <a class="buttons" (click)="goToLinkedin('https://www.linkedin.com/shareArticle?mini=true&url=')" > <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin</a>
+                    <a class="buttons" (click)="goToTwit('https://wa.me/?text=')"> <i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp</a>
+                    <a class="buttons" (click)="CopyClipboardUrl()"> <i class="fa fa-link" aria-hidden="true"></i> Copy Url</a>
+                </div>
+            </div>
+   
+        </div>
+    </div>
+    <div class="dashboard-menu">
+        <ul>
+            <li>
+                <a [routerLinkActiveOptions]="{ exact: true }" [routerLinkActive]="['active']"
+                    [routerLink]="['/student-dashboard/$']">
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/feed']">
+                    Collegey Feed
+                </a>
+            </li>
+            <li>
+                <!-- <a [routerLink]="['/student-dashboard/$/academy']">
+                    Academy <img src="assets/images/arrow-down-sign-to-navigate.svg" width="7" style="margin-left:10px"
+                        alt="">
+                </a> -->
+                <div ngbDropdown class="d-inline-block">
+                    <a [routerLinkActive]="['active']" [class.parentLink]="isActive==true" id="academyLink"
+                        [routerLink]="['/student-dashboard/$/blogs']">
+                        Academy
+                    </a>
+                    <button id="dropdownBasic1" ngbDropdownToggle></button>
+                    <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic1">
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [routerLink]="['/student-dashboard/$/blogs']">
+                            Blogs
+                        </a>
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [routerLink]="['/student-dashboard/$/vlog']">
+                            Vlogs
+                        </a>
+                        <a [routerLinkActive]="['active']" ngbDropdownItem
+                            [routerLink]="['/student-dashboard/$/Programs']">
+                            Programs
+                        </a>
+                        <a [routerLinkActive]="['active']" ngbDropdownItem
+                            [routerLink]="['/student-dashboard/$/course']">
+                            Courses
+                        </a>
+                        <a [routerLinkActive]="['active']" ngbDropdownItem
+                        [routerLink]="['/student-dashboard/$/store']">
+                        Collegey Store <span style="color: red; font-size: small;">(Upcoming)</span>
+                    </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/qaforms']">
+                    Q&A Form
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/events']">
+                    Events
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/mentor']">
+                    Mentor
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/mentor-chat']">
+                    Mentor Chat
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" (click)="msgcollegey(testimonail)">
+                    Share Testimonial
+                </a>
+            </li>
+            <li>
+                <a class="dark">
+                    <a [routerLinkActive]="['active']">
+                        Universities
+                    </a>
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/news-resource']">
+                    News & Resources
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row profile-details-wrap">
+        <div class="col-lg-9 profile-space">
+            <div class="profile-detail-main">
+                <!-- <div class="profile-details-header">
+                    <h1>Mentor</h1>
+                    <a *ngIf="isPublic == false" [routerLink]="['/student/profile']">EDIT</a>
+                </div> -->
+
+                <div class="personal-profile personal-profile-custom-space">  
+                    <div class="personal-contact-details">
+                        <div class="information ins">
+                            <h1>Mentor Profile</h1>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Full Legal Name:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.fullLegalName}}</span></h3>
+                             </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Country: &nbsp; <span style="font-weight: 400;">{{countryName}}</span></h3>
+                                <!-- <select required="required" value="{{MentorProfileInfo?.country}}" (change)="onSelectCountry($event)">
+                                    <option value="">Select Country*</option>
+                                    <option [value]="countr.id" *ngFor="let countr of countries">{{countr.name}}</option>
+                                </select>
+                          -->
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">State: &nbsp; <span style="font-weight: 400;">{{stateName}}</span></h3>
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">City:  &nbsp;<span style="font-weight: 400;">{{cityName}}</span></h3>
+
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Time Zone:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.timezone}}</span></h3>
+
+  
+                                
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Profissional Title:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.professionalTitle}}</span></h3>
+                                    </div>         
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Website:  &nbsp;<a style="font-weight: 400;" href="MentorProfileInfo?.website">{{MentorProfileInfo?.website}}</a></h3>
+                     
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Experience: &nbsp; <span style="font-weight: 400;">{{MentorProfileInfo?.experience}}</span></h3>
+                                
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Last Education Institute: &nbsp; <span style="font-weight: 400;">{{MentorProfileInfo?.lastEducationalInstitutionAttended}}</span></h3>
+
+                                
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight:600;font-size: 16px;">Last Education Degree: &nbsp; <span style="font-weight: 400;">{{MentorProfileInfo?.lastCollegeDegree}}</span></h3>
+                                                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Industry:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.industry}}</span></h3>
+                                                      </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Other Industry:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.other_industry}}</span></h3>
+     
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 500;font-size: 16px;">Expertise:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.expertise}}</span></h3>
+
+                                                         </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight:600;font-size: 16px;">Other Expertise:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.other_expertise}}</span></h3>
+
+                                
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Interests: &nbsp; <span style="font-weight: 400;">{{MentorProfileInfo?.interest}}</span></h3>
+                                
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Other Interest:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.other_interest}}</span></h3>
+                                
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">Where We Can Help?:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.can_help}}</span></h3>
+       
+                                
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight:600;font-size: 16px;">Favorite Book: &nbsp; <span style="font-weight: 400;">{{MentorProfileInfo?.favBooks}}</span></h3>
+                                
+                            </div>
+                            
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">LinkedIn:  &nbsp;<a style="font-weight: 400;" href="MentorProfileInfo?.linkedIn">{{MentorProfileInfo?.linkedIn}}</a></h3>
+                                
+                            </div>
+                            <div class="personal-information" style="padding: 15px;">
+                                <h3 style="font-weight: 600;font-size: 16px;">About Yourself:  &nbsp;<span style="font-weight: 400;">{{MentorProfileInfo?.aboutYou}}</span></h3>
+                     
+                                
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="personal-profile personal-profile-custom-space">  
+                    <div class="personal-contact-details">
+                        <div class="information ins">
+                            <h1>Office Hours</h1>
+                            <div *ngFor="let ele of MentorProfileInfoHours; let i = index">
+                            <div class="personal-information">
+                                <h3>{{ele.days}}</h3>
+                                <input type="text"  disabled="true"value="{{ele.start_time}}" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="start_time">
+                                <label>To</label>
+                            <input type="text"  disabled="true" value="{{ele.end_time}}" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="end_time">
+                            <span *ngIf="ele.closed=='true'">    
+                                <label for=""> <input type="checkbox"  disabled="true"checked="true" name="closed" value="{{ele.closed}}" formControlName="closed" value="">Closed</label>
+                            </span>
+                            <span *ngIf="ele.closed=='false'">    
+                                <label for=""> <input type="checkbox"  disabled="true" name="closed" value="{{ele.closed}}" formControlName="closed" value="">Closed</label>
+                            </span>
+                            </div>
+                            <!-- <div class="personal-information">
+                                <h3>Tuesday</h3>
+                                <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="start_time">
+                                <label>To</label>
+                            <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="end_time">
+                            <span>    
+                                <label for=""> <input type="checkbox" name="closed" formControlName="closed" value="">Closed</label>
+                            </span>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Wednesday</h3>
+                                <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="start_time">
+                                <label>To</label>
+                            <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="end_time">
+                            <span>    
+                                <label for=""> <input type="checkbox" name="closed" formControlName="closed" value="">Closed</label>
+                            </span>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Thursday</h3>
+                                <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="start_time">
+                                <label>To</label>
+                            <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="end_time">
+                            <span>    
+                                <label for=""> <input type="checkbox" name="closed" formControlName="closed" value="">Closed</label>
+                            </span>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Friday</h3>
+                                <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="start_time">
+                                <label>To</label>
+                            <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="end_time">
+                            <span>    
+                                <label for=""> <input type="checkbox" name="closed" formControlName="closed" value="">Closed</label>
+                            </span>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Saturday</h3>
+                                <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="start_time">
+                                <label>To</label>
+                            <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="end_time">
+                            <span>    
+                                <label for=""> <input type="checkbox" name="closed" formControlName="closed" value="">Closed</label>
+                            </span>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Sunday</h3>
+                                <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="start_time">
+                                <label>To</label>
+                            <input type="text" class="form-control d-inline-block w-auto"  style="height: 29px;" formControlName="end_time">
+                            <span>    
+                                <label for=""> <input type="checkbox" name="closed" formControlName="closed" value="">Closed</label>
+                            </span>
+                            </div> -->
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #openAddBannerimage>
+    <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+    <div class="banner-selection-modal">
+        <div class="project-modal-tabs">
+            <h3 class="pro_title">Add cover photo</h3>
+            <ngb-tabset>
+                <ngb-tab title="Default Covers">
+                    <ng-template ngbTabContent>
+                        <div class="liststdiv">
+
+                            <div *ngFor="let listdafault of listdafaultBanner; let i=index;"
+                                (click)="choiceUserBannerImage(i,'default',listdafault._id)" 
+                                class="listst"
+                            >
+                                <img src="{{listdafault?.imagePath}}" />
+                                <!-- <span class="re-name">Cover Pic {{i+1}}</span> -->
+                            </div>
+                            
+                            <div *ngFor="let listbanner of AllbannerImage; let i=index;"
+                                (click)="choiceUserBannerImage(i,'userbanner',null)"
+                                [ngClass]="listbanner.active === true ? 'listst re-active' : 'listst'">
+                                <img src="{{listbanner?.image}}" />
+                                <!-- <span class="re-name">Cover Pic {{i+1}}</span> -->
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Upload">
+                    <ng-template ngbTabContent>
+                        <div class="dragdropdiv">
+                            <!-- <div class="re-drag-txt1">Drag photo here</div> -->
+                            <div ngx-dropzone [accept]="'.png,.jpeg,.jpg'" (change)="onSelectBanner($event)">
+                                <ngx-dropzone-label>
+                                    <span class="re-drag-txt1">Drag photo here</span>
+                                    <span class="re-drag-txt2">Or if your prefer to</span>
+                                    <span class="re-drag-txt3">CHOOSE FROM SYSTEM </span>
+                                </ngx-dropzone-label>
+                                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+                                    [file]="f" [removable]="true" (removed)="onRemoveBanner(f)">
+                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                </ngx-dropzone-image-preview>
+                            </div>
+                            <div class="size_note">Note: Please upload file around image size 1200 x 190</div>
+                        </div>
+                        <div class="schedule-event-action">
+                            <button type="button" (click)="modalRef.hide()" class="cancel-btn">Cancel</button>
+                            <button class="submit-btn" (click)="addUserBannerData()">Submit</button>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+</ng-template>
+
+<!-- <app-mentor-globaldashboard></app-mentor-globaldashboard> -->
+<!-- <div class="lead-form-wrapper">
+    <div class="lead-form container">
+        <p class="steps-login">1 of 3</p>
+        <p class="heading">Mentors Profile</p>
+        <form class="login-form row profileFormGroup" [formGroup]="profileFormGroup" method="post" novalidate>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" value="" required="required" formControlName="fullLegalName" />
+                    <label>Full Legal Name*</label>
+                </div>
+                <span *ngIf="submittedProfile && hasError('fullLegalName','required')"
+                    class="alert-danger d-block p-1 text-center">Name is required</span>
+            </div>
+
+          
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Country*</label>
+                    <select required="required" formControlName="country" (change)="onSelectCountry($event)">
+                        <option value="">Select Country*</option>
+                        <option [value]="countr.id" *ngFor="let countr of countries">{{countr.name}}</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('country','required')"
+                    class="alert-danger d-block p-1 text-center">Country is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">State*</label>
+                    <select required="required" formControlName="state" (change)="onSelectState($event)">
+                        <option value="">Select State*</option>
+                        <option [value]="state.id" *ngFor="let state of states">{{state.name}}</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('state','required')"
+                    class="alert-danger d-block p-1 text-center">State is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">City*</label>
+                    <select required="required" formControlName="city" (change)="onSelectCity($event)">
+                        <option value="">Select City*</option>
+                        <option [value]="city.id" *ngFor="let city of cities">{{city.name}}</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('city','required')"
+                    class="alert-danger d-block p-1 text-center">City is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Time Zone*</label>
+                    <select required="required" formControlName="timezone">
+                        <option value="">Select time zone</option>
+                        <option *ngFor="let item of timeZoneList | keyvalue" value="{{item.key}}">{{item.value}}
+                        </option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('timezone','required')"
+                    class="alert-danger d-block p-1 text-center">Time Zone is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="professionalTitle" />
+                    <label>Professional Title*</label>
+                </div>
+                <span *ngIf="submittedProfile && hasError('professionalTitle','required')"
+                    class="alert-danger d-block p-1 text-center">is required</span>
+            </div>
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="website" />
+                    <label>Website*</label>
+                </div>
+                <span *ngIf="submittedProfile && hasError('website','required')"
+                    class="alert-danger d-block p-1 text-center">website is required</span>
+            </div>
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Experience*</label>
+                    <select required="required" formControlName="experience">
+                        <option value="">Select Experience</option>
+                        <option value="{{experience_list}}"
+                            *ngFor="let experience_list of mentorExperience; let i=index;">{{experience_list}}</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('experience','required')"
+                    class="alert-danger d-block p-1 text-center">experience is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="lastEducationalInstitutionAttended" />
+                    <label>Last Education Institute*</label>
+                </div>
+                <span *ngIf="submittedProfile && hasError('lastEducationalInstitutionAttended','required')"
+                    class="alert-danger d-block p-1 text-center">is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Last Education Degree*</label>
+                    <select required="required" formControlName="lastCollegeDegree">
+                        <option value="">Select Collage Degree</option>
+                        <option value="Bachelor Degrees">Bachelor Degrees</option>
+                        <option value="Graduate Degrees">Graduate Degrees</option>
+                        <option value="Master Degrees">Master Degrees</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('lastCollegeDegree','required')"
+                    class="alert-danger d-block p-1 text-center">Collage Degree is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Industry*</label>
+                    <select required="required" formControlName="industry" (change)="onChangeSomeTypes($event)">
+                        <option value="">Select industry</option>
+                        <option value="Industry">Industry</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Airlines/Aviation">Airlines/Aviation</option>
+                        <option value="Alternative Dispute Resolution">Alternative Dispute Resolution</option>
+                        <option value="Alternative Medicine">Alternative Medicine</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Apparel/Fashion">Apparel/Fashion</option>
+                        <option value="Architecture/Planning">Architecture/Planning</option>
+                        <option value="Arts/Crafts">Arts/Crafts</option>
+                        <option value="Automotive">Automotive</option>
+                        <option value="Aviation/Aerospace">Aviation/Aerospace</option>
+                        <option value="Banking/Mortgage">Banking/Mortgage</option>
+                        <option value="Biotechnology/Greentech">Biotechnology/Greentech</option>
+                        <option value="Broadcast Media">Broadcast Media</option>
+                        <option value="Building Materials">Building Materials</option>
+                        <option value="Business Supplies/Equipment">Business Supplies/Equipment</option>
+                        <option value="Capital Markets/Hedge Fund/Private Equity">Capital Markets/Hedge Fund/Private Equity</option>
+                        <option value="Chemicals">Chemicals</option>
+                        <option value="Civic/Social Organization">Civic/Social Organization</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Commercial Real Estate">Commercial Real Estate</option>
+                        <option value="Computer Games">Computer Games</option>
+                        <option value="Computer Hardware">Computer Hardware</option>
+                        <option value="Computer Networking">Computer Networking</option>
+                        <option value="Computer Software/Engineering">Computer Software/Engineering</option>
+                        <option value="Computer/Network Security">Computer/Network Security</option>
+                        <option value="Construction">Construction</option>
+                        <option value="Consumer Electronics">Consumer Electronics</option>
+                        <option value="Consumer Goods">Consumer Goods</option>
+                        <option value="Consumer Services">Consumer Services</option>
+                        <option value="Cosmetics">Cosmetics</option>
+                        <option value="Dairy">Dairy</option>
+                        <option value="Defense/Space">Defense/Space</option>
+                        <option value="Design">Design</option>
+                        <option value="E-Learning">E-Learning</option>
+                        <option value="Education Management">Education Management</option>
+                        <option value="Electrical/Electronic Manufacturing">Electrical/Electronic Manufacturing</option>
+                        <option value="Entertainment/Movie Production">Entertainment/Movie Production</option>
+                        <option value="Environmental Services">Environmental Services</option>
+                        <option value="Events Services">Events Services</option>
+                        <option value="Executive Office">Executive Office</option>
+                        <option value="Facilities Services">Facilities Services</option>
+                        <option value="Farming">Farming</option>
+                        <option value="Financial Services">Financial Services</option>
+                        <option value="Fine Art">Fine Art</option>
+                        <option value="Fishery">Fishery</option>
+                        <option value="Food Production">Food Production</option>
+                        <option value="Food/Beverages">Food/Beverages</option>
+                        <option value="Fundraising">Fundraising</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Gambling/Casinos">Gambling/Casinos</option>
+                        <option value="Glass/Ceramics/Concrete">Glass/Ceramics/Concrete</option>
+                        <option value="Government Administration">Government Administration</option>
+                        <option value="Government Relations">Government Relations</option>
+                        <option value="Graphic Design/Web Design">Graphic Design/Web Design</option>
+                        <option value="Automotive">Health/Fitness</option>
+                        <option value="Health/Fitness">Automotive</option>
+                        <option value="Higher Education/Acadamia">Higher Education/Acadamia</option>
+                        <option value="Hospital/Health Care">Hospital/Health Care</option>
+                        <option value="Hospitality">Hospitality</option>
+                        <option value="Human Resources/HR">Human Resources/HR</option>
+                        <option value="Import/Export">Import/Export</option>
+                        <option value="Individual/Family Services">Individual/Family Services</option>
+                        <option value="Industrial Automation">Industrial Automation</option>
+                        <option value="Information Services">Information Services</option>
+                        <option value="Information Technology/IT">Information Technology/IT</option>
+                        <option value="Insurance">Insurance</option>
+                        <option value="International Affairs">International Affairs</option>
+                        <option value="International Trade/Development">International Trade/Development</option>
+                        <option value="Internet">Internet</option>
+                        <option value="Investment Banking/Venture">Investment Banking/Venture</option>
+                        <option value="Investment Management/Hedge Fund/Private Equity">Investment Management/Hedge Fund/Private Equity</option>
+                        <option value="Judiciary">Judiciary</option>
+                        <option value="Law Enforcement">Law Enforcement</option>
+                        <option value="Law Practice/Law Firms">Law Practice/Law Firms</option>
+                        <option value="Legal Services">Legal Services</option>
+                        <option value="Legislative Office">Legislative Office</option>
+                        <option value="Leisure/Travel">Leisure/Travel</option>
+                        <option value="Library">Library</option>
+                        <option value="Logistics/Procurement">Logistics/Procurement</option>
+                        <option value="Luxury Goods/Jewelry">Luxury Goods/Jewelry</option>
+                        <option value="Machinery">Machinery</option>
+                        <option value="Management Consulting">Management Consulting</option>
+                        <option value="Maritime">Maritime</option>
+                        <option value="Market Research">Market Research</option>
+                        <option value="Marketing/Advertising/Sales">Marketing/Advertising/Sales</option>
+                        <option value="Mechanical or Industrial Engineering">Mechanical or Industrial Engineering</option>
+                        <option value="Media Production">Media Production</option>
+                        <option value="Medical Equipment">Medical Equipment</option>
+                        <option value="Medical Practice">Medical Practice</option>
+                        <option value="Mental Health Care">Mental Health Care</option>
+                        <option value="Military Industry">Military Industry</option>
+                        <option value="Mining/Metals">Mining/Metals</option>
+                        <option value="Motion Pictures/Film">Motion Pictures/Film</option>
+                        <option value="Museums/Institutions">Museums/Institutions</option>
+                        <option value="Music">Music</option>
+                        <option value="Nanotechnology">Nanotechnology</option>
+                        <option value="Newspapers/Journalism">Newspapers/Journalism</option>
+                        <option value="Non-Profit/Volunteering">Non-Profit/Volunteering</option>
+                        <option value="Oil/Energy/Solar/Greentech">Oil/Energy/Solar/Greentech</option>
+                        <option value="Online Publishing">Online Publishing</option>
+                        <option value="Outsourcing/Offshoring">Outsourcing/Offshoring</option>
+                        <option value="Package/Freight Delivery">Package/Freight Delivery</option>
+                        <option value="Packaging/Containers">Packaging/Containers</option>
+                        <option value="Paper/Forest Products">Paper/Forest Products</option>
+                        <option value="Performing Arts">Performing Arts</option>
+                        <option value="Pharmaceuticals">Pharmaceuticals</option>
+                        <option value="Philanthropy">Philanthropy</option>
+                        <option value="Photography">Photography</option>
+                        <option value="Plastics">Plastics</option>
+                        <option value="Political Organization">Political Organization</option>
+                        <option value="Primary/Secondary Education">Primary/Secondary Education</option>
+                        <option value="Printing">Printing</option>
+                        <option value="Professional Training">Professional Training</option>
+                        <option value="Program Development">Program Development</option>
+                        <option value="Public Relations/PR">Public Relations/PR</option>
+                        <option value="Public Safety">Public Safety</option>
+                        <option value="Publishing Industry">Publishing Industry</option>
+                        <option value="Railroad Manufacture">Railroad Manufacture</option>
+                        <option value="Ranching">Ranching</option>
+                        <option value="Real Estate/Mortgage">Real Estate/Mortgage</option>
+                        <option value="Recreational Facilities/Services">Recreational Facilities/Services</option>
+                        <option value="Religious Institutions">Religious Institutions</option>
+                        <option value="Renewables/Environment">Renewables/Environment</option>
+                        <option value="Research Industry">Research Industry</option>
+                        <option value="Restaurants">Restaurants</option>
+                        <option value="Retail Industry">Retail Industry</option>
+                        <option value="Security/Investigations">Security/Investigations</option>
+                        <option value="Semiconductors">Semiconductors</option>
+                        <option value="Shipbuilding">Shipbuilding</option>
+                        <option value="Sporting Goods">Sporting Goods</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Staffing/Recruiting">Staffing/Recruiting</option>
+                        <option value="Supermarkets">Supermarkets</option>
+                        <option value="Telecommunications">Telecommunications</option>
+                        <option value="Textiles">Textiles</option>
+                        <option value="Think Tanks">Think Tanks</option>
+                        <option value="Tobacco">Tobacco</option>
+                        <option value="Translation/Localization">Translation/Localization</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Venture Capital/VC">Venture Capital/VC</option>
+                        <option value="Veterinary">Veterinary</option>
+                        <option value="Warehousing">Warehousing</option>
+                        <option value="Wholesale">Wholesale</option>
+                        <option value="Wine/Spirits">Wine/Spirits</option>
+                        <option value="Wireless">Wireless</option>
+                        <option value="Writing/Editing">Writing/Editing</option>
+                        <option value="other_industry">Other Industry</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('industry','required')"
+                    class="alert-danger d-block p-1 text-center">Industry is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3" *ngIf="showotherIndustry">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="other_industry" />
+                    <label>Other Industry</label>
+                </div>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Expertise*</label>
+                    <select required="required" formControlName="expertise" (change)="onChangeSomeTypes($event)">
+                        <option value="">Select Expertise</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="other_expertise">Other Expertise</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('expertise','required')"
+                    class="alert-danger d-block p-1 text-center">Expertise is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3" *ngIf="showotherExpertise">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="other_expertise" />
+                    <label>Other Expertise</label>
+                </div>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label>Interest*</label>
+                    <label class="form-label">Interest*</label>
+                    <select required="required" formControlName="interest" (change)="onChangeSomeTypes($event)">
+                        <option value="">Select Interest</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Social Innovation & Social Entrepreneurship">Social Innovation & Social Entrepreneurship</option>
+                        <option value="Arts & Humanities">Arts & Humanities</option>
+                        <option value="Design">Design</option>
+                        <option value="Creative Arts">Creative Arts</option>
+                        <option value="Environment">Environment</option>
+                        <option value="Social Impact">Social Impact</option>
+                        <option value="Communication & Marketing">Communication & Marketing</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Mental Models">Mental Models</option>
+                        <option value="Public Policy">Public Policy</option>
+                        <option value="Design Thinking">Design Thinking</option>
+                        <option value="AI">AI</option>
+                        <option value="AR & VR">AR & VR</option>
+                        <option value="Civic Engagement">Civic Engagement</option>
+                        <option value="Interfaith">Interfaith</option>
+                        <option value="Empathy & Compassion">Empathy & Compassion</option>
+                        <option value="Intercultural Communication">Intercultural Communication</option>
+                        <option value="Research">Research</option>
+                        <option value="Education">Education</option>
+                        <option value="Public Diplomacy">Public Diplomacy</option>
+                        <option value="Wellbeing & Mindfulness">Wellbeing & Mindfulness</option>
+                        <option value="other_interest">Other</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('interest','required')"
+                    class="alert-danger d-block p-1 text-center">Interest is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3" *ngIf="showotherInterest">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="other_interest" />
+                    <label>Other Interest</label>
+                </div>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Where We Can Help?*</label>
+                    <select required="required" formControlName="can_help" name="can_help">
+                        <option value="">Select</option>
+                        <option value="2">Project Management</option>
+                        <option value="1">Job Shadowing</option>
+                        <option value="1">Making a career change</option>
+                        <option value="1">Resume/CV critique</option>
+                        <option value="1">Making Professional Introductions</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('can_help','required')"
+                    class="alert-danger d-block p-1 text-center"> is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1 keyword_input"> 
+                    <tag-input [ngModel]="" [formControlName]="'favBooks'" [maxItems]='3' [separatorKeyCodes]="[188,9]"></tag-input>
+                    <label>Favorite Book*</label>
+                </div>
+                <p class="sekec_text">Add upto 3 book</p>
+                <span *ngIf="submittedProfile && hasError('favBooks','required')"
+                    class="alert-danger d-block p-1 text-center"> is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="linkedIn" />
+                    <label>Linkedin*</label>
+                </div>
+                <span *ngIf="submittedProfile && hasError('linkedIn','required')"
+                    class="alert-danger d-block p-1 text-center">Linkedin Is Required</span>
+            </div>
+            <div class="group col-sm-12 mb-3">
+                <div class="mb-1">
+                    <textarea maxlength="200" formControlName="aboutYou"></textarea>
+                    <label for="email" class="form-label">About Yourself*</label>
+                </div>
+                <span *ngIf="submittedProfile && hasError('aboutYou','required')"
+                    class="alert-danger d-block p-1 text-center">About Yourself Is Required</span>
+            </div>
+           
+
+                       
+            
+        </form>
+    </div> -->
+    <!-- <div class="btn-wrapper">
+        <div style="margin-left: auto;">
+            <button class="savebtn" (click)="onSubmitForm(false)">Save and Complete later</button>
+            <button class="submitbutton" (click)="onSubmitForm(true)">SAVE & CONTINUE</button>
+        </div>
+    </div> -->
+<!-- </div> -->
+
+<ng-template #openDeleteVideoDialog>
+    <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+        <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+        <div class="modal-form-header bottom-border">
+            <h5 class="heading">Are you sure to delete this video ?</h5>
+        </div>
+        <div class="modal-form-footer">
+            <div class="row top-box">
+                <div class="footer-texteditor">
+                    <div class="row feed-item">
+                        <button type="button" style="border: 1px;
+                              color: #141414;font-weight: 600; margin-right: 10px;"
+                            (click)="modalRef.hide()">No</button>&nbsp;&nbsp;
+                        <button (click)="removeVideo()" type="submit" id="btn" class="btn" style="color: white;">YES</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #testimonail>
+    <div class="schedule-event-modal">
+        <div class="schedule-form">
+            <h5> Please write your Testimonial ! </h5>
+            <form [formGroup]="testimonialFormGroup" (ngSubmit)="addTestimonial()" method="post">
+                <div class="form-row">
+                        <!-- <div class="col-md-12">
+                            <label for="name">Enter name</label>
+                            <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter name"/>
+                            <span *ngIf="testimonialFormGroup.get('name').errors?.required" class="d-block" style="color: red;">
+                                Name is required.
+                            </span>
+                        </div>
+                        <div class="col-md-12" style="padding-top:10px;">
+                            <label for="qualification">Qualification</label>
+                            <input type="text" class="form-control" formControlName="qualification" id="qualification" placeholder="Enter Qualification"/>
+                            <span *ngIf="testimonialFormGroup.get('qualification').errors?.required" class="d-block" style="color: red;">
+                                Qualification is required.
+                            </span>
+                        </div>
+                        <div class="col-md-12" style="padding-top:10px;">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" formControlName="country" id="country" placeholder="Country"/>
+                            <span *ngIf="testimonialFormGroup.get('country').errors?.required" class="d-block" style="color: red;">
+                                Country is required.
+                            </span>
+                        </div> -->
+                        <div class="col-md-12" style="padding-top:10px;">
+                            <label for="testimonal">Testimonal <span style="color: red;">*</span></label>
+                            <textarea name="testimonal" class="form-control" formControlName="testimonal" rows="3" class="form-control"  placeholder="Please write your testimonal."></textarea>
+                            <div *ngIf="submittedTestimonial && hasError('testimonal','required')" style="text-align: center;margin-top: 10px;" class="alert alert-danger alert-dismissable mb-0 w-100">
+                                Testimonal is required
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="padding-top:10px; padding-bottom: 10px;">
+                            <label for="url">Youtube Embeded Url</label>
+                            <input type="text" class="form-control" formControlName="url" id="url" placeholder="Enter Youtube Video Embeded Url"/>
+                        </div>
+                </div>
+                <div class="schedule-event-action">
+                    <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+                    <a href="javascript:;" (click)="addTestimonial()" class="show-result-btn">Submit</a>
+                </div>        
+            </form>
+        </div>
+    </div>
+</ng-template>

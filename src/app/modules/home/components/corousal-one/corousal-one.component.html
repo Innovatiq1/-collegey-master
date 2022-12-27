@@ -1,0 +1,117 @@
+
+<div class="clg-top-banner-sec" [ngStyle]="{'background-image': 'url(' + homepageContent?.bannerImg + ')'}">
+  <div class="container clg-content"> 
+    <div>
+      <div class="col-12 col-xl-6 clg-top-left midTitle">
+        <img class="clg-log" src="assets/images/logo_image/new-collegey-home.png" />
+        <h3 class="clg-tit">{{homepageContent?.bannerText}}</h3>
+        <br> 
+        <h3 class="clg-tit">{{homepageContent?.midleTitle}}</h3>
+        <br>
+        <h3 class="clg-tit">{{homepageContent?.bannerSubText}}</h3>
+        <div *ngIf="!isAuthenticated()">
+          <button class="btn login-button" (click)="login()">LOGIN</button>
+          <!-- <button class="btn invite-button" (click)="invite()"> HAVE AN INVITE? JOIN NOW! </button> -->
+        </div>
+        <button *ngIf="!isAuthenticated()" class="btn screen-button" (click)="openModal(template)">
+          JOIN THE WAITLIST
+        </button>
+        <button *ngIf="isAuthenticated()" class="btn screen-button" (click)="onLogOut()">
+          Log Out
+        </button>
+      </div>
+      <!-- <div class="col-12 col-xl-6 clg-top-right">
+
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="chat">
+  <img src="assets/images/chat-smile-3-fill.svg" />
+</div>
+
+
+<!-- join the waitlist template-->
+<ng-template #template class="" style="background-color: red">
+  <div class="d-flex flex-column align-items-center info-box">
+    <div class="waitlist text-center" style="width: 100%;">Join the waitlist
+      <button type="button" class="close" (click)="onClose()" data-dismiss="modal" aria-label="Close" style="margin-top: -10px;margin-right: -12px;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="form-box" [formGroup]="form">
+      <div class="group">
+        <div>
+          <input formControlName="firstName" type="text" required="required" />
+          <label>Enter First Name</label>
+        </div>
+        <span *ngIf="submitted && hasError('firstName','required')" class="alert-danger error-padding">Name is required</span>
+      </div>
+      <div class="group">
+        <div>
+          <input formControlName="lastName" type="text" required="required" />
+          <label>Enter Last Name</label>
+        </div>
+        <span *ngIf="submitted && hasError('lastName','required')" class="alert-danger error-padding">Last Name is required</span>
+      </div>
+      <div class="group">
+        <div>
+          <input formControlName="email" type="text" required="required" />
+          <label>Enter Email ID</label>
+        </div>
+        <span *ngIf="submitted && hasError('email','required')" class="alert-danger error-padding">Email is required</span>
+      </div>
+      <div class="group">
+        <div>
+          <input formControlName="cellNumber" type="text" required="required" />
+          <label>Cell Number</label>
+        </div>
+        <span *ngIf="submitted && hasError('cellNumber','required')" class="alert-danger error-padding">Cell Number is required</span>
+      </div>
+      <div class="group">
+        <select
+          class="form-select"
+          formControlName="type"
+          aria-label="Default select example"
+          style="
+            width: 100%;
+            background: #ffffff 0% 0% no-repeat padding-box;
+            border: 1px solid #979797;
+            border-radius: 6px;
+            padding: 13px 0px 13px 0;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-family: 'Nunito';
+            font-weight: 400;
+            color: #444;
+          "
+        >
+          <option value="" selected>You are a</option>
+          <option value="High-school student">High-school student</option>
+          <option value="student">College student</option>
+          <option value="High-school counselor">High-school counselor</option>
+          <option value="IEC">IEC</option>
+          <option value="University">University</option>
+          <option value="mentor">Mentor</option>
+          <option value="Parent">Parent</option>
+          <option value="Impact Partner">Impact Partner</option>
+          <option value="Other">Other</option>
+        </select>
+        <span *ngIf="submitted && hasError('type','required')" class="alert-danger error-padding">Type is required</span>
+      </div>
+      
+      <div class="form-group bottom-margin">
+        <input class="terms-conditions" type="checkbox" id="termsConditions" name="termsConditions" formControlName="shouldAgree" (change)="eventCheck($event)">
+        <label for="termsConditions" class="label-terms-conditions">By signing up you agree to our <a  target="_blank" class="terms-anchortext" [routerLink]="['/terms-condition']">Terms & Conditions</a></label>
+        <span *ngIf="submitted && isChecked == false" class="alert-danger error-padding agree_margin">Please accept our terms and conditions to proceed.</span>
+      </div>
+
+      <button class="continue" (click)="save()" >CONTINUE</button>
+    </div>
+    <div class='login-wrapper' style="padding: 20px 0">
+      Already have an account?
+      <a style="color: blue; cursor: pointer;" (click)="login()">Log In</a>    
+    </div>
+  </div>
+</ng-template>

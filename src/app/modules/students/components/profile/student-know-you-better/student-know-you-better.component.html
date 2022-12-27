@@ -1,0 +1,284 @@
+<!-- <div class="question-box-inner bottom-margin">
+    <p>Tell us what you find cool. We will bring more of it.</p>
+    <form [formGroup]="knowYouBetterForm" *ngIf="knowYouBetterForm">
+        <div class="form-box" formGroupName="know_you_better">
+
+            people who inspire you form array section start
+            <div class="form-group fields">
+                <label class="field-label" for="peopleName">Name 2 people who inspire you</label>
+                <ng-container formArrayName="people_who_inspire_you" *ngFor="let people of inspirePeopleFormArray.controls; let i = index;">
+                    <ng-container [formGroupName]="i">
+                        <input type="text" id="name{{i+1}}" class="form-control field-control other-text" placeholder="Name {{i+1}}" formControlName="name">
+                    </ng-container>
+                </ng-container>
+            </div>
+            people who inspire you form array section end
+
+            favourite Books FormArray section start
+            <div class="form-group fields">
+                <label class="field-label" for="favoriteBooks">List 2 of your favourite books</label>
+                <ng-container formArrayName="fav_books" *ngFor="let book of favouriteBooksFormArray.controls; let i = index;">
+                    <ng-container [formGroupName]="i">
+                        <input type="text" id="Book Name {{i+1}}" formControlName="name" class="form-control field-control other-text" placeholder="Book Name {{i+1}}">
+                    </ng-container>
+                </ng-container>
+            </div>
+            favourite Books FormArray section end
+
+            favourite Movies FormArray section start
+
+            <div class="form-group fields">
+                <label class="field-label" for="favoriteMovies">List 2 of your favourite documentaries /movies</label>
+                <ng-container formArrayName="fav_movies" *ngFor="let movies of favouriteMoviesFormArray.controls; let i = index;">
+                    <ng-container [formGroupName]="i">
+
+                        <input type="text" id="movieName{{i+1}}" class="form-control field-control other-text" formControlName="name" placeholder="Movie Name {{i+1}}">
+                    </ng-container>
+                </ng-container>
+            </div>
+
+            favourite Movies FormArray section end
+
+            <div class="form-group fields">
+                <div class="group-label margin-remove">
+                    <label class="field-label" for="favoriteWebsites">Your 3 favourite websites</label>
+                </div>
+                <ng-container formArrayName="fav_websites" *ngFor="let website of favouriteWebsitesFormArray.controls; let i = index;">
+                    <ng-container [formGroupName]="i">
+                        <button type="button" class="shift-addmore-btn" (click)="onAddWebsite()">+ Add more</button>
+                        <input type="text" id="favoriteWebsites" formControlName="name" class="form-control field-control other-text multiple-inputs" placeholder="Website Url {{i+1}}">
+                        <button type="type" *ngIf="i>0" class="cross-button multiple-close" (click)="onRemoveWebsite(i)"><img
+                src="/assets/images/on-boarding/cross-button.svg"></button>
+                    </ng-container>
+                </ng-container>
+
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="internetActivity">Your favourite activities on internet</label>
+                <input type="text" id="internetActivity" formControlName="fav_activity_on_internet" class="form-control field-control" placeholder="ex: social networking, browsing">
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="messagingService">Your favourite text messaging service</label>
+                <ng-select class="educationType" id="messagingService" name="messagingService" placeholder="Select" bindLabel="name" bindValue="name" [searchable]="false" [clearable]="false" [closeOnSelect]="false" formControlName="fav_message_service" [items]="favMessagingService"
+                    [multiple]="true">
+                </ng-select>
+            </div>
+        </div>
+        <div class="save-btn-box">
+            <button type="button" class="save-and-exit" (click)="onSubmitForm(true)">Save & Exit</button>
+            <button type="button" class="save-btn" (click)="onSubmitForm(false)">Submit</button>
+        </div>
+    </form>
+</div> -->
+<div class="lead-form-wrapper">
+    <div class="lead-form container">
+        <p class="steps-login">4 of 8</p>
+        <p class="heading">Favorites</p>
+        <form class="login-form row justify-content-center" [formGroup]="knowYouBetterForm" *ngIf="knowYouBetterForm">
+            <div formGroupName="know_you_better" class="w-100">
+                <p style="font-size: 15px;">Tell us what you find cool. We will bring more of it.</p>
+
+                <div class="favorites-details w-100">
+                    <div class="full-width w-100">
+                        <p style="margin-bottom: 10px;">Name 2 people who inspire you<span
+                                style="color: #f00; ">*</span></p>
+                        <div class="d-flex flex-wrap mb-3">
+                            <ng-container formArrayName="people_who_inspire_you"
+                                *ngFor="let people of inspirePeopleFormArray.controls; let i = index;">
+                                <div class="group w-50 groupleftpad">
+                                    <div [formGroupName]="i" class="mb-1">
+                                        <input type="text" required="required" (ngModelChange)="onChange($event)"
+                                            formControlName="name" />
+                                        <label 
+                                            style="top: 5px;
+                                            font: normal normal bold 12px/12px Nunito;
+                                            color: #1982d4;">Answer {{i+1}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <span id="citierror1" style="color: red;">
+                                <p>{{inspire_error}}</p>
+                            </span>
+                        </div>
+                        
+
+                        <p style="margin-bottom: 10px;">List 2 of your favourite books<span
+                                style="color: #f00; ">*</span></p>
+                        <div class="d-flex flex-wrap mb-3">
+                            <ng-container formArrayName="fav_books"
+                                *ngFor="let book of favouriteBooksFormArray.controls; let i = index;">
+                                <div class="group w-50 groupleftpad">
+                                    <div [formGroupName]="i" class="mb-1">
+                                        <input type="text" required="required" (ngModelChange)="onChangebooks($event)"
+                                            formControlName="name" />
+                                        <label
+                                        style="top: 5px;
+                                        font: normal normal bold 12px/12px Nunito;
+                                        color: #1982d4;">Answer {{i+1}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <span id="citierror1" style="color: red;">
+                                <p>{{fav_books_error}}</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="favorites-details w-100">
+                    <div class="full-width w-100">
+                        <p style="margin-bottom: 10px;">List 2 of your favourite documentaries/ movies<span
+                                style="color: #f00; ">*</span></p>
+                        <div class="d-flex flex-wrap mb-3">
+                            <ng-container formArrayName="fav_movies"
+                                *ngFor="let movies of favouriteMoviesFormArray.controls; let i = index;">
+                                <div class="group w-50 groupleftpad">
+                                    <div [formGroupName]="i" class="mb-1">
+                                        <input type="text" required="required" (ngModelChange)="onChangemovies($event)"
+                                            formControlName="name" />
+                                        <label
+                                        style="top: 5px;
+                                        font: normal normal bold 12px/12px Nunito;
+                                        color: #1982d4;">Answer {{i+1}}
+                                       </label>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <span id="citierror1" style="color: red;">
+                                <p>{{fav_movies_error}}</p>
+                            </span>
+                        </div>
+                        
+                        <p style="margin-bottom: 10px;padding-left:0px;">List 2 of your favorite
+                            activities on the internet.
+                        </p>
+                        <div class="d-flex flex-wrap">
+                            <ng-container formArrayName="fav_movies"
+                                *ngFor="let movies of favouriteMoviesFormArray.controls; let i = index;">
+                                <div class="group w-50 groupleftpad">
+                                    <div [formGroupName]="i">
+                                        <input type="text" required="required" formControlName="name" />
+                                        <label
+                                        style="top: 5px;
+                                        font: normal normal bold 12px/12px Nunito;
+                                        color: #1982d4;">Answer {{i+1}}
+                                      </label>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div class="favorites-details">
+                    <div class="full-width">
+                        <p style="margin-bottom: 10px;">Your 3 favourite websites</p>
+
+                        <div class="group col-sm-12 groupleftpad">
+                            <ng-container>
+                                <div class="mr-2">
+                                    <input type="text" required="required" formControlName="fav_websites1" />
+                                    <label 
+                                    style="top: 5px;
+                                    font: normal normal bold 12px/12px Nunito;
+                                    color: #1982d4;"
+                                    >
+                                    Website 1</label>
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <div class="group col-sm-12 groupleftpad">
+                            <ng-container>
+                                <div class="mr-2">
+                                    <input type="text" required="required" formControlName="fav_websites2" />
+                                    <label
+                                    style="top: 5px;
+                                    font: normal normal bold 12px/12px Nunito;
+                                    color: #1982d4;">
+                            Website 2</label>
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <div class="group col-sm-12 groupleftpad">
+                            <ng-container>
+                                <div class="mr-2">
+                                    <input type="text" required="required" formControlName="fav_websites3" />
+                                    <label
+                                    style="top: 5px;
+                                    font: normal normal bold 12px/12px Nunito;
+                                    color: #1982d4;">
+                            Website 3</label>
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <!-- <ng-container formArrayName="fav_websites" >
+                        <ng-container *ngFor="let website of favouriteWebsitesFormArray.controls; let i = index;">
+                            <div class="group col-sm-12 groupleftpad">
+                                <ng-container [formGroupName]="i">
+                                    <div class="d-inline-block mr-2">
+                                        <input type="text" required="required"  formControlName="name"/>
+                                        <label >Website {{i + 1}}</label>
+                                    </div>
+                                        <button type="type" *ngIf="i>=0" class="cross-button multiple-close" (click)="onRemoveWebsite(i)"><img src="/assets/images/on-boarding/cross-button.svg"></button>
+                                </ng-container>
+                            </div>
+                            <div class="group col-sm-12 groupleftpad">
+                                <div [formGroupName]="1">
+                                    <input type="text" required="required" value=""  formControlName="name"/>
+                                    <label>Website 2</label>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+
+                    <div class="group col-sm-12 groupleftpad">
+                        <a class="add-more-website-btn" style="cursor: pointer;margin-right: 100px;" (click)="onAddWebsite()">+ADD MORE</a>
+                    </div> -->
+
+                    </div>
+                    <div class="full-width">
+                        <p style="margin-bottom: 10px;">Your favorite text messaging service</p>
+                        <div class="group col-sm-12 groupleftpad">
+                            <div>
+                                <label style="font-size: 12px;" class="select-label">Messaging Service</label>
+                                <select formControlName="fav_message_service">
+                                    <option value="" disabled>Select</option>
+                                    <option [value]="service" *ngFor="let service of favMessagingService">{{service}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="group col-sm-12 groupleftpad">
+                        <div [formGroupName]="1">
+                            <input type="text" required="required" value=""  formControlName="name"/>
+                            <label>Website 2</label>
+                        </div>
+                    </div> -->
+
+                    </div>
+                    <!-- <div class="full-width">
+                    <p style="margin-bottom: 10px;padding-left: 10px;visibility: hidden;">
+                        Services </p>
+                    <div class="group col-sm-12 ">
+                        <div>
+                            <input type="text" required="required" />
+                            <label>Book Name 1</label>
+                        </div>
+                    </div>
+                </div> -->
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="btn-wrapper">
+        <button class="backbutton" (click)="onFormBack()">Back</button>
+        <div>
+            <button class="savebtn" (click)="onSubmitForm(false)">Save and Complete later</button>
+            <button class="submitbutton" (click)="onSubmitForm(true)">SAVE AND CONTINUE</button>
+        </div>
+    </div>
+</div>

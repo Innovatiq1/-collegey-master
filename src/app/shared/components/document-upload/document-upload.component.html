@@ -1,0 +1,39 @@
+<div class="col-md-12 col-sm-12">
+    <div class="form-group no-m-b">
+        <label class="field-label" for="uploadDocuments">Upload Document (pdf,word & image:png,jpeg,CREDENTIALS)</label>
+        <input hidden #chooseFiles multiple type="file" (change)="onSelectDocument($event)" />
+        <label for="uploadDocument" class="btn-2 form-control document-not-upload" (click)="chooseFiles.click()">Choose
+      Document</label>
+    </div>
+    
+    <span class="note-span" *ngIf="inValidFileSize"> File is larger than <strong>5mb !!</strong></span>
+</div>
+<!-- <ng-container>
+    <ng-container *ngFor="let website of favouriteWebsitesFormArray.controls; let i = index;">
+<div class="group col-sm-12 groupleftpad">
+    <ng-container [formGroupName]="i">
+        <div class="d-inline-block mr-2">
+            <input hidden #chooseFiles multiple type="file" formControlName="name" (change)="onSelectDocument($event)" />
+            <label >Document {{i + 1}}</label>
+           
+
+        </div>
+        
+    </ng-container>
+
+</div>
+</ng-container>
+</ng-container> -->
+<!-- <div class="group col-sm-12 groupleftpad">
+    <a class="add-more-website-btn" style="cursor: pointer;margin-right: 100px;" (click)="onAddWebsite()">+ADD MOREeee</a>
+</div> -->
+<div class="col-md-12">
+    <div class="document-wrap">
+        <ul class="uploaded-document-name">
+            <li *ngFor="let image of documentList; let i = index">{{image}}
+                <button type="button" class="delete-file"
+                (click)="onRemoveDocument(i)"><img src="/assets/images/on-boarding/cross-button.svg"></button>
+            </li>
+        </ul>
+    </div>
+</div>

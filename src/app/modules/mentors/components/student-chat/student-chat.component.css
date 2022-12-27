@@ -1,0 +1,323 @@
+.first-section{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 15px #0000001A;
+  border-radius: 12px;
+  padding: 0;
+  margin-bottom: 20px;
+}
+.terms-header{
+  background: url(../../,,/../../../../assets/images/resources/programs-banner_1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 190px;
+  position: relative;
+  border-radius: 12px;
+}
+.student-info{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+.student-info-profile{
+  display: flex;
+}
+.profile-img{
+  border: 5px solid #FFFFFF;
+  border-radius: 500px;
+  width: 170px;
+  height: 170px;
+  margin-top: -80px;
+  z-index: 11;
+  margin-right: 40px;
+}
+.student-info-profile h5{
+  font: normal normal bold 28px/38px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  margin-bottom: 0;
+}
+.student-info-profile p{
+  font: normal normal bold 14px/22px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+.student-info-profile .location{
+  font: normal normal 300 14px/18px SF Pro;
+  letter-spacing: 0px;
+  /* color: #AFAFAF; */
+  margin-bottom: 0;
+  font-weight: 400;
+}
+.share-profile{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #3F89FC;
+  border-radius: 4px;
+  font: normal normal bold 12px/16px Nunito;
+  letter-spacing: 0px;
+  color: #3F89FC;
+  height: 30px;
+  padding: 6px 15px;
+  text-decoration: none;
+}
+.dashboard-menu{
+  border-top: 1px solid #DBDBDB;
+  padding: 20px;
+  margin-top: 25px;
+}
+.dashboard-menu ul{
+  list-style: none;
+  margin-bottom: 0;
+}
+.dashboard-menu li{
+  display: inline;
+}
+.dashboard-menu li a{
+  text-decoration: none;
+  font: normal normal bold 14px/22px Nunito;
+  letter-spacing: 0px;
+  color: #4E4E4E;
+  padding: 0 20px;
+}
+.dashboard-menu li a.active{
+  color: #3F89FC;
+}
+.dashboard-menu li a.dark{
+  color: #141414;
+}
+.dashboard-menu li a.disabled{
+  opacity: .3;
+}
+
+img{ max-width:100%;}
+.inbox_people {
+  background: #f8f8f8 none repeat scroll 0 0;
+  float: left;
+  overflow: hidden;
+  width: 35%; border-right:1px solid #c4c4c4;
+}
+.inbox_msg {
+  /*border: 1px solid #c4c4c4;*/
+  clear: both;
+  overflow: hidden;
+}
+.top_spac{ margin: 20px 0 0;}
+
+
+.recent_heading {
+  float: left;
+  width:40%;
+}
+.srch_bar {
+  display: inline-block;
+  text-align: right;
+  width: 60%;
+}
+.headind_srch{
+  padding:10px 29px 10px 20px; 
+  overflow:hidden; 
+  border-bottom:1px solid #c4c4c4;
+}
+
+.recent_heading h4 {
+  color: #3F89FC;
+  font-size: 21px;
+  margin: auto;
+  font-weight: 600;
+}
+.srch_bar input{
+  border:1px solid #cdcdcd; 
+  border-width:0 0 1px 0; 
+  outline: none;
+  width:100%; 
+  padding:2px 0 4px 6px; 
+  background:none;
+}
+.srch_bar .input-group-addon button {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  padding: 0;
+  color: #707070;
+  font-size: 18px;
+}
+.srch_bar .input-group-addon { margin: 0 0 0 -27px;}
+
+.chat_ib h5{ font-size:15px; color:#464646; margin:0 0 8px 0;}
+.chat_ib h5 span{ font-size:13px; float:right;}
+.chat_ib p{ font-size:14px; color:#989898; margin:auto}
+.chat_img {
+  float: left;
+  width: 11%;
+}
+.chat_ib {
+  float: left;
+  padding: 8px 0 0 10px;
+  width: 88%;
+}
+
+.chat_people{ overflow:hidden; clear:both;}
+.chat_list {
+  border-bottom: 1px solid #c4c4c4;
+  border-left: 10px solid transparent;
+  margin: 0;
+  cursor: pointer;
+  padding: 12px;
+}
+.inbox_chat { height: 550px; overflow-y: scroll;}
+
+.active_chat{ background:#ebebeb;}
+
+.incoming_msg_img {
+  display: inline-block;
+  width: 6%;
+}
+.received_msg {
+  display: inline-block;
+  padding: 0 0 0 10px;
+  vertical-align: top;
+  width: 92%;
+ }
+ .received_withd_msg p {
+  background: #ebebeb none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #646464;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+}
+.time_date {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+.received_withd_msg { width: 57%;}
+.mesgs {
+  float: left;
+  padding: 30px 15px 10px 25px;
+  width: 65%;
+}
+
+ .sent_msg p {
+  border-radius: 10px 10px 0px 10px;
+  font-size: 14px;
+  margin: 0;
+  padding: 15px 10px 15px 12px;
+  width: 100%;
+  background-color: #eee;
+}
+.outgoing_msg {
+  overflow:hidden; 
+  margin: 20px 0;
+}
+.sent_msg {
+  float: right;
+  width: 46%;
+}
+.input_msg_write input {
+  background: #F2F2F2 0% 0% no-repeat padding-box;
+  width: 100%;
+  padding: 10px 70px 10px 10px;
+  font: normal normal 600 14px/21px Nunito;
+  letter-spacing: 0px;
+  color: #AFAFAF;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.type_msg {
+  /*border-top: 1px solid #c4c4c4;*/
+  position: relative;
+}
+.msg_send_btn {
+  background: #3F89FC  none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
+}
+.messaging {
+  padding: 0; 
+  margin-top:80px;
+}
+.msg_history {
+  height: 500px;
+  overflow-y: auto;
+}
+.attachdoc {
+  position: absolute;
+    right: 40px;
+    top: 15px;
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    color: #3F89FC;
+    background: #fff;
+    border: 2px solid #3F89FC;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+.attachdoc input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  padding-right: 126px;
+  cursor: pointer;
+}
+.chat_img .rounded-circle {
+  height: 35px;
+  width: 35px;
+}
+
+.imgtimediv {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-top: 5px;
+}
+.imgtimediv img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border: 1px solid #999;
+}
+.imgtimediv .time_date {
+  margin: 0;
+  font: normal normal bold 10px/14px Nunito;
+  color: #000000;
+}
+.chat_list.open_chats {
+  border-left-color: #3F89FC;
+}
+.chat_list.open_chats h5 {
+  color: #3F89FC;
+}
+.collegy_loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+}
+.collegy_loader img {
+  max-width: 70px;
+  margin-top: 45vh;
+}

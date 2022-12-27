@@ -1,0 +1,282 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <a class="navbar-brand" routerLink="/">
+    <img src="assets/images/logo_image/new-collegylogo-22.png" width="140" />
+  </a>
+  <div class="order-lg-1 ml-auto" *ngIf="isAuthenticated()">
+    <div class="btn-group user-header-menu" dropdown>
+      <div class="header-reward-notificatio">
+
+        <div class="header-reward" *ngIf="!isLoginRoleCheck()">
+          <a style="text-decoration: none;" routerLink="/my-account" [state]="{ type:'rewardList'}">
+            <p class="rewards-title">Rewards</p>
+            <p class="rewards-total">{{authService?.totalLeftRewardPoint1}}</p>
+          </a>
+        </div>
+
+        <div class="notification">
+          <ul>
+            <li><a routerLink="#"><i class="fa fa-bell"></i></a></li>
+            <span class="num-count"><i class="fa fa-circle"></i></span>
+          </ul>
+        </div>
+      </div>
+      <button dropdownToggle type="button" class="user-icon-button">
+        <ng-container *ngIf="userInfo.avatar; then avatarImage; else  placeholder">
+        </ng-container>
+        <ng-template #placeholder>
+          <img src="assets/images/user-icon.png" alt="" class="user-profile-picture">
+        </ng-template>
+
+        <ng-template #avatarImage>
+          <img [src]="commonService.imagePathS3(userInfo?.avatar)" alt="" class="user-profile-picture">
+        </ng-template>
+
+        <i class="icon-down-arrow"></i>
+      </button>
+      <div id="dropdown-animated" *dropdownMenu class="dropdown-menu">
+        <!--<div class="username-box">
+          <p class="user-name-p">{{userInfo?.name}} {{userInfo?.last_name}}</p>
+          <button class="view-profile-btn" *ngIf="!isProfileCompleted && userInfo.type === USER_TYPES.STUDENTS"
+            [routerLink]="['/student/profile']">Complete my Portfolio</button>
+          <button class="view-profile-btn" *ngIf="isProfileCompleted && userInfo.type === USER_TYPES.STUDENTS"
+            [routerLink]="['/profile/' + userInfo.slug]">View my Portfolio</button>
+        </div> -->
+        <ul class="link-list">
+          <li *ngIf="userInfo.type === USER_TYPES.STUDENTS">
+            <a [routerLink]="['/student-dashboard/$']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === USER_TYPES.COUNSELOR">
+            <a [routerLink]="['/counselor/dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'university'">
+            <a [routerLink]="['university-dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'mentor'">
+            <a [routerLink]="['mentors/dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'partner'">
+            <a [routerLink]="['impact/dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'parents'">
+            <a [routerLink]="['parents/dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'school'">
+            <a [routerLink]="['hb/hbdashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'alumni'">
+            <a [routerLink]="['hb/hbdashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'student'">
+            <a [routerLink]="['student-dashboard/$/profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'university'">
+            <a [routerLink]="['university']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'partner'">
+            <a [routerLink]="['impact/ip-profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'mentor'">
+            <a [routerLink]="['mentors/profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'school'" class="height margin-80">
+            <a [routerLink]="['hb/profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'alumni'">
+            <a [routerLink]="['hb/profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'counselor'">
+            <a [routerLink]="['impact/ip-profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'parents'">
+            <a [routerLink]="['parents/profile']">My Profile</a>
+          </li>
+          <!-- <li class="ng-star-inserted">
+            <a [routerLink]="['/magazine']">Collegey Magazine</a>
+          </li> -->
+          <li class="ng-star-inserted">
+            <a [routerLink]="['/my-account']">My Account</a>
+          </li>
+          <li class="ng-star-inserted">
+            <a [routerLink]="['/my-badge']">My Badge</a>
+          </li>
+          <li class="ng-star-inserted">
+            <a href="javascript:;" (click)="onLogOut()">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <button class="navbar-toggler order-lg-2 ml-2" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+    </form> -->
+    <div class="top_search">
+      <div class="search-box d-flex align-items-center">
+        <input class="search" type="text" placeholder="What do you want to learn…" (keyup)="searchTopSearch($event)"
+          #searchBox />
+        <img src="assets/images/search-2-line.svg" class="search-icon" />
+        <div class="search-drop" *ngIf="showSearchResultDrop">
+          <a href="javascript:;" *ngFor="let listdata of topSearchResult; let i=index;"
+            (click)="onNavigateSingle(listdata?.slug)">{{listdata?.title}}</a>
+        </div>
+      </div>
+    </div>
+    <ul class="navbar-nav m-auto">
+      <li class="nav-item active">
+        <a href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/meet-our-team">Meet Our Team </a>
+      </li>
+      <li class="nav-item">
+        <a [href]="['collegey-programs']">Collegey Programs </a>
+      </li>
+      <li class="nav-item">
+        <a [href]="['invest-in-collegey']">Invest in Collegey </a>
+      </li>
+      <li class="nav-item">
+        <a [href]="['fund']">Collegey Fund</a>
+      </li>
+      <li class="nav-item" *ngIf="isAuthenticated() && !isLoginRoleCheck()">
+        <a [href]="['student-dashboard/$/blog']">Blog </a>
+      </li>
+      <li class="nav-item" *ngIf="!isAuthenticated() || isLoginRoleCheck()">
+        <a [href]="['/blog']">Blog </a>
+      </li>
+      <li class="nav-item">
+        <a [href]="['collegey-career']">Careers at Collegey </a>
+      </li>
+      <li class="nav-item">
+        <a [href]="['partner-with-collegey']">Partner with Collegey</a>
+      </li>
+      <li class="nav-item">
+        <a [href]="['faq']">FAQs</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!--  <div class="container-fluid nav-bar {{ appConfig?.headerClass }} design" *ngIf="true">
+  <a routerLink="/" >
+    <img src="assets/images/logo_image/new-collegylogo-22.png" width="100" />
+  </a>
+
+  <div class="top_search">
+    <div class="search-box d-flex align-items-center">
+      <input class="search" type="text" placeholder="What do you want to learn…" (keyup)="searchTopSearch($event)" #searchBox/>
+      <img src="assets/images/search-2-line.svg" class="search-icon" />
+      <div class="search-drop" *ngIf="showSearchResultDrop">
+        <a href="javascript:;" *ngFor="let listdata of topSearchResult; let i=index;" (click)="onNavigateSingle(listdata?.slug)">{{listdata?.title}}</a>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; align-items: center; margin: 0 auto;">
+    <div class="head_menu">
+      <a [routerLink]="['/']">Home</a>
+      <a [routerLink]="['meet-the-team']">Meet Our Team </a>
+      <a [routerLink]="['collegey-programs']">Collegey Programs </a>
+      <a [routerLink]="['campaign']">Invest in Collegey </a>
+      <a [routerLink]="['fund']">Collegey Fund</a>
+      <a *ngIf="isAuthenticated() && !isLoginRoleCheck()" [routerLink]="['student-dashboard/$/blog']">Blog </a>
+      <a *ngIf="!isAuthenticated() || isLoginRoleCheck()" [routerLink]="['/blog']">Blog </a>
+      <a [routerLink]="['thank-you']">Careers at Collegey </a>
+      <a [routerLink]="['partner-with-collegey']">Partner with Collegey</a>
+      <a [routerLink]="['faq']">FAQs</a> 
+    </div>
+  </div>
+  <div *ngIf="isAuthenticated()">
+    <div class="btn-group user-header-menu" dropdown>
+      <div class="header-reward-notificatio">
+        <div class="header-reward">
+          <p class="rewards-title">Rewards</p>
+            <p class="rewards-total">{{ rewardPoint }}</p>
+        </div>
+        <div class="notification">
+          <ul>
+            <li><a routerLink="#" ><i class="fa fa-bell"></i></a></li>
+            <span class="num-count"><i class="fa fa-circle"></i></span>
+          </ul>
+        </div>
+        </div>
+      <button dropdownToggle type="button" class="user-icon-button">
+          <ng-container *ngIf="userInfo.avatar; then avatarImage; else  placeholder">
+          </ng-container>
+          <ng-template #placeholder>
+              <img src="assets/images/user-icon.png" alt="" class="user-profile-picture">
+          </ng-template>
+
+          <ng-template #avatarImage>
+            <img [src]="commonService.imagePathS3(userInfo?.avatar)" alt="" class="user-profile-picture">
+          </ng-template>
+          
+          <i class="icon-down-arrow"></i>
+      </button>
+      <div id="dropdown-animated" *dropdownMenu class="dropdown-menu">
+        <ul class="link-list">
+          <li *ngIf="userInfo.type === USER_TYPES.STUDENTS">
+            <a [routerLink]="['/student-dashboard/$']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === USER_TYPES.COUNSELOR">
+            <a [routerLink]="['/counselor/dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'university'">
+            <a [routerLink]="['university-dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'mentor'">
+            <a [routerLink]="['mentors/dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'partner'">
+            <a [routerLink]="['impact/dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'parents'">
+            <a [routerLink]="['parents/dashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'school'">
+            <a [routerLink]="['hb/hbdashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'alumni'">
+            <a [routerLink]="['hb/hbdashboard']">My Dashboard</a>
+          </li>
+          <li *ngIf="userInfo.type === 'student'">
+            <a [routerLink]="['student-dashboard/$/profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'university'">
+            <a [routerLink]="['university']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'partner'">
+            <a [routerLink]="['impact/ip-profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'mentor'">
+            <a [routerLink]="['mentors/profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'school'" class="height margin-80">
+            <a [routerLink]="['hb/profile']">My Profile</a>
+          </li> 
+          <li *ngIf="userInfo.type === 'alumni'">
+            <a [routerLink]="['hb/profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'counselor'">
+            <a [routerLink]="['impact/ip-profile']">My Profile</a>
+          </li>
+          <li *ngIf="userInfo.type === 'parents'">
+            <a [routerLink]="['parents/profile']">My Profile</a>
+          </li>
+          <li class="ng-star-inserted">
+            <a [routerLink]="['/my-account']">My Account</a>
+          </li>
+          <li class="ng-star-inserted">
+            <a [routerLink]="['/my-badge']">My Badge</a>
+          </li>
+          <li class="ng-star-inserted">
+            <button type="button" (click)="onLogOut()">Log Out</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> -->

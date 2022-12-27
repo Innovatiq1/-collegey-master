@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="19px" viewBox="0 0 18 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Path</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#15AAFD" offset="0%"></stop>
+            <stop stop-color="#0066E2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Facebook" fill="url(#linearGradient-1)">
+            <path d="M16.77,0.94 L1.89,0.94 C1.35733315,0.966666278 0.939332936,1.40666651 0.939999203,1.94 L0.939999203,17.79 C0.966666278,18.3226668 1.40666651,18.7406671 1.9399992,18.7400008 L8.9399992,18.7400008 L8.9399992,12.22 L6.7,12.22 L6.7,9.61 L8.9399992,9.61 L8.9399992,7.69 C8.84917507,6.76877185 9.16947005,5.85440725 9.81530213,5.19122446 C10.4611342,4.52804167 11.3666882,4.18362405 12.29,4.25 C12.9581749,4.25012688 13.6258414,4.28684854 14.29,4.36 L14.29,6.69 L12.89,6.69 C11.81,6.69 11.6,7.21 11.6,7.96 L11.6,9.61 L14.18,9.61 L13.89,12.22 L11.63,12.22 L11.63,18.7400008 L16.77,18.7400008 C17.2839092,18.7148871 17.6948871,18.3039092 17.72,17.79 L17.72,1.89 C17.6948871,1.37609081 17.2839092,0.965112898 16.77,0.94 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>

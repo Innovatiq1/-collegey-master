@@ -1,0 +1,23 @@
+<div class="clg-meetour-team">
+  <div class="container clg-content">
+    <div class="row">
+      <div class="col-12 col-lg-12">
+        <h2>{{homepageContent?.name}}</h2>
+        <div class="small-text text-center" *ngIf="!mobile" [innerHtml]="homepageContent?.description">
+          <!-- We're a global team. Our mission is to <span>enable young people</span> to become <span>the best</span> that
+          they can be in the <span>context that matters</span> <span>most to them,</span> with <span>impact and
+            collaboration.</span> We are here to partner with youin your <span>career and higher education
+            journeys.</span> -->
+        </div>
+        <div class="frame">
+          <div class="box d-flex flex-column align-items-center">
+            <img *ngIf="!mobile" src="{{homepageContent?.imagePath}}" class="img-fluid img-beh" />
+            <img *ngIf="mobile" src="assets/images/meet_our_team/Mask_Group_25.png" class="img-fluid img-beh" />
+            <!-- <button class="shw-btn" [routerLink]="['meet-the-team']">{{homepageContent?.buttonText}}</button> -->
+            <a class="shw-btn" href="{{homepageContent?.buttonLink}}" target="_blank">{{homepageContent?.buttonText}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,210 @@
+<div class="lead-form-wrapper">
+    <div class="lead-form container">
+        <p class="steps-login">3 of 3</p>
+        <p class="heading">Student Projects</p>
+        <form class="login-form row projectFormGroup" [formGroup]="projectFormGroup" method="post" novalidate>
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="projectTitle" />
+                    <label>Enter Tentative Project Title*</label>
+                </div>
+                <span
+                    *ngIf="submittedProfile && (hasError('projectTitle','required') || hasError('projectTitle','pattern'))"
+                    class="alert-danger d-block p-1">Title is required.</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1 keyword_input">
+                    <tag-input [ngModel]="" [formControlName]="'keyword'" [maxItems]='3' [separatorKeyCodes]="[188,9]">
+                    </tag-input>
+                    <label>Enter a keyword and press enter to add more*</label>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('keyword','required') || hasError('keyword','pattern'))"
+                    class="alert-danger d-block p-1">Keyword is required.</span>
+            </div>
+
+            <div class="col-sm-12 no-pad" style="margin-bottom: 20px;">
+                <div class="image-upload no-xs-pad">
+                    <label *ngIf="!projectBannerImage" class="upload-profile-img" for="file-input-project-banner">
+                        <div>
+                            <img src="assets/images/camera--v2.png" />
+                            <p class="kyc-label">Project Picture Banner (upload file maximum image size 2000 x 2000)</p>
+                        </div>
+                    </label>
+                    <input id="file-input-project-banner" type="file" (change)="bannerUpload($event)"
+                        accept=".png,.jpeg,.jpg" />
+
+                    <img *ngIf="projectBannerImage" [src]="projectBannerImage" class="img-fluid"
+                        style="width: 150px;height: 150px;" />
+                    <span *ngIf="projectBannerImage" class="project_img_remove" (click)="removeProjectBanner()">X</span>
+
+                </div>
+                <div style="margin-top: 10px;">
+                    <label style="margin-top: 5px; margin-bottom: 0;position: relative;left: 0;" for="defaultImage">Upload image or choose from below.</label>
+                </div>
+                <div class="fixed-images">
+                    <img *ngFor="let image of bannerImages" [class.activeImg]="projectBannerImage == image"
+                        class="defaultImg" (click)="selectImage(image)" src="{{image.imagePath}}" alt="firstImg">
+                </div>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="date" class="form-control" min="{{projectStartDate}}" id="date1" placeholder=""
+                        style="height: 29px;" formControlName="startDate" (change)="onChangeProjectStart($event)">
+                    <label>Start date*</label>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('startDate','required') || hasError('startDate','pattern'))"
+                    class="alert-danger d-block p-1">Start date is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="date" class="form-control" min="{{projectSetLastDate}}" #takeInput id="date1"
+                        placeholder="" style="height: 29px;" formControlName="lastDate">
+                    <label>Last date of join*</label>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('lastDate','required') || hasError('lastDate','pattern'))"
+                    class="alert-danger d-block p-1">Last date is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="minNumberOfStudentsAllowed" />
+                    <label>Minimum # of students (add 3 or more)*</label> 
+                </div>
+                <span
+                    *ngIf="submittedProfile && (hasError('minNumberOfStudentsAllowed','required') || hasError('minNumberOfStudentsAllowed','pattern'))"
+                    class="alert-danger d-block p-1">is required</span>
+                <span *ngIf="submittedProfile && hasError('minNumberOfStudentsAllowed','min')"
+                    class="alert-danger d-block p-1">Minimum add 3 or more</span>
+            </div>
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="maxNumberOfStudentsAllowed" />
+                    <label>Maximum Number Of Students(15 or less)*</label>
+                </div>
+                <span
+                    *ngIf="submittedProfile && (hasError('maxNumberOfStudentsAllowed','required') || hasError('maxNumberOfStudentsAllowed','pattern'))"
+                    class="alert-danger d-block p-1">is required</span>
+                <span *ngIf="submittedProfile && hasError('maxNumberOfStudentsAllowed','max')"
+                    class="alert-danger d-block p-1">Allow only 15 student</span>
+            </div>
+
+            <div class="group col-sm-12 mb-3">
+                <div class="mb-1 custom_drop">
+                    <label class="sdgClass">Choose The UN Sustainable Development Goal (UN SDG) that best aligns with you project (2 or less)*</label>
+                    <ng-multiselect-dropdown formControlName="projectUNSDG" [placeholder]="'Choose UN SDG'"
+                        [data]="sdg_selection" [settings]="dropdownSettingsProjectSdg">
+                    </ng-multiselect-dropdown>
+                </div>
+                <p class="sekec_text">Choose one or two SDGs most relevant for this project</p>
+                <ul class="custom_drop_list">
+                    <li *ngFor="let inter of this.projectFormGroup.get('projectUNSDG').value;let i = index">
+                        <a> {{inter}} </a>
+                    </li>
+                </ul>
+                <span
+                    *ngIf="submittedProfile && (hasError('projectUNSDG','required') || hasError('projectUNSDG','pattern'))"
+                    class="alert-danger d-block p-1">Required.</span>
+            </div>
+
+            <div class="group col-sm-12 mb-3">
+                <div class="mb-1">
+                    <textarea (change)="wordCounter($event);" formControlName="aboutProject" placeholder=""></textarea>
+                    <label class="form-label">About project*</label>
+                </div>
+                <span *ngIf="showWordLimitError" class="alert-danger d-block p-1">Max word limit is 250</span>
+                <span
+                    *ngIf="submittedProfile && (hasError('aboutProject','required') || hasError('aboutProject','pattern'))"
+                    class="alert-danger d-block p-1">About project is required</span>
+            </div>
+            <ng-container>
+                <div class="group col-sm-12 mb-3">
+                    <div class="mb-1">
+                        <!-- <label class="select-label label-pad-designleft">Project plan duration*</label> -->
+                        <label class="form-label">Project plan duration*</label>
+                        <select required="required" formControlName="projectDuration"
+                            (change)="changeProjectduration($event)">
+                            <option value="0" disabled>Choose Duration</option>
+                            <option value="4">4 Weeks</option>
+                            <option value="5">5 Weeks</option>
+                            <option value="6">6 Weeks</option>
+                            <option value="3 month">3 Month</option>
+                            <option value="4 month">4 Month</option>
+                            <option value="5 month">5 Month</option>
+                            <option value="6 month">6 Month</option>
+                            <option value="7 month">7 Month</option>
+                            <option value="8 month">8 Month</option>
+                            <option value="9 month">9 Month</option>
+                        </select>
+                    </div>
+                    <span
+                        *ngIf="submittedProfile && (hasError('projectDuration','required') || hasError('projectDuration','pattern'))"
+                        class="alert-danger d-block p-1">Required.</span>
+                </div>
+                <ng-container>
+                    <div class="group col-sm-6" *ngFor="let item of projectWeeklength; let i=index;">
+                        <div>
+                            <textarea formControlName="week{{i+1}}Duration"></textarea>
+                            <label class="form-label">Week {{i+1}} description</label>
+                        </div>
+                    </div>
+
+                    <div class="group col-sm-12" *ngIf="monthDurationActive">
+                        <div>
+                            <textarea (change)="wordCounterMilestone($event);"
+                                formControlName="ProjectDescription"></textarea>
+                            <label class="form-label">Project description</label>
+                        </div>
+                        <span *ngIf="showWordLimitMilestoneError" class="alert-danger d-block p-1">Max word limit is
+                            250</span>
+                    </div>
+
+
+                </ng-container>
+            </ng-container>
+
+            <div class="col-sm-12">
+                <p style="margin-top: 15px;" class="head-title">Do you wish to charge student (s) for this project: Y/N?
+                    *
+                </p>
+                <div class="mb-3" formGroupName="isPaid">
+                    <div style="margin: 17px 0 0 0;" class="row">
+                        <label class="selects-label">Yes
+                            <input type="radio" name="selectpujatime" value="1" (click)="clickRadio($event)">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="selects-label">No
+                            <input type="radio" name="selectpujatime" value="0" (click)="clickRadio($event)" checked>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div *ngIf="isCharheStudent == 1">
+                        <div class="col-xs-6">
+                            <div class="d-block mt-2">Set a project fee between ${{projectFeedData?.minimum_price}} and ${{projectFeedData?.maximum_price}}</div>
+                            <div class="range range-primary mb-0">
+                                <input type="range" name="range" formControlName="range_price" min="{{projectFeedData?.minimum_price}}" max="{{projectFeedData?.maximum_price}}"
+                                    value="{{projectFeedData?.default_price}}" (change)="priceChange($event)">
+                                <output id="rangePrimary" #rangePrimary>{{rangeValue}}</output>
+                            </div>
+                        </div>
+                        <b>Note</b> : You will receive 50% of this fee.
+                    </div>
+                    <div *ngIf="isCharheStudent == 0">
+                        <b>Note</b> : The default Collegey Impact Project fee is ${{projectFeedData?.default_price}}. We will add 50% of the project fee to the Collegey Fund and offer it as a scholarship to low-income, high-potential (HALI) students.
+                    </div>  
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="btn-wrapper">
+        <button class="backbutton" (click)="onFormBack()">Back</button>
+        <div>
+            <!-- <button class="savebtn" (click)="onSubmitForm(true)">Save and Complete later</button> -->
+            <button class="submitbutton" (click)="onSubmitForm(true)">SUBMIT</button>
+        </div>
+    </div>
+
+</div>

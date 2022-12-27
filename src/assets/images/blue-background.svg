@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1457" height="1003">
+    <defs>
+        <linearGradient id="prefix__a" x1="6.976%" x2="0%" y1="99.756%" y2="0%">
+            <stop offset="0%" stop-color="#3B42D9"/>
+            <stop offset="100%" stop-color="#046EF2"/>
+        </linearGradient>
+        <linearGradient id="prefix__b" x1="62.932%" x2="0%" y1="77.715%" y2="0%">
+            <stop offset="0%" stop-color="#3B42D9"/>
+            <stop offset="100%" stop-color="#046EF2"/>
+        </linearGradient>
+    </defs>
+    <path fill="#020201" fill-rule="evenodd" d="M0 0h1457v1003H0V0z"/>
+    <path fill="url(#prefix__a)" d="M0 0h1457v1003H0V0z"/>
+    <path fill="#020201" fill-rule="evenodd" d="M-23.822-78.608l1649.481 566.515-164.825 479.909-1649.481-566.515L-23.822-78.608z" opacity=".8"/>
+    <path fill="url(#prefix__b)" d="M-23.822-78.608l1649.481 566.515-164.825 479.909-1649.481-566.515L-23.822-78.608z"/>
+    <path fill="#020201" fill-rule="evenodd" d="M-97.239 293.947l1329.461 553.284-160.973 386.814-1329.46-553.285 160.972-386.813z" opacity=".4"/>
+    <path fill="url(#prefix__b)" d="M-97.239 293.947l1329.461 553.284-160.973 386.814-1329.46-553.285 160.972-386.813z"/>
+</svg>

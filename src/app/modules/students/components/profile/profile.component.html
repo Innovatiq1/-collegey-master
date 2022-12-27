@@ -1,0 +1,504 @@
+<app-dashboard></app-dashboard>
+<div class="container secon-section1 mb-5">
+    <div class="row mb-4">
+        <!-- <div class="col-sm-4 student-profile no-sm-pad">
+                <div style="display: flex;align-items: center;">
+                    <div style="position: relative;">
+                        <!- - <img src="assets/images/profile-picture.png" class="user-img" alt=""> - ->
+                        <app-avatar-upload [redBorderImage]="true"></app-avatar-upload>
+                    </div>
+                    <div class="">
+                        <p>Welcome</p>
+                        <h5>{{user?.name}}</h5>
+                    </div>
+                </div>
+            </div> -->
+        <div class="col-12 portfolio-progress-wrapper">
+            <div class="portfolio-wrapper">
+                <div class="portfolio-user">
+                    <p>PORTFOLIO STRENGTH: {{profileText}} </p>
+                </div>
+                <div class="portfolio-progress">
+                    <ul>
+                        <li [class.is-active]="progressBarValue >= 25">
+                            <hr>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0"
+                                    y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512"
+                                    xml:space="preserve">
+                                    <g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                                fill="#ffffff" data-original="#000000" />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+
+                        </li>
+                        <li [class.is-active]="progressBarValue >= 50">
+                            <hr>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0"
+                                    y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512"
+                                    xml:space="preserve">
+                                    <g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                                fill="#ffffff" data-original="#000000" />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </li>
+                        <li [class.is-active]="progressBarValue >= 75">
+                            <hr>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0"
+                                    y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512"
+                                    xml:space="preserve">
+                                    <g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                                fill="#ffffff" data-original="#000000" />
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </li>
+                        <li [class.is-active]="progressBarValue >= 100">
+                            <hr>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0"
+                                    y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512"
+                                    xml:space="preserve" class="">
+                                    <g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                            <g>
+                                                <path
+                                                    d="m15.399 17c-.083 0-.166-.021-.242-.062l-3.157-1.746-3.157 1.745c-.169.094-.374.083-.53-.029-.156-.11-.236-.3-.205-.489l.608-3.731-2.573-2.638c-.131-.134-.176-.33-.117-.508.06-.178.214-.307.399-.335l3.537-.541 1.585-3.379c.166-.351.74-.351.906 0l1.585 3.379 3.537.541c.186.028.34.158.399.335.059.178.014.374-.117.508l-2.573 2.638.608 3.731c.031.189-.049.379-.205.489-.085.061-.186.092-.288.092zm-3.399-2.879c.083 0 .167.021.242.062l2.498 1.381-.483-2.964c-.025-.157.024-.316.136-.43l2.07-2.122-2.839-.434c-.165-.025-.307-.131-.378-.282l-1.246-2.655-1.246 2.657c-.071.151-.213.257-.378.282l-2.839.434 2.07 2.122c.111.114.161.273.136.43l-.483 2.962 2.498-1.381c.075-.041.159-.062.242-.062z"
+                                                    fill="#ffffff" data-original="#000000" class="" />
+                                            </g>
+                                        </g>
+                                        <g xmlns="http://www.w3.org/2000/svg">
+                                            <g>
+                                                <path
+                                                    d="m12 24c-.043 0-.086-.005-.127-.017-.099-.025-9.873-2.703-9.873-11.804v-8.179c0-.209.131-.397.327-.469l9.5-3.5c.111-.041.234-.041.346 0l9.5 3.5c.196.072.327.26.327.469v8.179c0 9.102-9.774 11.779-9.873 11.805-.041.011-.084.016-.127.016zm-9-19.651v7.83c0 7.882 7.85 10.466 9 10.802 1.15-.336 9-2.92 9-10.802v-7.83l-9-3.316z"
+                                                    fill="#ffffff" data-original="#000000" class="" />
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="port-desc"> A complete portfolio enhances your chances of building winning applications for
+                colleges and universities, and help us recommend best-fit projects for you.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-4 portfolio-steps no-sm-pad">
+            <p class="steps-p">Let’s weave your story into your portfolio together!</p>
+            <ul>
+                <li>
+                    <a [class.completed]="onBoardingSteps?.geography" (click)="setProfileFormState(sections[0].name)"
+                        [class.active]="currentSection.name == 'geography'">
+                        <div>
+                            <p class="progress-icon"></p>
+                        </div>
+                        <span style="cursor:pointer" class="steps-p">Location</span>
+                    </a>
+                </li>
+                <li>
+                    <a [class.completed]="onBoardingSteps?.history_updated"
+                        (click)="setProfileFormState(sections[1].name)"
+                        [class.active]="currentSection.name == 'history_updated'">
+                        <hr>
+                        <div>
+                            <p class="progress-icon"></p>
+                        </div>
+                        <span style="cursor:pointer" class="steps-p">Education</span>
+                    </a>
+                </li>
+                <li (click)="setProfileFormState(sections[2].name)">
+                    <a [class.completed]="onBoardingSteps?.interest" [class.active]="currentSection.name == 'interest'">
+                        <hr>
+                        <div>
+                            <p class="progress-icon"></p>
+                        </div>
+                        <span style="cursor:pointer" class="steps-p">Interests</span>
+                    </a>
+                </li>
+                <li (click)="setProfileFormState(sections[3].name)">
+                    <a [class.completed]="onBoardingSteps?.know_you_better"
+                        [class.active]="currentSection.name == 'know_you_better'">
+                        <hr>
+                        <div>
+                            <p class="progress-icon"></p>
+                        </div>
+                        <span style="cursor:pointer" class="steps-p">Favorites</span>
+                    </a>
+                </li>
+                <li (click)="setProfileFormState(sections[4].name)">
+                    <a [class.completed]="onBoardingSteps?.projects" [class.active]="currentSection.name == 'projects'">
+                        <hr>
+                        <div>
+                            <p class="progress-icon"></p>
+                        </div>
+                        <span style="cursor:pointer" class="steps-p">Project & Accomplishments</span>
+                    </a>
+                </li>
+                <li (click)="setProfileFormState(sections[5].name)">
+                    <a [class.completed]="onBoardingSteps?.headed" [class.active]="currentSection.name == 'headed'">
+                        <hr>
+                        <div>
+                            <p class="progress-icon"></p>
+                        </div>
+                        <span style="cursor:pointer" class="steps-p">Future Education Plans</span>
+                    </a>
+                </li>
+                <li (click)="setProfileFormState(sections[6].name)">
+                    <a [class.completed]="onBoardingSteps?.prefrences"
+                        [class.active]="currentSection.name == 'prefrences'">
+                        <hr>
+                        <div>
+                            <p class="progress-icon"></p>
+                        </div>
+                        <span style="cursor:pointer" class="steps-p">Education Preferences</span>
+                    </a>
+                </li>
+                <li (click)="setProfileFormState(sections[7].name)">
+                    <a [class.completed]="onBoardingSteps?.ways_to_be_in_touch"
+                        [class.active]="currentSection.name == 'ways_to_be_in_touch'">
+                        <hr>
+                        <div>
+                            <p class="progress-icon"></p>
+                        </div>
+                        <span style="cursor:pointer" class="steps-p">Personal</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-12 col-lg-8 no-pad" *ngIf="studentProfileData">
+            <app-student-geography [studentProfileData]="studentProfileData"
+                (onSubmitGeographyForm)="submitStudentProfile($event, sections[0].name)"
+                (onBackForm)="onBack($event, sections[0].name)" [section]="sections[0]" *ngIf="sections[0].isOpen">
+            </app-student-geography>
+            <app-student-history [studentProfileData]="studentProfileData"
+                (onSubmitHistoryForm)="submitStudentProfile($event, sections[1].name)"
+                (onUpdateEducationStatus)="setProfileStepsStatus($event)"
+                (onBackForm)="onBack($event, sections[1].name)" [section]="sections[1]" *ngIf="sections[1].isOpen">
+            </app-student-history>
+            <app-student-interests [studentProfileData]="studentProfileData"
+                (onSubmitInterestForm)="submitStudentProfile($event, sections[2].name)"
+                (onBackForm)="onBack($event, sections[2].name)" [section]="sections[2]" *ngIf="sections[2].isOpen">
+            </app-student-interests>
+            <app-student-know-you-better [studentProfileData]="studentProfileData"
+                (onSubmitKnowYouBetterForm)="submitStudentProfile($event, sections[3].name)"
+                (onBackForm)="onBack($event, sections[3].name)" [section]="sections[3]" *ngIf="sections[3].isOpen">
+            </app-student-know-you-better>
+            <app-student-projects [studentProfileData]="studentProfileData"
+                (onSubmitProjectForm)="submitStudentProfile($event, sections[4].name)"
+                (onBackForm)="onBack($event, sections[4].name)" [section]="sections[4]" *ngIf="sections[4].isOpen">
+            </app-student-projects>
+            <app-student-headed [studentProfileData]="studentProfileData"
+                (onSubmitHeadedForm)="submitStudentProfile($event, sections[5].name)"
+                (onBackForm)="onBack($event, sections[5].name)" [section]="sections[5]" *ngIf="sections[5].isOpen">
+            </app-student-headed>
+            <app-student-preferences [studentProfileData]="studentProfileData"
+                (onSubmitPreferencesForm)="submitStudentProfile($event, sections[6].name)"
+                (onBackForm)="onBack($event, sections[6].name)" [section]="sections[6]" *ngIf="sections[6].isOpen">
+            </app-student-preferences>
+            <app-student-personal-details [studentProfileData]="studentProfileData"
+                (onSubmitPersonalDetailsForm)="submitStudentProfile($event,sections[7].name)"
+                (onBackForm)="onBack($event, sections[7].name)" [section]="sections[7]" *ngIf="sections[7].isOpen">
+            </app-student-personal-details>
+            <!-- Uncomment below code to see Screen no 34 modal 
+                        and Uncomment the modal code at the end of the page too-->
+            <!-- <div class="lead-form-wrapper">
+                    <div style="margin: auto; text-align: center;width: 100%;">
+                        <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Click on me
+                            to
+                            see Screen no. 34(Modal)</button>
+                    </div>
+                </div> -->
+            <!-- Uncomment this code to see Screen no 34 modal-->
+
+
+            <!-- Uncomment below code to see Screen no 38 modal 
+                        and Uncomment the modal code at the end of the page too -->
+            <!-- <div class="lead-form-wrapper">
+                    <div style="margin: auto; text-align: center;width: 100%;">
+                        <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Click on
+                            me to see Screen no. 38(Modal)</button>
+                    </div>
+                </div> -->
+            <!-- Uncomment above code to see Screen no 38 modal-->
+
+            <!-- Uncomment below code to see Screen no 43 modal 
+                        and Uncomment the modal code at the end of the page too -->
+            <div class="lead-form-wrapper hides">
+                <div style="margin: auto; text-align: center;width: 100%;">
+                    <button type="button" class="btn btn-primary">Click on
+                        me to see Screen no. 43(Modal)</button>
+                </div>
+            </div>
+            <!-- Uncomment above code to see Screen no 43 modal-->
+
+        </div>
+    </div>
+</div>
+<!-- Uncomment below code to see Screen no 34 modal-->
+<!-- <ng-template #template>
+    <div class="modal-body">
+        <div>
+            <div
+                style="background: url(assets/images/congr-bg.jpg) no-repeat;min-height: 400px;
+                        border-radius: 5px;max-width: 800px;margin: 0 auto;display: flex;flex-direction: column;justify-content: center;align-items: center;width: 100%;">
+
+                <h2 style="padding: 10px;">Congratulations!</h2>
+                <div style="background: #FFFFFF 0% 0% no-repeat padding-box;box-shadow: 0px 1px 16px #00000014;
+                            border-radius: 12px;padding: 20px;text-align: center;margin-top: 30px;">
+                    <h6 style="text-align: center;font: normal normal bold 17px/15px Nunito;
+                        letter-spacing: 0px;color: #141414;">
+                        100 Reward Points
+                    </h6>
+                    <p style="text-align: center;margin-bottom: 0;color: #141414;
+                        font: normal normal normal 11px/15px Nunito;letter-spacing: 0px;">
+                        are added for coming this far! Keep going.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+<!-- Uncomment above code to see Screen no 34 modal-->
+
+
+<!-- Uncomment below code to see Screen no 38 modal-->
+<!-- <ng-template #template>
+    <div class="modal-body">
+
+        <div class="lead-form-wrapper">
+            <div class="lead-form container">
+                <p class="heading">Describe any independent or class project that you have done</p>
+                <form class="login-form row">
+                    <div class="group col-sm-12 no-pad">
+                        <div>
+                            <input type="text" required="required" value="" />
+                            <label class="label-pad-designright">Enter project title</label>
+                        </div>
+                    </div>
+                    <div class="flex-start">
+                        <div class="group col-sm-12 no-pad">
+                            <p class="textarea-label">Add Project Description</p>
+                            <div>
+                                <textarea class="form-control form-control-sm"
+                                    placeholder="Tell us about your project......" style="min-height: 44px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="" style="display: block;font: normal normal normal 12px/19px Nunito;
+                    letter-spacing: 0px;color: #141414;margin-bottom: 10px;">Share any online link for this project
+                        work
+                    </p>
+                    <div class="group col-sm-12 no-pad">
+                        <div>
+                            <input type="text" required="required" value="" />
+                            <label class="label-pad-designright">Enter project title</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="btn-wrapper" style="justify-content: flex-end;">
+                <button class="savebtn">CANCEL</button>
+                <button class="submitbutton">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+<!-- Uncomment above code to see Screen no 38 modal-->
+
+
+<!-- Uncomment below code to see Screen no 43 modal-->
+<!-- <ng-template #template>
+    <div class="modal-body">
+
+        <div class="lead-form-wrapper" style="max-width: 400px;">
+            <div class="lead-form container"
+                style="background: #F2F2F2 0% 0% no-repeat padding-box;
+            box-shadow: 0px 1px 16px #00000029;padding: 20px;border: 0.5px solid #969696;border-radius: 12px;text-align: center;">
+                <p class="heading" style="margin-bottom: 0;">Update Password</p>
+                <form class="login-form row" style="background: #FFFFFF 0% 0% no-repeat padding-box;
+                border-radius: 12px;padding: 30px;">
+                    <div class="group col-sm-12 no-pad">
+                        <div class="mg-b20 password-eye">
+                            <input type="password" required="required" value="qwerty" />
+                            <label>Old Password</label>
+                        </div>
+                    </div>
+                    <div class="group col-sm-12 no-pad">
+                        <div class="mg-b20 password-eye">
+                            <input type="password" required="required" value="qwerty" />
+                            <label class="label-pad-designleft">New Password</label>
+                        </div>
+                    </div>
+                    <div class="group col-sm-12 no-pad">
+                        <div class="mg-b20 password-eye">
+                            <input type="password" required="required" value="qwerty" />
+                            <label>Confirm Password</label>
+                        </div>
+                    </div>
+
+                    <button class="submitbutton"
+                        style="width: 100%;background: #3F89FC 0% 0% no-repeat padding-box;
+                    border-radius: 6px;font: normal normal bold 14px/19px Nunito;letter-spacing: 0px;padding:10px 0;color: #FFFFFF;">
+                        SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+<!-- Uncomment above code to see Screen no 43 modal-->
+
+<!-- <section class="profile-picture-wrap">
+    <div class="profile-picture-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="user-profile">
+                        <app-avatar-upload [redBorderImage]="true"></app-avatar-upload>
+                        <p>Hello <span>{{user?.name}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-content-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="profile-content-box">
+                        <div class="profile-strength-box">
+                            <p class="build-profile">Let’s build your portfolio together!</p>
+                            <p class="profile-strength">Portfolio Strength:
+                                <span *ngIf="studentProfileData?.profile_completion?.profile_text">{{studentProfileData?.profile_completion?.profile_text}}</span>
+                                <span *ngIf="!studentProfileData?.profile_completion?.profile_text">Beginner</span>
+                            </p>
+                            <div class="progress-bar-wrap">
+                                <app-progress-bar [value]="progressBarValue"></app-progress-bar>
+                            </div>
+                            <p class="complete-profile">A complete portfolio enhances your chances of building winning applications for colleges and universities, and help us recommend best-fit projects for you.
+                            </p>
+                        </div>
+                        <div id="profileQuestionBox" class="profile-question-wrap" [ngStyle]="{'transform': 'translateY('+boxScroll+')'}" [class.fixed]="isSticky">
+                            <ul class="profile-question-list">
+                                <li [class.profile-completed]="onBoardingSteps?.geography">
+                                    <p>Location</p>
+                                </li>
+                                <li [class.profile-completed]="onBoardingSteps?.history_updated">
+                                    <p>Education</p>
+                                </li>
+                                <li [class.profile-completed]="onBoardingSteps?.interest">
+                                    <p>Interests</p>
+                                </li>
+                                <li [class.profile-completed]="onBoardingSteps?.know_you_better">
+                                    <p>Favorites</p>
+                                </li>
+                                <li [class.profile-completed]="onBoardingSteps?.projects">
+                                    <p>Projects & Accomplishments</p>
+                                </li>
+                                <li [class.profile-completed]="onBoardingSteps?.headed">
+                                    <p>Future Education Plans</p>
+                                </li>
+                                <li [class.profile-completed]="onBoardingSteps?.prefrences">
+                                    <p>Preferences</p>
+                                </li>
+                                <li [class.profile-completed]="onBoardingSteps?.ways_to_be_in_touch">
+                                    <p>Personal</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-12 col-sm-12">
+                    <div class="profile-content-box">
+                        <accordion [isAnimated]="true" [closeOthers]="true" *ngIf="studentProfileData">
+
+                            
+                            <accordion-group class="question-box" [class.active]="geoGraphyAccordion.isOpen" [class.completed]="onBoardingSteps?.geography" heading="Location" [isOpen]="true" #geoGraphyAccordion>
+                                <app-student-geography [studentProfileData]="studentProfileData" (onSubmitGeographyForm)="submitStudentProfile($event, historyAccordion)"></app-student-geography>
+                            </accordion-group>
+                            <accordion-group class="question-box " heading="Education" [class.completed]="onBoardingSteps?.history_updated" [class.active]="historyAccordion.isOpen" #historyAccordion>
+                                <app-student-history [studentProfileData]="studentProfileData" (onSubmitHistoryForm)="submitStudentProfile($event, historyAccordion)" (onUpdateEducationStatus)="setProfileStepsStatus($event)"></app-student-history>
+                            </accordion-group>
+                            <accordion-group class="question-box" [class.completed]="onBoardingSteps?.interest" heading="Interests" [class.active]="interestAccordion.isOpen" #interestAccordion>
+                                <app-student-interests [studentProfileData]="studentProfileData" (onSubmitInterestForm)="submitStudentProfile($event, knowYouBetterAccordion)"></app-student-interests>
+                            </accordion-group>
+
+                            <accordion-group class="question-box" heading="Favorites" [class.completed]="onBoardingSteps?.know_you_better" [class.active]="knowYouBetterAccordion.isOpen" #knowYouBetterAccordion>
+                                <app-student-know-you-better [studentProfileData]="studentProfileData" (onSubmitKnowYouBetterForm)="submitStudentProfile($event, projectAccordion)">
+                                </app-student-know-you-better>
+                            </accordion-group>
+
+
+                            <accordion-group class="question-box" [class.completed]="onBoardingSteps?.projects" heading="Projects & Accomplishments" [class.active]="projectAccordion.isOpen" #projectAccordion>
+                                <app-student-projects [studentProfileData]="studentProfileData" (onSubmitProjectForm)="submitStudentProfile($event, headedAccordion)"></app-student-projects>
+                            </accordion-group>
+                            <accordion-group class="question-box" [class.completed]="onBoardingSteps?.headed" heading="Future Education Plans" [class.active]="headedAccordion.isOpen" #headedAccordion>
+                                <app-student-headed [studentProfileData]="studentProfileData" (onSubmitHeadedForm)="submitStudentProfile($event, preferencesAccordion)"></app-student-headed>
+                            </accordion-group>
+
+                            <accordion-group class="question-box" heading="Preferences" [class.completed]="onBoardingSteps?.prefrences" #preferencesAccordion [class.active]="preferencesAccordion.isOpen">
+                                <app-student-preferences [studentProfileData]="studentProfileData" (onSubmitPreferencesForm)="submitStudentProfile($event, waysToBeInTouch)">></app-student-preferences>
+                            </accordion-group>
+
+                            <accordion-group class="question-box" [class.completed]="onBoardingSteps?.ways_to_be_in_touch" heading="Personal" #waysToBeInTouch [class.active]="waysToBeInTouch.isOpen">
+                                <app-student-personal-details [studentProfileData]="studentProfileData" (onSubmitPersonalDetailsForm)="submitStudentProfile($event)">
+                                </app-student-personal-details>
+                            </accordion-group>
+                        </accordion>
+                    </div>
+                </div>
+            </div>
+            <div id="endBlock" class="end-block"></div>
+        </div>
+    </div>
+</section> -->
+
+<!-- profile completed modal  -->
+<div *ngIf="isProfileCompletedModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal
+    #profileCompletedModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
+    <div class="modal-dialog modal-small-width profile-completed">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-form-wrap reset-link-sent">
+                    <button type="button" class="close-button1" (click)="hideModal()"><img
+                            src="/assets/images/cross-button.png"></button>
+                    <div class="modal-form-body1">
+                        <img src="/assets/images/green-circle-tick.svg" class="link-sent-image">
+                        <p class="forgot-password-heading">Great Job!</p>
+                        <p class="forgot-password-subheading">You have successfully created your Collegey Portfolio and
+                            are ready to go out there to showcase your skills to the world. You can always come back and
+                            add more to your portfolio from your dashboard. Wishing you the best!</p>
+                        <button type="button" class="View-full-profile" [routerLink]="['/student/dashboard']">View My
+                            Portfolio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loader></app-loader>

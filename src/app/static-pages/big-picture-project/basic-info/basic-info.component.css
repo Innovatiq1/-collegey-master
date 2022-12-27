@@ -1,0 +1,296 @@
+.section-mr{
+    padding: 40px 65px;
+    max-width: 1366px;
+    margin: 70px auto 0;
+    background: #F0F0F0 0% 0% no-repeat padding-box;
+  }
+  .blog-left-side{
+    margin-right: 40px;
+  }
+  .blog-left-side .heading{
+    font: normal normal normal 32px/57px Georgia;
+    letter-spacing: 0px;
+    color: #141414;
+    text-transform: capitalize;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #F2F2F2;
+  }
+  .blog-left-side .blog-img{
+    margin-bottom: 20px;
+  }
+  .blog-left-side .desc{
+    font: normal normal bold 14px/28px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 5px;
+  }
+  .blog-left-side ul{
+    margin-bottom: 20px;
+  }
+  .blog-left-side ul li{
+    list-style: disc;
+    margin-left: 20px;
+  }
+  .blog-left-side .tags-box1 {
+    margin-top: 12px;
+    margin-bottom: 20px;
+  }
+  .blog-left-side .article-tags1 {
+    background-color: #D6E6FF;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.44px;
+    text-align: center;
+    color: rgba(32, 32, 32, 0.8);
+    margin-right: 6px;
+    padding: 5px 11px;
+    display: inline-block;
+    margin-bottom: 7px;
+    height: 23px;
+    font: normal normal 600 10px/14px Nunito;
+    letter-spacing: 0px;
+    color: #3F89FC;
+  }
+  .social-tag-box{
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .social-tag-box .img-div{
+    min-width: 180px;
+    min-height: 180px;
+    width: 180px;
+    height: 180px;
+  }
+  .social-tag-box .img-div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+  }
+  .social-tag-box h6{
+    font: normal normal bold 16px/28px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    text-transform: capitalize;
+  }
+  .social-tag-box p{
+    letter-spacing: 0px;
+    color: #141414;
+    font-size: 14px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+  .blog-right-side{
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    padding: 30px;
+  }
+  .blog-right-side p{
+    margin-bottom: 0;
+  }
+  .blog-right-side .p1{
+    font: normal normal bold 15px/24px Nunito;
+  letter-spacing: 0px;
+  color: #838383;
+  }
+  .blog-right-side .p2{
+  font: normal normal bold 25px/38px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  }
+  .blog-right-side .p3{
+    font: normal normal normal 15px/24px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  }
+  .blog-right-side .p4{
+    font: normal normal bold 19px/34px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  }
+  .blog-right-side .p5{
+    font: normal normal bold 15px/46px Nunito;
+  letter-spacing: 0px;
+  color: #838383;
+  }
+  .blog-right-side .p6{
+    font: normal normal normal 13px/44px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  }
+  .blog-right-side ul li{
+    font: normal normal bold 15px/24px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  list-style: disc;
+  margin-left: 20px;
+  }
+  .blog-right-side button{
+    background: #3F89FC 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    color: #fff;
+    width: 100%;
+    margin-top: 56px;
+    height: 40px;
+    font: normal normal bold 14px/19px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+  }
+  .head-text{
+    font: normal normal bold 18px/16px Nunito;
+    letter-spacing: 0px;
+    color: #838383;
+    text-transform: capitalize;
+    margin: 0;
+    padding-left: 10px;
+  }
+  .info-box{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 20px;
+  }
+  .info-header{
+    display: flex;
+    justify-content: space-between;
+  }
+  .info-header p{
+    font: normal normal bold 16px/28px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  text-transform: capitalize;
+  margin-bottom: 0;
+  }
+  .info-header button{
+    font: normal normal bold 12px/28px Nunito;
+    letter-spacing: 0px;
+    color: #3F89FC;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    width: 60px;
+    justify-content: space-between;
+  }
+  .info-header button img{
+    width: 15px;
+    height: 15px;
+  }
+  .info-box .sub-text{
+    letter-spacing: 0px;
+    color: #141414;
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .lead-form input,
+  .lead-form textarea {
+      background: #FFFFFF 0% 0% no-repeat padding-box;
+      text-align: left;
+      font: normal normal normal 12px/19px Nunito;
+      letter-spacing: 0px;
+      color: #141414;
+  }
+  
+  .lead-form input::placeholder,
+  .lead-form textarea::placeholder {
+      text-align: left;
+      font: normal normal normal 12px/19px Nunito;
+      letter-spacing: 0px;
+      color: #DBDBDB;
+  }
+  
+  .group {
+      position: relative;
+      padding: 0;
+  }
+  
+  .group div {
+      background: #FFFFFF 0% 0% no-repeat padding-box;
+      border: 1px solid #979797;
+      border-radius: 6px;
+      padding: 9px 0 5px 0;
+      margin-bottom: 30px;
+  }
+  
+  .lead-form input {
+      background: none;
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 0;
+      padding: 10px 10px 0 10px;
+  }
+  
+  .lead-form input:focus,
+  .lead-form textarea:focus {
+      outline: none;
+  }
+  
+  .lead-form input:focus~label,
+  .lead-form textarea:focus~label,
+  .lead-form input:valid~label,
+  .lead-form textarea:valid~label {
+      top: 5px;
+      font: normal normal bold 10px/14px Nunito;
+      letter-spacing: 0px;
+      color: #D3D3D3;
+  }
+  
+  input:focus~.bar:before,
+  textarea:focus~.bar:before {
+      width: 100%;
+  }
+  
+  .lead-form .login-label {
+      position: absolute;
+      pointer-events: none;
+      transition: 300ms ease all;
+      font: normal normal normal 12px/19px Nunito;
+      letter-spacing: 0px;
+      color: #DBDBDB;
+      top: 14px;
+      margin: 0;
+      left: 10px;
+  }
+  input:-internal-autofill-selected {
+      background-color: transparent;
+  }
+  .lead-form select{
+    width: 100%;
+    border: none;
+    font: normal normal 300 12px/19px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    background: none;
+    padding-left: 5px;
+    outline: none;
+  }
+  .lead-form .select-label{
+    font: normal normal bold 10px/14px Nunito;
+    letter-spacing: 0px;
+    color: #D3D3D3;
+    padding-left: 10px;
+    margin-bottom: 0;
+  }
+  .info-box .action-div{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .info-box .action-div button{
+    font: normal normal bold 14px/19px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    width: 160px;
+    height: 40px;
+    background: #3F89FC 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+  }
+  .hides{
+    display: none;
+  }
+  .closed-step{
+    padding: 15px 20px;
+  }

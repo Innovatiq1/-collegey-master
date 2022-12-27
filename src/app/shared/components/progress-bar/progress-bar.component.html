@@ -1,0 +1,7 @@
+<div class="progress-bar-box">
+  <progressbar [value]="value" class="profile-progressbar"></progressbar>
+  <div class="progress-bar-check " [ngClass]="{'step-completed': value >=25}"></div>
+  <div class="progress-bar-check1" [ngClass]="{'step-completed': value >=50}"></div>
+  <div class="progress-bar-check2" [ngClass]="{'step-completed': value >=75}"></div>
+  <div class="progress-bar-check3" [ngClass]="{'step-completed': value ==100}"></div>
+</div>

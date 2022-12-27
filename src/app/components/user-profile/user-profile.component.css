@@ -1,0 +1,83 @@
+.background {
+  background-color: #f7f7f7;
+}
+.board {
+  background: white;
+  padding: 53px 50px;
+  height: fit-content;
+  margin: 100px;
+  border-radius: 12px;
+}
+.welcome {
+  font-size: 32px;
+  font-family: Georgia;
+  line-height: 36px;
+  color: #141414;
+}
+.content {
+  font-size: 16px;
+  font-family: Nunito;
+  font-weight: 600;
+  line-height: 22px;
+  color: #838383;
+  margin-top: 20px;
+  margin-bottom: 36px;
+}
+
+.information {
+  font-size: 20px;
+  font-family: Nunito;
+  font-weight: 600;
+  line-height: 27px;
+  color: #141414;
+  margin-bottom: 20px;
+}
+.group {
+  position: relative;
+  padding: 0;
+  width: 304px;
+}
+.group div {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #979797;
+  border-radius: 6px;
+  padding: 9px 0 5px 0;
+  margin-bottom: 20px;
+}
+.radio {
+  height: 40px;
+  width: 304px;
+  padding: 15px 0 15px 11px;
+  border: 1px solid #d6e6ff;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.radio-box {
+  margin-right: 10px;
+}
+.radio-label {
+  margin-bottom: 0;
+}
+.radio-item input[type="radio"]:checked + label:after {
+  border-radius: 11px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  content: " ";
+  display: block;
+  background: #004c97;
+}
+.continue {
+  background-color: #3f89fc;
+  font-size: 14px;
+  color: #ffffff;
+  font-family: Nunito;
+  font-weight: bold;
+  line-height: 19px;
+  border-radius: 6px;
+  height: 40px;
+  width: 304px;
+  margin-top: 20px;
+}

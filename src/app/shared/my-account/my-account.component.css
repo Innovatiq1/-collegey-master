@@ -1,0 +1,51 @@
+.my-account-wrapper {
+    margin-top: 80px;
+}
+
+.cusheight {
+    min-height: 90vh;
+}
+
+.card {
+    height: 100%;
+}
+
+.table {
+    min-width: 700px;
+}
+
+.lead-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.lead-form .alert {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.clg-active {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.1;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.clg-deactive {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.1;
+    border-radius: 3px;
+    display: inline-block;
+}

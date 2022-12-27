@@ -1,0 +1,102 @@
+<app-mentor-globaldashboard activeTab="tab4"></app-mentor-globaldashboard>
+<div class="container">
+    <div class="second-section">
+        <!-- <div class="container" *ngFor="let opportunities of collegeyOpportunityFeaturedData; let i=index">
+        <div class="row"> 
+            <div class="mentor-block-main">
+                <div class="mentor-block">
+                    <div class="mentor-block-logo">
+                        <img *ngIf="opportunities?.image" [src]="commonService.imagePathS3(opportunities?.image) ">
+                    </div>
+                    <div class="mentor-block-content">
+                        <div class="mentor-header">
+                            <h2>{{ opportunities.title}}</h2>
+                            <a href="javascript:;" *ngIf="opportunities?.featured == 'Yes'"> Featured Opportunity</a>
+                        </div>
+                        <div class="mentor-full">
+                            <span>{{ opportunities.short_description}}</span>
+
+                            <div class="opportunitiesDesc" [innerHTML]="opportunities.description" [ngClass]="{'readLess': opportunities.readLess}"></div>
+                            <br> <br>
+
+                            <a href="javascript:;" (click)="readMoreClass(opportunities)" *ngIf="opportunities?.description">
+                                {{opportunities.readLess ? 'read less' : 'read more'}}
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mentor-bottom">
+                    <div class="mentor-block-btn">
+                        <span class="mentor-topic" *ngFor="let tag of opportunities.tags;">{{tag}}</span>
+                    </div>
+                </div>
+                <div class="mentor-bottom-faviourte">
+                    <div *ngIf="CheckOpportunitieslike(opportunities?.favorite)" class="favorite"
+                        (click)="addToFavoriteOpportunities(i,opportunities?._id,'removefavorite')"><span
+                            class="fa fa-star"></span>
+                        Favorite</div>
+                    <div *ngIf="!CheckOpportunitieslike(opportunities?.favorite)" class="favorite"
+                        (click)="addToFavoriteOpportunities(i,opportunities?._id,'addfavorite')"><span
+                            class="fa fa-star-o"></span>
+                        Favorite</div>
+                    <div class="favorite">{{ opportunities?.favorite.length}} Favorite</div>
+                </div>
+            </div>
+
+        </div>
+    </div> -->
+
+        <div class="container" *ngFor="let opportunities of collegeyOpportunityData; let i=index">
+            <div class="row">
+                <div class="mentor-block-main">
+                    <div class="mentor-block">
+                        <div class="mentor-block-logo">
+                            <img *ngIf="opportunities?.image" [src]="commonService.imagePathS3(opportunities?.image) ">
+                        </div>
+                        <div class="mentor-block-content">
+                            <div class="mentor-header">
+                                <h2>{{ opportunities.title}}</h2>
+                                <a href="javascript:;" *ngIf="opportunities?.featured == 'Yes'"> Featured
+                                    Opportunity</a>
+                            </div>
+                            <div class="mentor-full">
+                                <span>{{ opportunities.short_description}}</span>
+
+                                <div class="opportunitiesDesc" [innerHTML]="opportunities.description"
+                                    [ngClass]="{'readLess': opportunities.readLess}"></div>
+
+                                <a href="javascript:;" (click)="readMoreClass(opportunities)"
+                                    *ngIf="opportunities?.description && countWords(opportunities.description)">
+                                    {{opportunities.readLess ? 'read less' : 'read more'}}
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mentor-bottom">
+                        <div class="mentor-block-btn">
+                            <span class="mentor-topic" *ngFor="let tag of opportunities.tags;">{{tag}}</span>
+                        </div>
+                    </div>
+                    <div class="mentor-bottom-faviourte">
+                        <div *ngIf="CheckOpportunitieslike(opportunities?.favorite)" class="favorite"
+                            (click)="addToFavoriteOpportunities(i,opportunities?._id,'removefavorite')"><span
+                                class="fa fa-star"></span>
+                            Favorite</div>
+                        <div *ngIf="!CheckOpportunitieslike(opportunities?.favorite)" class="favorite"
+                            (click)="addToFavoriteOpportunities(i,opportunities?._id,'addfavorite')"><span
+                                class="fa fa-star-o"></span>
+                            Favorite</div>
+                        <div class="favorite">{{ opportunities?.favorite.length}} Favorite</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button (click)="loadMoreData()" [hidden]="isLoading" class="clg-loadmore">Load More</button>
+            <p class="noFoundData" *ngIf="isLoading">No More Data Found</p>
+        </div>
+    </div>
+</div>

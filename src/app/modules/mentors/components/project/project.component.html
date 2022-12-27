@@ -1,0 +1,991 @@
+<app-mentor-globaldashboard></app-mentor-globaldashboard>
+<div class="learn-box1">
+  <h6>Important Announcement</h6>
+  <div class="subdiv" *ngFor="let announcement of announcementsArray?.data; let i=index">
+    <h5>{{announcement.subject}}</h5>
+    <div [innerHTML]='announcement.details' class="announcementDetails"></div>
+    <!-- <p *ngIf="announcementWithURL.indexOf(i) == -1">{{announcement.details}}</p>
+    <p *ngIf="announcementWithURL.indexOf(i) != -1" [innerHtml] = 'linkArray[i]'></p> -->
+  </div>
+</div>
+<div class="container fifth-section">
+  <div class="row no-mr">
+    <div class="col-md-3 sidebar">
+      <h3 class="pb-0">My Projects&nbsp;&nbsp;{{projectinfo?.projectDashboardProjects?.length}} </h3>
+      <div class="create-project-btn">
+        <button class="btn" (click)="createproject(opencreateproject)">CREATE NEW PROJECT</button>
+      </div>
+      <ul *ngFor="let list of projectinfo?.projectDashboardProjects; let i=index;">
+        <li class="active" (click)="projectdescp(list?.project?._id,i);">
+          {{list?.project?.title}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9 project-box">
+      <div class="project-header">
+        <div class="project-img">
+          <img *ngIf="selectedProjectData?.image" [src]="selectedProjectData?.image" alt="">
+          <img *ngIf="!selectedProjectData?.image" src="/assets/images/resources/programs-banner_1.jpg" alt="">
+        </div>
+        <div>
+          <h5 style="display: inline-block;">{{selectedProjectData?.title}}</h5>
+
+          <span *ngIf="selectedProjectData?.projectStatus != 'completed'" class="ml-2 badge badge-success"
+            style="padding: 5px 10px;font-size: 10px;">{{selectedProjectData?.projectStatus}}</span>
+          <span *ngIf="selectedProjectData?.projectStatus == 'completed'" class="ml-2 badge badge-success"
+            style="padding: 5px 10px;font-size: 10px;">Completed</span>
+
+          <select
+            *ngIf="selectedProjectData?.projectOwner?.id == userid && selectedProjectData?.projectStatus != 'completed'"
+            class="update_projectStatus form-control"
+            style="display: inline-block;width: auto;margin-left: 15px;height: auto;"
+            (change)="projectStatusConformation(openStatusDialog)">
+            <option value="">Update Status</option>
+            <option value="completed">Completed</option>
+          </select>
+
+
+
+          <p class="tags-box1" *ngIf="selectedProjectData?.hash_tags">
+            <!-- <span class="article-tags1">{{selectedProjectData?.skills}}</span> -->
+            <span class="article-tags1" *ngFor="let tag of selectedProjectData?.hash_tags">{{tag}}</span>
+          </p>
+          <p class="desc">{{selectedProjectData?.description}} </p>
+          <ul>
+
+            <li
+              *ngIf="selectedProjectData?.projectOwner && selectedProjectData?.projectOwner?._id != selectedProjectData?.mentor?._id">
+              <img *ngIf="selectedProjectData?.projectOwner?.avatar"
+                [src]="commonService.imagePathS3(selectedProjectData?.projectOwner?.avatar)" alt=""
+                title="{{selectedProjectData?.projectOwner?.name}} {{selectedProjectData?.projectOwner?.last_name}}">
+              <img *ngIf="!selectedProjectData?.projectOwner?.avatar" src='assets/images/user-icon.png' alt=""
+                title="{{selectedProjectData?.projectOwner?.name}} {{selectedProjectData?.projectOwner?.last_name}}">
+            </li>
+
+            <li *ngIf="selectedProjectData?.mentor">
+              <img *ngIf="selectedProjectData?.mentor?.avatar"
+                [src]="commonService.imagePathS3(selectedProjectData?.mentor?.avatar)" alt=""
+                title="{{selectedProjectData?.mentor?.mentor_profile?.profile?.fullLegalName}}">
+              <img *ngIf="!selectedProjectData?.mentor?.avatar" src='assets/images/user-icon.png' alt=""
+                title="{{selectedProjectData?.mentor?.mentor_profile?.profile?.fullLegalName}}">
+            </li>
+
+            <li *ngFor="let member of selectedProjectData?.projectMembers; let j=index">
+              <img *ngIf="member?.avatar" [src]="commonService.imagePathS3(member?.avatar)" alt=""
+                title="{{member?.name}} {{member?.last_name}}">
+              <img *ngIf="!member.avatar" src='assets/images/user-icon.png' alt=""
+                title="{{member?.name}} {{member?.last_name}}">
+            </li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="user-data">
+        <div>
+          <ngb-tabset>
+            <ngb-tab title="Chat">
+              <ng-template ngbTabContent>
+                <div class="comment-box" *ngFor="let list of allchatdetail">
+                  <div class="pd-lr20">
+                    <div class="comment-date-info">
+                      <hr>
+                      <span class="comment-date">{{list?.createdAt | date :'EEEE, MMMM d'}}</span>
+                      <hr>
+                    </div>
+                    <div class="comment-item">
+                      <div>
+                        <img *ngIf="list?.user?.avatar" [src]="commonService.imagePathS3(list?.user?.avatar)"
+                          alt="{{list?.user?.name}}" class="user-img">
+                        <img *ngIf="!list?.user?.avatar" src="assets/images/user-icon.png" alt="" class="user-img">
+                        <!-- <span *ngIf="!list?.user?.avatar" class="user-img">{{list?.user?.name}} </span> -->
+                      </div>
+                      <div class="mg-l15">
+                        <div><span class="user-name">{{list?.user?.name + " " + list?.user?.last_name}}</span> <span
+                            class="comment-time">{{list?.createdAt
+                            |
+                            date :'h:mm:ss a'}}</span>
+                        </div>
+                        <p class="user-comment-desc">{{list?.text}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="commentForm" class="comment-send-box">
+                  <div class="alert alert-danger alert-dismissable mb-0 w-100" style="text-align: center;"
+                    *ngIf="Chatmsg_danger">
+                    Please enter message
+                  </div>
+                  <form [formGroup]="commentForm" style="width: 100%;">
+                    <div class="image-upload">
+                      <label for="file-input">
+                        <img src="assets/images/attachment.png" />
+                      </label>
+                      <input id="file-input" type="file"
+                        accept=".png,.jpeg,.jpg,.pdf,.docx,.xls,.xlsx,.doc,.ppt,.pptx" />
+                    </div>
+                    <div style="display: flex;width: 100%;">
+                      <!-- <img src="../../../../../assets/images/header_logo.svg" alt="" class="smiley-icon"> -->
+                      <input type="text" placeholder="Type a message @name" [mention]="userList"
+                        [mentionConfig]="{triggerChar:'@',maxItems:5,labelKey:'name'}" class="comment-input"
+                        formControlName="text">
+                      <button class="btn send-btn" (click)="postchats()"> Send</button>
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Project Board">
+              <ng-template ngbTabContent>
+                <div class="comment-send-box">
+
+                  <form [formGroup]="postForm" (ngSubmit)="postProject()" method="post" novalidate style="width: 100%;">
+                    <div style="display: inline-block; width: 100%; padding-top: 10px;">
+
+                      <div class="form-group">
+                        <label style="color: #023147;font-weight: 600;">Post your questions , project update or
+                          news</label>
+                        <textarea class="form-control" type="text" name="" id="" placeholder="Type Your Update"
+                          formControlName="postText" style="min-height: 50px;"></textarea>
+                        <span
+                          *ngIf="submittedPost && (hasErrorPost('postText','required') || hasErrorPost('postText','pattern'))"
+                          class="d-block" style="color: red;">is required.</span>
+                      </div>
+
+                      <div class="form-group">
+                        <label style="color: #023147;font-weight: 600;">Post Image (Please upload file around image size
+                          520 x 300)</label>
+                        <input class="form-control field-control" (change)="onpostFileSelect($event)" type="file"
+                          accept=".png,.jpeg,.jpg">
+                      </div>
+                      <div *ngIf="PostEditImage">
+                        <div class="d-inline-block position-relative" *ngIf="!removePostImageFile">
+                          <button class="delete-img" (click)="removePostImage()"><i
+                              class="fa fa-times-circle"></i></button>
+                          <img *ngIf="PostEditImage" alt="Feed Post Image" style="object-fit: cover;"
+                            class="pb-3 img-fluid" [src]="PostEditImage">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label style="color: #023147;font-weight: 600;">Add a Link</label>
+                        <textarea class="form-control" type="text" name="" id="" placeholder="Add a Link"
+                          formControlName="post_comment" style="min-height: 110px;"></textarea>
+                        <!-- <span *ngIf="submittedPost && hasErrorPost('post_comment','required')" class="d-block" style="color: red;">is required.</span> -->
+                      </div>
+
+                      <button *ngIf="!postIsEdit" class="btn send-btn" type="submit">Send</button>
+                      <button *ngIf="postIsEdit" class="btn send-btn" type="submit">Update</button>
+
+                    </div>
+                    <hr>
+                  </form>
+                </div>
+                <div class="social-feed-box" *ngFor="let feed of allProjectPost; let p=index">
+                  <div class="social-feed-list">
+                    <div class="row top-box">
+                      <div class="join-author">
+                        <span>
+                          <img *ngIf="feed?.postBy?.avatar" [src]="commonService.imagePathS3(feed?.postBy?.avatar)"
+                            alt="{{feed?.postBy?.name}}">
+                          <img *ngIf="!feed?.postBy?.avatar" src="assets/images/user-icon.png" alt=""
+                            class="profile-img">
+                        </span>
+                        <div>
+                          <h6>{{feed?.postBy?.name}}</h6>
+                          <p class="half-opac" style="color:#AFAFAF !important">{{feed?.timeago}}
+                          </p>
+                        </div>
+                        <!-- <div class="post_comments">{{feed?.postComment}}</div> -->
+                      </div>
+
+                      <div *ngIf="userid == feed?.postBy?.id" class="float-right">
+                        <div class="social-feed-edit">
+                          <i class="fa fa-edit cursor-pointer" (click)="editProjectPost(feed._id,p)"></i>
+                        </div>
+                        <div class="social-feed-edit">
+                          <i class="fa fa-trash cursor-pointer"
+                            (click)="deleteProjectPost(openPostDeleteDialog, feed._id)"></i>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="row feed-item">
+                      <div class="mb-4" *ngIf="feed.postType == 'image'">
+                        <h6 class="mb-1">{{feed?.postText}}</h6>
+                        <p [ngClass]="{'limitTextHeight': isReadMore}">
+                          <img src="{{feed?.postImageUrl}}" style="object-fit: cover;">
+                          <!-- {{feed?.postData}} -->
+                        </p>
+                        <a href="{{feed?.posturl}}" target="_blank" *ngIf="feed?.posturl">
+                          <p *ngIf="feed.postData != null">{{feed?.postData}}</p>
+                        </a>
+                        <p *ngIf="feed.postData != null && !feed?.posturl">{{feed?.postData}}</p>
+                      </div>
+                      <p [ngClass]="{'limitTextHeight': isReadMore}" *ngIf="feed.postType == 'text'">
+                        {{feed?.postText}}<br />
+                        <span *ngIf="feed?.postData != null">{{feed?.postData}}</span>
+                      </p>
+                      <div [ngClass]="{'limitTextHeight': isReadMore}" *ngIf="feed.postType == 'video'">
+                        <iframe width="100%" height="350" src="https://www.youtube.com/embed/HndV87XpkWg">
+                        </iframe>
+                        <!-- {{getEmbedYoutubeUrl(feed.postVideo)}} -->
+                        <p style="top: 892px;
+                                left: 393px;
+                                width: 487px;
+                                height: 24px;
+                                text-align: left;
+                                font: normal normal 600 18px/24px Nunito;
+                                letter-spacing: 0px;
+                                color: #4E4E4E;
+                                opacity: 1;">{{feed?.postData}}</p>
+                        <p style="margin-top: 35px;">{{feed?.postText}}</p>
+                      </div>
+                      <a *ngIf="feed?.posturl.includes('https')" class="readDesc" href="{{feed?.posturl}}"
+                        target="_blank" type="button">Read More <i class="fa fa-chevron-right"></i> </a>
+                      <div *ngIf="feed?.postData != null">
+                        <a *ngIf="feed?.postData.includes('https') && feed?.posturl == ''" class="readDesc"
+                          href="{{feed?.postData}}" target="_blank" type="button">Read More <i
+                            class="fa fa-chevron-right"></i> </a>
+                      </div>
+                      <!-- <a class="readDesc"
+                          *ngIf="feed?.postText?.length != 0 && feed?.postText?.length != 0> 500" type="button"
+                          (click)="showText()">
+                          {{ isReadMore ? 'Read More': 'Read Less' }} <i class="fa fa-chevron-right"></i>
+                        </a> -->
+                      <div class="social-status">
+
+                        <div class="" *ngIf="CheckPostlike(feed?.postLike)">
+                          <span class="social-points" (click)="addToPostLike(p,'removelike')">
+                            <span class="fa fa-heart" style="color: #f00;"></span>&nbsp;{{feed?.postLike.length}}
+                            Likes
+                          </span>
+                          <!-- <span class="social-points"><span class="fa fa-comment"></span>&nbsp;{{feed?.comment?.length}}
+                              Comments</span> -->
+                        </div>
+
+                        <div class="" *ngIf="!CheckPostlike(feed?.postLike)">
+                          <span class="social-points" (click)="addToPostLike(p,'addlike')">
+                            <span class="fa fa-heart-o"></span>&nbsp;{{feed?.postLike.length}}
+                            Likes
+                          </span>
+                          <!-- <span class="social-points"><span class="fa fa-comment"></span>&nbsp;{{feed?.comment?.length}}
+                              Comments</span> -->
+                        </div>
+
+                        <!-- <div class="text-right">
+                            <span class="glyphicon glyphicon-share-alt"></span> <span
+                              class="social-points fa fa-share">&nbsp;{{feed?.share}}
+                              Share</span>
+                          </div> -->
+                      </div>
+                    </div>
+                    <!-- <div class="comment-boxs">
+                        <form [formGroup]="feedComment">
+                          <img class="user-comment-ing" src="/assets/images/profile-picture.png">
+                          <input type="text" name="text" placeholder="Write your comment…">
+                          <button class="btn send-btn" (click)="postComment()"> Send</button>
+                        </form>
+                      </div> -->
+                    <div class="top-box commented-item" *ngFor="let comment of feed?.comment">
+                      <div class="join-author">
+                        <span>
+                          <img src="/assets/images/profile-picture.png">
+                        </span>
+                        <div>
+                          <h6>{{comment?.user?.name}}</h6>
+                          <p class="comment-text">{{comment?.text}}</p>
+                          <p class="half-opac" style="color:#AFAFAF !important">
+                            {{comment?.timeagoComment}}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Files">
+              <ng-template ngbTabContent>
+                <div class="file-input-box">
+                  <div class="image-upload">
+                    <label for="projectfile-input">
+                      Upload Files
+                    </label>
+                    <input id="projectfile-input" type="file" (change)="bannerUpload($event)"
+                      accept=".png,.jpeg,.jpg,.pdf,.docx,.xls,.xlsx,.doc,.ppt,.pptx" />
+                  </div>
+                  <div class="grid-container custom_gridcont">
+                    <div *ngFor="let list of projectfile">
+                      <a class="download-img" href="{{list?.file}}" download><i class="fa fa-download"></i></a>
+                      <!-- <button *ngIf="list.user==userid" class="delete-img" (click)="deleteFile(list._id, list.project, list.user)"><i class="fa fa-times-circle"></i></button> -->
+
+                      <button *ngIf="list.user==userid" class="delete-img"
+                        (click)="deleteConformationFile(openFileDeleteDialog,list._id, list.project, list.user)"><i
+                          class="fa fa-times-circle"></i></button>
+                      <img *ngIf="list.file_type == 'docx'" src="assets/images/resources/docs.png" alt="collegey"
+                        class="file-type">
+                      <img *ngIf="list.file_type == 'xls'" src="assets/images/resources/xls-icon.png" alt="collegey"
+                        class="file-type">
+                      <img *ngIf="list.file_type == 'pdf'" src="assets/images/resources/pdf.png" alt="collegey"
+                        class="file-type">
+                      <img *ngIf="list.file_type == 'png' || list.file_type == 'jpg' || list.file_type == 'jpeg'"
+                        src={{list?.file}} alt="collegey" class="file-type">
+                      <img *ngIf="list.file_type == 'ppt' || list.file_type == 'pptx'"
+                        src="assets/images/resources/ppt-file.png" alt="collegey" class="file-type">
+                      <!-- <p style="overflow-wrap: anywhere;" class="file-title">{{getFileName(list?.file)}}</p>   -->
+                      {{list?.name}} {{list?.last_name}}<br>
+                      <span class="project_filename" title="{{list?.file_name}}">{{list?.file_name}}</span>
+                      {{list?.timeago}}
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ngb-tab>
+
+            <ngb-tab title="Schedule">
+              <ng-template ngbTabContent>
+                <div class="event-schedule"> 
+                  <button class="add-event-btn" (click)="openAddEvent(openAddScheduleEvent)"> Schedule your project meeting</button>
+                  <hr style="border-color: #DBDBDB;">
+                  <div class="schedule-meetings-box" *ngFor="let listevent of allProjectEvent; let i=index;">
+                    <!-- <i *ngIf="userid == ProjectOwnerData?.id" class="fa fa-trash"
+                      (click)="removeEventSchedule('remove',i,'')" aria-hidden="true"></i> -->
+                    <!-- <h6>{{listevent?.eventName}}</h6> -->
+                    <h6>{{listevent?.eventName}} <span class="pull-right"> <i *ngIf="userid == listevent?.eventBy"
+                          style="font-size: 20px;" class="fa fa-edit" (click)="openEditEvent(openAddScheduleEvent,i)"
+                          aria-hidden="true" title="Edit Event"></i> &nbsp;&nbsp;&nbsp;<i
+                          *ngIf="userid == listevent?.eventBy" style="color:red;font-size: 20px;margin-top:5px;"
+                          class="fa fa-trash"
+                          (click)="openRemoveEventScheduleDialog(openDeleteScheduleEvent,'remove',i,'')"
+                          aria-hidden="true" title="Delete Event"></i> </span> </h6>
+                    <div class="project-timing-box">
+                      <p class="mg-r20"><span class="cal-icon"></span>&nbsp; {{listevent?.event_schedule}}</p>
+                      <p class="mg-r20"><span class="fa fa-globe"></span>&nbsp; Time Zone: {{listevent?.timezone}}</p>
+                      <p><span class="cloak-icon"></span>{{ listevent.startDate | date: "d MMM y" }} {{
+                        listevent.startTime}} - {{ listevent.endDate | date: "d MMM y" }} {{ listevent.endTime}}</p>
+                    </div>
+                    <div class="event-guest">
+                      <ul>
+                        <li *ngFor="let listGuest of listevent?.eventGuest; let e=index;">
+                          <img *ngIf="listGuest?.avatar" [src]="commonService.imagePathS3(listGuest?.avatar)" alt="">
+                          <img *ngIf="!listGuest?.avatar" src="/assets/images/profile-picture.png" alt="">
+                          <i *ngIf="userid == listevent?.eventBy && userid != listGuest?._id"
+                            (click)="removeEventScheduleUser('remove_user',i,e)" class="fa fa-times-circle"
+                            aria-hidden="true" title="Remove User"></i>
+                        </li>
+                      </ul>
+                      <a *ngIf="listevent?.eventGuest.length > 5" href="javascript:;"
+                        (click)="openEventUserList(openScheduleEventUser,i)" class="more-link">+5 more</a>
+                    </div>
+                    <!-- <img src="./../../../assets/images/more.svg" alt="" class="file-action"> -->
+                  </div>
+
+                </div>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+        <div class="social-items">
+          <!-- <a href=""><img src="/assets/images/phone-call.png" alt=""></a>
+            <a href=""><img src="/assets/images/video.png" style="border: solid;
+              border-radius: 5px;" alt=""></a>
+            <a href=""><img src="/assets/images/search.png" alt=""></a> -->
+          <button class="invite-btn">Invite people</button>
+          <!-- <button class="invite-btn" (click)="openInvitePeople(openSendInviteLink)">Invite People</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Web 1366 – 58 start-->
+<ng-template #openPostDeleteDialog>
+  <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+    <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+    <div class="modal-form-header bottom-border pt-2 pb-3">
+      <h5 class="heading">Are you sure delete this post ?</h5>
+    </div>
+    <div class="modal-form-footer">
+      <div class="row top-box">
+        <div class="footer-texteditor">
+          <div class="row feed-item">
+            <button type="button" style="border: 1px;
+                            color: #141414;font-weight: 600; margin-right: 10px;"
+              (click)="modalRef.hide()">No</button>&nbsp;&nbsp;
+            <button type="submit" (click)="deletePostById()" id="btn" class="btn" style="color: white;">YES</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Web 1366 – 58 start-->
+<ng-template #openAddScheduleEvent>
+  <div class=" schedule-event-modal">
+    <div class="schedule-form">
+      <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+      <!-- <h5>Schedule Event</h5> -->
+      <h5 *ngIf="addSchedule">
+        Schedule your project meeting
+      </h5>
+      <h5 *ngIf="!addSchedule">
+        Update Schedule your project meeting
+      </h5>
+      <form [formGroup]="scheduleEventForm" (ngSubmit)="addScheduleEvent()" method="post">
+        <div class="form-row">
+          <div class="col-12 col-lg-12">
+            <div class="form-group">
+              <label for="eventName">Event Name</label>
+              <input type="text" class="form-control" placeholder="Type event name" formControlName="eventName"
+                name="eventName" id="eventName">
+              <span *ngIf="submittedEvent && hasErrorEvent('eventName','required')" class="d-block"
+                style="color: red;">Event is required.</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-12">
+            <div class="form-group">
+              <label for="timezone">Select Timezone</label>
+              <ng-select [(ngModel)]="selectedTimeZone" formControlName="timezone">
+                <ng-option value="">Select time zone</ng-option>
+                <!-- <p class="sekec_text">Choose one or two SDGs most relevant for this project</p> -->
+                <ng-option *ngFor="let item of timeZoneList| keyvalue" [value]="item.key">{{item.value}}
+                </ng-option>
+              </ng-select>
+
+              <!-- <select class="form-control" id="timezone" formControlName="timezone" name="timezone">
+              <option value="">Select time zone</option>
+              <option *ngFor="let item of timeZoneList | keyvalue" value="{{item.key}}">{{item.value}}</option>
+              </select> -->
+
+              <span *ngIf="submittedEvent && hasErrorEvent('timezone','required')" class="d-block"
+                style="color: red;">Timezone is required.</span>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="form-group">
+              <label for="startDate">Start date</label>
+              <input type="date" formControlName="startDate" min="{{projectStartDate}}" name="startDate"
+                class="form-control" id="startDate">
+              <span *ngIf="submittedEvent && hasErrorEvent('startDate','required')" class="d-block"
+                style="color: red;">StartDate is required.</span>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="form-group">
+              <label for="startTime">Start Time <small> HH:MM</small></label>
+              <input type="time" formControlName="startTime" name="startTime" class="form-control" id="startTime"
+                placeholder="HH:MM">
+              <span *ngIf="submittedEvent && hasErrorEvent('startTime','required')" class="d-block"
+                style="color: red;">StartTime is required.</span>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="form-group">
+              <label for="endDate">End Date</label>
+              <input type="date" formControlName="endDate" min="{{projectSetLastDate}}" name="endDate"
+                class="form-control" id="endDate" data-date-format="dd-mm-yyyy">
+              <span *ngIf="submittedEvent && hasErrorEvent('endDate','required')" class="d-block"
+                style="color: red;">EndDate is required.</span>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="form-group">
+              <label for="endTime"> End Time <small> HH:MM</small></label>
+              <input type="time" formControlName="endTime" name="endTime" class="form-control" id="endTime"
+                data-time-format="hh:mm">
+              <span *ngIf="submittedEvent && hasErrorEvent('endTime','required')" class="d-block"
+                style="color: red;">EndTime is required.</span>
+            </div>
+          </div>
+          <div class="col-12 col-lg-12">
+            <div class="form-group">
+              <label for="event_schedule">Meeting Schedule</label>
+              <select class="form-control" id="event_schedule" formControlName="event_schedule" name="event_schedule">
+                <!-- <option value="">Meeting Schedule</option> -->
+                <option value="Onetime">One time</option>
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly">Monthly</option>
+              </select>
+              <span *ngIf="submittedEvent && hasErrorEvent('event_schedule','required')" class="d-block"
+                style="color: red;">Meeting Schedule is required.</span>
+            </div>
+          </div>
+          <div class="col-12 col-lg-12" style="padding-top:10px;">
+            <div class="form-group">
+              <label for="add_guest">Invite Guests</label>
+              <ng-multiselect-dropdown formControlName="add_guest" [placeholder]="'Select Invite Guests'"
+                [settings]="dropdownSettings" [data]="userListOptions" (onSelect)="addingGuest($event)">
+              </ng-multiselect-dropdown>
+              <span *ngIf="submittedEvent && hasErrorEvent('add_guest','required')" class="d-block"
+                style="color: red;">Please Select Guest</span>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="create_project_footer">
+      <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+      <a *ngIf="!addSchedule" href="javascript:;" (click)="addScheduleEvent()" class="show-result-btn">Update</a>
+      <a *ngIf="addSchedule" href="javascript:;" (click)="addScheduleEvent()" class="show-result-btn">Add</a>
+      <!-- <a href="javascript:;" (click)="addScheduleEvent()" class="show-result-btn">Add</a> -->
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #openScheduleEventUser>
+  <div class=" schedule-event-modal">
+    <div class="schedule-form">
+      <h5 class="mb-2 text-center">
+        User List
+      </h5>
+    </div>
+    <div class="member_list" *ngFor="let project_memberlist of EventUserList; let i=index;">
+      <div class="imgsdiv">
+        <img *ngIf="project_memberlist?.avatar" class="imgs"
+          [src]="commonService.imagePathS3(project_memberlist?.avatar)" alt="" title="{{project_memberlist?.name}}">
+        <img *ngIf="!project_memberlist.avatar" class="imgs" src='assets/images/user-icon.png' alt=""
+          title="{{project_memberlist?.name}}">
+      </div>
+      <h5 class="name_txt">{{project_memberlist?.name}} {{project_memberlist?.last_name}}</h5>
+      <i *ngIf="userid == EventUserList?.eventBy && userid != project_memberlist?._id"
+        (click)="removeEventScheduleUser('remove_user',eventIndex,i)" class="fa fa-times-circle" aria-hidden="true"></i>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Web 1366 – 58 start createproject-->
+<ng-template #opencreateproject>
+  <div class=" schedule-event-modal" style="width: 100%;">
+    <div class="schedule-form">
+      <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+      <h5>
+        Create Project
+      </h5>
+      <form [formGroup]="addProjectForm" method="post" novalidate>
+        <div class="row">
+          <div class="col-12 col-md-12">
+            <div class="form-group">
+              <label><span style="color: red;">*</span>&nbsp; Enter Tentative Project Title </label>
+              <input type="text" placeholder="Enter project title" formControlName="projectTitle" name="projectTitle">
+              <span *ngIf="submitted && (hasError('projectTitle','required') || hasError('projectTitle','pattern'))"
+                class="d-block" style="color: red;">Title
+                is required.</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12">
+            <div class="form-group">
+              <label><span style="color: red;">*</span>&nbsp; Enter a keyword and press enter to add more</label>
+              <tag-input [ngModel]="" class="keyword_input" [formControlName]="'keyword'" [maxItems]='3'
+                [separatorKeyCodes]="[188,9]"></tag-input>
+              <span *ngIf="submitted && hasError('keyword','required')" class="d-block" style="color: red;">Keyword is
+                required.</span>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-6 row pd-sm-l0" style="margin: 0;padding-left: 0;">
+            <div class="group col-sm-12 pd-sm-r10">
+              <div class="form-group">
+                <label><span style="color: red;">*</span>&nbsp; Start date</label>
+                <input type="date" class="form-control" min="{{projectStartDate}}" id="date1" placeholder=""
+                  style="height: 45px;" formControlName="startDate" (change)="onChangeProjectStart($event)">
+                <span *ngIf="submitted && hasError('startDate','required')" class="d-block" style="color: red;">Start
+                  date is required</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-lg-6 row pd-sm-l0" style="margin: 0;padding: 0;">
+            <div class="group col-sm-12 pd-sm-r10">
+              <div class="form-group">
+                <label><span style="color: red;">*</span>&nbsp; Last date of join</label>
+                <input type="date" class="form-control" min="{{projectSetLastDate}}" id="date1" placeholder=""
+                  style="height: 45px;" formControlName="lastDate">
+                <span *ngIf="submitted && hasError('lastDate','required')" class="d-block" style="color: red;">Last date
+                  is required</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12">
+            <div class="form-group">
+              <label><span style="color: red;">*</span>Minimum # of students (add 3 or more)</label>
+              <input type="text" placeholder="Enter Students Number" formControlName="minNumberOfStudentsAllowed"
+                name="minNumberOfStudentsAllowed">
+              <span *ngIf="submitted && hasError('minNumberOfStudentsAllowed','required')" class="d-block"
+                style="color: red;">is required.</span>
+              <span *ngIf="submitted && hasError('minNumberOfStudentsAllowed','min')" class="d-block"
+                style="color: red;">Minimum add 3 or more</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12">
+            <div class="form-group">
+              <label><span style="color: red;">*</span>&nbsp;Maximum Number Of Students(15 or less)</label>
+              <input type="text" placeholder="Enter Students Number" min="1" max="15"
+                formControlName="maxNumberOfStudentsAllowed" name="maxNumberOfStudentsAllowed">
+              <span *ngIf="submitted && hasError('maxNumberOfStudentsAllowed','required')" class="d-block"
+                style="color: red;">is required.</span>
+              <span *ngIf="submitted && hasError('maxNumberOfStudentsAllowed','max')" class="d-block"
+                style="color: red;">Allow only 15 student</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12">
+            <div class="form-group">
+              <label><span style="color: red;">*</span>&nbsp;Choose The UN Sustainable Development Goal (UN SDG) that
+                best aligns with you project (2 or less)*</label>
+
+              <ng-multiselect-dropdown formControlName="projectUNSDG" [placeholder]="'Choose UN SDG'"
+                [data]="sdg_selection" [settings]="dropdownSettingsProjectSdg">
+              </ng-multiselect-dropdown>
+
+              <p class="sekec_text">Choose one or two SDGs most relevant for this project</p>
+              <ul class="custom_drop_list">
+                <li *ngFor="let inter of this.addProjectForm.get('projectUNSDG').value;let i = index">
+                  <a> {{inter}} </a>
+                </li>
+              </ul>
+
+              <span *ngIf="submitted && hasError('projectUNSDG','required')" class="d-block"
+                style="color: red;">Required.</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12">
+            <div class="form-group">
+              <label><span style="color: red;">*</span>&nbsp;About project </label>
+              <textarea formControlName="aboutProject" placeholder="" class="form-control"
+                (change)="wordCounter($event);"></textarea>
+              <span *ngIf="submitted && (hasError('aboutProject','required') || hasError('aboutProject','pattern'))"
+                class="d-block" style="color: red;">About project is required</span>
+              <span *ngIf="showWordLimitError" class="alert-danger d-block p-1">Max word limit is 250</span>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12">
+            <div class="form-group">
+              <label>Project plan duration<span style="color: red;">*</span>&nbsp;</label>
+              <select formControlName="projectDuration" name="projectDuration" class="form-control"
+                (change)="changeProjectduration($event)">
+                <option value="">Choose Duration</option>
+                <option value="4" selected>4 Weeks</option>
+                <option value="5">5 Weeks</option>
+                <option value="6">6 Weeks</option>
+                <option value="3 month">3 Month</option>
+                <option value="4 month">4 Month</option>
+                <option value="5 month">5 Month</option>
+                <option value="6 month">6 Month</option>
+                <option value="7 month">7 Month</option>
+                <option value="8 month">8 Month</option>
+                <option value="9 month">9 Month</option>
+              </select>
+              <span *ngIf="submitted && hasError('projectDuration','required')" class="d-block"
+                style="color: red;">Required.</span>
+            </div>
+          </div>
+
+          <div *ngFor="let item of projectWeeklength; let i=index;" class="col-sm-12 col-lg-6 row pd-sm-l0"
+            style="margin: 0;padding: 0;">
+            <div class="group col-sm-12 pd-sm-r10">
+              <div class="form-group">
+                <label> Week {{i+1}} description</label>
+                <textarea formControlName="week{{i+1}}Duration" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="monthDurationActive" class="col-sm-12 col-lg-12 row pd-sm-l0" style="margin: 0;padding: 0;">
+            <div class="group col-sm-12 pd-sm-r10">
+              <div class="form-group">
+                <label> Project Description </label>
+                <textarea formControlName="ProjectDescription" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12">
+            <div class="form-group">
+              <label>Please upload file maximum image size 2000 x 2000</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" (change)="uploadProjectImage($event)"
+                  accept=".png,.jpeg,.jpg">
+                <label class="custom-file-label" for="customFile">Choose Image</label>
+              </div>
+              <div style="margin-top: 10px;">
+                <label style="margin-top: 5px; margin-bottom: 0;" for="defaultImage">Upload image or choose from
+                  below.</label>
+              </div>
+              <div class="fixed-images">
+                <img *ngFor="let image of bannerImages" [class.activeImg]="projectImage == image.imagePath"
+                  class="defaultImg" (click)="selectImage(image)" src="{{image.imagePath}}" alt="firstImg">
+              </div>
+              <img *ngIf="projectImage" alt="project" style="height: 100px; width: 100px;margin-top: 5px;"
+                src="{{projectImage}}">
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12">
+            <p class="mb-2">
+              Do you wish to charge student (s) for this project: Y/N? <span style="color: red;">*</span>
+            </p>
+            <div class="">
+              <div class="radiobtn">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline1" name="customRadioInline1" value="1"
+                    class="custom-control-input" (click)="clickRadio($event)">
+                  <label class="custom-control-label" for="customRadioInline1">Yes</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline2" name="customRadioInline1" value="0"
+                    class="custom-control-input" (click)="clickRadio($event)" checked>
+                  <label class="custom-control-label" for="customRadioInline2">No</label>
+                </div>
+              </div>
+              <div *ngIf="isCharheStudent == 1">
+                <div class="col-xs-6">
+                  <div class="d-block mt-2">Set a project fee between ${{projectFeedData?.minimum_price}} and
+                    ${{projectFeedData?.maximum_price}}</div>
+                  <div class="range range-primary mb-0">
+                    <input type="range" name="range" formControlName="range_price"
+                      min="{{projectFeedData?.minimum_price}}" max="{{projectFeedData?.maximum_price}}"
+                      value="{{projectFeedData?.default_price}}" onchange="rangePrimary.value=value">
+                    <output id="rangePrimary">{{projectFeedData?.default_price}}</output>
+                  </div>
+                </div>
+                <b>Note</b> : You will receive 50% of this fee.
+              </div>
+              <div *ngIf="isCharheStudent == 0">
+                <b>Note</b> : The default Collegey Impact Project fee is ${{projectFeedData?.default_price}}. We will
+                add 50% of the project fee to the Collegey Fund and offer it as a scholarship to low-income,
+                high-potential (HALI) students.
+              </div>
+            </div>
+          </div>
+
+          <div class="w-100"></div>
+        </div>
+      </form>
+    </div>
+    <div class="schedule-event-action">
+      <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+      <a class="show-result-btn" (click)="CreateNewProject()" href="javascript:;">Create</a>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #openStatusDialog>
+  <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+    <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+    <div class="modal-form-header bottom-border pt-4">
+      <h5 class="heading">Are you sure finish this project ?</h5>
+    </div>
+    <div class="modal-form-footer">
+      <div class="row top-box">
+        <div class="footer-texteditor">
+          <div class="row feed-item">
+            <button type="button" style="border: 1px;
+                            color: #141414;font-weight: 600; margin-right: 10px;"
+              (click)="modalRef.hide()">No</button>&nbsp;&nbsp;
+            <button (click)="onChangeProjectStatus()" type="submit" id="btn" class="btn"
+              style="color: white;">YES</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #openFileDeleteDialog>
+  <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+    <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+    <div class="modal-form-header bottom-border pt-2 pb-3">
+      <h5 class="heading">Are you sure delete this File ?</h5>
+    </div>
+    <div class="modal-form-footer">
+      <div class="row top-box">
+        <div class="footer-texteditor">
+          <div class="row feed-item">
+            <button type="button" style="border: 1px;
+                            color: #141414;font-weight: 600; margin-right: 10px;"
+              (click)="modalRef.hide()">No</button>&nbsp;&nbsp;
+            <button (click)="deleteFile()" type="submit" id="btn" class="btn" style="color: white;">YES</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #openDeleteScheduleEvent>
+  <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+    <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+    <div class="modal-form-header bottom-border pt-2 pb-3">
+      <h5 class="heading">Are you sure delete this Event ?</h5>
+    </div>
+    <div class="modal-form-footer">
+      <div class="row top-box">
+        <div class="footer-texteditor">
+          <div class="row feed-item">
+            <button type="button" style="border: 1px;
+                            color: #141414;font-weight: 600; margin-right: 10px;"
+              (click)="modalRef.hide()">No</button>&nbsp;&nbsp;
+            <button (click)="removeEventSchedule()" type="submit" id="btn" class="btn"
+              style="color: white;">YES</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="container" style="margin-top: 100px" *ngFor="let listpdfData of pdfData; let i=index">
+  <div *ngIf="dafaultGenratepdf" id="contentToConvert_{{i}}" style="padding: 30px 0">
+    <table width="800px" style="
+          margin: 0 auto;
+          background-image: url(../../assets/images/resources/pdf-bg.jpeg);
+          background-repeat: no-repeat;
+          background-position: center right;
+          background-size: 100% 100%;
+        ">
+      <tbody>
+        <tr>
+          <td width="11%"></td>
+          <td width="59%" style="padding: 30px 0">
+            <table style="width: 100%">
+              <tr>
+                <td>
+                  <img src="../../assets/images/resources/label.png" width="96px" style="margin-bottom: 10px;" />
+                </td>
+                <td style="text-align: right; padding-right: 30px;">
+                  <p style="
+                        font-weight: 600;
+                        font-size: 28px;
+                        margin-bottom: 10px;
+                        line-height: 1.2;
+                      ">
+                    www.collegey.com
+                  </p>
+                  <p style="
+                        font-weight: 300;
+                        font-size: 21px;
+                        margin-bottom: 5px;
+                        line-height: 1.2;
+                      ">
+                    India | USA
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <p style="
+                        font-weight: 700;
+                        font-size: 32px;
+                        margin-bottom: 0;
+                        line-height: 1.2;
+                        text-transform: uppercase;
+                      ">
+                    collegey INC.
+                  </p>
+                  <p style="
+                        font-weight: 500;
+                        font-size: 15px;
+                        margin: 8px 0;
+                        line-height: 1.2;
+                        font-style: italic;
+                      ">
+                    hereby recognizes that
+                  </p>
+                  <p style="
+                        font-weight: 700;
+                        font-size: 32px;
+                        margin-bottom: 8px;
+                        line-height: 1.2;
+                        font-style: italic;
+                      ">
+                    {{listpdfData?.student_name}}
+                  </p>
+                  <p style="
+                        font-weight: 400;
+                        font-size: 15px;
+                        margin-bottom: 5px;
+                        line-height: 1.2;
+                        letter-spacing: 0.5px;
+                      ">
+                    from <b>{{listpdfData?.student_school_name}}</b>
+                  </p>
+                  <p style="
+                        font-weight: 400;
+                        font-size: 15px;
+                        margin-bottom: 10px;
+                        line-height: 1.2;
+                        font-style: italic;
+                      ">
+                    has successfully completed the <b>{{listpdfData?.student_projectname}}</b> project
+                    on <b>{{listpdfData?.project_completed_date | date: 'dd/MM/yyyy'}}.</b>
+                  </p>
+                </td>
+              </tr>
+            </table>
+            <table style="width: 100%">
+              <tr>
+                <td width="70%">
+                  <p style="
+                        font-weight: 400;
+                        font-size: 15px;
+                        margin-bottom: 40px;
+                        line-height: 1.2;
+                        font-style: italic;
+                        max-width: 276px;
+                      ">
+                    {{listpdfData?.student_projectname}} Project is a rigorous {{listpdfData?.project_week}}, UN
+                    SDG-aligned
+                    project that includes training and mentorship with
+                    peer-to-peer feedback, project management experience, and
+                    design thinking pedagogy.
+                  </p>
+                  <p style="
+                        font-weight: normal;
+                        font-size: 12px;
+                        margin-bottom: 8px;
+                        line-height: 1.2;
+                      ">
+                    Authorized and issued by:
+                  </p>
+                  <p style="
+                        font-weight: 600;
+                        font-size: 15px;
+                        margin-bottom: 8px;
+                        line-height: 1.2;
+                        text-transform: uppercase;
+                      ">
+                    collegey inc.
+                  </p>
+                  <p style="
+                        font-weight: normal;
+                        font-size: 12px;
+                        margin-bottom: 8px;
+                        line-height: 1.2;
+                      ">
+                    Tacoma, Washington, USA | Noida, UP, India
+                  </p>
+                </td>
+                <td width="30%" style="text-align: right; vertical-align: bottom; padding-right: 30px;">
+                  <img src="../../assets/images/resources/stamp.png" width="140px" />
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td width="30%"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

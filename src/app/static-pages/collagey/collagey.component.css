@@ -1,0 +1,256 @@
+.webinar-box {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 30px #1D7FAB16;
+    border-radius: 8px;
+    opacity: 1;
+}
+
+.webinar-image-box {
+    margin-bottom: 0;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.webinar-content-box {
+    padding: 20px;
+}
+
+.article-tags {
+    background: #D6E6FF 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    text-align: left;
+    font: normal normal 600 10px/14px Nunito;
+    letter-spacing: 0px;
+    color: #3F89FC;
+    opacity: 1;
+    padding: 5px;
+    cursor: default;
+}
+
+.post-title.webinar-title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: color 0.5s ease;
+    font: normal normal bold 20px/27px Nunito;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.post-description.webinar-desc {
+    text-align: left;
+    letter-spacing: 0px;
+    color: #AFAFAF;
+    opacity: 1;
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.blog-date-span span {
+    color: #000000;
+}
+
+.blog-date-span {
+    margin: 5px 0;
+}
+
+.blog-date-span img,
+.blog-like-span img {
+    width: 15px;
+    vertical-align: middle;
+}
+
+.blog-like-span {
+    margin: 0;
+}
+
+.resources-content h1 {
+    text-align: left;
+    font: normal normal bold 28px/46px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    opacity: 1;
+}
+
+.terms-header {
+    background: url(../../../assets/images/bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* height: 212px; */
+    position: relative;
+    padding: 50px 0px
+}
+
+.terms-header .header-button {
+    text-align: center;
+    /* margin-top: 70px; */
+}
+
+.terms-header h1 {
+    font: normal normal normal 46px/57px Poppins;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.5;
+}
+
+.webinar-box {
+    margin-bottom: 30px;
+}
+
+.promo-box {
+    padding: 0px;
+    margin: 30px 0 80px;
+}
+
+.promo-box .promo-content {
+    background: #FB8524 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+    height: 300px;
+    padding-left: 40px;
+}
+
+.promo-content h5 {
+    font-size: 30px;
+    max-width: 400px;
+    margin: 38px 0 27px;
+    font: normal normal bold 30px/40px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.promo-content p {
+    color: #ffffff;
+    max-width: 350px;
+    font-size: 15px;
+}
+
+.promo-content a {
+    background: #3F89FC 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.promo-slider {
+    position: absolute;
+    right: 30px;
+    padding: 40px 40px;
+}
+
+.promo-slider img {
+    box-shadow: 0px 10px 30px #00000029;
+    border-radius: 20px;
+    max-height: 240px;
+    width: 85%;
+}
+
+.explore {
+    background-color: white;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #3a86fc;
+    padding: 15px 25px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+@media screen and (max-width:991px) {
+    .terms-header h1 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .terms-header h1 {
+        font-size: 32px;
+    }
+
+    .explore {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .webinar-content-box {
+        padding: 15px;
+    }
+
+    .tags-box {
+        display: contents;
+    }
+
+    .promo-slider {
+        position: inherit;
+        right: 0;
+        padding: 40px 40px;
+        padding: 0;
+    }
+
+    .promo-box .promo-content {
+        border-radius: 0;
+        height: 300px;
+        padding-left: 10px;
+    }
+
+    .promo-content h5 {
+        font-size: 19px;
+        max-width: 500px;
+        margin: 32px 0 27px;
+        font: normal normal bold 24px/28px Nunito;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+    }
+
+    .promo-content p {
+        max-width: 500px;
+    }
+
+    .hide-sm {
+        display: none;
+    }
+
+    .promo-slider img {
+        border-radius: 0px;
+    }
+
+    .promo-box {
+        padding: 0px;
+        margin: 0px 0 50px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .hide-md {
+        display: none;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+
+    .promo-box .promo-content {
+        padding-left: 20px;
+    }
+
+    .promo-content h5 {
+        max-width: 350px;
+        margin: 32px 0 27px;
+        font: normal normal bold 24px/28px Nunito;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+    }
+
+    .promo-content p {
+        max-width: 350px;
+    }
+
+    .promo-box {
+        padding: 0px;
+        margin: 0px 0 50px;
+    }
+}

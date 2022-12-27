@@ -1,0 +1,9 @@
+<app-loader></app-loader>
+<app-header *ngIf="appConfig?.header"></app-header>
+<main>
+  <router-outlet></router-outlet>
+  <app-footer *ngIf="router.url !== '/' && showFooterCheck"></app-footer>
+</main>
+<!-- <app-footer *ngIf="appConfig?.footer"></app-footer> -->
+
+<!-- <app-footer></app-footer> -->

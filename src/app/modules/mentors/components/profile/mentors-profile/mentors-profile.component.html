@@ -1,0 +1,508 @@
+<div class="lead-form-wrapper">
+    <div class="lead-form container">
+        <p class="steps-login">1 of 3</p>
+        <p class="heading">Mentors Profile</p>
+        <form class="login-form row profileFormGroup" [formGroup]="profileFormGroup" method="post" novalidate>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="fullLegalName" />
+                    <label>Full Legal Name*</label>
+                </div>
+                <span
+                    *ngIf="submittedProfile && (hasError('fullLegalName','required') || hasError('fullLegalName','pattern'))"
+                    class="alert-danger d-block p-1 text-center">Name is required</span>
+            </div>
+
+            <!-- <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="location"/>
+                    <label>Location*</label>
+                </div>
+                <span *ngIf="submittedProfile && hasError('location','required')" class="alert-danger d-block p-1 text-center">Location is required</span>
+            </div> -->
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Country*</label>
+                    <select required="required" formControlName="country" (change)="onSelectCountry($event)">
+                        <option value="">Select Country*</option>
+                        <option [value]="countr.id" *ngFor="let countr of countries">{{countr.name}}</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('country','required') || hasError('country','pattern'))"
+                    class="alert-danger d-block p-1 text-center">Country is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">State*</label>
+                    <select required="required" formControlName="state" (change)="onSelectState($event)">
+                        <option value="">Select State*</option>
+                        <option [value]="state.id" *ngFor="let state of states">{{state.name}}</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('state','required') || hasError('state','pattern'))"
+                    class="alert-danger d-block p-1 text-center">State is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">City*</label>
+                    <select required="required" formControlName="city" (change)="onSelectCity($event)">
+                        <option value="">Select City*</option>
+                        <option [value]="city.id" *ngFor="let city of cities">{{city.name}}</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('city','required') || hasError('city','pattern'))"
+                    class="alert-danger d-block p-1 text-center">City is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1 clg-timezone">
+                    <label class="form-label">Your Time Zone*</label>
+
+                    <ng-select [(ngModel)]="selectedTimeZone" formControlName="timezone">
+                        <ng-option value="">Select time zone</ng-option>
+                        <!-- <p class="sekec_text">Choose one or two SDGs most relevant for this project</p> -->
+                        <ng-option *ngFor="let item of timeZoneList| keyvalue" [value]="item.key">{{item.value}}
+                        </ng-option>
+                    </ng-select>
+
+                    <!-- <select required="required" formControlName="timezone">
+                        <option value="">Select time zone</option>
+                        <option *ngFor="let item of timeZoneList | keyvalue" value="{{item.key}}">{{item.value}}
+                        </option>
+                    </select> -->
+
+                </div>
+                <span *ngIf="submittedProfile && (hasError('timezone','required') || hasError('timezone','pattern'))"
+                    class="alert-danger d-block p-1 text-center">Time Zone is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="professionalTitle" />
+                    <label>Professional Title*</label>
+                </div>
+                <span
+                    *ngIf="submittedProfile && (hasError('professionalTitle','required') || hasError('professionalTitle','pattern'))"
+                    class="alert-danger d-block p-1 text-center">is required</span>
+            </div>
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="website" />
+                    <label>Website*</label>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('website','required') || hasError('website','pattern'))"
+                    class="alert-danger d-block p-1 text-center">website is required</span>
+            </div>
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Experience in years*</label>
+                    <select required="required" formControlName="experience">
+                        <option value="">Select Experience</option>
+                        <option value="{{experience_list}}"
+                            *ngFor="let experience_list of mentorExperience; let i=index;">{{experience_list}}</option>
+                    </select>
+                </div>
+                <span
+                    *ngIf="submittedProfile && (hasError('experience','required') || hasError('experience','pattern'))"
+                    class="alert-danger d-block p-1 text-center">experience is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="lastEducationalInstitutionAttended" />
+                    <label>Last Education Institute*</label>
+                </div>
+                <span
+                    *ngIf="submittedProfile && (hasError('lastEducationalInstitutionAttended','required') || hasError('lastEducationalInstitutionAttended','pattern'))"
+                    class="alert-danger d-block p-1 text-center">is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Last Education Degree*</label>
+                    <select required="required" formControlName="lastCollegeDegree">
+                        <option value="">Select Collage Degree</option>
+                        <option value="High School">High School</option>
+                        <option value="Some College">Some College</option>
+                        <option value="Bachelor Degrees">Bachelor Degrees</option>
+                        <option value="Master Degrees">Master Degrees</option>
+                        <option value="M.Phil">M.Phil</option>
+                        <option value="phd">phD</option>
+                        <option value="postdoc">Postdoc</option>
+                        <option value="abd">ABD</option>
+                        <option value="MD">MD</option>
+                        <option value="JD">JD</option>
+                        <option value="High School Diploma">High School Diploma</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <span
+                    *ngIf="submittedProfile && (hasError('lastCollegeDegree','required') || hasError('lastCollegeDegree','pattern'))"
+                    class="alert-danger d-block p-1 text-center">College Degree is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Industry*</label>
+                    <select required="required" formControlName="industry" (change)="onChangeSomeTypes($event)">
+                        <option value="">Select industry</option>
+                        <option value="Industry">Industry</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Airlines/Aviation">Airlines/Aviation</option>
+                        <option value="Alternative Dispute Resolution">Alternative Dispute Resolution</option>
+                        <option value="Alternative Medicine">Alternative Medicine</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Apparel/Fashion">Apparel/Fashion</option>
+                        <option value="Architecture/Planning">Architecture/Planning</option>
+                        <option value="Arts/Crafts">Arts/Crafts</option>
+                        <option value="Automotive">Automotive</option>
+                        <option value="Aviation/Aerospace">Aviation/Aerospace</option>
+                        <option value="Banking/Mortgage">Banking/Mortgage</option>
+                        <option value="Biotechnology/Greentech">Biotechnology/Greentech</option>
+                        <option value="Broadcast Media">Broadcast Media</option>
+                        <option value="Building Materials">Building Materials</option>
+                        <option value="Business Supplies/Equipment">Business Supplies/Equipment</option>
+                        <option value="Capital Markets/Hedge Fund/Private Equity">Capital Markets/Hedge Fund/Private
+                            Equity</option>
+                        <option value="Chemicals">Chemicals</option>
+                        <option value="Civic/Social Organization">Civic/Social Organization</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Commercial Real Estate">Commercial Real Estate</option>
+                        <option value="Computer Games">Computer Games</option>
+                        <option value="Computer Hardware">Computer Hardware</option>
+                        <option value="Computer Networking">Computer Networking</option>
+                        <option value="Computer Software/Engineering">Computer Software/Engineering</option>
+                        <option value="Computer/Network Security">Computer/Network Security</option>
+                        <option value="Construction">Construction</option>
+                        <option value="Consumer Electronics">Consumer Electronics</option>
+                        <option value="Consumer Goods">Consumer Goods</option>
+                        <option value="Consumer Services">Consumer Services</option>
+                        <option value="Cosmetics">Cosmetics</option>
+                        <option value="Dairy">Dairy</option>
+                        <option value="Defense/Space">Defense/Space</option>
+                        <option value="Design">Design</option>
+                        <option value="E-Learning">E-Learning</option>
+                        <option value="Education Management">Education Management</option>
+                        <option value="Electrical/Electronic Manufacturing">Electrical/Electronic Manufacturing</option>
+                        <option value="Entertainment/Movie Production">Entertainment/Movie Production</option>
+                        <option value="Environmental Services">Environmental Services</option>
+                        <option value="Events Services">Events Services</option>
+                        <option value="Executive Office">Executive Office</option>
+                        <option value="Facilities Services">Facilities Services</option>
+                        <option value="Farming">Farming</option>
+                        <option value="Financial Services">Financial Services</option>
+                        <option value="Fine Art">Fine Art</option>
+                        <option value="Fishery">Fishery</option>
+                        <option value="Food Production">Food Production</option>
+                        <option value="Food/Beverages">Food/Beverages</option>
+                        <option value="Fundraising">Fundraising</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Gambling/Casinos">Gambling/Casinos</option>
+                        <option value="Glass/Ceramics/Concrete">Glass/Ceramics/Concrete</option>
+                        <option value="Government Administration">Government Administration</option>
+                        <option value="Government Relations">Government Relations</option>
+                        <option value="Graphic Design/Web Design">Graphic Design/Web Design</option>
+                        <option value="Automotive">Health/Fitness</option>
+                        <option value="Health/Fitness">Automotive</option>
+                        <option value="Higher Education/Acadamia">Higher Education/Acadamia</option>
+                        <option value="Hospital/Health Care">Hospital/Health Care</option>
+                        <option value="Hospitality">Hospitality</option>
+                        <option value="Human Resources/HR">Human Resources/HR</option>
+                        <option value="Import/Export">Import/Export</option>
+                        <option value="Individual/Family Services">Individual/Family Services</option>
+                        <option value="Industrial Automation">Industrial Automation</option>
+                        <option value="Information Services">Information Services</option>
+                        <option value="Information Technology/IT">Information Technology/IT</option>
+                        <option value="Insurance">Insurance</option>
+                        <option value="International Affairs">International Affairs</option>
+                        <option value="International Trade/Development">International Trade/Development</option>
+                        <option value="Internet">Internet</option>
+                        <option value="Investment Banking/Venture">Investment Banking/Venture</option>
+                        <option value="Investment Management/Hedge Fund/Private Equity">Investment Management/Hedge
+                            Fund/Private Equity</option>
+                        <option value="Judiciary">Judiciary</option>
+                        <option value="Law Enforcement">Law Enforcement</option>
+                        <option value="Law Practice/Law Firms">Law Practice/Law Firms</option>
+                        <option value="Legal Services">Legal Services</option>
+                        <option value="Legislative Office">Legislative Office</option>
+                        <option value="Leisure/Travel">Leisure/Travel</option>
+                        <option value="Library">Library</option>
+                        <option value="Logistics/Procurement">Logistics/Procurement</option>
+                        <option value="Luxury Goods/Jewelry">Luxury Goods/Jewelry</option>
+                        <option value="Machinery">Machinery</option>
+                        <option value="Management Consulting">Management Consulting</option>
+                        <option value="Maritime">Maritime</option>
+                        <option value="Market Research">Market Research</option>
+                        <option value="Marketing/Advertising/Sales">Marketing/Advertising/Sales</option>
+                        <option value="Mechanical or Industrial Engineering">Mechanical or Industrial Engineering
+                        </option>
+                        <option value="Media Production">Media Production</option>
+                        <option value="Medical Equipment">Medical Equipment</option>
+                        <option value="Medical Practice">Medical Practice</option>
+                        <option value="Mental Health Care">Mental Health Care</option>
+                        <option value="Military Industry">Military Industry</option>
+                        <option value="Mining/Metals">Mining/Metals</option>
+                        <option value="Motion Pictures/Film">Motion Pictures/Film</option>
+                        <option value="Museums/Institutions">Museums/Institutions</option>
+                        <option value="Music">Music</option>
+                        <option value="Nanotechnology">Nanotechnology</option>
+                        <option value="Newspapers/Journalism">Newspapers/Journalism</option>
+                        <option value="Non-Profit/Volunteering">Non-Profit/Volunteering</option>
+                        <option value="Oil/Energy/Solar/Greentech">Oil/Energy/Solar/Greentech</option>
+                        <option value="Online Publishing">Online Publishing</option>
+                        <option value="Outsourcing/Offshoring">Outsourcing/Offshoring</option>
+                        <option value="Package/Freight Delivery">Package/Freight Delivery</option>
+                        <option value="Packaging/Containers">Packaging/Containers</option>
+                        <option value="Paper/Forest Products">Paper/Forest Products</option>
+                        <option value="Performing Arts">Performing Arts</option>
+                        <option value="Pharmaceuticals">Pharmaceuticals</option>
+                        <option value="Philanthropy">Philanthropy</option>
+                        <option value="Photography">Photography</option>
+                        <option value="Plastics">Plastics</option>
+                        <option value="Political Organization">Political Organization</option>
+                        <option value="Primary/Secondary Education">Primary/Secondary Education</option>
+                        <option value="Printing">Printing</option>
+                        <option value="Professional Training">Professional Training</option>
+                        <option value="Program Development">Program Development</option>
+                        <option value="Public Relations/PR">Public Relations/PR</option>
+                        <option value="Public Safety">Public Safety</option>
+                        <option value="Publishing Industry">Publishing Industry</option>
+                        <option value="Railroad Manufacture">Railroad Manufacture</option>
+                        <option value="Ranching">Ranching</option>
+                        <option value="Real Estate/Mortgage">Real Estate/Mortgage</option>
+                        <option value="Recreational Facilities/Services">Recreational Facilities/Services</option>
+                        <option value="Religious Institutions">Religious Institutions</option>
+                        <option value="Renewables/Environment">Renewables/Environment</option>
+                        <option value="Research Industry">Research Industry</option>
+                        <option value="Restaurants">Restaurants</option>
+                        <option value="Retail Industry">Retail Industry</option>
+                        <option value="Security/Investigations">Security/Investigations</option>
+                        <option value="Semiconductors">Semiconductors</option>
+                        <option value="Shipbuilding">Shipbuilding</option>
+                        <option value="Sporting Goods">Sporting Goods</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Staffing/Recruiting">Staffing/Recruiting</option>
+                        <option value="Supermarkets">Supermarkets</option>
+                        <option value="Telecommunications">Telecommunications</option>
+                        <option value="Textiles">Textiles</option>
+                        <option value="Think Tanks">Think Tanks</option>
+                        <option value="Tobacco">Tobacco</option>
+                        <option value="Translation/Localization">Translation/Localization</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Venture Capital/VC">Venture Capital/VC</option>
+                        <option value="Veterinary">Veterinary</option>
+                        <option value="Warehousing">Warehousing</option>
+                        <option value="Wholesale">Wholesale</option>
+                        <option value="Wine/Spirits">Wine/Spirits</option>
+                        <option value="Wireless">Wireless</option>
+                        <option value="Writing/Editing">Writing/Editing</option>
+                        <option value="other_industry">Other Industry</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('industry','required') || hasError('industry','pattern'))"
+                    class="alert-danger d-block p-1 text-center">Industry is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3" *ngIf="showotherIndustry">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="other_industry" />
+                    <label>Other Industry</label>
+                </div>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="expertise" />
+                    <label>Your area of expertise*</label>
+                    <span
+                        *ngIf="submittedProfile && (hasError('expertise','required') || hasError('expertise','pattern'))"
+                        class="alert-danger d-block p-1 text-center">Expertise is required</span>
+                </div>
+
+                <!-- <div class="group col-sm-6 mb-3" *ngIf="showotherExpertise">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="other_expertise" />
+                    <label>Other Expertise</label>
+                </div> -->
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">Project Interests*</label>
+                    <ng-multiselect-dropdown formControlName="interest" [data]="interestArray"
+                        [settings]="dropdownSettingsInterest">
+                    </ng-multiselect-dropdown>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('interest','required') || hasError('interest','pattern'))"
+                    class="alert-danger d-block p-1 text-center">Interest is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3" *ngIf="showotherInterest">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="other_interest" />
+                    <label>Other Interest</label>
+                </div>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">How can you contribute?*</label>
+                    <ng-multiselect-dropdown formControlName="can_help" [data]="canHelpArray"
+                        [settings]="dropdownSettingsCanHelp">
+                    </ng-multiselect-dropdown>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('can_help','required') || hasError('can_help','pattern'))"
+                    class="alert-danger d-block p-1 text-center"> is required</span>
+            </div>
+
+            <!-- <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <label class="form-label">How you can you contribute?*</label>
+                    <select required="required" formControlName="can_help" name="can_help">
+                        <option value="">Select</option>
+                        <option value="2">Project Management</option>
+                        <option value="1">Job Shadowing</option>
+                        <option value="1">Making a career change</option>
+                        <option value="1">Resume/CV critique</option>
+                        <option value="1">Making Professional Introductions</option>
+                    </select>
+                </div>
+                <span *ngIf="submittedProfile && hasError('can_help','required')"
+                    class="alert-danger d-block p-1 text-center"> is required</span>
+            </div> -->
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1 keyword_input">
+                    <tag-input [ngModel]="" [formControlName]="'favBooks'" [maxItems]='3' [separatorKeyCodes]="[188,9]">
+                    </tag-input>
+                    <label>Favorite Book*</label>
+                </div>
+                <p class="sekec_text">Add upto 3 book</p>
+                <span *ngIf="submittedProfile && (hasError('favBooks','required') || hasError('favBooks','pattern'))"
+                    class="alert-danger d-block p-1 text-center"> is required</span>
+            </div>
+
+            <div class="group col-sm-6 mb-3">
+                <div class="mb-1">
+                    <input type="text" required="required" formControlName="linkedIn" />
+                    <label>Linkedin*</label>
+                </div>
+                <span *ngIf="submittedProfile && (hasError('linkedIn','required') || hasError('linkedIn','pattern'))"
+                    class="alert-danger d-block p-1 text-center">Linkedin Is Required</span>
+            </div>
+            <div class="group col-sm-12 mb-3">
+                <div class="mb-1 aboutYou">
+                    <textarea (change)="wordCounter($event);" formControlName="aboutYou"></textarea>
+                    <label for="email" class="form-label">About Yourself*</label>
+                </div>
+                <span *ngIf="showWordLimitError" class="alert-danger d-block p-1 text-center">Max word limit is
+                    100</span>
+                <span *ngIf="submittedProfile && (hasError('aboutYou','required') || hasError('aboutYou','pattern'))"
+                    class="alert-danger d-block p-1 text-center">About Yourself Is Required</span>
+            </div>
+            <div class="group col-sm-12 mb-3">
+                <div class="mb-3 adviceToYoungPeople">
+                    <textarea (change)="wordCounterAdvice($event);" formControlName="adviceToYoungPeople"></textarea>
+                    <label for="adviceToYoungPeople" class="form-label">What is your most important advice to young
+                        people: (max 50 words)</label>
+                </div>
+                <span *ngIf="showWordLimitAdviceError" class="alert-danger d-block p-1 text-center">Max word limit
+                    is 50</span>
+                <!-- <span *ngIf="submittedProfile && hasError('adviceToYoungPeople','required')"
+                    class="alert-danger d-block p-1 text-center">Advice To Young People Is Required</span> -->
+            </div>
+            <!-- <div class="group col-sm-6">
+                <div>
+                    <label class="select-label">State*</label>
+                    <select formControlName="state" (change)="onSelectState($event)">
+                        <option value="" disabled>Select State*</option>
+                        <option [value]="state.id" *ngFor="let state of states" [selected] = "state.id == this.geographyFormGroup
+                        .get('geography')
+                        .get('state').value">{{state.name}}</option>
+                     
+                    </select>
+                </div>
+            </div> -->
+            <!-- <div class="group col-sm-6">
+                <div>
+                    <label class="select-label">City*</label>
+                    <select formControlName="city" (change)="onSelectCity($event)">
+                        <option value="" disabled>Select City*</option>
+                        <option [value]="city.id" *ngFor="let city of cities" [selected] = "city.id == this.geographyFormGroup
+                        .get('geography')
+                        .get('city').value">{{city.name}}</option>
+                       
+                    </select>
+                </div>
+            </div> -->
+
+            <div class="group col-sm-12">
+                <input style="padding-left: 5px;" type="file" class="file-upload" (change)="uploadRecordVideo($event)"
+                    maxFileSize="300">
+                <label style="top: -10px;"> Upload Video Introduction (1 minute or less)*</label>
+                <div *ngIf="getVideoIntro" class="mt-2 pt-4 position-relative">
+                    <button class="remove_video fa fa-times"
+                        (click)="removeVideoConformation(openDeleteVideoDialog)"></button>
+                    <video controls width="100%" height="300" data-closable>
+                        <source src="{{getVideoIntro}}" type="video/mp4" />
+                        Browser not supported
+                    </video>
+                </div>
+            </div>
+
+            <div class="col-sm-12 px-1">
+
+                <div class="form-group mt-4">
+                    <input class="terms-conditions" type="checkbox" id="termsConditions" name="termsConditions"
+                        formControlName="shouldAgree" (change)="eventCheck($event)">
+                    <label for="termsConditions" class="label-terms-conditions"
+                        style="background: none; color: #787878; left: 0;">I agree with the collegey mentor
+                        <a target="_blank" class="" [routerLink]="['/agreement-condition']">Agreement</a>
+                    </label>
+
+                    <div *ngIf="submittedProfile && isChecked == false">
+                        <span class="alert-danger d-block p-1 text-center mt-2">Please accept our Agreement terms
+                            and conditions to proceed.</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+    <div class="btn-wrapper">
+        <!-- <button class="backbutton">Back</button> -->
+        <div class="col-12 text-align p-0">
+            <button class="savebtn" (click)="onSubmitForm(false)">Save and Complete later</button>
+            <button class="submitbutton" (click)="onSubmitForm(true)">SAVE & CONTINUE</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #openDeleteVideoDialog>
+    <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+        <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+        <div class="modal-form-header bottom-border">
+            <h5 class="heading">Are you sure to delete this video ?</h5>
+        </div>
+        <div class="modal-form-footer">
+            <div class="row top-box">
+                <div class="footer-texteditor">
+                    <div class="row feed-item">
+                        <button type="button" style="border: 1px;
+                              color: #141414;font-weight: 600; margin-right: 10px;"
+                            (click)="modalRef.hide()">No</button>&nbsp;&nbsp;
+                        <button (click)="removeVideo()" type="submit" id="btn" class="btn"
+                            style="color: white;">YES</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,544 @@
+<div class="card mb-3" *ngIf="groupInfo">
+  <ul class="list-group" *ngIf="groupInfo?.isAdmin == true">
+    <li class="list-group-item bg-secondary text-white" *ngIf="groupInfo?.groupJoinRequest?.length > 0">Who wants to
+      join in this group</li>
+    <li class="list-group-item acceptRequest" *ngFor="let request of groupInfo.groupJoinRequest">
+      <span>{{request.name}}</span>
+      <span>
+        <i class="fa fa-check text-success cursor-pointer border p-2 mr-2"
+          (click)="requestAccepted(request._id,groupInfo._id)"></i>
+        <i class="fa fa-times text-danger cursor-pointer border p-2"
+          (click)="requestRejected(request._id,groupInfo._id)"></i>
+      </span>
+
+    </li>
+  </ul>
+</div>
+<div class="add-post d-block p-3">
+  <div class="w-100 border-bottom pb-3" *ngIf="groupInfo">
+    <div class="d-flex justify-content-between">
+      <div class="">
+        <h6>{{groupInfo?.groupName}}</h6>
+        <p class="text-secondary text-capitalize">{{groupInfo?.groupType}} Group</p>
+      </div>
+      <div>
+        <button class="btn btn-primary" (click)="joinGroup(groupInfo?._id)"
+          *ngIf="!groupInfo.userExist && groupInfo.groupType == 'public'"> Join the Group</button>
+        <button class="btn btn-primary" (click)="requestJoinGroup(groupInfo?._id)"
+          *ngIf="!groupInfo.userExist && groupInfo.groupType == 'private' && !groupInfo.groupAlreadySent">Request to
+          Join</button>
+        <p *ngIf="groupInfo.groupAlreadySent">Request sent</p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="w-100 d-flex ">
+    <a (click)="tab = 1" [ngClass]="tab == 1  ? 'active' : 'in-active' "
+      class="groups-tab py-3 pl-0 pr-3 cursor-pointer" *ngIf="groupInfo?.userExist">Discussion</a>
+    <a (click)="tab = 2" [ngClass]="tab == 2  ? 'active' : 'in-active' " class="groups-tab p-3 cursor-pointer">About</a>
+    <a (click)="tab = 3" [ngClass]="tab == 3  ? 'active' : 'in-active' " class="groups-tab p-3 cursor-pointer"
+      *ngIf="groupInfo?.userExist">Members ( {{groupInfo?.userList?.length}} )</a>
+  </div>
+
+</div>
+<div class="add-post justify-content-between flex-wrap" *ngIf="tab == 2">
+  <p><strong>Group:</strong> {{groupInfo?.groupType}}</p>
+  <p><strong>Created On: </strong> {{groupInfo?.createdAt | date: 'mediumDate'}}</p>
+  <p class="w-100 mb-0"><strong>Description: </strong> {{groupInfo?.description}}</p>
+</div>
+<ng-container *ngIf="tab == 1">
+  <ng-container *ngIf="groupInfo?.userExist">
+    <div class="add-post">
+      <div class="user-comment-img">
+        <img *ngIf="dashboard?.profile?.avatar" [src]="commonService.imagePathS3(dashboard?.profile?.avatar)"
+          alt="{{dashboard?.profile?.name}}">
+      </div>
+      <form class="postformdiv">
+        <input type="text" (click)="openCollegeFeedPostModal(collegeFeedPostModal)"
+          placeholder="Post a questions, project update, news, ask for team members, etc...">
+      </form>
+    </div>
+    <div *ngIf="noFeedData" class="noFeedData">No Feeds Found</div>
+    <div class="social-feed-box" *ngFor="let feed of response; let i=index">
+      <div class="social-feed-list">
+        <div class="row top-box">
+          <div class="join-author">
+            <span>
+              <img *ngIf="feed?.user?.avatar" [src]="commonService.imagePathS3(feed?.user?.avatar)"
+                alt="{{feed?.user?.name}}">
+            </span>
+            <div>
+              <h6 class="text-capitalize">{{feed?.user?.name}} {{feed?.user?.last_name}}</h6>
+              <p class="half-opac" style="color:#AFAFAF !important">{{feed.timeago}}</p>
+
+            </div>
+          </div>
+          <div class="deletedit_btndiv" *ngIf="feed?.user._id == userId">
+            <button type="button" class="m-1 edit-details-button1"
+              (click)="openGroupFeedEdit(collegeFeedPostModal,i)"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+            <!-- <button type="button" class="m-1 edit-details-button top-shift33" (click)="deletePost(feed._id)"><img src="assets/images/delete.svg"></button> -->
+            <button type="button" class="m-1 edit-details-button1"
+              (click)="deleteConformationFeed(openGroupFeedDeleteDialog,feed._id)"><img
+                src="assets/images/delete.svg"></button>
+          </div>
+          <a class="btn follow-btn" *ngIf="feed?.user == userInfo._id">Follow</a>
+        </div>
+        <div class="row feed-item">
+          <!-- <img src="/assets/images/feed1.png"> -->
+          <!-- <h5>
+                          YouTube hits 20 mn paid subscribers, 2 mn join YouTube TV
+                      </h5> -->
+          <div class="mb-4" *ngIf="feed.postType == 'text'">
+            <h6 class="mb-1 text-break">{{feed?.postText}}</h6>
+            <p class="postDesc" *ngIf="feed?.postData" [ngClass]="{'readLess': feed.readLess}"><span
+                *ngIf="feed?.posturl"><a href="{{feed?.posturl}}" target="_blank">{{feed?.posturl}}</a></span></p>
+          </div>
+
+          <div class="mb-4" *ngIf="feed.postType == 'image'">
+            <h6 class="mb-1 text-break">{{feed?.postText}}</h6>
+            <img *ngIf="!feed?.posturl" [src]="commonService.imagePathS3(feed.postImageUrl)" class="pb-3">
+            <img *ngIf="feed?.posturl && !feed?.postImageUrl.includes('http')"
+              [src]="commonService.imagePathS3(feed.postImageUrl)" class="pb-3">
+            <img *ngIf="feed?.posturl && feed?.postImageUrl.includes('http')" [src]="feed?.postImageUrl" class="pb-3">
+
+            <a *ngIf="feed?.posturl" [href]="feed?.posturl" class="postDesc" target="_blank"
+              [ngClass]="{'readLess': feed.readLess}">
+              {{feed?.postData}}</a>
+
+            <p class="postDesc" *ngIf="feed?.postData && !feed?.posturl" [ngClass]="{'readLess': feed.readLess}">
+              {{feed?.postData}}</p>
+
+          </div>
+
+          <a (click)="readMoreClass(feed)" class="readDesc my-3" *ngIf="feed?.postData">{{feed.readLess ? 'READ LESS' :
+            'READ MORE'}}</a>
+
+          <div *ngIf="feed.postType == 'video'">
+            <iframe width="100%" height="350" src="https://www.youtube.com/embed/HndV87XpkWg">
+            </iframe>
+            <!-- {{getEmbedYoutubeUrl(feed.postVideo)}} -->
+            <p style="top: 892px;
+                          left: 393px;
+                          width: 487px;
+                          height: 24px;
+                          text-align: left;
+                          font: normal normal 600 18px/24px Nunito;
+                          letter-spacing: 0px;
+                          color: #4E4E4E;
+                          opacity: 1;">{{feed?.postData}}</p>
+            <p style="margin-top: 35px;">{{feed?.postText}}</p>
+          </div>
+
+          <div class="socialHelpers">
+            <div class="socialStatusOne">
+              <!-- <ng-container *ngFor="let like of feed.likes"> -->
+              <!-- <ng-container *ngIf="like.user_id?._id == userInfo?._id && like.collegyFeed_id == feed._id; else otherContent">
+                    <div >
+                      <i class="fa fa-heart-o text-primary" (click)="likeClick(feed)"></i>
+                      <span> d{{feed?.likes.length}}
+                        Likes</span>
+                    </div>
+                  </ng-container> -->
+              <!-- <ng-template #otherContent> -->
+              <div *ngIf="feed.lkedbyCurrentUser == true">
+                <div>
+                  <i class="fa fa-heart text-danger cursor-pointer" (click)="dislikeClick(feed,feed.likeId)"></i>
+                  <span> {{feed?.likes.length}}
+                    Likes</span>
+                </div>
+              </div>
+              <div *ngIf="!feed.lkedbyCurrentUser">
+                <i class="fa fa-heart-o cursor-pointer" (click)="likeClick(feed)"></i>
+                <span> {{feed?.likes.length}}
+                  Likes</span>
+              </div>
+              <!-- </ng-template> -->
+              <!-- </ng-container> -->
+
+
+
+
+              <div>
+                <i class="fa fa-comment"></i>
+                <span>{{feed?.comment.length}} Comments</span>
+              </div>
+            </div>
+            <div class="socialStatusTwo">
+              <div (click)="openShareModel(sharePostModal,feed)">
+                <i class="fa fa-share"></i>
+                <span> {{feed?.share.length}} Share</span>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="social-status">
+                          <div class="">
+                              <span>
+                                 
+                                     
+                              </span>
+                            
+                              <span class="glyphicon glyphicon-comment"></span> <span class="social-points fa fa-comment">&nbsp;37
+                                  Comments</span>
+                          </div>
+                          <div class="text-right">
+                              <span class="glyphicon glyphicon-share-alt"></span> <span class="social-points fa fa-share">&nbsp;{{feed?.share}}
+                                  Share</span>
+                          </div>
+                      </div> -->
+        </div>
+        <div *ngIf="commentForm" class="comment-boxs">
+          <form [formGroup]="commentForm" class="commentForm">
+            <img class="user-comment-ing" *ngIf="feed?.user?.avatar"
+              [src]="commonService.imagePathS3(feed?.user?.avatar)" alt="{{feed?.user?.name}}">
+            <input type="text" name="" placeholder="Write your comment…" [mention]="userList"
+              [mentionConfig]="{triggerChar:'@',maxItems:5,labelKey:'name'}" formControlName="text">
+            <input id="commentBtn" type="submit" value="Send" (click)="postComment(feed._id)" />
+          </form>
+        </div>
+        <div class="top-box commented-item" *ngFor="let comment of feed?.comment; let commentIndex = index">
+          <div class="join-author">
+            <span>
+              <img class="user-comment-ing" *ngIf="comment?.user?.avatar"
+                [src]="commonService.imagePathS3(comment?.user?.avatar)" alt="{{comment?.user?.name}}">
+            </span>
+            <div>
+              <!-- <a class="btn follow-btn" (click)="getFollowUserData(comment.user._id);">{{ isAlreadyFollow ? 'Following': 'Follow' }}
+                              </a> -->
+
+              <h6 class="text-capitalize">{{comment.user.name}} {{comment?.user?.last_name}}</h6>
+              <p class="comment-text text-capitalize">{{comment.text}}</p>
+              <!-- <p class="half-opac" style="color:#AFAFAF !important">{{comment.timeagoComment}}</p> -->
+              <p class="half-opac" style="color:#AFAFAF !important">{{comment?.timeagoComment}}
+                <span style="float: none;"
+                  *ngIf="(comment?.user?._id == userId) && (feed?.user?._id == userId || feed?.user?._id != userId )"><button
+                    class="clear-btn" (click)="editComment(editFeedCommentModal, commentIndex, i)">Edit</button>
+                  <button class="delete-btn"
+                    (click)="deleteFeedComment(openFeedCommentDeleteDialog, commentIndex, feed?._id)">Delete</button></span>
+                <span style="float: none;" *ngIf="(comment?.user?._id != userId) && (feed?.user?._id == userId)">
+                  <button class="delete-btn"
+                    (click)="deleteFeedComment(openFeedCommentDeleteDialog, commentIndex, feed?._id)">Delete</button></span>
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <!-- <div class="top-box commented-item">
+                      <div class="join-author">
+                          <span>
+                              <img src="/assets/images/profile-picture.png">
+                          </span>
+                          <div>
+                              <h6>Atul choudhary</h6>
+                              <p class="comment-text">Good article to read.</p>
+                              <p class="half-opac">4 hr ago</p>
+                          </div>
+                      </div>
+                  </div> -->
+      </div>
+      <!-- <div class="social-feed-list">
+                  <div class="row top-box">
+                      <div class="join-author">
+                          <span>
+                              <img src="/assets/images/profile-picture.png">
+                          </span>
+                          <div>
+                              <h6>Atul choudhary</h6>
+                              <p class="half-opac">4 hr ago</p>
+                          </div>
+                      </div>
+                      <a href="" class="btn follow-btn">Follow</a>
+                  </div>
+                  <div class="row feed-item">
+                      <img src="/assets/images/feed1.png">
+                      <h5>
+                          YouTube hits 20 mn paid subscribers, 2 mn join YouTube TV
+                      </h5>
+                      <p>
+                          YouTube ended 2019 at a $3 billion annual run rate in YouTube subscriptions $3 billion
+                          annual
+                          and other non- advertis…
+                      </p>
+                      <a href="">Read More <span> ></span></a>
+                      <div class="social-status">
+                          <div class="">
+                              <span class="glyphicon glyphicon-heart-empty"></span> <span class="social-points">237
+                                  Likes</span>
+                              <span class="glyphicon glyphicon-comment"></span> <span class="social-points">37
+                                  Comments</span>
+                          </div>
+                          <div class="text-right">
+                              <span class="glyphicon glyphicon-share-alt"></span> <span class="social-points">20
+                                  Share</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="comment-boxs">
+                      <img class="user-comment-ing" src="/assets/images/profile-picture.png">
+                      <input type="" name="" placeholder="Write your comment…">
+                  </div>
+                  <div class="top-box commented-item">
+                      <div class="join-author">
+                          <span>
+                              <img src="/assets/images/profile-picture.png">
+                          </span>
+                          <div>
+                              <h6>Atul choudhary</h6>
+                              <p class="comment-text">Good article to read.</p>
+                              <p class="half-opac">4 hr ago</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="top-box commented-item">
+                      <div class="join-author">
+                          <span>
+                              <img src="/assets/images/profile-picture.png">
+                          </span>
+                          <div>
+                              <h6>Atul choudhary</h6>
+                              <p class="comment-text">Good article to read.</p>
+                              <p class="half-opac">4 hr ago</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="social-feed-list">
+                  <div class="row top-box">
+                      <div class="join-author">
+                          <span>
+                              <img src="/assets/images/profile-picture.png">
+                          </span>
+                          <div>
+                              <h6>Atul choudhary</h6>
+                              <p class="half-opac">4 hr ago</p>
+                          </div>
+                      </div>
+                      <a href="" class="btn follow-btn">Follow</a>
+                  </div>
+                  <div class="row feed-item">
+                      <img src="/assets/images/feed1.png">
+                      <h5>
+                          YouTube hits 20 mn paid subscribers, 2 mn join YouTube TV
+                      </h5>
+                      <p>
+                          YouTube ended 2019 at a $3 billion annual run rate in YouTube subscriptions $3 billion
+                          annual
+                          and other non- advertis…
+                      </p>
+                      <a href="">Read More <span> ></span></a>
+                      <div class="social-status">
+                          <div class="">
+                              <span class="glyphicon glyphicon-heart-empty"></span> <span class="social-points">237
+                                  Likes</span>
+                              <span class="glyphicon glyphicon-comment"></span> <span class="social-points">37
+                                  Comments</span>
+                          </div>
+                          <div class="text-right">
+                              <span class="glyphicon glyphicon-share-alt"></span> <span class="social-points">20
+                                  Share</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="comment-boxs">
+                      <img class="user-comment-ing" src="/assets/images/profile-picture.png">
+                      <input type="" name="" placeholder="Write your comment…">
+                  </div>
+                  <div class="top-box commented-item">
+                      <div class="join-author">
+                          <span>
+                              <img src="/assets/images/profile-picture.png">
+                          </span>
+                          <div>
+                              <h6>Atul choudhary</h6>
+                              <p class="comment-text">Good article to read.</p>
+                              <p class="half-opac">4 hr ago</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="top-box commented-item">
+                      <div class="join-author">
+                          <span>
+                              <img src="/assets/images/profile-picture.png">
+                          </span>
+                          <div>
+                              <h6>Atul choudhary</h6>
+                              <p class="comment-text">Good article to read.</p>
+                              <p class="half-opac">4 hr ago</p>
+                          </div>
+                      </div>
+                  </div>
+              </div> -->
+    </div>
+    <div *ngIf="groupLoadMoreStatus" class="load-more-feed">
+      <a href="javascript:void(0);" (click)="loadMoreFeeds()">Load More</a>
+    </div>
+
+
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="groupInfo?.userExist">
+  <div class="card" *ngIf="tab == 3">
+    <ul class="list-group">
+      <li class="list-group-item bg-secondary text-white">Group Members</li>
+      <li class="list-group-item" *ngFor="let users of groupInfo.userList"><a
+          href="/profile/{{users?.user?._id}}/{{users?.user?.name}}">
+          {{users?.user?.name}}
+        </a></li>
+    </ul>
+  </div>
+</ng-container>
+<!-- </div> -->
+<ng-template #collegeFeedPostModal>
+  <div class="modal-form-wrap1">
+    <div class="modal-formheader1">
+      <i class="fa fa-times custClose_model" (click)="modalRefCollegeFeed.hide()" aria-hidden="true"></i>
+      <h5 *ngIf="!postIsEdit" class="heading mb-0">Create Post</h5>
+      <h5 *ngIf="postIsEdit" class="heading mb-0">Edit Post</h5>
+    </div>
+    <form>
+      <div style="padding: 20px 20px 0 20px;">
+        <div class="form-box">
+          <form [formGroup]="postForm">
+
+            <div class="form-group fields">
+              <label class="cus-label">Post Your Questions , Project Update Or News</label>
+              <textarea class="form-control field-control1" type="text" name="" id="" placeholder="Type Your Update"
+                formControlName="postText" style="min-height: 50px;"
+                (change)="wordCounterPostTitle($event);"></textarea>
+              <span *ngIf="showWordLimitTitleError" class="d-block" style="color: red;">Max word limit is 250</span>
+              <span
+                *ngIf="submittedPost && ( hasErrorEvent('postText','required') || hasErrorEvent('postText','pattern'))"
+                class="d-block" style="color: red;">is required.</span>
+            </div>
+            <div class="form-group fields">
+              <label class="cus-label">Post Image (Please upload file around image size 520 x 300)</label>
+              <input class="form-control field-control1" (change)="onFileSelect($event)" type="file" name="" id=""
+                placeholder="Group Description">
+            </div>
+            <div *ngIf="PostEditImage != null">
+              <div class="d-inline-block position-relative" *ngIf="!removeImageFile">
+                <button class="delete-img" (click)="removeImage()"><i class="fa fa-times-circle"></i></button>
+                <img *ngIf="PostEditImage" alt="Feed Post Image" style="object-fit: cover;" class="pb-3 img-fluid"
+                  [src]="PostEditImage">
+              </div>
+            </div>
+            <!-- <img *ngIf="PostEditImage" [src]="PostEditImage" class="pb-3 img-fluid" style="object-fit: cover;"> -->
+            <div class="form-group fields">
+              <label class="cus-label">Add a Link</label>
+              <textarea class="form-control field-control1" type="text" name="" id="" placeholder="Add link"
+                formControlName="postData" style="min-height: 110px;"></textarea>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      <div class="modal-formfooter1">
+        <div class="d-inline-block">
+          <button (click)="modalRefCollegeFeed.hide()" class="btn btn-light">Cancel</button>
+          <button *ngIf="!postIsEdit" (click)="createUserPostData()" id="btn" class="btn btn-primary">Post</button>
+          <button *ngIf="postIsEdit" (click)="createUserPostData()" id="btn" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #sharePostModal>
+  <div class="modal-form-wrap1">
+    <div class="modal-formheader1">
+      <h5 class="heading mb-0">Share Post</h5>
+    </div>
+    <form [formGroup]="shareForm">
+      <div style="padding: 20px 20px 0 20px;">
+        <div class="form-box">
+          <div class="form-group fields">
+            <label class="cus-label">Write Something</label>
+            <textarea class="form-control field-control1" type="text" name="" id="" placeholder="Write Something"
+              formControlName="descriptionFeed"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-formfooter1">
+        <div class="d-inline-block">
+          <button (click)="modalRefShareCollegeFeed.hide()" class="btn btn-light">Cancel</button>
+          <button (click)="shareClick(currentData)" id="btn" class="btn btn-primary">Share</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #openGroupFeedDeleteDialog>
+  <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+    <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+    <div class="bottom-border pt-2 pb-3">
+      <h5 class="heading">Are you sure delete this Post ?</h5>
+    </div>
+    <div>
+      <div class="row top-box">
+        <div class="footer-texteditor">
+          <div class="row feed-item">
+            <button type="button" style="border: 1px;
+                              color: #141414;font-weight: 600; margin-right: 10px;"
+              (click)="modalRef.hide()">No</button>&nbsp;&nbsp;
+            <button (click)="deletePost()" type="submit" id="btn" class="btn" style="color: white;">YES</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Edit Comment  -->
+<ng-template #editFeedCommentModal>
+  <div class="modal-form-wrap1">
+    <div class="modal-formheader1">
+      <h5 class="heading mb-0">Update Comment</h5>
+    </div>
+    <form [formGroup]="editFeedCommentForm" (keyup.enter)="editFeedCommentData()">
+      <div style="padding: 20px 20px 0 20px;">
+        <div class="form-box">
+          <div class="form-group fields">
+            <label class="cus-label">Write Comment</label>
+            <input class="form-control field-control1" type="text" name="" id="" placeholder="Write Comment"
+              formControlName="text">
+            <span
+              *ngIf="submitUpdateComment && (hasErrorUpdateComment('text','required') || hasErrorUpdateComment('text','pattern'))"
+              class="d-block" style="color: red; margin-bottom: 20px;">Comment is required.</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-formfooter1">
+        <div class="d-inline-block">
+          <button (click)="modalRefEditComment.hide()" class="btn btn-light">Cancel</button>
+          <button (click)="editFeedCommentData()" id="btn" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!-- Delete Feed Comment -->
+
+<ng-template #openFeedCommentDeleteDialog>
+  <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+    <i class="fa fa-times custClose_model" (click)="modalFeedCommentDelete.hide()" aria-hidden="true"></i>
+    <div class="modal-form-header2 bottom-border pt-2 pb-3">
+      <h5 class="heading">Are you sure delete this comment ?</h5>
+    </div>
+    <div class="modal-form-footer2">
+      <div class="row top-box">
+        <div class="footer-texteditor">
+          <div class="row feed-item">
+            <button type="button" style="border: 1px;
+                            color: #141414;font-weight: 600; margin-right: 10px;"
+              (click)="modalFeedCommentDelete.hide()">No</button>&nbsp;&nbsp;
+            <button (click)="deleteFeedCommentData()" type="submit" id="btn" class="btn"
+              style="color: white;">YES</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

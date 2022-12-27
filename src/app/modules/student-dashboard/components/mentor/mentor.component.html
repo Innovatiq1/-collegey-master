@@ -1,0 +1,409 @@
+<app-dash-header></app-dash-header>
+<section class="section-mr" style="margin-top: -7px;">
+
+    <div class="container first-section" style="margin-top: -25px;">
+        <div class="dashboard-menu">
+            <div class="col-8 col-sm-12 col-md-9 col-lg-10">
+                <div class="d-flex align-items-center">
+                    <span>Mentor/University</span>&nbsp;&nbsp;&nbsp;
+                    <div class="search-box d-flex align-items-center">
+                        <input class="search" type="text" placeholder="What do you want to learn…"
+                            (keyup)="searchByMentor($event)" />
+                        <img src="assets/images/search-2-line.svg" class="search-icon" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding: 3px 50px;">
+        <!-- <a [ngClass]=" tab==='tab1' ? 'btn follow-btnss' : 'btn follow-btns'"  (click) ="all(1)">All</a> -->
+        <a [ngClass]=" tab==='tab2' ? 'btn follow-btnss' : 'btn follow-btns'" (click)="mentor(2)">Mentor</a>
+        <!-- <a [ngClass]=" tab==='tab3' ? 'btn follow-btnss' : 'btn follow-btns'" (click)="university(3)">University</a> -->
+        <span class="btn follow-btns">University</span>
+    </div>
+    <!-- <div class="social-feed-container" *ngIf="All==true">
+        <div class="middle-section">
+            <div class="social-feed-box">
+                <div class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle">
+                            </span>
+                            &nbsp;&nbsp;
+                            <h6 style="margin-top: -1%;margin-left: 12%;">San Francisco (Virtual) VC Fast Pitch
+                            <br>
+                            Chailchowk</h6>
+                            <i class="fa fa-users" style="color: gray;margin-left: 3%;">&nbsp;12,747 attendees</i>
+                        </div>
+                        <a href="" class="btn follow-btn">Follow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>Pitch and network with venture capitalists, angels and accredited investors from
+                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
+                                Fast Pitch Conference...(more)</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+                <div class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle">
+                            </span>
+                            &nbsp;&nbsp;
+                            <h6 style="margin-top: -1%;margin-left: 12%;">San Francisco (Virtual) VC Fast Pitch
+                            <br>
+                            Chailchowk</h6>
+                            <i class="fa fa-users" style="color: gray;margin-left: 3%;">&nbsp;12,747 attendees</i>
+                        </div>
+                        <a href="" class="btn follow-btn">Follow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>Pitch and network with venture capitalists, angels and accredited investors from
+                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
+                                Fast Pitch Conference...(more)</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div><div class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle">
+                            </span>
+                            &nbsp;&nbsp;
+                            <h6 style="margin-top: -1%;margin-left: 12%;">San Francisco (Virtual) VC Fast Pitch
+                            <br>
+                            Chailchowk</h6>
+                            <i class="fa fa-users" style="color: gray;margin-left: 3%;">&nbsp;12,747 attendees</i>
+                        </div>
+                        <a href="" class="btn follow-btn">Follow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>Pitch and network with venture capitalists, angels and accredited investors from
+                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
+                                Fast Pitch Conference...(more)</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div><div class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle">
+                            </span>
+                            &nbsp;&nbsp;
+                            <h6 style="margin-top: -1%;margin-left: 12%;">San Francisco (Virtual) VC Fast Pitch
+                            <br>
+                            Chailchowk</h6>
+                            <i class="fa fa-users" style="color: gray;margin-left: 3%;">&nbsp;12,747 attendees</i>
+                        </div>
+                        <a href="" class="btn follow-btn">Follow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>Pitch and network with venture capitalists, angels and accredited investors from
+                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
+                                Fast Pitch Conference...(more)</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="right-sidebar">
+            <div class="learn-box">
+                <p>#Get Learning</p>
+                <h6>Collegey Academy</h6>
+                <h5>Everything you need to stay on top of things. From webinars to conferences, student opportunities,
+                    articles, reports, and more.</h5>
+                <button type="button" class="btn">Next</button>
+            </div>
+            <div class="invite-friends-box">
+                <h5>Invite Friends</h5>
+                <p>You can invite your friends to Colegey</p>
+                <input type="text" name="" id="" placeholder="Enter Name">
+                <input type="text" name="" id="" placeholder="Enter Email ID">
+                <input type="text" name="" id="" placeholder="Enter Phone Number">
+                <button type="button" class="btn">NEXT</button>
+            </div>
+        </div>
+    </div> -->
+    <div class="social-feed-container" *ngIf="Mentor==true">
+        <div class="middle-section">
+            <div class="social-feed-box">
+                <div *ngFor="let ele of mentorList1; let i = index" class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle" *ngIf="!ele?.avatar"><img
+                                    style="width: 100% !important;height: 100% !important;"
+                                    src="./../../../assets/images/logo_image/new-collegey-home.png" alt=""
+                                    class="group-img"> </span>
+                            <img class="circle" *ngIf="ele?.avatar" [src]="commonService.imagePathS3(ele?.avatar)">
+                            <h6>
+                                <!-- <a (click)="mentorid(ele)" [routerLinkActive]="['active']"
+                                    [routerLink]="['/student-dashboard/$/mentorid']">
+                                    {{ele?.name}}
+                                </a> -->
+                                <a href="/mentor-profile/{{ele?._id}}/{{ele?.name}}" target="_blank">{{ele?.name}}</a>
+                            </h6>
+
+                            <div>
+                                <i *ngIf="!CheckMentorFollow(ele?.mentorFollow)" class="fa fa-users pull-left"
+                                    style="color: gray;"></i>
+                                <i *ngIf="CheckMentorFollow(ele?.mentorFollow)" class="fa fa-users pull-left"
+                                    style="color: #10E66D;"></i>
+                                <span>{{ele?.mentorFollow?.length}} followers</span>
+                            </div><br><br>
+                            <p>{{ele?.mentor_profile?.profile?.aboutYou}}</p>
+                        </div>
+                        <a *ngIf="!CheckMentorFollow(ele?.mentorFollow)" (click)='saveFollwer(ele?._id)'
+                            class="btn follow-btn cl-unfollow-btn">Follow</a>
+                        <a *ngIf="CheckMentorFollow(ele?.mentorFollow)" (click)='saveUnFollwer(ele?._id)'
+                            class="btn follow-btn cl-follow-btn">UnFollow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>{{ele[i]?.aboutYou}}</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+                <pagination [totalItems]="totalGroupItemsMy" [itemsPerPage]="10" (pageChanged)="pageChanged($event)">
+                </pagination>
+                <ng-template #openSendInviteLink>
+                    <div class=" schedule-event-modal">
+                        <div class="schedule-form">
+                            <form>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <label for="requestedForName">User Name</label>
+                                        <input type="text" class="form-control" value="{{ele.name}}"
+                                            placeholder="User Name" formControlName="requestedForName"
+                                            name="requestedForName" id="requestedForName">
+                                        <!-- <span *ngIf="submittedInvitePeople && hasErrorInvitePeople('requestedForName','required')" class="d-block" style="color: red;">Invite user name is required.</span> -->
+                                    </div>
+                                    <div class="col-md-12" style="padding-top:10px;">
+                                        <label for="useremailid">User Email</label>
+                                        <input type="email" class="form-control" value="{{ele.email}}"
+                                            placeholder="User Email" formControlName="useremailid" name="useremailid"
+                                            id="useremailid">
+                                        <!-- <span *ngIf="submittedInvitePeople && hasErrorInvitePeople('useremailid','required')" class="d-block" style="color: red;">Invite user email is required.</span> -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="schedule-event-action">
+                            <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+                            <!-- <a href="javascript:;" (click)="sendInvitePeopleLink()" class="show-result-btn">Invite People</a> -->
+                        </div>
+                    </div>
+                </ng-template>
+                <!-- <app-load-more [isLoading]="isLoading" [isHidden]="mentorList1.length<=0"></app-load-more> -->
+                <!-- <div class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle">
+                            </span>
+                            &nbsp;&nbsp;
+                            <h6 style="margin-top: -1%;margin-left: 12%;">San Francisco (Virtual) VC Fast Pitch
+                            <br>
+                            Chailchowk</h6>
+                            <i class="fa fa-users" style="color: gray;margin-left: 3%;">&nbsp;12,747 attendees</i>
+                        </div>
+                        <a href="" class="btn follow-btn">Follow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>Pitch and network with venture capitalists, angels and accredited investors from
+                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
+                                Fast Pitch Conference...(more)</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div><div class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle">
+                            </span>
+                            &nbsp;&nbsp;
+                            <h6 style="margin-top: -1%;margin-left: 12%;">San Francisco (Virtual) VC Fast Pitch
+                            <br>
+                            Chailchowk</h6>
+                            <i class="fa fa-users" style="color: gray;margin-left: 3%;">&nbsp;12,747 attendees</i>
+                        </div>
+                        <a href="" class="btn follow-btn">Follow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>Pitch and network with venture capitalists, angels and accredited investors from
+                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
+                                Fast Pitch Conference...(more)</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div><div class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle">
+                            </span>
+                            &nbsp;&nbsp;
+                            <h6 style="margin-top: -1%;margin-left: 12%;">San Francisco (Virtual) VC Fast Pitch
+                            <br>
+                            Chailchowk</h6>
+                            <i class="fa fa-users" style="color: gray;margin-left: 3%;">&nbsp;12,747 attendees</i>
+                        </div>
+                        <a href="" class="btn follow-btn">Follow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>Pitch and network with venture capitalists, angels and accredited investors from
+                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
+                                Fast Pitch Conference...(more)</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+        <div class="right-sidebar">
+            <div class="learn-box" *ngIf="collegyFeedsQuestions?.length > 0">
+                <p>#{{lernBoxCollection?.academyTitle}}</p>
+
+                <div *ngFor="let listQuetion of collegyFeedsQuestions; let i=index" class="clg-quetion-ans-box">
+                    <h6>{{listQuetion?.Question}}</h6>
+                    <h5 style="font-size: 15px;">{{listQuetion?.Answer}}</h5>
+                </div>
+                
+                <!-- <a href="{{lernBoxCollection?.academyLink}}" target="_blank"><button type="button" class="btn">{{lernBoxCollection?.academyBtnText}}</button></a> -->
+
+              </div>
+            <div class="invite-friends-box">
+                <form [formGroup]="inviteFormGroup">
+                    <h5>Invite Friends</h5>
+                    <p>You can invite your friends to Collegey</p>
+
+                    <span
+                        *ngIf="inviteSubmitted && (hasErrorInviteForm('inviteName','required') || hasErrorInviteForm('inviteName','pattern'))"
+                        class="d-block" style="color: red;">Name is required.</span>
+                    <input type="text" name="" id="" placeholder="Enter Name" formControlName="inviteName">
+
+                    <span *ngIf="inviteSubmitted && hasErrorInviteForm('email','required')" class="d-block"
+                        style="color: red;">Email is required.</span>
+                    <span *ngIf="inviteSubmitted && hasErrorInviteForm('email','pattern')" class="d-block"
+                        style="color: red;">Incorrect Email Format.</span>
+                    <input type="text" name="" id="" placeholder="Enter Email ID" formControlName="email">
+
+                    <!-- <span *ngIf="inviteSubmitted && hasErrorInviteForm('mobile_number','required')" class="d-block"
+                        style="color: red;">Phone is required.</span> -->
+                    <span *ngIf="inviteSubmitted && hasErrorInviteForm('mobile_number','pattern')" class="d-block"
+                        style="color: red;">Incorrect Phone Number Format.</span>
+                    <input type="text" name="" id="" placeholder="Enter Phone Number" formControlName="mobile_number">
+
+                    <button type="button" class="btn" (click)="save()">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="social-feed-container" *ngIf="University==true">
+        <div class="middle-section">
+            <div class="social-feed-box">
+                <div class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle"><img style="width: 100% !important;height: 100% !important;"
+                                    src="./../../../assets/images/logo_image/new-collegey-home.png" alt=""
+                                    class="group-img"></span>
+                            <h6>San Francisco (Virtual) VC Fast Pitch
+                                <br>
+                                Chailchowk
+                            </h6>
+                            <i class="fa fa-users" style="color: gray;font-size: 17px;font-weight: 600;">&nbsp;12,747
+                                attendees</i>
+                        </div>
+                        <a href="javascript:;" class="btn follow-btn">Follow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>Pitch and network with venture capitalists, angels and accredited investors from
+                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
+                                Fast Pitch Conference...(more)</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+                <div class="social-feed-list">
+                    <div class="row top-box">
+                        <div class="join-author">
+                            <span class="circle"><img style="width: 100% !important;height: 100% !important;"
+                                    src="./../../../assets/images/logo_image/new-collegey-home.png" alt=""
+                                    class="group-img"></span>
+                            <h6>San Francisco (Virtual) VC Fast Pitch
+                                <br>
+                                Chailchowk
+                            </h6>
+                            <i class="fa fa-users" style="color: gray;font-size: 17px;font-weight: 600;">&nbsp;12,747
+                                attendees</i>
+                        </div>
+                        <a href="javascript:;" class="btn follow-btn">Follow</a>
+                        <br><br>
+                    </div>
+                    <div class="row top-box">
+                        <div class="col-md-9">
+                            <span>Pitch and network with venture capitalists, angels and accredited investors from
+                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
+                                Fast Pitch Conference...(more)</span>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-sidebar">
+            <div class="learn-box">
+                <p>#{{lernBoxCollection?.academyTitle}}</p>
+                <h6>{{lernBoxCollection?.academySubTitle}}</h6>
+                <h5 style="font-size: 15px;">{{lernBoxCollection?.academyDescription}}</h5>
+                <a href="{{lernBoxCollection?.academyLink}}" target="_blank"><button type="button" class="btn">{{lernBoxCollection?.academyBtnText}}</button></a>
+              </div>
+            <div class="invite-friends-box">
+                <form [formGroup]="inviteFormGroup">
+                    <h5>Invite Friends</h5>
+                    <p>You can invite your friends to Collegey</p>
+
+                    <span
+                        *ngIf="inviteSubmitted && (hasErrorInviteForm('inviteName','required') || hasErrorInviteForm('inviteName','pattern'))"
+                        class="d-block" style="color: red;">Name is required.</span>
+                    <input type="text" name="" id="" placeholder="Enter Name" formControlName="inviteName">
+
+                    <span *ngIf="inviteSubmitted && hasErrorInviteForm('email','required')" class="d-block"
+                        style="color: red;">Email is required.</span>
+                    <span *ngIf="inviteSubmitted && hasErrorInviteForm('email','pattern')" class="d-block"
+                        style="color: red;">Incorrect Email Format.</span>
+                    <input type="text" name="" id="" placeholder="Enter Email ID" formControlName="email">
+
+                    <!-- <span *ngIf="inviteSubmitted && hasErrorInviteForm('mobile_number','required')" class="d-block"
+                        style="color: red;">Phone is required.</span> -->
+                    <span *ngIf="inviteSubmitted && hasErrorInviteForm('mobile_number','pattern')" class="d-block"
+                        style="color: red;">Incorrect Phone Number Format.</span>
+                    <input type="text" name="" id="" placeholder="Enter Phone Number" formControlName="mobile_number">
+
+                    <button type="button" class="btn" (click)="save()">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,202 @@
+<app-mentor-globaldashboard></app-mentor-globaldashboard>
+<section class="student-profile-wrapper" style="padding-top: 15px;">
+    <div class="container">
+        <div class="row" style="margin-bottom: 30px;">
+            <!-- <div class="col-sm-4 student-profile no-sm-pad">
+                <div style="display: flex;align-items: center;">
+                    <div style="position: relative;">
+                        <img src="assets/images/profile-picture.png" class="user-img" alt="">
+                        <app-avatar-upload [redBorderImage]="true"></app-avatar-upload>
+                    </div> 
+                    <div class="">
+                        <p>Welcome</p>
+                        <h5>{{mentorProfileData?.mentor_profile?.profile?.fullLegalName}}</h5>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-12 col-md-12 portfolio-progress-wrapper">
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-user">
+                        <p>PORTFOLIO STRENGTH:</p>
+                        <h5>{{profileText}}</h5>
+                    </div>
+                    <div class="portfolio-progress">
+                        <ul>
+                            <li class="is-active">
+                                <hr>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512"
+                                        x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512"
+                                        xml:space="preserve">
+                                        <g>
+                                            <g xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                                    fill="#ffffff" data-original="#000000" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+
+                            </li>
+                            <li [class]="profilefirstStepCompleted == true ? 'is-active' : ''">
+                                <hr>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512"
+                                        x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512"
+                                        xml:space="preserve">
+                                        <g>
+                                            <g xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                                    fill="#ffffff" data-original="#000000" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </li>
+                            <li [class]="profilesecondStepCompleted == true ? 'is-active' : ''">
+                                <hr>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512"
+                                        x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512"
+                                        xml:space="preserve">
+                                        <g>
+                                            <g xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                                    fill="#ffffff" data-original="#000000" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </li>
+                            <li>
+                                <hr>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512"
+                                        x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512"
+                                        xml:space="preserve" class="">
+                                        <g>
+                                            <g xmlns="http://www.w3.org/2000/svg">
+                                                <g>
+                                                    <path
+                                                        d="m15.399 17c-.083 0-.166-.021-.242-.062l-3.157-1.746-3.157 1.745c-.169.094-.374.083-.53-.029-.156-.11-.236-.3-.205-.489l.608-3.731-2.573-2.638c-.131-.134-.176-.33-.117-.508.06-.178.214-.307.399-.335l3.537-.541 1.585-3.379c.166-.351.74-.351.906 0l1.585 3.379 3.537.541c.186.028.34.158.399.335.059.178.014.374-.117.508l-2.573 2.638.608 3.731c.031.189-.049.379-.205.489-.085.061-.186.092-.288.092zm-3.399-2.879c.083 0 .167.021.242.062l2.498 1.381-.483-2.964c-.025-.157.024-.316.136-.43l2.07-2.122-2.839-.434c-.165-.025-.307-.131-.378-.282l-1.246-2.655-1.246 2.657c-.071.151-.213.257-.378.282l-2.839.434 2.07 2.122c.111.114.161.273.136.43l-.483 2.962 2.498-1.381c.075-.041.159-.062.242-.062z"
+                                                        fill="#ffffff" data-original="#000000" class="" />
+                                                </g>
+                                            </g>
+                                            <g xmlns="http://www.w3.org/2000/svg">
+                                                <g>
+                                                    <path
+                                                        d="m12 24c-.043 0-.086-.005-.127-.017-.099-.025-9.873-2.703-9.873-11.804v-8.179c0-.209.131-.397.327-.469l9.5-3.5c.111-.041.234-.041.346 0l9.5 3.5c.196.072.327.26.327.469v8.179c0 9.102-9.774 11.779-9.873 11.805-.041.011-.084.016-.127.016zm-9-19.651v7.83c0 7.882 7.85 10.466 9 10.802 1.15-.336 9-2.92 9-10.802v-7.83l-9-3.316z"
+                                                        fill="#ffffff" data-original="#000000" class="" />
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="port-desc">In your Collegey portfolio below, please list all of your profile details, office
+                    hours, and project information.</p>
+            </div>
+        </div>
+        <div class="row clg-portfolio">
+            <div class="col-12 col-md-4 portfolio-steps no-sm-pad">
+                <p class="steps-p">Let’s build your portfolio together!</p>
+                <ul>
+                    <li (click)="profile();" [class]="stepClassActive == 'profile-step'  ? 'active-step' : ''">
+                        <a [class.completed]="onBoardingSteps?.profile"
+                            [class]="stepClassActive == 'profile-step' ? 'active' : ''"
+                            (click)="setProfileFormState(sections[0].name)">
+                            <div class="progress-cust">
+                                <p class="progress-icon"></p>
+                            </div>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li (click)="setProfileFormState(sections[1].name)"
+                        [class]="stepClassActive == 'office-step' ? 'active-step' : ''">
+                        <a [class.completed]="profilesecondStepCompleted"
+                            [class]="stepClassActive == 'office-step' ? 'active' : ''">
+                            <hr>
+                            <div class="progress-cust">
+                                <p class="progress-icon"></p>
+                            </div>
+                            <span>Office hours</span>
+                        </a>
+                    </li>
+                    <li (click)="setProfileFormState(sections[2].name)"
+                        [class]="stepClassActive == 'project-step' ? 'active-step' : ''">
+                        <a [class.completed]="onBoardingSteps?.projects"
+                            [class]="stepClassActive == 'project-step' ? 'active' : ''">
+                            <hr>
+                            <div class="progress-cust">
+                                <p class="progress-icon"></p>
+                            </div>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-8 no-pad">
+                <app-mentors-profile *ngIf="sections[0].isOpen && Profile==true" [mentorProfileData]="mentorProfileData"
+                    [section]="sections[0]" (onSubmitProfileForm)="submitMentorProfile($event, sections[1].name)">
+                </app-mentors-profile>
+                <app-office-hours *ngIf="sections[1].isOpen && officeStepAction == true"
+                    [mentorProfileData]="mentorProfileData" (onBackForm)="onBack($event, sections[1].name)"
+                    [section]="sections[1]" (onSubmitOfficeForm)="submitMentorProfile($event, sections[1].name)">
+                </app-office-hours>
+                <app-students-project [mentorProfileData]="mentorProfileData" [section]="sections[2]"
+                    *ngIf="sections[2].isOpen" (onBackForm)="onBack($event, sections[2].name)"
+                    (onSubmitProjectForm)="submitMentorProfile($event, sections[1].name)"></app-students-project>
+                <!-- <app-student-history [studentProfileData]="studentProfileData" (onSubmitHistoryForm)="submitStudentProfile($event, sections[1].name)" (onUpdateEducationStatus)="setProfileStepsStatus($event)" [section]="sections[1]" *ngIf="sections[1].isOpen"></app-student-history>
+                <app-student-interests [studentProfileData]="studentProfileData" (onSubmitInterestForm)="submitStudentProfile($event, sections[2].name)" [section]="sections[2]" *ngIf="sections[2].isOpen"></app-student-interests>
+                <app-student-know-you-better [studentProfileData]="studentProfileData" (onSubmitKnowYouBetterForm)="submitStudentProfile($event, sections[3].name)" [section]="sections[3]" *ngIf="sections[3].isOpen">
+                </app-student-know-you-better>
+                <app-student-projects [studentProfileData]="studentProfileData" (onSubmitProjectForm)="submitStudentProfile($event, sections[4].name)" [section]="sections[4]" *ngIf="sections[4].isOpen"></app-student-projects>
+                <app-student-headed [studentProfileData]="studentProfileData" (onSubmitHeadedForm)="submitStudentProfile($event, sections[5].name)" [section]="sections[5]" *ngIf="sections[5].isOpen"></app-student-headed>
+                <app-student-preferences [studentProfileData]="studentProfileData" (onSubmitPreferencesForm)="submitStudentProfile($event, sections[6].name)" [section]="sections[6]" *ngIf="sections[6].isOpen"></app-student-preferences>
+                <app-student-personal-details [studentProfileData]="studentProfileData" (onSubmitPersonalDetailsForm)="submitStudentProfile($event,sections[7].name)" [section]="sections[7]" *ngIf="sections[7].isOpen">
+                </app-student-personal-details> -->
+                <!-- Uncomment below code to see Screen no 34 modal 
+                        and Uncomment the modal code at the end of the page too-->
+                <!-- <div class="lead-form-wrapper">
+                    <div style="margin: auto; text-align: center;width: 100%;">
+                        <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Click on me
+                            to
+                            see Screen no. 34(Modal)</button>
+                    </div>
+                </div> -->
+                <!-- Uncomment this code to see Screen no 34 modal-->
+
+
+                <!-- Uncomment below code to see Screen no 38 modal 
+                        and Uncomment the modal code at the end of the page too -->
+                <!-- <div class="lead-form-wrapper">
+                    <div style="margin: auto; text-align: center;width: 100%;">
+                        <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Click on
+                            me to see Screen no. 38(Modal)</button>
+                    </div>
+                </div> -->
+                <!-- Uncomment above code to see Screen no 38 modal-->
+
+                <!-- Uncomment below code to see Screen no 43 modal 
+                        and Uncomment the modal code at the end of the page too -->
+                <div class="lead-form-wrapper hides">
+                    <div style="margin: auto; text-align: center;width: 100%;">
+                        <button type="button" class="btn btn-primary">Click on
+                            me to see Screen no. 43(Modal)</button>
+                    </div>
+                </div>
+                <!-- Uncomment above code to see Screen no 43 modal-->
+
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,126 @@
+<div
+  class="d-flex flex-column align-items-center justify-content-center h-100"
+  *ngIf="!mobileView"
+>
+  <div class="d-flex justify-content-center">
+    <span class="text-center text-white heading">
+      Everyone wins with Collegey.<br />
+      Because it brings holistic growth & growth-mindset
+    </span>
+  </div>
+  <div class="list-winning">
+    <div class="d-flex p-3 justify-content-center flex-wrap">
+
+      <div class="d-flex flex-column align-items-center circle-box" *ngFor="let listdata of homepageContent; let i=index;">
+        <img
+          class="rounded-circle"
+          [src]="listdata?.imagePath"
+          alt="{{listdata?.name}}"
+        />
+        <span class="text-center text-white mt-2">{{listdata?.name}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- mobile view -->
+<div
+  class="d-flex flex-column align-items-center justify-content-center h-100"
+  *ngIf="mobileView"
+>
+  <div class="d-flex justify-content-center">
+    <span class="text-center text-white heading">
+      On Collegey, everyone wins.<br />
+      With one another.
+    </span>
+  </div>
+  <div>
+    <!--  first row-->
+    <div class="d-flex p-3 justify-content-center">
+      <div class="d-flex flex-column align-items-center circle-box">
+        <img
+          class="rounded-circle"
+          src="/assets/images/5th_folder/1st.svg"
+          alt="image1"
+        />
+        <span class="text-center text-white mt-2">Real-world skills</span>
+      </div>
+      <div class="d-flex flex-column align-items-center circle-box">
+        <img
+          class="rounded-circle"
+          src="/assets/images/5th_folder/2nd.svg"
+          alt="image2"
+        />
+        <span class="text-center text-white mt-2">Peer collaboration</span>
+      </div>
+      <div class="d-flex flex-column align-items-center circle-box">
+        <img
+          class="rounded-circle"
+          src="/assets/images/5th_folder/3rd.svg"
+          alt="image3"
+        />
+        <span class="text-center text-white mt-2"
+          >Purpose-driven decision making</span
+        >
+      </div>
+    </div>
+    <!--  second row-->
+    <div class="d-flex p-3 justify-content-center">
+      <div class="d-flex flex-column align-items-center circle-box">
+        <img
+          class="rounded-circle"
+          src="/assets/images/5th_folder/4th.svg"
+          alt="image3"
+        />
+        <span class="text-center text-white mt-2 text-white"
+          >Global network</span
+        >
+      </div>
+      <div class="d-flex flex-column align-items-center circle-box">
+        <img
+          class="rounded-circle"
+          src="/assets/images/5th_folder/5th.svg"
+          alt="image3"
+        />
+        <span class="text-center text-white mt-2 text-white"
+          >Certifications & Badges</span
+        >
+      </div>
+      <div class="d-flex flex-column align-items-center circle-box">
+        <img
+          class="rounded-circle"
+          src="/assets/images/5th_folder/6th.svg"
+          alt="image1"
+        />
+        <span class="text-center text-white mt-2">Social Impact</span>
+      </div>
+    </div>
+    <!--  3rd  row-->
+    <div class="d-flex p-3 justify-content-center">
+      <div class="d-flex flex-column align-items-center circle-box">
+        <img
+          class="rounded-circle"
+          src="/assets/images/5th_folder/sdg.svg"
+          alt="image2"
+        />
+        <span class="text-center text-white mt-2">#UNSDG</span>
+      </div>
+      <div class="d-flex flex-column align-items-center circle-box">
+        <img
+          class="rounded-circle"
+          src="/assets/images/5th_folder/8th.svg"
+          alt="image3"
+        />
+        <span class="text-center text-white mt-2">Profile Building</span>
+      </div>
+      <div class="d-flex flex-column align-items-center circle-box">
+        <img
+          class="rounded-circle"
+          src="/assets/images/5th_folder/9th.svg"
+          alt="image3"
+        />
+        <span class="text-center text-white mt-2">Critical thinking</span>
+      </div>
+    </div>
+  </div>
+</div>

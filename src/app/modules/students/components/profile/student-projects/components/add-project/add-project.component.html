@@ -1,0 +1,46 @@
+<div class="modal-form-wrap collegy-add-project">
+    <!-- <button type="button" class="close-button" (click)="bsModalRef.hide()"><img
+        src="/assets/images/on-boarding/cross-button.png"></button> -->
+    <div class="modal-form-header">
+        <p>Describe any independent or class project that you have done</p>
+    </div>
+    <form *ngIf="projectForm" [formGroup]="projectForm">
+        <div class="modal-form-body" formGroupName="describe_any_project">
+            <div class="form-box">
+                <div class="form-group fields">
+                    <label class="field-label" for="projectTitle">Project Title <span
+                            style="color: #f00; margin-top: 15px;">*</span></label>
+
+                    <input type="text" formControlName="title" class="form-control field-control"
+                        (ngModelChange)="title($event)" placeholder="Enter project title">
+                </div>
+                <span id="citierror1" style="color: red;"> {{ title_error }}</span>
+
+
+                <div class="form-group fields">
+                    <label class="field-label" for="projectDescription">Add Project Description <span
+                            style="color: #f00; margin-top: 15px;">*</span></label>
+                    <textarea class="form-control textarea-field" formControlName="description"
+                        (ngModelChange)="description($event)" id="projectDescription"
+                        placeholder="Tell us about your project..."></textarea>
+
+                </div>
+                <span id="citierror1" style="color: red;"> {{ description_error }}</span>
+                <div class="form-group fields">
+                    <label class="field-label" for="projectTitle">Share any online link for this project work</label>
+                    <input type="text" formControlName="project_url" (ngModelChange)="projet($event)"
+                        class="form-control field-control" placeholder="Share Project Link">
+                </div>
+                <span id="citierror1" style="color: red;"> {{ project_url_error }}</span>
+
+
+            </div>
+        </div>
+        <div class="modal-form-footer">
+            <div class="btn-wrapper">
+                <button class="backbutton" (click)="bsModalRef.hide()">Cancel</button>
+                <button class="submitbutton" (click)="onSubmitProjectData()">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

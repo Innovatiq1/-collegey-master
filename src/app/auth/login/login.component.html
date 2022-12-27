@@ -1,0 +1,12 @@
+<div id="login-page-space" style="height: 100vh; display: flex; align-items: center; text-align: center; justify-content: center; width: 100%;">
+    loading...
+</div>
+<section id="login-page-block" class="login-section">
+    <div class="bg"></div>
+    <div class="form-section">
+        <div class="container pad-remove">
+            <app-login-form [isLoginPage]="true" (loginSuccessEvent)="onLoginSuccess()">
+            </app-login-form>
+        </div>
+    </div>
+</section>

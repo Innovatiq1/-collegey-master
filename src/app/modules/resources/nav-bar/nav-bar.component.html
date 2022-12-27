@@ -1,0 +1,39 @@
+<app-dashboard></app-dashboard>
+<div class="resources-heading">
+    <h1>Academy</h1>
+</div>
+
+<div class="tabs-nav resources-tabs underline-from-left">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="#" [class.active]="isLinkActive('/student-dashboard/$/blogs')" class="nav-link" routerLink="/student-dashboard/$/blogs">
+                <span>Blogs</span> 
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link" [class.active]="isLinkActive('/student-dashboard/$/vlog')" routerLink="/student-dashboard/$/vlog">
+                <span>Vlogs</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" [class.active]="isLinkActive('/student-dashboard/$/Programs')" class="nav-link" routerLink="/student-dashboard/$/Programs">
+                <span>Programs</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" [class.active]="isLinkActive('/student-dashboard/$/conferences')" class="nav-link" routerLink="/student-dashboard/$/conferences">
+                <span>Conferences</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" [class.active]="isLinkActive('/student-dashboard/$/course')" class="nav-link" routerLink="/student-dashboard/$/course">
+                <span>Courses</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" [class.active]="isLinkActive('/student-dashboard/$/store')" class="nav-link" routerLink="/student-dashboard/$/store">
+                <span>Collegey Store <span id="upcoming" style="color: red; font-size: small;" >(Upcoming)</span></span>
+            </a>
+        </li>
+    </ul>
+</div>

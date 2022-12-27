@@ -1,0 +1,283 @@
+<!-- <div class="question-box-inner bottom-margin">
+    <p>No one plans to fail, but they often fail to plan. Don’t be them. Add your plan now!</p>
+    <form *ngIf="studentHeadedForm" [formGroup]="studentHeadedForm">
+        <div class="form-box" formGroupName="headed">
+            <ng-container formGroupName="expected_year_to_start">
+                <div class="form-group fields">
+                    <label class="field-label" for="interestedToPursue">You want to pursue:</label>
+                    <ng-select class="educationType" id="interestedToPursue" placeholder="Select" bindLabel="name" bindValue="name" [searchable]="false" [clearable]="false" [items]="degree" formControlName="grade">
+                    </ng-select>
+                    <input type="text" *ngIf="studentHeadedForm.get('headed').get('expected_year_to_start').get('grade').value === 'Others'" class="form-control field-control other-text" placeholder="Specify" formControlName="other_degree">
+
+                </div>
+                <div class="form-group fields">
+                    <label class="field-label" for="expectedYear">Expected year when you wish to finish your dream
+            program:</label>
+                    <input type="text" class="form-control field-control" placeholder="Enter" formControlName="year" bsDatepicker [bsConfig]="{dateInputFormat: 'YYYY'}" (onShown)="onOpenCalendarYear($event)">
+                </div>
+            </ng-container>
+            <div class="form-group fields">
+                <label class="field-label" for="preferredCountries">Your preferred country (s) for further education:</label>
+                <ng-select class="educationType" id="preferredCountries" name="preferredCountries" placeholder="Select" bindLabel="name" bindValue="id" [searchable]="true" [clearable]="false" [closeOnSelect]="false" [clearSearchOnAdd]="true" [items]="countries" formControlName="preferred_countries"
+                    [multiple]="true">
+                </ng-select>
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="tests">Have you taken or plan to take any of the following tests?</label>
+                <ng-container formArrayName="test_info" *ngFor="let test of testInfoArray.controls; let i =index">
+                    <ng-container [formGroupName]=i>
+                        <div class="taken-tests-box">
+                            <ng-select class="educationType" id="testName" placeholder="Select" bindLabel="name" bindValue="name" [searchable]="false" [clearable]="true" [addTag]="true" [items]="studentTests" formControlName="test_name">
+                            </ng-select>
+                            <ng-select class="educationType" id="takenTests" placeholder="Select" bindLabel="name" bindValue="value" [searchable]="false" [clearable]="true" [items]="takenTests" formControlName="test_status">
+                            </ng-select>
+
+                            <input type="text" class="form-control field-control" placeholder="Date of Test" bsDatepicker [bsConfig]="{ showWeekNumbers:false }" formControlName="test_date" *ngIf="testInfoArray.controls[i].value.test_status ==='planned'">
+
+                            visible when test status is null 
+
+                            <input type="text" *ngIf="!testInfoArray.controls[i].value.test_status" class="form-control field-control" placeholder="Date of Test" bsDatepicker [bsConfig]="{ showWeekNumbers:false }" formControlName="test_date">
+
+                            <input type="text" class="form-control field-control" formControlName="current_score" placeholder="Current score" *ngIf="testInfoArray.controls[i].value.test_status ==='taken'">
+
+                            <button type="type" *ngIf="i>0" class="cross-button" (click)="onRemoveStudentTests(i)"><img
+                  src="/assets/images/on-boarding/cross-button.svg"></button>
+                        </div>
+                    </ng-container>
+                </ng-container>
+                <div class="addMore-box"><button type="type" (click)="onAddStudentTests()">+ Add more</button></div>
+            </div>
+            <ng-container formArrayName="wish_to_study" *ngFor="let study of wishToStudyArray.controls; let i = index">
+                <div class="form-group fields" [formGroupName]="i">
+                    <label class="field-label" for="wishToStudySubjects">What do you wish to study?</label>
+                    <ng-select class="educationType long-value" id="wishToStudySubjects" [addTag]="true" placeholder="Select Subject" [searchable]="false" [clearable]="true" formControlName="subjects" [items]="studentSubjects">
+                    </ng-select>
+                    <input type="text" class="form-control field-control other-text" formControlName="majors" placeholder="Specify Major">
+                    <button type="type" class="cross-button top-shift"><img
+              src="/assets/images/on-boarding/cross-button.svg" *ngIf="i > 0" (click)="onRemoveWishTOStudy(i)">
+        </button>
+                    <div class="addMore-box shift-bottom"><button type="type" (click)="onAddWishToStudy()">+ Add more</button></div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="save-btn-box">
+            <button type="button" class="save-and-exit" (click)="onSubmitForm(true)">Save & Exit</button>
+            <button type="button" class="save-btn" (click)="onSubmitForm(false)">Submit</button>
+        </div>
+    </form>
+</div> -->
+<div class="lead-form-wrapper">
+    <div class="lead-form container">
+        <p class="steps-login">6 of 8</p>
+        <p class="heading">Future Education Plans</p>
+        <p>Help us curate events, conversations, and resources for your better future options <span
+                style="color: #f00;">*</span></p>
+        <form class="login-form row" *ngIf="studentHeadedForm" [formGroup]="studentHeadedForm">
+            <div formGroupName="headed" style="display: contents;">
+                <ng-container formGroupName="expected_year_to_start">
+                    <div class="group col-sm-6 p-0">
+                        <div class="mr-3">
+                            <label class="select-label">You Want To Pursue: </label>
+                            <select formControlName="grade" (ngModelChange)="saveFunction($event)">
+                                <option value="">Select Degree type</option>
+                                <option [value]="deg" *ngFor="let deg of degree">{{deg}}</option>
+                            </select>
+                        </div>
+                        <span id="citierror1" style="color: red;"> {{ degreeValidations }}</span>
+                    </div>
+                    <div class="group col-sm-6 p-0">
+                        <div>
+                            <label class="select-label">Expected Year Of Complitetion </label>
+                            <input type="text" placeholder="" (ngModelChange)="onChange($event)" formControlName="year"
+                                bsDatepicker [bsConfig]="{dateInputFormat: 'YYYY'}"
+                                (onShown)="onOpenCalendarYear($event)">
+                        </div>
+                        <span id="citierror1" style="color: red;"> {{ yearValidations }}</span>
+                    </div>
+
+                </ng-container>
+                <div class="group col-sm-12" style="max-width: 95%;margin-top: 15px; margin-bottom: 15px;">
+                    <!-- <select multiple formControlName="preferred_countries">
+                        <option value="" disabled>Select country</option>
+                        <option value="country" *ngFor="let country of countries">{{country.name}}</option>
+                    </select> -->
+                    <!-- <ng-multiselect-dropdown formControlName="preferred_countries" [placeholder]="'Select country'"
+                    [data]="countryName" 
+                        [settings]="dropdownSettings">
+                    </ng-multiselect-dropdown> -->
+                    <p class="textarea-label">Select country<span style="color: #f00;">*</span> (select up to 4)</p>
+                    <ng-multiselect-dropdown formControlName="preferred_countries"
+                        (ngModelChange)="changeCountry($event)" [placeholder]="'Select country'"
+                        [settings]="dropdownSettings" [data]="countryName" [(ngModel)]="selectedItems"
+                        (onSelect)="addingPreferredCountries($event)">
+
+                    </ng-multiselect-dropdown>
+                    <span id="citierror1" style="color: red;"> {{ countryValidations }}</span>
+                </div>
+
+                <hr style="border-color: #f5f5f5;margin-top: -5px;">
+                <p class="col-lg-12 pl-0 pr-0 pt-2">10 universities/colleges you wish to attend<span
+                        style="color: #f00;">*</span> </p>
+                <ng-container formArrayName="institutes_Wishlist"
+                    *ngFor="let test of institutesFormArray.controls; let i =index">
+                    <!-- <p class="textarea-label"><span style="color: #f00;">*</span> (select up to 4)</p> -->
+                    <ng-container [formGroupName]=i>
+                        <div class="group col-sm-12 p-0">
+                            <div class="mr-5">
+                                <label class="select-label">University/College:</label>
+                                <input type="text" formControlName="institute_name">
+                            </div>
+                            <button type="type" *ngIf="i>=0" class="cross-button multiple-close  fa fa-times"
+                                (click)="onRemoveInstitute(i)">
+                                <!-- <img src="/assets/images/on-boarding/cross-button.svg" style="margin-left: 220px;margin-top: 20px;"> -->
+                            </button>
+                            <!-- <span id="citierror1" style="color: red;"> {{ degreeValidations }}</span> -->
+                        </div>
+                    </ng-container>
+
+                    <!-- <div class="group col-sm-12 p-0">
+                        <div class="mr-3">
+                            <label class="select-label">University/College</label>
+                            <input type="text" formControlName="institutes">
+                        </div>
+                        <span id="citierror1" style="color: red;"> {{ degreeValidations }}</span>
+                    </div>
+                    <div class="group col-sm-12 p-0">
+                        <div class="mr-3">
+                            <label class="select-label">University/College</label>
+                            <input type="text" formControlName="institutes">
+                        </div>
+                        <span id="citierror1" style="color: red;"> {{ degreeValidations }}</span>
+                    </div> -->
+
+
+                </ng-container>
+                <div style="width: 100%;margin-top: 10px;" *ngIf="institutesFormArray.length <= 9">
+                    <a class="add-more-website-btn" style="padding-right: 0 !important;margin-top: 0; cursor: pointer;"
+                        (click)="onAddInstitute()">+ADD
+                        MORE</a>
+                </div>
+
+                <!-- </form> -->
+                <hr style="border-color: #f5f5f5;margin-top: -5px;">
+                <p class="col-lg-12 pl-0 pr-0 pt-2">Have you taken or plan to take any of the following
+                    tests?<span style="color: #f00;">*</span> </p>
+                <!-- <form class="login-form row"> -->
+                <ng-container formArrayName="test_info" *ngFor="let test of testInfoArray.controls; let i =index">
+                    <ng-container [formGroupName]=i>
+                        <div class="col-lg-12 mobile_custwrap p-0" style="display: flex;">
+                            <div class="group col-lg-4 p-0">
+                                <div class="m-0 mr-3 mb-2">
+                                    <label class="select-label">Select Test</label>
+                                    <select formControlName="test_name">
+                                        <option value="" disabled>Select Test</option>
+                                        <option></option>
+                                        <option [value]="test" *ngFor="let test of studentTests">{{test}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="group p-0"
+                                [ngClass]="testInfoArray.controls[i].value.test_status ==='Taken' ? 'col-lg-3' : 'col-lg-3'">
+                                <div class="m-0 mr-3 mb-2">
+                                    <label class="select-label">Select</label>
+                                    <select formControlName="test_status" (ngModelChange)="testStatusChange($event)">
+                                        <option value="" disabled>Select</option>
+                                        <option [value]="test.name" *ngFor="let test of takenTests">{{test.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="group p-0">
+                                <div class="m-0 mr-3 mb-2">
+                                    <label class="select-label" for="test_date">Date</label>
+                                    <input type="date" class="form-control field-control" id="date1"
+                                        formControlName="test_date" placeholder="" style="height: 38px;">
+                                    <!-- <label style="font-size: 15px;" class="select-label">Select</label>
+                                        <select formControlName="test_status">
+                                            <option value="" disabled>Select</option>
+                                            <option [value]="test" *ngFor="let test of takenTests">{{test.name}}</option>
+                                        </select> -->
+                                </div>
+                            </div>
+                            <div class="group col-lg-2 p-0"
+                                *ngIf="testInfoArray.controls[i].value.test_status ==='Taken'">
+                                <div class="m-0 mr-3 mb-2">
+                                    <label class="select-label" for="current_score">Score</label>
+                                    <input type="text" formControlName="current_score">
+                                </div>
+                            </div>
+                            <button type="type" *ngIf="i>=0" class="cross-button multiple-close  fa fa-times"
+                                (click)="onRemoveWebsite(i)">
+                                <!-- <img src="/assets/images/on-boarding/cross-button.svg" style="margin-left: 220px;margin-top: 20px;"> -->
+                            </button>
+                        </div>
+
+                        <!-- <button type="type" *ngIf="i>0" class="cross-button" (click)="onRemoveStudentTests(i)"><img
+                    src="/assets/images/on-boarding/cross-button.svg"></button> -->
+                        <!-- <div  class="group col-lg-4" style="margin-left: -10px;">
+                    <div>
+
+                        <label class="select-label">Date of Test</label>
+                    <input type="text" *ngIf="testInfoArray.controls[i].value.test_status" placeholder="Date of Test" bsDatepicker [bsConfig]="{ showWeekNumbers:false }" formControlName="test_date">
+                </div>
+                </div> -->
+                    </ng-container>
+                </ng-container>
+                <span id="citierror1" style="color: red;"> {{ testValidations }}</span>
+
+                <div style="width: 100%;margin-top: 10px;" *ngIf="studentstatus && testInfoArray.length <= 20">
+                    <a class="add-more-website-btn" style="padding-right: 0 !important;margin-top: 0; cursor: pointer;"
+                        (click)="onAddStudentTests()">+ADD
+                        MORE</a>
+                </div>
+                <!-- </form> -->
+
+                <p class="col-lg-12 pl-0 pr-0 pt-2">What do you wish to study?</p>
+                <!-- <form class="login-form row"> -->
+                <ng-container formArrayName="wish_to_study"
+                    *ngFor="let study of wishToStudyArray.controls; let i = index">
+                    <ng-container [formGroupName]="i">
+                        <div class="group col-sm-6 p-0">
+                            <div class="mr-3">
+                                <label class="select-label">You Want To Pursue:</label>
+                                <select formControlName="subjects">
+                                    <option value="" disabled>Select</option>
+                                    <option [value]="service" *ngFor="let service of studentSubjects">{{service}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="group col-sm-6 p-0">
+                            <div>
+                                <input type="text" formControlName="majors" />
+                                <label style="top: 5px;
+                  font: normal normal bold 12px/12px Nunito;
+                  color: #1982d4;" class="select-label label-pad-designleft">Specify Major</label>
+                            </div>
+                            <button type="type" *ngIf="i>=0" class="cross-button multiple-close fa fa-times"
+                                (click)="onRemoveWishTOStudy(i)">
+                                <!-- <img src="/assets/images/on-boarding/cross-button.svg" style="margin-left: 340px;margin-top: -160px;"> -->
+                            </button>
+
+                        </div>
+
+                    </ng-container>
+                </ng-container>
+
+                <div style="width: 100%;">
+                    <div class="addtop">
+                        <a class="add-more-website-btn mt-0" (click)="onAddWishToStudy()" style="cursor: pointer;">+ADD
+                            MORE</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="btn-wrapper">
+        <button class="backbutton" (click)="onFormBack()">Back</button>
+        <div>
+            <button class="savebtn" (click)="onSubmitForm(false)">Save and Complete later</button>
+            <button class="submitbutton" (click)="onSubmitForm(true)">SAVE AND CONTINUE</button>
+        </div>
+    </div>
+</div>

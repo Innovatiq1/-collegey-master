@@ -1,0 +1,54 @@
+<div class="my-account-wrapper">
+    <div class="container">
+        <div class="card shadow-lg">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="text-center mt-3"> My Badge</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> Sr.No </th>
+                                    <th> Badge Name</th>
+                                    <th> Details</th>
+                                    <th> Social Share</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let myBdage of myBadgeList; let i = index">
+                                    <td>
+                                        {{i+1}}
+                                    </td>
+                                    <td>
+                                        {{myBdage?.badgeId.title}}
+                                    </td>
+                                    <td>
+                                        <img class="user-comment-ing"
+                                            *ngIf="commonService.imagePathS3(myBdage?.badgeId?.imageName)"
+                                            [src]="commonService.imagePathS3((myBdage?.badgeId?.imageName))" alt="" />
+                                        <a class="download-img"
+                                            href="{{commonService.imagePathS3((myBdage?.badgeId?.imageName))}}"><i
+                                                class="fa fa-download"></i></a>
+                                        <!-- <a class="download-img" href="{{list?.file}}" download><i class="fa fa-download"></i></a> -->
+                                    </td>
+                                    <td>
+                                        <share-buttons theme="circles-dark"
+                                            [include]="['facebook','linkedin','whatsapp']" [showIcon]="true"
+                                            [showText]="false"
+                                            url="{{commonService.imagePathS3((myBdage?.badgeId?.imageName))}}"
+                                            description="Angular Share Buttons" class="pt-2">
+                                        </share-buttons>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

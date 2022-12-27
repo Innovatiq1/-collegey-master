@@ -1,0 +1,309 @@
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 70px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  // background-color: #fefefe;
+  margin: auto;
+  // padding: 20px;
+  // border: 1px solid #888;
+  width: 350px;
+  height: 400px;
+  // background: #F2F2F2 0% 0% no-repeat padding-box;
+  // box-shadow: 0px 1px 16px #00000029;
+  // border: 0.5px solid #969696;
+  border-radius: 12px;
+  opacity: 1;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.l-h{
+  color: #023147;
+  font-size: 19px;
+  text-align: center;
+}
+.main-wrap{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  height: 340px;
+  margin-top: 17px;
+  border-radius: 12px;
+}
+.main-wrap .t-w{
+  width: 100%;
+  height: 40px;
+}
+
+.collegy-login{
+	width: 100%;
+}
+.login-div {
+	margin: 5% auto;
+	width: 400px;
+	padding: 20px;
+	background: #F2F2F2;
+	border-radius: 5px;
+}
+form {
+	display: block;
+	margin-top: 0em;
+	background: #FFFFFF;
+	padding: 30px;
+}
+.form-group {
+	margin-bottom: 15px;
+}
+.login-div label {
+	color: #757575;
+	font-size: 12px;
+	font-weight: 500;
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 5px;
+	cursor: default;
+}
+.form-control {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 0;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+.login-div input {
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border: 1px solid #979797;
+	border-radius: 6px;
+	padding-left: 10px;
+	width: 96%;
+	outline: none;
+}
+.login-div .forgot-pass {
+	color: #1281A7;
+	margin: 0px 0 20px 0;
+	float: right;
+	font-size: 12px;
+	text-decoration: none;
+}
+.btn {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: normal;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.login-div .login-btn {
+	background: #3F89FC 0% 0% no-repeat padding-box;
+	text-transform: uppercase;
+	border: none;
+	font-weight: 600;
+	font-size: 12px;
+	padding: 9px;
+	display: block;
+	width: 100%;
+	color: #fff;
+}
+.title-line {
+	text-align: center;
+	margin: 20px 0;
+}
+.tl-1 {
+	width: 125px;
+	height: 1px;
+	display: inline-block;
+	background: #dcdcdc;
+}
+.tl-2 {
+	display: inline-block;
+	height: 12px;
+	margin: 0 5px;
+	position: relative;
+	top: 4px;
+	color: #9F9F9F;;
+	font-size: 12px;
+}
+.tl-3 {
+	width: 125px;
+	height: 1px;
+	display: inline-block;
+	background: #dcdcdc;
+}
+.btn {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: normal;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.login-div .fb {
+	background-color: #3B5998;
+	color: white;
+	width: 140px;
+}
+
+.login-div .fb, .login-div .google {
+	border: none;
+	border-radius: 4px;
+	margin: 5px 0;
+	display: inline-block;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+.login-div .fb img, .login-div .google img {
+	float: left;
+	padding-left: 15px;
+}
+.login-div .google{
+	border: 1px solid #DBDBDB;
+	color: #3E3E3E;
+	margin-left: 10px;
+	width: 140px;
+}
+.social-login{
+	display: flex;
+}
+.login-tab button{
+	width: 49.4%;
+	background: #F2F2F2;
+	border: 0;
+	padding: 15px 0;
+	color: #3F89FC;
+}
+.login-tab button.active{
+	background: #FFFFFF;
+	color: #141414;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.login-div h1{
+	color: #023147;
+	font-size: 24px;
+	font-weight: 600;
+	text-align: center;
+	margin-top: 0;
+}
+.mid-login{
+
+}
+.mid-login .switch {
+	position: relative;
+	display: inline-block;
+	width: 25px;
+	height: 10px;
+}
+.mid-login .switch input { 
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+.mid-login .slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+.mid-login .slider:before {
+	position: absolute;
+	content: "";
+	height: 8px;
+	width: 8px;
+	left: 0px;
+	bottom: 1px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+.mid-login input:checked + .slider {
+	background-color: #06D755;
+}
+.mid-login input:focus + .slider {
+	box-shadow: 0 0 1px #06D755;
+}
+.mid-login input:checked + .slider:before {
+	-webkit-transform: translateX(15px);
+	-ms-transform: translateX(15px);
+	transform: translateX(15px);
+}
+.mid-login .slider.round {
+	border-radius: 34px;
+}
+.mid-login .slider.round:before {
+	border-radius: 50%;
+}
+.remember-check{
+	color: #9F9F9F;
+    font-size: 12px;
+}

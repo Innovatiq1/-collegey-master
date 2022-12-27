@@ -1,0 +1,122 @@
+<!-- Modal content -->
+<div class="modal-content">
+  <div class="collegy-login">
+    <div class="login-div">
+      <h1>Log In to Collegey
+        <button type="button" class="close" (click)="onClose()" data-dismiss="modal" aria-label="Close" style="margin-top: -10px;margin-right: -12px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </h1>
+      <div class="login-tab">
+        <button [class]="StudtabActive ? 'active' : ''" (click)="selectLoginActionTab('studentlogin')">Student</button>
+        <button [class]="MentortabActive ? 'active' : ''" (click)="selectLoginActionTab('mentorlogin')">Mentor</button>
+      </div>
+      <form class="login-form lead-form" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="group">
+          <div>
+            <input type="email" id="email" autocomplete="off" formControlName="email" required="required" value={{email}} [ngModel]="email" (ngModelChange)="valuechange($event)"/>
+            <label class="login-label">Enter Email ID</label>
+          </div>
+          <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="loginForm.get('email')">
+          </app-input-validation>
+        </div>
+        <div class="group">
+          <div>
+            <input type="password" autocomplete="off" formControlName="password" required="required" value="" id="password" />
+            <label class="login-label">Enter Password</label>
+          </div>
+          <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="loginForm.get('password')">
+          </app-input-validation>
+        </div>
+        <!-- <div class="form-group">
+          <label for="email">Enter Email ID</label>
+          <input type="email" formControlName="email" class="form-control form-control-sm" id="email"
+            aria-describedby="emailHelp" placeholder="" />
+          <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="loginForm.get('email')">
+          </app-input-validation>
+        </div>
+        <div class="form-group">
+          <label for="password">Enter Password</label>
+          <input type="password" formControlName="password" class="form-control form-control-sm" id="password"
+            placeholder="" />
+          <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="loginForm.get('password')">
+          </app-input-validation>
+        </div> -->
+
+        <ngx-recaptcha2 [siteKey]="siteCaptchaKey" formControlName="recaptcha"></ngx-recaptcha2>
+        <span *ngIf="submittedLogin && hasError('recaptcha','required')" class="d-block text-danger">Please select captcha</span>
+
+        <!-- <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="loginForm.get('recaptcha')">
+        </app-input-validation> -->
+
+        <div class="mid-login">
+          <label class="switch">
+            <input type="checkbox" formControlName="remember" id="remember" [checked]="remberEmailCheck" />
+            <span class="slider round"></span>
+          </label>
+          <span class="remember-check"> Remember Me</span>
+          <a href="#" class="forgot-pass" (click)="openForgotPasswordModal()">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block login-btn">
+          Login
+        </button>
+
+        <div class="title-line">
+          <div class="tl-1"></div>
+          <div class="tl-2">Or log in with</div>
+          <div class="tl-3"></div>
+      </div>
+      
+      <div class="social-login">
+        <app-social-login *ngIf="loginForm.get('type').value === USER_TYPES.STUDENTS" (onSuccess)="onLoginEvent($event)"></app-social-login>
+      </div>  
+      
+    </form>
+      <!-- <div class="signup-wrapper">
+        Don't have an account
+        <a href="#" (click)="showRegisterForm()">SIGN UP NOW</a>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- <div class="auth-modal-body center-shift">
+  <div class="box-container">
+      <div class="modal-right-side" [class.counselor]="loginForm.get('type').value === USER_TYPES.COUNSELOR">
+          <button type="button" (click)="onClose()" class="close-button"><img
+          src="/assets/images/cross-button.png"></button>
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+              <div class="login-steps">
+                  <h2>Login To Collegey</h2>
+                  <div class="form-group">
+                      <ng-select class="educationType" placeholder="Select User" [searchable]="false" [clearable]="false" formControlName="type">
+                          <ng-option [value]="USER_TYPES.STUDENTS">I am a Student</ng-option>
+                          <ng-option [value]="USER_TYPES.COUNSELOR">I am a Counselor</ng-option>
+                      </ng-select>
+                  </div>
+
+                  <div class="form-group">
+                      <input type="email" formControlName="email" class="form-control" placeholder="Your Email">
+                      <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="loginForm.get('email')">
+                      </app-input-validation>
+                  </div>
+                  <div class="form-group">
+                      <input type="password" formControlName="password" class="form-control" placeholder="Your Password" required />
+                      <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="loginForm.get('password')">
+                      </app-input-validation>
+                  </div>
+                  <div class="forgot-password">
+                      <button type="button" class="link-btn" (click)="openForgotPasswordModal()">Forgot Password?</button>
+                  </div>
+                  <button class="next-btn" type="submit">Login</button>
+                  <p *ngIf="loginForm.get('type').value === USER_TYPES.STUDENTS" class="separator"><span>or login with</span></p>
+                  <div class="social-box">
+                      <app-social-login *ngIf="loginForm.get('type').value === USER_TYPES.STUDENTS" (onSuccess)="onLoginEvent($event)"></app-social-login>
+                  </div>
+                  <p class="have-an-account">Don’t have an account? <button type="button" (click)="showRegisterForm()">Signup</button></p>
+              </div>
+          </form>
+
+      </div>
+  </div>
+</div> -->
+</div>

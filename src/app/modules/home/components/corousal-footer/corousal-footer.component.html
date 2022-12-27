@@ -1,0 +1,115 @@
+<div class="dash-line"></div>
+<div class="brand-text" style="background-color: #ecf0fe; height:155px; margin-top: 150px;">
+  <span class="build" style="font-size:35px; color: #4E4E4E; font: Nunito; opacity: 1;"
+  ><span style="color:#FF914D;font-weight: 600; font-size:35px;">Create</span>&nbsp;Student Impact Movement<br/><br/><br/>
+  <!-- <img style="margin-top: 12px;
+  margin-left: 95px;" src="assets/images/social.png"/> -->
+  <a href="https://www.facebook.com/BeCollegey/" target="_blank" 
+  style="
+    margin-left: 145px;
+    display: inline-block;
+    height: 38px;
+    width: 40px;" class="backgroundSocial">
+    <img style="height: 30px;
+    width: 35px;
+    padding-top: 5px;
+    padding-left: 8px;" src="assets/images/fb.png"/></a>
+ <a href="https://twitter.com/becollegey" target="_blank"  style="
+    margin-left: 8px;
+    display: inline-block;
+    height: 38px;
+    width: 40px;" class="backgroundSocial"><img style="height:30px;
+    width: 35px;
+    padding-top: 5px;
+    padding-left: 8px;" src="assets/images/twitter.png"/></a>
+  <a href="https://www.instagram.com/becollegey/" target="_blank" style="
+    margin-left: 8px;
+    display: inline-block;
+    height: 38px;
+    width: 40px;" class="backgroundSocial"><img style="height:30px;
+    width: 35px;
+    padding-top: 5px;
+    padding-left: 8px;" src="assets/images/insta.png"/></a>
+ <a href="https://www.linkedin.com/company/collegey/" target="_blank" style="
+ margin-left: 8px;
+ display: inline-block;
+ height: 38px;
+ width: 40px;" class="backgroundSocial"><img style="height:30px;
+    width: 35px;
+    padding-top: 5px;
+    padding-left: 8px;" src="assets/images/linkidein.png"/></a>
+ <a href="https://www.youtube.com/channel/UC_vCErV7S2vK7TpjCG0Ig0Q" target="_blank" style="
+ margin-left: 8px;
+ display: inline-block;
+ height: 38px;
+ width: 40px;" class="backgroundSocial"><img style="height:30px;
+    width: 35px;
+    padding-top: 5px;
+    padding-left: 8px;" src="assets/images/youtube.png"/></a>
+</span>
+</div> 
+<div style="background-color: #ecf0fe; padding-bottom: 1px">
+  <div class="dash-line"></div>
+  <div class="brand-text">
+    <a [routerLink]="['meet-our-team']">Meet Our Team </a>
+    <a [routerLink]="['collegey-programs']">Collegey Programs </a>
+    <a [routerLink]="['campaign']">Invest in Collegey </a>
+    <a [routerLink]="['fund']">Collegey Fund</a>
+    <a [routerLink]="['blog']">Blog </a>
+    <a [routerLink]="['thank-you']">Careers at Collegey </a>
+    <a [routerLink]="['partner-with-collegey']">Partner with Collegey</a>
+    <a [routerLink]="['faq']">FAQs</a>
+  </div>
+  <div class="dash-line"></div>
+  <div class="container">
+    <div class="row" style="padding: 20px 0">
+      <div class="col col-sm-1 d-flex flex-column" *ngFor="let footerLogo of footerLogoDetails">
+        <img class="mask" [src]="commonService.imagePathS3(footerLogo?.imageName)" alt="{{footerLogo?.title}}" style="width: 88px; margin-bottom: 12px" />
+        <!-- <img
+          src="assets/images/9th_folder/footer_logo.svg"
+          style="width: 88px; margin-bottom: 12px"
+        />
+        <img class="mask" src="/assets/images/9th_folder/Mask/Mask.png" /> -->
+      </div>
+      <div class="col col-sm-4">
+        <p class="heading">India Contact Details</p>
+        <p class="light-text">A-32 Sector 4 Noida, UP, 201301</p>
+        <p>
+          <!-- <span class="span">Email : </span> -->
+          <img src="/assets/images/bottom-bar/mail-fill.svg" />
+          <span class="light-text"> : team@collegey.com</span>
+        </p>
+        <p>
+          <img src="/assets/images/bottom-bar/phone-fill.svg" />
+          <span class="light-text"> : +91-9311411300 </span>
+        </p>
+      </div>
+      <div class="col col-sm-5">
+        <p class="heading">US Contact Details</p>
+        <p class="light-text">1525 S Sunset Drive, Tacoma, WA 98465</p>
+        <p>
+          <img src="/assets/images/bottom-bar/mail-fill.svg" />
+          <span class="light-text"> : team@collegey.com</span>
+        </p>
+        <p>
+          <img src="/assets/images/bottom-bar/phone-fill.svg" />
+          <span class="light-text"> : +1-253-307-5624 </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="dash-line"></div>
+  <div class="d-flex justify-content-between px-5" style="margin: 20px 0">
+    <div class="d-flex justify-content-between w-260">
+      <a [routerLink]="['terms-condition']"
+        ><span class="f-text">Terms of Service </span></a
+      >
+      <a [routerLink]="['privacy-policy']"
+        ><span class="f-text">Privacy Policy</span></a
+      >
+    </div>
+    <div class="d-flex justify-content-between w-330">
+      <span class="f-text">© 2021 Collegey. All Rights Reserved </span>
+    </div>
+  </div>
+</div>

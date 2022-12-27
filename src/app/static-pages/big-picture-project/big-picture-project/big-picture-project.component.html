@@ -1,0 +1,53 @@
+<section class="section-mr custm_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="blog-left-side">
+                    <div class="blog-img">
+                        <img src="../../../assets/images/collegy-bg-a.png" alt="">
+                    </div>
+                    <h1 class="heading">{{articleDetails?.title}}</h1>
+                    
+                    <p class="tags-box1">
+                        <span class="article-tags1" *ngFor="let tags of articleDetails?.tags">{{tags}}</span>
+                    </p>
+
+                    <article [innerHTML]="articleDetails?.description"></article>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="blog-right-side">
+                    <p class="p1" *ngIf="articleDetails?.cost">
+                        Project Fee
+                    </p>
+                    <p class="p2" *ngIf="articleDetails?.cost && articleDetails?.is_paid != false">${{articleDetails?.cost}}</p>
+                    <p class="p2" *ngIf="articleDetails?.is_paid == false">Free</p>
+                    <p class="p3" *ngIf="articleDetails?.including_tax">{{articleDetails?.including_tax}}</p>
+                    <p class="p4" *ngIf="articleDetails?.program_hour_text">{{articleDetails?.program_hour_text}}</p>
+                    <p class="p5">Deliverables</p>
+
+                    <div [innerHTML]="articleDetails?.deliverable"></div>
+                    <!-- <p class="p6">On completion of each project, you receive</p>
+                    <ul>
+                        <li>
+                            Signed Project Certificate
+                        </li>
+                        <li>
+                            Letter of Recommendation
+                        </li>
+                    </ul> -->
+                    <!-- <a href="{{articleDetails?.redirect_link}}" class="join_now">JOIN NOW TO START</a> -->
+
+                    <button *ngIf="userRole == 'student' && articleDetails?.is_paid != false && articleDetails?.category != 'high-schools' && articleDetails?.category != 'higher-ed'" (click)="paymentForProject()">JOIN NOW TO START</button>
+                    <button *ngIf="userRole == 'student' && articleDetails?.is_paid == false && articleDetails?.category != 'high-schools' && articleDetails?.category != 'higher-ed'" (click)="paymentForFree()">JOIN NOW TO START</button>
+                    
+                    <!-- <button style="cursor: default;">JOIN NOW TO START</button> -->
+
+                    <!-- <button [routerLink]="['/big-picture-project/info']">JOIN NOW TO START</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

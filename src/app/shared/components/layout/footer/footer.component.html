@@ -1,0 +1,133 @@
+<div class="clg-footer">
+  <div class="clg-socialjoin-section">
+    <span class="clg-build-impact">
+      <span class="create-it-box">
+        <span>Design</span>
+        <span>Fund</span>
+        <span>Mentor</span>
+        <span>Support</span>
+        <span>Build</span>
+        <span>Join</span>
+      </span>&nbsp;Student Impact Movement
+    </span>
+    <div class="clg-social-section">
+      <a href="https://www.facebook.com/BeCollegey/" target="_blank" class="backgroundSocial"><img
+          src="assets/images/fb.png" /></a>
+      <a href="https://twitter.com/becollegey" target="_blank" class="backgroundSocial"><img
+          src="assets/images/twitter.png" /></a>
+      <a href="https://www.instagram.com/becollegey/" target="_blank" class="backgroundSocial"><img
+          src="assets/images/insta.png" /></a>
+      <a href="https://www.linkedin.com/company/collegey/" target="_blank" class="backgroundSocial"><img
+          src="assets/images/linkidein.png" /></a>
+      <a href="https://www.youtube.com/channel/UC_vCErV7S2vK7TpjCG0Ig0Q" target="_blank" class="backgroundSocial"><img
+          src="assets/images/youtube.png" /></a>
+    </div>
+  </div>
+
+  <div class="clg-partner-section">
+    <div class="container clg-content">
+      <div class="row">
+        <div class="col-12 col-lg-12">
+          <!-- <h3 class="clg-heading">Institutions that trusted Collegey:</h3>  -->
+          <h3 class="clg-heading">Institutions we have worked with:</h3> 
+
+          <!-- <marquee behavior="scroll" direction="left" class="marqueeImg w-100" scrollamount="10">
+            <img *ngFor="let universityLogo of homepageUniversityLogo" [src]="universityLogo?.imagePath"
+              alt="{{universityLogo?.name}}" class="marqueeImg-img" />
+          </marquee> -->
+
+          <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+            <div class="clg-slides" *ngFor="let universityLogo of homepageUniversityLogo">
+              <img ngxSlickItem class="slide marqueeImg-img" [src]="universityLogo?.imagePath"
+                alt="{{universityLogo?.name}}" width="100%">
+            </div>
+          </ngx-slick-carousel>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-inline-block w-100">
+    <div class="dash-line"></div>
+    <div class="container clg-content">
+      <div class="row">
+        <div class="col-12 col-lg-12">
+          <div class="clg-fmenu-section">
+            <a [href]="['meet-our-team']">Meet Our Team </a>
+            <a [href]="['collegey-programs']">Collegey Programs </a>
+            <a [href]="['campaign']">Invest in Collegey </a>
+            <a [href]="['fund']">Collegey Fund</a>
+            <a [href]="['student-dashboard/$/blog']" *ngIf="checkBloglink && !checkCurrentRole">Blog </a>
+            <a [href]="['/blog']" *ngIf="!checkBloglink || checkCurrentRole">Blog </a>
+            <a [href]="['thank-you']">Careers at Collegey </a>
+            <a [href]="['partner-with-collegey']">Partner with Collegey</a>
+            <a [href]="['faq']">FAQs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dash-line"></div>
+
+    <div class="brush">
+      <div class="container clg-content">
+        <div class="d-flex justify-content-center">
+          <a href="javascript:;" target="_blank">
+            <img src="{{homepageImpactImg}}" class="center-brand-img" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-10 offset-lg-1">
+          <div class="row">
+            <!-- <div class="col col-sm-1 d-flex flex-column" *ngFor="let footerLogo of footerLogoDetails">
+          <img class="mask" [src]="commonService.imagePathS3(footerLogo?.imageName)" alt="{{footerLogo?.title}}" />
+        </div> -->
+            <div class="col-12 col-md-6 my-4">
+              <p class="clg-heading">India Contact Details</p>
+              <p class="light-text">{{footerContentData?.address1}}</p>
+              <p>
+                <img src="/assets/images/bottom-bar/mail-fill.svg" />
+                <span class="light-text"> : {{footerContentData?.address1email}}</span>
+              </p>
+              <p class="mb-1">
+                <img src="/assets/images/bottom-bar/phone-fill.svg" />
+                <span class="light-text"> : {{footerContentData?.address1phone}} </span>
+              </p>
+            </div>
+            <div class="col-12 col-md-6 my-4">
+              <p class="clg-heading">US Contact Details</p>
+              <p class="light-text">{{footerContentData?.address2}}</p>
+              <p>
+                <img src="/assets/images/bottom-bar/mail-fill.svg" />
+                <span class="light-text"> : {{footerContentData?.address2email}}</span>
+              </p>
+              <p class="mb-1">
+                <img src="/assets/images/bottom-bar/phone-fill.svg" />
+                <span class="light-text"> : {{footerContentData?.address2phone}} </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dash-line"></div>
+    <div class="container clg-content clg-copyright-sec">
+      <div class="row">
+        <div class="col-12 col-lg-10 offset-lg-1">
+          <div class="row">
+            <div class="col-12 col-md-6 text-left clg-mobile-center mt-3">
+              <a [routerLink]="['terms-condition']"><span class="f-text">Terms of Service </span></a>
+              <a [routerLink]="['privacy-policy']"><span class="f-text">Privacy Policy</span></a>
+            </div>
+            <div class="col-12 col-md-6 text-right clg-mobile-center mt-3">
+              <span class="f-text">{{footerContentData?.copyright}} </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

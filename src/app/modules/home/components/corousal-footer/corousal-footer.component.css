@@ -1,0 +1,104 @@
+.dash-line {
+    border-top: 1px dashed #d3d3d3;
+  }
+  .brand-text {
+    display: flex;
+    justify-content: space-evenly;
+    height: 22px;
+    font-size: 16px;
+    font-family: Nunito;
+    font-weight: semiBold;
+    color: #838383;
+    padding: 40px 0;
+  }
+  .deco {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  a {
+    margin: 0 10px;
+    color: #838383;
+  }
+  
+  a :hover {
+    color: #3f89fc;
+  }
+  .heading {
+    font-size: 16px;
+    font-family: Nunito;
+    font-weight: semiBold;
+    color: #141414;
+    line-height: 22px;
+  }
+  .mask {
+    width: 68px;
+    height: 68px;
+  }
+  span {
+    font-size: 14px;
+    font-family: Nunito;
+    font-weight: Regular;
+    color: #afafaf;
+    line-height: 19px;
+  }
+  .light-text {
+    font-size: 16px;
+    font-family: Nunito;
+    font-weight: semiBold;
+    color: #838383;
+  }
+  
+  .f-text {
+    font-size: 14px;
+    font-family: Nunito;
+    font-weight: 400;
+    color: #afafaf;
+  }
+  .w-230 {
+    width: 230px;
+  }
+  .w-260 {
+    width: 260px;
+  }
+  .w-330 {
+    width: 250px;
+  }
+  
+  @media only screen and (max-width: 768px) and (min-width: 320px) {
+    .brand-text {
+      font-weight: bold;
+    }
+  
+    .f-text {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #838383;
+      font-weight: 500;
+    }
+    .brand-text {
+      display: contents;
+      color: #838383;
+    }
+    .brand-text a {
+      display: block;
+      margin: 15px;
+      font-weight: 500;
+    }
+  }
+  
+  a { text-decoration: none; }
+  .socialMedia {
+    font-size:35px;
+    color: #4E4E4E;
+    font: normal normal normal 50px/78px Nunito;
+  }
+  
+  .backgroundSocial {
+    top: 7521px;
+    left: 501px;
+    width: 53px;
+    height: 54px;
+    background: #DDE5FD 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    opacity: 1;
+  }

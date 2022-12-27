@@ -1,0 +1,125 @@
+<!-- <form *ngIf="geographyFormGroup" [formGroup]="geographyFormGroup">
+    <div class="question-box-inner bottom-margin">
+        <p>This information keeps your profile updated, relevant, and strong.</p>
+        <div class="form-box" formGroupName="geography">
+            <div class="form-group fields">
+                <label class="field-label" for="selectCountry">Select Country</label>
+                <ng-select class="educationType" id="selectCountry" name="selectCountry" placeholder="Select" [items]="countries" bindLabel="name" bindValue="id" [searchable]="true" [clearable]="false" (change)="onSelectCountry($event)" formControlName="country">
+                </ng-select>
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="selectState">Select State</label>
+                <ng-select class="educationType" id="selectState" name="selectState" placeholder="Select" [items]="states" bindLabel="name" bindValue="id" [searchable]="true" [clearable]="false" placeholder="States" formControlName="state" (change)="onSelectState($event)">
+                </ng-select>
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="selectCity">Select City</label>
+                <ng-select class="educationType" id="selectCity" name="selectCity" placeholder="Select" [items]="cities" formControlName="city" bindLabel="name" bindValue="id" [searchable]="true" [clearable]="false"
+                    (change)="onSelectCity($event)">
+                </ng-select>
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="citizenship">Citizenship</label>
+                <input type="text" class="form-control field-control" placeholder="Enter citizenship" formControlName="citizenship">
+            </div>
+            <div class="form-group fields" *ngIf="selectedCity">
+                <label class="field-label">What are two or three key problems that you think {{selectedCity}} has?</label>
+                <textarea class="form-control textarea-field" placeholder="Type your answer" formControlName="city_problem"></textarea>
+            </div>
+            <div class="form-group fields" *ngIf="selectedCity">
+                <label class="field-label">If you are allowed to work on any 2 projects to improve {{selectedCity}}, what will they be?</label>
+                <textarea class="form-control textarea-field" placeholder="Type your answer" formControlName="city_projects"></textarea>
+            </div>
+        </div>
+        <div class="save-btn-box">
+            <button type="button" class="save-and-exit" (click)="onSubmitForm(true)">Save & Exit</button>
+            <button type="submit" class="save-btn" (click)="onSubmitForm(false)">Submit</button>
+        </div>
+    </div>
+</form> -->
+<div class="lead-form-wrapper" [class.hides]="!section.isOpen">
+    <div class="lead-form container">
+        <p class="steps-login">1 of 8</p>
+        <p class="heading">Location</p>
+        <form class="login-form row" *ngIf="geographyFormGroup" [formGroup]="geographyFormGroup">
+            <div formGroupName="geography" style="display: contents;">
+                <div class="group col-sm-6 mb-3">
+                    <div class="mb-1">
+                        <label class="select-label">Country<span style="color: #f00;">*</span></label>
+                        <select (change)="onSelectCountry($event)" formControlName="country">
+                            <option value="" disabled>Select Country*</option>
+                            <option [value]="countr.id" *ngFor="let countr of countries">{{countr.name}}</option>
+                            <!-- <option value="1">b</option>
+                            <option value="1">c</option> -->
+                        </select>
+                    </div>
+                    <span *ngIf="country_error" style="color: red;">{{ country_errorMsg }}</span>
+                </div>
+
+                <div class="group col-sm-6 mb-3">
+                    <div class="mb-1">
+                        <label class="select-label">State<span style="color: #f00;">*</span></label>
+                        <select [(ngModel)]="stateSelected" formControlName="state" (change)="onSelectState($event)">
+                            <option value="" disabled>Select State*</option>
+                            <option [value]="state.id" *ngFor="let state of states;let s = index">{{state.name}}
+                            </option>
+                            <!-- <option value="1">b</option>
+                            <option value="1">c</option> -->
+                        </select>
+                    </div>
+                    <span *ngIf="state_error" style="color: red;">{{ state_errorMsg }}</span>
+                </div>
+                <div class="group col-sm-6 mb-3">
+                    <div class="mb-1">
+                        <label class="select-label">City<span style="color: #f00;">*</span></label>
+                        <select [(ngModel)]="citySelected" formControlName="city" (change)="onSelectCity($event)"
+                            required="required">
+                            <option value="" disabled>Select City*</option>
+                            <option [value]="city.id" *ngFor="let city of cities;let i = index">{{city.name}}</option>
+                            <!-- <option value="1">b</option>
+                            <option value="1">c</option> -->
+                        </select>
+                    </div>
+                    <span *ngIf="city_error" style="color: red;">{{ city_errorMsg }}</span>
+
+                </div>
+                <div class="group col-sm-6 mb-3">
+                    <div class="mb-1">
+                        <input type="text" required="required" (ngModelChange)="valuechange($event)"
+                            formControlName="citizenship" (blur)="validateCitizenship($event)" />
+                        <label class="select-label" style="top: 5px;
+                        font: normal normal bold 12px/12px Nunito;
+                        color: #1982d4;">Citizenship<span style="color: #f00;">*</span></label>
+                    </div>
+                    <span *ngIf="citizenship_error" style="color: red;">{{ citizenship_errorMsg }}</span>
+                </div>
+
+                <div class="group col-sm-6 mb-3">
+                    <div class="mb-1 clg-timezone">
+                        <label class="select-label">Time Zone<span style="color: #f00;">*</span></label>
+
+                        <ng-select [(ngModel)]="selectedTimeZone" formControlName="timezone">
+                            <ng-option value="">Select time zone</ng-option>
+                            <!-- <p class="sekec_text">Choose one or two SDGs most relevant for this project</p> -->
+                            <ng-option *ngFor="let item of timeZoneList| keyvalue" [value]="item.key">{{item.value}}
+                            </ng-option>
+                        </ng-select>
+
+                        <!-- <select required="required" (change)="onSelectTimezone($event)" formControlName="timezone">
+                            <option value="">Select time zone</option>
+                            <option *ngFor="let item of timeZoneList | keyvalue" value="{{item.key}}">{{item.value}}
+                            </option>
+                        </select> -->
+                    </div>
+                    <span *ngIf="timeZone_error" style="color: red;"> {{ timeZone_errorMsg }}</span>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="btn-wrapper">
+        <!-- <button class="backbutton">Back</button> -->
+        <button class="savebtn ml-auto" (click)="onSubmitForm(false)">Save and Complete later</button>
+        <button class="submitbutton" (click)="onSubmitForm(true)">SAVE AND CONTINUE</button>
+    </div>
+</div>

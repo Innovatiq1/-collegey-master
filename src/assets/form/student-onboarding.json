@@ -1,0 +1,198 @@
+ {
+  "student_profile": {
+    "geography": {
+      "citizenship": null,
+      "country": null,
+      "state": null,
+      "city": null,
+      "city_projects" : null,
+      "city_problem": null,
+      "is_completed": false
+    },
+    "history_updated": {
+      "education": [
+        {
+          "type": null,
+          "name": null,
+          "location": null,
+          "field_of_study": [
+          ],
+          "degree": null,
+          "start_year": null,
+          "end_year": null,
+          "score": null,
+          "grade_choosen" : [],
+          "grade": []
+
+        
+        }
+      ],
+      "is_completed": false
+    },
+    "interest": {
+      "interest_area": [],
+      "fav_subjects": [],
+      "is_completed": false
+    },
+    "know_you_better": {
+      "people_who_inspire_you": [
+        {
+          "name": null
+        }
+      ],
+      "fav_books": [
+        {
+          "name": null
+        }
+      ],
+      "fav_movies": [
+        {
+          "name": null
+        }
+      ],
+      "fav_websites": [
+        {
+          "name": null
+        }
+      ],
+      "fav_activity_on_internet": null,
+      "fav_message_service": [
+        {
+          "name": null
+        }
+      ],
+      "is_completed": false
+    },
+    "projects": {
+      "any_bpp": {
+        "answer": null,
+        "title": null,
+        "description": null
+      },
+      "describe_any_project": [
+      ],
+      "writing_sample": [
+      ],
+      "someone_said_something_or_recommendation": [
+      ],
+      "award": [
+      ],
+      "is_completed": false
+    },
+    "headed": {
+      "expected_year_to_start": {
+        "grade": null,
+        "year": null,
+        "other_degree" : null
+      },
+      "preferred_countries": [
+      ],
+      "test_info": [
+        {
+          "test_name": null,
+          "other_text": null,
+          "test_status": null,
+          "current_score": null,
+          "test_date": null
+        }
+      ],
+      "wish_to_study": [{
+        "grade": null,
+        "subjects": null,
+        "other_text": null,
+        "majors": null
+      }],
+      "institutes_Wishlist": [{
+        "institute_name": null
+      }],
+      "is_completed": false
+    },
+    "prefrences": {
+      "interested_in_gap": null,
+      "how_would_like_to_pay": [
+      ],
+      "wish_to_apply_for_scholarships": {
+        "answer": null,
+        "imoprtance": null
+      },
+      "family_income": null,
+      "is_completed": false
+    },
+    "ways_to_be_in_touch": {
+      "social_media": [],
+      "dob": null,
+      "age": null,
+      "phone_number": {
+        "extension": null,
+        "number": null
+      },
+      "parents_details": 
+        {
+          "name": null,
+          "email": null,
+          "relation": "father",
+          "relation_with_guardian": null
+        },
+      "school_counselor": [
+        {
+          "name": null,
+          "email": null
+        }
+      ],
+      "is_completed": false
+    }
+  },
+"mentor_profile": {
+  "profile": {
+    "professionalTitle":null,
+    "location": null,
+    "fullLegalName": null,
+    "aboutYou": null,
+    "favBooks": [],
+    "interest": [],
+    "expertise": [],
+    "industry": null,
+    "lastCollegeDegree": null,
+    "linkedIn": null,
+    "experience": null,
+    "lastEducationalInstitutionAttended": null,
+    "website": null,
+    "videoIntroduction":null
+  },
+  "officeHours": {
+    "time": null
+  },
+  "projects": {
+    "projectTitle": null,
+    "bannerImage":null,
+    "lastDate":null,
+    "startDate":null,
+    "keyword":[],
+    "maxNumberOfStudentsAllowed":null,
+    "projectUNSDG":null,
+    "aboutProject":null,
+    "projectPlan":null,
+    "isPaid":false
+  }
+  
+},
+"mentor_officeHours":{
+  "officeHours": {
+    "time": null
+  }
+},
+"mentor_projects":{
+  "projects": {
+    "projectTitle": null,
+    "bannerImage":null,
+    "lastDate":null,
+    "startDate":null,
+    "keyword":[],
+    "maxNumberOfStudentsAllowed":null,
+    "projectUNSDG":null,
+    "aboutProject":null,
+    "projectPlan":null,
+    "isPaid":false
+  }
+}
+}

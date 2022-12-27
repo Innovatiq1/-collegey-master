@@ -1,0 +1,21 @@
+.auth-wrapper {
+  position: relative;
+}
+
+.icon-close {
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  background: none;
+  color: #000;
+  border: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  .icon-close {
+    right: -10px;
+    top: -15px;
+  }
+}

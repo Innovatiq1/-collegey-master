@@ -1,0 +1,33 @@
+<!-- <img *ngIf="user?.avatar" class="default-profile" [src]="commonService.imagePathMaker(user?.avatar)" class="user-img" alt="profile picture" alt="student profile picture"> -->
+<div style="position: relative;">
+
+    <img *ngIf="!mentorProfileView" class="default-profile" [src]="avatharImage ? avatharImage  : 'assets/images/user-icon.png'" class="user-img"
+        alt="profile picture" alt="student profile picture">
+    <img *ngIf="mentorProfileView" class="default-profile" [src]="commonService.imagePathS3(ProfilePic) ? commonService.imagePathS3(ProfilePic)  : 'assets/images/user-icon.png'" class="user-img"
+        alt="profile picture" alt="student profile picture">
+
+    <div class="file-input" *ngIf="redBorderImage && !mentorProfileView" (change)="avatarUpload($event.target.files)">
+        <input #Image type="file" name="file-input" accept=".png,.jpeg,.jpg" id="file-input"
+            class="file-input__input" />
+        <label class="file-input__label" for="file-input">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                <g>
+                    <path xmlns="http://www.w3.org/2000/svg"
+                        d="m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0"
+                        fill="#ff971a" data-original="#2196f3" class="" />
+                    <path xmlns="http://www.w3.org/2000/svg"
+                        d="m368 277.332031h-90.667969v90.667969c0 11.777344-9.554687 21.332031-21.332031 21.332031s-21.332031-9.554687-21.332031-21.332031v-90.667969h-90.667969c-11.777344 0-21.332031-9.554687-21.332031-21.332031s9.554687-21.332031 21.332031-21.332031h90.667969v-90.667969c0-11.777344 9.554687-21.332031 21.332031-21.332031s21.332031 9.554687 21.332031 21.332031v90.667969h90.667969c11.777344 0 21.332031 9.554687 21.332031 21.332031s-9.554687 21.332031-21.332031 21.332031zm0 0"
+                        fill="#fafafa" data-original="#fafafa" />
+                </g>
+            </svg>
+        </label>
+    </div>
+</div>
+<div class="mt-3" *ngIf="showUploadButton">
+    <button type="button" class="btn-primary btn" (click)="changeProfile()">Upload</button>
+
+</div>
+<!-- <img class="replace-profile" *ngIf="redBorderImage" src="/assets/images/change-image-icon.svg" alt="change profile"> -->
+<img class="replace-profile" *ngIf="!redBorderImage" src="/assets/images/add-icon.svg" alt="change profile">

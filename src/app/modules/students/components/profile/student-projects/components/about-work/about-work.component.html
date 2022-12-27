@@ -1,0 +1,47 @@
+<div class="modal-form-wrap">
+    <!-- <button type="button" class="close-button" (click)="bsModalRef.hide()"><img
+        src="/assets/images/on-boarding/cross-button.png"></button> -->
+    <div class="modal-form-header">
+        <p>Upload your Letters of Recommendation (LoRs) or References.</p>
+    </div>
+    <form [formGroup]="aboutWorkForm" *ngIf="aboutWorkForm" style="margin-top: -20px;">
+        <div class="modal-form-body" formGroupName="someone_said_something_or_recommendation">
+            <div class="form-box">
+                <div style="display:block;">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-group fields">
+                                <label class="field-label" for="projectTitle">Recommender's Name<span
+                                        style="color: #f00;">*</span></label>
+                                <input type="text" class="form-control field-control"
+                                    (ngModelChange)="valuechange($event)" formControlName="title"
+                                    placeholder="Enter Title">
+                            </div>
+                            <span id="citierror1" style="color: red;"> {{ title_error }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group fields">
+                        <label class="field-label" for="projectDescription">About Recommender (Add details like your
+                            relationship with Recommender)<span style="color: #f00;">*</span></label>
+                        <textarea class="form-control textarea-field" id="projectDescription"
+                            (ngModelChange)="valuechange1($event)" formControlName="description"
+                            placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <span id="citierror1" style="color: red;"> {{ description_error }}</span>
+
+                    <div class="row">
+                        <app-document-upload [documentList]="documentList" (ngModelChange)="valuechange2($event)"
+                            (onFileUploadSuccess)="onFileUpload($event)" class="w-100"></app-document-upload>
+                        <!-- <span id="citierror1" style="color: red;"> {{ file_error }}</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-form-footer">
+            <div class="btn-wrapper">
+                <button class="backbutton" (click)="bsModalRef.hide()">Cancel</button>
+                <button class="submitbutton" type="submit" (click)="onSubmitData()">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

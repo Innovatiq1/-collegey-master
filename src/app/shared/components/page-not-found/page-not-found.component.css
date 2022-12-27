@@ -1,0 +1,66 @@
+.page-not-found-wrap {
+    width: 100%;
+    height: 100vh;
+    /* background-image: url(/assets/images/error-bg.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-not-found-box {
+    text-align: center;
+}
+
+.page-not-found-box img {
+    max-width: 506px;
+    width: 100%;
+    height: 221px;
+    margin-bottom: 27px;
+}
+
+.page-not-found {
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 1.17;
+    letter-spacing: 0.72px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0px 10px 5px rgba(0, 0, 0, 0.04);
+    margin-bottom: 24px;
+}
+
+.go-back {
+    width: 173px;
+    height: 45px;
+    border-radius: 6.5px;
+    background: #ff062f;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.31;
+    letter-spacing: 0.26px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #ff062f;
+    transition: all 0.4s;
+}
+
+.go-back:hover,
+.go-back:active,
+.go-back:focus {
+    background: #f1072e;
+    border: 1px solid #f1072e;
+}
+
+@media screen and (max-width:479px) {
+    .page-not-found-box img {
+        max-width: 260px;
+        height: 116px;
+        margin-bottom: 24px;
+    }
+    .page-not-found {
+        font-size: 20px;
+    }
+}

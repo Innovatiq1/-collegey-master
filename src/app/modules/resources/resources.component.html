@@ -1,0 +1,76 @@
+<section class="resources-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="resources-content">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <app-nav-bar></app-nav-bar>
+                        <div class="resources-tab-content">
+                            <div class="container">
+                                <div class="banner-box" [routerLink]="['/magazine/blog/' + latestArticle?.slug]">
+                                    <img src="{{commonService.imagePathMaker(latestArticle?.image, '/assets/images/resources/map-banner1.png')}}" alt="Resources Banner">
+                                    <div class="banner-content ">
+                                        <p class="latest-article ">Latest Blog</p>
+                                        <p class="post-title ">{{latestArticle?.title}}</p>
+                                        <p class="post-description ">{{latestArticle?.short_description}}</p>
+                                        <p class="tags-box "><span class="article-tags " *ngFor="let tag of latestArticle?.tags ">{{tag}}</span></p>
+                                        <p class="posted-date"><span class="blog-date-span" *ngIf="latestArticle?.author">By {{latestArticle?.author}} </span><span>{{latestArticle?.updatedAt | date}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="webinars-wrap ">
+                                <div class="container ">
+                                    <h2>Vlogs</h2>
+                                    <app-common-webinar [webinars]="webinars['docs']"></app-common-webinar>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        <div class="load-more ">
+                                            <button type="button " (click)="onNavigate( 'magazine/' + ResourcesRoutes.WEBINAR)" class="load-more-btn ">Load More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="our-programmes-wrap ">
+                                <div class="container ">
+                                    <h2>Our Programs</h2>
+                                    <div class="programmes-tab-content ">
+                                        <app-common-programmes [programmes]="programmes['docs']">
+                                        </app-common-programmes>
+                                        <div class="col-md-12 col-sm-12 ">
+                                            <div class="load-more ">
+                                                <button type="button " class="load-more-btn" (click)="onNavigate( 'magazine/' + ResourcesRoutes.PROGRAMME)">Load More</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="webinars-wrap ">
+                                <div class="container ">
+                                    <h2>Blogs</h2>
+                                    <app-common-articles (onGettingLatestArticle)="getLatestArticle($event)" [showRecords]="6"></app-common-articles>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        <div class="load-more ">
+                                            <button type="button " (click)="onNavigate( 'magazine/' + ResourcesRoutes.BLOG)" class="load-more-btn ">Load More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="webinars-wrap box-bg ">
+                                <div class="container ">
+                                    <h2>Conferences</h2>
+                                    <app-common-conferences [showRecords]="6"></app-common-conferences>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        <div class="load-more ">
+                                            <button type="button " (click)="onNavigate( 'magazine/' + ResourcesRoutes.CONFERENCE)" class="load-more-btn ">Load More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-loader></app-loader>

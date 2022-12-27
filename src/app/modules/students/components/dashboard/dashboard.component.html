@@ -1,0 +1,379 @@
+<div class="container first-section1 p-3" *ngIf="showCompleteProfile && !completeProfileMsgShow"
+    style="text-align: center !important;">
+    <span>
+        A complete profile brings you more opportunities. You want to finish your profile now?&nbsp;&nbsp; &nbsp;&nbsp;
+        <a [routerLink]="['/student/profile']" class="btn btn-sm btn-primary">
+            <strong> YES </strong>
+        </a>
+    </span> &nbsp;&nbsp; &nbsp;&nbsp;
+    <span (click)="hideCompleteProfile()" class="btn btn-sm btn-danger">
+        <strong> NO </strong>
+    </span>
+</div>
+<div class="container"
+    [ngClass]="showCompleteProfile && !completeProfileMsgShow ? 'showCompleteProfile' : 'first-section'">
+
+    <div class="terms-header" style="background-image: url({{CurrentBanner}});">
+        <div class="banner-upload">
+            <label class="mb-0" (click)="openAddBannerDialog(openAddBannerimage)">
+                <img src="assets/images/camera--v2.png" />
+            </label>
+        </div>
+    </div>
+
+    <div class="student-info">
+        <div class="student-info-profile">
+
+            <div class="mentorprofile_image">
+                <app-global-student-profile-upload [redBorderImage]="true" (_emitter)="showToastrMsg($event)">
+                </app-global-student-profile-upload>
+            </div>
+
+            <!-- <ng-container *ngIf="dashboard?.profile?.avatar; then avatarImage; else  placeholder">
+            </ng-container>
+            <ng-template #placeholder>
+                <img src="assets/images/user-icon.png" alt="" class="profile-img">
+            </ng-template>
+            <ng-template #avatarImage>
+                <img [src]="commonService.imagePathS3(dashboard?.profile?.avatar)" alt="" class="profile-img">
+            </ng-template> -->
+
+            <div class="clg-tophead1">
+                <h5>{{firstname}} {{lastname}}</h5>
+                <p>{{dashboard?.profile[0]?.qualification}}</p>
+                <p *ngIf="dashboard?.profile[0]?.cityObj" class="location"><img src="assets/images/location.svg"
+                        width="11" height="13" alt="" style="margin-right: 7px;">
+                    <span *ngIf="dashboard.profile[0].countryObj || cityName">{{cityName}}, </span>
+                    <span *ngIf="dashboard.profile[0].stateObj || stateName">{{stateName}}, </span>
+                    <span *ngIf="dashboard.profile[0].cityObj">{{countryName}}</span>
+                </p>
+            </div>
+
+            <div class="mx-5 clg-tophead2" *ngIf="showbadges">
+                <h6>My Badges</h6>
+                <div>
+                    <img *ngFor="let listbadgemaster of badgeMastersList; let i=index;" alt="{{listbadgemaster?.title}}"
+                        title="{{listbadgemaster?.title}}" class="badgemasters-img"
+                        [src]="commonService.imagePathS3(listbadgemaster?.imageName)">
+                    <a class="btn btn-sm btn-primary ml-2 fa fa-plus text-white" [routerLink]="['/my-badge']"></a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <a class="share-profile">SHARE YOUR PROFILE</a> -->
+        <div class="fb-share-button"
+            data-href="https://blogs.worldbank.org/eastasiapacific/indonesia-has-passed-100-million-covid-19-vaccine-doses-what-can-we-learn"
+            data-layout="button" data-size="large">
+            <!-- <a (click)="showShareProfile()" href="javascript:;" class="fb-xfbml-parse-ignore share-profile">SHARE YOUR
+                PROFILE</a> -->
+            <div ngbDropdown class="d-inline-block">
+                <a class="fb-xfbml-parse-ignore share-profile" ngbDropdownToggle>SHARE YOUR PROFILE</a>
+                <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic01">
+                    <a class="buttons" (click)="goToLink('https://www.facebook.com/sharer/sharer.php?u=')"> <i
+                            class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+                    <a class="buttons" (click)="goToLinkedin('https://www.linkedin.com/shareArticle?mini=true&url=')">
+                        <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin</a>
+                    <a class="buttons" (click)="goToTwit('https://wa.me/?text=')"> <i class="fa fa-whatsapp"
+                            aria-hidden="true"></i> Whatsapp</a>
+                    <a class="buttons" (click)="CopyClipboardUrl()"> <i class="fa fa-link" aria-hidden="true"></i> Copy
+                        Url</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-menu">
+        <ul>
+            <li>
+                <a [routerLinkActiveOptions]="{ exact: true }" [routerLinkActive]="['active']"
+                    [routerLink]="['/student-dashboard/$']">
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/feed']">
+                    Collegey Feed
+                </a>
+            </li>
+            <li>
+                <!-- <a [routerLink]="['/student-dashboard/$/academy']">
+                    Academy <img src="assets/images/arrow-down-sign-to-navigate.svg" width="7" style="margin-left:10px"
+                        alt="">
+                </a> -->
+                <div ngbDropdown class="d-inline-block clg-customdrop" #academyDropdown="ngbDropdown"
+                    (mouseover)='over(academyDropdown)' (mouseout)='out(academyDropdown)'>
+                    <a [routerLinkActive]="['active']" [class.parentLink]="isActive==true" id="academyLink"
+                        [routerLink]="['/student-dashboard/$/blogs']">
+                        Academy
+                    </a>
+                    <button id="dropdownBasic1" ngbDropdownToggle></button>
+                    <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic1">
+                        <a [routerLinkActive]="['active']" ngbDropdownItem
+                            [routerLink]="['/student-dashboard/$/blogs']">
+                            Blogs
+                        </a>
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [routerLink]="['/student-dashboard/$/vlog']">
+                            Vlogs
+                        </a>
+                        <a [routerLinkActive]="['active']" ngbDropdownItem
+                            [routerLink]="['/student-dashboard/$/Programs']">
+                            Programs
+                        </a>
+                        <a [routerLinkActive]="['active']" ngbDropdownItem
+                            [routerLink]="['/student-dashboard/$/conferences']">
+                            Conferences
+                        </a>
+                        <a [routerLinkActive]="['active']" ngbDropdownItem
+                            [routerLink]="['/student-dashboard/$/course']">
+                            Courses
+                        </a>
+                        <a [routerLinkActive]="['active']" ngbDropdownItem
+                            [routerLink]="['/student-dashboard/$/store']">
+                            Collegey Store <span style="color: red; font-size: small;">(Upcoming)</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <!-- <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/qaforms']">
+                    Q&A Form
+                </a> -->
+                <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Q&A Form
+                </a>
+            </li>
+            <li>
+                <!-- <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/events']">
+                    Events
+                </a> -->
+                <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Events
+                </a>
+            </li>
+            <li>
+                <!-- <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/mentor']">
+                    Mentors
+                </a> -->
+                <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Mentors
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/mentor-chat']">
+                    Mentor Chat
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" (click)="msgcollegey(testimonail)">
+                    Share Testimonial
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Universities
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/news-resource']">
+                    News & Resources
+                </a>
+            </li>
+            <li>
+                <a [routerLinkActive]="['active']" (click)="contactCollegey(contactCollegeyTemplate)">
+                    Contact Collegey
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div *ngIf="show_loader == true" class="collegy_loader">
+    <img src="assets/images/loading-buffering.gif">
+</div>
+<!-- mentor testimonal modal - ->
+<ng-template #testimonail1>
+    <div class="modal-form-wrap position-relative" style="background: white;">
+        <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+        <div class="modal-form-header bottom-border" style="padding: 20px 54px;">
+            <h5 class="heading">Please write your Testimonial!</h5>
+        </div>
+        <form [formGroup]="testimonialFormGroup" (ngSubmit)="addTestimonial()" method="post" novalidate>
+            <div class="modal-form-body" style="padding: 20px 54px;">
+                <div class="form-box">
+                    <div class="form-group fields">
+                        <textarea name="testimonal" formControlName="testimonal" rows="3" class="form-control">Please write your testimonal.
+                </textarea>
+                        <div *ngIf="submittedTestimonial && hasError('testimonal','required')"
+                            style="text-align: center;margin-top: 10px;"
+                            class="alert alert-danger alert-dismissable mb-0 w-100">
+                            is required
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-form-footer">
+                <div class="row top-box" style="margin-left: 75%;">
+                    <div class="footer-texteditor">
+                        <div class="row feed-item"> 
+                            <button type="button" style="border: 1px;
+                                color: #141414;font-weight: 600; margin-right: 10px;"
+                                (click)="modalRef.hide()">CANCEL</button>&nbsp;&nbsp;
+                            <button type="submit" id="btn" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<!- - -->
+
+<!-- Select Banner image Model -->
+
+<ng-template #openAddBannerimage>
+    <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+    <div class="banner-selection-modal">
+        <div class="project-modal-tabs">
+            <h3 class="pro_title">Add cover photo</h3>
+            <ngb-tabset>
+                <ngb-tab title="Default Covers">
+                    <ng-template ngbTabContent>
+                        <div class="liststdiv">
+
+                            <div *ngFor="let listdafault of listdafaultBanner; let i=index;"
+                                (click)="choiceUserBannerImage(i,'default',listdafault._id)" class="listst">
+                                <img src="{{listdafault?.imagePath}}" />
+                            </div>
+
+                            <div *ngFor="let listbanner of AllbannerImage; let i=index;"
+                                (click)="choiceUserBannerImage(i,'userbanner',null)"
+                                [ngClass]="listbanner.active === true ? 'listst re-active' : 'listst'">
+                                <img src="{{listbanner?.image}}" />
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Upload">
+                    <ng-template ngbTabContent>
+                        <div class="dragdropdiv">
+                            <div class="size_note">Note: Please upload file around image size 1200 x 190</div>
+                            <div ngx-dropzone [accept]="'.png,.jpeg,.jpg'" (change)="onSelectBanner($event)">
+                                <ngx-dropzone-label>
+                                    <span class="re-drag-txt1">Drag photo here</span>
+                                    <span class="re-drag-txt2">Or if your prefer to</span>
+                                    <span class="re-drag-txt3">CHOOSE FROM SYSTEM </span>
+                                </ngx-dropzone-label>
+                                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+                                    [file]="f" [removable]="true" (removed)="onRemoveBanner(f)">
+                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                </ngx-dropzone-image-preview>
+                            </div>
+                            <div class="size_note_error" *ngIf="sizeError">The maximum size for the 1200 x 190</div>
+                        </div>
+                        <div class="schedule-event-action">
+                            <button type="button" (click)="modalRef.hide()" class="cancel-btn">Cancel</button>
+                            <button class="submit-btn" (click)="addUserBannerData()">Submit</button>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #testimonail>
+    <div class="schedule-event-modal">
+        <div class="schedule-form">
+            <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+            <h5>Share a bit about how Collegey has helped you and what you like most. You can write or add your video
+                link. </h5>
+            <form [formGroup]="testimonialFormGroup" (ngSubmit)="addTestimonial()" method="post">
+                <div class="form-row">
+                    <!-- <div class="col-md-12">
+                            <label for="name">Enter name</label>
+                            <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter name"/>
+                            <span *ngIf="testimonialFormGroup.get('name').errors?.required" class="d-block" style="color: red;">
+                                Name is required.
+                            </span>
+                        </div>
+                        <div class="col-md-12" style="padding-top:10px;">
+                            <label for="qualification">Qualification</label>
+                            <input type="text" class="form-control" formControlName="qualification" id="qualification" placeholder="Enter Qualification"/>
+                            <span *ngIf="testimonialFormGroup.get('qualification').errors?.required" class="d-block" style="color: red;">
+                                Qualification is required.
+                            </span>
+                        </div>
+                        <div class="col-md-12" style="padding-top:10px;">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" formControlName="country" id="country" placeholder="Country"/>
+                            <span *ngIf="testimonialFormGroup.get('country').errors?.required" class="d-block" style="color: red;">
+                                Country is required.
+                            </span>
+                        </div> -->
+                    <div class="col-md-12" style="padding-top:10px;">
+                        <label for="testimonal">Testimonial <span style="color: red;">*</span></label>
+                        <textarea name="testimonal" class="form-control" formControlName="testimonal" rows="3"
+                            class="form-control" (change)="wordCounter($event);"
+                            placeholder="Please write your testimonial."></textarea>
+                        <span *ngIf="showWordLimitError" class="d-block" style="color: red;">Max word limit is
+                            250</span>
+                        <span
+                            *ngIf="submittedTestimonial && (hasError('testimonal','required') || hasError('testimonal','pattern'))"
+                            class="d-block ng-star-inserted" style="color: red;">Testimonial is required</span>
+                    </div>
+                    <div class="col-md-12" style="padding-top:10px; padding-bottom: 10px;">
+                        <label for="url">Youtube Embeded Url</label>
+                        <input type="text" class="form-control" formControlName="url" id="url"
+                            placeholder="Enter Youtube Video Embeded Url" />
+                        <span *ngIf="submittedTestimonial && (hasError('url','required') || hasError('url','pattern'))"
+                            class="d-block ng-star-inserted" style="color: red;">Youtube url is required</span>
+                    </div>
+                </div>
+                <div class="testimonial_footer">
+                    <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+                    <a href="javascript:;" (click)="addTestimonial()" class="show-result-btn">Submit</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Contact Collegey Pop up -->
+
+<ng-template #contactCollegeyTemplate>
+    <div class="modal-form-wrap1 position-relative" style="background: white;">
+        <i class="fa fa-times custClose_model1" (click)="modalRefContactCollegey.hide()" aria-hidden="true"></i>
+        <div class="modal-form-header1 bottom-border1">
+            <h5 class="heading">Send Message</h5>
+        </div>
+        <form [formGroup]="contactCollegeyForm" (ngSubmit)="onSubmitMessage()">
+            <div>
+                <div class="form-box">
+                    <div class="form-group fields1">
+                        <textarea class="form-control field-control1" rows="3" placeholder="Type your message here!"
+                            (change)="wordCounter($event);" formControlName="message"></textarea>
+                        <!-- <input class="form-control field-control" type="text" placeholder="Message" formControlName="message"
+              [ngClass]="{ 'is-invalid': submit && g.message.errors }"> -->
+                        <span *ngIf="showWordLimitError" class="d-block" style="color: red;">Max word limit is
+                            250</span>
+                        <div
+                            *ngIf="submit && (hasCollegyMsgError('message','required') || hasCollegyMsgError('message','pattern'))">
+                            <div style="color: red;">Message is required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row1 top-box1">
+                    <div class="footer-texteditor">
+                        <div class="row1 feed-item1">
+                            <button type="button" (click)="modalRefContactCollegey.hide()">Cancel</button>&nbsp;&nbsp;
+                            <button type="submit" id="btn1" class="btn" style="color: white;">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>

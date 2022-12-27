@@ -1,0 +1,46 @@
+<div class="clg-testimonial-section">
+  <div class="container clg-content">
+    <div class="row">
+      <div class="col-12 col-lg-12">
+        <div class="clg-heading">
+         <h2>{{homepageContent?.title}}</h2>
+        </div>
+        
+        <owl-carousel-o [options]="customOptions" class="mg-b40">
+          <ng-template carouselSlide *ngFor="let listdata of homepageContent?.sectionData; let i=index;">
+            <div class="card">
+              <div class="d-flex justify-content-center align-item-center floter-icon">
+                <img src="/assets/images/7th_folder/right-quotation-mark.svg" style="width: 40px" />
+              </div>
+              <div class="card-box">
+                <div class="profile-pic">
+                  <img [src]="listdata?.sectionImg" />
+                </div>
+                <div class="profile-desc">
+                  <div class="desc">
+                    {{listdata?.text}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+        <div class="clg-footer-text">
+          {{homepageContent?.bottomTitle}}
+        </div>
+        <div class="d-flex flex-wrap align-items-center">
+          <a class="explore" *ngFor="let text of homepageContent?.bottomButton" href="{{text?.link}}">{{text?.text}}</a>
+          <!-- <button class="explore"  *ngFor="let text of homepageContent.bottomButton" [routerLink]="[text.link]">
+            {{text.text}}
+          </button> -->
+          <!-- <button class="explore" [routerLink]="['collegey-programs']">High schools</button>
+          <button class="explore" [routerLink]="['collegey-programs']">Higher Ed</button> -->
+          <div class="d-flex align-items-center navigator">
+            <div class="first-bl"></div>
+            <div class="second-bl"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

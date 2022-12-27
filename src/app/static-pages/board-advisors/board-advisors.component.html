@@ -1,0 +1,48 @@
+<!-- code for meet the team screen  Start-->
+<section class="team_member section-padding">
+    <br><br><br>
+    <div class="py-5 team4">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <a [routerLink]="['../meet-our-team']" class="text-center btn btn-info m-1">Meet Our Team</a>
+              <a [routerLink]="['../advisors']" class="text-center btn btn-success m-1">Board of Advisors</a>
+              <a [routerLink]="['../directors']" class="text-center btn btn-info m-1">Board of Directors</a>
+            </div>
+          </div>
+      </div> 
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-12">
+            <h2 class="mb-3 text-center"><br>Board of Advisors</h2>
+            <h5  class="mb-3">Collegey teams up with students, educators, and key influencers for impact projects leading to impact careers. With ed-tech, we scale impact and meaning.</h5>
+            <h6 class="subtitle">We’re a growing team of digital marketing experts and thought leaders — full of personality minus the
+                ego. We’re the wearer of many hats dedicated to helping companies likes yours grow.</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 mb-4" *ngFor="let team of response; let ind = index;">
+          <div class="row">
+            <div class="col-md-12"> 
+              <img *ngIf="team.image" [src]="commonService.imagePathS3(team.image)" alt="{{team.name}}" class="img-fluid rounded-circle" style="width:270px; height: 270px;">
+              <img *ngIf="!team.image" src="assets/images/user-icon.png" alt="" class="img-fluid rounded-circle" style="width:270px; height: 270px;">
+            </div>
+            <div class="col-md-12 text-center">
+              <div class="pt-2">
+                <h5 class="mt-4 font-weight-medium mb-0">{{team.name}}</h5>
+                <h6 class="subtitle mb-3">{{team.position}} - {{team.designation}} <br>                 <a href="{{team.lindkin}}" target="_blank" style="cursor: pointer;"><img src="/assets/images/linkedin-full.svg" width="18px" alt=""></a></h6>
+                <p>{{team.description}}</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="{{team.lindkin}}" class="text-decoration-none d-block px-1"><i class="icon-social-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="text-decoration-none d-block px-1"><i class="icon-social-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="text-decoration-none d-block px-1"><i class="icon-social-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="text-decoration-none d-block px-1"><i class="icon-social-instagram"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  

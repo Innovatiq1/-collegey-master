@@ -1,0 +1,598 @@
+.article-detail-wrap {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 140px 0 0px;
+}
+
+.article-detail-heading {
+    width: 740px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.back-button {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.48px;
+    text-align: left;
+    margin: 0 0 38px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.back-button:hover,
+.back-button:focus,
+.back-button:active {
+    text-decoration: none;
+    color: #3F89FC;
+}
+
+a:not([href]),
+a:not([href]):hover {
+    color: #3F89FC;
+}
+
+.back-button img {
+    position: relative;
+    top: -0.4px;
+    margin-right: 5px;
+}
+
+.posted-date-head {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.48px;
+    text-align: left;
+    color: #111111;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+.posted-date-head>span,
+.posted-date>span {
+    font-weight: 600;
+    color: #888888;
+}
+
+.posted-date-head>.blog-date-span,
+.posted-date>.blog-date-span {
+    margin-right: 7px;
+    color: #111111;
+    font-weight: 400;
+}
+
+.blog-date-span:after {
+    content: '.';
+    position: absolute;
+    top: -4px;
+    font-size: 13px;
+    left: auto;
+    margin-right: -7px;
+    color: #000;
+}
+
+.posted-date>.blog-date-span:before {
+    top: -2.5px;
+    left: auto;
+    margin-left: -7px;
+}
+
+.article-detail-heading h2 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-align: left;
+    color: #0d0d0d;
+    margin-bottom: 15px;
+}
+
+.tags-box-head {
+    margin-bottom: 0;
+    display: flex;
+    width: 100%;
+    overflow: auto;
+}
+
+.article-tags-head {
+    background-color: #eeeeec;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.44px;
+    text-align: center;
+    color: rgba(32, 32, 32, 0.8);
+    margin-right: 10px;
+    padding: 5px 11px;
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 25px;
+    white-space: nowrap;
+}
+
+.article-image-box {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 31px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.article-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.article-detail-box {
+    max-width: 775px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 93px;
+    padding-bottom: 90px;
+}
+
+.article-detail-box p,
+.article-detail-box span {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.87;
+    letter-spacing: 0.6px;
+    color: #0a0a0a;
+    margin-bottom: 0px;
+}
+
+.article-detail-box img {
+    width: 100%;
+    height: 100%;
+    margin: 20px auto;
+}
+
+.article-detail-box>article>p:first-child::first-letter {
+    font-size: 40px;
+    font-weight: bold;
+    padding-right: 3px;
+    line-height: 1.1;
+}
+
+.article-detail-box h1,
+.article-detail-box h1 span,
+.article-detail-box h2 span,
+.article-detail-box h3 span,
+.article-detail-box h4 span,
+.article-detail-box h5 span,
+.article-detail-box h6 span {
+    font-weight: bold;
+    line-height: 1.1;
+    letter-spacing: normal;
+    color: #0d0d0d;
+    letter-spacing: 0.6px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.article-detail-box h1,
+.article-detail-box h1 span {
+    font-size: 40px;
+}
+
+.article-detail-box h2 span {
+    font-size: 32px;
+}
+
+.article-detail-box h3 span {
+    font-size: 22px;
+}
+
+.article-detail-box h4 span {
+    font-size: 18px;
+}
+
+.article-detail-box h5 span {
+    font-size: 14px;
+}
+
+.article-detail-box h6 span {
+    font-size: 12px;
+}
+
+.article-detail-box ul,
+.article-detail-box ol {
+    width: 100%;
+    padding-left: 16px;
+    margin-bottom: 30px;
+}
+
+.article-detail-box ul li span,
+.article-detail-box ol li {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.87;
+    letter-spacing: 0.6px;
+    color: #0a0a0a;
+}
+
+.article-detail-box ul li,
+.article-detail-box ol li {
+    margin-bottom: 10px;
+}
+
+.article-detail-box p b,
+.article-detail-box p span b,
+.article-detail-box ul li span b,
+.article-detail-box ol li b {
+    font-weight: 700;
+}
+
+.article-detail-box .quote {
+    font-size: 30px;
+    font-weight: 200;
+    line-height: 1.33;
+    letter-spacing: 1.2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.article-detail-box .redText {
+    display: block;
+    text-align: center;
+}
+
+.webinars-wrap {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.webinars-wrap.similar-articles-wrap {
+    background: #f7f7f7;
+    padding: 149px 0 50px;
+}
+
+.webinars-wrap h2 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 0.95;
+    letter-spacing: normal;
+    text-align: left;
+    color: #0d0d0d;
+    margin-bottom: 37px;
+}
+
+.webinar-box {
+    width: 100%;
+    margin-bottom: 99px;
+    position: relative;
+}
+
+.webinar-box.article-box>a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.webinar-image-box {
+    position: relative;
+    margin-bottom: 19px;
+    overflow: hidden;
+    border-radius: 7px;
+    border: 1px solid #eae8ea;
+    text-align: center;
+}
+
+.webinar-image-box img {
+    width: 100%;
+    height: 208px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.webinar-image-box:hover img {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.webinar-box.article-box>a:hover+.webinar-image-box img {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.our-programmes-wrap .webinar-box {
+    background: #fff;
+    border-radius: 7px;
+    padding-bottom: 18px;
+    margin-bottom: 32px;
+    cursor: pointer;
+    position: relative;
+}
+
+.our-programmes-wrap .webinar-box>a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.our-programmes-wrap .webinar-image-box {
+    border: none;
+    border-radius: 7px 7px 0 0;
+}
+
+.our-programmes-wrap .webinar-content-box {
+    padding: 0 15px 0 20px;
+    height: 205px;
+}
+
+.our-programmes-wrap .tags-box {
+    height: 60px;
+    overflow: hidden;
+}
+
+.our-programmes-wrap .load-more {
+    margin-top: 20px;
+}
+
+.post-title.webinar-title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #0d0d0d;
+    transition: color 0.5s ease;
+}
+
+.post-title.webinar-title:hover,
+.post-title.webinar-title:focus,
+.post-title.webinar-title:active {
+    text-decoration: none;
+    color: #217ced;
+}
+
+.webinar-box.article-box>a:hover~div .post-title.webinar-title {
+    text-decoration: none;
+    color: #217ced;
+}
+
+.post-description.webinar-desc {
+    line-height: 1.69;
+    margin-top: 15px;
+    margin-bottom: 14px;
+    max-height: 85px;
+    height: auto;
+    overflow: hidden;
+}
+
+.post-description.webinar-desc.top-gap {
+    margin-top: 11px;
+    font-size: 16px;
+}
+
+.tags-box {
+    margin-bottom: 0;
+}
+
+.article-tags {
+    background: #3F89FC 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.44px;
+    text-align: center;
+    color: #fff;
+    margin-right: 6px;
+    padding: 5px 11px;
+    display: inline-block;
+    margin-bottom: 7px;
+    height: 23px;
+    cursor: pointer;
+}
+
+.posted-date {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.44px;
+    text-align: left;
+    color: #111111;
+    margin-top: 14px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.posted-date.top-gap {
+    margin-top: 22px;
+}
+
+.author-img-box {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.author-img-box img {
+    width: 31px;
+    height: 31px;
+    border-radius: 50px;
+    margin-right: 8px;
+}
+
+.author-img-box .posted-date-head>.blog-date-span {
+    display: block;
+}
+
+.author-img-box .posted-date-head .blog-date-span:after {
+    display: none;
+}
+
+.author-name-span {
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    border-radius: 100%;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #cdcdcd;
+    text-align: center;
+    font-weight: 700;
+    line-height: 34px;
+    overflow: hidden;
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, .06);
+    border: 1px solid rgba(0, 0, 0, .08);
+    background-color: #eeeded;
+    margin-right: 8px;
+}
+
+@media screen and (min-width:991px) and (max-width:1199px) {
+    .our-programmes-wrap .webinar-content-box {
+        height: 250px;
+    }
+    .our-programmes-wrap .tags-box {
+        height: auto;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .article-image-box {
+        height: auto;
+    }
+    .article-image-box img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .article-detail-wrap {
+        padding: 130px 0 0;
+    }
+    .article-detail-box {
+        padding-top: 50px;
+        padding-bottom: 70px;
+    }
+    .article-detail-heading {
+        width: 100%;
+    }
+    .webinars-wrap.similar-articles-wrap {
+        padding: 80px 0 10px;
+    }
+    .webinar-image-box img {
+        object-fit: cover;
+    }
+    .our-programmes-wrap .webinar-content-box,
+    .our-programmes-wrap .tags-box {
+        height: auto;
+        overflow: auto;
+    }
+}
+
+@media screen and (max-width:599px) {
+    .article-detail-heading h2 {
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .article-detail-wrap {
+        padding: 120px 0 0;
+    }
+    .article-detail-heading h2 {
+        font-size: 26px;
+    }
+    .article-detail-box .quote {
+        font-size: 24px;
+        line-height: 1.40;
+    }
+    .article-detail-box {
+        padding-top: 35px;
+        padding-bottom: 50px;
+    }
+    .posted-date-head {
+        margin-bottom: 5px;
+    }
+    .article-detail-box p,
+    .article-detail-box ul li {
+        font-size: 14px;
+        line-height: 1.85;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+        color: #3F89FC;
+    }
+    .article-detail-box>article>p:first-child::first-letter,
+    .article-detail-box>article>span:first-child::first-letter {
+        font-size: 32px;
+    }
+    .webinars-wrap h2 {
+        font-size: 36px;
+        margin-bottom: 36px;
+    }
+    .webinar-box {
+        margin-bottom: 45px;
+    }
+    .tags-box-head {
+        max-width: 480px;
+    }
+    .tags-box {
+        max-width: 479px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: auto;
+        white-space: nowrap;
+        padding-bottom: 5px;
+        position: relative;
+        z-index: 99;
+    }
+    .posted-date {
+        margin-top: 10px;
+    }
+    .back-button {
+        margin: 0 0 30px;
+    }
+}
+
+@media screen and (max-width:374px) {
+    .article-detail-heading h2 {
+        font-size: 22px;
+    }
+    .article-image-box {
+        margin-top: 21px;
+    }
+    .article-detail-box .quote {
+        font-size: 20px;
+        margin-top: 25px;
+    }
+    .article-detail-box {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .webinars-wrap h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    .post-title.webinar-title {
+        font-size: 18px;
+        line-height: 1.3;
+    }
+}

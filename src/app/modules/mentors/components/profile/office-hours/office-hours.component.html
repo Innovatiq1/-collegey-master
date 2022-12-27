@@ -1,0 +1,275 @@
+<!-- <div class="lead-form-wrapper" [formGroup]="officeFormGroup">
+    <div class="lead-form container">
+        <p class="steps-login">2 of 3</p>
+        <p class="heading">Office Hours</p>
+        <form class="login-form row" formGroupName="office">
+
+            <div class="col-sm-12 col-lg-6 row pd-sm-l0" style="margin: 0;padding-right: 0;">
+                <div class="group col-sm-6">
+                    <div class="mg-b20">
+                        <input type="date" class="form-control" id="date1" placeholder=""
+                            style="height: 29px;" formControlName="date">
+                        <label>Choose Date</label>
+                    </div>
+                </div>
+            </div>
+            <div class="group col-sm-6" style="padding: 17px;">
+                <div>
+                    <label>Where we can help?*</label>
+                    <select multiple required="required" formControlName="days">
+                        <option value="" disabled>Select</option>
+                            <option value="2">Monday</option>
+                            <option value="1">Tuesday</option>
+                            <option value="1">Wednesday</option>
+                            <option value="1">Thursday</option>
+                            <option value="1">Friday</option>
+                            <option value="1">Saturday</option>
+                            <option value="1">Sunday</option>
+                        </select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 row pd-sm-l0" style="margin: 0;padding-right: 0;">
+                <div class="group col-sm-6">
+                    <div class="mg-b20">
+                        <input type="time" class="form-control" id="date1"
+                            style="height: 29px;" formControlName="time">
+                        <label>Choose Time</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="btn-wrapper">
+        <button class="backbutton">Back</button>
+        <div>
+            <button class="savebtn">Save and Complete later</button>
+            <button class="submitbutton">SAVE & CONTINUE</button>
+        </div>
+    </div>
+</div> -->
+<div class="lead-form-wrapper">
+    <div class="container">
+        <div class="lead-form" style="padding-bottom: 0;">
+            <p class="steps-login">2 of 3</p>
+        </div>
+        <form class="login-form office-hours-box" [formGroup]="officeFormGroup" method="post" novalidate>
+            <div class="mb-12">
+                <label class="form-label p-0">Time zone*</label>
+                <!-- =============== -->
+                <div class="mb-1">
+                    <ng-select [(ngModel)]="selectedTimeZone" formControlName="timezone">
+                        <ng-option value="">Select time zone</ng-option>
+                        <!-- <p class="sekec_text">Choose one or two SDGs most relevant for this project</p> -->
+                        <ng-option *ngFor="let item of timeZoneList| keyvalue" [value]="item.key">{{item.value}}
+                        </ng-option>
+                    </ng-select>
+                    <span *ngIf="submittedProfile && hasErrorEvent('timezone','required')" class="d-block"
+                        style="color: red;">is required.</span>
+                </div>
+            </div>
+            <hr>
+            <label class="heading p-0">Office hours</label>
+            <div *ngIf="officeHours.length > 0" formArrayName="officeHours">
+                <div [formGroupName]="0" class="">
+                    <div class="group col-sm-12" style="margin-bottom: 15px;">
+                        <select class="mr-3 weekday" required="required" formControlName="days"
+                            [(ngModel)]="mondayHours">
+                            <option value="Monday">Monday</option>
+                        </select>
+                        <input type="time" *ngIf="!mondayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time">
+                        <input type="time" *ngIf="mondayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time" [attr.disabled]="true">
+                        <label class="tolabel">To</label>
+                        <input type="time" *ngIf="!mondayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time">
+                        <input type="time" *ngIf="mondayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time" [attr.disabled]="true">
+                        <span class="chechbx">
+                            <label for=""> <input type="checkbox" name="closed" (click)="closedStatusMonday()"
+                                    formControlName="closed" value="">Closed</label>
+                        </span>
+                        <span
+                            *ngIf="submittedProfile && (officeHours?.controls[0].get('start_time').errors?.required || officeHours?.controls[0].get('end_time').errors?.required) && !mondayClosed"
+                            class="d-block" style="color: red;">
+                            Please select hours
+                        </span>
+                    </div>
+                </div>
+
+                <div [formGroupName]="1" class="">
+                    <div class="group col-sm-12" style="margin-bottom: 15px;">
+                        <select class="mr-3 weekday" required="required" formControlName="days"
+                            [(ngModel)]="tuesdayHours">
+                            <option value="Tuesday">Tuesday</option>
+                        </select>
+                        <input type="time" *ngIf="!tuesdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time">
+                        <input type="time" *ngIf="tuesdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time" [attr.disabled]="true">
+                        <label class="tolabel">To</label>
+                        <input type="time" *ngIf="!tuesdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time">
+                        <input type="time" *ngIf="tuesdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time" [attr.disabled]="true">
+                        <span class="chechbx">
+                            <label for=""> <input type="checkbox" name="closed" (click)="closedStatusTuesday()"
+                                    formControlName="closed" value="">Closed</label>
+                        </span>
+                        <span
+                            *ngIf="submittedProfile && (officeHours?.controls[1].get('start_time').errors?.required || officeHours?.controls[1].get('end_time').errors?.required) && !tuesdayClosed"
+                            class="d-block" style="color: red;">
+                            Please select hours
+                        </span>
+                    </div>
+                </div>
+
+                <div [formGroupName]="2" class="">
+                    <div class="group col-sm-12" style="margin-bottom: 15px;">
+                        <select class="mr-3 weekday" required="required" formControlName="days"
+                            [(ngModel)]="wednesdayHours">
+                            <option value="Wednesday">Wednesday</option>
+                        </select>
+                        <input type="time" *ngIf="!wednesdayClosed"
+                            class="form-control d-inline-block w-auto officetime" style="height: 29px;"
+                            formControlName="start_time">
+                        <input type="time" *ngIf="wednesdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time" [attr.disabled]="true">
+                        <label class="tolabel">To</label>
+                        <input type="time" *ngIf="!wednesdayClosed"
+                            class="form-control d-inline-block w-auto officetime" style="height: 29px;"
+                            formControlName="end_time">
+                        <input type="time" *ngIf="wednesdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time" [attr.disabled]="true">
+                        <span class="chechbx">
+                            <label for=""> <input type="checkbox" name="closed" (click)="closedStatusWednesday()"
+                                    formControlName="closed" value="">Closed</label>
+                        </span>
+                        <span
+                            *ngIf="submittedProfile && (officeHours?.controls[2].get('start_time').errors?.required || officeHours?.controls[2].get('end_time').errors?.required) && !wednesdayClosed"
+                            class="d-block" style="color: red;">
+                            Please select hours
+                        </span>
+                    </div>
+                </div>
+
+                <div [formGroupName]="3" class="">
+                    <div class="group col-sm-12" style="margin-bottom: 15px;">
+                        <select class="mr-3 weekday" required="required" formControlName="days"
+                            [(ngModel)]="thursdayHours">
+                            <option value="Thursday">Thursday</option>
+                        </select>
+                        <input type="time" *ngIf="!thursdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time">
+                        <input type="time" *ngIf="thursdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time" [attr.disabled]="true">
+                        <label class="tolabel">To</label>
+                        <input type="time" *ngIf="!thursdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time">
+                        <input type="time" *ngIf="thursdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time" [attr.disabled]="true">
+                        <span class="chechbx">
+                            <label for=""> <input type="checkbox" name="closed" (click)="closedStatusThursday()"
+                                    formControlName="closed" value="">Closed</label>
+                        </span>
+                        <span
+                            *ngIf="submittedProfile && (officeHours?.controls[3].get('start_time').errors?.required || officeHours?.controls[3].get('end_time').errors?.required) && !thursdayClosed"
+                            class="d-block" style="color: red;">
+                            Please select hours
+                        </span>
+                    </div>
+                </div>
+
+                <div [formGroupName]="4" class="">
+                    <div class="group col-sm-12" style="margin-bottom: 15px;">
+                        <select class="mr-3 weekday" required="required" formControlName="days"
+                            [(ngModel)]="fridayHours">
+                            <option value="Friday">Friday</option>
+                        </select>
+                        <input type="time" *ngIf="!fridayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time">
+                        <input type="time" *ngIf="fridayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time" [attr.disabled]="true">
+                        <label class="tolabel">To</label>
+                        <input type="time" *ngIf="!fridayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time">
+                        <input type="time" *ngIf="fridayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time" [attr.disabled]="true">
+                        <span class="chechbx">
+                            <label for=""> <input type="checkbox" name="closed" (click)="closedStatusFriday()"
+                                    formControlName="closed" value="">Closed</label>
+                        </span>
+                        <span
+                            *ngIf="submittedProfile && (officeHours?.controls[4].get('start_time').errors?.required || officeHours?.controls[4].get('end_time').errors?.required) && !fridayClosed"
+                            class="d-block" style="color: red;">
+                            Please select hours
+                        </span>
+                    </div>
+                </div>
+
+                <div [formGroupName]="5" class="">
+                    <div class="group col-sm-12" style="margin-bottom: 15px;">
+                        <select class="mr-3 weekday" required="required" formControlName="days"
+                            [(ngModel)]="saturdayHours">
+                            <option value="Saturday">Saturday</option>
+                        </select>
+                        <input type="time" *ngIf="!saturdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time">
+                        <input type="time" *ngIf="saturdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time" [attr.disabled]="true">
+                        <label class="tolabel">To</label>
+                        <input type="time" *ngIf="!saturdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time">
+                        <input type="time" *ngIf="saturdayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time" [attr.disabled]="true">
+                        <span class="chechbx">
+                            <label for=""> <input type="checkbox" name="closed" (click)="closedStatusSaturday()"
+                                    formControlName="closed" value="">Closed</label>
+                        </span>
+                        <span
+                            *ngIf="submittedProfile && (officeHours?.controls[5].get('start_time').errors?.required || officeHours?.controls[5].get('end_time').errors?.required) && !saturdayClosed"
+                            class="d-block" style="color: red;">
+                            Please select hours
+                        </span>
+                    </div>
+                </div>
+
+                <div [formGroupName]="6" class="">
+                    <div class="group col-sm-12" style="margin-bottom: 15px;">
+                        <select class="mr-3 weekday" required="required" formControlName="days"
+                            [(ngModel)]="sundayHours">
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                        <input type="time" *ngIf="!sundayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time">
+                        <input type="time" *ngIf="sundayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="start_time" [attr.disabled]="true">
+
+                        <label class="tolabel">To</label>
+                        <input type="time" *ngIf="!sundayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time">
+                        <input type="time" *ngIf="sundayClosed" class="form-control d-inline-block w-auto officetime"
+                            style="height: 29px;" formControlName="end_time" [attr.disabled]="true">
+                        <span class="chechbx">
+                            <label for=""> <input type="checkbox" name="closed" (click)="closedStatusSunday()"
+                                    formControlName="closed" value="">Closed</label>
+                        </span>
+                        <span
+                            *ngIf="submittedProfile && (officeHours?.controls[6].get('start_time').errors?.required || officeHours?.controls[6].get('end_time').errors?.required) && !sundayClosed"
+                            class="d-block" style="color: red;">
+                            Please select hours
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="btn-wrapper">
+        <button class="backbutton" (click)="onFormBack()">Back</button>
+        <div>
+            <button class="savebtn" (click)="onSubmitForm(false)">Save and Complete later</button>
+            <button class="submitbutton" (click)="onSubmitForm(true)">SAVE & CONTINUE</button>
+        </div>
+    </div>
+</div>

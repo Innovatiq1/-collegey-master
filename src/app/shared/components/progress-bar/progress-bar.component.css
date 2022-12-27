@@ -1,0 +1,61 @@
+.progress-bar-box {
+    max-width: 370px;
+    width: 100%;
+    margin-left: auto;
+    height: 9px;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.progress-bar-check.step-completed,
+.progress-bar-check1.step-completed,
+.progress-bar-check2.step-completed {
+    background-image: url(/assets/images/progressbar-tick.svg);
+}
+
+.progress-bar-check,
+.progress-bar-check1,
+.progress-bar-check2,
+.progress-bar-check3 {
+    position: absolute;
+    top: -8.2px;
+    width: 27px;
+    height: 27px;
+    background-image: url(/assets/images/progressbar-grey-tick.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.progress-bar-check {
+    left: 21%;
+}
+
+.progress-bar-check1 {
+    left: 45%;
+}
+
+.progress-bar-check2 {
+    left: 71%;
+}
+
+.progress-bar-check3 {
+    left: 94.5%;
+    background-image: url(/assets/images/star.svg);
+}
+
+.progress-bar-check3.step-completed {
+    background-image: url(/assets/images/coloured-star.svg);
+}
+
+@media screen and (max-width:991px) {
+    .progress-bar-box {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .progress-bar-box {
+        margin-right: auto;
+        margin-left: 0;
+    }
+}

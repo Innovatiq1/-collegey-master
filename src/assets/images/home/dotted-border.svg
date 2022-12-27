@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1030 405" width="1030" height="405">
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: none;stroke: #333333;stroke-dasharray: 1,3 } 
+	</style>
+	<g id="Page-1">
+		<path id="Rectangle" fill-rule="evenodd" class="shp0" d="M0 404L985 404C1009.3 404 1029 384.3 1029 360L1029 45C1029 20.7 1009.3 1 985 1L95 1" />
+	</g>
+</svg>

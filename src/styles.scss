@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+pre {
+  margin: 0;
+}
+@import "~swiper/swiper";
+@import "~swiper/components/pagination/pagination";
+@import '~@angular/cdk/overlay-prebuilt.css'; /** Add this only for non-material project */
+// @import '~ngx-sharebuttons/themes/default/default-theme';

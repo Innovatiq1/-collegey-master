@@ -1,0 +1,168 @@
+<div class="my-account-wrapper">
+  <div class="row cusheight">
+    <div class="col-12 col-lg-3 col-md-3">
+      <div class="card shadow-lg">
+        <ul class="card-body">
+          <li>
+            <h6>Settings</h6>
+            <ul class="ml-2" class="mt-3">
+              <li class="mb-3"><a (click)="openContainer('ChangePassowrd')" class="cursor-pointer">Change Password</a>
+              </li>
+              <!-- <li  class="mb-3"><a (click)="openPasswordContainer = true" class="cursor-pointer">General Settings</a></li> -->
+            </ul>
+            <ul class="ml-2" class="mt-3" *ngIf="currentLoginUser != 'mentor'">
+              <li class="mb-3"><a (click)="openContainer('ReviewList')" class="cursor-pointer">Reward List</a></li>
+              <!-- <li  class="mb-3"><a (click)="openPasswordContainer = true" class="cursor-pointer">General Settings</a></li> -->
+            </ul>
+            <ul class="ml-2" class="mt-3">
+              <li class="mb-3"><a (click)="openContainer('paymentList')" class="cursor-pointer">Payment List</a></li>
+              <!-- <li  class="mb-3"><a (click)="openPasswordContainer = true" class="cursor-pointer">General Settings</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-lg-9 col-md-9 p-4">
+      <div class="lead-form" *ngIf="openPasswordContainer">
+        <div class="mb-3">
+          <b>UPDATE PASSWORD</b>
+        </div>
+        <div class="lead-form-wrapper">
+          <form class="login-form" [formGroup]="changePwd">
+            <div class="form-group">
+              <div>
+                <input class="form-control" type="password" formControlName="oldPwd" required="required"
+                  placeholder="Old Password*" />
+              </div>
+              <span *ngIf="submittedPassword && hasError('oldPwd','required')" class="d-block" style="color: red;">Old
+                password is required.</span>
+            </div>
+            <div class="form-group">
+              <div>
+                <input class="form-control" type="password" formControlName="newPwd" required="required"
+                  placeholder="New Password (Atleast 8 characters) *" />
+              </div>
+              <span *ngIf="submittedPassword && hasError('newPwd','required')" class="d-block"
+                style="color: red;">Please
+                enter new password</span>
+              <span *ngIf="submittedPassword && hasError('newPwd','minlength')" class="d-block"
+                style="color: red;">Please
+                enter 8 Characters</span>
+            </div>
+            <div class="form-group">
+              <div>
+                <input class="form-control" type="password" formControlName="confirmPwd" required="required"
+                  placeholder="Confirm Password*" />
+              </div>
+              <span *ngIf="submittedPassword && hasError('confirmPwd','required')" class="d-block"
+                style="color: red;">Please enter confirm password</span>
+              <span *ngIf="changePwd.controls.confirmPwd.hasError('confirmedValidator')" class="d-block"
+                style="color: red;">passwords do not match</span>
+            </div>
+          </form>
+          <div class="btn-wrapper">
+            <div>
+              <button class="submitbutton btn btn-block btn-primary" (click)="onSubmitPsd()">SUBMIT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive pb-4" *ngIf="openReviewListContainer">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Reward Name</th>
+              <th scope="col">Point</th>
+              <th scope="col">Status</th>
+              <th scope="col">Create Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let reward  of rewardsData; let i = index">
+              <th scope="row">{{pageSrNo+i+1}}</th>
+              <td>
+                <!-- <span *ngIf="reward.rewardName == 'QuestionAnswer'">Question Answer</span>
+              <span *ngIf="reward.rewardName == 'CollegeyFeedGroup'">Collegey Feed Group</span>
+              <span *ngIf="reward.rewardName == 'projectCompleted'">Project Completed</span>
+              <span *ngIf="reward.rewardName == 'ProfilePartA'">Profile First Step</span>
+              <span *ngIf="reward.rewardName == 'ProfilePartB'">Profile Second Step</span>
+              <span *ngIf="reward.rewardName == 'ProjectPartA'">Project Join</span>
+              <span *ngIf="reward.rewardName == 'projectJoin'">Project Join</span> -->
+                <span>{{reward.rewardName}}</span>
+              </td>
+              <td *ngIf="reward.rewardCreditPoint != 0">{{reward.rewardCreditPoint}}</td>
+              <td *ngIf="reward.rewardCreditPoint == 0" style="color: #f00;">-{{reward.rewardDebitPoint}}</td>
+              <td>
+                <span *ngIf="reward.active" class="clg-active">Active</span>
+                <span *ngIf="!reward.active" class="clg-deactive">Deactive</span>
+              </td>
+              <td>{{reward.createdAt | date:'yyyy-MM-dd'}}</td>
+            </tr>
+
+            <!-- <tr>
+            <th scope="row">2</th>
+            <td>Question Answer</td>
+            <td>50</td>
+            <td>2022-09-10</td>
+          </tr> -->
+          </tbody>
+        </table>
+        <!-- {{totalGroupItems?.length}}
+      {{rewardsData.data.length}} -->
+        <pagination *ngIf="rewardsData.length > 0" [(ngModel)]="currentPage"
+          [totalItems]="totalGroupItems.data?.rewardsPointobjects.length" [itemsPerPage]="10"
+          (pageChanged)="pageChanged($event)"></pagination>
+      </div>
+
+      <div class="table-responsive pb-4" *ngIf="paymentListContainer">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Project Name</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Project Type</th>
+              <th scope="col">Status</th>
+              <th scope="col">Payment Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let paymentListData  of paymentHistoryData; let j = index">
+              <th scope="row">{{pageSrNoPayment+j+1}}</th>
+              <td>
+                <!-- <span *ngIf="reward.rewardName == 'QuestionAnswer'">Question Answer</span>
+              <span *ngIf="reward.rewardName == 'CollegeyFeedGroup'">Collegey Feed Group</span>
+              <span *ngIf="reward.rewardName == 'projectCompleted'">Project Completed</span>
+              <span *ngIf="reward.rewardName == 'ProfilePartA'">Profile First Step</span>
+              <span *ngIf="reward.rewardName == 'ProfilePartB'">Profile Second Step</span>
+              <span *ngIf="reward.rewardName == 'ProjectPartA'">Project Join</span>
+              <span *ngIf="reward.rewardName == 'projectJoin'">Project Join</span> -->
+                <span>{{paymentListData?.projectData?.title}}</span>
+              </td>
+              <td>{{paymentListData?.price}}</td>
+              <td>{{paymentListData?.paymentType}}</td>
+              <td>{{paymentListData?.status}}</td>
+              <td>{{paymentListData?.createdAt | date:'yyyy-MM-dd'}}</td>
+            </tr>
+
+            <!-- <tr>
+            <th scope="row">2</th>
+            <td>Question Answer</td>
+            <td>50</td>
+            <td>2022-09-10</td>
+          </tr> -->
+          </tbody>
+        </table>
+        <!-- {{totalGroupItems?.length}}
+      {{rewardsData.data.length}} -->
+        <pagination *ngIf="paymentHistoryData.length > 0" [(ngModel)]="currentPagePayment"
+          [totalItems]="totalPaymentHistoryData.data?.length" [itemsPerPage]="5"
+          (pageChanged)="pageChangedPayment($event)"></pagination>
+      </div>
+    </div>
+  </div>
+</div>

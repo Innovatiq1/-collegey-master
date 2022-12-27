@@ -1,0 +1,102 @@
+.collegey-magazine-wrapper {
+    width: 100%;
+    background: #3F89FC; 
+    margin: 50px 0; 
+    padding: 20px 0;  
+}
+.collegey-magazine-text {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+.no-pad{
+    padding: 0;
+}
+.collegey-magazine-title {
+    font: normal normal bold 32px/43px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    margin-bottom: 5px;
+}
+.collegey-magazine-subtitle {
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.collegey-graphics {
+    width: 100%;
+    position: relative;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #979797;
+    border-radius: 6px;
+    padding: 6px 5px 6px 10px;
+    margin-top: 10px;
+}
+.collegey-graphics label{
+    letter-spacing: 0px;
+    color: #D3D3D3;
+    font-size: 10px;
+    margin: 0;
+    line-height: 1;
+}
+.collegey-graphics input{
+    border: none;
+    height: 15px;
+    padding: 0;
+    line-height: 1;
+    font-size: 11px;
+}
+.collegey-graphics button{
+    float: right;
+    background: #FF971A 0% 0% no-repeat padding-box;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 12px;
+    height: 38px;
+    opacity: 1;
+}
+.collegey-graphics div{
+    display: inline-block;
+}
+@media screen and (max-width:575px) {
+    .collegey-magazine-title {
+        font-size: 20px;
+        line-height: 25px;
+    }
+    .collegey-magazine-subtitle {
+        font-size: 12px;
+    }
+    .collegey-graphics div{
+        width: 65%;
+    }
+}
+@media screen and (min-width:576px) and (max-width:767px) {
+    .collegey-magazine-title {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .collegey-magazine-subtitle {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .collegey-graphics div{
+        width: 65%;
+    }
+}
+@media screen and (min-width:768px) and (max-width:991px) {
+    .collegey-magazine-title {
+        font-size: 25px;
+        line-height: 30px;
+    }
+    .collegey-magazine-subtitle {
+        font-size: 15px;
+        line-height: 16px;
+    }
+    .collegey-graphics div{
+        width: 65%;
+    }
+}

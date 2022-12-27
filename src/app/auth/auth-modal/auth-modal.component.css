@@ -1,0 +1,15 @@
+.modal-content {
+    border: 0;
+    padding: 0px;
+    width: 100%;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: none;
+    background: #fff;
+}
+
+@media (max-width: 480px) {
+    /* .modal-content {
+        padding: 40px 30px;
+    } */
+}

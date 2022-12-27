@@ -1,0 +1,201 @@
+<!-- <div class="question-box-inner bottom-margin">
+    <p>All the lovely stuff you have done that we can promote.</p>
+    <form [formGroup]="studentProjectForm" *ngIf="studentProjectForm">
+        <ng-container formGroupName="projects">
+            <div class="form-box" formGroupName="any_bpp">
+                <div class="form-group fields">
+                    <label class="field-label" for="doneBigProject">Have you done any Big Picture Project?</label>
+                    <ng-select class="educationType" id="doneBigProject" placeholder="Select" bindLabel="name" bindValue="name" [searchable]="false" [clearable]="false" [items]="doneBigProject" formControlName="answer">
+                    </ng-select>
+                </div>
+                <ng-container *ngIf="projectFormAbstractControl.get('any_bpp').get('answer').value == 'Yes'">
+                    <div class="form-group fields">
+                        <label class="field-label" for="projectTitle">Project Title</label>
+                        <input type="text" class="form-control field-control" formControlName="title" placeholder="Enter project title">
+                    </div>
+                    <div class="form-group fields">
+                        <label class="field-label" for="projectDescription">Project Description</label>
+                        <textarea class="form-control textarea-field" id="projectDescription" formControlName="description" placeholder="Description"></textarea>
+                    </div>
+                </ng-container>
+                <p *ngIf="projectFormAbstractControl.get('any_bpp').get('answer').value == 'No' || projectFormAbstractControl.get('any_bpp').get('answer').value == 'Planning to do'" class="project-signup">Sign up for a <a href="https://intled.typeform.com/to/lMwhB4" target="_blank">Big Picture Project</a>, it helps you do projects for your future-readiness and portfolio building.</p>
+            </div>
+            <div class="save-information top-spacing">
+                <p class="information-heading">Describe any project/class project that you have done</p>
+                <button class="add-more-education remove-margin" (click)="openAddProjectsModal(null)">+
+          Add Project</button>
+                <ng-container formArrayName="describe_any_project" *ngFor="let project of describeProjectFormArray.controls; let i = index;">
+                    <div class="save-projects" style="display:block;" formGroupName={{i}}>
+                        <button type="button" class="edit-details-button" (click)="openAddProjectsModal(project)"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+                        <button type="button" class="edit-details-button top-shift33" (click)="onRemoveQuestion(project.get('_id').value, describeProjectFormArray, projectQuestion.DESCRIBE_PROJECT, i)">
+              <img src="assets/images/delete.svg"></button>
+                        <p class="college-name">{{project.get('title').value}}</p>
+                        <p class="college-name"><a [href]="project.get('project_url')" target="_blank">{{project.get('project_url').value}}</a></p>
+
+
+                        <p class="project-desc">{{project.get('description').value}}</p>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="save-information top-spacing">
+                <p class="information-heading">Share any writing sample, essays or any of your published or in-progress work that you wish to share</p>
+                <button class="add-more-education remove-margin" (click)="openAddWritingSampleModal(null)">+ Add</button>
+                <ng-container formArrayName="writing_sample" *ngFor="let writingSample of writingSampleFormArray.controls; let i =index;">
+
+                    <div class="save-projects" [formGroupName]="i">
+                        <button type="button" class="edit-details-button" (click)="openAddWritingSampleModal(writingSample)"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+                        <button type="button" class="edit-details-button top-shift3" (click)="onRemoveQuestion(writingSample.get('_id').value, writingSampleFormArray, projectQuestion.WRITING_SAMPLE, i)"><img
+                src="assets/images/delete.svg"></button>
+                        <p class="college-name" *ngIf="writingSample.get('answer').value != 'Yes'">
+                            {{writingSample.get('answer').value}}</p>
+                        <p class="college-name">{{writingSample.get('title').value}}</p>
+                        <p class="project-desc">{{writingSample.get('description').value}}</p>
+                        <p class="document-uploaded" *ngFor="let image of _getImageName(writingSample.get('file').value)"><button type="button">{{image}}</button></p>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="save-information top-spacing">
+                <p class="information-heading">Someone said something good about your work? Post it here. You can also upload your Letters of Recommendation (LoR) or References.</p>
+                <button class="add-more-education remove-margin" (click)="openAboutYourWorkModal(null)">+ Add</button>
+                <ng-container formArrayName="someone_said_something_or_recommendation" *ngFor="let recommendation of recommendationFormArray.controls; let i =index;">
+
+                    <div class="save-projects" [formGroupName]="i">
+                        <button type="button" (click)="openAboutYourWorkModal(recommendation)" class="edit-details-button"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+                        <button type="button" class="edit-details-button top-shift3" (click)="onRemoveQuestion(recommendation.get('_id').value, recommendationFormArray, projectQuestion.RECOMMENDATION, i)"><img
+                src="assets/images/delete.svg"></button>
+                        <p class="college-name">{{recommendation.get('title').value}}</p>
+                        <p class="project-desc">{{recommendation.get('description').value}}</p>
+                        <p class="document-uploaded" *ngFor="let image of _getImageName(recommendation.get('file').value)"><button type="button">{{image}}</button></p>
+                    </div>
+
+                </ng-container>
+            </div>
+            <div class="save-information top-spacing">
+                <p class="information-heading">Let’s showcase your credentials
+                    <span>Add awards/certificates/ participations/internship/volunteer experience/online learning</span></p>
+                <button class="add-more-education remove-margin" (click)="openAddAwardsModal(null)">+ Add</button>
+                <ng-container formArrayName="award" *ngFor="let award of awardsFormArray.controls; let i =index;">
+                    <div class="save-projects" [formGroupName]="i">
+                        <button type="button" class="edit-details-button" (click)="openAddAwardsModal(award)"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+                        <button type="button" class="edit-details-button top-shift3" (click)="onRemoveQuestion(award.get('_id').value, awardsFormArray, projectQuestion.AWARDS, i)"><img
+                src="assets/images/delete.svg"></button>
+                        <p class="college-name">{{award.get('title').value}} <span *ngIf="award.get('type').value">({{award.get('type').value}})</span></p>
+                        <p class="college-branch">{{award?.get('issuing_organisation').value}}</p>
+                        <p class="batch-year year-fonts">{{award.get('duration').value}}</p>
+                        <p class="batch-year year-fonts">{{award.get('role').value}}</p>
+                        <p class="project-desc">{{award.get('description').value}}</p>
+                        <p class="document-uploaded" *ngFor="let image of _getImageName(award.get('file').value)"><button type="button">{{image}}</button></p>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="save-btn-box">
+                <button type="button" class="save-and-exit" (click)="onSubmitForm(true)">Save & Exit</button>
+                <button type="button" class="save-btn" (click)="onSubmitForm(false)">Submit</button>
+            </div>
+        </ng-container>
+    </form>
+</div> -->
+<div class="lead-form-wrapper">
+    <div class="lead-form container">
+        <p class="steps-login">5 of 8</p>
+        <p class="heading">Project & Accomplishments</p>
+        <form class="login-form row" [formGroup]="studentProjectForm" *ngIf="studentProjectForm">
+            <p>All the lovely stuff you have done that we can promote.</p>
+            <div class="final-education-details">
+                <h3>Describe any independent or class project that you have done</h3>
+                <a class="edit-link" (click)="openAddProjectsModal(null)" style="cursor: pointer;">+ ADD PROJECT</a>
+                <ng-container  *ngFor="let project of describeProjectFormArray?.controls; let i = index;">
+                    <div class="save-projects" style="display:block;"> 
+                        <button type="button" class="edit-details-button" (click)="openAddProjectsModal(project)"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+                        <button type="button" class="delete-details-button top-shift33" (click)="onRemoveQuestion(project.get('_id').value, describeProjectFormArray, projectQuestion.DESCRIBE_PROJECT, i)">
+              <img src="assets/images/delete.svg"></button>
+                        <p class="college-name">{{project.get('title').value}}</p>
+                        <p class="college-name"><a [href]="project.get('project_url')" target="_blank">{{project.get('project_url').value}}</a></p>
+                        
+                        <p class="project-desc">{{project.get('description').value}}</p>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="final-education-details">
+                <h3>Share any writing sample, essays or any of your published or in-progress work that
+                    you wish to share</h3>
+                <a class="edit-link" style="cursor: pointer;" (click)="openAddWritingSampleModal(null)">+ ADD</a>
+                <ng-container *ngFor="let writingSample of writingSampleFormArray.controls; let i =index;">
+
+                    <div class="save-projects">
+                        <button type="button" class="edit-details-button" (click)="openAddWritingSampleModal(writingSample)"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+                        <button type="button" class="delete-details-button top-shift3" (click)="onRemoveQuestion(writingSample.get('_id').value, writingSampleFormArray, projectQuestion.WRITING_SAMPLE, i)"><img
+                src="assets/images/delete.svg"></button>
+                        <p class="college-name" *ngIf="writingSample.get('answer').value != 'Yes'">
+                            {{writingSample.get('answer').value}}</p>
+                        <p class="college-name">{{writingSample.get('title').value}}</p> 
+                        <p class="project-desc">{{writingSample.get('description').value}}</p>
+                        <!-- <p class="document-uploaded" *ngFor="let image of _getImageName(writingSample.get('file').value)"><button type="button">{{image}}</button></p> -->
+                        <p class="document-uploaded" *ngFor="let image of writingSample.get('file').value">
+                            <a [href]="commonService.imagePathS3(image)">{{sliceImageName(image)}}</a>
+                        </p>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="final-education-details">
+                <h3>Upload your
+                    Letters of Recommendation (LoRs) or References.</h3>
+                <a class="edit-link" style="cursor: pointer;" (click)="openAboutYourWorkModal(null)">+ ADD</a>
+                <ng-container *ngFor="let recommendation of recommendationFormArray.controls; let i =index;">
+
+                    <div class="save-projects">
+                        <button type="button"  (click)="openAboutYourWorkModal(recommendation)" class="edit-details-button"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+                        <button type="button"  class="edit-details-button top-shift3" (click)="onRemoveQuestion(recommendation.get('_id').value, recommendationFormArray, projectQuestion.RECOMMENDATION, i)"><img
+                src="assets/images/delete.svg"></button>
+                        <p class="college-name">{{recommendation.get('title').value}}</p>
+                        <p class="project-desc">{{recommendation.get('description').value}}</p>
+                        <!-- <p class="document-uploaded" *ngFor="let image of _getImageName(recommendation.get('file').value)"><button type="button">{{image}}</button></p> -->
+                        <p class="document-uploaded" *ngFor="let image of recommendation.get('file').value">
+                            <a [href]="commonService.imagePathS3(image)">{{sliceImageName(image)}}</a>
+                        </p>
+                    </div>
+                    
+                </ng-container>
+            </div>
+            <div class="final-education-details">
+                <h3>Let’s showcase your credentials</h3>
+                <p style="margin-bottom: 0;">Add awards/certificates/
+                    participations/internship/volunteer experience/online
+                    learning</p>
+                <a class="edit-link" style="cursor: pointer;" (click)="openAddAwardsModal(null)">+ ADD</a>
+                <ng-container *ngFor="let award of awardsFormArray.controls; let i =index;">
+                    <div class="save-projects">
+                        <button type="button" class="edit-details-button" (click)="openAddAwardsModal(award)"><img
+                src="assets/images/on-boarding/pencil-icon.svg"></button>
+                        <button type="button" class="edit-details-button top-shift3" (click)="onRemoveQuestion(award.get('_id').value, awardsFormArray, projectQuestion.AWARDS, i)"><img
+                src="assets/images/delete.svg"></button>
+                        <p class="college-name">{{award.get('title').value}} <span *ngIf="award.get('type').value">({{award.get('type').value}})</span></p>
+                        <p class="college-branch">{{award?.get('issuing_organisation').value}}</p>
+                        <p class="batch-year year-fonts">{{award.get('duration').value}}</p>
+                        <p class="batch-year year-fonts">{{award.get('role').value}}</p>
+                        <p class="project-desc">{{award.get('description').value}}</p>
+
+                        <p class="document-uploaded" *ngFor="let image of award.get('file').value">
+                            <a [href]="commonService.imagePathS3(image)">{{sliceImageName(image)}}</a>
+                        </p>
+
+                    </div>
+                </ng-container>
+            </div>
+        </form>
+    </div>
+    <div class="btn-wrapper">
+        <button class="backbutton" (click)="onFormBack()">Back</button>
+        <div>
+            <button class="savebtn" (click)="onSubmitForm(false)">Save and Complete later</button>
+            <button class="submitbutton" (click)="onSubmitForm(true)">SAVE AND CONTINUE</button>
+        </div>
+    </div>
+  </div>

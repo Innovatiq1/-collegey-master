@@ -1,0 +1,197 @@
+<app-dash-header></app-dash-header>
+<div class=" mentor-outer">
+    <div class="container">
+        <div class=" mentor-resourese">
+            <div class="row">
+                <div class="header-title">
+                    <h1>{{ resourcesTitle?.studentResourcesTitle }}</h1>
+                </div>
+                <div class="resource_notfound" *ngIf="mentorResourcenotFound">
+                    No Data Found
+                </div>
+            </div>
+            <div class="row position-relative">
+
+                <a *ngIf="resourcesData?.length >= 5" class="slide_pagignation" (click)="onListChangePage($event)"><i
+                        class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>
+
+                <a *ngIf="mentorResourceLeftpagignation" class="slide_left_pagignation"
+                    (click)="onResourceListPreviousPage($event)"><i class="fa fa-chevron-circle-left"
+                        aria-hidden="true"></i></a>
+
+                <div class="card cardvideo" *ngFor="let listResource of resourcesData; let i = index">
+                    <iframe width="100%" height="250" [src]='listResource?.link' title="{{listResource?.title}}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    <h2>{{listResource?.title}}</h2>
+                    <p>{{listResource?.description}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class=" mentor-resourese">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header-title">
+                        <h1>{{ resourcesTitle?.studentFavoriteArticlesTitle }}</h1>
+                    </div>
+                    <div class="resource_notfound" *ngIf="mentorArticalnotFound">
+                        No Data Found
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row position-relative">
+                        <!-- CARD 1-->
+                        <a *ngIf="mentorArticleData?.length >= 4" class="slide_pagignation"
+                            (click)="onArticalChangePage($event)"><i class="fa fa-chevron-circle-right"
+                                aria-hidden="true"></i></a>
+
+                        <a *ngIf="mentorArticalLeftpagignation" class="slide_left_pagignation"
+                            (click)="onArticalListPreviousPage($event)"><i class="fa fa-chevron-circle-left"
+                                aria-hidden="true"></i></a>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12"
+                            *ngFor="let listArticle of mentorArticleData; let i = index">
+                            <a href='{{listArticle?.external_link}}' target="_blank" class="url-box">
+                                <figure class='newsCard news-Slide-up '>
+                                    <img *ngIf="listArticle?.image" src="{{listArticle?.image}}" />
+                                    <img *ngIf="!listArticle?.image"
+                                        src="https://www.bridgeforbillions.org/wp-content/uploads/2020/08/harvard-business-review-3-700x700.png" />
+                                    <div class='newsCaption px-4'>
+                                        <div class="d-flex align-items-center justify-content-between cnt-title">
+                                            <h5 class='newsCaption-title text-white m-0'>{{listArticle?.title}}</h5>
+                                            <i class="fas fa-arrow-alt-circle-right "></i>
+                                        </div>
+                                        <div class='newsCaption-content d-flex '>
+                                            <p class="col-10 py-3 px-0">{{ listArticle?.shortdescription | slice:0:50
+                                                }}{{
+                                                listArticle?.shortdescription.length > 50 ? '...' : ''}}</p>
+                                        </div>
+                                    </div>
+                                    <span class="overlay"></span>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class=" mentor-resourese">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header-title">
+                        <h1>{{ resourcesTitle?.studentCuratedRsourcesTitle }}</h1>
+                    </div>
+                    <div class="resource_notfound" *ngIf="mentorCuratedResourcenotFound">
+                        No Data Found
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row position-relative">
+
+                        <!-- CARD 1-->
+
+                        <a *ngIf="mentorCuratedresources?.length >= 4" class="slide_pagignation"
+                            (click)="onCuratedChangePage($event)"><i class="fa fa-chevron-circle-right"
+                                aria-hidden="true"></i></a>
+
+                        <a *ngIf="mentorCuratedLeftpagignation" class="slide_left_pagignation"
+                            (click)="onCuratedListPreviousPage($event)"><i class="fa fa-chevron-circle-left"
+                                aria-hidden="true"></i></a>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12"
+                            *ngFor="let listCurate of mentorCuratedresources; let i = index">
+                            <a href='{{listCurate?.external_link}}' target="_blank" class="url-box">
+                                <figure class='newsCard news-Slide-up '>
+                                    <img *ngIf="listCurate?.image" src="{{listCurate?.image}}" />
+                                    <img *ngIf="listCurate?.image"
+                                        src="https://www.bridgeforbillions.org/wp-content/uploads/2020/08/harvard-business-review-3-700x700.png" />
+                                    <div class='newsCaption px-4'>
+                                        <div class="d-flex align-items-center justify-content-between cnt-title">
+                                            <h5 class='newsCaption-title text-white m-0'>{{listCurate?.title}}</h5>
+                                            <i class="fas fa-arrow-alt-circle-right "></i>
+                                        </div>
+                                        <div class='newsCaption-content d-flex '>
+                                            <p class="col-10 py-3 px-0">{{ listCurate?.shortdescription | slice:0:50
+                                                }}{{
+                                                listCurate?.shortdescription.length > 50 ? '...' : ''}}</p>
+                                        </div>
+                                    </div>
+                                    <span class="overlay"></span>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class=" mentor-resourese">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header-title">
+                        <h1>{{ resourcesTitle?.studentResourceFileTitle }}</h1>
+                    </div>
+                    <div class="resource_notfound" *ngIf="mentorFilenotFound">
+                        No Data Found
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row position-relative">
+                        <!-- CARD 1-->
+
+                        <a *ngIf="mentorFileData?.length >= 4" class="slide_pagignation"
+                            (click)="onFileChangePage($event)"><i class="fa fa-chevron-circle-right"
+                                aria-hidden="true"></i></a>
+
+                        <a *ngIf="mentorFilepagignation" class="slide_left_pagignation"
+                            (click)="onFileListPreviousPage($event)"><i class="fa fa-chevron-circle-left"
+                                aria-hidden="true"></i></a>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12"
+                            *ngFor="let listfile of mentorFileData; let i = index">
+                            <a href='{{listfile?.file}}' target="_blank" class="url-box">
+                                <figure class='newsCard news-Slide-up '>
+
+                                    <img *ngIf="listfile?.fileType == 'application/pdf'"
+                                        src="assets/images/resources/PDF.jpg">
+                                    <img *ngIf="listfile?.fileType == 'video/mp4'"
+                                        src="assets/images/resources/YouTube.jpg">
+                                    <img *ngIf="listfile?.fileType == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+                                        src="assets/images/resources/Docs.jpg">
+                                    <img *ngIf="listfile?.fileType == 'application/vnd.ms-excel'"
+                                        src="assets/images/resources/XLS.jpg">
+                                    <img *ngIf="listfile?.fileType == 'image/png'"
+                                        src="assets/images/resources/PNG.jpg">
+                                    <img *ngIf="listfile?.fileType == 'image/jpeg'"
+                                        src="assets/images/resources/JPG.jpg">
+
+                                    <div class='newsCaption px-4'>
+                                        <div class="download_link">Click to Download</div>
+                                        <div class="d-flex align-items-center justify-content-between cnt-title">
+                                            <h5 class='newsCaption-title text-white m-0'>{{listfile?.title}}</h5>
+                                            <i class="fas fa-arrow-alt-circle-right "></i>
+                                        </div>
+                                        <div class='newsCaption-content d-flex '>
+                                            <p class="col-10 py-3 px-0"
+                                                [innerHTML]="listfile?.description.slice(0, 100)"></p>
+                                        </div>
+                                    </div>
+                                    <span class="overlay"></span>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

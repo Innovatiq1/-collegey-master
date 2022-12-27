@@ -1,0 +1,230 @@
+<app-mentor-globaldashboard activeTab="tab7"></app-mentor-globaldashboard>
+<!-- Mentor Event -->
+<div class="container mb-3">
+    <button class="btn btn-danger clg-create-events-btn" (click)="openAddEvent(openAddScheduleEvent,false,'')">Create Events</button>
+    <select class="filter_hostevent form-control pull-right" name="filter_hostevent" (change)="onChangeEventFilter($event)">
+        <option value="my_event" >My Events</option>  
+        <option value="all_event" selected>All Events</option>
+    </select>
+</div>
+<div class="container">
+    <div *ngIf="noEventData" class="noEventData">No Events Found</div>
+    <div class="events_list" *ngFor="let listevent of mentorHostevent; let i = index">        
+        <div class="events_img"
+            [ngStyle]="{'background-image': listevent?.logo ? 'url(' + listevent?.logo + ')' : 'url(./../../../assets/images/logo_image/new-collegey-home.png)' }">
+        </div>
+        <div class="events_data">
+            <h3 class="title">{{listevent?.eventName}}</h3>
+            <div class="schedule-meetings-box">
+                <div class="project-timing-box">
+                    <p class="mg-r20"><span class="cal-icon"></span>&nbsp; {{listevent?.eventFrequency}}</p>
+                    <p class="mg-r20"><span class="fa fa-globe"></span>&nbsp; Time Zone: {{listevent?.timezone}}</p>
+                    <p><span class="cloak-icon"></span>{{listevent?.startEvent}}
+                </div>
+            </div>
+            <span *ngIf="listevent?.eventFrequency != 'One time'">{{ listevent?.startDate | date: "d MMM y" }} To {{ listevent?.endDate | date: "d MMM y" }}</span>
+            <span *ngIf="listevent?.eventFrequency == 'One time'">{{ listevent?.startDate | date: "d MMM y" }}</span>
+            <div class="eventshow_schedule" *ngIf="listevent?.online_link">
+                <b>Online link : </b> <a href="listevent?.online_link" target="_blank">{{listevent?.online_link}}</a>
+            </div>
+            <div class="eventshow_schedule" *ngIf="listevent?.avenue_address">
+                <b>Venue Address :</b> {{listevent?.avenue_address}}
+            </div>
+            <div class="desq">{{listevent?.description}}</div>
+            <div class="event-guest">
+                <ul>
+                    <li *ngFor="let listGuest of listevent?.userdata | slice:0:5; let e=index;">
+                        <img *ngIf="listGuest?.avatar" [src]="commonService.imagePathS3(listGuest?.avatar)" alt="">
+                        <img *ngIf="!listGuest?.avatar" src="/assets/images/profile-picture.png" alt="">
+                    </li>
+                </ul>
+                <a *ngIf="listevent?.userdata.length > 5" href="javascript:;" class="more-link"
+                    (click)="openEventUserList(openScheduleEventUser,i)">more</a>
+            </div>
+        </div>
+        <div class="events_date">
+            <a *ngIf="this.userInfo?._id == listevent?.organizer" class="edit_eventdata"
+                (click)="openAddEvent(openAddScheduleEvent,true,listevent?._id)"><i class="fa fa-pencil-square-o"
+                    aria-hidden="true"></i></a>
+            <!-- <a *ngIf="this.userInfo?._id == listevent?.organizer" class="delete_eventdata"
+                (click)="deleteEvent(listevent?._id)"><i class="fa fa-trash-o"
+                    aria-hidden="true"></i></a> -->
+            <a *ngIf="this.userInfo?._id == listevent?.organizer" class="delete_eventdata"
+            (click)="deleteConformationEvent(openEventDeleteDialog,listevent?._id)"><i class="fa fa-trash-o"
+                    aria-hidden="true"></i></a>
+            
+        </div>
+    </div>
+</div>
+
+<ng-template #openScheduleEventUser>
+    <div class=" schedule-event-modal">
+        <div class="schedule-form">
+            <h5 class="mb-2 text-center">
+                Member List
+            </h5>
+        </div>
+        <div class="list_eventuser">
+            <div class="member_list" *ngFor="let project_memberlist of EventUserList; let i=index;">
+                <div class="imgsdiv">
+                    <img *ngIf="project_memberlist?.avatar" class="imgs"
+                        [src]="commonService.imagePathS3(project_memberlist?.avatar)" alt=""
+                        title="{{project_memberlist?.name}}">
+                    <img *ngIf="!project_memberlist.avatar" class="imgs" src='assets/images/user-icon.png' alt=""
+                        title="{{project_memberlist?.name}}">
+                </div>
+                <h5 class="name_txt">{{project_memberlist?.name}} {{project_memberlist?.last_name}}</h5>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #openAddScheduleEvent>
+    <div class=" schedule-event-modal">
+        <div class="schedule-form">
+            <i class="fa fa-times close_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+            <h5>
+                Schedule Event
+            </h5>
+            <form [formGroup]="scheduleEventForm" method="post" novalidate>
+                <div class="form-group">
+                    <label style="color: #141414; font-weight: 600;">Enter event type*</label>
+                    <input type="text" class="clg-place-color" placeholder="Enter event name *" formControlName="eventName" name="eventName">
+                    <span *ngIf="submittedEvent && (hasErrorEvent('eventName','required') || hasErrorEvent('eventName','pattern'))" class="d-block"
+                        style="color: red;">Event is required.</span>
+                </div>
+                <div class="form-group">
+                    <label style="color: #141414; font-weight: 600;">Time Zone</label>
+                    <ng-select [(ngModel)]="selectedTimeZone" formControlName="timezone">
+                        <ng-option [value]="">Select time zone</ng-option>
+                        <!-- <p class="sekec_text">Choose one or two SDGs most relevant for this project</p> -->
+                        <ng-option *ngFor="let item of timeZoneList| keyvalue" [value]="item.key">{{item.value}}
+                        </ng-option>
+                    </ng-select>
+
+                    <!-- <select formControlName="timezone" name="timezone">
+                        <option value="">Select time zone *</option>
+                        <option *ngFor="let item of timeZoneList | keyvalue" value="{{item.key}}">{{item.value}}
+                        </option>
+                    </select> -->
+
+                    <span *ngIf="submittedEvent && hasErrorEvent('timezone','required')" class="d-block"
+                        style="color: red;">Timezone is required.</span>
+                </div>
+
+                <div class="form-group">
+                    <label style="color: #141414; font-weight: 600;">Select event type*</label>
+                    <select id="" formControlName="event_status" name="event_status"
+                        (change)="onChangeEventStatus($event)">
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                    </select>
+                    <span *ngIf="submittedEvent && hasErrorEvent('event_status','required')" class="d-block"
+                        style="color: red;">Event status is required.</span>
+                </div>
+
+                <div class="form-group" *ngIf="current_eveneStatus == 'online'">
+                    <label style="color: #141414; font-weight: 600;">Event Online link*</label>
+                    <input type="text" placeholder="Enter Event Online Link" formControlName="online_link" name="online_link">
+                </div>
+
+                <div class="form-group" *ngIf="current_eveneStatus == 'offline'">
+                    <label style="color: #141414; font-weight: 600;">Event venue address*</label>
+                    <input type="text" placeholder="Enter Event Venue Address" formControlName="avenue_address"
+                        name="avenue_address">
+                </div>
+
+                <div class="form-field">
+                    <div>
+                        <label for=""> Start date *</label>
+                        <input type="date" formControlName="startDate" name="startDate">
+                        <span *ngIf="submittedEvent && hasErrorEvent('startDate','required')" class="d-block"
+                            style="color: red;">StartDate is required.</span>
+                    </div>
+                    <div>
+                        <label for=""> Start Time *</label>
+                        <input type="time" formControlName="startTime" name="startTime">
+                        <span *ngIf="submittedEvent && hasErrorEvent('startTime','required')" class="d-block"
+                            style="color: red;">StartTime is required.</span>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <div>
+                        <label for=""> End Date *</label>
+                        <input type="date" formControlName="endDate" name="endDate">
+                        <span *ngIf="submittedEvent && hasErrorEvent('endDate','required')" class="d-block"
+                            style="color: red;">EndDate is required.</span>
+                    </div>
+                    <div>
+                        <label for=""> End Time *</label>
+                        <input type="time" formControlName="endTime" name="endTime">
+                        <span *ngIf="submittedEvent && hasErrorEvent('endTime','required')" class="d-block"
+                            style="color: red;">EndTime is required.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label style="color: #141414; font-weight: 600;">Event frequency</label>
+                    <select name="" id="" formControlName="eventFrequency" name="eventFrequency">
+                        <option value="">Event frequency</option>
+                        <option value="One time">One time</option>
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                    </select>
+                    <span *ngIf="submittedEvent && hasErrorEvent('eventFrequency','required')" class="d-block"
+                            style="color: red;">Event Frequency is required.</span>
+                </div>
+
+                <div class="form-group">
+                    <label style="color: #141414; font-weight: 600;">Event description</label>
+                    <textarea (change)="wordCounter($event);" name="description" formControlName="description" rows="3" class="form-control clg-place-color"
+                        placeholder="Enter Description Here *"></textarea>
+                    <span *ngIf="showWordLimitError" class="d-block" style="color: red;">Max word limit is 250</span>
+                    <span *ngIf="submittedEvent && (hasErrorEvent('description','required') || hasErrorEvent('description','pattern'))" class="d-block"
+                        style="color: red;">Description is required.</span>
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile" (change)="uploadEventImage($event)"
+                            accept=".png,.jpeg,.jpg">
+                        <label class="custom-file-label" for="customFile">Choose Image</label>
+                    </div>
+                    <div class="event_imageRem">
+                        <img *ngIf="eventImage" alt="eventImage" style="height: 100px; width: 100px;margin-top: 5px;"
+                            src="{{eventImage}}">
+                        <i *ngIf="eventImage" class="fa fa-times-circle" aria-hidden="true"
+                            (click)="removeEventImage()"></i>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="schedule-event-action">
+            <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+            <a *ngIf="event_operationStatus == 'Add'" href="javascript:;" (click)="addScheduleEvent()"
+                class="show-result-btn">Submit</a>
+            <a *ngIf="event_operationStatus == 'Edit'" href="javascript:;" (click)="addScheduleEvent()"
+                class="show-result-btn">Update</a>
+        </div>
+    </div>
+</ng-template>
+<ng-template #openEventDeleteDialog>
+    <div class="modal-form-wrap position-relative conformationModel" style="background: white;">
+        <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+        <div class="modal-form-header bottom-border pt-2 pb-3">
+            <h5 class="heading">Are you sure delete this Event ?</h5>
+        </div>
+        <div class="modal-form-footer">
+            <div class="row top-box">
+                <div class="footer-texteditor">
+                    <div class="row feed-item">
+                        <button type="button" style="border: 1px;
+                              color: #141414;font-weight: 600; margin-right: 10px;"
+                            (click)="modalRef.hide()">No</button>&nbsp;&nbsp;
+                        <button (click)="deleteEvent()" type="submit" id="btn" class="btn" style="color: white;">YES</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </ng-template>

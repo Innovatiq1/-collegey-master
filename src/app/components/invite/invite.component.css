@@ -1,0 +1,122 @@
+.background {
+  background-color: #f7f7f7;
+}
+.board {
+  background: white;
+  padding: 53px 50px;
+  height: fit-content;
+  margin: 100px;
+  border-radius: 12px;
+}
+.welcome {
+  font-size: 32px;
+  font-family: Georgia;
+  line-height: 36px;
+  color: #141414;
+}
+.content {
+  font-size: 16px;
+  font-family: Nunito;
+  font-weight: 600;
+  line-height: 22px;
+  color: #838383;
+  margin-top: 20px;
+  margin-bottom: 36px;
+}
+
+.information {
+  font-size: 20px;
+  font-family: Nunito;
+  font-weight: 600;
+  line-height: 27px;
+  color: #141414;
+}
+.group {
+  position: relative;
+  padding: 0;
+  width: 304px;
+}
+.group div {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #979797;
+  border-radius: 6px;
+  padding: 9px 0 5px 0;
+  margin-bottom: 20px;
+}
+input,
+.lead-form textarea {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  text-align: left;
+  font: normal normal normal 14px/19px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+}
+input::placeholder,
+.lead-form textarea::placeholder {
+  text-align: left;
+  font: normal normal normal 14px/19px Nunito;
+  letter-spacing: 0px;
+  color: #dbdbdb;
+}
+input,
+textarea {
+  background: none;
+  display: block;
+  border: none;
+  border-radius: 0;
+  padding: 10px 10px 0 10px;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+input:focus ~ label,
+textarea:focus ~ label,
+input:valid ~ label,
+textarea:valid ~ label {
+  top: 5px;
+  font: normal normal bold 10px/14px Nunito;
+  letter-spacing: 0px;
+  color: #d3d3d3;
+}
+input:focus ~ .bar:before,
+textarea:focus ~ .bar:before {
+  width: 100%;
+}
+input[type="password"] {
+  letter-spacing: 0.3em;
+}
+input {
+  height: 40px;
+}
+
+label {
+  position: absolute;
+  pointer-events: none;
+  transition: 300ms ease all;
+  font: normal normal normal 14px/19px Nunito;
+  letter-spacing: 0px;
+  color: #dbdbdb;
+  top: 17px;
+  margin: 0;
+  left: 10px;
+}
+.email-invite {
+  font-size: 10px;
+  font-family: Nunito;
+  font-weight: 400;
+  line-height: 14px;
+  color: #afafaf;
+  margin-bottom: 40px;
+}
+.continue {
+  background-color: #3f89fc;
+  font-size: 14px;
+  color: #ffffff;
+  font-family: Nunito;
+  font-weight: bold;
+  line-height: 19px;
+  border-radius: 6px;
+  height: 40px;
+  width: 304px;
+}

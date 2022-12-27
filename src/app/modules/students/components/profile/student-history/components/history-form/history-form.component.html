@@ -1,0 +1,876 @@
+<!-- <ng-container [formGroup]="educationForm" *ngIf="educationForm">
+    <h4 class="education-title">Your {{qualificationType}} Details</h4>
+    <ng-container *ngIf="qualificationType === 'School' || qualificationType=== 'College'">
+        <div class="form-group fields">
+            <label class="field-label" for="schoolName">{{qualificationType ==='College' ? 'College/institution' : 'High school'}}
+      name:</label>
+            <input type="text" class="form-control field-control" formControlName="name" [placeholder]="qualificationType ==='College' ? 'Enter College/Institution Name': 'Enter High School Name'">
+        </div>
+        <div class="form-group fields">
+            <label class="field-label" for="institutionLocation">{{qualificationType ==='College' ? 'College/institution' : 'High school'}}
+      location (city/state):</label>
+            <input type="text" class="form-control field-control" formControlName="location" [placeholder]="qualificationType ==='College' ? 'Enter Location (city/state)': 'Enter Location (city/state)'">
+        </div>
+    </ng-container>
+    <div class="form-group fields bottom-space" *ngIf="qualificationType==='School'">
+        <label class="field-label" for="gradeLevelAttended">Grade level attended at:</label>
+        <ng-select class="educationType" id="gradeLevelAttended" name="gradeLevelAttended" placeholder="Select" bindLabel="name" bindValue="name" [items]="currentClass" [multiple]="true" [addTag]="addTagFn" [closeOnSelect]="false" formControlName="grade_choosen"
+            (remove)="onRemoveStudentGrade($event)" (change)="onAddStudentGrade($event)">
+        </ng-select>
+        <app-input-validation [control]="educationForm.get('grade_choosen')" [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+
+        <span class="note-span">If you did not change your high school, you can select multiple grades.</span>
+    </div>
+    <div class="grade-tab-wrap" formArrayName="grade" *ngFor="let grade of 
+  typeCastToFormArray(educationForm.get('grade')).controls; let index = index;">
+        <div class="grade-tab" [formGroupName]=index *ngIf="grade.get('name').value">
+            <p class="grade-level">Grade {{grade.get('name').value}} <span>Details</span></p>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group fields">
+                        <label class="field-label" for="startYear">Start Year:</label>
+                        <input type="text" class="form-control field-control" placeholder="Year" formControlName="start_year" bsDatepicker [bsConfig]="{dateInputFormat: 'YYYY'}" (onShown)="onOpenCalendarYear($event)">
+                        <app-input-validation [control]="grade.get('start_year')" [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group fields">
+                        <label class="field-label" for="endYear">End Year (or expected):</label>
+                        <input type="text" class="form-control field-control" placeholder="Year" formControlName="end_year" bsDatepicker [bsConfig]="{dateInputFormat: 'YYYY'}" (onShown)="onOpenCalendarYear($event)">
+                        <app-input-validation [control]="grade.get('end_year')" [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="schoolBoard">High School Board:</label>
+                <ng-select class="educationType" id="schoolBoard" name="schoolBoard" placeholder="Select" bindLabel="name" bindValue="name" formControlName="board" [addTag]="addTagFn" [searchable]="true" [clearable]="true" [closeOnSelect]="false" [clearSearchOnAdd]="true"
+                    [items]="schoolBoard">
+                </ng-select>
+                <app-input-validation [control]="grade.get('board')" [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="fieldOfStudy">Subjects (select upto 5 or add new subject):</label>
+                <ng-select class="educationType" id="fieldOfStudy" name="fieldOfStudy" placeholder="Select" bindLabel="name" bindValue="name" [searchable]="true" [clearable]="false" [items]="studySubjects" [multiple]="true" formControlName="field_of_study" [addTag]="addTagFn"
+                    [closeOnSelect]="false" [clearSearchOnAdd]="true" [maxSelectedItems]="5">
+                </ng-select>
+                <app-input-validation [control]="grade.get('field_of_study')" [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+            </div>
+            <div class="form-group fields">
+                <label class="field-label" for="grade">Score%/GPA:</label>
+                <input type="text" formControlName="score" name="grade" class="form-control field-control left-border" placeholder="Enter Latest Score%/GPA">
+                <app-input-validation [control]="grade.get('score')" [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="qualificationType ==='College'">
+        <div class="form-group fields">
+            <label class="field-label" for="collegeDegree">College program type:</label>
+            <ng-select class="educationType" id="collegeDegree" name="collegeDegree" placeholder="Select" bindLabel="name" bindValue="name" formControlName="degree" [items]="collegeDegree" [addTag]="addTagFn" [searchable]="true" [clearable]="true" [closeOnSelect]="false"
+                [clearSearchOnAdd]="true">
+            </ng-select>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group fields">
+                    <label class="field-label" for="startYear">Start Year:</label>
+                    <input type="text" class="form-control field-control" placeholder="Year" formControlName="start_year" bsDatepicker [bsConfig]="{dateInputFormat: 'YYYY'}" (onShown)="onOpenCalendarYear($event)">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group fields">
+                    <label class="field-label" for="endYear">End Year (or expected):</label>
+                    <input type="text" class="form-control field-control" placeholder="Year" formControlName="end_year" bsDatepicker [bsConfig]="{dateInputFormat: 'YYYY'}" (onShown)="onOpenCalendarYear($event)">
+                </div>
+            </div>
+        </div>
+        <div class="form-group fields">
+            <label class="field-label" for="grade">Score%/GPA:</label>
+            <input type="text" formControlName="score" class="form-control field-control left-border" placeholder="Enter Latest Score%/GPA">
+        </div>
+        <div class="form-group fields">
+            <label class="field-label" for="fieldOfStudy">Subjects (select upto 5 or add new subject):</label>
+            <ng-select class="educationType" id="fieldOfStudy" name="fieldOfStudy" placeholder="Select" bindLabel="name" bindValue="name" [searchable]="true" [clearable]="false" [items]="studySubjects" [multiple]="true" formControlName="field_of_study" [addTag]="addTagFn"
+                [closeOnSelect]="false" [clearSearchOnAdd]="true" [maxSelectedItems]="5">
+            </ng-select>
+        </div>
+
+
+    </ng-container>
+
+
+    <pre>{{educationForm.value | json}}</pre>
+
+</ng-container> -->
+<!-- <ng-container [formGroup]="educationForm" *ngIf="educationForm">
+    <p>
+        You are in:
+    </p>
+    <div class="group col-sm-7 col-md-6 col-lg-5 pd-r15">
+        <div>
+            <label class="select-label">Select option</label>
+            <select (change) ="onChangeQualification($event)">
+                <option [value]="qualification.name" *ngFor="let qualification of userTypeList">{{qualification.name}}</option>
+            </select>
+        </div>
+    </div>
+    <ng-container *ngIf="qualificationType === 'School' || qualificationType=== 'College'">
+        <h6 class="school--grade">Your {{qualificationType}} Details</h6>
+        <div class="group col-sm-6 col-md-6 no-pad" *ngIf="qualificationType==='School'">
+            <div>
+                <label class="select-label label-pad-designleft">Grade level attended at:</label>
+                <select formControlName="grade_choosen"
+                (change)="onAddStudentGrade($event)" multiple>
+                    <option value="" disabled>Select grade level</option>
+                    <option [value]="class.name" *ngFor="let class of currentClass">{{class.name}}</option>
+                </select>
+            </div>
+        </div>
+        <p class="grade-imp-msg" *ngIf="qualificationType==='School'">If you did not change your high school, you can select multiple
+        grades.</p>
+        <ng-container *ngIf="qualificationType ==='School'">
+            <div formArrayName="grade" *ngFor="let grade of typeCastToFormArray(educationForm.get('grade')).controls; let index = index;">
+                <div [formGroupName]=index *ngIf="grade.get('name').value">
+                    
+                    <div class="flex-div">
+                        <div class="group col-sm-3 no-pad pd-r15">
+                            <div>
+                                <label class="select-label">Start Year</label>
+                                <select formControlName="start_year">
+                                    <option value="1">Select Year</option>
+                                    <option value="2" selected>9</option>
+                                    <option value="1">b</option>
+                                    <option value="1">c</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="group col-sm-3 no-pad ">
+                            <div>
+                                <label class="select-label label-pad-designleft">End Year</label>
+                                <select formControlName="end_year">
+                                    <option value="1">Select Year</option>
+                                    <option value="2">a</option>
+                                    <option value="1">b</option>
+                                    <option value="1">c</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="group col-sm-6 no-pad pd-l15">
+                            <div>
+                                <label class="select-label label-pad-designright">High School Board</label>
+                                <select formControlName="board">
+                                    <option value="" disabled>Select Board</option>
+                                    <option [value]="board" *ngFor="let board of schoolBoard">{{board}}</option>
+                                </select>
+                                <app-input-validation [control]="grade.get('board')" [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="group col-sm-6 no-pad">
+                        <div>
+                            <label class="select-label">Subjects</label>
+                            <select multiple formControlName="field_of_study">
+                                <option value="" disabled>Select upto 5 or add new subject</option>
+                                <option [value]="subject" *ngFor="let subject of studySubjects">{{subject}}</option>
+                            </select>
+                            <app-input-validation [control]="grade.get('field_of_study')" [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+                        </div>
+                        </div>
+                        <div class="group col-sm-6 no-pad pd-l15">
+                        <div>
+                            <input type="text" required="required" value="" formControlName="score"/>
+                            <label class="label-pad-designright">Score %/GPA</label>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="qualificationType ==='College'">
+                    <div class="flex-div">
+                        <div class="group col-sm-3 no-pad pd-r15">
+                            <div>
+                                <label class="select-label">Start Year</label>
+                                <select formControlName="start_year">
+                                    <option value="1">Select Year</option>
+                                    <option value="2" selected>9</option>
+                                    <option value="1">b</option>
+                                    <option value="1">c</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="group col-sm-3 no-pad ">
+                            <div>
+                                <label class="select-label label-pad-designleft">End Year</label>
+                                <select formControlName="end_year">
+                                    <option value="1">Select Year</option>
+                                    <option value="2">a</option>
+                                    <option value="1">b</option>
+                                    <option value="1">c</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="group col-sm-6 no-pad pd-l15">
+                            <div>
+                                <label class="select-label label-pad-designright">College program type</label>
+                                <select formControlName="degree">
+                                    <option value="" disabled>Select Degree</option>
+                                    <option [value]="degree" *ngFor="let degree of collegeDegree">{{degree}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="group col-sm-6 no-pad">
+                        <div>
+                            <label class="select-label">Subjects</label>
+                            <select multiple formControlName="field_of_study">
+                                <option value="" disabled>Select upto 5 or add new subject</option>
+                                <option [value]="subject" *ngFor="let subject of studySubjects">{{subject}}</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="group col-sm-6 no-pad pd-l15">
+                        <div>
+                            <input type="text" required="required" value="" formControlName="score"/>
+                            <label class="label-pad-designright">Score %/GPA</label>
+                        </div>
+                        </div>
+        </ng-container>
+        <div class="group col-sm-6 no-pad">
+            <div>
+                <input type="text" required="required" value="" formControlName="name"/>
+                <label class="">{{qualificationType ==='College' ? 'College/institution' : 'High school'}}
+                    name:</label>
+            </div>
+        </div>
+        <div class="group col-sm-6 no-pad pd-l15">
+            <div>
+                <input type="text" required="required" value="" formControlName="location"/>
+                <label class="label-pad-designright">{{qualificationType ==='College' ? 'College/institution' : 'High school'}}
+                    location (city/state):</label>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                   <h6>Your {{qualificationType}} Details </h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                   <label > <p style="font-size: 15px;" class="textarea-label"> You are in </p> </label>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <select formControlName="type" class="form-control" (change)="onChangeQualification($event)" [(ngModel)]="qualificationType">
+                        <option [value]="qualification.name" *ngFor="let qualification of userTypeList">
+                            {{qualification.name}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                   <label >&nbsp;</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                   <label> <p style="font-size: 15px;" class="textarea-label">Select grade level</p> </label>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    
+                    <ng-select
+                        [items]="currentClass2"
+                        placeholder="'Select Subject'"
+                        [multiple]="true"
+                        formControlName="grade_choosen"
+                        (add)="onAddStudentGrade($event)"
+                        (remove)="onRemoveStudentGrade($event)"
+                        (clear)="onClearStudentGrade()">
+                    </ng-select>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                   <label >&nbsp;</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                   <label> &nbsp;</label>
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9" *ngIf="qualificationType =='School'">
+                    <p *ngIf="qualificationType === 'School'" style="font-size: 15px;" class="grade-imp-msg grade-imp-msg-height">
+                        If you did not change your high school, you can select multiple grades.
+                    </p>
+                </div>
+            </div>
+
+
+<div class="group col-sm-6 no-pad add-item-btn">
+<a >+ ADD ANOTHER GRADE</a>
+</div>
+<div class="group col-sm-6 no-pad pd-l15 add-item-btn ">
+<a >+ ADD ANOTHER SCHOOL</a>
+</div> -->
+
+<div class="lead-form-wrapper">
+    <div class="lead-form">
+        <form [formGroup]="educationForm" *ngIf="educationForm" class="login-form row">
+            <div class="col-md-12 p-0">
+                <p style="font-size: 15px;">You are in:</p>
+
+                <div class="flex-div" *ngIf="formType == 'new'">
+                    <div class="group col-sm-12 p-0">
+                        <div>
+                            <label class="select-label">Select option</label>
+                            <select formControlName="type" (change)="onChangeQualification($event)"
+                                [(ngModel)]="qualificationType">
+                                <option [value]="qualification.name" *ngFor="let qualification of userTypeList">
+                                    {{qualification.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-div" *ngIf="formType == 'edit' && eduType != 'college student'">
+                    <div class="group col-sm-12 p-0">
+                        <div>
+                            <label class="select-label">Select option</label>
+                            <select formControlName="type" disabled>
+                                <option value="high school student" selected>
+                                    School
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-div" *ngIf="formType == 'edit' && eduType == 'college student'">
+                    <div class="group col-sm-12 p-0">
+                        <div>
+                            <label class="select-label">Select option</label>
+                            <select formControlName="type" disabled>
+                                <option value="college student" selected>
+                                    College
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h6 class="school--grade">Your {{qualificationType}} Details
+                <span style="color: #f00; margin-top: 15px;">*</span>
+            </h6>
+            <ng-container style="padding: 12px;margin-top: -5px;">
+                <div class="group col-sm-6 col-md-6 no-pad" *ngIf="qualificationType =='School'">
+                    <p style="font-size: 15px;" class="textarea-label">Select grade level<span
+                            style="color: #f00; margin-top: 15px;">*</span></p>
+                    <ng-select [items]="currentClass2" placeholder="Select below" [multiple]="true"
+                        formControlName="grade_choosen" (add)="onAddStudentGrade($event)"
+                        (remove)="onRemoveStudentGrade($event)" (ngModelChange)="number1($event)"
+                        (clear)="onClearStudentGrade()">
+                    </ng-select>
+                    <span id="citierror1" style="color: red;">
+                        <p>{{error}}</p>
+                    </span>
+                </div>
+                <!-- <app-input-validation  [control]="grade.get('name')"
+
+                [isShowErrorMsg]="showErrorMessage"></app-input-validation> -->
+                <p *ngIf="qualificationType === 'School'" style="font-size: 15px;"
+                    class="grade-imp-msg grade-imp-msg-height">If you did not change your high school,
+                    you can select multiple
+                    grades.</p>
+                <ng-container
+                    *ngIf="qualificationType =='School' && typeCastToFormArray(educationForm.get('grade')).controls.length > 0">
+                    <div formArrayName="grade" class="w-100"
+                        *ngFor="let grade of typeCastToFormArray(educationForm.get('grade')).controls; let index = index;">
+
+                        <div [formGroupName]=index *ngIf="grade.get('name').value" style="margin-bottom: 30px;">
+                            <p class="grade-level">Grade {{grade.get('name').value}} <span>Details </span><span
+                                    style="color: #f00;">*</span></p>
+                            <div class="flex-div">
+                                <div class="groupSchoolYear col-md-3 no-pad pd-r15">
+                                    <div>
+                                        <label class="select-label">Start Year</label>
+                                        <select formControlName="start_year" (ngModelChange)="startYear1($event)">
+                                            <option value="">Select Year</option>
+                                            <option [value]="startyear" *ngFor="let startyear of startYear">
+                                                {{startyear}}</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="groupSchoolYear col-md-3 no-pad ">
+                                    <div>
+                                        <label class="select-label label-pad-designleft">End Year</label>
+                                        <select formControlName="end_year" (ngModelChange)="EndYear1($event)">
+                                            <option value="">Select Year</option>
+                                            <option [value]="endyear" *ngFor="let endyear of endYear">{{endyear}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="groupSchoolYear col-md-6 no-pad pd-l15">
+                                    <div>
+                                        <label class="select-label label-pad-designright">High School Board</label>
+                                        <select formControlName="board" (ngModelChange)="board($event)">
+                                            <option value="" disabled>Select Board</option>
+                                            <option [value]="board" *ngFor="let board of schoolBoard">{{board}}</option>
+                                        </select>
+                                        <app-input-validation [control]="grade.get('board')"
+                                            [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="flex-div align-items-start">
+                                <div *ngIf="start_year_error">
+                                    <span id="citierror1" style="color: red;"><p>{{start_year_error}}</p> </span>
+                                </div>
+                                <div *ngIf="end_year_error">
+                                    <span id="citierror1" style="color: red;"><p>{{end_year_error}}</p> </span>
+                                </div>
+                                <div *ngIf="board_error">
+                                    <span id="citierror1" style="color: red;"><p>{{board_error}}</p> </span>
+                                </div>
+                            </div> -->
+                            <div class="flex-div">
+                                <div class="col-md-3 no-pad pd-r15">
+                                    <div *ngIf="start_year_error">
+                                        <span id="citierror1" style="color: red;">
+                                            <p>{{start_year_error}}</p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 no-pad ">
+                                    <div *ngIf="end_year_error">
+                                        <span id="citierror1" style="color: red;">
+                                            <p>{{end_year_error}}</p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 no-pad pd-l15">
+                                    <div *ngIf="board_error">
+                                        <span id="citierror1" style="color: red;">
+                                            <p>{{board_error}}</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="flex-div">
+                                <div style="margin-bottom: 6px;" class="group col-sm-12 no-pad student-dropdown">
+                                    <!-- <div> -->
+                                    <!-- <label class="select-label">Subjects</label> -->
+                                    <ng-multiselect-dropdown class="student-history-year-dropdown"
+                                        style="margin-top: -5px;padding: 12px;" formControlName="field_of_study"
+                                        [placeholder]="'Select below'" [data]="projectDashboardProjects1"
+                                        (ngModelChange)="saveSubject($event)" [settings]="dropdownSettings">
+
+                                    </ng-multiselect-dropdown>
+                                    <app-input-validation [control]="grade.get('field_of_study')"
+                                        [isShowErrorMsg]="showErrorMessage"></app-input-validation>
+                                    <!-- </div> -->
+                                    <!-- *ngIf="formType == 'edit'" -->
+                                    <button (click)="addIntrest(openSendInviteLink, grade)" type="button"
+                                        class="addIntrest pull-right">+Add</button>
+                                </div>
+                            </div>
+
+                            <div class="flex-div">
+                                <div *ngIf="subject_error">
+                                    <span id="citierror1" style="color: red;">
+                                        <p>{{subject_error}}</p>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="flex-div">
+                                <div class="group col-sm-6 no-pad">
+                                    <div>
+                                        <input type="text" required="required" value="" (ngModelChange)="score($event)"
+                                            formControlName="score" />
+                                        <label style="top: 5px;
+                                            font: normal normal bold 12px/12px Nunito;
+                                            color: #1982d4;" class="label-pad-designleft">Grade
+                                        </label>
+
+                                    </div>
+                                </div>
+                                <div class="group col-sm-3 no-pad pd-l15">
+                                    <div>
+                                        <label class="select-label label-pad-designright">Grade Type</label>
+
+                                        <select formControlName="scoreType"
+                                            (ngModelChange)="scoreTypeSelection($event)">
+                                            <option [value]="type" *ngFor="let type of scoreType">{{type}}</option>
+                                        </select>
+
+                                        <!-- <app-input-validation [control]="grade.get('scoreType')"
+                                            [isShowErrorMsg]="showErrorMessage"></app-input-validation> -->
+                                    </div>
+                                    <span id="citierror1" style="color: red;">
+                                        <p>{{scoreType_error}}</p>
+                                    </span>
+                                </div>
+                                <div class="group col-sm-3 no-pad pd-l15">
+                                    <div style="border: none">
+                                        <label class="select-label position-static d-flex" style="pointer-events: all">
+                                            <input class="w-auto mr-1" type="checkbox" name="tbd" formControlName="tbd"
+                                                value="" (click)="tbdStatus()">Result TBD</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex-div align-items-start">
+                                <div class="group col-sm-6 no-pad">
+                                    <div>
+                                        <label class="select-label label-pad-designleft">Upload Transcript</label>
+                                        <input id="file-input-project-banner form-control" nbInput
+                                            formControlName="school_file" type="file"
+                                            (change)="studentFileUpload($event,index)"
+                                            accept=".png,.jpeg,.jpg,.pdf,.docx,.xls,.xlsx,.doc,.ppt,.pptx" />
+                                    </div>
+                                </div>
+
+                                <div class="group col-sm-6 no-pad">
+                                    <a *ngIf="grade.get('school_fileName').value != null"
+                                        class="fa fa-file-text-o mx-2 mt-2 h4"
+                                        [href]="grade.get('school_fileName').value" aria-hidden="true"
+                                        target="_blank"></a>
+                                </div>
+                            </div>
+
+
+                            <div *ngIf="score_error">
+                                <span id="citierror1" style="color: red;">
+                                    <p>{{score_error}}</p>
+                                </span>
+                            </div>
+                            <!-- 
+                            <input formControlName="transcript" (change)="uploadTranscript($event)" type="file" name="file-input" id="file-input"/>
+                            <label for="file-input">Choose File</label> -->
+
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-template #openSendInviteLink>
+                    <div class=" schedule-event-modal">
+                        <div class="schedule-form">
+                            <form [formGroup]="AddSubjectForm" (ngSubmit)="AddSubject()" method="post">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <label for="requestedForName">Add Your Subject</label>
+                                        <input type="text" class="form-control" placeholder=""
+                                            formControlName="requestedForName" name="requestedForName"
+                                            id="requestedForName">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="schedule-event-action">
+                            <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button> &nbsp;&nbsp;
+                            <button (click)="AddSubject()" class="add-btn">Add</button>
+
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-container *ngIf="qualificationType =='College'">
+                    <div class="flex-div">
+                        <div class="group col-md-3 no-pad pd-r15">
+                            <div>
+                                <label class="select-label">Start year</label>
+                                <select formControlName="start_year" (ngModelChange)="startYear1($event)">
+                                    <option value="">Select Year</option>
+                                    <option [value]="startyear" *ngFor="let startyear of startYear">{{startyear}}
+                                    </option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                        <div class="group col-md-3 no-pad ">
+                            <div>
+                                <label class="select-label label-pad-designleft">Expected graduation year</label>
+                                <select formControlName="end_year" (ngModelChange)="EndYear1($event)">
+                                    <option value="">Select Year</option>
+                                    <option [value]="endyear" *ngFor="let endyear of endYear">{{endyear}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="group col-md-6 no-pad pd-l15">
+                            <div>
+                                <label class="select-label label-pad-designright">College program type</label>
+                                <select formControlName="degree" (ngModelChange)="degree($event)">
+                                    <option value="" disabled>Select Degree</option>
+                                    <option [value]="degree" *ngFor="let degree of collegeDegree">{{degree}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-div">
+                        <div class="col-md-3 no-pad pd-r15">
+                            <div *ngIf="start_year_error">
+                                <span id="citierror1" style="color: red;">
+                                    <p>{{start_year_error}}</p>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 no-pad ">
+                            <div *ngIf="end_year_error">
+                                <span id="citierror1" style="color: red;">
+                                    <p>{{end_year_error}}</p>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 no-pad pd-l15">
+                            <div *ngIf="board_error">
+                                <span id="citierror1" style="color: red;">
+                                    <p>{{board_error}}</p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div *ngIf="start_year_error">
+                        <span id="citierror1" style="color: red;"><p>{{start_year_error}}</p> </span>
+                    </div>
+                    <div *ngIf="end_year_error">
+                        <span id="citierror1" style="color: red;"><p>{{end_year_error}}</p> </span>
+                    </div>
+                    <div *ngIf="degree_error">
+                        <span id="citierror1" style="color: red;"><p>{{degree_error}}</p> </span>
+                    </div> -->
+                    <div class="flex-div">
+                        <div class="group col-sm-6 no-pad mb-3">
+
+                            <!-- <label style="font-size: 15px;" class="select-label label-pad-designright">Select Year</label> -->
+                            <ng-select [items]="currentClass3" placeholder="'Select year'" [multiple]="true"
+                                formControlName="year_choosen" (add)="onAddStudentcollege($event)"
+                                (remove)="onRemoveStudentcollege($event)" (ngModelChange)="year($event)"
+                                (clear)="onClearStudentcollege()">
+                            </ng-select>
+
+                        </div>
+
+                        <span id="citierror1" style="color: red;">
+                            <p>{{year_error}}</p>
+                        </span>
+
+                    </div>
+
+                    <div formArrayName="collegegrade" class="col-sm-12"
+                        *ngFor="let college of typeCastToFormArray(educationForm.get('collegegrade')).controls; let index = index;">
+                        <div class="row" [formGroupName]=index>
+
+                            <div class="col-sm-12 no-pad" style="margin-top: 10px;">{{college.get('name').value}}
+                                Details</div>
+
+                            <div class="group col-sm-6 no-pad">
+                                <ng-multiselect-dropdown formControlName="field_of_study"
+                                    (ngModelChange)="saveSubject($event)" placeholder="Select below"
+                                    [data]="projectDashboardProjects1" [settings]="dropdownSettings">
+                                </ng-multiselect-dropdown>
+                                <!-- *ngIf="formType == 'edit'" -->
+                                <button (click)="addIntrest(openSendInviteLink, college)" type="button"
+                                    class="addIntrest pull-right">+Add</button>
+                                <span id="citierror1" style="color: red;">
+                                    <p>{{subject_error}}</p>
+                                </span>
+
+                            </div>
+                            <ng-template #openSendInvite>
+                                <div class=" schedule-event-modal">
+                                    <div class="schedule-form">
+                                        <form [formGroup]="AddSubjectForm" (ngSubmit)="AddSubject()" method="post">
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <label for="requestedForName">Add Your Subject</label>
+                                                    <input type="text" class="form-control" placeholder=""
+                                                        (ngModelChange)="saveSubject($event)"
+                                                        formControlName="requestedForName" name="requestedForName"
+                                                        id="requestedForName">
+                                                    <!-- <span *ngIf="submittedInvitePeople && hasErrorInvitePeople('requestedForName','required')" class="d-block" style="color: red;">Invite user name is required.</span> -->
+                                                </div>
+                                                <!-- <div class="col-md-12" style="padding-top:10px;">
+                                      <label for="useremailid">User Email</label>
+                                      <input type="email" class="form-control" placeholder="User Email" formControlName="useremailid" name="useremailid" id="useremailid">
+                                      <span *ngIf="submittedInvitePeople && hasErrorInvitePeople('useremailid','required')" class="d-block" style="color: red;">Invite user email is required.</span>
+                                    </div> -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="schedule-event-action">
+                                        <button (click)="modalRef.hide()"
+                                            class="reset-fliter-btn">Cancel</button>&nbsp;&nbsp;
+                                        <button (click)="AddSubject()" class="add-btn">Add</button>
+
+                                        <!-- <a href="javascript:;" (click)="sendInvitePeopleLink()" class="show-result-btn">Invite People</a> -->
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                            <div class="group col-sm-3 no-pad pd-l15">
+                                <div>
+                                    <input type="text" required="required" (ngModelChange)="score($event)" value=""
+                                        formControlName="score" />
+                                    <label style="top: 5px;
+                                    font: normal normal bold 12px/12px Nunito;
+                                    color: #1982d4;" class="label-pad-designright">
+                                        Grade
+                                    </label>
+
+
+                                </div>
+                                <span id="citierror1" style="color: red;">
+                                    <p>{{score_error}}</p>
+                                </span>
+
+                            </div>
+                            <div class="group col-sm-3 no-pad pd-l15">
+                                <div>
+                                    <label class="select-label label-pad-designright">Grade Type</label>
+                                    <select formControlName="scoreType" (ngModelChange)="scoreTypeSelection($event)">
+                                        <option [value]="type" *ngFor="let type of scoreType">{{type}}</option>
+                                    </select>
+
+                                    <!-- <app-input-validation [control]="college.get('scoreType')"
+                                    [isShowErrorMsg]="showErrorMessage"></app-input-validation> -->
+                                </div>
+                                <span id="citierror1" style="color: red;">
+                                    <p>{{scoreType_error}}</p>
+                                </span>
+                            </div>
+
+                            <div class="group col-sm-6 no-pad">
+                                <div>
+                                    <label style=" left: 8px;" class="select-label label-pad-designleft">Upload
+                                        Transcript</label>
+                                    <input id="file-input-project-banner" nbInput formControlName="college_file"
+                                        type="file" (change)="collegeFileUpload($event,index)"
+                                        accept=".png,.jpeg,.jpg,.pdf,.docx,.xls,.xlsx,.doc,.ppt,.pptx" />
+                                </div>
+                            </div>
+
+                            <div class="group col-sm-3 no-pad pd-l15">
+                                <div style="border: none">
+                                    <label class="select-label position-static d-flex" style="pointer-events: all">
+                                        <input class="w-auto mr-1" type="checkbox" name="tbd" formControlName="tbd"
+                                            value="" (click)="tbdStatus()">Result TBD</label>
+                                </div>
+                            </div>
+
+                            <a *ngIf="college.get('college_fileName').value != null"
+                                class="fa fa-file-text-o mx-2 mt-3 h4" [href]="college.get('college_fileName').value"
+                                aria-hidden="true" target="_blank"></a>
+
+                        </div>
+
+                    </div>
+
+
+                </ng-container>
+                <div class="group col-sm-6 no-pad">
+                    <div>
+                        <input type="text" required="required" value="" (ngModelChange)="school($event)"
+                            formControlName="name" />
+                        <label style="top: 5px;
+                        font: normal normal bold 12px/12px Nunito;
+                        left: 8px;
+                        color: #1982d4;" class="label-pad-designleft select-label">
+                            {{qualificationType ==='College' ? 'College/institution' : 'High school'}}
+                            name:</label>
+                    </div>
+                    <span id="citierror1" style="color: red;">
+                        <p>{{school_error}}</p>
+                    </span>
+                </div>
+                <!-- location Country -->
+                <div class="group col-sm-6 no-pad pd-l15">
+                    <div>
+                        <!-- <input type="text" required="required" value="" (ngModelChange)="locationCountry($event)" formControlName="locationCountry"/>
+                        <label 
+                        style="top: 5px;
+                        font: normal normal bold 12px/12px Nunito;
+                        color: #1982d4;
+                       
+                        "
+                        class="label-pad-designright">{{qualificationType ==='College' ? 'College/institution' : 'High school'}}
+                            location (country):</label> -->
+                        <select (ngModelChange)="locationCountry($event)" (change)="onSelectCountry($event)"
+                            formControlName="locationCountry">
+                            <option value="" disabled>Select Country*</option>
+                            <option [value]="countr.id" *ngFor="let countr of countries">{{countr.name}}</option>
+
+                            <!-- <option value="1">b</option>
+                            <option value="1">c</option> -->
+                        </select>
+
+                        <label style="top: 5px;
+                            font: normal normal bold 12px/12px Nunito;
+                            color: #1982d4;" class="label-pad-designright">Country<span style="color: #f00;">*</span>
+                        </label>
+                    </div>
+                    <span id="citierror1" style="color: red;">
+                        <p>{{locationCountry_error}}</p>
+                    </span>
+                </div>
+                <!-- location State -->
+                <div class="group col-sm-6 no-pad">
+                    <div class="mb-2">
+                        <!-- <input type="text" required="required" value="" (ngModelChange)="locationState($event)" formControlName="locationState"/>
+                        <label 
+                        class=""
+                        style="top: 5px;
+                        font: normal normal bold 12px/12px Nunito;
+                        left: 8px;
+                        color: #1982d4;" 
+                        >{{qualificationType ==='College' ? 'College/institution' : 'High school'}}
+                            location (state):</label> -->
+                        <select (ngModelChange)="locationState($event)" formControlName="locationState"
+                            (change)="onSelectState($event)">
+                            <option value="" disabled>Select State*</option>
+                            <option [value]="state.id" *ngFor="let state of states;let s = index">{{state.name}}
+                            </option>
+
+                            <!-- <option value="1">b</option>
+                            <option value="1">c</option> -->
+                        </select>
+
+                        <label class="" style="top: 5px;
+                            font: normal normal bold 12px/12px Nunito;
+                            left: 8px;
+                            color: #1982d4;">State<span style="color: #f00;">*</span>
+                        </label>
+                    </div>
+                    <span id="citierror1" style="color: red;">
+                        <p>{{locationState_error}}</p>
+                    </span>
+                </div>
+                <!-- location City -->
+                <div class="group col-sm-6 no-pad pd-l15">
+                    <div>
+                        <input type="text" required="required" value="" (ngModelChange)="locationCity($event)"
+                            formControlName="locationCity" />
+                        <label style="top: 5px;
+                        font: normal normal bold 12px/12px Nunito;
+                        color: #1982d4;" class="label-pad-designright">
+                            {{qualificationType ==='College' ? 'College/institution' : 'High school'}}
+                            location (city):</label>
+                    </div>
+                    <span id="citierror1" style="color: red;">
+                        <p>{{locationCity_error}}</p>
+                    </span>
+                </div>
+            </ng-container>
+            <!-- <div class="group col-sm-6 no-pad add-item-btn">
+                <a >+ ADD ANOTHER GRADE</a>
+            </div>
+            <div class="group col-sm-6 no-pad pd-l15 add-item-btn ">
+                <a >+ ADD ANOTHER SCHOOL</a>
+            </div> -->
+        </form>
+    </div>
+
+</div>

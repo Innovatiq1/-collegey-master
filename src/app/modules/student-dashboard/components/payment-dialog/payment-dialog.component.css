@@ -1,0 +1,117 @@
+.project-modal{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 16px #00000014;
+    border-radius: 12px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* css ended for filter sidebar */
+
+/* css for web 1366 - 70 */
+
+.project-modal .project-box{
+    padding: 0;
+    position: relative;
+}
+.project-modal .project-img img{
+    width: 160px;
+    min-height: 168px;
+    border: 0.5px solid #D3D3D3;
+    border-radius: 6px;
+    margin-right: 30px;
+}
+.project-modal .project-header {
+    display: flex;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.project-modal .project-header h6 {
+    margin-bottom: 0;
+    font-size: 18px;
+}
+.project-body {
+    padding: 20px;
+}
+.project-modal .project-header .project--title{
+    font: normal normal bold 20px/27px Nunito;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-bottom: 5px;
+    padding-right: 20px;
+}
+.project-modal .project-header .tags-box1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.project-modal .project-header .article-tags1 {
+    background-color: #eeeeec;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.44px;
+    text-align: center;
+    color: rgba(32, 32, 32, 0.8);
+    margin-right: 5px;
+    padding: 2px 7px 2px 6px;
+    display: inline-block;
+    margin-bottom: 7px;
+    height: auto;
+    font: normal normal 600 10px/14px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+}
+.project-modal .project-header .timing-box{
+    font: normal normal 600 16px/22px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 0;
+}
+.project-modal .project-header .date-box{
+    font: normal normal normal 12px/16px Nunito;
+    letter-spacing: 0px;
+    color: #838383;
+    margin-bottom: 10px;
+}
+.project-modal .project-header .price-box{
+    font: normal normal normal 18px/27px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 0;
+    padding-right: 140px;
+}
+.project-modal .project-header .spots-box{
+    font: normal normal normal 12px/16px Nunito;
+    letter-spacing: 0px;
+    color: #141414;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+.project-modal-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 10px;
+    cursor: pointer;
+}
+.cardpay_footer {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+.cardpay_footer .btn-cancel {
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 5px;
+}
+.cardpay_footer .btn-pay {
+    font-weight: 600;
+    padding: 7px 30px;
+    border-radius: 5px;
+    background-color: #3f763f;
+    color: #fff;
+}
+.modal_name_filed {
+    padding-bottom: 20px;
+}

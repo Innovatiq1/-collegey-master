@@ -1,0 +1,293 @@
+<div class="container first-section">
+    <div class="terms-header" style="background-image: url({{CurrentBanner}});">
+        <div class="banner-upload">
+            <label class="mb-0" (click)="openAddBannerDialog(openAddBannerimage)">
+                <img src="assets/images/camera--v2.png" />
+            </label>
+        </div>
+    </div>
+    <div class="student-info">
+        <div class="student-info-profile">
+
+            <div class="mentorprofile_image">
+                <app-avatar-upload [redBorderImage]="true"></app-avatar-upload>
+            </div>
+
+            <!-- <div *ngIf="!bannerisEdit" style="display: inherit;">
+                <ng-container *ngIf="dashboard?.profile?.avatar; then avatarImage; else  placeholder">
+                </ng-container>
+    
+                <ng-template #placeholder>
+                    <img src="assets/images/user-icon.png" alt="" class="profile-img">
+                </ng-template>
+                <ng-template #avatarImage>
+                    <img [src]="commonService.imagePathS3(dashboard?.profile?.avatar)" alt="" class="profile-img">
+                </ng-template>
+            </div> -->
+
+            <div class="clg-tophead1">
+                <h5>{{mentorDisplayName}}</h5>
+                <p>{{dashboard?.profile?.qualification}}</p>
+                <p *ngIf="dashboard?.profile?.cityObj?.name" class="location"><img src="assets/images/location.svg"
+                        width="11" height="13" alt="" style="margin-right: 7px;"><span
+                        *ngIf="dashboard?.profile?.cityObj">{{dashboard?.profile?.cityObj?.name}}, </span>
+                    <span *ngIf="dashboard?.profile.stateObj">{{dashboard?.profile?.stateObj?.name}}, </span>
+                    <span>{{dashboard?.profile?.countryObj && dashboard?.profile?.countryObj?.name}}</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="fb-share-button"
+            data-href="https://blogs.worldbank.org/eastasiapacific/indonesia-has-passed-100-million-covid-19-vaccine-doses-what-can-we-learn"
+            data-layout="button" data-size="large">
+            <div ngbDropdown class="d-inline-block">
+                <a class="fb-xfbml-parse-ignore share-profile" ngbDropdownToggle>SHARE YOUR PROFILE</a>
+                <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic01">
+                    <a class="buttons" (click)="goToLink('https://www.facebook.com/sharer/sharer.php?u=')"> <i
+                            class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+                    <a class="buttons" (click)="goToLinkedin('https://www.linkedin.com/shareArticle?mini=true&url=')">
+                        <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin</a>
+                    <a class="buttons" (click)="goToTwit('https://wa.me/?text=')"> <i class="fa fa-whatsapp"
+                            aria-hidden="true"></i> Whatsapp</a>
+                    <a class="buttons" (click)="CopyClipboardUrl()"> <i class="fa fa-link" aria-hidden="true"></i> Copy
+                        Url</a>
+                    <a class="buttons" [routerLink]="['/mentors/metor-profile-detail']">View My Profile</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="dashboard-menu">
+        <ul>
+            <li>
+                <a [ngClass]=" tab === 'tab1' ? 'active' : 'dark'" [href]="['/mentors/dashboard']">Dashboard</a>
+            </li>
+            <li>
+                <!-- <a [ngClass]=" tab === 'tab2' ? 'active' : 'dark'" [href]="['/mentors/perks']">
+                    Mentor Perks
+                </a> -->
+                <a [ngClass]=" tab === 'tab2' ? 'active' : 'dark'" style="cursor: default;">
+                    Mentor Perks
+                </a>
+            </li>
+            <li>
+                <a [ngClass]=" tab==='tab5' ? 'active' : 'dark'" [href]="['/mentors/mentor-resource']">
+                    Mentor Resources
+                </a>
+            </li>
+            <li>
+                <!-- <a [ngClass]=" tab==='tab4' ? 'active' : 'dark'" [href]="['/mentors/collegey-opportunities']">
+                    Collegey Opportunities
+                </a> -->
+                <a [ngClass]=" tab==='tab4' ? 'active' : 'dark'" style="cursor: default;">
+                    Collegey Opportunities
+                </a>
+            </li>
+            <li>
+                <!-- <a [ngClass]=" tab==='tab7' ? 'active' : 'dark'" [href]="['/mentors/mentor-event']">
+                    Host Event
+                </a> -->
+                <a [ngClass]=" tab==='tab7' ? 'active' : 'dark'" style="cursor: default;">
+                    Host Event
+                </a>
+            </li>
+            <li>
+                <a [ngClass]=" tab === 'tab6' ? 'active' : 'dark'" [href]="['/mentors/student-chat']">
+                    Student Messages
+                </a>
+            </li>
+            <li>
+                <a [ngClass]=" tab === 'tab3' ? 'active' : 'dark'" (click)="membership(mentorship,3)">
+                    Refer Collegey
+                </a>
+            </li>
+            <li>
+                <a [ngClass]=" tab==='tab10' ? 'active' : 'dark'" (click)="msgcollegey(testimonail,10)">
+                    Share Testimonial
+                </a>
+            </li>
+            <li>
+                <a [ngClass]=" tab==='tab11' ? 'active' : 'dark'" (click)="msgcollegey(messageCollegey,11)">
+                    Contact Collegey
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Refer Collegey  -->
+
+<ng-template #mentorship>
+    <div class="schedule-event-modal">
+        <div class="schedule-form">
+            <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+            <h5>Recommend a friend for mentorship at Collegey</h5>
+            <form [formGroup]="membershipForm" (ngSubmit)="onSubmitMembership()">
+
+                <div class="form-box">
+                    <!-- <form> -->
+                    <div class="form-group fields">
+                        <input class="form-control field-control" type="text" placeholder="Name" formControlName="name"
+                            [ngClass]="{ 'is-invalid': submit && f.name.errors }">
+                        <div *ngIf="submit && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required || f.name.errors.pattern">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group fields">
+                        <input class="form-control field-control" type="text" placeholder="Email"
+                            formControlName="email" [ngClass]="{ 'is-invalid': submit && f.email.errors }">
+                        <div *ngIf="submit && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <!-- </form> -->
+                </div>
+                <div class="row top-box">
+                    <div class="footer-texteditor" style="margin-bottom: 10px;">
+                        <div class="row feed-item">
+                            <button type="button" (click)="modalRef.hide()">Cancel</button>&nbsp;&nbsp;
+                            <button type="submit" id="btn" class="btn" style="color: white;">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Select Banner image Model -->
+
+<ng-template #openAddBannerimage>
+    <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+    <div class="banner-selection-modal">
+        <div class="project-modal-tabs">
+            <h3 class="pro_title">Add cover photo</h3>
+            <ngb-tabset>
+                <ngb-tab title="Default Covers">
+                    <ng-template ngbTabContent>
+                        <div class="liststdiv">
+
+                            <div *ngFor="let listdafault of listdafaultBanner; let i=index;"
+                                (click)="choiceUserBannerImage(i,'default',listdafault._id)" class="listst">
+                                <img src="{{listdafault?.imagePath}}" />
+                                <!-- <span class="re-name">Cover Pic {{i+1}}</span> -->
+                            </div>
+
+                            <div *ngFor="let listbanner of AllbannerImage; let i=index;"
+                                (click)="choiceUserBannerImage(i,'userbanner',null)"
+                                [ngClass]="listbanner.active === true ? 'listst re-active' : 'listst'">
+                                <img src="{{listbanner?.image}}" />
+                                <!-- <span class="re-name">Cover Pic {{i+1}}</span> -->
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Upload">
+                    <ng-template ngbTabContent>
+                        <div class="dragdropdiv">
+                            <!-- <div class="re-drag-txt1">Drag photo here</div> -->
+                            <div class="size_note">Note: Please upload file around image size 1200 x 190</div>
+
+                            <div ngx-dropzone [accept]="'.png,.jpeg,.jpg'" (change)="onSelectBanner($event)">
+                                <ngx-dropzone-label>
+                                    <span class="re-drag-txt1">Drag photo here</span>
+                                    <span class="re-drag-txt2">Or if your prefer to</span>
+                                    <span class="re-drag-txt3">CHOOSE FROM SYSTEM </span>
+                                </ngx-dropzone-label>
+                                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+                                    [file]="f" [removable]="true" (removed)="onRemoveBanner(f)">
+                                    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                </ngx-dropzone-image-preview>
+                            </div>
+                            <div class="size_note_error" *ngIf="sizeError">The maximum size for the 1200 x 190</div>
+                        </div>
+                        <div class="schedule-event-action">
+                            <button type="button" (click)="modalRef.hide()" class="cancel-btn">Cancel</button>
+                            <button class="submit-btn" (click)="addUserBannerData()">Submit</button>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+</ng-template>
+
+<!-- mentor testimonal modal -->
+<ng-template #testimonail>
+    <div class="schedule-event-modal">
+        <div class="schedule-form">
+            <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+            <h5>Please write your Testimonial!</h5>
+
+            <form [formGroup]="testimonialFormGroup" (ngSubmit)="addTestimonial()" method="post" novalidate>
+                <div class="form-box">
+                    <!-- <form> -->
+                    <div class="form-group fields">
+                        <label for="testimonal">Testimonial <span style="color: red;">*</span></label>
+                        <textarea name="testimonal" (change)="wordCounter($event);" formControlName="testimonal"
+                            rows="8" class="form-control" placeholder="Please write your testimonial.">
+                </textarea>
+
+                        <span *ngIf="showWordLimitError" class="d-block" style="color: red;">Max word limit is
+                            250</span>
+                        <div *ngIf="submittedTestimonial && (hasError('testimonal','required') || hasError('testimonal','pattern'))"
+                            style="text-align: center;margin-top: 10px;"
+                            class="alert alert-danger alert-dismissable mb-0 w-100">
+                            Testimonial is required
+                        </div>
+                    </div>
+                    <!-- <div class="form-group fields">
+                  <input class="form-control field-control" type="text" placeholder="Youtube URL">
+                </div> -->
+                    <!-- </form> -->
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <div class="row top-box">
+                        <div class="footer-texteditor">
+                            <div class="row feed-item">
+                                <button type="button" (click)="modalRef.hide()">Cancel</button>&nbsp;&nbsp;
+                                <button type="submit" id="btn" class="btn" style="color: white;">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #messageCollegey>
+    <div class="schedule-event-modal">
+        <div class="schedule-form">
+            <i class="fa fa-times custClose_model" (click)="modalRef.hide()" aria-hidden="true"></i>
+            <h5>Have a feedback, comment, or question? Just send it to us, right here.</h5>
+            <form [formGroup]="messageForm" (ngSubmit)="onSubmitMessage()">
+                <div class="form-box">
+                    <div class="form-group fields">
+                        <textarea class="form-control field-control1" rows="4" cols="50"
+                            placeholder="Type your message here!" (change)="wordCounter($event);"
+                            formControlName="message"
+                            [ngClass]="{ 'is-invalid': submit && g.message.errors }"></textarea>
+                        <!-- <input class="form-control field-control" type="text" placeholder="Message" formControlName="message"
+              [ngClass]="{ 'is-invalid': submit && g.message.errors }"> -->
+                        <span *ngIf="showWordLimitError" class="d-block" style="color: red;">Max word limit is
+                            250</span>
+                        <div *ngIf="submit && g.message.errors" class="invalid-feedback">
+                            <div *ngIf="(g.message.errors.required || g.message.errors.pattern)">Message is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row top-box">
+                    <div class="footer-texteditor" style="margin-bottom: 10px;">
+                        <div class="row feed-item">
+                            <button type="button" (click)="modalRef.hide()">Cancel</button>&nbsp;&nbsp;
+                            <button type="submit" id="btn" class="btn" style="color: white;">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

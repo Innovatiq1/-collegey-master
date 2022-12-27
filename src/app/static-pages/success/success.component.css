@@ -1,0 +1,57 @@
+
+/* css start for web 1366 - 46 */
+
+.bingo-modal{
+    width: 800px;
+    margin: 0 auto;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 16px #00000014;
+    border: 1px solid #3F89FC;
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bingo-modal .text-box{
+    margin: 0 70px 0 40px;
+}
+.bingo-modal .p1{
+    font: normal normal normal 46px/52px Georgia;
+    letter-spacing: 0px;
+    color: #FD0D2E;
+    margin-bottom: 20px;
+}
+.bingo-modal .p2{
+    font: normal normal bold 20px/27px Nunito;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+.bingo-modal .p3{
+    font: normal normal normal 14px/19px Nunito;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-bottom: 24px;
+}
+.bingo-modal a{
+    line-height: 36px;
+    background: #FF971A 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    font: normal normal bold 12px/16px Nunito;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    height: 36px;
+    padding: 10px 28px;
+}
+.bingo-modal .bingo-img{
+    min-width: 265px;
+    height: 304px;
+    max-width: 265px;
+}
+.bingo-modal .bingo-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+}
+

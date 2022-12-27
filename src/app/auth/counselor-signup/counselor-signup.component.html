@@ -1,0 +1,56 @@
+<section class="counselor-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="counselor-form-wrap">
+                    <h2 class="counselor-heading">Counselor details</h2>
+                    <div class="counselor-content">
+                        <form [formGroup]="counselorForm">
+                            <div class="fields-wrap">
+                                <div class="form-group fields">
+                                    <label class="field-label" for="firstName">Your First Name</label>
+                                    <input type="text" class="form-control field-control" placeholder="First Name" formControlName="name">
+                                    <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="counselorForm.get('name')"></app-input-validation>
+                                </div>
+                                <div class="form-group fields">
+                                    <label class="field-label" for="lastName">Your Last Name</label>
+                                    <input type="text" class="form-control field-control" placeholder="Last Name" formControlName="last_name">
+                                </div>
+                                <div class="form-group fields">
+                                    <label class="field-label" for="emailID">Your Email ID</label>
+                                    <input type="email" class="form-control field-control" placeholder="Your Email ID" formControlName="email">
+                                    <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="counselorForm.get('email')"></app-input-validation>
+                                </div>
+                            </div>
+                            <div class="fields-wrap">
+                                <div class="form-group fields">
+                                    <label class="field-label" for="institutionName">Institution Name</label>
+                                    <input type="text" class="form-control field-control" placeholder="Institution Name" formControlName="organization">
+                                    <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="counselorForm.get('organization')"></app-input-validation>
+                                </div>
+                                <div class="form-group fields">
+                                    <label class="field-label" for="createPassword">Create Password</label>
+                                    <input type="password" class="form-control field-control" placeholder="Create Password (Atleast 8 characters)" formControlName="password">
+                                    <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="counselorForm.get('password')"></app-input-validation>
+                                </div>
+                                <div class="form-group fields">
+                                    <label class="field-label" for="createPassword">Re-enter Password</label>
+                                    <input type="password" formControlName="confirmPassword" class="form-control field-control" placeholder="Re-enter Password">
+                                    <app-input-validation [isShowErrorMsg]="showErrorMessage" [control]="counselorForm.get('confirmPassword')"></app-input-validation>
+                                    <app-input-validation *ngIf="counselorForm.get('confirmPassword')?.value" [isShowErrorMsg]="showErrorMessage" [control]="counselorForm">
+                                    </app-input-validation>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <button type="button" class="next-btn" (click)="onRegister()">Let's get started</button>
+                                    <p class="have-an-account">Have an account? <button type="button" (click)="openLoginModal()">Login</button></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

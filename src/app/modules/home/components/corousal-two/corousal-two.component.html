@@ -1,0 +1,15 @@
+<div class="clg-ecosystem-section" [ngStyle]="{'background-image': 'url(' + homepageContent?.backgroundImg + ')'}">
+  <div class="container clg-content">
+    <div class="row">
+      <div class="col-12 col-lg-12">
+        <h2>{{homepageContent?.mainTitle}}</h2>
+        <div class="clg-ecosystem-content">
+          <div class="clg-ecosystem-data" *ngFor="let listsection of homepageContent?.sectionData; let i=index;">
+            <h5>{{listsection?.title}}</h5>
+            <p [innerHTML]="listsection?.description"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,410 @@
+<!-- <app-dash-header *ngIf="!loggedInUserTypeMentor"></app-dash-header> -->
+<div class="container first-section">
+    <div class="terms-header" style="background-image: url({{CurrentBanner}});">
+    </div>
+    <div class="student-info">
+
+        <div class="student-info-profile">
+            <ng-container *ngIf="ProfileData?.avatar; then avatarImage; else  placeholder">
+            </ng-container>
+            <ng-template #placeholder>
+                <img src="assets/images/user-icon.png" alt="" class="profile-img">
+            </ng-template>
+            <ng-template #avatarImage>
+                <img [src]="commonService.imagePathS3(ProfileData?.avatar)" alt="" class="profile-img">
+            </ng-template>
+            <div class="clg-tophead1">
+                <h5>{{mentorDisplayName}}</h5>
+                <p>{{ProfileData?.qualification}}</p>
+                <p *ngIf="ProfileData?.cityname" class="location">
+                    <img src="assets/images/location.svg" width="11" height="13" alt="" style="margin-right: 7px;">
+                    <span *ngIf="ProfileData?.cityname">{{ProfileData?.cityname}}, </span>
+                    <span *ngIf="ProfileData?.statename">{{ProfileData?.statename}}, </span>
+                    <span>{{ProfileData?.countryname}}</span>
+                </p>
+            </div>
+        </div>
+        <!-- <a class="share-profile" [routerLink]="['/mentors/metor-profile-detail']">View My Profile</a> -->
+        <div class="fb-share-button"
+            data-href="https://blogs.worldbank.org/eastasiapacific/indonesia-has-passed-100-million-covid-19-vaccine-doses-what-can-we-learn"
+            data-layout="button" data-size="large">
+            <div ngbDropdown class="d-inline-block">
+                <a class="fb-xfbml-parse-ignore share-profile" ngbDropdownToggle>SHARE PROFILE</a>
+                <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic01">
+                    <a class="buttons" (click)="goToLink('https://www.facebook.com/sharer/sharer.php?u=')"> <i
+                            class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+                    <a class="buttons" (click)="goToLinkedin('https://www.linkedin.com/shareArticle?mini=true&url=')">
+                        <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin</a>
+                    <a class="buttons" (click)="goToTwit('https://wa.me/?text=')"> <i class="fa fa-whatsapp"
+                            aria-hidden="true"></i> Whatsapp</a>
+                    <a class="buttons" (click)="CopyClipboardUrl()"> <i class="fa fa-link" aria-hidden="true"></i> Copy
+                        Url</a>
+                    <!-- <a *ngIf="userid == id" class="buttons" [routerLink]="['/mentors/metor-profile-detail']">View My Profile</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div *ngIf="userid == id" class="dashboard-menu">
+        <ul style="margin-left: -1%;">
+            <li>
+                <a [routerLink]="['/mentors/dashboard']">Dashboard</a>
+            </li>
+            <li>
+                <a [routerLink]="['/mentors/park']">
+                    Mentor Perks
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    Refer Collegey
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/mentors/collegey-opportunities']">
+                    Collegey Opportunities
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/mentors/mentor-resource']">
+                    Mentor Resources
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/mentors/student-chat']">
+                    Student Messages
+                </a>
+            </li>
+            <li>
+                <a  [routerLink]="['/mentors/mentor-event']">
+                    Host Event
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    Share Testimonial
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    Contact Collegey
+                </a>
+            </li>
+        </ul>
+    </div> -->
+</div>
+
+<!-- <div *ngIf="userid == id" class="container third-section mentor-profile-detail">
+    <div class="portfolio-progress">
+        <p style="text-align: left;font: normal normal normal 14px/14px Nunito;
+          letter-spacing: 0px;color: #141414;">PORTFOLIO STRENGTH: <span class="text-align: left;
+font: normal normal bold 18px/22px Nunito;letter-spacing: 0px;color: #141414; font-weight: bold;
+font-size: small;">
+                <span>{{profileText}}</span></span></p>
+        <ul>
+            <li class="is-active">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                    fill="#ffffff" data-original="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+
+            <li [class]="profilefirstStepCompleted == true ? 'is-active' : ''">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                    fill="#ffffff" data-original="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+
+            <li [class]="profilesecondStepCompleted == true ? 'is-active' : ''">
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m9.707 19.121c-.187.188-.442.293-.707.293s-.52-.105-.707-.293l-5.646-5.647c-.586-.586-.586-1.536 0-2.121l.707-.707c.586-.586 1.535-.586 2.121 0l3.525 3.525 9.525-9.525c.586-.586 1.536-.586 2.121 0l.707.707c.586.586.586 1.536 0 2.121z"
+                                    fill="#ffffff" data-original="#000000" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+
+            <li>
+                <hr>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0"
+                        viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                        <g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path
+                                        d="m15.399 17c-.083 0-.166-.021-.242-.062l-3.157-1.746-3.157 1.745c-.169.094-.374.083-.53-.029-.156-.11-.236-.3-.205-.489l.608-3.731-2.573-2.638c-.131-.134-.176-.33-.117-.508.06-.178.214-.307.399-.335l3.537-.541 1.585-3.379c.166-.351.74-.351.906 0l1.585 3.379 3.537.541c.186.028.34.158.399.335.059.178.014.374-.117.508l-2.573 2.638.608 3.731c.031.189-.049.379-.205.489-.085.061-.186.092-.288.092zm-3.399-2.879c.083 0 .167.021.242.062l2.498 1.381-.483-2.964c-.025-.157.024-.316.136-.43l2.07-2.122-2.839-.434c-.165-.025-.307-.131-.378-.282l-1.246-2.655-1.246 2.657c-.071.151-.213.257-.378.282l-2.839.434 2.07 2.122c.111.114.161.273.136.43l-.483 2.962 2.498-1.381c.075-.041.159-.062.242-.062z"
+                                        fill="#ffffff" data-original="#000000" class="" />
+                                </g>
+                            </g>
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path
+                                        d="m12 24c-.043 0-.086-.005-.127-.017-.099-.025-9.873-2.703-9.873-11.804v-8.179c0-.209.131-.397.327-.469l9.5-3.5c.111-.041.234-.041.346 0l9.5 3.5c.196.072.327.26.327.469v8.179c0 9.102-9.774 11.779-9.873 11.805-.041.011-.084.016-.127.016zm-9-19.651v7.83c0 7.882 7.85 10.466 9 10.802 1.15-.336 9-2.92 9-10.802v-7.83l-9-3.316z"
+                                        fill="#ffffff" data-original="#000000" class="" />
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="portfolio-progress-text">
+        <a  [routerLink]="['/mentors/profile']"><h6>COMPLETE YOUR PROFILE</h6></a>
+        <p class="port-desc">A complete portfolio enhances your chances of building winning applications for
+            colleges and
+            universities, and help us recommend best-fit projects for you.</p>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row profile-details-wrap">
+        <div class="col-lg-9 profile-space">
+
+            <!-- My Badges -->
+
+            <div class="profile-detail-main" *ngIf="showbadges">
+                <div class="profile-details-header">
+                    <h1>My Badges</h1>
+                </div>
+                <div class="profile-info badges_list">
+                    <img *ngFor="let listbadgemaster of badgeMastersList; let i=index;" class="badgemasters-img "
+                        alt="{{listbadgemaster?.title}}" title="{{listbadgemaster?.title}}"
+                        [src]="commonService.imagePathS3(listbadgemaster?.imageName)">
+                </div>
+            </div>
+
+            <!--Mentor Profile Details-->
+
+            <div class="profile-detail-main">
+                <div class="profile-details-header">
+                    <h1>Profile</h1>
+                    <!-- <a href="">EDIT</a> -->
+                </div>
+
+                <div class="personal-profile personal-profile-custom-space">
+                    <div class="personal-contact-details">
+                        <div class="information">
+                            <div class="personal-information">
+                                <h3>Full Legal Name</h3>
+                                <p>{{MentorProfileInfo?.fullLegalName}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Professional Title</h3>
+                                <p>{{MentorProfileInfo?.professionalTitle}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Experience</h3>
+                                <p>{{MentorProfileInfo?.experience}} years</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Last Education Degree</h3>
+                                <p>{{MentorProfileInfo?.lastCollegeDegree}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Last Education Institute</h3>
+                                <p>{{MentorProfileInfo?.lastEducationalInstitutionAttended}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Area of Expertise</h3>
+                                <p>{{MentorProfileInfo?.expertise}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>How can you contribute?</h3>
+                                <p><span *ngFor="let contribution of MentorProfileInfo?.can_help">{{contribution}},
+                                    </span></p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>About Yourself</h3>
+                                <p>{{MentorProfileInfo?.aboutYou}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>What is your most important advice to young people?</h3>
+                                <p>{{MentorProfileInfo?.adviceToYoungPeople}}</p>
+                            </div>
+
+                        </div>
+                        <div class="information social-media-connect">
+                            <div class="personal-information">
+                                <h3>Location</h3>
+                                <p>{{ProfileData?.cityname}}, {{ProfileData?.statename}}, {{ProfileData?.countryname}}
+                                </p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Timezone</h3>
+                                <p>{{MentorProfileInfo?.timezone}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Website</h3>
+                                <p>{{MentorProfileInfo?.website}}</p>
+                            </div>
+
+                            <!-- <div class="personal-information">
+                                <h3>Interests</h3>
+                                <p><span *ngFor="let interest of MentorProfileInfo?.interest">{{interest}}, </span></p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Industry</h3>
+                                <p>{{MentorProfileInfo?.industry}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Favourite Books</h3>
+                                <p><span *ngFor="let book of MentorProfileInfo?.favBooks">{{book}}, </span></p>
+                            </div> -->
+
+                            <div class="personal-information">
+                                <h3>LinkedIn</h3>
+                                <p>{{MentorProfileInfo?.linkedIn}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Mentor Office Hours-->
+            <div class="profile-detail-main">
+                <div class="profile-details-header">
+                    <h1>Office Hours</h1>
+                    <!-- <a href="">EDIT</a> -->
+                </div>
+                <div class="profile-info">
+                    <div class="profile-detail">
+                        <h2>Office Timezone</h2>
+                        <p>{{MentorOfficeTimezone}}</p>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <div *ngFor="let day of MentorOfficeInfo" class="profile-detail">
+                        <h2>{{day.days}}</h2>
+                        <p *ngIf="day.closed == 'false'">{{day.start_time}}&nbsp; To &nbsp;{{day.end_time}}</p>
+                        <p *ngIf="day.closed == 'true'">Closed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-detail-main">
+                <div class="profile-details-header">
+                    <h1>Projects</h1>
+                    <!-- <a href="">EDIT</a> -->
+                </div>
+
+                <!-- Mentor Project Details-->
+
+                <div *ngFor="let project of mentorProjects; let i=index;"
+                    class="personal-profile personal-profile-custom-space">
+                    <h3>Project {{i+1}}</h3>
+                    <hr>
+                    <div class="personal-contact-details">
+
+                        <div class="information">
+                            <div class="personal-information">
+                                <h3>Project Title</h3>
+                                <p>{{project.title}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Project Keywords</h3>
+                                <p><span *ngFor="let keyword of project?.keyword"> {{keyword}}, </span></p>
+                            </div>
+
+                            <div class="personal-information">
+                                <h3>Start date</h3>
+                                <p>{{project?.start_date | date: 'dd/MM/yyyy'}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Number of students</h3>
+                                <p>{{project.students_count}}</p>
+                            </div>
+                            <div class="personal-information">
+                                <h3>Sustainable Development Goals</h3>
+                                <p><span *ngFor="let sdg of project?.sdg">{{sdg}}, </span></p>
+                            </div>
+                        </div>
+
+                        <div class="information social-media-connect">
+
+                            <div class="personal-information">
+                                <h3>Last Date of join</h3>
+                                <p>{{project?.end_date | date: 'dd/MM/yyyy'}}</p>
+                            </div>
+                            <!-- <div class="personal-information">
+        <h3>Project UNSDG*</h3>
+        <p>1</p>
+    </div> -->
+                            <div class="personal-information">
+                                <h3>Project Duration</h3>
+                                <p>{{project?.projectPlan.projectDuration}}</p>
+                            </div>
+                            <!-- <div class="personal-information">
+        <h3>SSf</h3>
+        <p>1</p>
+    </div> -->
+
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-3 ">
+            <div class="profile-details-right">
+                <h2>Other Details</h2>
+                <div class="other-details">
+                    <h3>Project Interests</h3>
+                    <ul>
+                        <li *ngFor="let interest of MentorProfileInfo?.interest"><a href="">{{interest}}</a></li>
+                    </ul>
+                </div>
+                <div class="other-details">
+                    <h3>Industry</h3>
+                    <ul>
+                        <li><a href="">{{MentorProfileInfo?.industry}}</a></li>
+                    </ul>
+                </div>
+                <div class="other-details">
+                    <h3>Favourite Books</h3>
+                    <ul>
+                        <li *ngFor="let book of MentorProfileInfo?.favBooks"><a href="">{{book}}</a></li>
+                    </ul>
+                </div>
+                <div class="other-details">
+                    <h3>How can you contribute?</h3>
+                    <ul>
+                        <li *ngFor="let contribution of MentorProfileInfo?.can_help"><a href="">{{contribution}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>

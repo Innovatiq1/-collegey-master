@@ -1,0 +1,463 @@
+<!-- <form *ngIf="personalDetailsForm" [formGroup]="personalDetailsForm">
+  <div class="question-box-inner bottom-margin" formGroupName="ways_to_be_in_touch">
+    <p>This information keeps you better connected with our team of experts.</p>
+    <div class="form-box">
+      <div class="form-group fields">
+        <label class="field-label" for="dateOfBirth">Date of Birth</label>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 reduce-pad">
+            <input type="text" placeholder="Enter Date of Birth" class="form-control field-control" bsDatepicker
+              [bsConfig]="{ showWeekNumbers:false }" formControlName="dob">
+          </div>
+          <div class="col-md-1 col-sm-1">
+            <div class="or-text">
+              <p>or</p>
+            </div>
+          </div>
+          <div class="col-md-5 col-sm-5 reduce-pad2">
+            <input type="number" placeholder="Specify your age" class="form-control field-control other-field"
+              formControlName="age">
+          </div>
+        </div>
+      </div>
+      <div class="form-group fields" formGroupName="phone_number">
+        <label class="field-label" for="countryCode">Your Cell Number</label>
+        <div class="group-field group-field-cell">
+            <ng-select class="educationType" id="countryCode" name="countryCode" placeholder="+ 91" bindLabel="label" bindValue="value" [editableSearchTerm]="true" [clearable]="true" [items]="countryPhoneCode" formControlName="extension">
+            </ng-select>
+          <input type="number" class="form-control field-control" placeholder="Enter Number" formControlName="number">
+          <span class="error-message" *ngIf="personalDetailsForm.get('ways_to_be_in_touch').get('phone_number').get('number').value
+            && personalDetailsForm.get('ways_to_be_in_touch').get('phone_number').get('number').invalid && personalDetailsForm.get('ways_to_be_in_touch').get('phone_number').get('number').dirty">
+            Invalid phone number</span>
+        </div>
+      </div>
+      <div class="heading-seperator" formGroupName="parents_details">
+        <p>Parent/Guardian Contact Details</p>
+        <div class="form-group fields">
+          <div class="custom_radio">
+            <div class="radio-option">
+              <input type="radio" id="parentDetails1" formControlName="relation" value="father"><label
+                for="parentDetails1">Father's Details</label></div>
+            <div class="radio-option"><input type="radio" id="parentDetails2" formControlName="relation"
+                value="mother"><label for="parentDetails2">Mother's Details</label></div>
+            <div class="radio-option"><input type="radio" id="parentDetails3" formControlName="relation"
+                value="guardian"><label for="parentDetails3">Guardian's Details</label></div>
+          </div>
+        </div>
+        <div class="form-group fields">
+          <label class="field-label">Name</label>
+          <input type="text" class="form-control field-control" placeholder="Name" formControlName="name">
+        </div>
+        <div class="form-group fields">
+          <label class="field-label">Email</label>
+          <input type="email" class="form-control field-control" placeholder="Email ID" formControlName="email">
+          <span class="error-message"
+            *ngIf="personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('email').value
+                && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('email').invalid && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('email').dirty">Invalid
+            email address</span>
+        </div>
+        <div class="form-group fields" formGroupName="phone_number">
+          <label class="field-label" for="countryCode">Contact Number</label>
+          <div class="group-field group-field-cell">
+            <ng-select class="educationType" id="countryCode" name="countryCode" placeholder="+ 91" bindLabel="label"
+              bindValue="value" [searchable]="true" [clearable]="true" [items]="countryPhoneCode"
+              formControlName="extension">
+            </ng-select>
+            <input type="number" class="form-control field-control" placeholder="Enter Number" formControlName="number">
+
+            <span class="error-message"
+              *ngIf="personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').value
+                  && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').invalid && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').dirty">
+              Invalid phone number</span>
+          </div>
+        </div>
+        <div class="form-group fields"
+          *ngIf="personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('relation').value === 'guardian'">
+          <label class="field-label">Relation</label>
+          <input type="text" class="form-control field-control" placeholder="Enter relation">
+        </div>
+      </div>
+      <div class="heading-seperator" formArrayName="school_counselor">
+        <p>School Counselor Details</p>
+        <ng-container *ngFor="let counselor of counselorDetailsFormArray.controls; let i = index">
+          <ng-container [formGroupName]="i">
+            <div class="form-group fields">
+              <label class="field-label" for="councelorName">Name</label>
+              <input type="text" id="councelorName" class="form-control field-control" placeholder="Name"
+                formControlName="name">
+            </div>
+            <div class="form-group fields">
+              <label class="field-label" for="councelorEmail">Email ID</label>
+              <input type="email" id="councelorEmail" class="form-control field-control" placeholder="Email ID"
+                formControlName="email">
+              <span class="error-message"
+                *ngIf="counselorDetailsFormArray.controls[i].get('email').value
+                && counselorDetailsFormArray.controls[i].get('email').invalid && counselorDetailsFormArray.controls[i].get('email').dirty">Invalid
+                email address</span>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="heading-seperator" formArrayName="social_media">
+        <p>Your social media channels</p>
+        <div class="form-group fields">
+          <div class="group-label">
+            <label class="field-label" for="socialMedia">Add social Media Links</label><button type="button"
+              (click)="onClickAddSocialMedial()">+ Add more</button>
+          </div>
+          <ng-container *ngFor="let channel of socialMedialFormArray.controls; let i = index">
+            <ng-container formGroupName={{i}}>
+              <div class="group-field message-space">
+                <ng-select class="educationType" (change) = "onSelectSocialMediaHandle($event, i)" placeholder="Select" [searchable]="false" [clearable]="false"
+                  [items]="socialMediaChannels" formControlName="channel_name">
+                </ng-select>
+                <input type="text" name="socialMediaLink" class="form-control field-control" placeholder="Enter Url"
+                  formControlName="channel_link" autofocus #channelLink>
+                <button type="button" class="cross-button" (click)="onRemoveSocialMedia(i)" *ngIf="i>0"><img
+                    src="/assets/images/on-boarding/cross-button.svg"></button>
+                <span class="error-message" *ngIf="channel.get('channel_link').value
+                    && channel.get('channel_link').invalid && channel.get('channel_link').dirty">
+                  Invalid Url</span>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+
+      </div>
+    </div>
+    <div class="save-btn-box">
+      <button type="button" class="save-and-exit" (click)="onSubmitForm()">Save & Exit</button>
+      <button type="button" class="save-btn" (click)="onSubmitForm()">Submit</button>
+    </div>
+
+  </div>
+</form> -->
+<div class="lead-form-wrapper">
+  <div class="lead-form container" *ngIf="personalDetailsForm" [formGroup]="personalDetailsForm">
+    <p class="steps-login">8 of 8</p>
+    <p class="heading">Personal</p>
+    <form class="login-form row" formGroupName="ways_to_be_in_touch">
+      <p class="head-title">Personal Info</p>
+      <div style="width: 100%;margin: 0;border-bottom: 1px solid #f5f5f5;" class="row">
+        <div class="group col-sm-6 pd-sm-r10">
+          <div class="mg-b20">
+            <input type="text" required="required" [value]="user.name +' '+ user.last_name | titlecase" disabled />
+            <label class="select-label">Full Name</label>
+          </div>
+          <!-- <div class="mg-b20">
+            <input style="padding: 18px 10px 0 10px;" type="text" required="required"
+              [value]="user.name +' '+ user.last_name | titlecase" disabled />
+            <label>Full Name</label>
+          </div> -->
+        </div>
+        <div class="col-sm-12 col-lg-6 row pd-sm-l0" style="margin: 0;padding-right: 0;">
+          <div class="group col-sm-6 col-lg-5 pd-sm-r10" style="padding-right: 0;">
+            <div class="mg-b20">
+              <input type="date" class="form-control" id="date1" placeholder="" style="height: 40px;"
+                formControlName="dob">
+              <label style="top: 5px;
+              font: normal normal bold 12px/12px Nunito;
+              color: #1982d4;">Date of Birth</label>
+            </div>
+          </div>
+          <p class="col-sm-2 col-lg-2" style="margin-top: 10px;">OR</p>
+          <div class="group col-sm-6 col-lg-5 pd-sm-r10" style="padding-right: 0;">
+            <div class="mg-b20">
+              <input type="text" required="required" value="" formControlName="age" />
+              <label style="top: 5px;
+              font: normal normal bold 12px/12px Nunito;
+              color: #1982d4;">Specify your age</label>
+            </div>
+          </div>
+        </div>
+        <div style="width: 100%;margin: 0;" class="row">
+          <div class="group col-sm-6">
+            <div class="mg-b20">
+              <input type="text" required="required" [value]="user.email" disabled />
+              <label class="select-label">Email ID</label>
+            </div>
+          </div>
+
+          <div class="group col-sm-2" formGroupName="phone_number">
+            <div class="mg-b20"
+              style="border-right: 0;border-top-right-radius: 0;border-bottom-right-radius:0;padding-bottom: 15px;">
+              <label style="left: 20px;" class="select-label">Country Code</label>
+              <select style="margin-top: 11px;padding-top:0;" formControlName="extension">
+                <option value="" disabled>Select</option>
+                <option [value]="code.value" *ngFor="let code of countryPhoneCode">{{code.label}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="group col-sm-4" style="padding-left: 0;padding-right: 0px;" formGroupName="phone_number">
+            <div class="mg-b20" style="border-left: 0;border-top-left-radius:0; border-bottom-left-radius:0;">
+              <input type="text" required="required" value="" formControlName="number" (ngModelChange)="number1($event)"
+                (keypress)="keyPress($event)" maxlength=15 />
+              <label style="top: 5px;
+              font: normal normal bold 12px/12px Nunito;
+              color: #1982d4;">Your Cell Number</label>
+              <span class="error-message"
+                *ngIf="personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').value
+                      && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').invalid && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').dirty">
+                Invalid phone number</span>
+            </div>
+            <span id="citierror1" style="color: red;"> {{ phone_error1 }}</span>
+          </div>
+
+          <!-- <div class="group col-sm-6">
+          <div style="width: 100%;margin: 0;" class="row select-input-added" formGroupName="phone_number">
+            <div class="group col-sm-6 no-pad">
+              <div class="mg-b20" style="border-right: 0;border-top-right-radius: 0;border-bottom-right-radius:0;padding-bottom: 15px;">
+                <label style="font-size: 13px;" class="select-label label-pad-designleft">Country Code</label>
+                <select style="margin-top: 11px;padding-top:0;" formControlName="extension">
+                  <option [value]="code.value" *ngFor="let code of countryPhoneCode">{{code.value}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="group col-sm-6" style="padding-left: 0;padding-right: 10px;">
+              <div class="mg-b20" style="border-left: 0;border-top-left-radius:0; border-bottom-left-radius:0;">
+                <input type="text" required="required" value="" (keypress)="keyPress($event)" maxlength=15
+                  formControlName="number" />
+                <label style="font-size: 13px;">Your Cell Number</label>
+              </div>
+            </div>
+          </div>
+        </div> -->
+          <!-- <div style="width: 100%;margin: 0;border-bottom: 1px solid #f5f5f5;" class="row select-input-added col-sm-6"
+        formGroupName="phone_number">
+        <div class="group col-sm-2 no-pad">
+          <div class="mg-b20" style="border-right: 0;border-top-right-radius: 0;border-bottom-right-radius:0;padding-bottom: 15px;">
+            <label style="font-size: 13px;"class="select-label label-pad-designleft">Country Code</label>
+            <select style="margin-top: 11px;padding-top:0;" formControlName="extension">
+              <option value="" disabled>Select</option>
+              <option [value]="code.value" *ngFor="let code of countryPhoneCode">{{code.value}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="group col-sm-4" style="padding-left: 0;padding-right: 10px;">
+          <div class="mg-b20" style="border-left: 0;border-top-left-radius:0; border-bottom-left-radius:0;">
+            <input type="text" required="required" value="" formControlName="number" (keypress)="keyPress($event)"
+              maxlength=15 />
+            <label style="font-size: 13px;">Your Cell Number</label>
+            <span class="error-message"
+              *ngIf="personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').value
+                    && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').invalid && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').dirty">
+              Invalid phone number</span>
+          </div>
+        </div>
+      </div> -->
+        </div>
+        <a class="change-pass-link" style="margin-top: 15px;margin-left: 15px;"
+          (click)="changePswd(sayChangePswdTemplate)" style="cursor: pointer;">CHANGE PASSWORD</a>
+      </div>
+      <div class="selectdiv-with-p" formGroupName="parents_details">
+        <p style="margin-top: 15px;" class="head-title">Family/Guardian Info</p>
+        <span>Privacy:
+          <select style="cursor: pointer;" formControlName="privacy">
+            <option value="Public">Public</option>
+            <option value="Private">Private</option>
+          </select>
+        </span>
+      </div>
+      <div formGroupName="parents_details" class="w-100">
+        <div style="width: 100%;margin: 0;position: relative;" class="row">
+          <label class="selects-label">Father's Details <span style="color: #f00; margin-top: 15px;">*</span>
+            <input type="radio" formControlName="relation" value="father">
+            <span class="checkmark"></span>
+          </label>
+          <label class="selects-label">Mother's Details
+            <input type="radio" formControlName="relation" value="mother">
+            <span class="checkmark"></span>
+          </label>
+          <label class="selects-label">Guardian's Details
+            <input type="radio" formControlName="relation" value="guardian">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div style="width: 100%;margin: 0;" class="row">
+          <div class="group col-sm-6 no-pad mb-3" style="padding-right: 10px !important;">
+            <div class="mb-1">
+              <input type="text" required="required" value="" formControlName="name" (ngModelChange)="name($event)" />
+              <label style="top: 5px;
+              font: normal normal bold 12px/12px Nunito;
+              color: #1982d4;">Full Name</label>
+            </div>
+            <span id="citierror1" style="color: red;"> {{ name_error }}</span>
+          </div>
+          <div class="group col-sm-6 no-pad pd-l15 mb-3">
+            <div class="mb-1">
+              <input type="text" required="required" value="" formControlName="email" (ngModelChange)="email($event)" />
+              <label style="top: 5px;
+              font: normal normal bold 12px/12px Nunito;
+              color: #1982d4;" class="label-pad-designright">Email ID</label>
+              <span class="error-message"
+                *ngIf="personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('email').value
+                          && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('email').invalid && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('email').dirty">Invalid
+                email address</span>
+            </div>
+            <span id="citierror1" style="color: red;"> {{ email_error }}</span>
+          </div>
+        </div>
+
+        <div style="width: 100%;margin: 0;border-bottom: 1px solid #f5f5f5;" class="row select-input-added"
+          formGroupName="phone_number">
+          <div class="group col-sm-2 no-pad">
+            <div class="mg-b20"
+              style="border-right: 0;border-top-right-radius: 0;border-bottom-right-radius:0;padding-bottom: 15px;">
+              <label class="select-label label-pad-designleft">Country Code</label>
+              <select style="margin-top: 11px;padding-top:0;" formControlName="extension">
+                <option value="" disabled>Select</option>
+                <option [value]="code.value" *ngFor="let code of countryPhoneCode">{{code.value}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="group col-sm-4" style="padding-left: 0;padding-right: 10px;">
+            <div class="mg-b20" style="border-left: 0;border-top-left-radius:0; border-bottom-left-radius:0;">
+              <input type="text" required="required" value="" formControlName="number" (ngModelChange)="number($event)"
+                (keypress)="keyPress($event)" maxlength=15 />
+              <label style="top: 5px;
+              font: normal normal bold 12px/12px Nunito;
+              color: #1982d4;">Your Cell Number</label>
+              <span class="error-message"
+                *ngIf="personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').value
+                      && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').invalid && personalDetailsForm.get('ways_to_be_in_touch').get('parents_details').get('phone_number').get('number').dirty">
+                Invalid phone number</span>
+            </div>
+            <span id="citierror1" style="color: red;"> {{ phone_error }}</span>
+
+          </div>
+        </div>
+      </div>
+      <div class="selectdiv-with-p" formArrayName="school_counselor">
+        <p style="margin-top: 15px;" class="head-title">School Counselor Info</p>
+        <ng-container *ngFor="let counselor of counselorDetailsFormArray.controls; let i = index">
+          <ng-container [formGroupName]="i">
+            <span>Privacy:
+              <select formControlName="privacy">
+                <option value="Public">Public</option>
+                <option value="Private">Private</option>
+              </select>
+            </span>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div style="width: 100%;margin: 0;border-bottom: 1px solid #f5f5f5;" class="row" formArrayName="school_counselor">
+        <ng-container *ngFor="let counselor of counselorDetailsFormArray.controls; let i = index">
+          <ng-container [formGroupName]="i">
+            <div class="group col-sm-6 no-pad" style="padding-right: 10px !important;">
+              <div>
+                <input type="text" required="required" value="" formControlName="name" />
+                <label style="top: 5px;
+                font: normal normal bold 12px/12px Nunito;
+                color: #1982d4;" class="">Full Name</label>
+              </div>
+            </div>
+            <div class="group col-sm-6 no-pad pd-l15">
+              <div>
+                <input type="text" required="required" value="" formControlName="email" />
+                <label style="top: 5px;
+                font: normal normal bold 12px/12px Nunito;
+                color: #1982d4;" class="label-pad-designright">Email ID</label>
+                <span class="error-message"
+                  *ngIf="counselorDetailsFormArray.controls[i].get('email').value
+                    && counselorDetailsFormArray.controls[i].get('email').invalid && counselorDetailsFormArray.controls[i].get('email').dirty">Invalid
+                  email address</span>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <p style="margin-top: 15px;" class="head-title">Your Social Media Info</p>
+      <div style="width: 100%;margin: 0;" class="row select-input-added" formArrayName="social_media">
+        <ng-container *ngFor="let channel of socialMedialFormArray.controls; let i = index">
+          <ng-container formGroupName={{i}}>
+            <div class="group col-sm-3 no-pad">
+              <div class="mg-b20"
+                style="border-right: 0;border-top-right-radius: 0;border-bottom-right-radius:0;padding-bottom: 15px;">
+                <label class="select-label label-pad-designleft">Channel Name</label>
+                <select style="margin-top: 11px;padding-top:10px;" (change)="onSelectSocialMediaHandle($event, i)"
+                  formControlName="channel_name">
+                  <option value="" disabled>Select</option>
+                  <option [value]="channel" *ngFor="let channel of socialMediaChannels">{{channel}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="group col-sm-8" style="padding-left: 0;">
+              <div class="mg-b20"
+                style="border-left: 0;border-top-left-radius:0; border-bottom-left-radius:0;padding-bottom: 15px;">
+                <input type="text" required="required" value="url" formControlName="channel_link" autofocus
+                  #channelLink />
+                <label style="top: 5px;
+                font: normal normal bold 12px/12px Nunito;
+                color: #1982d4;">Enter URL</label>
+                <span class="error-message"
+                  *ngIf="channel.get('channel_link').value && channel.get('channel_link').invalid && channel.get('channel_link').dirty">
+                  Invalid Url</span>
+              </div>
+              <button type="button" class="cross-button" (click)="onRemoveSocialMedia(i)" *ngIf="i>=0">
+                <img src="/assets/images/on-boarding/cross-button.svg">
+              </button>
+            </div>
+          </ng-container>
+        </ng-container>
+        <div class="add-more-link">
+          <a (click)="onClickAddSocialMedial()" style="cursor: pointer;"> +ADD MORE</a>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="btn-wrapper">
+    <button class="backbutton" (click)="onFormBack()">Back</button>
+    <div>
+      <button class="savebtn" (click)="onSubmitForm(true)">Save and Complete later</button>
+      <button class="submitbutton" (click)="onSubmitForm(true)">SAVE AND CONTINUE</button>
+    </div>
+  </div>
+</div>
+<ng-template #sayChangePswdTemplate>
+  <div class="lead-form changepass_modal">
+    <div class="headd">
+      UPDATE PASSWORD
+    </div>
+    <div class="lead-form-wrapper">
+      <button type="button" class="close-button" (click)="modalRef.hide()"><img
+          src="/assets/images/on-boarding/cross-button.png"></button>
+
+      <form class="login-form row" style="margin:22px;" [formGroup]="changePwd">
+        <div class="group col-sm-12" style="padding-right: 13px;padding-left: 10px;">
+          <div>
+            <input type="password" formControlName="oldPwd" required="required" />
+
+            <label style="left:26px;">Old Password*</label>
+          </div>
+        </div>
+        <div *ngIf="f.oldPwd.touched && f.oldPwd.invalid" class="alert alert-danger">
+          <div *ngIf="f.oldPwd.errors.required">Old Password is required.</div>
+        </div>
+        <div class="group col-sm-12" style="padding-right: 15px; padding-left: 10px;">
+          <div>
+            <input type="password" formControlName="newPwd" required="required" />
+
+            <label style="left:26px;">New Password*</label>
+          </div>
+        </div>
+        <div *ngIf="f.newPwd.touched && f.newPwd.invalid" class="alert alert-danger">
+          <div *ngIf="f.newPwd.errors.required">New Password is required.</div>
+        </div>
+        <div class="group col-sm-12" style="padding-right: 13px; padding-left: 10px;">
+          <div>
+            <input type="password" formControlName="confirmPwd" required="required" />
+            <label style="left:26px;">Confirm Password*</label>
+          </div>
+        </div>
+        <div *ngIf="f.confirmPwd.touched && f.confirmPwd.invalid" class="alert alert-danger">
+          <div *ngIf="f.confirmPwd.errors.required"> Confirm Password is required.</div>
+          <div *ngIf="f.confirmPwd.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+        </div>
+
+      </form>
+      <div class="btn-wrapper">
+        <button class="submitbutton" [disabled]="!changePwd.valid" (click)="onSubmitPsd()">SUBMIT</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

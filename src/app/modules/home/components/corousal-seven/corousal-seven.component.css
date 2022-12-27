@@ -1,0 +1,306 @@
+@import "../../../../../assets/css/dashboard.css";
+
+.clg-heading1 {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.clg-heading2 {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.card-item {
+  /*width: 505px;*/
+  height: auto;
+  background-color: #ffffff;
+  /* margin-right: 60px; */
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.clg-mission-section {
+  padding: 100px 40px;
+  background-color: #C54452;
+}
+
+.clg-mission-section ::ng-deep .owl-theme .owl-nav [class*="owl-"] {
+  opacity: 1;
+  color: #fff;
+  font-size: 30px;
+  background: #3a86fc;
+}
+
+.clg-mission-section ::ng-deep .owl-theme .owl-nav [class*="owl-"]:hover {
+  opacity: 0.8;
+}
+
+.clg-mission-section ::ng-deep .owl-stage {
+  display: flex;
+}
+
+.clg-mission-section ::ng-deep .owl-carousel {
+  margin-bottom: 40px !important;
+  margin-top: 20px !important;
+}
+
+.clg-mission-section ::ng-deep .owl-theme .owl-prev,
+.clg-mission-section ::ng-deep .owl-theme .owl-next {
+  background: #141414 0% 0% no-repeat padding-box;
+  opacity: 0.5;
+  width: 30px;
+  background-color: gray;
+  border-radius: 0;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  top: 70px;
+  font-weight: 600;
+}
+
+.clg-mission-section ::ng-deep .owl-theme .owl-prev {
+  border-radius: 0px 4px 4px 0px;
+  left: 0;
+}
+
+.clg-mission-section ::ng-deep .owl-theme .owl-next {
+  border-radius: 4px 0px 0px 4px;
+  right: 0;
+}
+
+.clg-mission-section ::ng-deep .owl-theme .owl-nav .disabled {
+  display: none;
+}
+
+.card {
+  width: 505px;
+  height: 240px;
+  background-color: #ffffff;
+  margin-right: 60px;
+  border-radius: 8px;
+  padding: 30px 30px 0 30px;
+}
+
+.row.card-box.text {
+  margin-top: 20px;
+}
+
+.card-box {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  height: 50%;
+  position: relative;
+}
+
+.clg-youbox:before {
+  content: "\f16a";
+  font-family: 'FontAwesome';
+  color: #f00;
+  font-size: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 100%;
+}
+
+.profile-desc {
+  width: 115px;
+  height: 100px;
+}
+
+.name {
+  font-size: 14px;
+  font-family: Nunito;
+  font-weight: bold;
+  color: #141414;
+  line-height: 19px;
+}
+
+.details {
+  font-size: 12px;
+  font-family: Nunito;
+  font-weight: 400;
+  color: #838383;
+  line-height: 16px;
+}
+
+.flag-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.clg-footer-text {
+  margin-bottom: 20px;
+  font-size: 35px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.explore {
+  color: #ffffff;
+  background-color: #3a86fc;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 16px;
+  font-family: Nunito;
+  font-weight: bold;
+  padding: 15px 30px;
+}
+
+.navigator {
+  position: absolute;
+  right: 10%;
+}
+
+.text {
+  font-size: 16px;
+  font-family: "Nunito";
+  font-weight: 400;
+}
+
+img:hover {
+  opacity: 0.2 !important;
+}
+
+.clickVideo-modal {
+  width: auto;
+  height: 450px;
+  margin: 0 auto;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border-radius: 5px;
+}
+
+.clickVideo-form {
+  padding: 10px 10px 10px 10px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 16px #00000014;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.clickVideo-form .reset-fliter-btn {
+  font: normal normal bold 14px/19px Nunito;
+  letter-spacing: 0px;
+  color: #141414;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.clg-video-bgimg {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+@media screen and (min-width:1400px) {
+  .clg-content {
+    max-width: 1600px;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .clg-mission-section ::ng-deep .owl-stage {
+    padding-left: 0 !important;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .clg-heading1 {
+    font-size: 40px;
+  }
+
+  .clg-heading2 {
+    font-size: 30px;
+  }
+
+  .clg-footer-text {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .clg-mission-section {
+    padding: 80px 10px;
+  }
+
+  .clg-youbox:before {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .clg-mission-section ::ng-deep .owl-theme .owl-nav [class*="owl-"] {
+    height: auto;
+    top: 50%;
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .card,
+  .card-item {
+    width: 100%;
+    margin-right: 60px;
+    padding: 15px 15px 0 15px;
+  }
+
+  .flag-icon {
+    /*right: -30px;*/
+  }
+
+  .clg-mission-section ::ng-deep .owl-carousel.owl-drag .owl-item {
+    min-width: 180px;
+  }
+
+  .text {
+    font-size: 16px;
+    font-family: "Nunito";
+    font-weight: 400;
+  }
+
+  .clg-heading1 {
+    font-size: 30px;
+  }
+
+  .clg-heading2 {
+    font-size: 20px;
+  }
+
+  .clg-footer-text {
+    font-size: 20px;
+  }
+
+  .clickVideo-modal iframe {
+    height: 300px;
+  }
+
+  .row.card-box.text {
+    padding-bottom: 15px;
+    font-size: 14px;
+  }
+
+  .clg-youbox:before {
+    font-size: 40px;
+  }
+
+  .profile-pic iframe {
+    height: 200px;
+  }
+}

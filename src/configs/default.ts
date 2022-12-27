@@ -19,9 +19,9 @@ export const DEFAULT_CONFIG = {
 /* */  
 // UAT server API connection URL 
 frontEndUrl: 'https://collegey.com/',
-apiEndpoint: 'https://collegey.com/api/',
-apiEndpointNew: 'https://collegey.com/x-api/v1/',
-apiNewEndpoint: 'https://collegey.com/api1/',
+apiEndpoint: 'https://prodapi.collegey.com/api/',
+apiEndpointNew: 'https://prodapi.collegey.com/x-api/v1/',
+apiNewEndpoint: 'https://prodapi.collegey.com/api1/',
 /* */   
   keys: {
     FACEBOOK_APP_ID: '726332021874244',  

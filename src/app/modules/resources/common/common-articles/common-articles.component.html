@@ -5,7 +5,7 @@
                 <div class="webinar-box article-box" (click)="onNavigate(article.slug)">
 
                     <div class="webinar-image-box">
-                        <img class="zoom-image" [src]="commonService.imagePathMaker(article.image, '/assets/images/default-blog.svg')" alt="Article Image">
+                        <img class="zoom-image" [src]="commonService.imagePathS3(article.image, '/assets/images/default-blog.svg')" alt="Article Image">
                     </div>
                     <div class="webinar-content-box">
                         <a class="post-title webinar-title" href="javascript:void(0)">{{article.title}}</a>

@@ -25,8 +25,9 @@
         </p>
         <div class="article-content-box">
           <ng-container *ngIf="articleDetails?.image">
-            <img [src]="commonService.imagePathMaker(articleDetails?.image)" alt="Article Banner Image"
-              class="img-fluid" />
+            <!-- <img [src]="commonService.imagePathMaker(articleDetails?.image)" alt="Article Banner Image"
+              class="img-fluid" /> -->
+              <img class="zoom-image" [src]="commonService.imagePathS3(articleDetails?.image, '/assets/images/default-blog.svg')" alt="Article Image" class="img-fluid">
           </ng-container>
           <article [innerHTML]="articleDetails?.description" class="clg-blog-description"></article>
         </div>
@@ -44,8 +45,8 @@
               <img *ngIf="commentList?.userData?.avatar"
                 [src]="commonService.imagePathS3(commentList?.userData?.avatar)" class="user-img" alt="" />
               <div class="user-comment-info">
-                <p class="user-name">{{commentList?.name}}</p>
-                <p class="user-email">{{commentList?.email}}</p>
+                <p class="user-name">{{commentList?.name}} {{commentList?.userData?.last_name}}</p>
+                <p class="user-email">{{commentList?.userData?.type}}</p>
                 <p class="user-submitted-comment">
                   {{commentList?.comment}}
                 </p>
@@ -57,11 +58,11 @@
                   <div class="user-comment-item" *ngFor="let replyList of commentList?.reply; let i=index;">
                     <img *ngIf="!commentList?.userData?.avatar" src="assets/images/profile-picture.png" class="user-img"
                       alt="" />
-                    <img *ngIf="commentList?.userData?.avatar"
-                      [src]="commonService.imagePathS3(commentList?.userData?.avatar)" class="user-img" alt="" />
+                      <img *ngIf="commentList?.userData?.avatar"
+                      [src]="commonService.imagePathS3(replyList?.avatar)" class="user-img" alt="" />
                     <div class="user-comment-info">
-                      <p class="user-name">{{replyList?.name}}</p>
-                      <p class="user-email">{{replyList?.email}}</p>
+                      <p class="user-name">{{replyList?.name}} {{replyList?.last_name}}</p>
+                      <p class="user-email">{{replyList?.type}}</p>
                       <p class="user-submitted-comment">
                         {{replyList?.comment}}
                       </p><br>
@@ -114,8 +115,8 @@
               <img *ngIf="commentList?.userData?.avatar"
                 [src]="commonService.imagePathS3(commentList?.userData?.avatar)" class="user-img" alt="" />
               <div class="user-comment-info">
-                <p class="user-name">{{commentList?.name}}</p>
-                <p class="user-email">{{commentList?.email}}</p>
+                <p class="user-name">{{commentList?.name}} {{commentList?.userData?.last_name}}</p>
+               	 <p class="user-email">{{commentList?.userData?.type}}</p>
                 <p class="user-submitted-comment">
                   {{commentList?.comment}}
                 </p>
@@ -128,8 +129,8 @@
                     <img *ngIf="replyList.avatar" [src]="commonService.imagePathS3(replyList?.avatar)" class="user-img"
                       alt="" />
                     <div class="user-comment-info">
-                      <p class="user-name">{{replyList?.name}}</p>
-                      <p class="user-email">{{replyList?.email}}</p>
+                      <p class="user-name">{{replyList?.name}} {{replyList?.last_name}}</p>
+                      <p class="user-email">{{replyList?.type}}</p>
                       <p class="user-submitted-comment">
                         {{replyList?.comment}}
                       </p><br>
@@ -225,7 +226,8 @@
           <p class="subheading">Recent Post</p>
           <div class="postlists" *ngFor="let article of similarArticles; let i = index">
             <div class="recent-post-item" *ngIf="i < 8" (click)="onNavigate(article.slug)">
-              <img [src]="commonService.imagePathMaker(article?.image)" alt="Article Image" class="post-img" alt="" />
+              <!-- <img [src]="commonService.imagePathMaker(article?.image)" alt="Article Image" class="post-img" alt="" /> -->
+              <img class="zoom-image" [src]="commonService.imagePathS3(article.image, '/assets/images/default-blog.svg')" alt="Article Image" class="post-img">
               <div class="post-info">
                 <p class="postlink">{{ article?.title }}</p>
                 <div class="post-date-like">

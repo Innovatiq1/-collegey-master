@@ -10,8 +10,8 @@
     box-shadow: 0px 3px 15px #0000001A;
     border-radius: 0px;
     padding: 0;
-    margin-bottom: 20px;
-    margin-top: 5.125rem;
+    margin-bottom: 10px;
+    margin-top: 6.125rem;
 }
 
 .first-section {
@@ -20,7 +20,7 @@
     border-radius: 12px;
     padding: 0;
     margin-bottom: 20px;
-    margin-top: 3.125rem;
+    /* margin-top: 3.125rem; */
 }
 
 .get-start {

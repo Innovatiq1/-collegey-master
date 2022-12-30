@@ -8,9 +8,10 @@
                 <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let article of articles;">
                     <div class="webinar-box article-box">
                         <div class="webinar-image-box" (click)="onNavigate(article.slug)">
-                            <img class="zoom-image"
+                            <!-- <img class="zoom-image"
                                 [src]="commonService.imagePathMaker(article.image, '/assets/images/default-blog.svg')"
-                                alt="Article Image">
+                                alt="Article Image"> -->
+                                <img class="zoom-image" [src]="commonService.imagePathS3(article.image, '/assets/images/default-blog.svg')" alt="Article Image">
                         </div>
                         <div class="webinar-content-box1">
                             <a class="post-title webinar-title" (click)="onNavigate(article.slug)"

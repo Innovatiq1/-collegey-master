@@ -44,6 +44,7 @@
     }
     .resources-tabs .nav-tabs li{ 
         margin: 5px;
+        width: 45%;
     }
 }
 

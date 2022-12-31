@@ -249,6 +249,7 @@ export class DashHeaderComponent implements OnInit {
         name:res?.name,
         stateObj:res?.stateObj?.name,
         _id:res?._id,
+        type:res?.type,
         }]
       };
       

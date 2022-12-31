@@ -4,7 +4,7 @@
             <div class="row banner-blog">
                 <!-- image box for mobile hidden above sm -->
                 <div class="col-sm hide-md no-pad">
-                    <img [src]="commonService.imagePathMaker(currentBlog?.image, '/assets/images/default-blog.svg')" class="full-width">
+                    <img [src]="commonService.imagePathS3(currentBlog?.image, '/assets/images/default-blog.svg')" class="full-width">
                 </div>
                 <div class="col-sm">
                     <div class="webinar-content-box">
@@ -35,7 +35,7 @@
                 </div>
                 <!-- image box for above sm -->
                 <div class="col-sm hide-xs" style="padding: 0;">
-                    <img [src]="commonService.imagePathMaker(currentBlog?.image, '/assets/images/default-blog.svg')" class="full-width">
+                    <img [src]="commonService.imagePathS3(currentBlog?.image, '/assets/images/default-blog.svg')" class="full-width">
                     <button class="btn slider-btn next-btn" *ngIf="nextPage" (click)="loadNext($event)">
                         Next
                     </button>

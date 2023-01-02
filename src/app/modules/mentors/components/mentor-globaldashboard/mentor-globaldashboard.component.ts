@@ -80,6 +80,10 @@ export class MentorGlobaldashboardComponent implements OnInit {
 
   fetchcurrentImageheight: any;
   fetchcurrentImagewight: any;
+
+  //userType
+  userType:any;
+
   constructor(
     private modalService: BsModalService,
     private mentorDashboardService: MentorDashboardService,
@@ -95,6 +99,7 @@ export class MentorGlobaldashboardComponent implements OnInit {
     // Get User Data
     const loggedInInfo = this.authService.getUserInfo();
     this.userid = loggedInInfo?.user?.id;
+    this.profileType();    
     this.userComboname = loggedInInfo?.user?.name + '-' + loggedInInfo?.user?.last_name;
     this.siteurl = environment.frontEndUrl;
     this.userInfo = loggedInInfo ? loggedInInfo.user : new User();
@@ -210,17 +215,33 @@ export class MentorGlobaldashboardComponent implements OnInit {
     this.mentorDashboardService.getDashboardDetail().subscribe((res) => {
       if (res.profile.profile_completion) {
         this.calculateProfileProgress(
-          res.profile.profile_completion.profile_text
+          res.profile?.profile_completion?.profile_text
         );
       }
       this.dashboard = res;
      // this.mentorFullName = this.dashboard?.profile?.name.toLowerCase() + ' ' + this.dashboard?.profile?.last_name.toLowerCase();
-      if (this.dashboard?.profile?.mentor_profile?.profile?.fullLegalName != '') {
+      // if (this.dashboard?.profile?.mentor_profile?.profile?.fullLegalName != '') {
+      //   this.mentorFullName = this.dashboard?.profile?.mentor_profile?.profile?.fullLegalName.toLowerCase();
+      //   this.mentorDisplayName = this.capitalize(this.mentorFullName);
+      // }
+
+      if (this.dashboard?.profile?.mentor_profile) {
+        console.log('yes');
         this.mentorFullName = this.dashboard?.profile?.mentor_profile?.profile?.fullLegalName.toLowerCase();
+        this.mentorDisplayName = this.capitalize(this.mentorFullName);
+      }
+      else {
+        console.log('no');
+        this.mentorFullName = this.dashboard?.profile?.name.toLowerCase()+' '+this.dashboard?.profile?.last_name.toLowerCase();
         this.mentorDisplayName = this.capitalize(this.mentorFullName);
       }
       this.cdr.detectChanges();
     });
+  }
+
+  profileType(){
+    const loggedInInfo = this.authService.getUserInfo();
+    this.userType = this.capitalize(loggedInInfo?.user?.type);    
   }
 
   capitalize(input) {

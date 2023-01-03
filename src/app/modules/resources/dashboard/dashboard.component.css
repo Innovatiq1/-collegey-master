@@ -33,7 +33,8 @@
 }
 
 .terms-header {
-    background-image: url(../../../../assets/images/resources/programs-banner_1.jpg);
+    /* background-image: url(../../../../assets/images/resources/programs-banner_1.jpg); */
+    background-image: url('https://s3.ap-southeast-1.amazonaws.com/storage.collegey/.png/9-1662202073249.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 190px;

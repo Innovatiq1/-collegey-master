@@ -197,7 +197,7 @@ const routes: Routes = [
   {
     path: 'success',
     component: SuccessComponent,
-    pathMatch: 'full',
+    //pathMatch: 'full',
   },
   {
     path: 'cancel',

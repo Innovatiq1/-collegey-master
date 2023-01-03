@@ -36,6 +36,9 @@ export class SuccessComponent implements OnInit {
     {
       this.updateProjectPayment();    
     }
+    console.log("this.paymentAmount",this.paymentAmount);
+    console.log("this.projectId",this.projectId);
+    console.log("this.userid",this.userid);
   }
 
   updateProjectPayment()

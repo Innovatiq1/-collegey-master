@@ -175,7 +175,7 @@ font-size: small;">{{profileText}}
             <div style="display: flex;align-items: center;">
               <img src="./../../../assets/images/office-chair.png" style="width: 12px;" alt="">
               <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
-              letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+              letter-spacing: 0px; color: #141414;">{{project?.remainingSlot - project?.projectMembers?.length}} spots available</p>
             </div>
             <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
           </div>
@@ -259,7 +259,7 @@ font-size: small;">{{profileText}}
             <div style="display: flex;align-items: center;">
               <img src="./../../../assets/images/office-chair.png" style="width: 12px;" alt="">
               <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
-                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot - project?.projectMembers?.length}} spots available</p>
             </div>
             <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
           </div>
@@ -301,7 +301,7 @@ font-size: small;">{{profileText}}
             <div style="display: flex;align-items: center;">
               <img src="./../../../assets/images/office-chair.png" style="width: 12px;" alt="">
               <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
-                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot - project?.projectMembers?.length}} spots available</p>
             </div>
             <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
           </div>
@@ -341,7 +341,7 @@ font-size: small;">{{profileText}}
             <div style="display: flex;align-items: center;">
               <img src="./../../../assets/images/office-chair.png" style="width: 12px;" alt="">
               <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
-                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+                letter-spacing: 0px; color: #141414;">{{project?.remainingSlot - project?.projectMembers?.length}} spots available</p>
             </div>
             <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
           </div>
@@ -382,7 +382,7 @@ font-size: small;">{{profileText}}
             <div style="display: flex;align-items: center;">
               <img src="./../../../assets/images/office-chair.png" style="width: 12px;" alt="">
               <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
-                  letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
+                  letter-spacing: 0px; color: #141414;">{{project?.remainingSlot - project?.projectMembers?.length}} spots available</p>
             </div>
             <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
           </div>
@@ -415,7 +415,7 @@ font-size: small;">{{profileText}}
             <div style="display: flex;align-items: center;">
               <img src="./../../../assets/images/office-chair.png" style="width: 12px;" alt="">
               <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
-                letter-spacing: 0px; color: #141414;">{{project?.project?.remainingSlot}} spots available</p>
+                letter-spacing: 0px; color: #141414;">{{project?.project?.remainingSlot - project?.project?.projectMembers?.length}} spots available</p>
             </div>
             <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.project?.start_date | date}}</span>
             </p>
@@ -550,7 +550,7 @@ font-size: small;">{{profileText}}
           <p>Including taxes</p>
           <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
               style="vertical-align: middle;"> | </span> <img src="./../../../assets/images/office-chair.png" width="15"
-              alt=""> <span style="color: #25E66D;"> {{projectDialog?.remainingSlot}} Spots available</span>
+              alt=""> <span style="color: #25E66D;"> {{projectDialog?.remainingSlot - projectDialog?.projectMembers?.length}} Spots available</span>
           </p>
         </div>
         <div class="button_div">

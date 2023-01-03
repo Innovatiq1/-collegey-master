@@ -807,16 +807,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
         else {
           this.includeInJoinProject = false;
         }
-        this.projectDialog.availableSlot = project?.remainingSlot - response?.data;
-
-        if (project?.mentor?._id != project?.projectOwner?._id) {
+        
+        /* this.projectDialog.availableSlot = project?.remainingSlot - response?.data;
+        
+        if(project?.mentor && project?.mentor?._id != project?.projectOwner?._id) {
           this.projectDialog.availableSlot = this.projectDialog.availableSlot + 2;
         }
-        else {
-          this.projectDialog.availableSlot = this.projectDialog.availableSlot + 1;
-        }
-
-        this.completeProjectCertificate = response?.certificateData?.certificateUrl;
+        else
+        {
+          if(project?.projectOwner?.type != 'admin')
+          {
+            this.projectDialog.availableSlot = this.projectDialog.availableSlot + 1;
+          }
+        } */
+        
+        this.projectDialog.availableSlot = project?.remainingSlot - project?.projectMembers?.length;
+        this.completeProjectCertificate  = response?.certificateData?.certificateUrl;
       },
       (err) => {
 

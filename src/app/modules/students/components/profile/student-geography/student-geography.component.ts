@@ -218,8 +218,8 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
           this.getStateList(countryId);
         } else {
           // disable state and city formControl on initial time
-          this.geographyFormGroup.get('geography').get('state').disable();
-          this.geographyFormGroup.get('geography').get('city').disable();
+          // this.geographyFormGroup.get('geography').get('state').disable();
+          // this.geographyFormGroup.get('geography').get('city').disable();
         }
 
         this.cdr.detectChanges();

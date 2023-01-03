@@ -52,7 +52,7 @@
                 <div class="mb-1">
                     <input type="date" class="form-control" min="{{projectStartDate}}" id="date1" placeholder=""
                         style="height: 29px;" formControlName="startDate" (change)="onChangeProjectStart($event)">
-                    <label>Start date*</label>
+                    <label>Project start date*</label>
                 </div>
                 <span *ngIf="submittedProfile && (hasError('startDate','required') || hasError('startDate','pattern'))"
                     class="alert-danger d-block p-1">Start date is required</span>
@@ -62,10 +62,10 @@
                 <div class="mb-1">
                     <input type="date" class="form-control" min="{{projectSetLastDate}}" #takeInput id="date1"
                         placeholder="" style="height: 29px;" formControlName="lastDate">
-                    <label>Last date of join*</label>
+                    <label>Project end date*</label>
                 </div>
                 <span *ngIf="submittedProfile && (hasError('lastDate','required') || hasError('lastDate','pattern'))"
-                    class="alert-danger d-block p-1">Last date is required</span>
+                    class="alert-danger d-block p-1">End date is required</span>
             </div>
 
             <div class="group col-sm-6 mb-3">

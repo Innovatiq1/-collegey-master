@@ -18,6 +18,7 @@ const Logging = new Logger('StaticDataService');
 })
 export class StaticDataService {
   defaultUrl = environment.apiEndpoint;
+  publicUrl = environment.apiEndpointNew;
   constructor(private http: HttpClient) {}
 
   _getStaticDataList(): Observable<any> {
@@ -32,6 +33,17 @@ export class StaticDataService {
 
   getCountries(): Observable<Countries[]> {
     const endPointUrl = this.defaultUrl + 'master/country';
+    return this.http.get<ApiGenericResponse<any>>(endPointUrl).pipe(
+      map((response) => {
+        this.getCountryPhoneCode(response.data);
+        Logging.debug(response);
+        return response.data;
+      })
+    );
+  }
+
+  publicgetCountries(): Observable<Countries[]> {
+    const endPointUrl = this.publicUrl + 'public/country';
     return this.http.get<ApiGenericResponse<any>>(endPointUrl).pipe(
       map((response) => {
         this.getCountryPhoneCode(response.data);

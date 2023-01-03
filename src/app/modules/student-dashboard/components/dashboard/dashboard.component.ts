@@ -831,7 +831,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.includeInProjectMember = this.includeInProject?.includes(this.userInfo?._id);
       this.pdfData['student_name'] = this.userInfo?.name + ' ' + this.userInfo?.last_name;
       this.pdfData['student_projectname'] = this.projectDialog?.title;
-      if (this.projectDialog?.projectPlan?.projectDuration.includes('month')) {
+      if (this.projectDialog?.projectPlan?.projectDuration?.includes('month')) {
         this.pdfData['project_week'] = this.projectDialog?.projectPlan?.projectDuration;
       }
       else {

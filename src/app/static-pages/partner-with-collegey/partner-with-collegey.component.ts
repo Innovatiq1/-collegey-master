@@ -40,7 +40,6 @@ export class PartnerWithCollegeyComponent implements OnInit {
     this.submitted = true;
     let obj = this.collegeyPartnerForm.value;
     console.log("obj",obj);
-    return;
     if (this.collegeyPartnerForm.invalid) {
       return;
     }    

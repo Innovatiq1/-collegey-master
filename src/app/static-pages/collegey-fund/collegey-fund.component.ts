@@ -6,6 +6,7 @@ import { InvestService } from 'src/app/core/services/invest.service';
 import { AppConstants } from 'src/app/shared/constants/app.constants';
 import {DomSanitizer,SafeHtml,} from '@angular/platform-browser';
 import { CustomValidators } from 'src/app/shared/validators/custom-validators';
+import { StaticDataService } from 'src/app/core/services/static-data.service';
 
 
 @Component({
@@ -17,9 +18,7 @@ export class CollegeyFundComponent implements OnInit {
 
   fundForm: FormGroup;
   submitted:boolean = false;
-  countryPhoneCode = JSON.parse(
-    localStorage.getItem(AppConstants.KEY_COUNTRY_PHONE_CODE)
-  );
+  countryPhoneCode:any=[];
 
   selectedCountryCode : any = "Select Country Code";
 
@@ -29,7 +28,10 @@ export class CollegeyFundComponent implements OnInit {
     private router : Router,
     private toastrService: ToastrService,
     private domSanitizer :DomSanitizer,
-  ){ }
+    private staticService :StaticDataService
+  ){ 
+    this.getCountriescode();
+  }
 
   ngOnInit(): void {
     this.fundForm = this.fb.group({
@@ -83,6 +85,28 @@ export class CollegeyFundComponent implements OnInit {
     this.investService.getFundAllData({}).subscribe((res)=>{
       this.dynamicValue = res.data[0];
     })
+  }
+
+  getCountriescode(){
+    this.staticService.publicgetCountries().subscribe((res:any)=>{
+      const phoneCodeArray = res
+      .map((item) => {
+        return {
+          label: `${item.phone_code} ${item.name}`,
+          value: item.phone_code
+        };
+      });
+    localStorage.setItem(
+      AppConstants.KEY_COUNTRY_PHONE_CODE,
+      JSON.stringify(phoneCodeArray)
+    );    
+    })
+    setTimeout(() => {
+      this.countryPhoneCode = JSON.parse(
+        localStorage.getItem(AppConstants.KEY_COUNTRY_PHONE_CODE)
+      )
+    }, 1000);
+      
   }
   
 }

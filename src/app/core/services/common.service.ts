@@ -62,6 +62,20 @@ export class CommonService {
       );
   }
 
+  publicuploadResume(formData, source): Observable<any> {
+    return this.http
+      .post<any>(
+        `${environment.apiEndpointNew}public/common/upload-resume/${source}`,
+        formData
+      )
+      .pipe(
+        map((response) => {
+          Logging.debug(response.files);
+          return response.files;
+        })
+      );
+  }
+
   uploadProfile(profile): Observable<any> {
     return this.http
       .put<any>(`${environment.apiEndpoint}auth/edit`, profile)

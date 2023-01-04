@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ImageSource } from 'src/app/core/enums/image-upload-source.enum';
 import { CareerService } from 'src/app/core/services/career.service';
 import { CommonService } from 'src/app/core/services/common.service';
+import { StaticDataService } from 'src/app/core/services/static-data.service';
 import { AppConstants } from 'src/app/shared/constants/app.constants';
 
 @Component({
@@ -29,8 +30,11 @@ export class ThankYouComponent implements OnInit {
     private careerService: CareerService,
     private commonService: CommonService,
     private router: Router,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private staticService :StaticDataService
+  ) {
+    this.getCountriescode();
+  }
 
   ngOnInit(): void {
     this.collegeyCareerform = this.fb.group({
@@ -88,7 +92,7 @@ export class ThankYouComponent implements OnInit {
         this.toastrService.success('Data Successfully Saved');
         this.collegeyCareerform.reset();
         this.completeNameDocumentList=[]
-        // this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/');
       },
       (err) => {
         console.log('Career Error', err);
@@ -132,7 +136,7 @@ export class ThankYouComponent implements OnInit {
   uploadDocument(formData) {
     // this.documentList = [];
     this.commonService
-      .uploadResume(formData, ImageSource.RESUME)
+      .publicuploadResume(formData, ImageSource.RESUME)
       .subscribe((file) => {
         // this.onFileUploadSuccess.emit(file);
         if (file instanceof Array) {
@@ -159,5 +163,27 @@ export class ThankYouComponent implements OnInit {
     this.careerService.getAllData({}).subscribe((res)=>{
       this.dynamicValue = res.data[0];
     })
+  }
+
+  getCountriescode(){
+    this.staticService.publicgetCountries().subscribe((res:any)=>{
+      const phoneCodeArray = res
+      .map((item) => {
+        return {
+          label: `${item.phone_code} ${item.name}`,
+          value: item.phone_code
+        };
+      });
+    localStorage.setItem(
+      AppConstants.KEY_COUNTRY_PHONE_CODE,
+      JSON.stringify(phoneCodeArray)
+    );    
+    })
+    setTimeout(() => {
+      this.countryPhoneCode = JSON.parse(
+        localStorage.getItem(AppConstants.KEY_COUNTRY_PHONE_CODE)
+      )
+    }, 1000);
+      
   }
 }

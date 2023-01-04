@@ -195,7 +195,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'success',
+    path: 'success/:projectId',
     component: SuccessComponent,
     //pathMatch: 'full',
   },

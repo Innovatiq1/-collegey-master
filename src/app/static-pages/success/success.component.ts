@@ -19,14 +19,18 @@ export class SuccessComponent implements OnInit {
     private route: ActivatedRoute,
     private studentDashboardService: StudentDashboardService,
     private projectService: ProjectService,
+    private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
     private authService: AuthService,
   )
   { 
-    this.route.queryParams.subscribe(params => {
+    /* this.route.queryParams.subscribe(params => {
       this.projectId = params.project;
       this.paymentAmount = params.price;
-    });
+    }); */
+
+    this.projectId = this.activatedRoute.snapshot.paramMap.get('projectId');
+    
     const loggedInInfo = this.authService.getUserInfo();
     this.userid = loggedInInfo?.user._id;
   }
@@ -36,11 +40,8 @@ export class SuccessComponent implements OnInit {
     {
       this.updateProjectPayment();    
     }
-    console.log("this.paymentAmount",this.paymentAmount);
-    console.log("this.projectId",this.projectId);
-    console.log("this.userid",this.userid);
   }
-
+  
   updateProjectPayment()
   {
     let obj = {project_id:this.projectId};
@@ -59,7 +60,7 @@ export class SuccessComponent implements OnInit {
 
   UserProjectSuccess(data:any)
   {
-    let obj = {project_id:data.id,user_id:this.userid,paymentType:'paid',paymentAmount:this.paymentAmount};
+    let obj = {project_id:data.id,user_id:this.userid,paymentType:'paid'};
           this.projectService.UserProjectSuccess(obj).subscribe(
             (response) => {
               this.toastrService.success(response.message);

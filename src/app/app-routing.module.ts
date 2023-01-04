@@ -41,6 +41,7 @@ import { MentorPublicProfileComponent } from './modules/mentors/components/mento
 import { ForgotPasswordFormComponent } from '../app/shared/components/forgot-password-form/forgot-password-form.component';
 import { PublicBlogTagComponent } from 'src/app/public-blog-tag/public-blog-tag.component';
 import { SuccessProgramComponent } from './static-pages/success-program/success-program.component';
+import { SuccessFreeProjectComponent } from './static-pages/success-free-project/success-free-project.component';
 
 const routes: Routes = [
   ...AUTH_ROUTES,
@@ -101,7 +102,6 @@ const routes: Routes = [
     component: SuccessProgramComponent,
     pathMatch: 'full',
   },
-
   {
     path: 'forget-password', 
     component: ForgotPasswordFormComponent,
@@ -198,6 +198,11 @@ const routes: Routes = [
     path: 'success/:projectId',
     component: SuccessComponent,
     //pathMatch: 'full',
+  },
+  {
+    path: 'success-free',
+    component: SuccessFreeProjectComponent,
+    pathMatch: 'full',
   },
   {
     path: 'cancel',

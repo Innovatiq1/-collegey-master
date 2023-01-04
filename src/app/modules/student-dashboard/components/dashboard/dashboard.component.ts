@@ -1106,7 +1106,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         //   this.router.navigate(['/success']);
         // });
         this.toastrService.info("Congratulations! 200 Reward Point.");
-        this.router.navigate(['/success']);
+        this.router.navigate(['/success-free']);
       },
       (err) => {
         this.toastrService.error('Add project faild');

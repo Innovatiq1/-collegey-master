@@ -306,6 +306,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const tokenid = this.route.snapshot.params['id'];
+    console.log('-=-===->',tokenid);
+    this.navid()
     this.getInviteProjectDetail(tokenid);
     this.getDashboardDetail();
     this.getMentors();
@@ -765,8 +767,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     if (this.modalRef) {
       this.modalRef.hide();
     }
-    this.userSubscription.unsubscribe();
-    this.userSubscription.unsubscribe();
+    this.userSubscription?.unsubscribe();
+    // this.userSubscription.unsubscribe();
   }
 
   CopyCertificateUrl(certificateUrl: any) {
@@ -1106,7 +1108,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         //   this.router.navigate(['/success']);
         // });
         this.toastrService.info("Congratulations! 200 Reward Point.");
-        this.router.navigate(['/success']);
+        this.router.navigate(['/success-free']);
       },
       (err) => {
         this.toastrService.error('Add project faild');
@@ -1378,5 +1380,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     );
   }
 
+  isAuthenticated() {
+    return this.authService.getToken();
+  }
 
+  navid(){
+    if(!this.isAuthenticated()){
+      this.toastrService.error('Please login first');
+      this.router.navigateByUrl('/');
+    }
+  }
 }

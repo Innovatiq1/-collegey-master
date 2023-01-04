@@ -10,6 +10,8 @@ import referralCodeGenerator from 'referral-code-generator';
 import { InviteeServiceService } from 'src/app/core/services/invitee-service.service';
 import { ToastrService } from 'ngx-toastr';
 
+import { AppConstants } from 'src/app/shared/constants/app.constants';
+
 @Component({
   selector: 'app-corousal-one',
   templateUrl: './corousal-one.component.html',
@@ -94,7 +96,7 @@ export class CorousalOneComponent implements OnInit {
         type: ["", [Validators.required]],
         firstName: ["", [Validators.required]],
         lastName: ["", [Validators.required]],
-        email: ["", [Validators.required]],
+        email: ["", [Validators.required, Validators.pattern(AppConstants.EMAIL_PATTERN)]],
         cellNumber: ["", [Validators.required]],
         shouldAgree: [null, Validators.required],
       },

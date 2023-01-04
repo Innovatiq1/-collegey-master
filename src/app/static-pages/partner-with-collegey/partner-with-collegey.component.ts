@@ -43,10 +43,10 @@ export class PartnerWithCollegeyComponent implements OnInit {
     if (this.collegeyPartnerForm.invalid) {
       return;
     }    
-    this.investService.createCollegyPartner(obj).subscribe(
+    this.investService.publicCollegyPartner(obj).subscribe(
       (response) => {
         this.toastrService.success("Thank you. We will follow up soon");
-        // this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/');
       },
       (err) => {
         this.toastrService.error("Error" + err);

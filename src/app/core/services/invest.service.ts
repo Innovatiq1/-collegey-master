@@ -12,6 +12,7 @@ import { catchError } from 'rxjs/operators';
 export class InvestService {
 
   private defaultUrl: string = environment['apiEndpoint'];
+  private publicUrl: string = environment['apiEndpointNew'];
 
   constructor(
     private http: HttpClient,
@@ -27,6 +28,14 @@ export class InvestService {
 
   createCollegyPartner(formData): Observable<any> {
     const apiUrl = this.defaultUrl + 'collegeyPartner/create';
+    return this.http.post<any>(apiUrl, formData).pipe(map(response => {
+      console.log("Invest",response.data);
+      return response.data;
+    }));
+  }
+
+  publicCollegyPartner(formData): Observable<any> {
+    const apiUrl = this.publicUrl + 'public/collegeyPartner/create';
     return this.http.post<any>(apiUrl, formData).pipe(map(response => {
       console.log("Invest",response.data);
       return response.data;

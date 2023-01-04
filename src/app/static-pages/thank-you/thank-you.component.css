@@ -442,6 +442,10 @@ label {
     border: none;
 }
 
+.selectedCountryCode /deep/ .ng-select .ng-value-label {
+    font: normal normal normal 14px/19px Nunito;
+}
+
 .clg-investDes{
     font-size: 17px;
 }

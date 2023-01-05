@@ -71,6 +71,8 @@ export class SocialLoginComponent implements OnInit {
     this.authService.socialLogin({ email, social_type, social_id }).subscribe(
       (res: any) => { 
         localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
+        this.authService.setReward( res?.data?.user?._id);
+        
         // this.toastrService.success(res.message);
         if (res.message === 'user not found!') {
           this.showRegisterForm(socialUsers);

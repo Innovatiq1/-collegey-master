@@ -395,6 +395,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   openModalWithClass(template: TemplateRef<any>, project, projectlink: boolean,showInviteAccept:boolean) {
     this.projectDialog = project;
+
+    if (this.projectDialog?.projectPlan?.projectDuration?.includes('month')) {
+      this.projectDialog['project_week'] = this.projectDialog?.projectPlan?.projectDuration;
+    }
+    else {
+      this.projectDialog['project_week'] = this.projectDialog?.projectPlan?.projectDuration + ' week';
+    }
+    
     if (projectlink == true) {
       this.projectRedirect = true;
     } else {

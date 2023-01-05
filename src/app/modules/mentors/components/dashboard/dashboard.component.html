@@ -562,7 +562,7 @@ font-size: small;">{{profileText}}
               (click)="updateInvitationProjectData('decline',projectDialog?._id)">Decline</a>
           </div>
 
-          <p class="timing-box"> {{projectDialog?.projectPlan?.projectDuration}} hours/week for 4 weeks</p>
+          <p class="timing-box"> 4 hours/week for {{projectDialog?.project_week}}</p>
           <p class="date-box">Last date of joining : {{projectDialog?.start_date | date}}</p>
 
           <button *ngIf="!includeInJoinProject && projectDialog?.projectStatus != 'new'" style="margin-bottom: -16px;"

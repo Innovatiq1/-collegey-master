@@ -97,7 +97,7 @@ export class CorousalOneComponent implements OnInit {
         firstName: ["", [Validators.required]],
         lastName: ["", [Validators.required]],
         email: ["", [Validators.required, Validators.pattern(AppConstants.EMAIL_PATTERN)]],
-        cellNumber: ["", [Validators.required]],
+        cellNumber: [""],
         shouldAgree: [null, Validators.required],
       },
     );

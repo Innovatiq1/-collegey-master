@@ -124,6 +124,7 @@ getMentorList(filterName) {
   };
 
   updateMentorProfileStep03 = (data:any): Observable<any> => {
+    console.log('data-=-=-=-=-=-profile-=-=-=->',data)
     const endpoint = environment.apiEndpoint+'profile/updateMentorProfileStep03';
     return this.http.post(endpoint, data).pipe(
       catchError((err) => {

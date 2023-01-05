@@ -236,7 +236,7 @@ export class ProjectsComponent implements OnInit {
       week4Duration: [''],
       week5Duration: [''],
       week6Duration: [''],
-      ProjectDescription: [''],
+      monthDuration: [''],
       range_price: [''],
       isPaid: [''],
       // outcomes: ['',Validators.required],

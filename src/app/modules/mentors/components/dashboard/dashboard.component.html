@@ -600,10 +600,18 @@ font-size: small;">{{profileText}}
                 <p class="week-number">Week 4</p>
                 <p class="week-desc">{{projectDialog?.projectPlan?.week4Duration}}</p>
               </div>
+              <div *ngIf="projectDialog?.projectPlan.week5Duration">
+                <p class="week-number">Week 5</p>
+                <p class="week-desc">{{projectDialog?.projectPlan?.week5Duration}}</p>
+              </div>
+              <div *ngIf="projectDialog?.projectPlan.week6Duration">
+                <p class="week-number">Week 6</p>
+                <p class="week-desc">{{projectDialog?.projectPlan?.week6Duration}}</p>
+              </div>
 
-              <div *ngIf="projectDialog?.projectPlan.ProjectDescription">
-                <p class="week-number">Project Description</p>
-                <p class="week-desc">{{projectDialog?.projectPlan?.ProjectDescription}}</p>
+              <div *ngIf="projectDialog?.projectPlan?.monthDuration">
+                <p class="week-number">{{projectDialog?.projectPlan?.projectDuration}}</p>
+                <p class="week-desc">{{projectDialog?.projectPlan?.monthDuration}}</p>
               </div>
 
             </div>

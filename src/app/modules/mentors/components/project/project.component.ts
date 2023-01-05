@@ -213,7 +213,7 @@ export class ProjectComponent implements OnInit {
       week4Duration: [''],
       week5Duration: [''],
       week6Duration: [''],
-      ProjectDescription: [''],
+      monthDuration: [''],
       range_price: [this.projectFeedData?.default_price],
       isPaid: [''],
     });

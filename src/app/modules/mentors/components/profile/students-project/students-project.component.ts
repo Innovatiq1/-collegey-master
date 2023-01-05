@@ -114,7 +114,7 @@ export class StudentsProjectComponent implements OnInit {
       week4Duration: [''],
       week5Duration: [''],
       week6Duration: [''],
-      ProjectDescription: [''],
+      monthDuration: [''],
       range_price: [185],
       isPaid: [''],
     });
@@ -356,7 +356,7 @@ export class StudentsProjectComponent implements OnInit {
     }
 
     if (this.monthDurationActive) {
-      const aProjectDescriptionCount = this.wordCounts(this.projectFormGroup.value.ProjectDescription, 250);
+      const aProjectDescriptionCount = this.wordCounts(this.projectFormGroup.value.monthDuration, 250);
       if (aProjectDescriptionCount) {
         return;
       }

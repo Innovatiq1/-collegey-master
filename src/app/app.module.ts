@@ -69,7 +69,7 @@ let config = new AuthServiceConfig([
   }
 ]);
  
-export function provideConfig() {
+export function provideConfig() { 
   return config;
 }
 

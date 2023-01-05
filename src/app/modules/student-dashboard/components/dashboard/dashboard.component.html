@@ -833,7 +833,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                 </div>
                 <div class="button_div">
                     <p class="timing-box"> {{projectDialog?.projectPlan?.projectDuration}} hours/week for 4 weeks</p>
-                    <p class="date-box">Last date of joining : {{projectDialog?.end_date | date}}</p>
+                    <p class="date-box">Last date of joining : {{projectDialog?.end_date | date:'MMM d, y'}}</p>
 
                     <button
                         *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 1 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0"

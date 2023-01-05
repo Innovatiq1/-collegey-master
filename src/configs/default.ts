@@ -1,6 +1,6 @@
 export const DEFAULT_CONFIG = {
 
-/* * / 
+/* */ 
 // Localhost server API connection URL 
   frontEndUrl: 'http://localhost:4200/',
   apiEndpoint: 'http://localhost:3000/api/',
@@ -16,7 +16,7 @@ export const DEFAULT_CONFIG = {
   apiNewEndpoint: 'http://3.0.100.217/api1/',
 /* */   
 
-/* */  
+/* * /  
 // UAT server API connection URL 
 frontEndUrl: 'https://collegey.com/',
 apiEndpoint: 'https://prodapi.collegey.com/api/',
@@ -25,7 +25,7 @@ apiNewEndpoint: 'https://prodapi.collegey.com/api1/',
 /* */   
   keys: {
     FACEBOOK_APP_ID: '726332021874244',  
-    GOOGLE_APP_ID: '864589825494-msel7o6s7vqd0jcp3a7aebc7vlmjsrfq.apps.googleusercontent.com'
+    GOOGLE_APP_ID: '825814605050-ievpn82lq5qso69cib5es7n3h2h8okg7.apps.googleusercontent.com'
   },
   awsUrl: 'https://collegey-images.s3-ap-southeast-1.amazonaws.com/',
 

@@ -16,28 +16,34 @@
                 </div>
                 <div class="student-form-wrap">
                     <div class="form-group">
-                        <div class="custom_radio">
+                        
+                        <!-- <div class="custom_radio">
                             <div class="radio-option">
                                 <input type="radio" id="studentType1" [value]="qualificationType.HIGHT_SCHOOL_STUDENT" formControlName="qualification" (change)="handleChange(false)">
                                 <label for="studentType1">I'm a high school student</label></div>
                         </div>
+
                         <div class="custom_radio">
                             <div class="radio-option">
                                 <input type="radio" id="studentType2" [value]="qualificationType.HIGHT_SCHOOL_GRADUATE" formControlName="qualification" (change)="handleChange(false)">
                                 <label for="studentType2">I'm a high school graduate</label></div>
-                        </div>
+                        </div> -->
+
                         <div class="custom_radio">
-                            <div class="radio-option"><input type="radio" id="studentType3" [value]="qualificationType.COLLEGE_STUDENT" formControlName="qualification" (change)="handleChange(false)">
-                                <label for="studentType3">I'm a college student</label></div>
+                            <div class="radio-option"><input type="radio" id="studentType3" value="student" formControlName="qualification" (change)="handleChange(false)">
+                                <label for="studentType3">Student</label></div>
                         </div>
+
                         <div class="custom_radio">
-                            <div class="radio-option"><input type="radio" id="studentType4" [value]="qualificationType.COLLEGE_GRADUATE" formControlName="qualification" (change)="handleChange(false)">
-                                <label for="studentType4">I'm a college graduate</label></div>
+                            <div class="radio-option"><input type="radio" id="studentType4" value="mentor" formControlName="qualification" (change)="handleChange(false)">
+                                <label for="studentType4">Mentor</label></div>
                         </div>
-                        <div class="custom_radio">
+
+                        <!-- <div class="custom_radio">
                             <div class="radio-option"><input type="radio" id="studentType5" formControlName="other" value="Others" (change)="handleChange(true)">
-                                <label for="studentType5">Other</label></div>
-                        </div>
+                                <label for="studentType5">Mentor</label></div>
+                        </div> -->
+
                     </div>
                     <div class="form-group others-field" *ngIf="studentForm.get('other').value">
                         <input type="text" formControlName="qualification" placeholder="Please specify" class="form-control other-text">

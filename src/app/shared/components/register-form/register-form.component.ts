@@ -120,6 +120,7 @@ export class RegisterFormComponent implements OnInit {
       this.toatrService.success(
         res.message || 'Student registered successfully'
       );
+      localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
       this.onLoginEvent();
     }, error => this.emailErrorMessage =  error.error.errors[0].email) ;
   }

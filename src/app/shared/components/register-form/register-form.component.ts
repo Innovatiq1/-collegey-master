@@ -105,8 +105,7 @@ export class RegisterFormComponent implements OnInit {
       return;
     }
     let  formData = this.studentForm.getRawValue();
-
-    if(formData.other != '' && formData.other != null)
+    if(formData.qualification == 'mentor' && formData.qualification != null)
     {
       formData.type = 'mentor';
     } 
@@ -114,7 +113,7 @@ export class RegisterFormComponent implements OnInit {
     {
       formData.type = 'student';
     }
-    console.log("formData",formData); 
+    //console.log("formData",formData); 
     formData = this.preparedSubmitData(formData);
     this.commonService.onRegisterUser(formData).subscribe((res) => {
       this.toatrService.success(

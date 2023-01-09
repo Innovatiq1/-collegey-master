@@ -151,6 +151,15 @@ export class AuthService {
       );
   }
 
+  checkloginpassword = (data:any): Observable<any> => {
+    const endpoint = environment.apiNewEndpoint+'forget/profile/checkloginpassword';
+    return this.http.post(endpoint, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    ); 
+  };
+
   logOut() {
     this.http
       .post(`${environment.apiEndpoint}auth/logout/`, {})

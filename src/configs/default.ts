@@ -24,7 +24,7 @@ apiEndpointNew: 'https://prodapi.collegey.com/x-api/v1/',
 apiNewEndpoint: 'https://prodapi.collegey.com/api1/',
 /* */   
   keys: {
-    FACEBOOK_APP_ID: '726332021874244',  
+    FACEBOOK_APP_ID: '885706355802239',  
     GOOGLE_APP_ID: '746072596199-pkln56fkjkv94ojhuca5049omatadm9k.apps.googleusercontent.com'
   },
   awsUrl: 'https://collegey-images.s3-ap-southeast-1.amazonaws.com/',

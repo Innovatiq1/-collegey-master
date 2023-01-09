@@ -45,7 +45,7 @@ export class CollageyComponent implements OnInit {
     });
     if(this.searchParams == 'student')
     {
-      this.typeOfProgramTitle = 'Student';
+      this.typeOfProgramTitle = 'Students';
     }
     else if(this.searchParams == 'high-schools')
     {
@@ -53,7 +53,7 @@ export class CollageyComponent implements OnInit {
     }
     else if(this.searchParams == 'higher-ed')
     {
-      this.typeOfProgramTitle = 'Higher Ed';
+      this.typeOfProgramTitle = 'Higher Education';
     }
     this.getProgrammes(this.queryParams);
     this.getHomepageContentData();

@@ -2610,3 +2610,16 @@ label,
 .adviceToYoungPeople {
     height: auto;
 }
+
+.clg-mentor-profile ::ng-deep ng-select .ng-value-label {
+    font: normal normal normal 12px/19px Nunito;
+    color: #141414;
+}
+.clg-mentor-profile ::ng-deep ng-multiselect-dropdown .selected-item span {
+    font: normal normal normal 12px/19px Nunito;
+    color: #141414 !important;
+}
+.clg-mentor-profile ::ng-deep tag .tag__text {
+    font: normal normal normal 12px/19px Nunito;
+    color: #141414;
+}

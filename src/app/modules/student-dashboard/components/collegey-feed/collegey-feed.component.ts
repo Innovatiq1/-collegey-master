@@ -757,7 +757,7 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
     this.modalRefCollegeFeed = this.modalService.show(template);
     this.modalRefCollegeFeed.setClass('modal-width');
     this.postForm.patchValue({
-      postData: 'https://www.',
+      postData: '',
     })
   }
   openCollegeFeedPostModal1(template: TemplateRef<any>, feed) {
@@ -1369,6 +1369,7 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
         this.toaster.success('Invite Sent Successfully');
       },
       (err) => {
+        this.toaster.error('Invite Sent Failed');
       },
     );
 
@@ -1402,7 +1403,8 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
         let response = res.data.data;
       },
       (err: any) => {
-        //  console.log(err);
+        this.toaster.error('Recommendation Saved Failed');
+        //console.log(err);
       }
     );
   }

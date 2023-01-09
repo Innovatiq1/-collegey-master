@@ -542,11 +542,13 @@ font-size: small;">{{profileText}}
             {{projectDialog?.mentor?.profile?.experience}}<br />
             {{projectDialog?.mentor?.profile?.industry}}
           </ng-template>
+
           <p class="price-box">
             <span *ngIf="projectDialog?.projectfees == 1"
               style="font-weight: 600;">{{projectDialog?.projectPrice?.currencySymbol}}{{projectDialog?.projectPrice?.amount}}</span>
             <span *ngIf="projectDialog?.projectfees == 0" style="font-weight: 600;">Free</span>
           </p>
+          
           <p>Including taxes</p>
           <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
               style="vertical-align: middle;"> | </span> <img src="./../../../assets/images/office-chair.png" width="15"
@@ -565,11 +567,11 @@ font-size: small;">{{profileText}}
           <p class="timing-box"> 4 hours/week for {{projectDialog?.project_week}}</p>
           <p class="date-box">Last date of joining : {{projectDialog?.start_date | date}}</p>
 
-          <button *ngIf="!includeInJoinProject && projectDialog?.projectStatus != 'new'" style="margin-bottom: -16px;"
+          <button *ngIf="!includeInJoinProject && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0" style="margin-bottom: -16px;"
             class="get-started-btn">GET
             STARTED</button>
 
-          <a *ngIf="includeInJoinProject" href="javascript:;" routerLink="/mentors/project"
+          <a *ngIf="includeInJoinProject && projectDialog?.projectStatus != 'new'" href="javascript:;" routerLink="/mentors/project"
             [state]="{ projectId: projectDialog?._id}" style="margin-bottom: -16px;" class="get-started-btn">PROJECT
             MANAGEMENT</a>
 

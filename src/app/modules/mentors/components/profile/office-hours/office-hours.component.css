@@ -2090,6 +2090,12 @@ textarea:focus~.bar:before {
     padding-right: 5px;
 }
 
+
+.clg-mentor-office ::ng-deep ng-select .ng-value-label {
+    font: normal normal normal 12px/19px Nunito;
+    color: #141414;
+}
+
 @media screen and (max-width: 575px) {
     .lead-form {
         margin-top: 0;

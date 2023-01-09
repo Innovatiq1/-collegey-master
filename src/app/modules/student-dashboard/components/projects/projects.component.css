@@ -702,9 +702,9 @@
 }
 
 .user-comment-desc {
-    font: normal normal normal 13px/18px Nunito;
+    /*font: normal normal normal 13px/18px Nunito;*/
     letter-spacing: 0px;
-    color: #000000;
+    color: #999;
     margin-bottom: 0;
 }
 

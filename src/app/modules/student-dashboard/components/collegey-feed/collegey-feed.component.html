@@ -145,7 +145,7 @@
                 <p class="half-opac" style="color:#AFAFAF !important">{{feed?.timeago}}</p>
               </div>
             </div>
-            <div class="deletedit_btndiv" *ngIf="feed?.user[0]._id == userId">
+            <div class="deletedit_btndiv" *ngIf="feed?.user[0]?._id == userId">
               <button type="button" class="m-1 edit-details-button1"
                 (click)="openCollegeFeedEdit(collegeFeedPostModal,i)"><img
                   src="assets/images/on-boarding/pencil-icon.svg"></button>

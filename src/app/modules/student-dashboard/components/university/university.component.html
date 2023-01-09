@@ -15,9 +15,10 @@
     <div class="tabs_btnlist">
         <!-- <a [ngClass]=" tab === 'tab1' ? 'btn follow-btnss' : 'btn follow-btns'"  (click) ="all(1)">All</a> -->
         <a [ngClass]=" tab ==='tab2' ? 'btn follow-btnss' : 'btn follow-btns'" (click)="mentor(2)">Mentor</a>
-        <a href="javascript:;" class="btn follow-btns">University</a>
-        <!-- <a [ngClass]=" tab==='tab3' ? 'btn follow-btnss' : 'btn follow-btns'" (click)="university(3)">University</a> -->
+        <!-- <a href="javascript:;" class="btn follow-btns">University</a> -->
+        <a [ngClass]=" tab==='tab3' ? 'btn follow-btnss' : 'btn follow-btns'" (click)="university(3)">University</a>
     </div>
+
     <div class="social-feed-container" *ngIf="All==true">
         <div class="middle-section">
             <div class="social-feed-box">
@@ -341,6 +342,7 @@
             </div>
         </div>
     </div>
+
     <div class="social-feed-container" *ngIf="University==true">
         <div class="middle-section">
             <div class="social-feed-box">
@@ -397,12 +399,14 @@
             </div>
         </div>
         <div class="right-sidebar">
-            <div class="learn-box">
+            
+            <!-- <div class="learn-box">
                 <p>#{{lernBoxCollection?.academyTitle}}</p>
                 <h6>{{lernBoxCollection?.academySubTitle}}</h6>
                 <h5 style="font-size: 15px;">{{lernBoxCollection?.academyDescription}}</h5>
                 <a href="{{lernBoxCollection?.academyLink}}" target="_blank"><button type="button" class="btn">{{lernBoxCollection?.academyBtnText}}</button></a>
-              </div>
+            </div> -->
+
             <div class="invite-friends-box">
                 <form [formGroup]="inviteFormGroup">
                     <h5>Invite Friends</h5>
@@ -430,4 +434,5 @@
             </div>
         </div>
     </div>
+
 </section>

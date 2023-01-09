@@ -62,8 +62,8 @@ export class UniversityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.Mentor = true;
-    this.University = false;
+    this.Mentor = false;
+    this.University = true;
     this.tab = this.tab3;
     this.university(3);
     // this.activatedRoute.queryParams.subscribe(params => {
@@ -104,6 +104,7 @@ export class UniversityComponent implements OnInit {
         this.toastrService.success('Invite Sent Successfully');
       },
       (err) => {
+        this.toastrService.error('Invite Sent Failed');
       },
     );
 
@@ -300,11 +301,11 @@ export class UniversityComponent implements OnInit {
   }
   university(check) {
     if (check == 3) {
-      this.tab = 'tab2';
+      this.tab = 'tab3';
     }
     this.All = false;
-    this.University = false;
-    this.Mentor = true;
+    this.University = true;
+    this.Mentor = false;
 
   }
   all(check) {

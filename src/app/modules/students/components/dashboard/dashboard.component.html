@@ -78,6 +78,7 @@
                             aria-hidden="true"></i> Whatsapp</a>
                     <a class="buttons" (click)="CopyClipboardUrl()"> <i class="fa fa-link" aria-hidden="true"></i> Copy
                         Url</a>
+                    <a class="buttons" [routerLink]="['/student-dashboard/$/profile']">View My Profile</a>
                 </div>
             </div>
         </div>
@@ -138,7 +139,7 @@
                 <!-- <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/qaforms']">
                     Q&A Form
                 </a> -->
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" style="cursor: default;" title="Coming Soon">
                     Q&A Form
                 </a>
             </li>
@@ -146,17 +147,17 @@
                 <!-- <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/events']">
                     Events
                 </a> -->
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" style="cursor: default;" title="Coming Soon">
                     Events
                 </a>
             </li>
             <li>
-                <!-- <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/mentor']">
-                    Mentors
-                </a> -->
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/mentor']">
                     Mentors
                 </a>
+                <!-- <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Mentors
+                </a> -->
             </li>
             <li>
                 <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/mentor-chat']">
@@ -169,9 +170,12 @@
                 </a>
             </li>
             <li>
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/university']">
                     Universities
                 </a>
+                <!-- <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Universities
+                </a> -->
             </li>
             <li>
                 <a [routerLinkActive]="['active']" [routerLink]="['/student-dashboard/$/news-resource']">

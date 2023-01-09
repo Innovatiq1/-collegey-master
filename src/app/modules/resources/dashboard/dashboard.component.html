@@ -65,6 +65,7 @@
                             aria-hidden="true"></i> Whatsapp</a>
                     <a class="buttons" (click)="CopyClipboardUrl()"> <i class="fa fa-link" aria-hidden="true"></i> Copy
                         Url</a>
+                    <a class="buttons" [routerLink]="['/student-dashboard/$/profile']">View My Profile</a>
                 </div>
             </div>
 
@@ -125,17 +126,20 @@
                 </div>
             </li>
             <li>
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" style="cursor: default;" title="Coming Soon">
                     Q&A Forum
                 </a>
             </li>
             <li>
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" style="cursor: default;" title="Coming Soon">
                     Events
                 </a>
             </li>
             <li>
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <!-- <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Mentors
+                </a> -->
+                <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/mentor']">
                     Mentors
                 </a>
             </li>
@@ -150,7 +154,10 @@
                 </a>
             </li>
             <li>
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <!-- <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Universities
+                </a> -->
+                <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/university']">
                     Universities
                 </a>
             </li>

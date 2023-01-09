@@ -5,8 +5,11 @@
                 <div class="col-12 col-md-12">
                     <h1>{{typeOfProgramTitle}} Collegey Programs</h1>
                     <div class="header-button">
-                        <a class="explore" *ngFor="let text of homepageContent.bottomButton"
-                            href="{{text.link}}">{{text.text}}</a>
+
+                        <span *ngFor="let text of homepageContent.bottomButton">
+                            <a [ngClass]="text.text == typeOfProgramTitle ? 'explore clg-actives' : 'explore'" href="{{text.link}}">{{text.text}}</a>
+                        </span>
+
                     </div>
                 </div>
             </div>

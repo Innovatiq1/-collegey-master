@@ -684,8 +684,9 @@ export class ProjectsComponent implements OnInit {
           project_week = this.selectedProjectData?.projectPlan?.projectDuration +' week';
         }
 
-        let studentSchoolName = this.sortedEducationSchoolFormArray[0]?.name ? this.sortedEducationSchoolFormArray[0]?.name : '';
-        let studentSchoolCity = this.sortedEducationSchoolFormArray[0]?.locationCity ? this.sortedEducationSchoolFormArray[0]?.locationCity : '';
+        let studentSchoolName = this.sortedEducationSchoolFormArray[0]?.name ? this.sortedEducationSchoolFormArray[0]?.name : 'Collegy';
+        let studentSchoolCity = this.sortedEducationSchoolFormArray[0]?.locationCity ? this.sortedEducationSchoolFormArray[0]?.locationCity : 'Collegy';
+
         let pdfObj = {
           student_name: this.selectedProjectData?.projectMembers[i]?.name + ' ' + this.selectedProjectData?.projectMembers[i]?.last_name,
           student_projectname: this.selectedProjectData?.title,

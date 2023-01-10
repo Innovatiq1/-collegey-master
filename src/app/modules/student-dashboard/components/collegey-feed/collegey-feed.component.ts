@@ -1305,10 +1305,10 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
     this.collegeyFeedService.getEachGroup(id).subscribe((data) => {
       this.groupInfo = data;
       this.groupInfo.userList.forEach(element => {
-        if (element.user._id == this.userInfo._id) {
+        if (element.user?._id == this.userInfo?._id) {
           this.groupInfo.userExist = true;
         }
-        if (element.user._id == this.userInfo._id && element.userType == 'admin' && this.groupInfo.groupType == 'private') {
+        if (element.user?._id == this.userInfo._id && element.userType == 'admin' && this.groupInfo.groupType == 'private') {
           this.groupInfo.isAdmin = true;
         }
 

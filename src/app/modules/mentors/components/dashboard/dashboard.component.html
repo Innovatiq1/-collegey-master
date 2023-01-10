@@ -571,10 +571,9 @@ font-size: small;">{{profileText}}
             class="get-started-btn">GET
             STARTED</button>
 
-          <a *ngIf="includeInJoinProject && projectDialog?.projectStatus != 'new'" href="javascript:;" routerLink="/mentors/project"
+          <a *ngIf="includeInJoinProject && projectDialog?.projectStatus != 'new' && projectDialog?.projectStatus != 'completed'" href="javascript:;" routerLink="/mentors/project"
             [state]="{ projectId: projectDialog?._id}" style="margin-bottom: -16px;" class="get-started-btn">PROJECT
             MANAGEMENT</a>
-
 
         </div>
         <img (click)="modalRef.hide()" src="./../../../assets/images/Close.svg" alt="" class="project-modal-close">
@@ -633,6 +632,7 @@ font-size: small;">{{profileText}}
         <ngb-tab title="Project Members">
           <ng-template ngbTabContent>
             <div class="project-plan">
+
               <div class="member_list" *ngFor="let project_memberlist of projectDialog?.projectMembers">
                 <div class="imgsdiv">
                   <img *ngIf="project_memberlist?.avatar" class="imgs"
@@ -642,9 +642,10 @@ font-size: small;">{{profileText}}
                     title="{{project_memberlist?.name}}">
                 </div>
                 <h5 class="name_txt">{{project_memberlist?.name}} {{project_memberlist?.last_name}}<span
-                    class="tags">Mentore</span></h5>
-                <span class="degree_txt">Bachelor of Science . University of Delh</span>
+                    class="tags"></span></h5>
+                    <span class="typetags">{{project_memberlist?.type}}</span>
               </div>
+
             </div>
           </ng-template>
         </ngb-tab>

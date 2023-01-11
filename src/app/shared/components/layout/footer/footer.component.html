@@ -81,12 +81,12 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-12 col-lg-10 offset-lg-1">
+        <div class="col-12 col-lg-12">
           <div class="row">
             <!-- <div class="col col-sm-1 d-flex flex-column" *ngFor="let footerLogo of footerLogoDetails">
           <img class="mask" [src]="commonService.imagePathS3(footerLogo?.imageName)" alt="{{footerLogo?.title}}" />
         </div> -->
-            <div class="col-12 col-md-6 my-4">
+            <div class="col-12 col-md-5 my-4">
               <p class="clg-heading">India Contact Details</p>
               <p class="light-text">{{footerContentData?.address1}}</p>
               <p>
@@ -98,7 +98,7 @@
                 <a class="light-text" href="tel:{{footerContentData?.address1phone}}"> : {{footerContentData?.address1phone}} </a>
               </p>
             </div>
-            <div class="col-12 col-md-6 my-4">
+            <div class="col-12 col-md-5 my-4">
               <p class="clg-heading">US Contact Details</p>
               <p class="light-text">{{footerContentData?.address2}}</p>
               <p>
@@ -109,6 +109,12 @@
                 <img src="/assets/images/bottom-bar/phone-fill.svg" />
                 <a class="light-text" href="tel:{{footerContentData?.address2phone}}"> : {{footerContentData?.address2phone}} </a>
               </p>
+            </div>
+            <div class="col-12 col-md-2 my-4">
+              <p class="clg-heading">Android App</p>
+              <a href="assets/images/collegey-apk/collegey-app.apk" download="">
+                <img src="assets/images/Google-Play-Icon.png" class="clg-app-icon" />
+              </a>
             </div>
           </div>
         </div>

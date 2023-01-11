@@ -225,7 +225,13 @@ td {
     cursor: pointer;
     overflow: hidden;
 }
-
+.webinar-box1 .clg-project-img {
+    height: 220px;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    object-fit: cover;
+}
 .second-section .benefits-item:nth-child(2) p {
     background: rgba(253, 227, 81, 0.1);
 }

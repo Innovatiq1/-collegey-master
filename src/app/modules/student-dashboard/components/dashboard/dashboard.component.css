@@ -386,7 +386,13 @@
     cursor: pointer;
     overflow: hidden;
 }
-
+.webinar-box1 .clg-project-img {
+    height: 220px;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    object-fit: cover;
+}
 .webinar-image-box1 .clg-freetag {
     position: absolute;
     left: -18px;

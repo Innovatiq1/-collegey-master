@@ -1,5 +1,5 @@
 .terms-header {
-  background: url('/assets/images/faq-21.png');
+  /*background: url('/assets/images/faq-21.png');*/
   /* background-size: cover; */
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #9DC3FD;
 }
 
 .terms-header h1 {

@@ -237,6 +237,7 @@
   letter-spacing: 0px;
   color: #3F89FC;
   outline: none;
+  cursor: pointer;
 }
 
 .add-post input::placeholder {

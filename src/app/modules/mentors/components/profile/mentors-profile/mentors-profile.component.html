@@ -125,13 +125,13 @@
                 <div class="mb-1">
                     <label class="form-label">Last Education Degree*</label>
                     <select required="required" formControlName="lastCollegeDegree">
-                        <option value="">Select Collage Degree</option>
+                        <option value="">Select from following</option>
                         <option value="High School">High School</option>
                         <option value="Some College">Some College</option>
-                        <option value="Bachelor Degrees">Bachelor Degrees</option>
-                        <option value="Master Degrees">Master Degrees</option>
+                        <option value="Bachelors Degree">Bachelors Degree</option>
+                        <option value="Masters Degree">Masters Degree</option>
                         <option value="M.Phil">M.Phil</option>
-                        <option value="phd">phD</option>
+                        <option value="PhD">PhD</option>
                         <option value="postdoc">Postdoc</option>
                         <option value="abd">ABD</option>
                         <option value="MD">MD</option>
@@ -461,7 +461,7 @@
                     <input class="terms-conditions" type="checkbox" id="termsConditions" name="termsConditions"
                         formControlName="shouldAgree" (change)="eventCheck($event)">
                     <label for="termsConditions" class="label-terms-conditions"
-                        style="background: none; color: #787878; left: 0;">I agree with the collegey mentor
+                        style="background: none; color: #787878; left: 0;text-transform: inherit;">I have read and agree to the terms of the Collegey Mentor
                         <a target="_blank" class="" [routerLink]="['/agreement-condition']">Agreement</a>
                     </label>
 

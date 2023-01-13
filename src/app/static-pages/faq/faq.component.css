@@ -1,5 +1,5 @@
 .terms-header {
-  /*background: url('/assets/images/faq-21.png');*/
+  background: url('/assets/images/faq-22.png');
   /* background-size: cover; */
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -10,11 +10,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #9DC3FD;
 }
 
 .terms-header h1 {
-  font: normal normal normal 46px/57px Poppins;
+  font-size: 46px;
+  font-family: Nunito;
+  line-height: 1.2;
+  letter-spacing: 0px;
 }
 
 .thanks-div {

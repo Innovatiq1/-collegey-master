@@ -92,10 +92,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   )
   { 
     const loggedInInfo = this.authService.getUserInfo();
-    // if(loggedInInfo?.user?.passwordChange == true)
-    // {
-    //   this.router.navigateByUrl('/reset-password');
-    // }
+    if(loggedInInfo?.user?.forgetPasswordChange == true)
+    {
+      this.router.navigateByUrl('/reset-password');
+    }
   }
 
   @HostListener('document:click', ['$event'])

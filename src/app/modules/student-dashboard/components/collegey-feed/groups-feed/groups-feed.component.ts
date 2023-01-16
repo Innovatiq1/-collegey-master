@@ -107,6 +107,7 @@ export class GroupsFeedComponent implements OnInit {
     this.chatsForm();
     //get comment edit form initialized
     this.commentEditFormInit();
+    this.shareInit();
   }
 
   commentEditFormInit() {
@@ -594,7 +595,7 @@ deleteFeedCommentData() {
     let data = {
       user_id: this.userInfo._id,
       collegyFeed_id: feed._id,
-      description: this.shareForm.value.descriptionFeed
+      description: this.shareForm?.value.descriptionFeed
     };
     this.collegeyFeedService.shareFeedData(feed._id, data).subscribe((data) => {
       this.shareForm.reset();

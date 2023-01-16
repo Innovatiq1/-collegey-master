@@ -393,13 +393,49 @@
             <a href=""><img src="/assets/images/video.png" style="border: solid;
               border-radius: 5px;" alt=""></a>
             <a href=""><img src="/assets/images/search.png" alt=""></a> -->
-          <button class="invite-btn">Invite people</button>
-          <!-- <button class="invite-btn" (click)="openInvitePeople(openSendInviteLink)">Invite People</button> -->
+          <!-- <button class="invite-btn">Invite people</button> -->
+          <button class="invite-btn" (click)="openInvitePeople(openSendInviteLink)">Invite People</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #openSendInviteLink>
+  <div class=" schedule-event-modal">
+    <div class="schedule-form">
+      <h5>
+        Invite People By Invite Link
+      </h5>
+      <form [formGroup]="invitePeopleForm" (ngSubmit)="sendInvitePeopleLink()" method="post">
+        <div class="form-row">
+          <div class="col-12 col-lg-12">
+            <div class="form-group">
+              <label for="requestedForName">Invite User Name</label>
+              <input type="text" class="form-control" placeholder="Enter Invite User Name"
+                formControlName="requestedForName" name="requestedForName" id="requestedForName">
+              <span *ngIf="submittedInvitePeople && hasErrorInvitePeople('requestedForName','required')" class="d-block"
+                style="color: red;">Invite user name is required.</span>
+            </div>
+          </div>
+          <div class="col-12 col-lg-12">
+            <div class="form-group">
+              <label for="useremailid">Invite User Email</label>
+              <input type="email" class="form-control" placeholder="Enter Invite User Email"
+                formControlName="useremailid" name="useremailid" id="useremailid">
+              <span *ngIf="submittedInvitePeople && hasErrorInvitePeople('useremailid','required')" class="d-block"
+                style="color: red;">Invite user email is required.</span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="create_project_footer">
+      <button (click)="modalRef.hide()" class="reset-fliter-btn">Cancel</button>
+      <a href="javascript:;" (click)="sendInvitePeopleLink()" class="show-result-btn">Invite People</a>
+    </div>
+  </div>
+</ng-template>
 
 <!-- Web 1366 – 58 start-->
 <ng-template #openPostDeleteDialog>

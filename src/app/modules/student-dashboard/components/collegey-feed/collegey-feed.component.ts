@@ -1060,6 +1060,7 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
       this.shareForm.reset();
       this.currentData = undefined;
       this.modalRefShareCollegeFeed.hide();
+      this.response = [];
       this.getFeedData();
     });
   }

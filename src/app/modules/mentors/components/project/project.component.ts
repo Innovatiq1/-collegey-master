@@ -141,6 +141,11 @@ export class ProjectComponent implements OnInit {
   userListOptions = [];
   updateData: any;
 
+  // invite People Form
+
+  invitePeopleForm: FormGroup;
+  submittedInvitePeople: boolean = false;
+
   // Set Last date and start date
   projectStartDate: any;
   projectSetLastDate: any;
@@ -245,6 +250,11 @@ export class ProjectComponent implements OnInit {
       this.stateProjectId = this.router.getCurrentNavigation().extras.state;
     }
 
+    this.invitePeopleForm = this.fb.group({
+      requestedForName: ['', Validators.required],
+      useremailid: ['', Validators.required],
+    });
+
   }
 
   linkify(text, index) {
@@ -286,6 +296,10 @@ export class ProjectComponent implements OnInit {
     })
   }
 
+  public hasErrorInvitePeople = (controlName: string, errorName: string) => {
+    return this.invitePeopleForm.controls[controlName].hasError(errorName);
+  };
+  
   wordCounter(event) {
     if (event.keyCode != 32) {
       this.wordCount = event.target.value ? event.target.value.split(/\s+/) : 0;
@@ -879,6 +893,48 @@ export class ProjectComponent implements OnInit {
       template,
       Object.assign({}, { class: 'gray modal-lg' })
     );
+  }
+
+  openInvitePeople(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'gray modal-lg', ignoreBackdropClick: true })
+    );
+  }
+  
+  sendInvitePeopleLink() {
+    this.submittedInvitePeople = true;
+    let obj = this.invitePeopleForm.value;
+    obj['user_id'] = this.userid;
+    obj['projectId'] = this.selectedProjectData._id;
+
+    if (this.invitePeopleForm.invalid) {
+      return;
+    }
+    // return false;
+    this.projectService.inviteProjectLink(obj).subscribe(
+      (response) => {
+        if (response.status == 'success') {
+          //this.toastrService.success(response.message);
+          this.toastrService.success("Invite link sent successfully");
+          this.invitePeopleForm.reset();
+          this.submittedInvitePeople = false;
+          this.modalRef.hide();
+        } else {
+          this.toastrService.error(response.message);
+          this.submittedInvitePeople = false;
+          this.modalRef.hide();
+        }
+
+      },
+      (err) => {
+        // this.toastrService.error(err);
+        this.submittedInvitePeople = false;
+        this.modalRef.hide();
+      },
+    );
+
+
   }
 
   getallchats() {

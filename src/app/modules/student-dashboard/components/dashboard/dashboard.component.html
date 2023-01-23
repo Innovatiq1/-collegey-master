@@ -606,10 +606,10 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-box1 article-box1">
                         <div class="webinar-image-box1">
-
-                            <img *ngIf="project?.Programdata?.image" [src]="project?.Programdata?.image" class="clg-project-img" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')">
+                         
+                            <img *ngIf="project?.Programdata?.image" [src]="commonService.imagePathS3(project?.Programdata?.image)" class="clg-project-img" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')">
                             <img *ngIf="!project?.Programdata?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')">
-
+                            
                             <!-- <div class="webinar-imageas"
                                 [ngStyle]="{'background-image': project?.Programdata?.image ? 'url(' +commonService.imagePathS3( project?.Programdata?.image )+ ')' : 'url(/assets/images/default-blog.svg)' }"
                                 (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')"></div> -->
@@ -664,7 +664,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                     <div class="webinar-box1 article-box1">
                         <div class="webinar-image-box1">
 
-                            <img *ngIf="project?.Programdata?.image" [src]="project?.Programdata?.image" class="clg-project-img" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'Completed')">
+                            <img *ngIf="project?.Programdata?.image" [src]="commonService.imagePathS3(project?.Programdata?.image)" class="clg-project-img" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'Completed')">
                             <img *ngIf="!project?.Programdata?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'Completed')">
 
                             <!-- <div class="webinar-imageas"

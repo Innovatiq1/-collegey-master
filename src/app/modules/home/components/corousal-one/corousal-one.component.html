@@ -65,7 +65,7 @@
       </div>
       <div class="group">
         <div>
-          <input formControlName="cellNumber" type="text" required="required" />
+          <input formControlName="cellNumber" type="text"/>
           <label>Cell Number</label>
         </div>
         <!-- <span *ngIf="submitted && hasError('cellNumber','required')" class="alert-danger error-padding">Cell Number is required</span> -->
@@ -108,7 +108,7 @@
         <span *ngIf="submitted && isChecked == false" class="alert-danger error-padding agree_margin">Please accept our terms and conditions to proceed.</span>
       </div>
 
-      <button class="continue" (click)="save()" >CONTINUE</button>
+      <button class="continue" (click)="save()" >SUBMIT</button>
     </div>
     <div class='login-wrapper' style="padding: 20px 0">
       Already have an account?

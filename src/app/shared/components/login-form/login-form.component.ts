@@ -12,6 +12,7 @@ import {
 } from 'ngx-bootstrap/modal';
 
 import { AuthService as AuthService1} from "angularx-social-login";
+import { ToastrService } from 'ngx-toastr';
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 import { SocialUsers } from 'src/app/core/models/social-user.model';
@@ -74,7 +75,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     private bsModalRef: BsModalRef,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private authServiceSocial: AuthService1
+    private authServiceSocial: AuthService1,
+    private toastrService: ToastrService,
   ) {
     this.screenWidth = window.innerWidth;
     //console.log(this.screenWidth);
@@ -194,15 +196,30 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     const loginFromdata   = this.loginForm.getRawValue();
     loginFromdata['logintype'] = this.loginType;
 
-    this.authService.login(loginFromdata).subscribe(
-      (res) => { 
-        localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
-        this.onLoginEvent();
+    this.authService.checkloginpassword(loginFromdata).subscribe(
+      (response) => {
+        if(response?.data?.passwordChange == true)
+        {
+          this.router.navigateByUrl('/resetPassword/'+response?.data?._id);
+        }
+        else
+        {
+          this.authService.login(loginFromdata).subscribe(
+            (res) => { 
+              localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
+              this.onLoginEvent();
+            },
+            (err) => {
+              console.log("err",err);
+            },
+          );     
+        }
       },
       (err) => {
-        
+        this.toastrService.error('User not found');
+        return;
       },
-    );     
+    ); 
 
     if(loginFromdata.remember){
       localStorage.setItem("clg-email",loginFromdata.email)

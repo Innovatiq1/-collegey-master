@@ -386,7 +386,13 @@
     cursor: pointer;
     overflow: hidden;
 }
-
+.webinar-box1 .clg-project-img {
+    height: 220px;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    object-fit: cover;
+}
 .webinar-image-box1 .clg-freetag {
     position: absolute;
     left: -18px;
@@ -2202,7 +2208,7 @@ input:-internal-autofill-selected {
 .member_list .name_txt .tags {
     color: #838383;
     font-size: 10px;
-    background-color: #F2F2F2;
+    /*background-color: #F2F2F2;*/
     border-radius: 4px;
     padding: 2px 5px;
     display: inline-block;
@@ -2266,7 +2272,7 @@ input:-internal-autofill-selected {
     display: block;
 }
 
-.tags {
+.typetags {
     color: #838383;
     font-size: 10px;
     background-color: #F2F2F2;

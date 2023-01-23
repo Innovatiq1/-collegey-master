@@ -757,7 +757,7 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
     this.modalRefCollegeFeed = this.modalService.show(template);
     this.modalRefCollegeFeed.setClass('modal-width');
     this.postForm.patchValue({
-      postData: 'https://www.',
+      postData: '',
     })
   }
   openCollegeFeedPostModal1(template: TemplateRef<any>, feed) {
@@ -1060,6 +1060,7 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
       this.shareForm.reset();
       this.currentData = undefined;
       this.modalRefShareCollegeFeed.hide();
+      this.response = [];
       this.getFeedData();
     });
   }
@@ -1305,10 +1306,10 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
     this.collegeyFeedService.getEachGroup(id).subscribe((data) => {
       this.groupInfo = data;
       this.groupInfo.userList.forEach(element => {
-        if (element.user._id == this.userInfo._id) {
+        if (element.user?._id == this.userInfo?._id) {
           this.groupInfo.userExist = true;
         }
-        if (element.user._id == this.userInfo._id && element.userType == 'admin' && this.groupInfo.groupType == 'private') {
+        if (element.user?._id == this.userInfo._id && element.userType == 'admin' && this.groupInfo.groupType == 'private') {
           this.groupInfo.isAdmin = true;
         }
 
@@ -1369,6 +1370,7 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
         this.toaster.success('Invite Sent Successfully');
       },
       (err) => {
+        this.toaster.error('Invite Sent Failed');
       },
     );
 
@@ -1402,7 +1404,8 @@ export class CollegeyFeedComponent implements OnInit,OnDestroy {
         let response = res.data.data;
       },
       (err: any) => {
-        //  console.log(err);
+        this.toaster.error('Recommendation Saved Failed');
+        //console.log(err);
       }
     );
   }

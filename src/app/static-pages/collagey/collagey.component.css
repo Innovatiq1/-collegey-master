@@ -18,7 +18,7 @@
     background: #D6E6FF 0% 0% no-repeat padding-box;
     border-radius: 4px;
     text-align: left;
-    font: normal normal 600 10px/14px Nunito;
+    font: normal normal 600 12px/14px Nunito;
     letter-spacing: 0px;
     color: #3F89FC;
     opacity: 1;
@@ -43,7 +43,8 @@
     color: #AFAFAF;
     opacity: 1;
     margin: 10px 0;
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 .blog-date-span span {
@@ -159,6 +160,10 @@
     margin-bottom: 5px;
     text-decoration: none;
     display: inline-block;
+}
+.clg-actives {
+    background-color: #3a86fc;
+    color: #fff;
 }
 
 @media screen and (max-width:991px) {

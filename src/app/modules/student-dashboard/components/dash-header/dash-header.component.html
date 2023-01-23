@@ -85,8 +85,8 @@
                         <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin</a>
                     <a class="buttons" (click)="goToTwit('https://wa.me/?text=')"> <i class="fa fa-whatsapp"
                             aria-hidden="true"></i> Whatsapp</a>
-                    <a class="buttons" (click)="CopyClipboardUrl()"> <i class="fa fa-link" aria-hidden="true"></i> Copy
-                        Url</a>
+                    <a class="buttons" (click)="CopyClipboardUrl()"> <i class="fa fa-link" aria-hidden="true"></i>Copy URL</a>
+                    <a class="buttons" [routerLink]="['/student-dashboard/$/profile']">View My Profile</a>
                 </div>
             </div>
         </div>
@@ -143,7 +143,7 @@
                 <!-- <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/qaforms']">
                     Q&A Forum
                 </a> -->
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" style="cursor: default;" title="Coming Soon">
                     Q&A Forum
                 </a>
             </li>
@@ -151,17 +151,17 @@
                 <!-- <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/events']">
                     Events
                 </a> -->
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" style="cursor: default;" title="Coming Soon">
                     Events
                 </a>
             </li>
             <li>
-                <!-- <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/mentor']">
-                    Mentors
-                </a> -->
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/mentor']">
                     Mentors
                 </a>
+                <!-- <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Mentors
+                </a> -->
             </li>
             <li>
                 <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/mentor-chat']">
@@ -174,9 +174,12 @@
                 </a>
             </li>
             <li>
-                <a [routerLinkActive]="['active']" style="cursor: default;">
+                <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/university']">
                     Universities
                 </a>
+                <!-- <a [routerLinkActive]="['active']" style="cursor: default;">
+                    Universities
+                </a> -->
             </li>
             <li>
                 <a [routerLinkActive]="['active']" [href]="['/student-dashboard/$/news-resource']">

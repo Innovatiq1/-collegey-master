@@ -71,7 +71,7 @@
             <div class="group col-sm-6 mb-3">
                 <div class="mb-1">
                     <input type="text" required="required" formControlName="minNumberOfStudentsAllowed" />
-                    <label>Minimum # of students (add 3 or more)*</label> 
+                    <label>Minimum Number Of Students (at least 3)*</label> 
                 </div>
                 <span
                     *ngIf="submittedProfile && (hasError('minNumberOfStudentsAllowed','required') || hasError('minNumberOfStudentsAllowed','pattern'))"
@@ -93,12 +93,12 @@
 
             <div class="group col-sm-12 mb-3">
                 <div class="mb-1 custom_drop">
-                    <label class="sdgClass">Choose The UN Sustainable Development Goal (UN SDG) that best aligns with you project (2 or less)*</label>
+                    <label class="sdgClass">Choose The UN Sustainable Development Goal(s) that best align with your project*</label>
                     <ng-multiselect-dropdown formControlName="projectUNSDG" [placeholder]="'Choose UN SDG'"
                         [data]="sdg_selection" [settings]="dropdownSettingsProjectSdg">
                     </ng-multiselect-dropdown>
                 </div>
-                <p class="sekec_text">Choose one or two SDGs most relevant for this project</p>
+                <p class="sekec_text">Choose one or two UN SDGs from list.</p>
                 <ul class="custom_drop_list">
                     <li *ngFor="let inter of this.projectFormGroup.get('projectUNSDG').value;let i = index">
                         <a> {{inter}} </a>
@@ -166,7 +166,7 @@
             </ng-container>
 
             <div class="col-sm-12">
-                <p style="margin-top: 15px;" class="head-title">Do you wish to charge student (s) for this project: Y/N?
+                <p style="margin-top: 15px;" class="head-title">Do you wish to charge a fee for this project?
                     *
                 </p>
                 <div class="mb-3" formGroupName="isPaid">
@@ -193,7 +193,7 @@
                         <b>Note</b> : You will receive 50% of this fee.
                     </div>
                     <div *ngIf="isCharheStudent == 0">
-                        <b>Note</b> : The default Collegey Impact Project fee is ${{projectFeedData?.default_price}}. We will add 50% of the project fee to the Collegey Fund and offer it as a scholarship to low-income, high-potential (HALI) students.
+                        <b>Note</b> : The default Collegey Impact Project fee is ${{projectFeedData?.default_price}}. We will add 50% of the project fee to the Collegey Fund and offer it as a scholarship to Low-income, High-ability (HALI) students.
                     </div>  
                 </div>
             </div>

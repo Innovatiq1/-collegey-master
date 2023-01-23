@@ -2,7 +2,7 @@
     <div class="lead-form container">
         <p class="steps-login">1 of 3</p>
         <p class="heading">Mentors Profile</p>
-        <form class="login-form row profileFormGroup" [formGroup]="profileFormGroup" method="post" novalidate>
+        <form class="login-form row profileFormGroup clg-mentor-profile" [formGroup]="profileFormGroup" method="post" novalidate>
 
             <div class="group col-sm-6 mb-3">
                 <div class="mb-1">
@@ -125,13 +125,13 @@
                 <div class="mb-1">
                     <label class="form-label">Last Education Degree*</label>
                     <select required="required" formControlName="lastCollegeDegree">
-                        <option value="">Select Collage Degree</option>
+                        <option value="">Select from following</option>
                         <option value="High School">High School</option>
                         <option value="Some College">Some College</option>
-                        <option value="Bachelor Degrees">Bachelor Degrees</option>
-                        <option value="Master Degrees">Master Degrees</option>
+                        <option value="Bachelors Degree">Bachelors Degree</option>
+                        <option value="Masters Degree">Masters Degree</option>
                         <option value="M.Phil">M.Phil</option>
-                        <option value="phd">phD</option>
+                        <option value="PhD">PhD</option>
                         <option value="postdoc">Postdoc</option>
                         <option value="abd">ABD</option>
                         <option value="MD">MD</option>
@@ -382,7 +382,7 @@
                     </tag-input>
                     <label>Favorite Book*</label>
                 </div>
-                <p class="sekec_text">Add upto 3 book</p>
+                <p class="sekec_text">Add upto three books</p>
                 <span *ngIf="submittedProfile && (hasError('favBooks','required') || hasError('favBooks','pattern'))"
                     class="alert-danger d-block p-1 text-center"> is required</span>
             </div>
@@ -461,7 +461,7 @@
                     <input class="terms-conditions" type="checkbox" id="termsConditions" name="termsConditions"
                         formControlName="shouldAgree" (change)="eventCheck($event)">
                     <label for="termsConditions" class="label-terms-conditions"
-                        style="background: none; color: #787878; left: 0;">I agree with the collegey mentor
+                        style="background: none; color: #787878; left: 0;text-transform: inherit;">I have read and agree to the terms of the Collegey Mentor
                         <a target="_blank" class="" [routerLink]="['/agreement-condition']">Agreement</a>
                     </label>
 

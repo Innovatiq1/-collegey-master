@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AuthType } from 'src/app/core/enums/auth-type.enum';
@@ -19,9 +20,10 @@ export class ForgotPasswordFormComponent implements OnInit {
   constructor(
     public bsModalRef: BsModalRef,
     private formBuilder: FormBuilder,
+    private router: Router,
     private authService: AuthService,
     private toastrService: ToastrService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -45,12 +47,26 @@ export class ForgotPasswordFormComponent implements OnInit {
       this.showErrorMessage = true;
       return;
     }
-    this.authService
-      .forgotPassword(this.forgotPasswordForm.value)
-      .subscribe((res) => {
-        this.resetLink = true;
-        this.toastrService.success(res.message);
-      });
+
+    this.authService.checkloginpassword(this.forgotPasswordForm.value).subscribe(
+      (response) => {
+        if (response?.data?.passwordChange == true) {
+          this.router.navigateByUrl('/resetPassword/' + response?.data?._id);
+        }
+        else {
+          this.authService.forgotPassword(this.forgotPasswordForm.value).subscribe((res) => {
+              this.resetLink = true;
+              this.toastrService.success(res.message);
+          });
+        }
+      },
+      (err) => {
+        this.toastrService.error('User not found');
+        return;
+      },
+    );
+
+
   }
 
 }

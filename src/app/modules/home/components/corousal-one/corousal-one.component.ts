@@ -59,7 +59,7 @@ export class CorousalOneComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template,{ class: 'gray modal-lg', ignoreBackdropClick: true});
     //this.modalRef = this.modalService.show(template);
-    this.modalRef.setClass('modal-sm');
+    this.modalRef.setClass('modal-lg');
     this.createForm();
   }
   login() {

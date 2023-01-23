@@ -156,9 +156,14 @@ font-size: small;">{{profileText}}
       <ng-template carouselSlide *ngFor="let project of inviteProjects">
         <div class="webinar-box1 article-box1">
           <div class="webinar-image-box1">
-            <div class="webinar-imageas"
+
+            <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,true,true)">
+            <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,true,true)">
+
+            <!-- <div class="webinar-imageas"
               [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }">
-            </div>
+            </div> -->
+
             <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
             <!-- <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}"
               aria-hidden="true"
@@ -195,9 +200,14 @@ font-size: small;">{{profileText}}
       <ng-template carouselSlide *ngFor="let project of inProgressProjects">
         <div class="webinar-box1 article-box1" (click)="openModalWithClass(addDialog,project,false,false)">
           <div class="webinar-image-box1">
-            <div class="webinar-imageas"
+
+            <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img">
+            <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="">
+
+            <!-- <div class="webinar-imageas"
               [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }">
-            </div>
+            </div> -->
+
             <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
             <!-- <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}"
               aria-hidden="true"
@@ -240,9 +250,14 @@ font-size: small;">{{profileText}}
 
         <div class="webinar-box1 article-box1">
           <div class="webinar-image-box1">
-            <div class="webinar-imageas"
+
+            <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,true,false)">
+            <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,true,false)">
+
+            <!-- <div class="webinar-imageas"
               [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }">
-            </div>
+            </div> -->
+
             <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
             <!-- <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}"
                 aria-hidden="true"
@@ -282,9 +297,14 @@ font-size: small;">{{profileText}}
       <ng-template carouselSlide *ngFor="let project of liveProjects">
         <div class="webinar-box1 article-box1">
           <div class="webinar-image-box1">
-            <div class="webinar-imageas"
+
+            <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,true,false)">
+            <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,true,false)">
+
+            <!-- <div class="webinar-imageas"
               [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }">
-            </div>
+            </div> -->
+
             <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
             <!-- <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}"
                 aria-hidden="true"
@@ -322,9 +342,14 @@ font-size: small;">{{profileText}}
       <ng-template carouselSlide *ngFor="let project of allCollegyProjects">
         <div class="webinar-box1 article-box1">
           <div class="webinar-image-box1">
-            <div class="webinar-imageas"
+
+            <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,true,false)">
+            <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,true,false)">
+
+            <!-- <div class="webinar-imageas"
               [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }">
-            </div>
+            </div> -->
+
             <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
             <!-- <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}"
                 aria-hidden="true"
@@ -366,9 +391,15 @@ font-size: small;">{{profileText}}
       <ng-template carouselSlide *ngFor="let project of pendingProjects">
         <div class="webinar-box1 article-box1">
           <div class="webinar-image-box1">
-            <div class="webinar-imageas"
+
+            <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,false,false)">
+            <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,false,false)">
+
+            <!-- <div class="webinar-imageas"
               [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }">
-            </div>
+            </div> -->
+
+
             <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
           </div>
           <div class="webinar-content-box1" (click)="openModalWithClass(addDialog,project,false,false)">
@@ -542,11 +573,13 @@ font-size: small;">{{profileText}}
             {{projectDialog?.mentor?.profile?.experience}}<br />
             {{projectDialog?.mentor?.profile?.industry}}
           </ng-template>
+
           <p class="price-box">
             <span *ngIf="projectDialog?.projectfees == 1"
               style="font-weight: 600;">{{projectDialog?.projectPrice?.currencySymbol}}{{projectDialog?.projectPrice?.amount}}</span>
             <span *ngIf="projectDialog?.projectfees == 0" style="font-weight: 600;">Free</span>
           </p>
+          
           <p>Including taxes</p>
           <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
               style="vertical-align: middle;"> | </span> <img src="./../../../assets/images/office-chair.png" width="15"
@@ -565,14 +598,13 @@ font-size: small;">{{profileText}}
           <p class="timing-box"> 4 hours/week for {{projectDialog?.project_week}}</p>
           <p class="date-box">Last date of joining : {{projectDialog?.start_date | date}}</p>
 
-          <button *ngIf="!includeInJoinProject && projectDialog?.projectStatus != 'new'" style="margin-bottom: -16px;"
+          <button *ngIf="!includeInJoinProject && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0" style="margin-bottom: -16px;"
             class="get-started-btn">GET
             STARTED</button>
 
-          <a *ngIf="includeInJoinProject" href="javascript:;" routerLink="/mentors/project"
+          <a *ngIf="includeInJoinProject && projectDialog?.projectStatus != 'new' && projectDialog?.projectStatus != 'completed'" href="javascript:;" routerLink="/mentors/project"
             [state]="{ projectId: projectDialog?._id}" style="margin-bottom: -16px;" class="get-started-btn">PROJECT
             MANAGEMENT</a>
-
 
         </div>
         <img (click)="modalRef.hide()" src="./../../../assets/images/Close.svg" alt="" class="project-modal-close">
@@ -631,6 +663,7 @@ font-size: small;">{{profileText}}
         <ngb-tab title="Project Members">
           <ng-template ngbTabContent>
             <div class="project-plan">
+
               <div class="member_list" *ngFor="let project_memberlist of projectDialog?.projectMembers">
                 <div class="imgsdiv">
                   <img *ngIf="project_memberlist?.avatar" class="imgs"
@@ -640,9 +673,10 @@ font-size: small;">{{profileText}}
                     title="{{project_memberlist?.name}}">
                 </div>
                 <h5 class="name_txt">{{project_memberlist?.name}} {{project_memberlist?.last_name}}<span
-                    class="tags">Mentore</span></h5>
-                <span class="degree_txt">Bachelor of Science . University of Delh</span>
+                    class="tags"></span></h5>
+                    <span class="typetags">{{project_memberlist?.type}}</span>
               </div>
+
             </div>
           </ng-template>
         </ngb-tab>
@@ -856,7 +890,7 @@ letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProject
 
           <div class="col-sm-12 col-lg-6">
             <div class="form-group">
-              <label>Last date of join</label>
+              <label>Deadline to sign up</label>
               <input type="date" class="form-control" id="date1" placeholder="" formControlName="lastDate">
             </div>
           </div>

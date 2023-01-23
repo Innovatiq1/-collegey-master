@@ -206,9 +206,14 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
             <ng-template carouselSlide *ngFor="let project of projectInProgressData?.projectDashboardProjects">
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-image-box1">
-                        <div class="webinar-imageas"
+
+                        <img *ngIf="project?.project?.image" [src]="project?.project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project?.project,true)">
+                        <img *ngIf="!project?.project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project?.project,true)">
+
+                        <!-- <div class="webinar-imageas"
                             [ngStyle]="{'background-image': project?.project?.image ? 'url(' + project?.project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
-                            (click)="openModalWithClass(addDialog,project?.project,true)"></div>
+                            (click)="openModalWithClass(addDialog,project?.project,true)"></div> -->
+
                         <span *ngIf="project?.project?.projectfees == 0" class="clg-freetag">Free</span>
                         <a class="watchlist"
                             (click)="project?.project?.watchlist ? onAddOrRemoveWatchlist('Remove',project?.project?._id) : onAddOrRemoveWatchlist('Add',project?.project?._id) ">Add
@@ -253,9 +258,14 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
             <ng-template carouselSlide *ngFor="let project of projectData">
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-image-box1">
-                        <div class="webinar-imageas"
+
+                        <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,true)">
+                        <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,true)">
+
+                        <!-- <div class="webinar-imageas"
                             [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
-                            (click)="openModalWithClass(addDialog,project,true)"></div>
+                            (click)="openModalWithClass(addDialog,project,true)"></div> -->
+
                         <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
                         <!-- <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}"
                             aria-hidden="true"
@@ -298,9 +308,14 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
             <ng-template carouselSlide *ngFor="let project of pendingProjects?.projectDashboardProjects">
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-image-box1">
-                        <div class="webinar-imageas"
+
+                        <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,false)">
+                        <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,false)">
+
+                        <!-- <div class="webinar-imageas"
                             [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
-                            (click)="openModalWithClass(addDialog,project,false)"></div>
+                            (click)="openModalWithClass(addDialog,project,false)"></div> -->
+
                         <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
                         <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image"> -->
@@ -344,9 +359,14 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
             <ng-template carouselSlide *ngFor="let project of collegeyProjectData">
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-image-box1">
-                        <div class="webinar-imageas"
+
+                        <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,false)">
+                        <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,false)">
+
+                        <!-- <div class="webinar-imageas"
                             [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
-                            (click)="openModalWithClass(addDialog,project,false)"></div>
+                            (click)="openModalWithClass(addDialog,project,false)"></div> -->
+                            
                         <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
                         <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image"> -->
@@ -420,9 +440,14 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
             <ng-template carouselSlide *ngFor="let project of mentorsProjectData">
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-image-box1">
-                        <div class="webinar-imageas"
+
+                        <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,false)">
+                        <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,false)">
+
+                        <!-- <div class="webinar-imageas"
                             [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
-                            (click)="openModalWithClass(addDialog,project,false)"></div>
+                            (click)="openModalWithClass(addDialog,project,false)"></div> -->
+                        
                         <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
                         <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image"> -->
@@ -464,9 +489,14 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
             <ng-template carouselSlide *ngFor="let project of watchlistProjects">
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-image-box1">
-                        <div class="webinar-imageas"
+
+                        <img *ngIf="project?.project?.image" [src]="project?.project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project?.project,false)">
+                        <img *ngIf="!project?.project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project?.project,false)">
+
+                        <!-- <div class="webinar-imageas"
                             [ngStyle]="{'background-image': project?.project?.image ? 'url(' + project?.project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
-                            (click)="openModalWithClass(addDialog,project?.project,false)"></div>
+                            (click)="openModalWithClass(addDialog,project?.project,false)"></div> -->
+
                         <span *ngIf="project?.project?.projectfees == 0" class="clg-freetag">Free</span>
                         <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image"> -->
@@ -519,9 +549,14 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-box1 article-box1">
                         <div class="webinar-image-box1">
-                            <div class="webinar-imageas"
+
+                            <img *ngIf="project?.image" [src]="project?.image" class="clg-project-img" (click)="openModalWithClass(addDialog,project,false)">
+                            <img *ngIf="!project?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass(addDialog,project,false)">
+
+                            <!-- <div class="webinar-imageas"
                                 [ngStyle]="{'background-image': project?.image ? 'url(' + project?.image + ')' : 'url(/assets/images/resources/article-image1.png)' }"
-                                (click)="openModalWithClass(addDialog,project,false)"></div>
+                                (click)="openModalWithClass(addDialog,project,false)"></div> -->
+
                             <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
                             <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image"> -->
@@ -571,11 +606,14 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-box1 article-box1">
                         <div class="webinar-image-box1">
-                            <div class="webinar-imageas"
+                         
+                            <img *ngIf="project?.Programdata?.image" [src]="commonService.imagePathS3(project?.Programdata?.image)" class="clg-project-img" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')">
+                            <img *ngIf="!project?.Programdata?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')">
                             
-                            
+                            <!-- <div class="webinar-imageas"
                                 [ngStyle]="{'background-image': project?.Programdata?.image ? 'url(' +commonService.imagePathS3( project?.Programdata?.image )+ ')' : 'url(/assets/images/default-blog.svg)' }"
-                                (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')"></div>
+                                (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'InProgress')"></div> -->
+
                             <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
                             <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image"> -->
@@ -625,11 +663,14 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                 <div class="webinar-box1 article-box1">
                     <div class="webinar-box1 article-box1">
                         <div class="webinar-image-box1">
-                            <div class="webinar-imageas"
-                            
-                            
+
+                            <img *ngIf="project?.Programdata?.image" [src]="commonService.imagePathS3(project?.Programdata?.image)" class="clg-project-img" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'Completed')">
+                            <img *ngIf="!project?.Programdata?.image" src="/assets/images/resources/article-image1.png" alt="" (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'Completed')">
+
+                            <!-- <div class="webinar-imageas"
                                 [ngStyle]="{'background-image': project?.Programdata?.image ? 'url(' +commonService.imagePathS3( project?.Programdata?.image )+ ')' : 'url(/assets/images/default-blog.svg)' }"
-                                (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'Completed')"></div>
+                                (click)="openModalWithClass1(addDialog1,project?.Programdata,false,'Completed')"></div> -->
+
                             <span *ngIf="project?.projectfees == 0" class="clg-freetag">Free</span>
                             <!-- <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image"> -->
@@ -863,7 +904,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{completeProjectCertificate}}" download="">Download1</a>
                             <a class="dropdown-item" href="javascript:;"
-                                (click)="CopyCertificateUrl(completeProjectCertificate)">Copy Url</a>
+                                (click)="CopyCertificateUrl(completeProjectCertificate)">Copy URL</a>
                         </div>
                     </div>
 
@@ -927,7 +968,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                                 </div>
                                 <h5 class="name_txt">{{project_memberlist?.name}} {{project_memberlist?.last_name}}<span
                                         class="tags"></span></h5>
-                                <span class="tags">{{project_memberlist?.type}}</span>
+                                <span class="typetags">{{project_memberlist?.type}}</span>
                             </div>
                             <!-- <div class="member_list">
                                 <div class="imgsdiv">
@@ -1111,7 +1152,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{completeProgramCertificate}}" download="">Download</a>
                             <a class="dropdown-item" href="javascript:;"
-                                (click)="CopyCertificateUrl(completeProgramCertificate)">Copy Url</a>
+                                (click)="CopyCertificateUrl(completeProgramCertificate)">Copy URL</a>
                         </div>
                     </div>
 

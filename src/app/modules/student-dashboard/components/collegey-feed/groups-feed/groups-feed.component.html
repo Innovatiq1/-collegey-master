@@ -99,9 +99,9 @@
           <div class="mb-4" *ngIf="feed.postType == 'image'">
             <h6 class="mb-1 text-break">{{feed?.postText}}</h6>
             <img *ngIf="!feed?.posturl" [src]="commonService.imagePathS3(feed.postImageUrl)" class="pb-3">
-            <img *ngIf="feed?.posturl && !feed?.postImageUrl.includes('http')"
+            <img *ngIf="feed?.posturl && !feed?.postImageUrl?.includes('http')"
               [src]="commonService.imagePathS3(feed.postImageUrl)" class="pb-3">
-            <img *ngIf="feed?.posturl && feed?.postImageUrl.includes('http')" [src]="feed?.postImageUrl" class="pb-3">
+            <img *ngIf="feed?.posturl && feed?.postImageUrl?.includes('http')" [src]="feed?.postImageUrl" class="pb-3">
 
             <a *ngIf="feed?.posturl" [href]="feed?.posturl" class="postDesc" target="_blank"
               [ngClass]="{'readLess': feed.readLess}">

@@ -120,6 +120,7 @@ export class MentorComponent implements OnInit {
         this.toastrService.success('Invite Sent Successfully');
       },
       (err) => {
+        this.toastrService.error('Invite Sent Failed');
       },
     );
 

@@ -55,7 +55,7 @@
           <div class="group-item-box">
 
             <img *ngIf="group?.groupIcon" [src]="commonService.imagePathS3(group?.groupIcon)" alt="" class="group-img">
-            <img *ngIf="!group?.groupIcon" src="./../../../assets/images/collegey-logo.png" alt="" class="group-img">
+            <img *ngIf="!group?.groupIcon" src="./../../../assets/images/logo_image/new-collegey-home.png" alt="" class="group-img">
 
             <div (click)="onClickGroup1(group._id,group);groupTemplate = false" class="cursor-pointer">
               <ng-container *ngIf="selectedGroup">

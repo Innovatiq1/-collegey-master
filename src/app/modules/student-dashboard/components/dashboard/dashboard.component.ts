@@ -782,6 +782,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.userProjectInclude = [];
     this.projectDialog = project;
 
+    console.log('-=-=-=-=-=->',this.projectDialog?.projectPlan?.projectDuration);
+  
     if (this.projectDialog?.projectPlan?.projectDuration?.includes('month')) {
       this.projectDialog['project_week'] = this.projectDialog?.projectPlan?.projectDuration;
     }

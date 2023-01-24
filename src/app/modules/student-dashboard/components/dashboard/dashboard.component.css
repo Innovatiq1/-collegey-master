@@ -391,7 +391,7 @@
     border-radius: 6px;
     cursor: pointer;
     overflow: hidden;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 .webinar-image-box1 .clg-freetag {
     position: absolute;

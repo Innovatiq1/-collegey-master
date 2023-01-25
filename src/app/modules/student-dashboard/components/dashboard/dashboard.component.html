@@ -624,7 +624,8 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
         <h4 class="slider-title">My Programs in Progress</h4>
         <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="programesData?.length == 0">
             <ng-template carouselSlide class="webinar-content-box1">
-                <p class="post-title1 webinar-title1"> Not found Programs in Progress</p>
+                <!-- <p class="post-title1 webinar-title1"> Not found Programs in Progress</p> -->
+                <p class="post-title1 webinar-title1"> No Progress Programs found!</p>
             </ng-template>
         </owl-carousel-o>
         <owl-carousel-o [options]="customOptions" class="mg-b40">
@@ -681,7 +682,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
         <h4 class="slider-title">My Completed Programs</h4>
         <owl-carousel-o [options]="customOptions" class="mg-b40" *ngIf="completedProgramesData?.length == 0">
             <ng-template carouselSlide class="webinar-content-box1">
-                <p class="post-title1 webinar-title1"> Not Completed Programs found!</p>
+                <p class="post-title1 webinar-title1"> No Completed Programs found!</p>
             </ng-template>
         </owl-carousel-o>
         <owl-carousel-o [options]="customOptions" class="mg-b40">

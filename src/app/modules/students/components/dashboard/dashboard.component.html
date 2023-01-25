@@ -104,32 +104,32 @@
                 <div ngbDropdown class="d-inline-block clg-customdrop" #academyDropdown="ngbDropdown"
                     (mouseover)='over(academyDropdown)' (mouseout)='out(academyDropdown)'>
                     <a [routerLinkActive]="['active']" [class.parentLink]="isActive==true" id="academyLink"
-                        [routerLink]="['/student-dashboard/$/blogs']">
+                        [routerLink]="['/student-dashboard/$/academy/blogs']">
                         Academy
                     </a>
                     <button id="dropdownBasic1" ngbDropdownToggle></button>
                     <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic1">
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/blogs']">
+                            [routerLink]="['/student-dashboard/$/academy/blogs']">
                             Blogs
                         </a>
-                        <a [routerLinkActive]="['active']" ngbDropdownItem [routerLink]="['/student-dashboard/$/vlog']">
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [routerLink]="['/student-dashboard/$/academy/vlog']">
                             Vlogs
                         </a>
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/Programs']">
+                            [routerLink]="['/student-dashboard/$/academy/Programs']">
                             Programs
                         </a>
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/conferences']">
+                            [routerLink]="['/student-dashboard/$/academy/conferences']">
                             Conferences
                         </a>
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/course']">
+                            [routerLink]="['/student-dashboard/$/academy/course']">
                             Courses
                         </a>
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/store']">
+                            [routerLink]="['/student-dashboard/$/academy/store']">
                             Collegey Store <span style="color: red; font-size: small;">(Upcoming)</span>
                         </a>
                     </div>

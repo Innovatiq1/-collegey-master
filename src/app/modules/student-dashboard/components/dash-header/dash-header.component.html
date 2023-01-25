@@ -46,9 +46,9 @@
                 <p *ngIf="!mentorProfileView" style="text-transform: capitalize;">{{currentUserRole}}</p>
                 <p *ngIf="dashboard?.profile[0]?.cityObj && !mentorProfileView" class="location"><img
                         src="assets/images/location.svg" width="11" height="13" alt="" style="margin-right: 7px;">
-                    <span *ngIf="dashboard.profile[0].countryObj">{{dashboard?.profile[0]?.countryObj}}, </span>
-                    <span *ngIf="dashboard.profile[0].stateObj">{{dashboard?.profile[0]?.stateObj}}, </span>
-                    <span *ngIf="dashboard.profile[0].cityObj">{{dashboard?.profile[0]?.cityObj}}</span>
+                        <span *ngIf="dashboard.profile[0].cityObj">{{dashboard?.profile[0]?.cityObj}},</span>
+                        <span *ngIf="dashboard.profile[0].stateObj">{{dashboard?.profile[0]?.stateObj}}, </span>
+                    <span *ngIf="dashboard.profile[0].countryObj">{{dashboard?.profile[0]?.countryObj}} </span>
                 </p>
                 <p *ngIf="mentorProfileView" class="location"><img src="assets/images/location.svg" width="11"
                         height="13" alt="" style="margin-right: 7px;">
@@ -112,28 +112,28 @@
                 <div ngbDropdown class="d-inline-block clg-customdrop" #academyDropdown="ngbDropdown"
                     (mouseover)='over(academyDropdown)' (mouseout)='out(academyDropdown)'>
                     <a [routerLinkActive]="['active']" [class.parentLink]="isActive==true" id="academyLink"
-                        [href]="['/student-dashboard/$/blogs']">
+                        [href]="['/student-dashboard/$/academy/blogs']">
                         Academy
                     </a>
                     <button id="dropdownBasic1" ngbDropdownToggle></button>
                     <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic1">
-                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/blogs']">
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/academy/blogs']">
                             Blogs
                         </a>
-                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/vlog']">
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/academy/vlog']">
                             Vlogs
                         </a>
-                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/Programs']">
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/academy/Programs']">
                             Programs
                         </a>
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [href]="['/student-dashboard/$/conferences']">
+                            [href]="['/student-dashboard/$/academy/conferences']">
                             Conferences
                         </a>
-                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/course']">
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/academy/course']">
                             Courses
                         </a>
-                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/store']">
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [href]="['/student-dashboard/$/academy/store']">
                             Collegey Store <span style="color: red; font-size: small;">(Upcoming)</span>
                         </a>
                     </div>

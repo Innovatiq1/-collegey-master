@@ -40,7 +40,8 @@
 
             <div class="clg-tophead1">
                 <h5>{{firstname}} {{lastname}}</h5>
-                <p>{{dashboard?.profile[0]?.qualification}}</p>
+                <!-- <p>{{dashboard?.profile[0]?.qualification}}</p> -->
+                <p>{{qualification}}</p>
                 <p *ngIf="dashboard?.profile[0]?.cityObj" class="location"><img src="assets/images/location.svg"
                         width="11" height="13" alt="" style="margin-right: 7px;">
                     <span *ngIf="dashboard.profile[0].countryObj || cityName">{{cityName}}, </span>

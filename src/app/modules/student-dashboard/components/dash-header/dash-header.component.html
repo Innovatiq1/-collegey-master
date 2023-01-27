@@ -46,9 +46,9 @@
                 <p *ngIf="!mentorProfileView" style="text-transform: capitalize;">{{currentUserRole}}</p>
                 <p *ngIf="dashboard?.profile[0]?.cityObj && !mentorProfileView" class="location"><img
                         src="assets/images/location.svg" width="11" height="13" alt="" style="margin-right: 7px;">
-                        <span *ngIf="dashboard.profile[0].cityObj">{{dashboard?.profile[0]?.cityObj}},</span>
+                        <span *ngIf="dashboard.profile[0].countryObj">{{dashboard?.profile[0]?.countryObj}}, </span>
                         <span *ngIf="dashboard.profile[0].stateObj">{{dashboard?.profile[0]?.stateObj}}, </span>
-                    <span *ngIf="dashboard.profile[0].countryObj">{{dashboard?.profile[0]?.countryObj}} </span>
+                        <span *ngIf="dashboard.profile[0].cityObj">{{dashboard?.profile[0]?.cityObj}}</span>
                 </p>
                 <p *ngIf="mentorProfileView" class="location"><img src="assets/images/location.svg" width="11"
                         height="13" alt="" style="margin-right: 7px;">

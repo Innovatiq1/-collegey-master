@@ -97,6 +97,7 @@ export class DashboardComponent implements OnInit {
   cityName: any;
   stateName: any;
   countryName: any;
+  qualification:any
 
   fetchcurrentImageheight: any;
   fetchcurrentImagewight: any;
@@ -229,6 +230,8 @@ export class DashboardComponent implements OnInit {
       this.cityName = this.dashboard.profile[0].countryObj;
       this.stateName = this.dashboard?.profile[0]?.stateObj;
       this.countryName = this.dashboard.profile[0].cityObj;
+      const str = this.dashboard?.profile[0]?.type;
+      this.qualification = str.charAt(0).toUpperCase() + str.slice(1);
       this.cdr.detectChanges();
       // this.show_loader = false;
     });

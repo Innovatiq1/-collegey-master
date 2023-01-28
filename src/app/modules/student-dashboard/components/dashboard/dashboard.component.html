@@ -809,6 +809,11 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
         <div class="location-filter">
             <p>Project Tags</p>
             <div class="questionOptionBox">
+
+                <ng-multiselect-dropdown formControlName="projectTag" [data]="finalTagArray"
+                        [settings]="dropdownSettingsTags">
+                </ng-multiselect-dropdown>
+
                 <tag-input [ngModel]="" class="keyword_input form-control" [formControlName]="'projectTag'"
                     [maxItems]='3' [separatorKeyCodes]="[188,9]"></tag-input>
                 <!-- <label>

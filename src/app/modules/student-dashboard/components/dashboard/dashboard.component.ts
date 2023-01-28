@@ -246,7 +246,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   //tagfilter
   tagArray:any = [];
-  finalTagArray:any=[]
+  finalTagArray:any;
+  dropdownSettingsTags = {};
 
   constructor(
     private projectService: ProjectService,
@@ -273,6 +274,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     else {
       this.isActive = false;
     }
+
+    this.dropdownSettingsTags = {
+      singleSelection: false,
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 5,
+      allowSearchFilter: true,
+      limitSelection: 5
+    };
 
     this.testimonialFormGroup = this.fb.group({
       testimonal: ['', Validators.required],
@@ -319,7 +329,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.getCurrentUserData();
     this.getProgramesData();
     this.getCompletedProgramesData();
-    this.test();
     /*  this.getUserInfo();
      this.checkIsProfileCompleted();
      this.initProjectIdeaForm();
@@ -605,6 +614,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       // this.addWatchLits(this.collegeyProjectData._id);
       this.initialFormDataStudent();
       this.getBannerImage();
+      setTimeout(() => {
+        this.tagSetuniq();
+      }, 1000);
     });
   }
 
@@ -1054,11 +1066,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
           this.tagArray.push(this.collegeyProjectData[i].keyword[j]);
         }
       }
-      console.log('finalTagArray-=-=-=->',this.finalTagArray);
       this.cdr.detectChanges();
       // this.show_loader = false;
     })
   }
+
+  tagSetuniq(){  
+    this.finalTagArray = this.tagArray
+                 .map(item => item)
+                 .filter((value, index, self) => self.indexOf(value) === index);
+   }
 
   createproject(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
@@ -1423,12 +1440,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.toastrService.error('Please login first');
       this.router.navigateByUrl('/');
     }
-  }
-
-  test(){  
-   let unique = this.tagArray.filter((item, i, ar) => ar.indexOf(item) === i);
-   console.log('tagArray=-=-=-=>',this.tagArray);
-   console.log('unique=-=-=-=>',unique);
-   
   }
 }

@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable,EventEmitter  } from '@angular/core';
 import { Logger } from './logger.service';
 import { HttpClient } from '@angular/common/http';
 import { ApiGenericResponse } from '../models/response.model';
 import { map, mergeMap } from 'rxjs/operators';
-import { Observable, BehaviorSubject,throwError } from 'rxjs';
+import { Observable, BehaviorSubject,throwError, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MentorProfile, MentorsProfile } from '../models/student-profile.model';
 import { catchError } from 'rxjs/operators';
@@ -141,5 +141,11 @@ getMentorList(filterName) {
       })
     );
   };
+
+  invokeProfile = new EventEmitter(); 
+  subsVar: Subscription;
+  onProfileUpdate() {    
+    this.invokeProfile.emit(); 
+  } 
 
 }

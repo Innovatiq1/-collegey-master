@@ -393,6 +393,7 @@ export class MentorsProfileComponent implements OnInit {
 
     this.mentorService.updateMentorProfileStep01(obj).subscribe(
       (response) => {
+        this.updateProfile();
         this.toastrService.success(response.message);
         this.profileFormGroup.reset();
         this.submittedProfile = false;
@@ -407,6 +408,11 @@ export class MentorsProfileComponent implements OnInit {
         this.submittedProfile = false;
       },
     );
+    
+  }
+
+  updateProfile(){    
+    this.mentorService.onProfileUpdate();    
   }
 
   uploadFileApi(file) {

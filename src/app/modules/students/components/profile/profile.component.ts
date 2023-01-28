@@ -396,14 +396,14 @@ export class StudentProfileComponent implements OnInit, OnDestroy {
         {
             let checkData = {
                 "user_id": this.user?._id,
-                "rewardName" : "Profile PartA"
+                "rewardName" : "Profile Step Location,Education,Interests,Favorites"
             }; 
             this.studentService.checkRewardPoints(checkData).subscribe((res) => { 
               this.resData = res;
               if(this.resData.data === 0){
                 let rewObj = {
                   "user_id": this.user?._id,
-                  "rewardName" : "Profile PartA",
+                  "rewardName" : "Profile Step Location,Education,Interests,Favorites",
                   "rewardCreditPoint":"100",
                 }
                 this.studentService.updateProfileRewardPoints(rewObj).subscribe(
@@ -425,14 +425,14 @@ export class StudentProfileComponent implements OnInit, OnDestroy {
         {
             let checkData = {
               "user_id": this.user?._id,
-              "rewardName" : "Profile PartB"
+              "rewardName" : "Profile Step Project & Accomplishments,Future Education Plans,Education Preferences,Personal"
             };
             this.studentService.checkRewardPoints(checkData).subscribe((res) => { 
               this.resData = res;
               if(this.resData.data === 0){
                 let rewObj = {
                   "user_id": this.user?._id,
-                  "rewardName" : "Profile PartB",
+                  "rewardName" : "Profile Step Project & Accomplishments,Future Education Plans,Education Preferences,Personal",
                   "rewardCreditPoint":"150",
                 }
                 this.studentService.updateProfileRewardPoints(rewObj).subscribe(

@@ -84,7 +84,7 @@
 }
 
 .main-link {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 50px;
   text-align: justify;
@@ -166,6 +166,7 @@ ngb-accordion::ng-deep.card::ng-deep .btn {
   font-size: revert;
   min-height: 1px;
   font-weight: 800;
+  font-size: 16px;
 }
 
 span {
@@ -195,6 +196,7 @@ ngb-accordion /deep/ .card-body /deep/ {
   text-align: center;
   padding: 1.2rem;
   padding-top: 0;
+  font-size: 16px;
 }
 
 .category-tree /deep/ .card .btn-link {

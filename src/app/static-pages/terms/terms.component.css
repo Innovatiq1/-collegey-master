@@ -13,11 +13,14 @@
 }
 .terms-header h1{
     text-align: center;
-    font: normal normal normal 46px/57px Georgia;
     letter-spacing: 0px;
     color: #141414;
     margin-top: 70px;
     margin-bottom: 0;
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: 0px;
 }
 .terms-content-box{
     background: #F7F7F7 0% 0% no-repeat padding-box;
@@ -28,6 +31,8 @@
     max-width: 1160px;
     padding: 40px;
     margin: -102px 0 50px;
+    font-size: 16px;
+    line-height: 1.5;
 }
 .terms-content h3{
     text-align: left;

@@ -12,6 +12,11 @@
     margin-right: auto;
 }
 
+.clg-team-topcontent h2
+{
+    color: #141414;
+}
+
 .terms-header h1 {
     text-align: left;
     font: normal normal normal 46px/57px Georgia;

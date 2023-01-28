@@ -999,7 +999,6 @@
 }
 
 @media only screen and (max-width: 767px) {
-
     .first-section1 {
         background: #FFFFFF 0% 0% no-repeat padding-box;
         box-shadow: 0px 3px 15px #0000001A;
@@ -1008,7 +1007,6 @@
         margin-bottom: 20px;
         margin-top: 6.125rem;
     }
-
     
     .student-info-profile {
         flex-wrap: wrap;
@@ -1037,6 +1035,9 @@
 
     .banner-selection-modal .dragdropdiv .re-drag-txt1 {
         padding: 10px 20px;
+    }
+    .custom_mobile_text {
+        display: block;
     }
 }
 

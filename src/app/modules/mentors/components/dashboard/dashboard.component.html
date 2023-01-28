@@ -602,6 +602,9 @@ font-size: small;">{{profileText}}
             class="get-started-btn">GET
             STARTED</button>
 
+          <!-- <span *ngIf="!includeInJoinProject && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0" style="margin-bottom: -16px;font-size: 14px;"
+            class="get-started-btn">Only students can join project</span> -->
+
           <a *ngIf="includeInJoinProject && projectDialog?.projectStatus != 'new' && projectDialog?.projectStatus != 'completed'" href="javascript:;" routerLink="/mentors/project"
             [state]="{ projectId: projectDialog?._id}" style="margin-bottom: -16px;" class="get-started-btn">PROJECT
             MANAGEMENT</a>

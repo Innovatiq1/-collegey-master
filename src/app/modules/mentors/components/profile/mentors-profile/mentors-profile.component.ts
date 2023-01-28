@@ -327,10 +327,9 @@ export class MentorsProfileComponent implements OnInit {
       if (this.MentorProfileInfo?.interest == 'other_interest') { this.showotherInterest = true; }
       if (this.MentorProfileInfo?.shouldAgree == true) { this.isChecked = true; }
 
-
       this.profileFormGroup.patchValue({
         fullLegalName: this.MentorProfileInfo?.fullLegalName,
-
+        
         country: this.MentorProfileInfo?.country,
         state: this.MentorProfileInfo?.state,
         city: this.MentorProfileInfo?.city,
@@ -357,6 +356,14 @@ export class MentorsProfileComponent implements OnInit {
         adviceToYoungPeople: this.MentorProfileInfo?.adviceToYoungPeople,
         shouldAgree: this.MentorProfileInfo?.shouldAgree,
       });
+
+      setTimeout(() => {
+        this.profileFormGroup.patchValue({
+          state: this.MentorProfileInfo?.state,
+          city: this.MentorProfileInfo?.city,
+        });
+      }, 1500);
+
     });
   }
 

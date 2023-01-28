@@ -1,12 +1,12 @@
 <div class="container first-section1 p-3" *ngIf="showCompleteProfile && !completeProfileMsgShow"
     style="text-align: center !important;">
-    <span>
-        A complete profile brings you more opportunities. You want to finish your profile now?&nbsp;&nbsp; &nbsp;&nbsp;
-        <a [routerLink]="['/student/profile']" class="btn btn-sm btn-primary">
-            <strong> YES </strong>
-        </a>
-    </span> &nbsp;&nbsp; &nbsp;&nbsp;
-    <span (click)="hideCompleteProfile()" class="btn btn-sm btn-danger">
+    <span class="custom_mobile_text">
+        A complete profile brings you more opportunities. You want to finish your profile now?
+    </span>
+    <span [routerLink]="['/student/profile']" class="btn btn-sm btn-primary mx-1">
+        <strong> YES </strong>
+    </span>
+    <span (click)="hideCompleteProfile()" class="btn btn-sm btn-danger mx-1">
         <strong> NO </strong>
     </span>
 </div>

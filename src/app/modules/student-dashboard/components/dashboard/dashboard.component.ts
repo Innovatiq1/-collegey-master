@@ -116,16 +116,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     responsive: {
       0: {
         items: 1,
-        margin: 20,
+        margin: 10,
+        stagePadding: 8,
       },
       600: {
-        items: 2
-      },
-      992: {
-        items: 3
+        items: 1,
+        stagePadding: 50,
       },
       1100: {
-        items: 4
+        items: 2
       }
     }
   }

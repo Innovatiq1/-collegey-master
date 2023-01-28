@@ -248,6 +248,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   tagArray:any = [];
   finalTagArray:any;
   dropdownSettingsTags = {};
+  selectedItems:any;
 
   constructor(
     private projectService: ProjectService,
@@ -620,13 +621,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
+  onItemSelect(select:any){
+    this.selectedItems = select
+  }
+
   onSubmitProjectFilter() {
+    
     this.projectKeywordArray = [];
     let obj = this.projectFilterFormGroup.value;
-
-    for (let i = 0; i < obj.projectTag.length; i++) {
-      this.projectKeywordArray.push(obj.projectTag[i].value);
-    }
+  
+    // for (let i = 0; i < obj.projectTag.length; i++) {
+    //   this.projectKeywordArray.push(obj.projectTag[i].value);
+    // }
+    this.projectKeywordArray.push(this.selectedItems);
 
     obj['projectTag'] = this.projectKeywordArray;
     this.projectFilterData = obj;

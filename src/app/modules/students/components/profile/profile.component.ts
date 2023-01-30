@@ -392,7 +392,7 @@ export class StudentProfileComponent implements OnInit, OnDestroy {
         
         // Add Reward point
 
-        if(profileData?.profile_completion.profile_status?.geography == true && profileData?.profile_completion.profile_status?.history_updated == true && profileData?.profile_completion.profile_status?.interest == true && profileData?.profile_completion.profile_status?.know_you_better == true)
+        if(profileData?.profile_completion?.profile_status?.geography == true && profileData?.profile_completion?.profile_status?.history_updated == true && profileData?.profile_completion?.profile_status?.interest == true && profileData?.profile_completion?.profile_status?.know_you_better == true)
         {
             let checkData = {
                 "user_id": this.user?._id,
@@ -421,7 +421,7 @@ export class StudentProfileComponent implements OnInit, OnDestroy {
             });
         }
 
-        if(profileData?.profile_completion.profile_status?.projects == true && profileData?.profile_completion.profile_status?.headed == true && profileData?.profile_completion.profile_status?.prefrences == true && profileData?.profile_completion.profile_status?.ways_to_be_in_touch == true)
+        if(profileData?.profile_completion?.profile_status?.projects == true && profileData?.profile_completion?.profile_status?.headed == true && profileData?.profile_completion?.profile_status?.prefrences == true && profileData?.profile_completion?.profile_status?.ways_to_be_in_touch == true)
         {
             let checkData = {
               "user_id": this.user?._id,

@@ -77,6 +77,7 @@ export class SocialLoginComponent implements OnInit {
         if (res.message === 'user not found!') {
           this.showRegisterForm(socialUsers);
         } else {
+          localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
           this.onSuccess.emit(true);
         }
       },

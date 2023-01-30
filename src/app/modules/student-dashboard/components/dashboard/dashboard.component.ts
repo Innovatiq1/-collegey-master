@@ -622,19 +622,25 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   onItemSelect(select:any){
-    this.selectedItems = select
+    this.selectedItems = select;
+    this.projectKeywordArray.push(select);
+  }
+
+  onItemDeSelect(select:any)
+  {
+    let index = this.projectKeywordArray.findIndex(x => x === select);
+    if (index !== -1) {
+      this.projectKeywordArray.splice(index, 1);
+    } 
   }
 
   onSubmitProjectFilter() {
-    
-    this.projectKeywordArray = [];
+    //this.projectKeywordArray = [];
     let obj = this.projectFilterFormGroup.value;
-  
-    // for (let i = 0; i < obj.projectTag.length; i++) {
-    //   this.projectKeywordArray.push(obj.projectTag[i].value);
+    // if(this.selectedItems !== null && this.selectedItems !== undefined)
+    // {
+    //   this.projectKeywordArray.push(this.selectedItems);
     // }
-    this.projectKeywordArray.push(this.selectedItems);
-
     obj['projectTag'] = this.projectKeywordArray;
     this.projectFilterData = obj;
     if (obj.projectTypeArray != '') {

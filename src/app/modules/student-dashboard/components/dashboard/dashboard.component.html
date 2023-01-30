@@ -753,7 +753,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
             <p>By Location</p>
 
             <select class="selCountry" name="country" id="" formControlName="country">
-                <option value="">Select Country*</option>
+                <option value="">Select Country</option>
                 <option [value]="countr?.name" *ngFor="let countr of countries">{{countr?.name}}</option>
             </select>
 
@@ -810,7 +810,9 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
             <p>Project Tags</p>
             <div class="questionOptionBox">
 
-                <ng-multiselect-dropdown formControlName="projectTag" [data]="finalTagArray" (onSelect)="onItemSelect($event)"
+                <ng-multiselect-dropdown formControlName="projectTag" [data]="finalTagArray" 
+                        (onSelect)="onItemSelect($event)"
+                        (onDeSelect)="onItemDeSelect($event)"
                         [settings]="dropdownSettingsTags">
                 </ng-multiselect-dropdown>
 

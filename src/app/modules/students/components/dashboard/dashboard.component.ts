@@ -197,7 +197,7 @@ export class DashboardComponent implements OnInit {
       );
 
       this.studentService.getStudentProfile().subscribe((profileData) => {
-        let profile_completed_status = profileData.profile_completion.profile_text;
+        let profile_completed_status = profileData?.profile_completion?.profile_text;
         if (profile_completed_status == "Expert") {
           this.showCompleteProfile = false;
           this.completeProfileMsgShow = true;

@@ -67,6 +67,9 @@ export class LinkedinLoginResponseComponent implements OnInit {
     var social_id = 'linked122';
     this.authService.socialLogin({ email, social_type, social_id }).subscribe(
       (res: any) => {
+        console.log(';res',res);
+        
+        
         // this.toastrService.success(res.message);
         if (res.message === 'user not found!') {
           this.showRegisterForm(socialUsers);
@@ -75,10 +78,13 @@ export class LinkedinLoginResponseComponent implements OnInit {
           if(res?.data?.user?.type == 'student')
           {
             this.router.navigateByUrl('/student/profile');
+            localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
+            this.authService.setReward( res?.data?.user?._id);
           }
           else
           {
             this.router.navigateByUrl('/mentors/profile');
+            localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
           }
         }
       },

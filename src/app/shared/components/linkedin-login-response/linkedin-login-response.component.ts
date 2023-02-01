@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthType } from 'src/app/core/enums/auth-type.enum';
+import { DEFAULT_CONFIG } from 'src/configs/default';
 
 @Component({
   selector: 'app-linkedin-login-response',
@@ -32,7 +33,7 @@ export class LinkedinLoginResponseComponent implements OnInit {
       code: this.linkedInTokenCode,
       client_id: '77u10423gsm7cx',
       client_secret: 'neoGgtcYWNGZiu8k',
-      redirect_uri: 'http://localhost:4200/linkedInLogin',
+      redirect_uri: `${DEFAULT_CONFIG.frontEndUrl}linkedInLogin`,
     };
     this.authService.getLinkedinAccessToken(obj).subscribe(
       (response) => {
@@ -77,13 +78,13 @@ export class LinkedinLoginResponseComponent implements OnInit {
           this.onSuccess.emit(true);
           if(res?.data?.user?.type == 'student')
           {
-            this.router.navigateByUrl('/student/profile');
+            this.router.navigateByUrl('/student-dashboard/$');
             localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
             this.authService.setReward( res?.data?.user?._id);
           }
           else
           {
-            this.router.navigateByUrl('/mentors/profile');
+            this.router.navigateByUrl('/mentors/dashboard');
             localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
           }
         }

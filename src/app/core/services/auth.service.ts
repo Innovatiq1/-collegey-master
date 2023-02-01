@@ -106,6 +106,15 @@ export class AuthService {
       })
     );
   };
+  
+  getLinkedinDetailsFetch1 = (data:any): Observable<any> => {
+    const endpoint = environment.apiNewEndpoint+'forget/auth/getLinkedinDetailsFetch1';
+    return this.http.post(endpoint, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    );
+  };
 
   socialLogin(socialUser): Observable<ApiGenericResponse<any>> {
     return this.http

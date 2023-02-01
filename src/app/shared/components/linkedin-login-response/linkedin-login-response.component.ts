@@ -52,10 +52,9 @@ export class LinkedinLoginResponseComponent implements OnInit {
     }
     this.authService.getLinkedinDetailsFetch(obj).subscribe(
       (response) => {
-        var socialProvider = 'linkedin';
         let elementsData = response?.result?.elements[0];
         let socialUsers  = elementsData["handle~"].emailAddress;
-        this._socialLogin({ socialUsers, socialProvider });
+        this.linkedInProfile(obj,socialUsers);
       },
       (err) => {
        
@@ -63,10 +62,10 @@ export class LinkedinLoginResponseComponent implements OnInit {
     ); 
   }
 
-  _socialLogin({ socialUsers, socialProvider: social_type }) {
-    var email = socialUsers;
+  _socialLogin( socialUsers:any, socialProvider: any) {
+    var email = socialUsers.email;
     var social_id = 'linked122';
-    this.authService.socialLogin({ email, social_type, social_id }).subscribe(
+    this.authService.socialLogin({ email, socialProvider, social_id }).subscribe(
       (res: any) => {
         console.log(';res',res);
         
@@ -101,6 +100,18 @@ export class LinkedinLoginResponseComponent implements OnInit {
   showRegisterForm(socialUserInfo?) {
     this.authService.closeAuthDialog();
     this.authService.openAuthDialog(AuthType.SIGN_UP,  null, socialUserInfo);
+  }
+
+  linkedInProfile(obj:any,socialUsers:any){
+    this.authService.getLinkedinDetailsFetch1(obj).subscribe((res)=>{
+      var linkedInObj:any = {
+        firstName:res?.result?.localizedFirstName,
+        lastName:res?.result?.localizedLastName,
+        email:socialUsers
+      }      
+      var socialProvider = 'linkedin';
+      this._socialLogin( linkedInObj, socialProvider );
+    })
   }
 
 }

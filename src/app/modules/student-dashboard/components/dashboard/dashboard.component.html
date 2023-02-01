@@ -974,6 +974,18 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                                 <p class="week-number">Week 4</p>
                                 <p class="week-desc">{{projectDialog?.projectPlan?.week4Duration}}</p>
                             </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week5Duration">
+                                <p class="week-number">Week 5</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week5Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week6Duration">
+                                <p class="week-number">Week 6</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week6Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.monthDuration">
+                                <p class="week-number">{{projectDialog?.projectPlan?.projectDuration}}</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.monthDuration}}</p>
+                            </div>
                         </div>
                     </ng-template>
                 </ngb-tab>

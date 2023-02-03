@@ -5,6 +5,23 @@
     background: #F7F7F7 0% 0% no-repeat padding-box;
 }
 
+.form-control{
+    font:normal normal 600 14px/21px Nunito;
+}
+
+/* .form-control::placeholder {
+    color: red;
+    opacity: 1; 
+  }
+  
+  .form-control:-ms-input-placeholder { 
+   color: red;
+  }
+  
+  .form-control::-ms-input-placeholder { 
+   color: red;
+  } */
+
 .announcementDetails ::ng-deep p a {
     color: white;
     text-decoration: underline;

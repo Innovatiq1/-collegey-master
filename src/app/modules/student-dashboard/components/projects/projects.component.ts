@@ -617,7 +617,7 @@ export class ProjectsComponent implements OnInit {
         this.toastrService.success(response.message);
         let creditRewardPoint = {
           "user_id": this.userid,
-          "rewardName": "projectCompleted",
+          "rewardName": "Project Completed",
           "rewardCreditPoint": "300",
         };
         this.modalRef.hide();

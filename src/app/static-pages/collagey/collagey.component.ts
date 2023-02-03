@@ -90,6 +90,7 @@ export class CollageyComponent implements OnInit {
       queryParams: { page: this.currentPage },
       queryParamsHandling: 'merge'
     });
+    this.getProgrammes(this.queryParams)
   }
 
 }

@@ -5,6 +5,23 @@
     background: #F7F7F7 0% 0% no-repeat padding-box;
 }
 
+.form-control{
+    font:normal normal 600 14px/21px Nunito;
+}
+
+/* .form-control::placeholder {
+    color: red;
+    opacity: 1; 
+  }
+  
+  .form-control:-ms-input-placeholder { 
+   color: red;
+  }
+  
+  .form-control::-ms-input-placeholder { 
+   color: red;
+  } */
+
 .announcementDetails ::ng-deep p a {
     color: white;
     text-decoration: underline;
@@ -702,9 +719,11 @@
 }
 
 .user-comment-desc {
-    /*font: normal normal normal 13px/18px Nunito;*/
+    font: normal normal normal 13px/18px Nunito;
     letter-spacing: 0px;
-    color: #999;
+    /* color: #999; */
+    color: rgba(36, 35, 35, 0.822);
+    font-weight: 500;
     margin-bottom: 0;
 }
 
@@ -787,7 +806,8 @@
     background: #F2F2F2 0% 0% no-repeat padding-box;
     font: normal normal 600 14px/21px Nunito;
     letter-spacing: 0px;
-    color: #AFAFAF;
+    /* color: #AFAFAF; */
+    color: rgba(36, 35, 35, 0.822);
     height: 50px;
     border: none;
     border-radius: 5px;

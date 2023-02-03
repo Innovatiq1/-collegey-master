@@ -10,16 +10,22 @@
 
 .blog-left-side {
   margin-right: 40px;
+  font-size: 16px;
+  line-height: 1.5;
 }
-
+.clg-article-content
+{
+  font-size: 14px;
+}
 .blog-left-side .heading {
-  font: normal normal normal 32px/57px Georgia;
   letter-spacing: 0px;
   color: #141414;
   text-transform: capitalize;
   padding-bottom: 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid #F2F2F2;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .blog-left-side .blog-img {

@@ -1,12 +1,12 @@
 <div class="container first-section1 p-3" *ngIf="showCompleteProfile && !completeProfileMsgShow"
     style="text-align: center !important;">
-    <span>
-        A complete profile brings you more opportunities. You want to finish your profile now?&nbsp;&nbsp; &nbsp;&nbsp;
-        <a [routerLink]="['/student/profile']" class="btn btn-sm btn-primary">
-            <strong> YES </strong>
-        </a>
-    </span> &nbsp;&nbsp; &nbsp;&nbsp;
-    <span (click)="hideCompleteProfile()" class="btn btn-sm btn-danger">
+    <span class="custom_mobile_text">
+        A complete profile brings you more opportunities. You want to finish your profile now?
+    </span>
+    <span [routerLink]="['/student/profile']" class="btn btn-sm btn-primary mx-1">
+        <strong> YES </strong>
+    </span>
+    <span (click)="hideCompleteProfile()" class="btn btn-sm btn-danger mx-1">
         <strong> NO </strong>
     </span>
 </div>
@@ -40,7 +40,8 @@
 
             <div class="clg-tophead1">
                 <h5>{{firstname}} {{lastname}}</h5>
-                <p>{{dashboard?.profile[0]?.qualification}}</p>
+                <!-- <p>{{dashboard?.profile[0]?.qualification}}</p> -->
+                <p>{{qualification}}</p>
                 <p *ngIf="dashboard?.profile[0]?.cityObj" class="location"><img src="assets/images/location.svg"
                         width="11" height="13" alt="" style="margin-right: 7px;">
                     <span *ngIf="dashboard.profile[0].countryObj || cityName">{{cityName}}, </span>
@@ -104,32 +105,32 @@
                 <div ngbDropdown class="d-inline-block clg-customdrop" #academyDropdown="ngbDropdown"
                     (mouseover)='over(academyDropdown)' (mouseout)='out(academyDropdown)'>
                     <a [routerLinkActive]="['active']" [class.parentLink]="isActive==true" id="academyLink"
-                        [routerLink]="['/student-dashboard/$/blogs']">
+                        [routerLink]="['/student-dashboard/$/academy/blogs']">
                         Academy
                     </a>
                     <button id="dropdownBasic1" ngbDropdownToggle></button>
                     <div ngbDropdownMenu class="academyDropdown" aria-labelledby="dropdownBasic1">
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/blogs']">
+                            [routerLink]="['/student-dashboard/$/academy/blogs']">
                             Blogs
                         </a>
-                        <a [routerLinkActive]="['active']" ngbDropdownItem [routerLink]="['/student-dashboard/$/vlog']">
+                        <a [routerLinkActive]="['active']" ngbDropdownItem [routerLink]="['/student-dashboard/$/academy/vlog']">
                             Vlogs
                         </a>
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/Programs']">
+                            [routerLink]="['/student-dashboard/$/academy/Programs']">
                             Programs
                         </a>
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/conferences']">
+                            [routerLink]="['/student-dashboard/$/academy/conferences']">
                             Conferences
                         </a>
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/course']">
+                            [routerLink]="['/student-dashboard/$/academy/course']">
                             Courses
                         </a>
                         <a [routerLinkActive]="['active']" ngbDropdownItem
-                            [routerLink]="['/student-dashboard/$/store']">
+                            [routerLink]="['/student-dashboard/$/academy/store']" title="Coming Soon">
                             Collegey Store <span style="color: red; font-size: small;">(Upcoming)</span>
                         </a>
                     </div>

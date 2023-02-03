@@ -37,12 +37,22 @@ export class BigPictureProjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.program_id = this.route.snapshot.params.id;
-    this.initializeFormData(this.program_id);
+    //this.initializeFormData(this.program_id);
+    this.initializeFormDataSlg(this.program_id);
   }
 
   initializeFormData(id) {
     this.resourcesService.getProgramDetailsById(id).subscribe((data: any) => {
       this.articleDetails = data;
+    }, error => {
+      this.toastrService.error('Data not found');
+    })
+  }
+
+  initializeFormDataSlg(id) {
+    this.resourcesService.getProgramDetailsBySlug(id).subscribe((data: any) => {
+      this.articleDetails = data;
+      this.program_id     = data?._id;
     }, error => {
       this.toastrService.error('Data not found');
     })

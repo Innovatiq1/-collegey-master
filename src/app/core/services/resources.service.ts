@@ -165,6 +165,19 @@ export class ResourcesService {
       );
   }
 
+  getProgramDetailsBySlug(id): Observable<Resource> {
+    return this.http
+      .get<ApiGenericResponse<any>>(
+        `${environment.apiEndpoint}resources/programs-slug/${id}`
+      )
+      .pipe(
+        map((response) => {
+          Logging.debug(response);
+          return response.data;
+        })
+      );
+  }
+
   getCourses(params?): Observable<ApiGenericResponse<GenericResources>> {
     return this.http
       .get<ApiGenericResponse<GenericResources>>(

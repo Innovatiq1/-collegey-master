@@ -392,18 +392,18 @@ export class StudentProfileComponent implements OnInit, OnDestroy {
         
         // Add Reward point
 
-        if(profileData?.profile_completion.profile_status?.geography == true && profileData?.profile_completion.profile_status?.history_updated == true && profileData?.profile_completion.profile_status?.interest == true && profileData?.profile_completion.profile_status?.know_you_better == true)
+        if(profileData?.profile_completion?.profile_status?.geography == true && profileData?.profile_completion?.profile_status?.history_updated == true && profileData?.profile_completion?.profile_status?.interest == true && profileData?.profile_completion?.profile_status?.know_you_better == true)
         {
             let checkData = {
                 "user_id": this.user?._id,
-                "rewardName" : "Profile PartA"
+                "rewardName" : "Profile Step Location,Education,Interests,Favorites"
             }; 
             this.studentService.checkRewardPoints(checkData).subscribe((res) => { 
               this.resData = res;
               if(this.resData.data === 0){
                 let rewObj = {
                   "user_id": this.user?._id,
-                  "rewardName" : "Profile PartA",
+                  "rewardName" : "Profile Step Location,Education,Interests,Favorites",
                   "rewardCreditPoint":"100",
                 }
                 this.studentService.updateProfileRewardPoints(rewObj).subscribe(
@@ -421,18 +421,18 @@ export class StudentProfileComponent implements OnInit, OnDestroy {
             });
         }
 
-        if(profileData?.profile_completion.profile_status?.projects == true && profileData?.profile_completion.profile_status?.headed == true && profileData?.profile_completion.profile_status?.prefrences == true && profileData?.profile_completion.profile_status?.ways_to_be_in_touch == true)
+        if(profileData?.profile_completion?.profile_status?.projects == true && profileData?.profile_completion?.profile_status?.headed == true && profileData?.profile_completion?.profile_status?.prefrences == true && profileData?.profile_completion?.profile_status?.ways_to_be_in_touch == true)
         {
             let checkData = {
               "user_id": this.user?._id,
-              "rewardName" : "Profile PartB"
+              "rewardName" : "Profile Step Project & Accomplishments,Future Education Plans,Education Preferences,Personal"
             };
             this.studentService.checkRewardPoints(checkData).subscribe((res) => { 
               this.resData = res;
               if(this.resData.data === 0){
                 let rewObj = {
                   "user_id": this.user?._id,
-                  "rewardName" : "Profile PartB",
+                  "rewardName" : "Profile Step Project & Accomplishments,Future Education Plans,Education Preferences,Personal",
                   "rewardCreditPoint":"150",
                 }
                 this.studentService.updateProfileRewardPoints(rewObj).subscribe(

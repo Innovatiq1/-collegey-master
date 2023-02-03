@@ -223,7 +223,7 @@ export class QaformsComponent implements OnInit {
             if (createQId) {
               let creditRewardPoint = {
                 "user_id": this.userInfo?._id,
-                "rewardName": "CreateQuestion",
+                "rewardName": "Create Question",
                 "rewardCreditPoint": "50",
                 "uniqueId": createQId
               };
@@ -493,7 +493,7 @@ export class QaformsComponent implements OnInit {
       if (this.deleteq) {
         let creditRewardPoint = {
           "user_id": this.userInfo?._id,
-          "rewardName": "CreateQuestion",
+          "rewardName": "Create Question",
           "rewardCreditPoint": "50",
           "uniqueId": id
         };

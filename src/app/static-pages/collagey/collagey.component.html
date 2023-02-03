@@ -28,7 +28,7 @@
                                             <!-- <a [href]="programme.redirect_link" target="_blank">
                                             </a> -->
                                             <div class="webinar-image-box">
-                                                <a [routerLink]="['/single-program/',programme.id]"
+                                                <a [routerLink]="['/single-program/',programme.slug]"
                                                     href="javascript:void(0)">
                                                     <img class="zoom-image"
                                                         [src]="commonService.imagePathS3(programme?.image, '/assets/images/default-blog.svg')"
@@ -36,7 +36,7 @@
                                                 </a>
                                             </div>
                                             <div class="webinar-content-box">
-                                                <a [routerLink]="['/single-program/',programme.id]"
+                                                <a [routerLink]="['/single-program/',programme.slug]"
                                                     class="post-title webinar-title"
                                                     href="javascript:void(0)">{{programme?.title}}</a>
                                                 <p class="post-description webinar-desc top-gap">

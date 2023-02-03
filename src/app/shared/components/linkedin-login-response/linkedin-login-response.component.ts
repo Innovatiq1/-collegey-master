@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthType } from 'src/app/core/enums/auth-type.enum';
+import { DEFAULT_CONFIG } from 'src/configs/default';
 
 @Component({
   selector: 'app-linkedin-login-response',
@@ -32,7 +33,7 @@ export class LinkedinLoginResponseComponent implements OnInit {
       code: this.linkedInTokenCode,
       client_id: '77u10423gsm7cx',
       client_secret: 'neoGgtcYWNGZiu8k',
-      redirect_uri: 'http://localhost:4200/linkedInLogin',
+      redirect_uri: `${DEFAULT_CONFIG.frontEndUrl}linkedInLogin`,
     };
     this.authService.getLinkedinAccessToken(obj).subscribe(
       (response) => {
@@ -51,10 +52,9 @@ export class LinkedinLoginResponseComponent implements OnInit {
     }
     this.authService.getLinkedinDetailsFetch(obj).subscribe(
       (response) => {
-        var socialProvider = 'linkedin';
         let elementsData = response?.result?.elements[0];
         let socialUsers  = elementsData["handle~"].emailAddress;
-        this._socialLogin({ socialUsers, socialProvider });
+        this.linkedInProfile(obj,socialUsers);
       },
       (err) => {
        
@@ -62,11 +62,14 @@ export class LinkedinLoginResponseComponent implements OnInit {
     ); 
   }
 
-  _socialLogin({ socialUsers, socialProvider: social_type }) {
-    var email = socialUsers;
+  _socialLogin( socialUsers:any, socialProvider: any) {
+    var email = socialUsers.email;
     var social_id = 'linked122';
-    this.authService.socialLogin({ email, social_type, social_id }).subscribe(
+    this.authService.socialLogin({ email, socialProvider, social_id }).subscribe(
       (res: any) => {
+        console.log(';res',res);
+        
+        
         // this.toastrService.success(res.message);
         if (res.message === 'user not found!') {
           this.showRegisterForm(socialUsers);
@@ -74,11 +77,14 @@ export class LinkedinLoginResponseComponent implements OnInit {
           this.onSuccess.emit(true);
           if(res?.data?.user?.type == 'student')
           {
-            this.router.navigateByUrl('/student/profile');
+            this.router.navigateByUrl('/student-dashboard/$');
+            localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
+            this.authService.setReward( res?.data?.user?._id);
           }
           else
           {
-            this.router.navigateByUrl('/mentors/profile');
+            this.router.navigateByUrl('/mentors/dashboard');
+            localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
           }
         }
       },
@@ -94,6 +100,18 @@ export class LinkedinLoginResponseComponent implements OnInit {
   showRegisterForm(socialUserInfo?) {
     this.authService.closeAuthDialog();
     this.authService.openAuthDialog(AuthType.SIGN_UP,  null, socialUserInfo);
+  }
+
+  linkedInProfile(obj:any,socialUsers:any){
+    this.authService.getLinkedinDetailsFetch1(obj).subscribe((res)=>{
+      var linkedInObj:any = {
+        firstName:res?.result?.localizedFirstName,
+        lastName:res?.result?.localizedLastName,
+        email:socialUsers
+      }      
+      var socialProvider = 'linkedin';
+      this._socialLogin( linkedInObj, socialProvider );
+    })
   }
 
 }

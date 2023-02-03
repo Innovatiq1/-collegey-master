@@ -21,6 +21,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Clipboard } from '@angular/cdk/clipboard';
 
 import { environment } from 'src/environments/environment';
+import { MentorService } from 'src/app/core/services/mentor.service';
 
 @Component({
   selector: 'app-mentor-globaldashboard',
@@ -95,6 +96,7 @@ export class MentorGlobaldashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private projectService: ProjectService,
     private clipboard: Clipboard,
+    private mentorService:MentorService
   ) {
     // Get User Data
     const loggedInInfo = this.authService.getUserInfo();
@@ -122,6 +124,7 @@ export class MentorGlobaldashboardComponent implements OnInit {
 
     this.getDashboardDetail();
     this.getCurrentUserData();
+    this.invokeToProfile();
   }
 
   public hasError = (controlName: string, errorName: string) => {
@@ -489,6 +492,15 @@ export class MentorGlobaldashboardComponent implements OnInit {
         this.submit = false;
       },
     );
+  }
+
+  invokeToProfile(){
+    console.log('call invoke');
+    
+    this.mentorService.subsVar = this.mentorService.    
+    invokeProfile.subscribe((name:string) => {    
+      this.getDashboardDetail();    
+    });
   }
 
 }

@@ -9,6 +9,7 @@ import {
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthType } from 'src/app/core/enums/auth-type.enum';
+import { DEFAULT_CONFIG } from 'src/configs/default';
 
 @Component({
   selector: 'app-social-login',
@@ -33,7 +34,7 @@ export class SocialLoginComponent implements OnInit {
   private linkedInCredentials = {
     response_type: "code",
     clientId: "77u10423gsm7cx",
-    redirectUrl: "http://localhost:4200/linkedInLogin",
+    redirectUrl: `${DEFAULT_CONFIG.frontEndUrl}linkedInLogin`,
     state: 23101992,
     scope: "r_liteprofile%20r_emailaddress%20w_member_social",
   };
@@ -77,6 +78,7 @@ export class SocialLoginComponent implements OnInit {
         if (res.message === 'user not found!') {
           this.showRegisterForm(socialUsers);
         } else {
+          localStorage.setItem("fetchcurrentUserRole",res?.data?.user?.type);
           this.onSuccess.emit(true);
         }
       },

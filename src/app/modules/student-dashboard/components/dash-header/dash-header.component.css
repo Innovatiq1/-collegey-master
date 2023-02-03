@@ -1029,6 +1029,9 @@
     .banner-selection-modal .dragdropdiv .re-drag-txt1 {
         padding: 10px 20px;
     }
+    .custom_mobile_text {
+        display: block;
+    }
 }
 
 @media only screen and (max-width: 640px) {

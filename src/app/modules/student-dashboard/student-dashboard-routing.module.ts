@@ -84,23 +84,23 @@ const routes: Routes = [
     component: AcademyComponent,
   },
   {
-    path: 'blogs',
+    path: 'academy/blogs',
     component: ArticlesComponent,
   },
   {
-    path: 'vlog',
+    path: 'academy/vlog',
     component: WebinarsComponent,
   },
   {
-    path: 'Programs',
+    path: 'academy/Programs',
     component: ProgrammesComponent
   },
   {
-    path: 'course',
+    path: 'academy/course',
     component: ActivecoursesComponent
   },
   {
-    path: 'conferences',
+    path: 'academy/conferences',
     component: ConferencesComponent
   },
   {

@@ -499,6 +499,23 @@ ul.link-list {
   opacity: 1;
 }
 
+@media only screen and (max-width: 1500px) {
+  .navbar-expand-lg {
+    padding: 15px;
+  }
+  .top_search {
+    max-width: 200px;
+  }
+  .navbar-brand {
+    margin-right: 0;
+  }
+  .navbar-nav .nav-item {
+    margin: 4px;
+  }
+  .navbar-nav .nav-item a {
+    font-size: 14px;
+  }
+}
 @media screen and (max-width: 991px) {
   .top_search {
     width: 100%;
@@ -512,10 +529,20 @@ ul.link-list {
 }
 
 @media screen and (max-width: 640px) {
-  .notification {
+  /* .notification {
     display: none;
+  } */
+  .rewards-title{
+    font-size: 12px;
   }
-
+  .notification {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .user-header-menu button.user-icon-button img{
+    width: 40px; 
+    height: 40px;
+  }
   .navbar-light .navbar-brand img {
     max-width: 100px;
   }

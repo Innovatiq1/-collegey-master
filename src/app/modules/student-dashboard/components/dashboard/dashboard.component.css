@@ -19,7 +19,11 @@
     margin-bottom: 20px;
     margin-top: 5.125rem;
 }
-
+.filter-siderbar ::ng-deep .questionOptionBox .selected-item
+{
+    background: #007bff !important;
+    color: #fff !important;
+}
 .first-section {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 15px #0000001A;
@@ -391,7 +395,7 @@
     border-radius: 6px;
     cursor: pointer;
     overflow: hidden;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 .webinar-image-box1 .clg-freetag {
     position: absolute;

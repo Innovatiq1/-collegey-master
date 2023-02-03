@@ -65,6 +65,9 @@ export class DashboardComponent implements OnInit {
 
   fetchcurrentImageheight:any;
   fetchcurrentImagewight: any;
+
+  qualification:any
+  
   constructor(
     private studentDashboardService: StudentDashboardService,
     public commonService: CommonService,
@@ -112,6 +115,11 @@ export class DashboardComponent implements OnInit {
     //this.show_loader = true;
     this.studentDashboardService.getDashboardHeaderDetail().subscribe((res) => {
       this.dashboard = res; 
+      console.log('dashboard',this.dashboard);
+      const str = this.dashboard?.profile[0]?.type;
+      this.qualification = str.charAt(0).toUpperCase() + str.slice(1);
+      console.log('qualification',this.qualification);
+      
     // this.show_loader = false;
     });
   }

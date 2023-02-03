@@ -382,7 +382,7 @@
                     </tag-input>
                     <label>Favorite Book*</label>
                 </div>
-                <p class="sekec_text">Add upto 3 book</p>
+                <p class="sekec_text">Add upto three books</p>
                 <span *ngIf="submittedProfile && (hasError('favBooks','required') || hasError('favBooks','pattern'))"
                     class="alert-danger d-block p-1 text-center"> is required</span>
             </div>
@@ -444,7 +444,7 @@
             <div class="group col-sm-12">
                 <input style="padding-left: 5px;" type="file" class="file-upload" (change)="uploadRecordVideo($event)"
                     maxFileSize="300">
-                <label style="top: -10px;"> Upload Video Introduction (1 minute or less)*</label>
+                <label style="top: -10px;"> Upload Video Introduction (1 minute or less)</label>
                 <div *ngIf="getVideoIntro" class="mt-2 pt-4 position-relative">
                     <button class="remove_video fa fa-times"
                         (click)="removeVideoConformation(openDeleteVideoDialog)"></button>

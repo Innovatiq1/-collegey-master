@@ -226,41 +226,42 @@ export class DashHeaderComponent implements OnInit {
     );
   }
 
-  // getDashboardDetail() {
-  //   //this.show_loader = true;
-  //   this.studentDashboardService.getDashboardHeaderDetail().subscribe((res) => {
-  //     this.dashboard = res;
-  //     this.firstname = this.dashboard?.profile[0]?.name[0].toUpperCase() + this.dashboard?.profile[0]?.name.substring(1);
-  //     this.lastname = this.dashboard?.profile[0]?.last_name[0].toUpperCase() + this.dashboard?.profile[0]?.last_name.substring(1);
-  //     // this.show_loader = false;
-  //   });
-  // }
-
   getDashboardDetail() {
     //this.show_loader = true;
-      var res =this.loggedInInfo.user      
-      var obj:Dashboard | any={
-        profile:[{
-        avatar:res?.avatar,
-        cityObj:res?.cityObj?.name,
-        countryObj:res?.countryObj?.name,
-        email:res?.email,
-        last_name:res?.last_name,
-        name:res?.name,
-        stateObj:res?.stateObj?.name,
-        _id:res?._id,
-        type:res?.type,
-        }]
-      };
-      
-      this.dashboard = obj
-      
+    this.studentDashboardService.getDashboardHeaderDetail().subscribe((res) => {
+      this.dashboard = res;
       this.firstname = this.dashboard?.profile[0]?.name[0].toUpperCase() + this.dashboard?.profile[0]?.name.substring(1);
-      this.currentUserRole = this.dashboard?.profile[0]?.type;
       this.lastname = this.dashboard?.profile[0]?.last_name[0].toUpperCase() + this.dashboard?.profile[0]?.last_name.substring(1);
+      this.currentUserRole = this.dashboard?.profile[0]?.type;
       // this.show_loader = false;
-
+    });
   }
+
+  // getDashboardDetail() {
+  //   //this.show_loader = true;
+  //     var res =this.loggedInInfo.user   
+  //     var obj:Dashboard | any={
+  //       profile:[{
+  //       avatar:res?.avatar,
+  //       cityObj:res?.cityObj?.name,
+  //       countryObj:res?.countryObj?.name,
+  //       email:res?.email,
+  //       last_name:res?.last_name,
+  //       name:res?.name,
+  //       stateObj:res?.stateObj?.name,
+  //       _id:res?._id,
+  //       type:res?.type,
+  //       }]
+  //     };
+      
+  //     this.dashboard = obj
+      
+  //     this.firstname = this.dashboard?.profile[0]?.name[0].toUpperCase() + this.dashboard?.profile[0]?.name.substring(1);
+  //     this.currentUserRole = this.dashboard?.profile[0]?.type;
+  //     this.lastname = this.dashboard?.profile[0]?.last_name[0].toUpperCase() + this.dashboard?.profile[0]?.last_name.substring(1);
+  //     // this.show_loader = false;
+
+  // }
 
   // Add Top Banner Popup 
 

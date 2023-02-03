@@ -10,7 +10,7 @@
       </p>
       <img src="assets/images/invite/student/selected_student.svg" />
     </div>
-    <form [formGroup]="studentForm">
+    <form [formGroup]="studentForm" *ngIf="!isAuthenticated()">
       <div class="modal-right-side first-box" *ngIf="showBox1">
           <div class="student-heading" style="font-size: large;
           font-style: normal;
@@ -125,4 +125,8 @@
           </div>
       </div>
   </form>
+  <div class="profileLogin" *ngIf="isAuthenticated()">
+    <h3 class="welcome" style="color: red;">You are already login</h3>
+    <button class="continue" (click)="redirect()">Back to the programs</button>
+  </div>
 </div>

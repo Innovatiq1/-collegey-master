@@ -116,16 +116,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     responsive: {
       0: {
         items: 1,
-        margin: 20,
+        margin: 10,
+        stagePadding: 8,
       },
       600: {
-        items: 2
-      },
-      992: {
-        items: 3
+        items: 1,
+        stagePadding: 50,
       },
       1100: {
-        items: 4
+        items: 2
       }
     }
   }
@@ -245,6 +244,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   // Program Status
   programStatus:any;
 
+  //tagfilter
+  tagArray:any = [];
+  finalTagArray:any;
+  dropdownSettingsTags = {};
+  selectedItems:any;
+
   constructor(
     private projectService: ProjectService,
     private modalService: BsModalService,
@@ -270,6 +275,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     else {
       this.isActive = false;
     }
+
+    this.dropdownSettingsTags = {
+      singleSelection: false,
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 5,
+      allowSearchFilter: true,
+      limitSelection: 5
+    };
 
     this.testimonialFormGroup = this.fb.group({
       testimonal: ['', Validators.required],
@@ -601,17 +615,32 @@ export class DashboardComponent implements OnInit, OnDestroy {
       // this.addWatchLits(this.collegeyProjectData._id);
       this.initialFormDataStudent();
       this.getBannerImage();
+      setTimeout(() => {
+        this.tagSetuniq();
+      }, 1000);
     });
   }
 
+  onItemSelect(select:any){
+    this.selectedItems = select;
+    this.projectKeywordArray.push(select);
+  }
+
+  onItemDeSelect(select:any)
+  {
+    let index = this.projectKeywordArray.findIndex(x => x === select);
+    if (index !== -1) {
+      this.projectKeywordArray.splice(index, 1);
+    } 
+  }
+
   onSubmitProjectFilter() {
-    this.projectKeywordArray = [];
+    //this.projectKeywordArray = [];
     let obj = this.projectFilterFormGroup.value;
-
-    for (let i = 0; i < obj.projectTag.length; i++) {
-      this.projectKeywordArray.push(obj.projectTag[i].value);
-    }
-
+    // if(this.selectedItems !== null && this.selectedItems !== undefined)
+    // {
+    //   this.projectKeywordArray.push(this.selectedItems);
+    // }
     obj['projectTag'] = this.projectKeywordArray;
     this.projectFilterData = obj;
     if (obj.projectTypeArray != '') {
@@ -782,6 +811,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.userProjectInclude = [];
     this.projectDialog = project;
 
+    console.log('-=-=-=-=-=->',this.projectDialog?.projectPlan?.projectDuration);
+  
     if (this.projectDialog?.projectPlan?.projectDuration?.includes('month')) {
       this.projectDialog['project_week'] = this.projectDialog?.projectPlan?.projectDuration;
     }
@@ -996,6 +1027,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     let obj = { projectType: 'mentors', projectFilter: this.projectFilterData };
     this.studentDashboardService.getAllProjectByMentorsCount(obj).subscribe((response: any) => {
       this.mentorsProjectData = response?.data?.data;
+
+      for(let i = 0;i < this.mentorsProjectData.length; i++){
+        for(let j = 0;j<this.mentorsProjectData[i].keyword.length;j++){
+          this.tagArray.push(this.mentorsProjectData[i].keyword[j]);
+        }
+      }
+
       this.cdr.detectChanges();
 
     });
@@ -1005,6 +1043,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     let obj = { user_id: this.userid, projectFilter: this.projectFilterData };
     this.projectService.projectdashboard_detail(obj).subscribe((response: any) => {
       this.projectInProgressData = response.data;
+
+      for(let i = 0;i < this.projectInProgressData.projectDashboardProjects.length; i++){
+        for(let j = 0;j<this.projectInProgressData.projectDashboardProjects[i].project.keyword.length;j++){
+          this.tagArray.push(this.projectInProgressData.projectDashboardProjects[i].project.keyword[j]);
+        }
+      }     
+      
       this.cdr.detectChanges();
     });
     // this.studentDashboardService.getAllProjectInProgress().subscribe((response:any)=>{
@@ -1028,10 +1073,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
     let obj = { projectType: 'collegey', projectFilter: this.projectFilterData };
     this.studentDashboardService.getAllProjectByCollegeyCount(obj).subscribe((response: any) => {
       this.collegeyProjectData = response?.data?.data;
+
+      for(let i = 0;i < this.collegeyProjectData.length; i++){
+        for(let j = 0;j<this.collegeyProjectData[i].keyword.length;j++){
+          this.tagArray.push(this.collegeyProjectData[i].keyword[j]);
+        }
+      }
       this.cdr.detectChanges();
       // this.show_loader = false;
     })
   }
+
+  tagSetuniq(){  
+    this.finalTagArray = this.tagArray
+                 .map(item => item)
+                 .filter((value, index, self) => self.indexOf(value) === index);
+   }
 
   createproject(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(

@@ -27,7 +27,7 @@
                     <p class="p4" *ngIf="articleDetails?.program_hour_text">{{articleDetails?.program_hour_text}}</p>
                     <p class="p5">Deliverables</p>
 
-                    <div [innerHTML]="articleDetails?.deliverable"></div>
+                    <div class="clg-article-content" [innerHTML]="articleDetails?.deliverable"></div>
                     <!-- <p class="p6">On completion of each project, you receive</p>
                     <ul>
                         <li>

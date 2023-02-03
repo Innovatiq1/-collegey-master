@@ -253,4 +253,12 @@ export class UserProfileComponent implements OnInit {
       this.studentForm.controls['other'].setValue(null);
     }
   }
+
+  isAuthenticated() {
+    return this.authService.getToken();
+  }
+
+  redirect(){
+    this.router.navigate(['/collegey-programs']);
+  }
 }

@@ -8,8 +8,8 @@ export const environment = {
   apiEndpoint: DEFAULT_CONFIG.apiEndpoint,
   //apiNewEndpoint: 'http://localhost:3000/api1/',
   //recaptcha_key: '6LejbfQdAAAAAJ9NL2-ukdypLjBeuAxMH3YxwN8x', // local Server captcha key
-  //recaptcha_key: '6LeBcGQjAAAAAGjYjgW3qKrIExHwzBa69SEBKSvX',   // UAT Server captcha key
-  recaptcha_key: '6LdYeg0eAAAAAFaG7Zr-QhPaUHI7yviLxZYSnG2y',   // Staging captcha key
+  recaptcha_key: '6LeBcGQjAAAAAGjYjgW3qKrIExHwzBa69SEBKSvX',   // UAT Server captcha key
+  //recaptcha_key: '6LdYeg0eAAAAAFaG7Zr-QhPaUHI7yviLxZYSnG2y',   // Staging captcha key
   apiNewEndpoint:DEFAULT_CONFIG.apiNewEndpoint,
   apiEndpointNew: DEFAULT_CONFIG.apiEndpointNew,
   frontEndUrl: DEFAULT_CONFIG.frontEndUrl,

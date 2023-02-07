@@ -1067,3 +1067,11 @@
         padding: 0;
     }
 }
+@media screen and (max-width: 400px) {
+    .terms-header {
+        height: 140px;
+    }
+    .mentorprofile_image {
+        margin-top: -50px;
+    }
+}

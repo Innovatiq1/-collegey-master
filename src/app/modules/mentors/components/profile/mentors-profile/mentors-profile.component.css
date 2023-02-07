@@ -2623,3 +2623,13 @@ label,
     font: normal normal normal 12px/19px Nunito;
     color: #141414;
 }
+
+
+@media screen and (max-width: 500px) {
+    .group .adviceToYoungPeople {
+        padding-top: 22px;
+    }
+    .group .adviceToYoungPeople label {
+        line-height: 1.2;
+    }
+}

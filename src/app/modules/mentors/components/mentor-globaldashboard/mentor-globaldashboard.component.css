@@ -3168,7 +3168,6 @@ figure img {
     .clg-tophead1 {
         width: 100%;
     }
-
 }
 
 @media only screen and (max-width: 640px) {
@@ -3176,7 +3175,6 @@ figure img {
         width: 120px;
         height: 120px;
     }
-
     .mentorprofile_image ::ng-deep .user-img {
         width: 120px;
         height: 120px;
@@ -3187,8 +3185,16 @@ figure img {
     .student-info {
         flex-wrap: wrap;
     }
-
+    
     .student-info .dropdown {
         padding: 0;
+    }
+}
+@media screen and (max-width: 400px) {
+    .terms-header {
+        height: 140px;
+    }
+    .mentorprofile_image {
+        margin-top: -50px;
     }
 }

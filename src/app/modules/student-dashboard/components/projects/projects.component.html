@@ -94,8 +94,8 @@
       </div> -->
 
       <div class="create-project-btn">
-        <!-- <button class="btn" (click)="createproject(opencreateproject)">CREATE NEW PROJECT</button> -->
-        <button class="btn" style="cursor: default;" title="Coming Soon">CREATE NEW PROJECT</button>
+        <button class="btn" (click)="createproject(opencreateproject)">CREATE NEW PROJECT</button>
+        <!-- <button class="btn" title="Coming Soon" (click)="createproject(opencreateproject)">CREATE NEW PROJECT</button> -->
       </div>
       <ul *ngFor="let list of projectinfo?.projectDashboardProjects; let i=index;">
         <li class="active" (click)="projectdescp(list?.project?._id,i);">

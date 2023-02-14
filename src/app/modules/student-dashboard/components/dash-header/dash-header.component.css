@@ -1069,9 +1069,18 @@
 }
 @media screen and (max-width: 400px) {
     .terms-header {
-        height: 140px;
+        height: 52px;
     }
     .mentorprofile_image {
         margin-top: -50px;
+    }
+    .banner-upload{
+        padding: 7px;
+        background: #fff;
+        display: block;
+        border-radius: 50px;
+        float: right;
+        margin-top: 46px;
+        margin-right: 10px;
     }
 }

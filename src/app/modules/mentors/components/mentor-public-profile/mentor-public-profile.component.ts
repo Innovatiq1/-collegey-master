@@ -59,6 +59,7 @@ export class MentorPublicProfileComponent implements OnInit {
 
   badgeMastersList: any;
   showbadges: Boolean = false;
+  public getVideoIntro: any;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -132,6 +133,7 @@ export class MentorPublicProfileComponent implements OnInit {
         this.profilefirstStepCompleted  = response?.data?.mentor_profile?.profile?.is_completed;
         this.profilesecondStepCompleted = response?.data?.mentor_profile?.officeTimezone?.is_completed;
 
+        this.getVideoIntro = response?.data?.mentor_profile?.profile?.videoIntroduction;
       },
       (err) => {
         

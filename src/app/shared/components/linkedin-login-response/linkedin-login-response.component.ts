@@ -23,7 +23,10 @@ export class LinkedinLoginResponseComponent implements OnInit {
   ){ }
 
   ngOnInit(): void {
-    this.linkedInTokenCode = this.route.snapshot.queryParams["code"];
+    //this.linkedInTokenCode = this.route.snapshot.queryParams["code"];
+    this.route.queryParams.subscribe((params) => {
+      this.linkedInTokenCode = params['code'];
+    });
     this.getLinkedinAccessToken();
   }
 
@@ -31,9 +34,10 @@ export class LinkedinLoginResponseComponent implements OnInit {
     let obj = {
       grant_type: 'authorization_code',
       code: this.linkedInTokenCode,
-      client_id: '77u10423gsm7cx',
-      client_secret: 'neoGgtcYWNGZiu8k',
-      redirect_uri: `${DEFAULT_CONFIG.frontEndUrl}linkedInLogin`,
+      client_id: '86ggwpa949d3u5', //77u10423gsm7cx
+      client_secret: '1RBrwnMzpai8KdLU', //neoGgtcYWNGZiu8k
+      //redirect_uri: `${DEFAULT_CONFIG.frontEndUrl}linkedInLogin`,
+      redirect_uri: 'http://3.0.100.217/linkedInLogin',      
     };
     this.authService.getLinkedinAccessToken(obj).subscribe(
       (response) => {

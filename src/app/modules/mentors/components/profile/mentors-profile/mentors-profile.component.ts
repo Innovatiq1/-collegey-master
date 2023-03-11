@@ -307,7 +307,7 @@ export class MentorsProfileComponent implements OnInit {
 
   fetchProfiledata() {
     this.mentorService.getMentorProfile().subscribe((profile) => {
-      this.MentorProfileInfo = profile.mentor_profile.profile;
+      this.MentorProfileInfo = profile.mentor_profile?.profile;
       this.getVideoIntro = this.MentorProfileInfo?.videoIntroduction;
 
       const countryId = this.MentorProfileInfo?.country;

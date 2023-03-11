@@ -40,7 +40,6 @@ export class MetorProfileDetailComponent implements OnInit {
   mentorProjects: any;
   projectStartDate: any;
   projectLastJoinDate: any;
-
   constructor(
     private mentorService: MentorService,
     private cdr: ChangeDetectorRef,
@@ -78,7 +77,7 @@ export class MetorProfileDetailComponent implements OnInit {
       this.MentorOfficeInfo = profile.mentor_profile.officeHours;
       this.MentorOfficeTimezone = profile.mentor_profile.officeTimezone.timezoneName;
 
-      // this.getVideoIntro     = this.MentorProfileInfo?.videoIntroduction;
+      this.getVideoIntro     = this.MentorProfileInfo?.videoIntroduction;
 
       this.getCountryList();
       const countryId = this.MentorProfileInfo?.country;

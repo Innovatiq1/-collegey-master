@@ -59,12 +59,14 @@ export class ProfileComponent implements OnInit {
 
     this.commonService.subscribProfileForm.subscribe((response) => {
       if (response == 'office-step') {
+        this.profilefirstStepCompleted = true;
         this.setProfileFormState('officeHours');
-        this.stepClassActive = 'office-step';
+        this.stepClassActive = 'office-step';        
       }
       else if (response == 'project-step') {
+        this.profilesecondStepCompleted = true;
         this.stepClassActive = 'project-step';
-        this.setProfileFormState('projects');
+        this.setProfileFormState('projects');        
       }
     });
 
@@ -112,7 +114,7 @@ export class ProfileComponent implements OnInit {
       this.profile();
     }
   }
-
+  
   profile()  {
     this.Profile = true;
     this.officeStepAction = true;
@@ -280,6 +282,14 @@ export class ProfileComponent implements OnInit {
   }
 
   setProfileFormState(sectionName) {
+    if(sectionName == 'projects')
+    {
+      if(this.profilefirstStepCompleted != true || this.profilesecondStepCompleted != true)
+      {
+        this.toastrService.error('please complete the below steps');
+        return;
+      }
+    }
     for (let i in this.sections) {
       if (this.sections[i].name === sectionName) {
         this.sections[i].isOpen = true;

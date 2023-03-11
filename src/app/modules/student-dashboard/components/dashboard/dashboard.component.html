@@ -912,7 +912,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                 </div>
                 <div class="button_div">
                     <p class="timing-box"> 4 hours/week for {{projectDialog?.project_week}}</p>
-                    <p class="date-box">Last date of joining : {{projectDialog?.end_date | date:'MMM d, y'}}</p>
+                    <p class="date-box">Deadline to sign up : {{projectDialog?.end_date | date:'MMM d, y'}}</p>
 
                     <button
                         *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 1 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0"
@@ -958,7 +958,78 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
             <ngb-tabset>
                 <ngb-tab title="Project Plan">
                     <ng-template ngbTabContent>
-                        <div class="project-plan">
+                        
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 1">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 2">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 3">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week3Duration">
+                                <p class="week-number">Week 3</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week3Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 4">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week3Duration">
+                                <p class="week-number">Week 3</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week3Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week4Duration">
+                                <p class="week-number">Week 4</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week4Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 5">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week3Duration">
+                                <p class="week-number">Week 3</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week3Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week4Duration">
+                                <p class="week-number">Week 4</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week4Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week5Duration">
+                                <p class="week-number">Week 5</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week5Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 6">
                             <div *ngIf="projectDialog?.projectPlan?.week1Duration">
                                 <p class="week-number">Week 1</p>
                                 <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
@@ -983,11 +1054,16 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                                 <p class="week-number">Week 6</p>
                                 <p class="week-desc">{{projectDialog?.projectPlan?.week6Duration}}</p>
                             </div>
+                        </div>
+
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == '3 month' || projectDialog?.projectPlan?.projectDuration == '4 month' || projectDialog?.projectPlan?.projectDuration == '5 month' || projectDialog?.projectPlan?.projectDuration == '6 month' || projectDialog?.projectPlan?.projectDuration == '7 month' || projectDialog?.projectPlan?.projectDuration == '8 month' || projectDialog?.projectPlan?.projectDuration == '9 month'">
                             <div *ngIf="projectDialog?.projectPlan?.monthDuration">
                                 <p class="week-number">{{projectDialog?.projectPlan?.projectDuration}}</p>
                                 <p class="week-desc">{{projectDialog?.projectPlan?.monthDuration}}</p>
                             </div>
-                        </div>
+                        </div>                       
+                        
+
                     </ng-template>
                 </ngb-tab>
 

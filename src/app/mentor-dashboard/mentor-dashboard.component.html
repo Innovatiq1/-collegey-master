@@ -12,7 +12,7 @@
                         <span *ngIf="dashboard.profile.stateObj">{{dashboard.profile.stateObj.name}}, </span> {{dashboard.profile.countryObj && dashboard.profile.countryObj.name}}</p> -->
             </div>
         </div>
-        <a  class="share-profile" (click)="testimonal()">Mentor Testimonial</a>
+        <a class="share-profile" (click)="testimonal()">Mentor Testimonial</a>
     </div>
     <div class="dashboard-menu">
         <ul style="margin-left: -1%;">
@@ -22,18 +22,18 @@
                 </a>
             </li>
             <li>
-                <a [ngClass]=" tab==='tab2' ? 'active' : 'dark'" (click)="projectprogress(2)"> 
-                   My Project in Progress
+                <a [ngClass]=" tab==='tab2' ? 'active' : 'dark'" (click)="projectprogress(2)">
+                    My Project in Progress
                 </a>
             </li>
             <li>
                 <a [ngClass]=" tab==='tab3' ? 'active' : 'dark'" (click)="completeproject(3)">
-                   My Completed Project
+                    My Completed Project
                 </a>
             </li>
             <li>
                 <a [ngClass]=" tab==='tab4' ? 'active' : 'dark'" (click)="liveproject(4)">
-            My Live Project
+                    My Live Project
                 </a>
             </li>
             <li>
@@ -41,7 +41,7 @@
                     My Pending Project
                 </a>
             </li>
-            <li> 
+            <li>
                 <a [ngClass]=" tab==='tab6' ? 'active' : 'dark'" (click)="mentorproject(6)">
                     All Collegey Mentor Project
                 </a>
@@ -55,39 +55,39 @@
         <ul>
             <li>
                 <a [ngClass]=" tab==='tab7' ? 'active' : 'dark'" (click)="mentorperks(7)">
-                   Mentor Perks
+                    Mentor Perks
                 </a>
             </li>
             <li>
                 <a [ngClass]=" tab==='tab8' ? 'active' : 'dark'" (click)="membership(mentorship,8)">
-                Membership At Collegey
+                    Membership At Collegey
                 </a>
             </li>
             <li>
                 <a [ngClass]=" tab==='tab9' ? 'active' : 'dark'" (click)="collegeyopp(9)">
-                 Collegey Opportunities
+                    Collegey Opportunities
                 </a>
             </li>
             <li>
                 <a [ngClass]=" tab==='tab10' ? 'active' : 'dark'" (click)="msgcollegey(10)">
-                 Messege Collegey
+                    Messege Collegey
                 </a>
             </li>
             <li>
                 <a [ngClass]=" tab==='tab11' ? 'active' : 'dark'" (click)="studentmsg(11)">
-                 Student Messege 
+                    Student Messege
                 </a>
             </li>
-             <li>
+            <li>
                 <a [ngClass]=" tab==='tab12' ? 'active' : 'dark'" (click)="hostevent(12)">
-                 Host Event
+                    Host Event
                 </a>
             </li>
             <li>
                 <a [ngClass]=" tab==='tab13' ? 'active' : 'dark'" (click)="mentorresource(13)">
-            Mentor Resource
-            </a>
-        </li>
+                    Mentor Resource
+                </a>
+            </li>
         </ul>
     </div>
 </div>
@@ -120,15 +120,18 @@
     <ng-container *ngIf="myProjects.length > 0 && projectsprogress==true">
         <h4 class="slider-title">My Projects in Progress <button style="background: #FF971A 0% 0% no-repeat padding-box;
             border-radius: 20px;font: normal normal bold 12px/16px Nunito;
-  letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px; margin-left:770px;" (click)="showFilters()">FILTERS</button></h4>
-       
+  letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px; margin-left:770px;" (click)="showFilters()">FILTERS</button>
+        </h4>
+
         <owl-carousel-o [options]="customOptions" class="mg-b40">
             <ng-template carouselSlide *ngFor="let project of myProjects">
                 <div class="webinar-box1 article-box1" (click)="openModalWithClass(addDialog,project.project)">
                     <div class="webinar-image-box1">
                         <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image">
-                        <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}" aria-hidden="true" (click)="project?.project.watchlist ? onAddOrRemoveWatchlist('Remove',project.project._id) : onAddOrRemoveWatchlist('Add',project.project._id) "></i>
+                        <i class="fa fa-heart fav-projects" [ngClass]="{'active' : project?.project.watchlist}"
+                            aria-hidden="true"
+                            (click)="project?.project.watchlist ? onAddOrRemoveWatchlist('Remove',project.project._id) : onAddOrRemoveWatchlist('Add',project.project._id) "></i>
                     </div>
                     <div class="webinar-content-box1">
                         <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.project.title}}</a>
@@ -136,13 +139,15 @@
                             <span class="article-tags1" *ngFor="let tag of project.project.hash_tags">{{tag}}</span>
                             <!-- <span class="article-tags1">UI/UX </span> -->
                         </p>
-                        <p class="post-description1 webinar-desc1 top-gap1"><span>{{project?.project.description}}</span></p>
+                        <p class="post-description1 webinar-desc1 top-gap1">
+                            <span>{{project?.project.description}}</span></p>
                         <div style="display: flex;align-items: center;">
                             <img src="/assets/images/office-chair.svg" style="width: 12px;" alt="">
                             <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
                 letter-spacing: 0px; color: #141414;">{{project?.project.remainingSlot}} spots available</p>
                         </div>
-                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.project.start_date | date}}</span></p>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.project.start_date |
+                                date}}</span></p>
                     </div>
                 </div>
             </ng-template>
@@ -156,7 +161,8 @@
                     <div class="webinar-image-box1">
                         <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image">
-                        <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true" (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
+                        <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true"
+                            (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
                     </div>
                     <div class="webinar-content-box1">
                         <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
@@ -170,7 +176,8 @@
                             <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
                 letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
                         </div>
-                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date |
+                                date}}</span></p>
                     </div>
                 </div>
             </ng-template>
@@ -180,12 +187,13 @@
     <ng-container *ngIf="livesprojects==true">
         <h4 class="slider-title">My Live Project</h4>
         <owl-carousel-o [options]="customOptions" class="mg-b40">
-            <ng-template carouselSlide *ngFor="let project of impactPartnerProjects" >
+            <ng-template carouselSlide *ngFor="let project of impactPartnerProjects">
                 <div class="webinar-box1 article-box1" (click)="openModalWithClass(addDialog,project)">
                     <div class="webinar-image-box1">
                         <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image">
-                        <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true" (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
+                        <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true"
+                            (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
                     </div>
                     <div class="webinar-content-box1">
                         <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
@@ -199,7 +207,8 @@
                             <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
                 letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
                         </div>
-                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date |
+                                date}}</span></p>
                     </div>
                 </div>
             </ng-template>
@@ -213,7 +222,8 @@
                     <div class="webinar-image-box1">
                         <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image">
-                        <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true" (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
+                        <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true"
+                            (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
                     </div>
                     <div class="webinar-content-box1">
                         <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
@@ -227,7 +237,8 @@
                             <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
                 letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
                         </div>
-                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date |
+                                date}}</span></p>
                     </div>
                 </div>
             </ng-template>
@@ -241,7 +252,8 @@
                     <div class="webinar-image-box1">
                         <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image">
-                        <i class="fa fa-heart fav-projects active" aria-hidden="true" (click)="onAddOrRemoveWatchlist('Remove',project.project._id)"></i>
+                        <i class="fa fa-heart fav-projects active" aria-hidden="true"
+                            (click)="onAddOrRemoveWatchlist('Remove',project.project._id)"></i>
                     </div>
                     <div class="webinar-content-box1">
                         <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.project?.title}}</a>
@@ -249,13 +261,15 @@
                             <span class="article-tags1" *ngFor="let tag of project?.project?.hash_tags">{{tag}}</span>
                             <!-- <span class="article-tags1">UI/UX </span> -->
                         </p>
-                        <p class="post-description1 webinar-desc1 top-gap1"><span>{{project?.project?.description}}</span></p>
+                        <p class="post-description1 webinar-desc1 top-gap1">
+                            <span>{{project?.project?.description}}</span></p>
                         <div style="display: flex;align-items: center;">
                             <img src="/assets/images/office-chair.svg" style="width: 12px;" alt="">
                             <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
                 letter-spacing: 0px; color: #141414;">{{project?.project?.remainingSlot}} spots available</p>
                         </div>
-                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.project?.start_date | date}}</span></p>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.project?.start_date |
+                                date}}</span></p>
                     </div>
                 </div>
             </ng-template>
@@ -269,7 +283,8 @@
                     <div class="webinar-image-box1">
                         <img class="zoom-image" src="/assets/images/resources/programs-banner_1.jpg"
                             alt="Article Image">
-                        <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true" (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
+                        <i class="fa fa-heart fav-projects" [class.active]="project?.watchlist" aria-hidden="true"
+                            (click)="project?.watchlist ? onAddOrRemoveWatchlist('Remove',project._id) : onAddOrRemoveWatchlist('Add',project._id) "></i>
                     </div>
                     <div class="webinar-content-box1">
                         <a class="post-title1 webinar-title1" href="javascript:void(0)">{{project?.title}}</a>
@@ -283,7 +298,8 @@
                             <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
                 letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
                         </div>
-                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
+                        <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date |
+                                date}}</span></p>
                     </div>
                 </div>
             </ng-template>
@@ -319,185 +335,282 @@
 </div>
 
 <!-- filter siderbar start  Web 1366 – 45-->
-   <div class="filter-siderbar" *ngIf="isFilterBy">
+<div class="filter-siderbar" *ngIf="isFilterBy">
     <div class="header-box">
-      <h5>Filter by :</h5>
-      <img (click)="showFilters()" src="./../../../assets/images/Close.svg" alt="" class="close-filter">
+        <h5>Filter by :</h5>
+        <img (click)="showFilters()" src="./../../../assets/images/Close.svg" alt="" class="close-filter">
     </div>
     <div class="location-filter">
-      <p>By Location</p>
-      <select name="" id="">
-        <option value="">Select Location</option>
-        <option value="">India</option>
-        <option value="">India</option>
-        <option value="">India</option>
-      </select>
-      <div class="selected-location">
-        <span class="selected-item">
-          <span class="seleted-item-title">India</span>
-          <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
-        </span>
-        <span class="selected-item">
-          <span class="seleted-item-title">Sri Lanka</span>
-          <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
-        </span>
-        <span class="selected-item">
-          <span class="seleted-item-title">India</span>
-          <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
-        </span>
-        <span class="selected-item">
-          <span class="seleted-item-title">Sri Lanka</span>
-          <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
-        </span>
-      </div>
+        <p>By Location</p>
+        <select name="" id="">
+            <option value="">Select Location</option>
+            <option value="">India</option>
+            <option value="">India</option>
+            <option value="">India</option>
+        </select>
+        <div class="selected-location">
+            <span class="selected-item">
+                <span class="seleted-item-title">India</span>
+                <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
+            </span>
+            <span class="selected-item">
+                <span class="seleted-item-title">Sri Lanka</span>
+                <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
+            </span>
+            <span class="selected-item">
+                <span class="seleted-item-title">India</span>
+                <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
+            </span>
+            <span class="selected-item">
+                <span class="seleted-item-title">Sri Lanka</span>
+                <img src="./../../../assets/images/Close.svg" alt="" class="delete-selected-item">
+            </span>
+        </div>
     </div>
     <div class="location-filter">
-      <p>Price Range</p>
+        <p>Price Range</p>
     </div>
     <div class="location-filter">
-      <p>Project Type</p>
-      <div class="questionOptionBox">
-        <label>
-          <input type="checkbox" name="questionOption">
-          <span class="questionOptionTitle">Student</span>
-        </label>
-        <label>
-          <input type="checkbox" name="questionOption">
-          <span class="questionOptionTitle">Working Professional</span>
-        </label>
-        <label>
-          <input type="checkbox" name="questionOption">
-          <span class="questionOptionTitle">Student</span>
-        </label>
-        <label>
-          <input type="checkbox" name="questionOption">
-          <span class="questionOptionTitle">Working Professional</span>
-        </label>
-        <label>
-          <input type="checkbox" name="questionOption">
-          <span class="questionOptionTitle">Student</span>
-        </label>
-        <label>
-          <input type="checkbox" name="questionOption">
-          <span class="questionOptionTitle">Working Professional</span>
-        </label>
-      </div>
+        <p>Project Type</p>
+        <div class="questionOptionBox">
+            <label>
+                <input type="checkbox" name="questionOption">
+                <span class="questionOptionTitle">Student</span>
+            </label>
+            <label>
+                <input type="checkbox" name="questionOption">
+                <span class="questionOptionTitle">Working Professional</span>
+            </label>
+            <label>
+                <input type="checkbox" name="questionOption">
+                <span class="questionOptionTitle">Student</span>
+            </label>
+            <label>
+                <input type="checkbox" name="questionOption">
+                <span class="questionOptionTitle">Working Professional</span>
+            </label>
+            <label>
+                <input type="checkbox" name="questionOption">
+                <span class="questionOptionTitle">Student</span>
+            </label>
+            <label>
+                <input type="checkbox" name="questionOption">
+                <span class="questionOptionTitle">Working Professional</span>
+            </label>
+        </div>
     </div>
     <div class="filter-action">
-      <a  class="reset-fliter-btn">RESET FILTER</a>
-      <a  class="show-result-btn">SHOW RESULTS</a>
+        <a class="reset-fliter-btn">RESET FILTER</a>
+        <a class="show-result-btn">SHOW RESULTS</a>
     </div>
-  </div> 
-  <!-- filter siderbar end  Web 1366 – 45-->
+</div>
+<!-- filter siderbar end  Web 1366 – 45-->
 
-  <!-- Web 1366 – 70 start-->
-  <ng-template #addDialog>
-   <div class="project-modal">
-    <div class="project-box">
-      <div class="project-header">
-        <div class="project-img">
-          <img src="/assets/images/resources/programs-banner_1.jpg" alt="">
-        </div>
-        <div>
-          <h5 class="project--title">{{projectDialog?.title}}</h5>
-          <p class="tags-box1">
-            <span class="article-tags1" *ngFor="let tag of projectDialog.hash_tags">{{tag}}</span>
-            <!-- <span class="article-tags1">UI/UX </span> -->
-          </p>
-          <p [ngbTooltip]="tipContent"><b>Mentor By : </b>{{projectDialog?.mentor?.name}}</p>
-          <ng-template placement="right" #tipContent>{{projectDialog?.mentor?.name}}<br/>
-            {{projectDialog?.mentor?.mentor_profile?.profile?.rating}} {{projectDialog?.mentor.profile?.profile?.experience}}<br/>
-            {{projectDialog?.mentor?.mentor_profile?.profile?.industry}}
-        </ng-template>
+<!-- Web 1366 – 70 start-->
+<ng-template #addDialog>
+    <div class="project-modal">
+        <div class="project-box">
+            <div class="project-header">
+                <div class="project-img">
+                    <img src="/assets/images/resources/programs-banner_1.jpg" alt="">
+                </div>
+                <div>
+                    <h5 class="project--title">{{projectDialog?.title}}</h5>
+                    <p class="tags-box1">
+                        <span class="article-tags1" *ngFor="let tag of projectDialog.hash_tags">{{tag}}</span>
+                        <!-- <span class="article-tags1">UI/UX </span> -->
+                    </p>
+                    <p [ngbTooltip]="tipContent"><b>Mentor By : </b>{{projectDialog?.mentor?.name}}</p>
+                    <ng-template placement="right" #tipContent>{{projectDialog?.mentor?.name}}<br />
+                        {{projectDialog?.mentor?.mentor_profile?.profile?.rating}}
+                        {{projectDialog?.mentor.profile?.profile?.experience}}<br />
+                        {{projectDialog?.mentor?.mentor_profile?.profile?.industry}}
+                    </ng-template>
 
-          <p style="margin-left:354px;margin-top: -25px;"class="timing-box"> 4 hours/week for {{projectDialog?.projectPlan.projectDuration}} weeks</p>
-          <p  style="margin-left:357px;" class="date-box">Last date of joining : {{projectDialog?.start_date | date}}</p>
-          <p class="price-box"><span style="font-weight: 600;">{{projectDialog?.projectPrice.currencySymbol}}{{projectDialog?.projectPrice.amount}}</span>
-          </p>
-          <p>Including taxes</p>
-          <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span style="vertical-align: middle;"> | </span> <img
-              src="./../../../assets/images/office-chair.svg" width="15" alt="">
-            <span style="color: #25E66D;"> {{projectDialog?.remainingSlot}} Spots available</span>
-          </p>
+                    <p style="margin-left:354px;margin-top: -25px;" class="timing-box"> 4 hours/week for
+                        {{projectDialog?.projectPlan.projectDuration}} weeks</p>
+                    <p style="margin-left:357px;" class="date-box">Last date of joining : {{projectDialog?.start_date |
+                        date}}</p>
+                    <p class="price-box"><span
+                            style="font-weight: 600;">{{projectDialog?.projectPrice.currencySymbol}}{{projectDialog?.projectPrice.amount}}</span>
+                    </p>
+                    <p>Including taxes</p>
+                    <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
+                            style="vertical-align: middle;"> | </span> <img
+                            src="./../../../assets/images/office-chair.svg" width="15" alt="">
+                        <span style="color: #25E66D;"> {{projectDialog?.remainingSlot}} Spots available</span>
+                    </p>
+                </div>
+                <img (click)="modalRef.hide()" src="./../../../assets/images/Close.svg" alt=""
+                    class="project-modal-close">
+                <button style="margin-bottom: -16px;" class="get-started-btn"
+                    (click)="openPaymentDialog(openPayment)">GET STARTED</button>
+            </div>
         </div>
-        <img (click)="modalRef.hide()" src="./../../../assets/images/Close.svg" alt="" class="project-modal-close">
-        <button style="margin-bottom: -16px;" class="get-started-btn" (click)="openPaymentDialog(openPayment)" >GET STARTED</button>
-      </div>
+        <div class="project-modal-tabs">
+            <ngb-tabset>
+                <ngb-tab title="Project Plan">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 1">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 2">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 3">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week3Duration">
+                                <p class="week-number">Week 3</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week3Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 4">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week3Duration">
+                                <p class="week-number">Week 3</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week3Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week4Duration">
+                                <p class="week-number">Week 4</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week4Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 5">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week3Duration">
+                                <p class="week-number">Week 3</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week3Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week4Duration">
+                                <p class="week-number">Week 4</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week4Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week5Duration">
+                                <p class="week-number">Week 5</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week5Duration}}</p>
+                            </div>
+                        </div>
+                        <div class="project-plan" *ngIf="projectDialog?.projectPlan?.projectDuration == 6">
+                            <div *ngIf="projectDialog?.projectPlan?.week1Duration">
+                                <p class="week-number">Week 1</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week1Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week2Duration">
+                                <p class="week-number">Week 2</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week2Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week3Duration">
+                                <p class="week-number">Week 3</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week3Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week4Duration">
+                                <p class="week-number">Week 4</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week4Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week5Duration">
+                                <p class="week-number">Week 5</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week5Duration}}</p>
+                            </div>
+                            <div *ngIf="projectDialog?.projectPlan?.week6Duration">
+                                <p class="week-number">Week 6</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.week6Duration}}</p>
+                            </div>
+                        </div>
+
+                        <div class="project-plan"
+                            *ngIf="projectDialog?.projectPlan?.projectDuration == '3 month' || projectDialog?.projectPlan?.projectDuration == '4 month' || projectDialog?.projectPlan?.projectDuration == '5 month' || projectDialog?.projectPlan?.projectDuration == '6 month' || projectDialog?.projectPlan?.projectDuration == '7 month' || projectDialog?.projectPlan?.projectDuration == '8 month' || projectDialog?.projectPlan?.projectDuration == '9 month'">
+                            <div *ngIf="projectDialog?.projectPlan?.monthDuration">
+                                <p class="week-number">{{projectDialog?.projectPlan?.projectDuration}}</p>
+                                <p class="week-desc">{{projectDialog?.projectPlan?.monthDuration}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+
+                <ngb-tab title="About Project">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div>
+                                <p class="week-desc">{{projectDialog?.description}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Project Members">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div>
+                                <p class="week-desc">{{projectDialog?.projectMembers ? projectDialog?.projectMembers :
+                                    "No Members Found"}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Project Comments">
+                    <ng-template ngbTabContent>
+                        <div class="project-plan">
+                            <div>
+                                <p class="week-desc">{{projectDialog?.projectComments ? projectDialog?.projectComments :
+                                    "No Comments Found"}}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
     </div>
-    <div class="project-modal-tabs">
-      <ngb-tabset>
-        <ngb-tab title="Project Plan">
-          <ng-template ngbTabContent>
-            <div class="project-plan">
-              <div>
-                <p class="week-number">Week 1</p>
-                <p class="week-desc">{{projectDialog?.projectPlan.week1Duration}}</p>
-              </div>
-              <div>
-                <p class="week-number">Week 2</p>
-                <p class="week-desc">{{projectDialog?.projectPlan.week2Duration}}</p>
-              </div>
-              <div>
-                <p class="week-number">Week 3</p>
-                <p class="week-desc">{{projectDialog?.projectPlan.week3Duration}}</p>
-              </div>
-              <div>
-                <p class="week-number">Week 4</p>
-                <p class="week-desc">{{projectDialog?.projectPlan.week4Duration}}</p>
-              </div>
-            </div>
-          </ng-template>
-        </ngb-tab>
-    
-        <ngb-tab title="About Project">
-          <ng-template ngbTabContent>
-            <div class="project-plan">
-              <div>
-            <p class="week-desc">{{projectDialog?.description}}</p></div></div>
-          </ng-template>
-        </ngb-tab>
-        <ngb-tab title="Project Members">
-          <ng-template ngbTabContent>
-              <div class="project-plan">
-            <div>
-                <p class="week-desc">{{projectDialog?.projectMembers ? projectDialog?.projectMembers : "No Members Found"}}</p>
-            </div>
-            </div>
-          </ng-template>
-        </ngb-tab>
-        <ngb-tab title="Project Comments">
-            <ng-template ngbTabContent>
-                <div class="project-plan">
-              <div>
-                  <p class="week-desc">{{projectDialog?.projectComments ? projectDialog?.projectComments : "No Comments Found"}}</p>
-              </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
-      </ngb-tabset>
-    </div>
-  </div>
 </ng-template>
 
-  <!-- Web 1366 – 70 end-->
-  <!-- Web 1366 – 46 start-->
-  <ng-template #openBingo>
+<!-- Web 1366 – 70 end-->
+<!-- Web 1366 – 46 start-->
+<ng-template #openBingo>
     <div class="bingo-modal">
-      <div class="text-box">
-        <p class="p1">Bingo!</p>
-        <p class="p2">You have just joined Project X! Congratulations!</p>
-        <p class="p3">Starting today, you have 30 days to complete the project before the offer expires.</p>
-        <button style="background: #FF971A 0% 0% no-repeat padding-box;
+        <div class="text-box">
+            <p class="p1">Bingo!</p>
+            <p class="p2">You have just joined Project X! Congratulations!</p>
+            <p class="p3">Starting today, you have 30 days to complete the project before the offer expires.</p>
+            <button style="background: #FF971A 0% 0% no-repeat padding-box;
         border-radius: 4px;font: normal normal bold 12px/16px Nunito;
   letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProjectSection()">START NOW</button>
-      </div>
-      <div class="bingo-img">
-        <img src="./../../../assets/images/bingo.png" alt="">
-      </div>
+        </div>
+        <div class="bingo-img">
+            <img src="./../../../assets/images/bingo.png" alt="">
+        </div>
     </div>
-    </ng-template>
-  <ng-template #openPayment>
-  <!-- <div class="bingo-modal">
+</ng-template>
+<ng-template #openPayment>
+    <!-- <div class="bingo-modal">
     <div class="text-box">
       <p class="p1">Bingo!</p>
       <p class="p2">You have just joined Project X! Congratulations!</p>
@@ -510,7 +623,7 @@ letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProject
       <img src="./../../../assets/images/blue-background.jpg" alt="">
     </div>
   </div> -->
-  <section class="section-mr">
+    <section class="section-mr">
         <div class="row">
             <div class="col-sm-4">
                 <div class="blog-right-side" style="margin-top: 36px; margin-right: 53px;
@@ -520,7 +633,7 @@ letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProject
                     <p class="p3">Netbanking</p>
                     <p class="p3">Wallet</p>
                     <p class="p3">EMI</p>
-                   
+
                 </div>
             </div>
             <div class="col-sm-8">
@@ -568,32 +681,31 @@ letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProject
                                     </div>
                                 </div>
                             </div>
-                            <div  *ngIf="!promoEnable" style="background-color: #F0F0F0
+                            <div *ngIf="!promoEnable" style="background-color: #F0F0F0
                             ;border-radius: 5px;">
                                 <button (click)="hideAndShowPromo('promo')">Have A Promo Code?</button>
-                            </div>   
-                            <div *ngIf ="promoEnable" class="group col-sm-6" style="padding-right:13px">
+                            </div>
+                            <div *ngIf="promoEnable" class="group col-sm-6" style="padding-right:13px">
                                 <div>
-                                    <input type="text" id="number" formControlName="nuumber"
-                                        value="" />
-                                    <label  class="login-label">Enter the Promo Code</label>
+                                    <input type="text" id="number" formControlName="nuumber" value="" />
+                                    <label class="login-label">Enter the Promo Code</label>
                                 </div>
-                            </div>            
+                            </div>
                             <div class="action-div">
-                                <button style="margin-top: 30px;"  (click)="openBingoDialog(openBingo)">Submit</button>
+                                <button style="margin-top: 30px;" (click)="openBingoDialog(openBingo)">Submit</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-           
+
         </div>
 
-</section>
-  </ng-template>
-  <!-- Web 1366 – 46 end-->
+    </section>
+</ng-template>
+<!-- Web 1366 – 46 end-->
 
-  <ng-template #mentorship>
+<ng-template #mentorship>
     <div class="modal-form-wrap" style="background: white;">
         <div class="modal-form-header bottom-border" style="padding: 20px 54px;">
             <h5 class="heading">Recommend Someone for mentoship at collegey</h5>
@@ -606,38 +718,39 @@ letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProject
                             <input class="form-control field-control" type="text" name="" id="" placeholder="Name">
                         </div>
                         <div class="form-group fields">
-                            <input  class="form-control field-control" type="text" name="" id="" placeholder="Email">
+                            <input class="form-control field-control" type="text" name="" id="" placeholder="Email">
                         </div>
                     </form>
                 </div>
             </div>
-          <div class= "modal-form-footer">
-            <div class="row top-box" style="margin-left: 75%;">
-                        <div class="footer-texteditor">
-                            <div class="row feed-item">
-                                <button style="border: 1px;
-                                color: #141414;"  (click)="modalRef.hide()">CANCEL</button>&nbsp;&nbsp;
-                                <button type="button" id="btn" class="btn">Submit</button>
-                            </div>
+            <div class="modal-form-footer">
+                <div class="row top-box" style="margin-left: 75%;">
+                    <div class="footer-texteditor">
+                        <div class="row feed-item">
+                            <button style="border: 1px;
+                                color: #141414;" (click)="modalRef.hide()">CANCEL</button>&nbsp;&nbsp;
+                            <button type="button" id="btn" class="btn">Submit</button>
                         </div>
                     </div>
-                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </ng-template>
 <div class="container second-section" *ngIf="opportunities==true">
-    <h2 class="title"><span>collegey Opportunities  </span></h2>
+    <h2 class="title"><span>collegey Opportunities </span></h2>
     <p class="subtitle">landing page with a list of additional opportunities </p>
     <div class="benefits">
         <div class="social-feed-container">
             <div class="blog-leftside-dashboard">
                 <div class="webinar-box article-box">
-    
+
                     <div class="webinar-image-box">
                         <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
                     </div>
                     <div class="webinar-content-box">
-                        <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                        <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website
+                            Design</a>
                         <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
                                 Bojan Sandic </span> 02 July, 2019</p>
                         <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
@@ -645,16 +758,17 @@ letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProject
                             replied removal an amongst. ut perspiciatis unde omnis
                         </p>
                         <a href="" class="read-more">Read More <span>></span></a>
-    
+
                     </div>
                 </div>
                 <div class="webinar-box article-box">
-    
+
                     <div class="webinar-image-box">
                         <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
                     </div>
                     <div class="webinar-content-box">
-                        <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                        <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website
+                            Design</a>
                         <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
                                 Bojan Sandic </span> 02 July, 2019</p>
                         <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
@@ -662,16 +776,17 @@ letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProject
                             replied removal an amongst. ut perspiciatis unde omnis
                         </p>
                         <a href="" class="read-more">Read More <span>></span></a>
-    
+
                     </div>
                 </div>
                 <div class="webinar-box article-box">
-    
+
                     <div class="webinar-image-box">
                         <img class="zoom-image" src="/assets/images/default-blog.svg" alt="Article Image">
                     </div>
                     <div class="webinar-content-box">
-                        <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website Design</a>
+                        <a class="post-title webinar-title" href="javascript:void(0)">How To make Super Website
+                            Design</a>
                         <p class="posted-date top-gap">Posted by<span class="blog-date-span"> hello
                                 Bojan Sandic </span> 02 July, 2019</p>
                         <p class="post-description webinar-desc top-gap">Forfeited you engrossed but gay sometimes
@@ -679,10 +794,10 @@ letter-spacing: 0px;color: #FFFFFF;padding: 10px 50px;" (click)="navigateProject
                             replied removal an amongst. ut perspiciatis unde omnis
                         </p>
                         <a href="" class="read-more">Read More <span>></span></a>
-    
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>

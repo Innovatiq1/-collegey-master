@@ -2615,20 +2615,38 @@ label,
     font: normal normal normal 12px/19px Nunito;
     color: #141414;
 }
+
 .clg-mentor-profile ::ng-deep ng-multiselect-dropdown .selected-item span {
     font: normal normal normal 12px/19px Nunito;
     color: #141414 !important;
 }
+
 .clg-mentor-profile ::ng-deep tag .tag__text {
     font: normal normal normal 12px/19px Nunito;
     color: #141414;
 }
 
+.collegy_loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.collegy_loader img {
+    max-width: 70px;
+    margin-top: 45vh;
+}
 
 @media screen and (max-width: 500px) {
     .group .adviceToYoungPeople {
         padding-top: 22px;
     }
+
     .group .adviceToYoungPeople label {
         line-height: 1.2;
     }

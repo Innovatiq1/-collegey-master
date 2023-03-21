@@ -61,6 +61,7 @@ export class StudentsProjectComponent implements OnInit {
   // Set Last date and start date
   projectStartDate: any;
   projectSetLastDate: any;
+  ProjectSetLastMaxiDate: any;
 
   @ViewChild('takeInput', { static: false })
 
@@ -213,12 +214,20 @@ export class StudentsProjectComponent implements OnInit {
 
   onChangeProjectStart(event) {
     var myCurrentDate = new Date(event.target.value);
-    myCurrentDate.setDate(myCurrentDate.getDate() + 30);
+    myCurrentDate.setDate(myCurrentDate.getDate() - 1);
     var newPlusDate = this.datePipe.transform(myCurrentDate, 'yyyy-MM-dd');
     this.projectSetLastDate = newPlusDate;
+
+    // Set Maximum Date
+    var myDateSet1 = new Date();
+    myDateSet1.setDate(myDateSet1.getDate() + 1);
+    var newDateSet1 = this.datePipe.transform(myDateSet1, 'yyyy-MM-dd');
+    this.ProjectSetLastMaxiDate = newDateSet1;
+    
     this.projectFormGroup.patchValue({
-      lastDate: '',
+      lastDate: this.ProjectSetLastMaxiDate,
     });
+    
   }
 
   getBanners() {

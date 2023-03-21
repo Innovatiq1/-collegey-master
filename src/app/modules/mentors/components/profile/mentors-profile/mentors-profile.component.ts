@@ -72,6 +72,7 @@ export class MentorsProfileComponent implements OnInit {
   dropdownSettingsInterest = {};
   dropdownSettingsCanHelp = {};
   selectedTimeZone: any; 
+  showClgLoader: boolean = false;
   constructor(
     @Inject(DOCUMENT) private document: any,
     private formBuilder: FormBuilder,
@@ -429,6 +430,7 @@ export class MentorsProfileComponent implements OnInit {
   }
 
   uploadRecordVideo(event) {
+    this.showClgLoader = true;
     if (event.target.files[0].size / 1024 / 1024 > 50) {
       this.toastrService.error('The file is too large. Allowed maximum size is 50 MB.');
       return;
@@ -438,6 +440,7 @@ export class MentorsProfileComponent implements OnInit {
       return;
     }
     this.uploadFileApi(event.target.files[0]).then((data) => {
+      this.showClgLoader = false;
       this.mentorVideointro = data;
       this.getVideoIntro = '';
       this.cdr.detectChanges();

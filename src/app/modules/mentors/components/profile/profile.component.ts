@@ -282,9 +282,10 @@ export class ProfileComponent implements OnInit {
   }
 
   setProfileFormState(sectionName) {
+    var redirection_check = localStorage.getItem("redirectProject");
     if(sectionName == 'projects')
     {
-      if(this.profilefirstStepCompleted != true || this.profilesecondStepCompleted != true)
+      if(redirection_check != 'yes' && (this.profilefirstStepCompleted != true || this.profilesecondStepCompleted != true))
       {
         this.toastrService.error('please complete the below steps');
         return;

@@ -641,8 +641,8 @@
           <div class="col-sm-12 col-lg-6 row pd-sm-l0" style="margin: 0;padding: 0;">
             <div class="group col-sm-12 pd-sm-r10">
               <div class="form-group">
-                <label><span style="color: red;">*</span>&nbsp; Last date of join</label>
-                <input type="date" class="form-control" min="{{projectSetLastDate}}" id="date1" placeholder=""
+                <label><span style="color: red;">*</span>&nbsp; Deadline to sign up</label>
+                <input type="date" class="form-control" min="{{ProjectSetLastMaxiDate}}" max="{{projectSetLastDate}}" id="date1" placeholder=""
                   style="height: 45px;" formControlName="lastDate">
                 <span *ngIf="submitted && hasError('lastDate','required')" class="d-block" style="color: red;">Last date
                   is required</span>

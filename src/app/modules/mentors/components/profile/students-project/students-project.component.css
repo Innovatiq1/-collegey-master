@@ -2474,7 +2474,20 @@ textarea:focus~.bar:before {
         padding-right: 10px !important;
     }
 }
-
+@media screen and (max-width: 600px) {
+    .group .keyword_input {
+        padding-top: 22px;
+    }
+    .group .keyword_input label {
+        line-height: 1.2;
+    }
+    .group .custom_drop {
+        padding-top: 35px;
+    }
+    .group .custom_drop .sdgClass {
+        line-height: 1.2;
+    }
+}
 @media screen and (max-width: 500px) {
     .portfolio-progress hr {
         width: 50px;

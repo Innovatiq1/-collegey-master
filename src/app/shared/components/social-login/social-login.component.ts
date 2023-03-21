@@ -33,8 +33,9 @@ export class SocialLoginComponent implements OnInit {
   
   private linkedInCredentials = {
     response_type: "code",
-    clientId: "77u10423gsm7cx",
-    redirectUrl: `${DEFAULT_CONFIG.frontEndUrl}linkedInLogin`,
+    clientId: "86ggwpa949d3u5", //77u10423gsm7cx
+    //redirectUrl: `${DEFAULT_CONFIG.frontEndUrl}linkedInLogin`,
+    redirectUrl: "http%3A%2F%2F3.0.100.217%2FlinkedInLogin",
     state: 23101992,
     scope: "r_liteprofile%20r_emailaddress%20w_member_social",
   };

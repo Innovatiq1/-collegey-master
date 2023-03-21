@@ -82,3 +82,10 @@
     color: #AFAFAF;
     margin-bottom: 0;
 }
+@media screen and (max-width: 400px) {
+.mentorprofile_image .user-img{
+        width: 100px;
+        height: 100px;
+    }
+
+}

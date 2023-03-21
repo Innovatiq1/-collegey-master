@@ -360,8 +360,8 @@ export class OfficeHoursComponent implements OnInit {
 
   fetchProfiledata() {
     this.mentorService.getMentorProfile().subscribe((profile) => {
-      this.MentorProfileInfo = profile.mentor_profile.officeHours;
-      this.MentorOfficeTimeZone = profile.mentor_profile.officeTimezone?.timezoneName;
+      this.MentorProfileInfo = profile.mentor_profile?.officeHours;
+      this.MentorOfficeTimeZone = profile.mentor_profile?.officeTimezone?.timezoneName;
       this.cdr.detectChanges();
       if (this.MentorProfileInfo.length <= 0) {
         this.createReminder();

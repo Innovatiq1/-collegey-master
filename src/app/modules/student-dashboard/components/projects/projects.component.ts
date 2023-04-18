@@ -263,10 +263,17 @@ export class ProjectsComponent implements OnInit {
 
     this.isCharheStudent = 0;
 
-    var myDateSet = new Date();
-    var newDateSet = this.datePipe.transform(myDateSet, 'yyyy-MM-dd');
-    this.projectStartDate = newDateSet;
-    this.projectSetLastDate = newDateSet;
+    var myDateSet = new Date(new Date());
+    var projStartDate = new Date();
+    projStartDate.setDate(myDateSet.getDate()+28);
+    var newprojStartDateSet = this.datePipe.transform(projStartDate, 'yyyy-MM-dd');
+    this.projectStartDate = newprojStartDateSet;
+
+     var deadlineDate = new Date();
+     deadlineDate.setDate(myDateSet.getDate());
+     var startDeadlineDateSet = this.datePipe.transform(deadlineDate, 'yyyy-MM-dd');
+     this.ProjectSetLastMaxiDate = startDeadlineDateSet;
+
 
     this.invitePeopleForm = this.fb.group({
       requestedForName: ['', Validators.required],
@@ -277,7 +284,7 @@ export class ProjectsComponent implements OnInit {
       this.stateProjectId = this.router.getCurrentNavigation().extras.state;
     }
 
-    this.eventStartDate = newDateSet;
+    this.eventStartDate = newprojStartDateSet;
 
   }
 
@@ -306,16 +313,22 @@ export class ProjectsComponent implements OnInit {
   }
 
   onChangeProjectStart(event) {
-    var myCurrentDate = new Date(event.target.value);
-    myCurrentDate.setDate(myCurrentDate.getDate() - 1);
-    var newPlusDate = this.datePipe.transform(myCurrentDate, 'yyyy-MM-dd');
-    this.projectSetLastDate = newPlusDate;
+    // var myCurrentDate = new Date(event.target.value);
+    // myCurrentDate.setDate(myCurrentDate.getDate() - 1);
+    // var newPlusDate = this.datePipe.transform(myCurrentDate, 'yyyy-MM-dd');
+    // this.projectSetLastDate = newPlusDate;
 
     // Set Maximum Date
-    var myDateSet1 = new Date();
-    myDateSet1.setDate(myDateSet1.getDate() + 1);
-    var newDateSet1 = this.datePipe.transform(myDateSet1, 'yyyy-MM-dd');
-    this.ProjectSetLastMaxiDate = newDateSet1;
+    // var myDateSet1 = new Date();
+    // myDateSet1.setDate(myDateSet1.getDate() + 1);
+    // var newDateSet1 = this.datePipe.transform(myDateSet1, 'yyyy-MM-dd');
+    // this.ProjectSetLastMaxiDate = newDateSet1;
+
+    var myCurrentDate = new Date(event.target.value);
+    var endDeadlineDate = new Date(this.addProjectForm.get('startDate').value);
+    endDeadlineDate.setDate(myCurrentDate.getDate()-1);
+    var endDeadlineDateSet = this.datePipe.transform(endDeadlineDate, 'yyyy-MM-dd');
+    this.projectSetLastDate = endDeadlineDateSet;
 
     this.addProjectForm.patchValue({
       lastDate: this.ProjectSetLastMaxiDate,

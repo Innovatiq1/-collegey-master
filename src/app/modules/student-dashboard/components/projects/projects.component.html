@@ -663,7 +663,7 @@
 
           <div class="col-12 col-lg-6">
             <div class="form-group">
-              <label>Start date<span style="color: red;">*</span>&nbsp; </label>
+              <label>Start date <span style="color: red;">*</span>&nbsp; </label>
               <input type="date" class="form-control" min="{{projectStartDate}}" id="date1" placeholder=""
                 style="height: 45px;" formControlName="startDate" (change)="onChangeProjectStart($event)">
               <span *ngIf="submitted && hasError('startDate','required')" class="d-block" style="color: red;">Start
@@ -674,8 +674,8 @@
           <div class="col-12 col-lg-6">
             <div class="form-group">
               <label>Deadline to sign up<span style="color: red;">*</span>&nbsp; </label>
-              <input type="date" class="form-control" min="{{ProjectSetLastMaxiDate}}" max="{{projectSetLastDate}}" id="date1" placeholder=""
-                style="height: 45px;" formControlName="lastDate">
+              <input type="date" class="form-control" min="{{ProjectSetLastMaxiDate}}" max="{{projectSetLastDate}}" id="date2" placeholder=""
+                style="height: 45px;" formControlName="lastDate" value="{{projectSetLastDate}}">
               <span *ngIf="submitted && hasError('lastDate','required')" class="d-block" style="color: red;">Last date
                 is required</span>
             </div>

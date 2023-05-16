@@ -310,6 +310,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
       startDate: ['', Validators.required],
       requestMentor: [''],
     });
+    // var myDateSet = new Date(new Date());
+    // var projStartDate = new Date(); 
+    // projStartDate.setDate(myDateSet.getDate()+28);
+    // var newprojStartDateSet = this.datePipe.transform(projStartDate, 'yyyy-MM-dd');
+    // this.projectStartDate = newprojStartDateSet;
+    // console.log("this.projectStartDate",this.projectStartDate)
+
+    // var deadlineDate = new Date();
+    // deadlineDate.setDate(myDateSet.getDate());
+    // var startDeadlineDateSet = this.datePipe.transform(deadlineDate, 'yyyy-MM-dd');
+    // this.projectSetLastDate = startDeadlineDateSet;
 
     var myDateSet = new Date();
     var newDateSet = this.datePipe.transform(myDateSet, 'yyyy-MM-dd');
@@ -330,6 +341,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.getCurrentUserData();
     this.getProgramesData();
     this.getCompletedProgramesData();
+    console.log("this.projectStartDate",this.projectStartDate)
     /*  this.getUserInfo();
      this.checkIsProfileCompleted();
      this.initProjectIdeaForm();
@@ -379,10 +391,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   onChangeProjectStart(event) {
+    // var myCurrentDate = new Date(event.target.value);
+    // myCurrentDate.setDate(myCurrentDate.getDate() + 21);
+    // var newPlusDate = this.datePipe.transform(myCurrentDate, 'yyyy-MM-dd');
+    // this.projectSetLastDate = newPlusDate;
     var myCurrentDate = new Date(event.target.value);
-    myCurrentDate.setDate(myCurrentDate.getDate() + 21);
-    var newPlusDate = this.datePipe.transform(myCurrentDate, 'yyyy-MM-dd');
-    this.projectSetLastDate = newPlusDate;
+    var endDeadlineDate = new Date(this.editProjectForm.get('startDate').value);
+    endDeadlineDate.setDate(myCurrentDate.getDate()-1);
+    var endDeadlineDateSet = this.datePipe.transform(endDeadlineDate, 'yyyy-MM-dd');
+    this.projectSetLastDate = endDeadlineDateSet;
+
     this.editProjectForm.patchValue({
       lastDate: '',
     });

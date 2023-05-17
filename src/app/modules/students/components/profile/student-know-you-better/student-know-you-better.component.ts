@@ -170,7 +170,6 @@ export class StudentKnowYouBetterComponent implements OnInit, OnDestroy {
     let favMovies = this.knowYouBetterForm.getRawValue().know_you_better.fav_movies
     //let favbooks = this.knowYouBetterForm.getRawValue().know_you_better.fav_books
     this.inspireyou = people_who_inspire_you[0].name
-    if(exit){
     if(people_who_inspire_you[0].name===null || people_who_inspire_you[0].name==''){
       this.inspire_error="Please enter people who inspire you"
 
@@ -178,15 +177,6 @@ export class StudentKnowYouBetterComponent implements OnInit, OnDestroy {
       this.fav_books_error="Please enter favourite books"
     }else if(favMovies[0].name===null ||favMovies[0].name===''){
       this.fav_movies_error="Please enter favourite movies"
-    }
-    else{
-   
-      this.studentService.redirectToDashboard(exit); // in case of save and exit button click
-      let YouBetterFormData = this.knowYouBetterForm.getRawValue();
-      YouBetterFormData.know_you_better.fav_websites = this.favWebsitesList;
-      YouBetterFormData.know_you_better.redirectAction = exit;
-      this.onSubmitKnowYouBetterForm.emit(YouBetterFormData);
-     }
     }else{
    
     this.studentService.redirectToDashboard(exit); // in case of save and exit button click

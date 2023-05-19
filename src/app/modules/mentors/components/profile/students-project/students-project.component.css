@@ -1499,7 +1499,11 @@ label::first-letter {
 }
 
 .lead-form textarea {
+<<<<<<< HEAD
     margin-top:15px;
+=======
+    margin-top: 15px;
+>>>>>>> 0f5475dc5ded1d59e3c604c59fd759ad3f2c908d
     background: none;
     display: block;
     width: 100%;

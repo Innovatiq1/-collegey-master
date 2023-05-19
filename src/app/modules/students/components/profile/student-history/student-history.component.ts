@@ -177,7 +177,7 @@ export class StudentHistoryComponent implements OnInit, OnChanges, OnDestroy {
     this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
     const formData = historyForm.getRawValue();
     let education  = formData.history_updated.education;
-    
+    if(exit){
     if (this.removeEdu) {
     this.removeIndex.sort(function(a,b){ return a - b; });
     education = removeFromArray(education, this.removeIndex)          
@@ -195,7 +195,12 @@ export class StudentHistoryComponent implements OnInit, OnChanges, OnDestroy {
     //   education[i].start_year = new Date(education[i].start_year).getFullYear();
     //   education[i].end_year = new Date(education[i].end_year).getFullYear();
     // }
-
+  }else{
+    formData.history_updated.education = education;
+    this.hideQualificationChangeOption = true;
+    formData.history_updated.redirectAction = exit;
+    this.onSubmitHistoryForm.emit(formData);
+  }
     formData.history_updated.education = education;
     this.hideQualificationChangeOption = true;
     formData.history_updated.redirectAction = exit;

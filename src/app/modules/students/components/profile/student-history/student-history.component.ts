@@ -195,26 +195,14 @@ export class StudentHistoryComponent implements OnInit, OnChanges, OnDestroy {
     //   education[i].start_year = new Date(education[i].start_year).getFullYear();
     //   education[i].end_year = new Date(education[i].end_year).getFullYear();
     // }
-  }else{
-<<<<<<< HEAD
-  formData.history_updated.education = education;
-    this.hideQualificationChangeOption = true;
+  }else{formData.history_updated.education = education;
+   this.hideQualificationChangeOption = true;
     formData.history_updated.redirectAction = exit;
-    this.onSubmitHistoryForm.emit(formData);
-}
-  formData.history_updated.education = education;
-=======
+    this.onSubmitHistoryForm.emit(formData) }
     formData.history_updated.education = education;
     this.hideQualificationChangeOption = true;
     formData.history_updated.redirectAction = exit;
-    this.onSubmitHistoryForm.emit(formData);
-  }
-    formData.history_updated.education = education;
->>>>>>> 0f5475dc5ded1d59e3c604c59fd759ad3f2c908d
-    this.hideQualificationChangeOption = true;
-    formData.history_updated.redirectAction = exit;
-    this.onSubmitHistoryForm.emit(formData);
-  }
+    this.onSubmitHistoryForm.emit(formData);}
   
   onFormBack(){
     const formData = this.studentHistoryForm.getRawValue();

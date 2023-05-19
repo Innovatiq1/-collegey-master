@@ -351,20 +351,12 @@ export class StudentProjectsComponent implements OnInit, OnDestroy {
   onSubmitForm(exit) {
     if(exit){
     }else{
-<<<<<<< HEAD
-        this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
-    let projectFormData = this.studentProjectForm.getRawValue();
-    projectFormData.projects.redirectAction = exit;
-    this.onSubmitProjectForm.emit(projectFormData);
-      }
-=======
       this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
     let projectFormData = this.studentProjectForm.getRawValue();
     projectFormData.projects.redirectAction = exit;
     this.onSubmitProjectForm.emit(projectFormData);
   }
 
->>>>>>> 0f5475dc5ded1d59e3c604c59fd759ad3f2c908d
     this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
     let projectFormData = this.studentProjectForm.getRawValue();
     projectFormData.projects.redirectAction = exit;

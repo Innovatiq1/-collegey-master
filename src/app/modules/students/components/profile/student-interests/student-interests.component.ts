@@ -202,11 +202,7 @@ export class StudentInterestsComponent implements OnInit, OnDestroy {
     }else if(favourite.length===0){
       this.fav_error="Please Select Favourite Subjects"
     }
-<<<<<<< HEAD
-  else{
-=======
     else{
->>>>>>> 0f5475dc5ded1d59e3c604c59fd759ad3f2c908d
       this.studentService.redirectToDashboard(exit);  // exit after save or not
       let InterestFormData = this.studentInterestForm.getRawValue();
       InterestFormData.interest.redirectAction = exit;

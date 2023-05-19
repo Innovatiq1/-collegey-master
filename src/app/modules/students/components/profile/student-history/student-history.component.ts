@@ -199,6 +199,7 @@ export class StudentHistoryComponent implements OnInit, OnChanges, OnDestroy {
    this.hideQualificationChangeOption = true;
     formData.history_updated.redirectAction = exit;
     this.onSubmitHistoryForm.emit(formData) }
+
     formData.history_updated.education = education;
     this.hideQualificationChangeOption = true;
     formData.history_updated.redirectAction = exit;

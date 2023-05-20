@@ -234,6 +234,7 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
     this.country = data.geography.country
     this.citizenship = data.geography.citizenship;
     this.timezone1 = data.geography.timezone;
+    if(exit){
     if (data?.geography?.country == null || data?.geography?.country == '') {
       this.country_error = true;
       this.country_errorMsg = 'Please Select County';
@@ -258,6 +259,23 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
       this.timeZone_error = true;
       this.timeZone_errorMsg = 'TimeZone is Required';
       return;
+    }
+    else {
+      this.studentService.redirectToDashboard(exit);
+
+
+      let geographyFormData = this.geographyFormGroup.getRawValue();
+
+
+      let outputObj = {
+        city: data?.geography?.city == 11111111111 ? 0 : data?.geography?.city,
+        state: data?.geography?.state,
+        country: data?.geography?.country,
+      }
+      geographyFormData.geography.redirectAction = exit;
+      this.onSubmitGeographyForm.emit(geographyFormData);
+      this.commonService.sendUpdate(outputObj);
+    }
     }
     else {
       this.studentService.redirectToDashboard(exit);

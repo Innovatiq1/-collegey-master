@@ -336,6 +336,7 @@ export class StudentPersonalDetailsComponent implements OnInit, OnDestroy {
     //   this.phone_error1="Your cell number is Required"
 
     // }
+    if(exit){
     if (name1.name === null) {
       this.name_error = "Full Name is Required"
 
@@ -347,6 +348,14 @@ export class StudentPersonalDetailsComponent implements OnInit, OnDestroy {
     //   this.phone_error="Your cell number is Required"
     // }
     else {
+      this.studentService.redirectToDashboard(exit);
+      let persoanlFormData = this.personalDetailsForm.getRawValue();
+      persoanlFormData.ways_to_be_in_touch.redirectAction = exit;
+      // console.log('persoanlFormData===>', persoanlFormData);
+      
+      this.onSubmitPersonalDetailsForm.emit(persoanlFormData);
+    }
+  }else {
       this.studentService.redirectToDashboard(exit);
       let persoanlFormData = this.personalDetailsForm.getRawValue();
       persoanlFormData.ways_to_be_in_touch.redirectAction = exit;

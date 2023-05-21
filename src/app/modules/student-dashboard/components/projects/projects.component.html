@@ -663,8 +663,8 @@
 
           <div class="col-12 col-lg-6">
             <div class="form-group">
-              <label>Start date <span style="color: red;">*</span>&nbsp; </label>
-              <input type="date" class="form-control" min="{{projectStartDate}}" id="date1" placeholder=""
+              <label>Start date<span style="color: red;">*</span>&nbsp; </label>
+              <input type="date" class="form-control" value="" min="{{projectStartDate}}" id="date1" placeholder=""
                 style="height: 45px;" formControlName="startDate" (change)="onChangeProjectStart($event)">
               <span *ngIf="submitted && hasError('startDate','required')" class="d-block" style="color: red;">Start
                 date is required</span>

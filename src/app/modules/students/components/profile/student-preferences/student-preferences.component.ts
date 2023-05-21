@@ -108,12 +108,11 @@ export class StudentPreferencesComponent implements OnInit, OnDestroy {
       return;
     }
   }else{
-      this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
+    this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
     let PreferencesFormData = this.studentPreferencesForm.getRawValue();
     PreferencesFormData.prefrences.redirectAction = exit;
     this.onSubmitPreferencesForm.emit(PreferencesFormData);
-  
-    }
+  }
     this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
     let PreferencesFormData = this.studentPreferencesForm.getRawValue();
     PreferencesFormData.prefrences.redirectAction = exit;

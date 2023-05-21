@@ -1489,7 +1489,7 @@ td {
     font: normal normal normal 12px/16px Nunito;
     letter-spacing: 0px;
     color: #838383;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
 }
 
 .project-modal .project-header .price-box {
@@ -2456,7 +2456,11 @@ input:-internal-autofill-selected {
     padding: 10px;
     text-decoration: none;
     color: #fff;
+<<<<<<< HEAD
     box-shadow: 0 0 15px rgb(0 0 0 / 40%);
+=======
+    box-shadow: 0 0 15px rgb(0 0 0 / 40%)
+>>>>>>> 30b8545dabd305ac6b36df757da90e6bcaeb62d9
 } */
 
 .newsCard {

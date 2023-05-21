@@ -195,13 +195,13 @@ export class StudentInterestsComponent implements OnInit, OnDestroy {
     let favourite= this.studentInterestForm.getRawValue().interest.fav_subjects
 
     this.Interest1 =interest[0]
+    if(exit){
     if(interest.length===0 ){
       this.interest_error="Please Select Interest Areas"
 
     }else if(favourite.length===0){
       this.fav_error="Please Select Favourite Subjects"
     }
-
     else{
       this.studentService.redirectToDashboard(exit);  // exit after save or not
       let InterestFormData = this.studentInterestForm.getRawValue();
@@ -209,9 +209,6 @@ export class StudentInterestsComponent implements OnInit, OnDestroy {
       this.onSubmitInterestForm.emit(InterestFormData);
       }
     }else{
-
-      else{
-
     this.studentService.redirectToDashboard(exit);  // exit after save or not
     let InterestFormData = this.studentInterestForm.getRawValue();
     InterestFormData.interest.redirectAction = exit;

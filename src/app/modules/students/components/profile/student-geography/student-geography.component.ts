@@ -234,7 +234,6 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
     this.country = data.geography.country
     this.citizenship = data.geography.citizenship;
     this.timezone1 = data.geography.timezone;
-    if(exit){
     if (data?.geography?.country == null || data?.geography?.country == '') {
       this.country_error = true;
       this.country_errorMsg = 'Please Select County';
@@ -272,6 +271,7 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
       this.onSubmitGeographyForm.emit(geographyFormData);
       this.commonService.sendUpdate(outputObj);
     }
+
   }else {
       this.studentService.redirectToDashboard(exit);
       let geographyFormData = this.geographyFormGroup.getRawValue();
@@ -284,6 +284,8 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
       this.onSubmitGeographyForm.emit(geographyFormData);
       this.commonService.sendUpdate(outputObj);
     }
+
+
   }
 
   ngOnDestroy(): void {
@@ -311,6 +313,12 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
       return false;
     }
 
-  }
+  
 
-}
+
+
+
+
+
+
+

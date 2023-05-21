@@ -86,7 +86,7 @@
                 <div class="group col-sm-6 mb-3">
                     <div class="mb-1">
                         <input type="text" required="required" (ngModelChange)="valuechange($event)"
-                            formControlName="citizenship" />
+                            formControlName="citizenship" (blur)="validateCitizenship($event)" />
                         <label class="select-label" style="top: 5px;
                         font: normal normal bold 12px/12px Nunito;
                         color: #1982d4;">Citizenship<span style="color: #f00;">*</span></label>

@@ -237,10 +237,15 @@ font-size: small;">{{profileText}}
               <p style="margin-bottom: 0;margin-left: 7px;font: normal normal normal 12px/16px Nunito;
                 letter-spacing: 0px; color: #141414;">{{project?.remainingSlot}} spots available</p>
             </div>
+<<<<<<< HEAD
+            <p class="posted-date1 top-gap1"><span>Start Date : {{project?.start_date |date}}</span></p>
+            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |date}}</span></p>
+=======
             <p class="posted-date1 top-gap1"><span>Start date : {{project?.start_date |
               date}}</span></p>
           <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
                   date}}</span></p>
+>>>>>>>>> Temporary merge branch 2
           </div>
         </div>
       </ng-template>
@@ -288,7 +293,8 @@ font-size: small;">{{profileText}}
                 letter-spacing: 0px; color: #141414;">{{project?.remainingSlot - project?.projectMembers?.length}}
                 spots available</p>
             </div>
-            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
+            <p class="posted-date1 top-gap1"><span>Start Date : {{project?.start_date |date}}</span></p>
+            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date | date}}</span></p>
           </div>
         </div>
       </ng-template>
@@ -339,6 +345,8 @@ font-size: small;">{{profileText}}
                 spots available</p>
             </div>
             <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
+            <p class="posted-date1 top-gap1"><span>Start Date : {{project?.start_date |date}}</span></p>
+            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date | date}}</span></p>
           </div>
         </div>
       </ng-template>
@@ -387,6 +395,10 @@ font-size: small;">{{profileText}}
                 spots available</p>
             </div>
             <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
+            <p class="posted-date1 top-gap1"><span>Start date : {{project?.start_date |
+              date}}</span></p>
+          <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                  date}}</span></p>
           </div>
         </div>
       </ng-template>
@@ -437,6 +449,10 @@ font-size: small;">{{profileText}}
                 spots available</p>
             </div>
             <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.start_date | date}}</span></p>
+            <p class="posted-date1 top-gap1"><span>Start date : {{project?.start_date |
+              date}}</span></p>
+          <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                  date}}</span></p>
           </div>
         </div>
       </ng-template>
@@ -470,8 +486,10 @@ font-size: small;">{{profileText}}
                 letter-spacing: 0px; color: #141414;">{{project?.project?.remainingSlot -
                 project?.project?.projectMembers?.length}} spots available</p>
             </div>
-            <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.project?.start_date | date}}</span>
-            </p>
+            <p class="posted-date1 top-gap1"><span>Start date : {{project?.start_date |
+              date}}</span></p>
+          <p class="posted-date1 top-gap1"><span>Last date of joining : {{project?.end_date |
+                  date}}</span></p>
           </div>
         </div>
       </ng-template>

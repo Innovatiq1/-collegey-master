@@ -262,11 +262,7 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
     }
     else {
       this.studentService.redirectToDashboard(exit);
-
-
       let geographyFormData = this.geographyFormGroup.getRawValue();
-
-
       let outputObj = {
         city: data?.geography?.city == 11111111111 ? 0 : data?.geography?.city,
         state: data?.geography?.state,
@@ -278,18 +274,12 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
     }
   }else {
       this.studentService.redirectToDashboard(exit);
-
-
       let geographyFormData = this.geographyFormGroup.getRawValue();
-
-
       let outputObj = {
         city: data?.geography?.city == 11111111111 ? 0 : data?.geography?.city,
         state: data?.geography?.state,
         country: data?.geography?.country,
       }
-
-
       geographyFormData.geography.redirectAction = exit;
       this.onSubmitGeographyForm.emit(geographyFormData);
       this.commonService.sendUpdate(outputObj);

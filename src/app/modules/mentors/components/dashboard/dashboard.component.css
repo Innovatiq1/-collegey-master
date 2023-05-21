@@ -2450,18 +2450,7 @@ input:-internal-autofill-selected {
     border-radius: 5px;
 }
 
-/* .btn {
-    margin-top: auto;
-    background: green;
-    padding: 10px;
-    text-decoration: none;
-    color: #fff;
-<<<<<<< HEAD
-    box-shadow: 0 0 15px rgb(0 0 0 / 40%);
-=======
-    box-shadow: 0 0 15px rgb(0 0 0 / 40%)
->>>>>>> 30b8545dabd305ac6b36df757da90e6bcaeb62d9
-} */
+
 
 .newsCard {
     position: relative;

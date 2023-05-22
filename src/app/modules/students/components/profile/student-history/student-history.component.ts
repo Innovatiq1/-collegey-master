@@ -178,16 +178,15 @@ export class StudentHistoryComponent implements OnInit, OnChanges, OnDestroy {
    const formData = historyForm.getRawValue();
    let education  = formData.history_updated.education;
    if(exit){
-   if (this.removeEdu) {
-   this.removeIndex.sort(function(a,b){ return a - b; });
-   education = removeFromArray(education, this.removeIndex)          
-   }
-
-   function removeFromArray(arr, toRemove){
-     return arr.filter(item => toRemove.indexOf(arr.indexOf(item)) === -1)
-   }
-
-
+    if (this.removeEdu) {
+    this.removeIndex.sort(function(a,b){ return a - b; });
+    education = removeFromArray(education, this.removeIndex)          
+    }
+ 
+    function removeFromArray(arr, toRemove){
+      return arr.filter(item => toRemove.indexOf(arr.indexOf(item)) === -1)
+    }
+ 
     // for(let i = 0; i< education.length; i++) {
     //   for(let j = 0; j< education[i].grade.length; j++ ) {
     //     education[i].grade[j].start_year = new Date(education[i].grade[j].start_year).getFullYear();
@@ -196,28 +195,17 @@ export class StudentHistoryComponent implements OnInit, OnChanges, OnDestroy {
     //   education[i].start_year = new Date(education[i].start_year).getFullYear();
     //   education[i].end_year = new Date(education[i].end_year).getFullYear();
     // }
-  }
-  else{formData.history_updated.education = education;
-
-   // for(let i = 0; i< education.length; i++) {
-   //   for(let j = 0; j< education[i].grade.length; j++ ) {
-   //     education[i].grade[j].start_year = new Date(education[i].grade[j].start_year).getFullYear();
-   //     education[i].grade[j].end_year = new Date(education[i].grade[j].end_year).getFullYear();
-   //   }
-   //   education[i].start_year = new Date(education[i].start_year).getFullYear();
-   //   education[i].end_year = new Date(education[i].end_year).getFullYear();
-   // }
- }else{formData.history_updated.education = education;
-  this.hideQualificationChangeOption = true;
-   formData.history_updated.redirectAction = exit;
-   this.onSubmitHistoryForm.emit(formData) }
-
-   formData.history_updated.education = education;
-
+  }else{formData.history_updated.education = education;
    this.hideQualificationChangeOption = true;
-   formData.history_updated.redirectAction = exit;
-   this.onSubmitHistoryForm.emit(formData);}
+    formData.history_updated.redirectAction = exit;
+    this.onSubmitHistoryForm.emit(formData) }
  
+    formData.history_updated.education = education;
+    this.hideQualificationChangeOption = true;
+    formData.history_updated.redirectAction = exit;
+    this.onSubmitHistoryForm.emit(formData);}
+  
+  
  onFormBack(){
    const formData = this.studentHistoryForm.getRawValue();
    this.onBackForm.emit(formData);

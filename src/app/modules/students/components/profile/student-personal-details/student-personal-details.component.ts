@@ -355,7 +355,8 @@ export class StudentPersonalDetailsComponent implements OnInit, OnDestroy {
       
       this.onSubmitPersonalDetailsForm.emit(persoanlFormData);
     }
-  }else {
+  }
+  else {
       this.studentService.redirectToDashboard(exit);
       let persoanlFormData = this.personalDetailsForm.getRawValue();
       persoanlFormData.ways_to_be_in_touch.redirectAction = exit;

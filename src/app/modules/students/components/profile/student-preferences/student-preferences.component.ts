@@ -107,7 +107,8 @@ export class StudentPreferencesComponent implements OnInit, OnDestroy {
       this.family_income_error = "Please select family income"
       return;
     }
-  }else{
+  }
+  else{
       this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
     let PreferencesFormData = this.studentPreferencesForm.getRawValue();
     PreferencesFormData.prefrences.redirectAction = exit;

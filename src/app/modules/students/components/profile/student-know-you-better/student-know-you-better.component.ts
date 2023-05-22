@@ -187,7 +187,8 @@ export class StudentKnowYouBetterComponent implements OnInit, OnDestroy {
       YouBetterFormData.know_you_better.redirectAction = exit;
       this.onSubmitKnowYouBetterForm.emit(YouBetterFormData);
      }
-    }else{
+    }
+    else{
    
     this.studentService.redirectToDashboard(exit); // in case of save and exit button click
     let YouBetterFormData = this.knowYouBetterForm.getRawValue();

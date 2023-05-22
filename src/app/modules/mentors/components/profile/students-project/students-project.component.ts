@@ -239,6 +239,7 @@ export class StudentsProjectComponent implements OnInit {
     endDeadlineDate.setDate(myCurrentDate.getDate()-1);
     var endDeadlineDateSet = this.datePipe.transform(endDeadlineDate, 'yyyy-MM-dd');
     this.projectSetLastDate = endDeadlineDateSet;
+    
     this.projectFormGroup.patchValue({
       lastDate: this.ProjectSetLastMaxiDate,
     });

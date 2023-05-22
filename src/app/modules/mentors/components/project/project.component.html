@@ -220,7 +220,16 @@
                         <a href="{{feed?.posturl}}" target="_blank" *ngIf="feed?.posturl">
                           <p *ngIf="feed.postData != null">{{feed?.postData}}</p>
                         </a>
-                        <p *ngIf="feed.postData != null && !feed?.posturl">{{feed?.postData}}</p>
+
+                        <p *ngIf="feed.postData != null && !feed?.posturl">
+                          <a *ngIf="feed?.postData.includes('https') && feed?.posturl == ''" class="readDesc"
+                          href="{{feed?.postData}}" target="_blank"> {{feed?.postData}}
+                          
+                        </a>
+                      </p>
+
+                       <p *ngIf="feed.postData != null && !feed?.posturl">{{feed?.postData}}</p>
+
                       </div>
                       <p [ngClass]="{'limitTextHeight': isReadMore}" *ngIf="feed.postType == 'text'">
                         {{feed?.postText}}<br />

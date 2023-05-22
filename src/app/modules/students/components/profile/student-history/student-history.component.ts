@@ -151,7 +151,6 @@ export class StudentHistoryComponent implements OnInit, OnChanges, OnDestroy {
    this.qualification = event?.name;
  } 
 
-
  onSubmitForm(exit, historyForm?: FormGroup) {
    
    //  alert("dasdas");
@@ -184,43 +183,9 @@ export class StudentHistoryComponent implements OnInit, OnChanges, OnDestroy {
    education = removeFromArray(education, this.removeIndex)          
    }
 
-  onSubmitForm(exit, historyForm?: FormGroup) {
-    
-    //  alert("dasdas");
-    // this.typeCastToFormArray(historyForm.get('history_updated').get('education')).controls.forEach(control => {
-    //   if(this.qualification !== QualificationType.HIGHT_SCHOOL_GRADUATE && 
-    //     this.qualification !== QualificationType.HIGHT_SCHOOL_STUDENT ) {
-    //     control.get('grade_choosen').clearValidators();
-    //     control.get('grade_choosen').updateValueAndValidity();
-    //   }
-    // });
-    this.markFormGroupTouched(historyForm);
-    if(historyForm.invalid) {
-      this.showErrorMessage = true;
-      return;
-    }
-    // this.qualificationTypeSubscription = this.studentEducationService.qualificationType$.subscribe(
-    //   (qualification) => {
-    //     this.educationFormArray.controls[0].patchValue({
-    //       type : qualification
-    //     });
-    //     this.cdr.detectChanges();
-    //   });
-    
-    this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
-    const formData = historyForm.getRawValue();
-    let education  = formData.history_updated.education;
-    
-    if (this.removeEdu) {
-    this.removeIndex.sort(function(a,b){ return a - b; });
-    education = removeFromArray(education, this.removeIndex)          
-    }
-
-
    function removeFromArray(arr, toRemove){
      return arr.filter(item => toRemove.indexOf(arr.indexOf(item)) === -1)
    }
-
 
    // for(let i = 0; i< education.length; i++) {
    //   for(let j = 0; j< education[i].grade.length; j++ ) {
@@ -234,27 +199,6 @@ export class StudentHistoryComponent implements OnInit, OnChanges, OnDestroy {
   this.hideQualificationChangeOption = true;
    formData.history_updated.redirectAction = exit;
    this.onSubmitHistoryForm.emit(formData) }
-
-    // for(let i = 0; i< education.length; i++) {
-    //   for(let j = 0; j< education[i].grade.length; j++ ) {
-    //     education[i].grade[j].start_year = new Date(education[i].grade[j].start_year).getFullYear();
-    //     education[i].grade[j].end_year = new Date(education[i].grade[j].end_year).getFullYear();
-    //   }
-    //   education[i].start_year = new Date(education[i].start_year).getFullYear();
-    //   education[i].end_year = new Date(education[i].end_year).getFullYear();
-    // }
-
-    formData.history_updated.education = education;
-    this.hideQualificationChangeOption = true;
-    formData.history_updated.redirectAction = exit;
-    this.onSubmitHistoryForm.emit(formData);
-  }
-  
-  onFormBack(){
-    const formData = this.studentHistoryForm.getRawValue();
-    this.onBackForm.emit(formData);
-  }
-
 
    formData.history_updated.education = education;
    this.hideQualificationChangeOption = true;

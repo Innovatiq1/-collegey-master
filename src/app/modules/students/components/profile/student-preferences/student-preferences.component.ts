@@ -96,7 +96,7 @@ export class StudentPreferencesComponent implements OnInit, OnDestroy {
     let Program =this.studentPreferencesForm.getRawValue().prefrences.interested_in_gap 
     let pay =this.studentPreferencesForm.getRawValue().prefrences.how_would_like_to_pay 
     let inome =this.studentPreferencesForm.getRawValue().prefrences.family_income
-    if(exit){
+   if(exit){
     if(pay == null || pay == '')
     {
       this.pay_error = "Please select pay per year"
@@ -107,7 +107,7 @@ export class StudentPreferencesComponent implements OnInit, OnDestroy {
       this.family_income_error = "Please select family income"
       return;
     }
-  }
+ }
   else{
       this.studentService.redirectToDashboard(exit);  // in case of save and exit button click
     let PreferencesFormData = this.studentPreferencesForm.getRawValue();

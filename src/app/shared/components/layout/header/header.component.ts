@@ -207,7 +207,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   openNewLink(){
 
-    window.open("https://admin.sequel.io/company/2df5b7bd-d748-43ec-8575-91cbb044850d/events", '_blank');
+    window.open("/event", '_blank');
 
    }
   setUserData() {

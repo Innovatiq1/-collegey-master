@@ -58,6 +58,7 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import { PublicBlogTagComponent } from './public-blog-tag/public-blog-tag.component';
 import { SequelEventComponent } from './sequel-event/sequel-event.component';
+import { EventComponent } from './sequel-event/event/event.component';
 
 let config = new AuthServiceConfig([
   {
@@ -76,7 +77,7 @@ export function provideConfig() {
 
 
 @NgModule({
- declarations: [AppComponent,PartnerWithCollegeyComponent,ThankYouComponent, InviteComponent, UserSelectionComponent, UserProfileComponent,CollageyComponent,MeetTheTeamComponent, CampaignComponent,ProfileComponent,UniversityDashboardComponent, UniversityComponent, CollegyMarketplaceComponent, ResetPasswordComponent, CertificateComponent, AgreementTermsConditionComponent,CollegeyFundComponent,BoardAdvisorsComponent,BoardDirectorsComponent,NewsResourceComponent, PublicBlogTagComponent, SequelEventComponent],
+ declarations: [AppComponent,PartnerWithCollegeyComponent,ThankYouComponent, InviteComponent, UserSelectionComponent, UserProfileComponent,CollageyComponent,MeetTheTeamComponent, CampaignComponent,ProfileComponent,UniversityDashboardComponent, UniversityComponent, CollegyMarketplaceComponent, ResetPasswordComponent, CertificateComponent, AgreementTermsConditionComponent,CollegeyFundComponent,BoardAdvisorsComponent,BoardDirectorsComponent,NewsResourceComponent, PublicBlogTagComponent, SequelEventComponent, EventComponent],
  imports: [
     BrowserModule,
     AppRoutingModule,

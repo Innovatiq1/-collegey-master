@@ -8,11 +8,15 @@ import { HeaderMobileMenuComponent } from './header-mobile-menu/header-mobile-me
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
+
+
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     HeaderMobileMenuComponent,
+    
+    
   ],
   imports: [
     RouterModule,

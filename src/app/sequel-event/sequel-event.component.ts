@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Button } from 'protractor';
 import { CommonService } from 'src/app/core/services/common.service';
 import { StudentService } from 'src/app/core/services/student.service';
 
@@ -30,8 +31,19 @@ export class SequelEventComponent implements OnInit {
        
       },
     );
+    const button = document.getElementById("event-button") as HTMLBodyElement;
+
+   function   handleButtonClick()  {
+    alert('working!');
     
   }
-
+    button.addEventListener("click",  handleButtonClick);
+    
+  }
+   
 
 }
+function handleButtonClick(this: HTMLBodyElement, ev: MouseEvent) {
+  throw new Error('Function not implemented.');
+}
+

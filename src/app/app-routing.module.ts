@@ -329,6 +329,7 @@ const routes: Routes = [
     component: SequelEventComponent,
   },
 
+  
   ...STATIC_PAGE_ROUTES,
 ];
 

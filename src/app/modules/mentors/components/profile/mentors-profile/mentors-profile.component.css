@@ -2438,6 +2438,18 @@ label,
 
 .keyword_input ::ng-deep tag delete-icon svg {
     height: auto;
+    -webkit-transform: none !important;
+    transform: none !important;
+}
+
+delete-icon:hover {
+    -webkit-transform: none;
+    transform: none;
+}
+
+.keyword_input ::ng-deep tag delete-icon:hover svg{
+    -webkit-transform: none;
+    transform: none;
 }
 
 .remove_video {

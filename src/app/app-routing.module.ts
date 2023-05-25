@@ -42,6 +42,7 @@ import { ForgotPasswordFormComponent } from '../app/shared/components/forgot-pas
 import { PublicBlogTagComponent } from 'src/app/public-blog-tag/public-blog-tag.component';
 import { SuccessProgramComponent } from './static-pages/success-program/success-program.component';
 import { SuccessFreeProjectComponent } from './static-pages/success-free-project/success-free-project.component';
+import { SequelEventComponent } from './sequel-event/sequel-event.component';
 
 const routes: Routes = [
   ...AUTH_ROUTES,
@@ -210,6 +211,17 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'events',
+
+    loadChildren: () =>
+
+      import('./modules/home/home.module').then((m) => m.HomeModule),
+
+    pathMatch: 'full',
+
+  },  
+
+  {
     path: 'student',
     loadChildren: () =>
       import('./modules/students/students.module').then(
@@ -310,7 +322,13 @@ const routes: Routes = [
   {
     path: 'my-badge',
     component: MyBadgeComponent,
+  }, 
+  
+  {
+    path: 'event',
+    component: SequelEventComponent,
   },
+
   ...STATIC_PAGE_ROUTES,
 ];
 

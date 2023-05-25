@@ -375,6 +375,15 @@ export class StudentService {
     );
   }
 
+  getSequelEventData() {
+    const apiUrl = environment.apiEndpointNew + 'public/listAllsequelEvents';
+    return this.http.get(apiUrl).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    );
+  }
+
   getPrivacy() {
     const apiUrl = `${environment.apiEndpointNew}public/privacy`;
     return this.http.get<ApiGenericResponse<any>>(apiUrl).pipe(

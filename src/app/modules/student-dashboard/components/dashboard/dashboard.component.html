@@ -1009,6 +1009,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
 
                     <div *ngIf="projectDialog?.mentor" class="position-relative d-inline-block p-0"
                         (mouseover)="MentoyByToolTrip=true" (mouseout)="MentoyByToolTrip=false"><b>Mentor :
+
                         </b>{{projectDialog?.mentor?.name}}
                         <div class="custom_tooltip" *ngIf="MentoyByToolTrip">
                             <h6 class="nam">{{projectDialog?.mentor?.name}}</h6>
@@ -1039,6 +1040,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                         <span *ngIf="projectDialog?.projectfees == 0" style="font-weight: 600;">Free</span>
                     </p>
                     <!-- <p>Including taxes</p> -->
+                    
                     <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
                             style="vertical-align: middle;"> | </span> <img
                             src="./../../../assets/images/office-chair.png" width="15" alt=""> <span

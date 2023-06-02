@@ -1003,7 +1003,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                     <!-- <p [ngbTooltip]="tipContent"><b>Mentor By : </b>{{projectDialog?.mentor?.name}}</p> -->
 
                     <div *ngIf="projectDialog?.mentor" class="position-relative d-inline-block p-0"
-                        (mouseover)="MentoyByToolTrip=true" (mouseout)="MentoyByToolTrip=false"><b>Mentor By :
+                        (mouseover)="MentoyByToolTrip=true" (mouseout)="MentoyByToolTrip=false"><b>Mentor :
                         </b>{{projectDialog?.mentor?.name}}
                         <div class="custom_tooltip" *ngIf="MentoyByToolTrip">
                             <h6 class="nam">{{projectDialog?.mentor?.name}}</h6>
@@ -1026,10 +1026,12 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                     </ng-template>
                     <p class="price-box">
                         <span *ngIf="projectDialog?.projectfees == 1"
-                            style="font-weight: 600;">{{projectDialog?.projectPrice?.currencySymbol}}{{projectDialog?.projectPrice?.amount}}</span>
+                            style="font-weight: 600;">{{projectDialog?.projectPrice?.currencySymbol}}{{projectDialog?.projectPrice?.amount}}
+                            <p style="font-weight: lighter;font-size: small;">Including taxes</p>
+                        </span>
                         <span *ngIf="projectDialog?.projectfees == 0" style="font-weight: 600;">Free</span>
                     </p>
-                    <p>Including taxes</p>
+                    <!-- <p>Including taxes</p> -->
                     <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
                             style="vertical-align: middle;"> | </span> <img
                             src="./../../../assets/images/office-chair.png" width="15" alt=""> <span
@@ -1199,7 +1201,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                     </ng-template>
                 </ngb-tab>
 
-                <ngb-tab title="About project">
+                <ngb-tab title="About Project">
                     <ng-template ngbTabContent>
                         <div class="project-plan">
                             <div>
@@ -1370,7 +1372,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                             style="font-weight: 600;">{{projectDialog?.projectPrice?.currencySymbol}}{{projectDialog?.projectPrice?.amount}}</span>
                         <span *ngIf="projectDialog?.projectfees == 0" style="font-weight: 600;">Free</span>
                     </p>
-                    <p>Including taxes</p>
+                    <!-- <p>Including taxes</p> -->
                     <!-- <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
                             style="vertical-align: middle;"> | </span> <img
                             src="./../../../assets/images/office-chair.png" width="15" alt=""> <span

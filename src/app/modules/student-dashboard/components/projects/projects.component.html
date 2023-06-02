@@ -176,8 +176,8 @@
                         <!-- <span *ngIf="!list?.user?.avatar" class="user-img">{{list?.user?.name}} </span> -->
                       </div>
                       <div class="mg-l15">
-                        <div><span class="user-name">{{list?.user?.name + " " + list?.user?.last_name}}</span> <span
-                            class="comment-time">{{list?.createdAt
+                        <div><span class="user-name">{{list?.user?.name + " " + list?.user?.last_name}}</span> 
+                          <span class="comment-time">{{list?.createdAt
                             |
                             date :'h:mm:ss a'}}</span>
                         </div>
@@ -194,7 +194,7 @@
                   <form [formGroup]="commentForm" style="width: 100%;">
                     <div class="image-upload">
                       <label for="file-input">
-                        <img src="assets/images/attachment.png" />
+                        <!-- <img src="assets/images/attachment.png" /> -->
                       </label>
                       <input id="file-input" type="file"
                         accept=".png,.jpeg,.jpg,.pdf,.docx,.xls,.xlsx,.doc,.ppt,.pptx" />

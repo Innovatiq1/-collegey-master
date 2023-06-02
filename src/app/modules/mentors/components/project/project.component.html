@@ -118,7 +118,7 @@
                   <form [formGroup]="commentForm" style="width: 100%;">
                     <div class="image-upload">
                       <label for="file-input">
-                        <img src="assets/images/attachment.png" />
+                        <!-- <img src="assets/images/attachment.png" /> -->
                       </label>
                       <input id="file-input" type="file"
                         accept=".png,.jpeg,.jpg,.pdf,.docx,.xls,.xlsx,.doc,.ppt,.pptx" />
@@ -706,7 +706,7 @@
 
           <div class="col-12 col-md-12">
             <div class="form-group">
-              <label><span style="color: red;">*</span>&nbsp;About project </label>
+              <label><span style="color: red;">*</span>&nbsp;About Project </label>
               <textarea formControlName="aboutProject" placeholder="" class="form-control"
                 (change)="wordCounter($event);"></textarea>
               <span *ngIf="submitted && (hasError('aboutProject','required') || hasError('aboutProject','pattern'))"

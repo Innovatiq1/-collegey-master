@@ -420,7 +420,7 @@
                         <span class="article-tags1" *ngFor="let tag of projectDialog.hash_tags">{{tag}}</span>
                         <!-- <span class="article-tags1">UI/UX </span> -->
                     </p>
-                    <p [ngbTooltip]="tipContent"><b>Mentor By : </b>{{projectDialog?.mentor?.name}}</p>
+                    <p [ngbTooltip]="tipContent"><b>Mentor : </b>{{projectDialog?.mentor?.name}}</p>
                     <ng-template placement="right" #tipContent>{{projectDialog?.mentor?.name}}<br />
                         {{projectDialog?.mentor?.mentor_profile?.profile?.rating}}
                         {{projectDialog?.mentor.profile?.profile?.experience}}<br />

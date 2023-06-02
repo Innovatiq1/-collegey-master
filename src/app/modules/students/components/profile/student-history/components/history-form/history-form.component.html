@@ -347,7 +347,7 @@
                 <div class="flex-div" *ngIf="formType == 'edit' && eduType == 'college student'">
                     <div class="group col-sm-12 p-0">
                         <div>
-                            <label class="select-label">Select option</label>
+                            <label class="select-label">Select option </label>
                             <select formControlName="type" disabled>
                                 <option value="college student" selected>
                                     College
@@ -362,7 +362,7 @@
             </h6>
             <ng-container style="padding: 12px;margin-top: -5px;">
                 <div class="group col-sm-6 col-md-6 no-pad" *ngIf="qualificationType =='School'">
-                    <p style="font-size: 15px;" class="textarea-label">Select grade level<span
+                    <p style="font-size: 15px;" class="textarea-label">Select grade level <span
                             style="color: #f00; margin-top: 15px;">*</span></p>
                     <ng-select [items]="currentClass2" placeholder="Select below" [multiple]="true"
                         formControlName="grade_choosen" (add)="onAddStudentGrade($event)"
@@ -391,7 +391,7 @@
                             <div class="flex-div">
                                 <div class="groupSchoolYear col-md-3 no-pad pd-r15">
                                     <div>
-                                        <label class="select-label">Start Year</label>
+                                        <label class="select-label">Start Year *</label>
                                         <select formControlName="start_year" (ngModelChange)="startYear1($event)">
                                             <option value="">Select Year</option>
                                             <option [value]="startyear" *ngFor="let startyear of startYear">
@@ -403,7 +403,7 @@
 
                                 <div class="groupSchoolYear col-md-3 no-pad ">
                                     <div>
-                                        <label class="select-label label-pad-designleft">End Year</label>
+                                        <label class="select-label label-pad-designleft">End Year *</label>
                                         <select formControlName="end_year" (ngModelChange)="EndYear1($event)">
                                             <option value="">Select Year</option>
                                             <option [value]="endyear" *ngFor="let endyear of endYear">{{endyear}}
@@ -413,9 +413,9 @@
                                 </div>
                                 <div class="groupSchoolYear col-md-6 no-pad pd-l15">
                                     <div>
-                                        <label class="select-label label-pad-designright">High School Board</label>
+                                        <label class="select-label label-pad-designright">High School Board </label>
                                         <select formControlName="board" (ngModelChange)="board($event)">
-                                            <option value="" disabled>Select Board</option>
+                                            <option value="" disabled>Select Board </option>
                                             <option [value]="board" *ngFor="let board of schoolBoard">{{board}}</option>
                                         </select>
                                         <app-input-validation [control]="grade.get('board')"
@@ -437,6 +437,7 @@
                             <div class="flex-div">
                                 <div class="col-md-3 no-pad pd-r15">
                                     <div *ngIf="start_year_error">
+                                        <label class="select-label">Start year <span style="color: #f00;">*</span></label>
                                         <span id="citierror1" style="color: red;">
                                             <p>{{start_year_error}}</p>
                                         </span>
@@ -444,6 +445,7 @@
                                 </div>
                                 <div class="col-md-3 no-pad ">
                                     <div *ngIf="end_year_error">
+                                        <label class="select-label">End year <span style="color: #f00;">*</span></label>
                                         <span id="citierror1" style="color: red;">
                                             <p>{{end_year_error}}</p>
                                         </span>
@@ -451,6 +453,7 @@
                                 </div>
                                 <div class="col-md-6 no-pad pd-l15">
                                     <div *ngIf="board_error">
+                                        <!-- <label class="select-label">High School Board <span style="color: #f00;">*</span></label> -->
                                         <span id="citierror1" style="color: red;">
                                             <p>{{board_error}}</p>
                                         </span>
@@ -462,10 +465,12 @@
                             <div class="flex-div">
                                 <div style="margin-bottom: 6px;" class="group col-sm-12 no-pad student-dropdown">
                                     <!-- <div> -->
-                                    <!-- <label class="select-label">Subjects</label> -->
-                                    <ng-multiselect-dropdown class="student-history-year-dropdown"
+                                    <label style="margin-top: 1px;
+                                    font: normal normal bold 12px/12px Nunito;
+                                    color: #1982d4;" class="select-label">Subjects <span style="color: #f00;">*</span></label>
+                                  <ng-multiselect-dropdown class="student-history-year-dropdown"
                                         style="margin-top: -5px;padding: 12px;" formControlName="field_of_study"
-                                        [placeholder]="'Select below'" [data]="projectDashboardProjects1"
+                                        [placeholder]="" [data]="projectDashboardProjects1"
                                         (ngModelChange)="saveSubject($event)" [settings]="dropdownSettings">
 
                                     </ng-multiselect-dropdown>
@@ -493,14 +498,14 @@
                                             formControlName="score" />
                                         <label style="top: 5px;
                                             font: normal normal bold 12px/12px Nunito;
-                                            color: #1982d4;" class="label-pad-designleft">Grade
+                                            color: #1982d4;" class="label-pad-designleft">Grade <span style="color: #f00;">*</span> 
                                         </label>
 
                                     </div>
                                 </div>
                                 <div class="group col-sm-3 no-pad pd-l15">
                                     <div>
-                                        <label class="select-label label-pad-designright">Grade Type</label>
+                                        <label class="select-label label-pad-designright">Grade Type <span style="color: #f00;">*</span></label>
 
                                         <select formControlName="scoreType"
                                             (ngModelChange)="scoreTypeSelection($event)">
@@ -518,7 +523,7 @@
                                     <div style="border: none">
                                         <label class="select-label position-static d-flex" style="pointer-events: all">
                                             <input class="w-auto mr-1" type="checkbox" name="tbd" formControlName="tbd"
-                                                value="" (click)="tbdStatus()">Result TBD</label>
+                                                value="" (click)="tbdStatus()">Result To be Declared</label>
                                     </div>
                                 </div>
                             </div>
@@ -580,7 +585,7 @@
                     <div class="flex-div">
                         <div class="group col-md-3 no-pad pd-r15">
                             <div>
-                                <label class="select-label">Start year</label>
+                                <label class="select-label">Start year <span style="color: #f00;">*</span></label>
                                 <select formControlName="start_year" (ngModelChange)="startYear1($event)">
                                     <option value="">Select Year</option>
                                     <option [value]="startyear" *ngFor="let startyear of startYear">{{startyear}}
@@ -592,9 +597,9 @@
                         </div>
                         <div class="group col-md-3 no-pad ">
                             <div>
-                                <label class="select-label label-pad-designleft">Expected graduation year</label>
+                                <label class="select-label label-pad-designleft">Expected graduation year <span style="color: #f00;">*</span></label>
                                 <select formControlName="end_year" (ngModelChange)="EndYear1($event)">
-                                    <option value="">Select Year</option>
+                                    <option value="">Select Year *</option>
                                     <option [value]="endyear" *ngFor="let endyear of endYear">{{endyear}}</option>
                                 </select>
                             </div>
@@ -602,9 +607,9 @@
                         </div>
                         <div class="group col-md-6 no-pad pd-l15">
                             <div>
-                                <label class="select-label label-pad-designright">College program type</label>
+                                <label class="select-label label-pad-designright">College program type <span style="color: #f00;">*</span></label>
                                 <select formControlName="degree" (ngModelChange)="degree($event)">
-                                    <option value="" disabled>Select Degree</option>
+                                    <option value="" disabled>Select Degree *</option>
                                     <option [value]="degree" *ngFor="let degree of collegeDegree">{{degree}}</option>
                                 </select>
                             </div>
@@ -645,7 +650,7 @@
                     <div class="flex-div">
                         <div class="group col-sm-6 no-pad mb-3">
 
-                            <!-- <label style="font-size: 15px;" class="select-label label-pad-designright">Select Year</label> -->
+                            <label style="font-size: 15px;" class="select-label label-pad-designright">Select Year *</label>
                             <ng-select [items]="currentClass3" placeholder="'Select year'" [multiple]="true"
                                 formControlName="year_choosen" (add)="onAddStudentcollege($event)"
                                 (remove)="onRemoveStudentcollege($event)" (ngModelChange)="year($event)"
@@ -665,7 +670,7 @@
                         <div class="row" [formGroupName]=index>
 
                             <div class="col-sm-12 no-pad" style="margin-top: 10px;">{{college.get('name').value}}
-                                Details</div>
+                                Course <span style="color: #f00;">*</span></div>
 
                             <div class="group col-sm-6 no-pad">
                                 <ng-multiselect-dropdown formControlName="field_of_study"
@@ -718,7 +723,7 @@
                                     <label style="top: 5px;
                                     font: normal normal bold 12px/12px Nunito;
                                     color: #1982d4;" class="label-pad-designright">
-                                        Grade
+                                        Grade <span style="color: #f00;">*</span>
                                     </label>
 
 
@@ -730,7 +735,7 @@
                             </div>
                             <div class="group col-sm-3 no-pad pd-l15">
                                 <div>
-                                    <label class="select-label label-pad-designright">Grade Type</label>
+                                    <label class="select-label label-pad-designright">Grade Type <span style="color: #f00;">*</span></label>
                                     <select formControlName="scoreType" (ngModelChange)="scoreTypeSelection($event)">
                                         <option [value]="type" *ngFor="let type of scoreType">{{type}}</option>
                                     </select>
@@ -757,7 +762,7 @@
                                 <div style="border: none">
                                     <label class="select-label position-static d-flex" style="pointer-events: all">
                                         <input class="w-auto mr-1" type="checkbox" name="tbd" formControlName="tbd"
-                                            value="" (click)="tbdStatus()">Result TBD</label>
+                                            value="" (click)="tbdStatus()">Result To be Declared</label>
                                 </div>
                             </div>
 
@@ -780,7 +785,7 @@
                         left: 8px;
                         color: #1982d4;" class="label-pad-designleft select-label">
                             {{qualificationType ==='College' ? 'College/institution' : 'High school'}}
-                            name:</label>
+                            name:<span style="color: #f00;">*</span></label>
                     </div>
                     <span id="citierror1" style="color: red;">
                         <p>{{school_error}}</p>
@@ -809,7 +814,7 @@
 
                         <label style="top: 5px;
                             font: normal normal bold 12px/12px Nunito;
-                            color: #1982d4;" class="label-pad-designright">Country<span style="color: #f00;">*</span>
+                            color: #1982d4;" class="label-pad-designright">Country <span style="color: #f00;">*</span>
                         </label>
                     </div>
                     <span id="citierror1" style="color: red;">
@@ -857,7 +862,7 @@
                         font: normal normal bold 12px/12px Nunito;
                         color: #1982d4;" class="label-pad-designright">
                             {{qualificationType ==='College' ? 'College/institution' : 'High school'}}
-                            location (city):</label>
+                            location (city): <span style="color: #f00;">*</span></label>
                     </div>
                     <span id="citierror1" style="color: red;">
                         <p>{{locationCity_error}}</p>

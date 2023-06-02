@@ -194,7 +194,7 @@
                   <form [formGroup]="commentForm" style="width: 100%;">
                     <div class="image-upload">
                       <label for="file-input">
-                        <img src="assets/images/attachment.png" />
+                        <!-- <img src="assets/images/attachment.png" /> -->
                       </label>
                       <input id="file-input" type="file"
                         accept=".png,.jpeg,.jpg,.pdf,.docx,.xls,.xlsx,.doc,.ppt,.pptx" />
@@ -721,7 +721,7 @@
 
           <div class="col-12 col-lg-12">
             <div class="form-group">
-              <label>About project (under 250 words)&nbsp;<span style="color: red;">*</span></label>
+              <label>About Project (under 250 words)&nbsp;<span style="color: red;">*</span></label>
               <textarea formControlName="aboutProject" placeholder="" class="form-control"
                 (change)="wordCounter($event);"></textarea>
               <span *ngIf="showWordLimitError" class="d-block" style="color: red;">Max word limit is 250</span>

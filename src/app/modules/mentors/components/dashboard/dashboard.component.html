@@ -660,11 +660,13 @@ font-size: small;">{{profileText}}
 
           <p class="price-box">
             <span *ngIf="projectDialog?.projectfees == 1"
-              style="font-weight: 600;">{{projectDialog?.projectPrice?.currencySymbol}}{{projectDialog?.projectPrice?.amount}}</span>
+              style="font-weight: 600;">{{projectDialog?.projectPrice?.currencySymbol}}{{projectDialog?.projectPrice?.amount}}
+              <p style="font-weight: lighter;font-size: small;">Including taxes</p>
+            </span>
             <span *ngIf="projectDialog?.projectfees == 0" style="font-weight: 600;">Free</span>
           </p>
 
-          <p>Including taxes</p>
+          <!-- <p>Including taxes</p> -->
           <p class="spots-box"><span>{{projectDialog?.remainingSlot}} Spots </span><span
               style="vertical-align: middle;"> | </span> <img src="./../../../assets/images/office-chair.png" width="15"
               alt=""> <span style="color: #25E66D;"> {{projectDialog?.remainingSlot -
@@ -814,7 +816,7 @@ font-size: small;">{{profileText}}
           </ng-template>
         </ngb-tab>
 
-        <ngb-tab title="About project">
+        <ngb-tab title="About Project">
           <ng-template ngbTabContent>
             <div class="project-plan">
               <div>

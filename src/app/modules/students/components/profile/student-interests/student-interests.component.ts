@@ -208,7 +208,8 @@ export class StudentInterestsComponent implements OnInit, OnDestroy {
       InterestFormData.interest.redirectAction = exit;
       this.onSubmitInterestForm.emit(InterestFormData);
       }
-    }else{
+    }
+    else{
     this.studentService.redirectToDashboard(exit);  // exit after save or not
     let InterestFormData = this.studentInterestForm.getRawValue();
     InterestFormData.interest.redirectAction = exit;

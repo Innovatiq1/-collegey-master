@@ -43,9 +43,12 @@ import { PublicBlogTagComponent } from 'src/app/public-blog-tag/public-blog-tag.
 import { SuccessProgramComponent } from './static-pages/success-program/success-program.component';
 import { SuccessFreeProjectComponent } from './static-pages/success-free-project/success-free-project.component';
 import { SequelEventComponent } from './sequel-event/sequel-event.component';
+
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { PastComponent } from './past/past.component';
 import { LoadmoreComponent } from './loadmore/loadmore.component'
+
+
 
 const routes: Routes = [
   ...AUTH_ROUTES,
@@ -226,6 +229,17 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'events',
+
+    loadChildren: () =>
+
+      import('./modules/home/home.module').then((m) => m.HomeModule),
+
+    pathMatch: 'full',
+
+  },  
+
+  {
     path: 'student',
     loadChildren: () =>
       import('./modules/students/students.module').then(
@@ -326,11 +340,21 @@ const routes: Routes = [
   {
     path: 'my-badge',
     component: MyBadgeComponent,
-  },
+  }, 
+  
   {
     path: 'event',
     component: SequelEventComponent,
   },
+
+
+
+
+
+
+
+  
+
   ...STATIC_PAGE_ROUTES,
 ];
 

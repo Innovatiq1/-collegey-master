@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+
+
+
 import { SequelEventComponent } from './sequel-event.component';
 
 describe('SequelEventComponent', () => {
@@ -7,9 +11,15 @@ describe('SequelEventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+
       declarations: [SequelEventComponent]
     })
       .compileComponents();
+
+      declarations: [ SequelEventComponent ]
+    })
+    .compileComponents();
+
   }));
 
   beforeEach(() => {
@@ -21,4 +31,8 @@ describe('SequelEventComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
+
+});
+

@@ -72,8 +72,12 @@
             <div *ngIf="officeHours.length > 0" formArrayName="officeHours">
                 <div [formGroupName]="0" class="">
                     <div class="group col-sm-12" style="margin-bottom: 15px;">
-                        <select class="mr-3 weekday" required="required" formControlName="days"
-                            [(ngModel)]="mondayHours">
+                        <select class="mr-3 weekday" disabled="disabled" required="required" formControlName="days"
+                            [(ngModel)]="mondayHours" style="
+                            color: black; border: 1px solid black;
+                                appearance: none;
+                                text-indent: 5px;
+                                ">
                             <option value="Monday">Monday</option>
                         </select>
                         <input type="time" *ngIf="!mondayClosed" class="form-control d-inline-block w-auto officetime"
@@ -99,8 +103,12 @@
 
                 <div [formGroupName]="1" class="">
                     <div class="group col-sm-12" style="margin-bottom: 15px;">
-                        <select class="mr-3 weekday" required="required" formControlName="days"
-                            [(ngModel)]="tuesdayHours">
+                        <select class="mr-3 weekday" disabled="disabled" required="required" formControlName="days"
+                            [(ngModel)]="tuesdayHours" style="
+                            color: black; border: 1px solid black;
+                                appearance: none;
+                                text-indent: 5px;
+                                ">
                             <option value="Tuesday">Tuesday</option>
                         </select>
                         <input type="time" *ngIf="!tuesdayClosed" class="form-control d-inline-block w-auto officetime"
@@ -126,8 +134,12 @@
 
                 <div [formGroupName]="2" class="">
                     <div class="group col-sm-12" style="margin-bottom: 15px;">
-                        <select class="mr-3 weekday" required="required" formControlName="days"
-                            [(ngModel)]="wednesdayHours">
+                        <select class="mr-3 weekday" disabled="disabled" required="required" formControlName="days"
+                            [(ngModel)]="wednesdayHours" style="
+                            color: black; border: 1px solid black;
+                                appearance: none;
+                                text-indent: 5px;
+                                ">
                             <option value="Wednesday">Wednesday</option>
                         </select>
                         <input type="time" *ngIf="!wednesdayClosed"
@@ -155,8 +167,12 @@
 
                 <div [formGroupName]="3" class="">
                     <div class="group col-sm-12" style="margin-bottom: 15px;">
-                        <select class="mr-3 weekday" required="required" formControlName="days"
-                            [(ngModel)]="thursdayHours">
+                        <select class="mr-3 weekday" disabled="disabled" required="required" formControlName="days"
+                            [(ngModel)]="thursdayHours" style="
+                            color: black; border: 1px solid black;
+                                appearance: none;
+                                text-indent: 5px;
+                                ">
                             <option value="Thursday">Thursday</option>
                         </select>
                         <input type="time" *ngIf="!thursdayClosed" class="form-control d-inline-block w-auto officetime"
@@ -182,8 +198,12 @@
 
                 <div [formGroupName]="4" class="">
                     <div class="group col-sm-12" style="margin-bottom: 15px;">
-                        <select class="mr-3 weekday" required="required" formControlName="days"
-                            [(ngModel)]="fridayHours">
+                        <select class="mr-3 weekday" disabled="disabled" required="required" formControlName="days"
+                        [(ngModel)]="fridayHours" style="
+                        color: black; border: 1px solid black;
+                            appearance: none;
+                            text-indent: 5px;
+                            ">
                             <option value="Friday">Friday</option>
                         </select>
                         <input type="time" *ngIf="!fridayClosed" class="form-control d-inline-block w-auto officetime"
@@ -209,8 +229,12 @@
 
                 <div [formGroupName]="5" class="">
                     <div class="group col-sm-12" style="margin-bottom: 15px;">
-                        <select class="mr-3 weekday" required="required" formControlName="days"
-                            [(ngModel)]="saturdayHours">
+                        <select class="mr-3 weekday" disabled="disabled" required="required" formControlName="days"
+                            [(ngModel)]="saturdayHours" style="
+                            color: black; border: 1px solid black;
+                                appearance: none;
+                                text-indent: 5px;
+                                ">
                             <option value="Saturday">Saturday</option>
                         </select>
                         <input type="time" *ngIf="!saturdayClosed" class="form-control d-inline-block w-auto officetime"
@@ -236,8 +260,12 @@
 
                 <div [formGroupName]="6" class="">
                     <div class="group col-sm-12" style="margin-bottom: 15px;">
-                        <select class="mr-3 weekday" required="required" formControlName="days"
-                            [(ngModel)]="sundayHours">
+                        <select class="mr-3 weekday" disabled="disabled" required="required" formControlName="days"
+                            [(ngModel)]="sundayHours" style="
+                            color: black; border: 1px solid black;
+                                appearance: none;
+                                text-indent: 5px;
+                                ">
                             <option value="Sunday">Sunday</option>
                         </select>
                         <input type="time" *ngIf="!sundayClosed" class="form-control d-inline-block w-auto officetime"

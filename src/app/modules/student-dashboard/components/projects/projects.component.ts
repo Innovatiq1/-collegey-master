@@ -262,9 +262,9 @@ export class ProjectsComponent implements OnInit {
     });
 
     this.isCharheStudent = 0;
+
     var myDateSet = new Date(new Date());
-    
-    var projStartDate = new Date(); 
+     var projStartDate = new Date();
     projStartDate.setDate(myDateSet.getDate()+28);
     var newprojStartDateSet = this.datePipe.transform(projStartDate, 'yyyy-MM-dd');
     this.projectStartDate = newprojStartDateSet;
@@ -273,6 +273,7 @@ export class ProjectsComponent implements OnInit {
     deadlineDate.setDate(myDateSet.getDate());
     var startDeadlineDateSet = this.datePipe.transform(deadlineDate, 'yyyy-MM-dd');
     this.ProjectSetLastMaxiDate = startDeadlineDateSet;
+
 
     // var myDateSet = new Date();
     // var newDateSet = this.datePipe.transform(myDateSet, 'yyyy-MM-dd');
@@ -329,6 +330,7 @@ export class ProjectsComponent implements OnInit {
     // this.ProjectSetLastMaxiDate = newDateSet1;
 
     var myCurrentDate = new Date(event.target.value);
+    
     var endDeadlineDate = new Date(this.addProjectForm.get('startDate').value);
     endDeadlineDate.setDate(myCurrentDate.getDate()-1);
     var endDeadlineDateSet = this.datePipe.transform(endDeadlineDate, 'yyyy-MM-dd');

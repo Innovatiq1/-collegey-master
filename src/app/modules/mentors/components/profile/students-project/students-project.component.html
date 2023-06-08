@@ -62,7 +62,9 @@
                 <div class="mb-1">
                     <input type="date" class="form-control" min="{{ProjectSetLastMaxiDate}}" max="{{projectSetLastDate}}"  #takeInput id="date2"
                         placeholder="" style="height: 29px;" formControlName="lastDate" value="{{projectSetLastDate}}">
-                    <label>Deadline to sign up*</label>
+                    <label>Deadline to sign up*
+                        
+                    </label>
                 </div>
                 <span *ngIf="submittedProfile && (hasError('lastDate','required') || hasError('lastDate','pattern'))"
                     class="alert-danger d-block p-1">End date is required</span>

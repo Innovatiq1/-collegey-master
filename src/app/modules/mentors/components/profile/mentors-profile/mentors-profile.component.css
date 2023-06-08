@@ -2438,6 +2438,18 @@ label,
 
 .keyword_input ::ng-deep tag delete-icon svg {
     height: auto;
+    -webkit-transform: none !important;
+    transform: none !important;
+}
+
+delete-icon:hover {
+    -webkit-transform: none;
+    transform: none;
+}
+
+.keyword_input ::ng-deep tag delete-icon:hover svg{
+    -webkit-transform: none;
+    transform: none;
 }
 
 .remove_video {
@@ -2559,6 +2571,7 @@ label,
 .form-group .label-terms-conditions:before {
     content: '';
     -webkit-appearance: none;
+    appearance: none;
     background-color: transparent;
     border: solid 1px rgba(0, 0, 0, 0.1);
     padding: 6px;

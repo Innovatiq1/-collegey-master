@@ -272,7 +272,8 @@ export class StudentGeographyComponent implements OnInit, OnDestroy {
       this.onSubmitGeographyForm.emit(geographyFormData);
       this.commonService.sendUpdate(outputObj);
     }
-  }else {
+  }
+  else {
       this.studentService.redirectToDashboard(exit);
       let geographyFormData = this.geographyFormGroup.getRawValue();
       let outputObj = {

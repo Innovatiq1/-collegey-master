@@ -205,6 +205,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     }
   }
+  openNewLink(){
+    window.open("/event", '_blank');
+  }
 
   setUserData() {
     const loggedInInfo = this.authService.getUserInfo();

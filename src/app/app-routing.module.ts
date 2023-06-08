@@ -42,6 +42,10 @@ import { ForgotPasswordFormComponent } from '../app/shared/components/forgot-pas
 import { PublicBlogTagComponent } from 'src/app/public-blog-tag/public-blog-tag.component';
 import { SuccessProgramComponent } from './static-pages/success-program/success-program.component';
 import { SuccessFreeProjectComponent } from './static-pages/success-free-project/success-free-project.component';
+import { SequelEventComponent } from './sequel-event/sequel-event.component';
+import { UpcomingComponent } from './upcoming/upcoming.component';
+import { PastComponent } from './past/past.component';
+import { LoadmoreComponent } from './loadmore/loadmore.component'
 
 const routes: Routes = [
   ...AUTH_ROUTES,
@@ -51,6 +55,18 @@ const routes: Routes = [
   //     import('./modules/landing/landing.module').then(m => m.LandingModule),
   //     pathMatch: 'full'
   // },
+  {
+    path: 'upcoming',
+    component: UpcomingComponent,
+  },
+  // {
+  //   path: 'loadmore',
+  //   component: LoadmoreComponent,
+  // },
+  {
+    path: 'past',
+    component: PastComponent,
+  },
   {
     path: '',
     loadChildren: () =>
@@ -310,6 +326,10 @@ const routes: Routes = [
   {
     path: 'my-badge',
     component: MyBadgeComponent,
+  },
+  {
+    path: 'event',
+    component: SequelEventComponent,
   },
   ...STATIC_PAGE_ROUTES,
 ];

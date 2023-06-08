@@ -57,6 +57,12 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 import {NgxImageCompressService} from 'ngx-image-compress';
 import { PublicBlogTagComponent } from './public-blog-tag/public-blog-tag.component';
+import { SequelEventComponent } from './sequel-event/sequel-event.component';
+import { UpcomingComponent } from './upcoming/upcoming.component';
+import { PastComponent } from './past/past.component';
+import { CardsComponent } from './cards/cards.component';
+import { LoadmoreComponent } from './loadmore/loadmore.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 let config = new AuthServiceConfig([
   {
@@ -75,7 +81,7 @@ export function provideConfig() {
 
 
 @NgModule({
- declarations: [AppComponent,PartnerWithCollegeyComponent,ThankYouComponent, InviteComponent, UserSelectionComponent, UserProfileComponent,CollageyComponent,MeetTheTeamComponent, CampaignComponent,ProfileComponent,UniversityDashboardComponent, UniversityComponent, CollegyMarketplaceComponent, ResetPasswordComponent, CertificateComponent, AgreementTermsConditionComponent,CollegeyFundComponent,BoardAdvisorsComponent,BoardDirectorsComponent,NewsResourceComponent, PublicBlogTagComponent],
+ declarations: [AppComponent,PartnerWithCollegeyComponent,ThankYouComponent, InviteComponent, UserSelectionComponent, UserProfileComponent,CollageyComponent,MeetTheTeamComponent, CampaignComponent,ProfileComponent,UniversityDashboardComponent, UniversityComponent, CollegyMarketplaceComponent, ResetPasswordComponent, CertificateComponent, AgreementTermsConditionComponent,CollegeyFundComponent,BoardAdvisorsComponent,BoardDirectorsComponent,NewsResourceComponent, PublicBlogTagComponent, SequelEventComponent, UpcomingComponent, PastComponent, CardsComponent, LoadmoreComponent],
  imports: [
     BrowserModule,
     AppRoutingModule,
@@ -85,6 +91,7 @@ export function provideConfig() {
     FileSaverModule,
     NgxSpinnerModule,
     CarouselModule,
+    TabsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',

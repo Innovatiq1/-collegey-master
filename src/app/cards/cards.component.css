@@ -1,0 +1,11 @@
+.team_member {
+    padding-top: 120px;
+}
+
+.cards iframe {
+    display: flex;
+    width:600px;
+    height:450px;
+    justify-content: center;
+    margin-left: 25%;
+}

@@ -1,0 +1,68 @@
+.team_member {
+    padding-top: 100px;
+}
+
+.body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+    margin: 2%;
+}
+
+.card {
+    width: 200px;
+    display: inline-block;
+    box-shadow: 2px, 2px, 20px, black;
+    border-radius: 5px;
+    margin: 2%;
+}
+
+.image img {
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.title {
+    text-align: left;
+    padding-top: 25px;
+}
+
+.title h6 {
+    font-weight: bold;
+
+}
+
+.timendate p {
+    /* padding: 3px; */
+    text-align: left;
+    padding-top: 1px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+/* .load {
+    position:absolute;
+    background-color: #2c76ed;
+    border-color: black;
+    height: 30px;
+    width: fit-content;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+     right: 60px; 
+     left: 40%; 
+    bottom: 140px;
+    border-radius: 5px;
+}
+
+ .col{
+    top: 100px;
+    width: fit-content;
+    color: black;
+    font-weight: bolder;
+    position: absolute;
+} */

@@ -39,7 +39,7 @@
 .col-8 img{
     width:90%;
     height: fit-content;
-    margin-top: -85px;
+    margin-top: -80px;
 }
 .col-4 {
     margin-left: -60px;
@@ -79,81 +79,31 @@
     font-weight: bold;
      cursor: pointer;
 }
-.btn-warning{
-    position: relative;
-    padding: 10px 16px;
-    font-size: 15px;
-    line-height: 1.5;
-    border-radius: 3px;
-    color: #fff;
-    background-color: #ffc100;
-    border: 0;
-    transition: 0.2s;
-    overflow: hidden;
-}
-
-.btn-warning input[type = "file"]{
-    cursor: pointer;
-    position: absolute;
-    left : 0%;
-    right: 0%;
-    transform: scale(3);
-    opacity: 0;
-}
-
-.btn-warning:hover{
-    background-color: #d9a400;
-}
-
-.upload-1{
-    width: 100px;
-    position: relative;
-    margin: auto;
-}
-
-.upload-1 img {
-    border-radius: 50%;
-    border: 6px solid #eaeaea;
-}
-
-.upload-1 .round{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.6);;
-    width: 30px;
-    height: 32px;
-    line-height: 33px;
-    text-align: center;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.upload-1 .round input[type = "file"]{
-    position: absolute;
-    transform: scale(2);
-    opacity: 0;
-}
-input[type =file]::-webkit-file-upload-button{
-    cursor: pointer;
-}
 
 .text-overlay{
     position: relative;
-    top: 6%;
-    left: 9%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    width: 162%;
+    display: flex;
+    flex: 0 1 0%;
+    left: -10%;
+    /* transform: translate(-50%, -50%);  */
+    background-color: rgba(70, 69, 102, 0.4);
+    width: 100%;
     padding: 20px;
-    color: #fff;
+    box-shadow: rgba(70, 69, 102, 0.4);
+    backdrop-filter: blur(50px);
 }
 
 .text-overlay h3{
-    /* position: relative; */
-    font-size :30px;
-    margin-bottom: 10px;    
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 10px;
+    margin-left: 80px;
 }
+
+ 
+
+
+
 
 /* .share-button i {
     margin-right: 8px;

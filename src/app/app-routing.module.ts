@@ -43,6 +43,10 @@ import { PublicBlogTagComponent } from 'src/app/public-blog-tag/public-blog-tag.
 import { SuccessProgramComponent } from './static-pages/success-program/success-program.component';
 import { SuccessFreeProjectComponent } from './static-pages/success-free-project/success-free-project.component';
 import { SequelEventComponent } from './sequel-event/sequel-event.component';
+import { UpcomingComponent } from './upcoming/upcoming.component';
+import { PastComponent } from './past/past.component';
+import {CardsComponent } from './cards/cards.component';
+import { LoadmoreComponent } from './loadmore/loadmore.component'
 
 const routes: Routes = [
   ...AUTH_ROUTES,
@@ -52,6 +56,27 @@ const routes: Routes = [
   //     import('./modules/landing/landing.module').then(m => m.LandingModule),
   //     pathMatch: 'full'
   // },
+  {
+    path: 'upcoming',
+    component: UpcomingComponent,
+  },
+// {
+//   path: 'loadmore',
+//   component: LoadmoreComponent,
+// },
+  {
+    path: 'past',
+    component: PastComponent,
+  },
+  {
+    path: 'cards',
+    component: CardsComponent,
+  },
+  // {
+  //   path: 'redirectToSequelPage',
+  //   component: CardsComponent,
+  // },
+
   {
     path: '',
     loadChildren: () =>
@@ -210,16 +235,16 @@ const routes: Routes = [
     component: CancelComponent,
     pathMatch: 'full',
   },
-  {
-    path: 'events',
+  // {
+  //   path: 'events',
 
-    loadChildren: () =>
+  //   loadChildren: () =>
 
-      import('./modules/home/home.module').then((m) => m.HomeModule),
+  //     import('./modules/home/home.module').then((m) => m.HomeModule),
 
-    pathMatch: 'full',
+  //   pathMatch: 'full',
 
-  },  
+  // },  
 
   {
     path: 'student',
@@ -327,6 +352,13 @@ const routes: Routes = [
   {
     path: 'event',
     component: SequelEventComponent,
+   
+  },
+
+  {
+    path: 'events',
+    component: CardsComponent,
+   
   },
 
   

@@ -1,0 +1,195 @@
+.team_member {
+    padding-top: 70px;
+}
+.embed-button{
+    background-color: whitesmoke;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 33px;
+    margin-left: -35px;
+   font-size: 12px;
+   font-weight: bold;
+   padding: 4px 6px;
+   height: 36px;
+   width: 100px;
+}
+
+.share-button{
+
+    background-color: whitesmoke;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 33px;
+    margin-left: -35px;
+   font-size: 12px;
+   font-weight:bold ;
+   padding: 4px 6px;
+   height: 36px;
+   width: 100px;
+}
+.col-10 img{
+    width: 120px;
+    margin-top: 30px;
+    margin-left: 20px
+}
+.col-8 img{
+    width:90%;
+    height: fit-content;
+    margin-top: -85px;
+}
+.col-4 {
+    margin-left: -60px;
+    margin-top: 40px;
+}
+.col-4 h4{
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 70px;
+}
+.col-4 p{
+    margin-top: 30px;
+    text-align: center;
+}
+.col-4 label{
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 12px;
+}
+.col-4 input{
+    width:100%;
+    height: 50px;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+.col-4 button{
+    margin-top: 40px;
+    background-color: blueviolet;
+    font-weight: bold;
+}
+.already p{
+    margin-top: 20px;
+    margin-left: -160px;
+}
+.already span{
+    color: blueviolet;
+    font-weight: bold;
+     cursor: pointer;
+}
+.btn-warning{
+    position: relative;
+    padding: 10px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #ffc100;
+    border: 0;
+    transition: 0.2s;
+    overflow: hidden;
+}
+
+.btn-warning input[type = "file"]{
+    cursor: pointer;
+    position: absolute;
+    left : 0%;
+    right: 0%;
+    transform: scale(3);
+    opacity: 0;
+}
+
+.btn-warning:hover{
+    background-color: #d9a400;
+}
+
+.upload-1{
+    width: 100px;
+    position: relative;
+    margin: auto;
+}
+
+.upload-1 img {
+    border-radius: 50%;
+    border: 6px solid #eaeaea;
+}
+
+.upload-1 .round{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);;
+    width: 30px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.upload-1 .round input[type = "file"]{
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+}
+input[type =file]::-webkit-file-upload-button{
+    cursor: pointer;
+}
+
+.text-overlay{
+    position: relative;
+    top: 6%;
+    left: 9%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 162%;
+    padding: 20px;
+    color: #fff;
+}
+
+.text-overlay h3{
+    /* position: relative; */
+    font-size :30px;
+    margin-bottom: 10px;    
+}
+
+/* .share-button i {
+    margin-right: 8px;
+} */
+
+/* .box-2 .col-8 img {
+    width:85%;
+    height: 100%;
+}
+
+.box-2 .col-4{
+    margin-left: -90px;
+}
+.box-2 .col-4 h4 {
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: 70px;
+}
+.box-2 .col-4 .para{
+    margin-top: 30px;
+}
+.box-2 .col-4 .fullname {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: large;
+}
+.box-2 .col-4 .text{
+    width: 120%;
+    height: 40px;
+    margin-top: 10px;
+}
+.box-2 .col-4 .email{
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: large;   
+}
+.box-2 .col-4 .already{
+    margin-top: 10px
+} */

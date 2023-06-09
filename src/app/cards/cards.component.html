@@ -1,9 +1,80 @@
 <section class="team_member section-padding">
-    <div class="cards">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/l9AzO1FMgM8"
-    title="YouTube video player" frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; 
-    encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
-  </iframe>
+  <div class="row" style="border-bottom: 2px solid white;box-shadow:0 1px 11px black;
+  height: 80px;margin-top: 10px;">
+    <div class="col-10">
+      <img src="assets\images\collegey-main-logo.png" style="width: 120px;margin-top: 30px;
+      margin-left: 20px;">
     </div>
+    <div class="col-1">
+      <button class="embed-button">
+        <!-- <i class="&lt &gt;"></i> -->
+        <i>&#60; &#62;</i>
+        Embed
+      </button>
+    </div>
+    <div class="col-1">
+      <!-- <button class="btn btn-primary" style="margin-top:30px;background-color: white;color: blueviolet;">Share</button> -->
+      <button class="share-button">
+        <i class="fa fa-share-alt"></i>
+        Share
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="text-overlay">
+        <h3>Main Session</h3>
+      </div>
+      <img src="assets\images\sequel.jpg" style="width:90%; height: 100%;margin-top: -68px;">
+    </div>
+   
+    <div class="col-4" style="margin-left: -100px;">
+      <h4 style="font-weight: bold;margin-top: 50px;margin-left: 100px;color: rgb(48, 44, 102);;
+    font-size: 1.25rem;font-family: Nunito;">Ready to join the event?</h4>
+
+      <!-- <div class="profile" style="margin-left: 160px;margin-top: 30px;">
+        <div class="circle">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+          <i class="fas fa-user-circle"></i>
+          <div class="upload">
+            <button type="button" class="btn-upload">
+              <i class="fa fa-upload"></i>Upload File
+              <input type="file">
+            </button>
+          </div>
+          <div class="cam">
+
+            <i class="fa fa-camera"></i>
+          </div>
+        </div>
+      </div> -->
+
+      <form>
+        <label for="fullname" style="font-weight: bold;margin-top: -5px;font-size: 12px;">Display
+          Name</label><br>
+        <input type="text" placeholder="Enter your name"
+          style="width: 100%;height: 50px;padding-left: 15px;margin-top: 15px;"><br>
+        <label for="fullname" style="font-weight: bold;margin-top: 30px;font-size: 12px;">Email
+          Address</label><br>
+        <input type="text" placeholder="Enter your email address"
+          style="width: 100%;height: 50px;padding-left: 15px;margin-top: 15px;"><br>
+        <div class="col">
+          <button class="btn" style="margin-top:30px;background-color: whitesmoke;color: rgb(51, 51, 51);
+  border: 1px black; background-color: rgba(51, 51, 51, 0.08);border: none;">NO PASSCODE</button>
+          <button class="btn" style="margin-top:30px;background-color: whitesmoke;color: rgb(51, 51, 51);
+  margin-left: 2px;border: 1px black;background-color: rgba(51, 51, 51, 0.08);">I HAVE PASSCODE</button>
+        </div>
+        <button class="btn btn-primary" style="margin-top: 25px;background-color: blueviolet;
+  font-weight: bold;width: 70%;padding-right: 20px;margin-left: 20px;
+  padding-left: 20px;border-radius: 20px;margin-bottom: 30px;border: none;">Join Session</button>
+
+      </form>
+    </div>
+
+
+  </div>
 </section>
+
+<!-- <div>
+    <card *ngfor =" let event of events" [event] = "event"></card>
+</div> -->

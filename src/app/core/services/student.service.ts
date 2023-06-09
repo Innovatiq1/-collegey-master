@@ -378,7 +378,6 @@ export class StudentService {
 
 getSequelEventData() {
 
-  getSequelEventData() {
 
     const apiUrl = environment.apiEndpointNew + 'public/listAllsequelEvents';
     return this.http.get(apiUrl).pipe(

@@ -88,8 +88,6 @@ export function provideConfig() {
 
  declarations: [AppComponent,PartnerWithCollegeyComponent,ThankYouComponent, InviteComponent, UserSelectionComponent, UserProfileComponent,CollageyComponent,MeetTheTeamComponent, CampaignComponent,ProfileComponent,UniversityDashboardComponent, UniversityComponent, CollegyMarketplaceComponent, ResetPasswordComponent, CertificateComponent, AgreementTermsConditionComponent,CollegeyFundComponent,BoardAdvisorsComponent,BoardDirectorsComponent,NewsResourceComponent, PublicBlogTagComponent, SequelEventComponent, UpcomingComponent, PastComponent, CardsComponent, LoadmoreComponent],
 
- declarations: [AppComponent,PartnerWithCollegeyComponent,ThankYouComponent, InviteComponent, UserSelectionComponent, UserProfileComponent,CollageyComponent,MeetTheTeamComponent, CampaignComponent,ProfileComponent,UniversityDashboardComponent, UniversityComponent, CollegyMarketplaceComponent, ResetPasswordComponent, CertificateComponent, AgreementTermsConditionComponent,CollegeyFundComponent,BoardAdvisorsComponent,BoardDirectorsComponent,NewsResourceComponent, PublicBlogTagComponent, SequelEventComponent, EventComponent],
-
  imports: [
     BrowserModule,
     AppRoutingModule,

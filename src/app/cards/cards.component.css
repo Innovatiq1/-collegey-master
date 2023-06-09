@@ -1,11 +1,153 @@
 .team_member {
-    padding-top: 120px;
+    padding-top: 70px;
 }
 
-.cards iframe {
-    display: flex;
-    width:600px;
-    height:450px;
-    justify-content: center;
-    margin-left: 25%;
+.input {
+    width: 100%;
 }
+
+.embed-button {
+    background-color: whitesmoke;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 33px;
+    margin-left: -35px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 6px;
+    height: 36px;
+    width: 100px;
+}
+
+.share-button {
+
+    background-color: whitesmoke;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 33px;
+    margin-left: -35px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 6px;
+    height: 36px;
+    width: 100px;
+}
+
+.text-overlay{
+    position: relative;
+    display: flex;
+    flex: 0 1 0%;
+    left: -10%;
+    /* transform: translate(-50%, -50%); */
+    background-color: rgba(70, 69, 102, 0.4);;
+    width: 100%;
+    padding: 20px;
+    box-shadow: rgba(70, 69, 102, 0.4);;
+    color: #fff;
+    backdrop-filter: blur(50px);
+}
+
+.text-overlay h3{
+    font-size: 1.6rem;
+    color: #b1afab;
+    margin-bottom: 10px;
+    margin-left: 80px;
+}
+/* .circle{
+    background-color: rgb(87, 27, 234);
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+} */
+.circle i {
+    /* position: absolute; */
+    color: rgb(87, 27, 234);
+    text-align: center;
+    /* margin-top: 8px;
+    margin-left: 21px; */
+    font-size: 140px;
+}
+
+.cam {
+    /* position: absolute; */
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.54);
+    height: 60px;
+    width: 60px;
+    top: -45px;
+    left: 85px;
+    border-radius: 50%;
+}
+
+.cam i {
+    /* background-color: black;  */
+    position: absolute;
+    color: white;
+    text-align: center;
+    margin-top: 18px;
+    margin-left: 18px;
+    font-size: 25px;
+    /* border-radius: 50%;  */
+
+}
+
+.btn-upload{
+    position: relative;
+    padding: 10px 15px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #fff;
+    border-color: yellow;
+    border: 0;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.btn-upload input[type="file"]{
+    position: absolute;
+    cursor: pointer;
+    left: 0%;
+    right: 0%;
+    transform: scale(5);
+    opacity: 0;
+}
+.btn-upload:hover{
+    background: #d9a400;
+}
+.upload .circle input[type = "file"]{
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+}
+/* .p-icon{
+    width: 100px;
+    position: relative;
+    margin-left: 100px ;
+    background-color: blue;
+    border-radius: 50%;
+    
+}
+.p-icon img{
+    border-radius: 50%;
+    border: 6px solid grey;
+
+}
+.p-icon .round{
+    position: absolute;
+   bottom: 0;
+   right: 0;
+   transform: scale(2);
+    width: 32px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+    /* opacity: 0; 
+
+} */

@@ -18,6 +18,7 @@ export class SequelEventComponent implements OnInit {
     private studentService: StudentService,
     public commonService: CommonService,
     private router: Router
+    
   ) { }
 
   setTab(tabname: string) {

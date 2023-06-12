@@ -54,6 +54,7 @@ export class PastComponent implements OnInit {
     let url1= "https://app.sequel.io/event/"+ url.uid
     console.log(url1);
     window.location.href=url1;
+    
   }
   // goToLoad(pagename: string): void {
   //   this.loadmore = true;

@@ -59,6 +59,16 @@ export class StudentService {
     );
   };
   
+  cards = (data:any,id:any): Observable<any> => {
+    console.log("=====test====",id)
+    const endpoint = 'https://api.introvoke.com/api/v3/events/'+id+'/registrant';
+    console.log(endpoint)
+    return this.http.post(endpoint, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    );
+  };
   
   resetNewPassword = (data: any): Observable<any> => {
     const endpoint = environment.apiNewEndpoint + 'forget/resetPasswordAction';

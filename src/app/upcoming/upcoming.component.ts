@@ -58,21 +58,19 @@ export class UpcomingComponent implements OnInit {
       },
     );
   }
-  // goToLoad(pagename: string): void {
-  //   this.loadmore = true;
-    // this.router.navigate([`${pagename}`])
-  // }
-  goToCards(cardsdata,pagename: string): void {
-    console.log("navdata",cardsdata)
-    console.log(pagename)
-    this.router.navigate(['/cards'],{queryParams:cardsdata});
-    
   
+  // goToCards(cardsdata,pagename: string): void {
+  //   console.log("navdata",cardsdata)
+  //   console.log(pagename)
+  //   this.router.navigate(['/cards'],{queryParams:cardsdata});
+
+  //   }
+    redirectToSequelPage(url:any){
+      let url1= "https://app.sequel.io/event/"+ url.uid
+      console.log(url1);
+      window.location.href=url1;
+      
+
     }
   }
-  // openNewURL(){
-  //   // console.log(item,name,"hello world");
-  //   window.open("/events", '_blank');
-
-  //  }
-
+  

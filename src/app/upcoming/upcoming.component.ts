@@ -15,38 +15,38 @@ export class UpcomingComponent implements OnInit {
   eventData: any = [];
   EndDate: any;
   id: number;
-  title:string;
-  description : string;
+  title: string;
+  description: string;
   projectEndDate: any;
   upcomingEvents: any = [];
   pastEvents: any = [];
-  constructor( private studentService: StudentService, private datePipe: DatePipe,
-    private router: Router, private route : ActivatedRoute,
+  constructor(private studentService: StudentService, private datePipe: DatePipe,
+    private router: Router, private route: ActivatedRoute,
   ) { }
   ngOnInit(): void {
     this.loadmore = false;
-    this.getSequelEventData();  
+    this.getSequelEventData();
     this.route.queryParams.subscribe(params => {
       const id = params['cardsdata'];
       const name = params['pagename'];
-    });  
+    });
   }
 
   getSequelEventData() {
-    let obj = {};    
+    let obj = {};
     var myDateSet = new Date(new Date());
     var projEndDate = new Date();
     projEndDate.setDate(myDateSet.getDate());
     var newprojEndDateSet = this.datePipe.transform(projEndDate, 'yyyy-MM-dd');
     this.studentService.getSequelEventData().subscribe(
       (response) => {
-        console.log("event",response);
-        if(response['data'] !== undefined && response['data'].length > 0){
+        console.log("event", response);
+        if (response['data'] !== undefined && response['data'].length > 0) {
           this.eventData = response['data'];
           if (this.eventData.length > 0) {
             this.eventData.forEach((file) => {
               this.EndDate = moment(file.startDate).format('YYYY-MM-DD');
-              if(this.EndDate > newprojEndDateSet){
+              if (this.EndDate > newprojEndDateSet) {
                 this.upcomingEvents.push(file);
               }
             });
@@ -58,19 +58,18 @@ export class UpcomingComponent implements OnInit {
       },
     );
   }
-  
+
   // goToCards(cardsdata,pagename: string): void {
   //   console.log("navdata",cardsdata)
   //   console.log(pagename)
   //   this.router.navigate(['/cards'],{queryParams:cardsdata});
 
   //   }
-    redirectToSequelPage(url:any){
-      let url1= "https://app.sequel.io/event/"+ url.uid
-      console.log(url1);
-      window.location.href=url1;
-      
+  redirectToSequelPage(url: any) {
+    let url1 = "https://app.sequel.io/event/" + url.uid
+    console.log(url1);
+    window.location.href = url1;
 
-    }
+
   }
-  
+}

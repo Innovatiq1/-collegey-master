@@ -17,28 +17,28 @@ export class PastComponent implements OnInit {
   projectEndDate: any;
   upcomingEvents: any = [];
   pastEvents: any = [];
-  constructor( private studentService: StudentService, private datePipe: DatePipe,
+  constructor(private studentService: StudentService, private datePipe: DatePipe,
     private router: Router,
   ) { }
   ngOnInit(): void {
     this.loadmore = false;
-    this.getSequelEventData();    
+    this.getSequelEventData();
   }
 
   getSequelEventData() {
-    let obj = {};    
+    let obj = {};
     var myDateSet = new Date(new Date());
     var projEndDate = new Date();
     projEndDate.setDate(myDateSet.getDate());
     var newprojEndDateSet = this.datePipe.transform(projEndDate, 'yyyy-MM-dd');
     this.studentService.getSequelEventData().subscribe(
       (response) => {
-        if(response['data'] !== undefined && response['data'].length > 0){
+        if (response['data'] !== undefined && response['data'].length > 0) {
           this.eventData = response['data'];
           if (this.eventData.length > 0) {
             this.eventData.forEach((file) => {
               this.EndDate = moment(file.startDate).format('YYYY-MM-DD');
-              if(this.EndDate < newprojEndDateSet){
+              if (this.EndDate < newprojEndDateSet) {
                 this.pastEvents.push(file);
               }
             });
@@ -50,11 +50,11 @@ export class PastComponent implements OnInit {
       },
     );
   }
-  redirectToSequelPage(url:any){
-    let url1= "https://app.sequel.io/event/"+ url.uid
+  redirectToSequelPage(url: any) {
+    let url1 = "https://app.sequel.io/event/" + url.uid
     console.log(url1);
-    window.location.href=url1;
-    
+    window.location.href = url1;
+
   }
   // goToLoad(pagename: string): void {
   //   this.loadmore = true;

@@ -1,22 +1,22 @@
  .main {
      margin: 2%;
  }
- .card:hover{
-    opacity: 0.4;
+
+ .card:hover {
+     opacity: 0.4;
  }
 
-
  .card {
-    width: 220px;
-    display: inline-block;
-    box-shadow: 2px, 2px, 20px, black;
-    border-radius: 5px;
-    margin-left: 5%;
-    margin-bottom: 4%;
-    margin-top:3%;
-    cursor: pointer;
+     width: 220px;
+     display: inline-block;
+     box-shadow: 2px, 2px, 20px, black;
+     border-radius: 5px;
+     margin-left: 5%;
+     margin-bottom: 4%;
+     margin-top: 3%;
+     cursor: pointer;
 
-}
+ }
 
  .image img {
      width: 100%;
@@ -40,9 +40,7 @@
  .timendate p {
      padding-top: 1px;
      text-align: left;
-    padding-left: 10px;
+     padding-left: 10px;
      border-bottom-right-radius: 5px;
      border-bottom-left-radius: 5px;
  }
-
- 

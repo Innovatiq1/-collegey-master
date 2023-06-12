@@ -2,8 +2,8 @@
     padding-top: 120px;
 }
 
-.nav-tabs .nav-link.active{ 
-    background-color:  rgb(253, 249, 249);
+.nav-tabs .nav-link.active {
+    background-color: rgb(253, 249, 249);
     border: none;
     outline: none;
     color: #3f89fc;
@@ -22,5 +22,5 @@
     margin-right: -80px;
     font-size: var(--bs-nav-link-font-size);
     font-weight: var(--bs-nav-link-font-weight);
-    color: black;   
+    color: black;
 }

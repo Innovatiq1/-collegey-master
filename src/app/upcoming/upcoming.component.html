@@ -1,15 +1,13 @@
 <section class="section-padding">
     <div class="main">
-        <div class="card" *ngFor="let displayCard of upcomingEvents; " 
-        (click)="redirectToSequelPage(displayCard)">
-
+        <div class="card" *ngFor="let displayCard of upcomingEvents; " (click)="redirectToSequelPage(displayCard)">
             <div class="image">
-                <img src="{{displayCard.picture}}" alt="" >
+                <img src="{{displayCard.picture}}" alt="">
             </div>
             <div class="title">
                 <h6>{{displayCard.name}}</h6>
-             </div>
-             <div class="timendate">
+            </div>
+            <div class="timendate">
                 <p>{{displayCard.startDate | date:'MMM d, y, h:mm a'}}</p>
                 <p>{{displayCard.startDate | date:'z'}}</p>
 

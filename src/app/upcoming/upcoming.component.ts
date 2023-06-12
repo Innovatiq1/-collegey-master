@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from '../core/services/student.service';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
@@ -14,16 +14,22 @@ export class UpcomingComponent implements OnInit {
   loadmore: boolean = false;
   eventData: any = [];
   EndDate: any;
-
+  id: number;
+  title:string;
+  description : string;
   projectEndDate: any;
   upcomingEvents: any = [];
   pastEvents: any = [];
   constructor( private studentService: StudentService, private datePipe: DatePipe,
-    private router: Router,
+    private router: Router, private route : ActivatedRoute,
   ) { }
   ngOnInit(): void {
     this.loadmore = false;
-    this.getSequelEventData();    
+    this.getSequelEventData();  
+    this.route.queryParams.subscribe(params => {
+      const id = params['cardsdata'];
+      const name = params['pagename'];
+    });  
   }
 
   getSequelEventData() {
@@ -34,6 +40,7 @@ export class UpcomingComponent implements OnInit {
     var newprojEndDateSet = this.datePipe.transform(projEndDate, 'yyyy-MM-dd');
     this.studentService.getSequelEventData().subscribe(
       (response) => {
+        console.log("event",response);
         if(response['data'] !== undefined && response['data'].length > 0){
           this.eventData = response['data'];
           if (this.eventData.length > 0) {
@@ -55,12 +62,17 @@ export class UpcomingComponent implements OnInit {
   //   this.loadmore = true;
     // this.router.navigate([`${pagename}`])
   // }
-  // goToCards(pagename: string): void {
-  //   this.router.navigate([`${pagename}`])
-  // }
-  openNewURL(){
+  goToCards(cardsdata,pagename: string): void {
+    console.log("navdata",cardsdata)
+    console.log(pagename)
+    this.router.navigate(['/cards'],{queryParams:cardsdata});
+    
+  
+    }
+  }
+  // openNewURL(){
+  //   // console.log(item,name,"hello world");
+  //   window.open("/events", '_blank');
 
-    window.open("/events", '_blank');
+  //  }
 
-   }
-}

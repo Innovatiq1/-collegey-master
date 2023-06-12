@@ -1,7 +1,8 @@
 <section class="section-padding">
 
     <div class="main">
-        <div class="card" *ngFor="let displayCard of pastEvents">
+        <div class="card" *ngFor="let displayCard of pastEvents"
+        (click)="redirectToSequelPage(displayCard)">
             <div class="image">
                 <img src="{{displayCard.picture}}" alt="" >
             </div>

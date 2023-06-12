@@ -1,6 +1,6 @@
 <section class="section-padding">
     <div class="main">
-        <div class="card" *ngFor="let displayCard of upcomingEvents" (click)="openNewURL()">
+        <div class="card" *ngFor="let displayCard of upcomingEvents" (click)="redirectToSequelPage(displayCard)">
 
             <div class="image">
                 <img src="{{displayCard.picture}}" alt="" >

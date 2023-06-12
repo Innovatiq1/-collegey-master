@@ -58,9 +58,9 @@ export class UpcomingComponent implements OnInit {
   // goToCards(pagename: string): void {
   //   this.router.navigate([`${pagename}`])
   // }
-  openNewURL(){
-
-    window.open("/events", '_blank');
-
-   }
+  redirectToSequelPage(url:any){
+    let url1= "https://app.sequel.io/event/"+ url.uid
+    console.log(url1);
+    window.location.href=url1;
+  }
 }

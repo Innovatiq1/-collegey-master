@@ -50,12 +50,10 @@ export class PastComponent implements OnInit {
       },
     );
   }
-  goToLoad(pagename: string): void {
-    this.loadmore = true;
-    // this.router.navigate([`${pagename}`])
-  }
-  goToCards(pagename: string): void {
-    this.router.navigate([`${pagename}`])
+  redirectToSequelPage(url:any){
+    let url1= "https://app.sequel.io/event/"+ url.uid
+    console.log(url1);
+    window.location.href=url1;
   }
 
 }

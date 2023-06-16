@@ -16,8 +16,8 @@ import { InviteComponent } from './components/invite/invite.component';
 import { UserSelectionComponent } from './components/user-selection/user-selection.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { PartnerWithCollegeyComponent } from './static-pages/partner-with-collegey/partner-with-collegey.component';
-import {ProfileComponent } from './university/profile/profile.component';
-import {UniversityDashboardComponent } from './university/university-dashboard/university-dashboard.component';
+import { ProfileComponent } from './university/profile/profile.component';
+import { UniversityDashboardComponent } from './university/university-dashboard/university-dashboard.component';
 import { SuccessComponent } from './static-pages/success/success.component';
 import { CancelComponent } from './static-pages/cancel/cancel.component';
 import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
@@ -43,6 +43,10 @@ import { PublicBlogTagComponent } from 'src/app/public-blog-tag/public-blog-tag.
 import { SuccessProgramComponent } from './static-pages/success-program/success-program.component';
 import { SuccessFreeProjectComponent } from './static-pages/success-free-project/success-free-project.component';
 import { SequelEventComponent } from './sequel-event/sequel-event.component';
+import { UpcomingComponent } from './upcoming/upcoming.component';
+import { PastComponent } from './past/past.component';
+import { CardsComponent } from './cards/cards.component';
+import { LoadmoreComponent } from './loadmore/loadmore.component'
 
 const routes: Routes = [
   ...AUTH_ROUTES,
@@ -53,6 +57,27 @@ const routes: Routes = [
   //     pathMatch: 'full'
   // },
   {
+    path: 'upcoming',
+    component: UpcomingComponent,
+  },
+  // {
+  //   path: 'loadmore',
+  //   component: LoadmoreComponent,
+  // },
+  {
+    path: 'past',
+    component: PastComponent,
+  },
+  {
+    path: 'cards',
+    component: CardsComponent,
+  },
+  // {
+  //   path: 'redirectToSequelPage',
+  //   component: CardsComponent,
+  // },
+
+  {
     path: '',
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
@@ -61,15 +86,15 @@ const routes: Routes = [
   {
     path: 'profile/:id/:author',
     component: ProfileDetailsComponent,
-    data: {title: 'public_profile'},
-  },
-  { 
-    path: 'mentor-profile/:id/:author',
-    component: MentorPublicProfileComponent,
-    data: {title: 'public_profile'},
+    data: { title: 'public_profile' },
   },
   {
-    path: "linkedInLogin", 
+    path: 'mentor-profile/:id/:author',
+    component: MentorPublicProfileComponent,
+    data: { title: 'public_profile' },
+  },
+  {
+    path: "linkedInLogin",
     component: LinkedinLoginResponseComponent,
     pathMatch: 'full',
   },
@@ -94,7 +119,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'resetPassword/:id', 
+    path: 'resetPassword/:id',
     component: ResetPasswordComponent,
     pathMatch: 'full',
   },
@@ -104,7 +129,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'forget-password', 
+    path: 'forget-password',
     component: ForgotPasswordFormComponent,
     pathMatch: 'full',
   },
@@ -133,7 +158,7 @@ const routes: Routes = [
     path: 'user-profile/:id',
     component: UserProfileComponent,
     pathMatch: 'full',
-    data: {title: 'edit'},
+    data: { title: 'edit' },
   },
   {
     path: 'register-form',
@@ -210,16 +235,16 @@ const routes: Routes = [
     component: CancelComponent,
     pathMatch: 'full',
   },
-  {
-    path: 'events',
+  // {
+  //   path: 'events',
 
-    loadChildren: () =>
+  //   loadChildren: () =>
 
-      import('./modules/home/home.module').then((m) => m.HomeModule),
+  //     import('./modules/home/home.module').then((m) => m.HomeModule),
 
-    pathMatch: 'full',
+  //   pathMatch: 'full',
 
-  },  
+  // },  
 
   {
     path: 'student',
@@ -322,21 +347,28 @@ const routes: Routes = [
   {
     path: 'my-badge',
     component: MyBadgeComponent,
-  }, 
-  
+  },
+
   {
     path: 'event',
     component: SequelEventComponent,
+
   },
 
-  
+  {
+    path: 'events',
+    component: CardsComponent,
+
+  },
+
+
   ...STATIC_PAGE_ROUTES,
 ];
 
 @NgModule({
-  imports: [ 
+  imports: [
     RouterModule.forRoot(routes),
-  ], 
+  ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

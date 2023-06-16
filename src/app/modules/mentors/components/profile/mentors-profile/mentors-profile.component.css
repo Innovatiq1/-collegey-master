@@ -2442,7 +2442,7 @@ label,
     transform: none !important;
 }
 
-delete-icon:hover {
+.keyword_input ::ng-deep delete-icon:hover {
     -webkit-transform: none;
     transform: none;
 }

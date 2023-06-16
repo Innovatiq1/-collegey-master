@@ -8,7 +8,7 @@ export const DEFAULT_CONFIG = {
   apiNewEndpoint: 'http://localhost:3000/api1/', 
  /* */
 
- /* * / 
+ /* */ 
 // UAT server API connection URL 
   frontEndUrl: 'http://3.0.100.217/',
   apiEndpoint: 'http://3.0.100.217/api/',
@@ -16,7 +16,7 @@ export const DEFAULT_CONFIG = {
   apiNewEndpoint: 'http://3.0.100.217/api1/',
 /* */   
 
-/* */  
+/* * /  
 // UAT server API connection URL 
 frontEndUrl: 'https://collegey.com/',
 apiEndpoint: 'https://prodapi.collegey.com/api/',

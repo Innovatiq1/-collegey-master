@@ -1,0 +1,18 @@
+<section class="section-padding">
+
+    <div class="main">
+        <div class="card" *ngFor="let displayCard of pastEvents" (click)="redirectToSequelPage(displayCard)">
+            <div class="image">
+                <img src="{{displayCard.picture}}" alt="">
+            </div>
+            <div class="title">
+                <h6>{{displayCard.name}}</h6>
+
+            </div>
+            <div class="timendate">
+                <p>{{displayCard.startDate | date:'medium'}}</p>
+            </div>
+        </div>
+    </div>
+
+</section>

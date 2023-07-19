@@ -237,12 +237,18 @@ export class StudentsProjectComponent implements OnInit {
     var myCurrentDate = new Date(event.target.value);
     var endDeadlineDate = new Date(this.projectFormGroup.get('startDate').value);
     endDeadlineDate.setDate(myCurrentDate.getDate()-1);
+    //console.log("=========endateLine",endDeadlineDate)
+    
     var endDeadlineDateSet = this.datePipe.transform(endDeadlineDate, 'yyyy-MM-dd');
+    //console.log("=======endDeadlineDateSet==",endDeadlineDateSet)
     this.projectSetLastDate = endDeadlineDateSet;
     
     this.projectFormGroup.patchValue({
-      lastDate: this.ProjectSetLastMaxiDate,
+      lastDate: this.projectSetLastDate,
     });
+    // this.projectFormGroup.patchValue({
+    //   lastDate: this.ProjectSetLastMaxiDate,
+    // });
     
   }
 
@@ -393,6 +399,7 @@ export class StudentsProjectComponent implements OnInit {
       return;
     }
     obj['keyword'] = this.projectKeywordArray;
+    //console.log("======obj===",obj)
     this.mentorService.updateMentorProfileStep03(obj).subscribe(
       (response) => {
         this.toastrService.success(response.message, null, { timeOut: 90000 });

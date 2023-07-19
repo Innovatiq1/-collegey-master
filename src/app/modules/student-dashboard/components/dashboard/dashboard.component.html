@@ -1056,14 +1056,22 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                     <p class="date-box">Start Date : {{projectDialog?.start_date | date:'MMM d, y'}}</p>
 
                     <p class="date-box">Deadline to sign up : {{projectDialog?.end_date | date:'MMM d, y'}}</p>
+                    <div *ngIf="compare == false && !includeInJoinProject">
+                    <button disabled="true"
+                        
+                        style="margin-bottom: -16px;" class="get-started-btn1"
+                        (click)="paymentForProject(projectDialog._id,projectDialog?.title)">GET STARTED</button>
+                    </div>
 
+
+                    
                     <button
-                        *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 1 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0"
+                        *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 1 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0 && compare == true"
                         style="margin-bottom: -16px;" class="get-started-btn"
                         (click)="paymentForProject(projectDialog._id,projectDialog?.title)">GET STARTED</button>
 
                     <button
-                        *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 0 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0"
+                        *ngIf="projectDialog?.projectStatus != 'completed' && projectRedirect == false && !includeInJoinProject && projectDialog?.projectfees == 0 && projectDialog?.projectStatus != 'new' && projectDialog?.availableSlot != 0 && compare== true"
                         style="margin-bottom: -16px;" class="get-started-btn"
                         (click)="paymentForFreeProject(projectDialog._id,false,'free',0)">GET STARTED</button>
 
@@ -1250,7 +1258,7 @@ font-size: small;">{{dashboard?.profile?.profile_completion?.profile_text}}
                     </ng-template>
                 </ngb-tab>
 
-                <ngb-tab title="Project Comments">
+                <ngb-tab title="Project Commentsbb">
                     <ng-template ngbTabContent>
                         <div class="project-plan">
                             <div>

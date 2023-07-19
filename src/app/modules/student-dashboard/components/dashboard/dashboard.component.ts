@@ -249,6 +249,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   finalTagArray:any;
   dropdownSettingsTags = {};
   selectedItems:any;
+  compare: boolean;
 
   constructor(
     private projectService: ProjectService,
@@ -395,6 +396,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // myCurrentDate.setDate(myCurrentDate.getDate() + 21);
     // var newPlusDate = this.datePipe.transform(myCurrentDate, 'yyyy-MM-dd');
     // this.projectSetLastDate = newPlusDate;
+
     var myCurrentDate = new Date(event.target.value);
     var endDeadlineDate = new Date(this.editProjectForm.get('startDate').value);
     endDeadlineDate.setDate(myCurrentDate.getDate()-1);
@@ -828,8 +830,28 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.includeInProject = [];
     this.userProjectInclude = [];
     this.projectDialog = project;
+    let today = new Date();
+    
+    let date =this.datePipe.transform(today, 'yyyy-MM-dd');
+    let end_date =this.datePipe.transform(project.end_date, 'yyyy-MM-dd');
+    //console.log("======ssssssssssa=",end_date)
+    //console.log("======enddate=",date)
+    if (date < end_date) {
+      this.compare=true
+      console.log("date1 is earlier than date2");
+    } else if (date > end_date) {
+      this.compare=false
+      console.log("date1 is later than date2");
+    } else {
+      this.compare=true
+      
+    }
+    //this.compare = date >= end_date
+    //console.log(this.compare)
 
-    console.log('-=-=-=-=-=->',this.projectDialog?.projectPlan?.projectDuration);
+
+
+    //console.log('-=-=-=-=-=->',this.projectDialog?.projectPlan?.projectDuration);
   
     if (this.projectDialog?.projectPlan?.projectDuration?.includes('month')) {
       this.projectDialog['project_week'] = this.projectDialog?.projectPlan?.projectDuration;

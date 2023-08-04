@@ -63,6 +63,9 @@ import { PastComponent } from './past/past.component';
 import { CardsComponent } from './cards/cards.component';
 import { LoadmoreComponent } from './loadmore/loadmore.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { CompanyComponent } from './company/company.component';
+import { NetworkhubComponent } from './networkhub/networkhub.component';
+import { CreateEventComponent } from './past/create-event/create-event.component';
 
 
 let config = new AuthServiceConfig([
@@ -82,7 +85,7 @@ export function provideConfig() {
 
 
 @NgModule({
- declarations: [AppComponent,PartnerWithCollegeyComponent,ThankYouComponent, InviteComponent, UserSelectionComponent, UserProfileComponent,CollageyComponent,MeetTheTeamComponent, CampaignComponent,ProfileComponent,UniversityDashboardComponent, UniversityComponent, CollegyMarketplaceComponent, ResetPasswordComponent, CertificateComponent, AgreementTermsConditionComponent,CollegeyFundComponent,BoardAdvisorsComponent,BoardDirectorsComponent,NewsResourceComponent, PublicBlogTagComponent, SequelEventComponent, UpcomingComponent, PastComponent, CardsComponent, LoadmoreComponent],
+ declarations: [AppComponent,PartnerWithCollegeyComponent,ThankYouComponent, InviteComponent, UserSelectionComponent, UserProfileComponent,CollageyComponent,MeetTheTeamComponent, CampaignComponent,ProfileComponent,UniversityDashboardComponent, UniversityComponent, CollegyMarketplaceComponent, ResetPasswordComponent, CertificateComponent, AgreementTermsConditionComponent,CollegeyFundComponent,BoardAdvisorsComponent,BoardDirectorsComponent,NewsResourceComponent, PublicBlogTagComponent, SequelEventComponent, UpcomingComponent, PastComponent, CardsComponent, LoadmoreComponent, CompanyComponent, NetworkhubComponent, CreateEventComponent],
  imports: [
     BrowserModule,
     AppRoutingModule,

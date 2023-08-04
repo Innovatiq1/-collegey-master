@@ -37,7 +37,7 @@ export class UpcomingComponent implements OnInit {
     var myDateSet = new Date(new Date());
     var projEndDate = new Date();
     projEndDate.setDate(myDateSet.getDate());
-    var newprojEndDateSet = this.datePipe.transform(projEndDate, 'yyyy-MM-dd');
+    var newprojEndDateSet = this.datePipe.transform(projEndDate, 'yyyy-MM-dd HH:mm');
     this.studentService.getSequelEventData().subscribe(
       (response) => {
         console.log("event", response);
@@ -45,8 +45,12 @@ export class UpcomingComponent implements OnInit {
           this.eventData = response['data'];
           if (this.eventData.length > 0) {
             this.eventData.forEach((file) => {
-              this.EndDate = moment(file.startDate).format('YYYY-MM-DD');
-              if (this.EndDate > newprojEndDateSet) {
+             console.log(file.startDate)
+              
+              this.EndDate = moment(file.startDate).format("YYYY-MM-DD HH:mm");
+              console.log("mian",moment(file.startDate).format('YYYY-MM-DD HH:mm'))
+              console.log("Test",newprojEndDateSet)
+              if (this.EndDate >= newprojEndDateSet) {
                 this.upcomingEvents.push(file);
               }
             });
@@ -66,9 +70,12 @@ export class UpcomingComponent implements OnInit {
 
   //   }
   redirectToSequelPage(url: any) {
-    let url1 = "https://app.sequel.io/event/" + url.uid
-    console.log(url1);
-    window.location.href = url1;
+    let id=url.uid
+    this.router.navigateByUrl('/event/'+id)
+    ///let url1 = "https://app.sequel.io/event/" + url.uid
+
+
+    // window.location.href = url1;
 
 
   }

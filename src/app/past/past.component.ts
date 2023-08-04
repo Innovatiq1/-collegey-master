@@ -37,6 +37,7 @@ export class PastComponent implements OnInit {
           this.eventData = response['data'];
           if (this.eventData.length > 0) {
             this.eventData.forEach((file) => {
+              
               this.EndDate = moment(file.startDate).format('YYYY-MM-DD');
               if (this.EndDate < newprojEndDateSet) {
                 this.pastEvents.push(file);
@@ -51,9 +52,12 @@ export class PastComponent implements OnInit {
     );
   }
   redirectToSequelPage(url: any) {
-    let url1 = "https://app.sequel.io/event/" + url.uid
-    console.log(url1);
-    window.location.href = url1;
+    // let url1 = "https://app.sequel.io/event/" + url.uid
+    // console.log(url1);
+    // window.location.href = url1;
+    let id=url.uid
+    this.router.navigateByUrl('/event/'+id)
+    
 
   }
   // goToLoad(pagename: string): void {

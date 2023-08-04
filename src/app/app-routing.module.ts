@@ -47,6 +47,8 @@ import { UpcomingComponent } from './upcoming/upcoming.component';
 import { PastComponent } from './past/past.component';
 import { CardsComponent } from './cards/cards.component';
 import { LoadmoreComponent } from './loadmore/loadmore.component'
+import { CompanyComponent } from './company/company.component';
+import { NetworkhubComponent } from './networkhub/networkhub.component';
 
 const routes: Routes = [
   ...AUTH_ROUTES,
@@ -358,6 +360,16 @@ const routes: Routes = [
   {
     path: 'events',
     component: CardsComponent,
+
+  },
+  {
+    path: 'event/:id',
+    component: CompanyComponent,
+
+  },
+  {
+    path: 'network',
+    component: NetworkhubComponent,
 
   },
 

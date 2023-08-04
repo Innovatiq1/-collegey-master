@@ -1130,6 +1130,12 @@
     height: 30px;
     width: 250px;
 }
+.join-meeting {
+    
+    height: 30px;
+    width: 100px;
+    padding:50px;
+}
 
 .schedule-meetings-box {
     background: #FFFFFF 0% 0% no-repeat padding-box;

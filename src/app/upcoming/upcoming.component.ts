@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from '../core/services/student.service';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
+import { interval } from 'rxjs';
+
 
 @Component({
   selector: 'app-upcoming',
@@ -22,10 +24,16 @@ export class UpcomingComponent implements OnInit {
   pastEvents: any = [];
   constructor(private studentService: StudentService, private datePipe: DatePipe,
     private router: Router, private route: ActivatedRoute,
-  ) { }
+    
+  ) { 
+    interval(60000).subscribe(x => {
+    this.getSequelEventData();
+});
+ }
   ngOnInit(): void {
     this.loadmore = false;
     this.getSequelEventData();
+    
     this.route.queryParams.subscribe(params => {
       const id = params['cardsdata'];
       const name = params['pagename'];

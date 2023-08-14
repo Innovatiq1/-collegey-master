@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StudentService } from '../core/services/student.service';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-past',
@@ -19,7 +20,9 @@ export class PastComponent implements OnInit {
   pastEvents: any = [];
   constructor(private studentService: StudentService, private datePipe: DatePipe,
     private router: Router,
-  ) { }
+  ) {interval(60000).subscribe(x => {
+    this.getSequelEventData();
+}); }
   ngOnInit(): void {
     this.loadmore = false;
     this.getSequelEventData();
@@ -30,16 +33,16 @@ export class PastComponent implements OnInit {
     var myDateSet = new Date(new Date());
     var projEndDate = new Date();
     projEndDate.setDate(myDateSet.getDate());
-    var newprojEndDateSet = this.datePipe.transform(projEndDate, 'yyyy-MM-dd');
+    var newprojEndDateSet = this.datePipe.transform(projEndDate, 'yyyy-MM-dd HH:mm');
     this.studentService.getSequelEventData().subscribe(
       (response) => {
         if (response['data'] !== undefined && response['data'].length > 0) {
           this.eventData = response['data'];
           if (this.eventData.length > 0) {
             this.eventData.forEach((file) => {
-              
-              this.EndDate = moment(file.startDate).format('YYYY-MM-DD');
-              if (this.EndDate < newprojEndDateSet) {
+
+              this.EndDate = moment(file.startDate).format('YYYY-MM-DD HH:mm');
+              if (this.EndDate <= newprojEndDateSet) {
                 this.pastEvents.push(file);
               }
             });

@@ -27,6 +27,7 @@ export class UpcomingComponent implements OnInit {
     
   ) { 
     interval(60000).subscribe(x => {
+      this.upcomingEvents = [];
     this.getSequelEventData();
 });
  }
@@ -41,6 +42,7 @@ export class UpcomingComponent implements OnInit {
   }
 
   getSequelEventData() {
+
     let obj = {};
     var myDateSet = new Date(new Date());
     var projEndDate = new Date();
@@ -53,11 +55,12 @@ export class UpcomingComponent implements OnInit {
           this.eventData = response['data'];
           if (this.eventData.length > 0) {
             this.eventData.forEach((file) => {
-             console.log(file.startDate)
+              console.log("upcoming",this.upcomingEvents)
+             //console.log(file.startDate)
               
               this.EndDate = moment(file.startDate).format("YYYY-MM-DD HH:mm");
-              console.log("mian",moment(file.startDate).format('YYYY-MM-DD HH:mm'))
-              console.log("Test",newprojEndDateSet)
+              ////console.log("mian",moment(file.startDate).format('YYYY-MM-DD HH:mm'))
+              //console.log("Test",newprojEndDateSet)
               if (this.EndDate >= newprojEndDateSet) {
                 this.upcomingEvents.push(file);
               }

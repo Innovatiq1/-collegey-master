@@ -21,6 +21,8 @@ export class PastComponent implements OnInit {
   constructor(private studentService: StudentService, private datePipe: DatePipe,
     private router: Router,
   ) {interval(60000).subscribe(x => {
+    console.log("==========test")
+    this.pastEvents=[]
     this.getSequelEventData();
 }); }
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class PastComponent implements OnInit {
           this.eventData = response['data'];
           if (this.eventData.length > 0) {
             this.eventData.forEach((file) => {
+              console.log("past",this.pastEvents)
 
               this.EndDate = moment(file.startDate).format('YYYY-MM-DD HH:mm');
               if (this.EndDate <= newprojEndDateSet) {

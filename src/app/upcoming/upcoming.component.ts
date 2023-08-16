@@ -15,8 +15,10 @@ export class UpcomingComponent implements OnInit {
 
   loadmore: boolean = false;
   eventData: any = [];
+  
   EndDate: any;
   id: number;
+  ids:any
   title: string;
   description: string;
   projectEndDate: any;
@@ -26,10 +28,10 @@ export class UpcomingComponent implements OnInit {
     private router: Router, private route: ActivatedRoute,
     
   ) { 
-    interval(60000).subscribe(x => {
-      this.upcomingEvents = [];
-    this.getSequelEventData();
-});
+//     interval(60000).subscribe(x => {
+//       this.upcomingEvents = [];
+//     this.getSequelEventData();
+// });
  }
   ngOnInit(): void {
     this.loadmore = false;
@@ -39,6 +41,14 @@ export class UpcomingComponent implements OnInit {
       const id = params['cardsdata'];
       const name = params['pagename'];
     });
+    this.ids = setInterval(() => {
+      console.log("========upcomingTest")
+      this.upcomingEvents=[]
+      this.getSequelEventData(); 
+    }, 60000);
+  }
+  ngOnDestroy() {
+    clearInterval(this.ids);
   }
 
   getSequelEventData() {

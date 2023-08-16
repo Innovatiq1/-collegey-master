@@ -18,18 +18,33 @@ export class PastComponent implements OnInit {
   projectEndDate: any;
   upcomingEvents: any = [];
   pastEvents: any = [];
+  id: NodeJS.Timeout;
   constructor(private studentService: StudentService, private datePipe: DatePipe,
     private router: Router,
-  ) {interval(60000).subscribe(x => {
-    console.log("==========test")
-    this.pastEvents=[]
-    this.getSequelEventData();
-}); }
+  ) {
+//     interval(60000).subscribe(x => {
+//     console.log("==========test")
+//     this.pastEvents=[]
+//     this.getSequelEventData();
+// }); 
+}
   ngOnInit(): void {
     this.loadmore = false;
     this.getSequelEventData();
+    this.id = setInterval(() => {
+      console.log("========test")
+      this.pastEvents=[]
+      this.getSequelEventData(); 
+    }, 60000);
   }
+  ngOnDestroy() {
+    clearInterval(this.id);
+  }
+  
+  // setInterval(()=>{
 
+  // });
+  
   getSequelEventData() {
     let obj = {};
     var myDateSet = new Date(new Date());
@@ -75,3 +90,4 @@ export class PastComponent implements OnInit {
   // }
 
 }
+

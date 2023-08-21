@@ -514,6 +514,12 @@ export class ProjectsComponent implements OnInit {
       this.monthDurationActive = false;
     }
   }
+  openmetting(){
+    //let id=url.uid
+    this.router.navigateByUrl('/network')
+    
+
+  }
   favOutcome() {
     this.submittedOutcome = true;
     if (this.AddOutcomeForm.invalid) {

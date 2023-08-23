@@ -335,6 +335,14 @@ export class UniversityComponent implements OnInit {
 
     });
   }
+  // weblink(weblink:any){
+
+  // }
+  weblink(url: string){
+    console.log("url",url)
+
+    window.open(url);
+}
 
   pageChanged(event: PageChangedEvent): void {
     const startItem = (event.page - 1) * event.itemsPerPage;

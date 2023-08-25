@@ -51,7 +51,7 @@ enum RoutesUrl {
 })
 
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('searchBox')searchBox: ElementRef;
+  @ViewChild('searchBox') searchBox: ElementRef;
   dashboard: Dashboard = new Dashboard();
   @Output()
   authModalEmitter: EventEmitter<AuthModalType> = new EventEmitter<AuthModalType>();
@@ -75,8 +75,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   totalDebitRewardPoint: any = 0;
   totalLeftRewardPoint: any = 0;
 
-  topSearchResult:any;
-  showSearchResultDrop:boolean = false;
+  topSearchResult: any;
+  showSearchResultDrop: boolean = false;
   constructor(
     private router: Router,
     public authService: AuthService,
@@ -89,21 +89,19 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private modalService: BsModalService,
     private resourcesService: ResourcesService,
     @Inject(PLATFORM_ID) private platformId: any
-  )
-  { 
+  ) {
     const loggedInInfo = this.authService.getUserInfo();
-    if(loggedInInfo?.user?.forgetPasswordChange == true)
-    {
+    if (loggedInInfo?.user?.forgetPasswordChange == true) {
       this.router.navigateByUrl('/reset-password');
     }
   }
 
   @HostListener('document:click', ['$event'])
   clickOutsideCurrentPopup(event: Event) {
-          if (!this.searchBox.nativeElement.contains(event.target)) {
-            this.showSearchResultDrop = false;; 
-            this.searchBox.nativeElement.value = '';
-          }
+    if (!this.searchBox.nativeElement.contains(event.target)) {
+      this.showSearchResultDrop = false;;
+      this.searchBox.nativeElement.value = '';
+    }
   }
 
   // Add white background on home page when page scrolled
@@ -121,7 +119,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }
   }
-  
+
   ngOnInit(): void {
     //
     this.userSubscription.add(
@@ -132,7 +130,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         } else {
           this.getUserInfo();
         }
-        
+
       })
     );
     this.router.events.subscribe((event) => {
@@ -142,7 +140,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
             event.url === RoutesUrl.SIGN_UP ||
             event.url.includes(RoutesUrl.PUBLIC_PROFILE)) &&
           !this.isAuthenticated()
-        ){ 
+        ) {
           this.isShowLoginButton = false;
         }
       }
@@ -172,15 +170,44 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
+  dropdownVisible = false;
+
+  ntitile : string = "New Notifications";
+  notificationCount = 5;
+
+  notifications = [
+    { text: 'New Instructor', course:'Advanced Java', time: '30 Min ago.' },
+    {  text: 'Student Programs', course: 'Skills, Council Membership', time: '15 Min ago.' },
+    {  text: 'Global Education Program', course:'Global Programs', time: '02 Days ago.' },
+    {  text: 'Undergraduate Recruitment tours : Spring 2023', course:'Tour & In Detail program', time: '2 days ago.' }
+    
+    // Add more notifications here
+  ];
+
+  toggleDropdown() {
+    this.dropdownVisible = !this.dropdownVisible;
+  }
+  toggleExpansion(){
+    this.isExpanded =! this.isExpanded;
+  }
+  isExpanded = false
+  // notifications() {
+  //   this.list = !this.list
+  // }
+  // list = true;
+  // showDropdown = false;
+  // togglrDropdown(){
+  //   this.showDropdown = !this.showDropdown
+  // }
+
   searchTopSearch(event) {
     const obj = {
       searchKeyword: event.target.value,
     };
 
     this.resourcesService.getSearchPostData(obj).subscribe(
-      (response)=> {
-        if(response?.data != null)
-        {
+      (response) => {
+        if (response?.data != null) {
           this.showSearchResultDrop = true;
           this.topSearchResult = response?.data;
         }
@@ -194,7 +221,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getUpdatedAvatar() {
-   // console.log('updated');
+    // console.log('updated');
     if (this.isAuthenticated()) {
       this.commonService.getUserDetails().subscribe((response) => {
         if (response) {
@@ -205,11 +232,11 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     }
   }
-  openNewLink(){
+  openNewLink() {
 
     window.open("/event", '_blank');
 
-   }
+  }
   setUserData() {
     const loggedInInfo = this.authService.getUserInfo();
     loggedInInfo.user = this.userInfo;
@@ -221,7 +248,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getUserInfo() {
     const loggedInInfo = this.authService.getUserInfo();
-   // console.log(loggedInInfo)
+    // console.log(loggedInInfo)
     this.userInfo = loggedInInfo ? loggedInInfo.user : null;
     // if(this.userInfo?._id && this.userInfo?.type != 'mentor')
     // {
@@ -243,7 +270,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     localStorage.removeItem('user_data');
     localStorage.removeItem('static_data');
     localStorage.removeItem('fetchcurrentUserRole');
-   // localStorage.clear();
+    // localStorage.clear();
   }
 
   isAuthenticated() {
@@ -251,12 +278,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   isLoginRoleCheck() {
-    if(localStorage.getItem('fetchcurrentUserRole') == 'mentor')
-    {
+    if (localStorage.getItem('fetchcurrentUserRole') == 'mentor') {
       return true;
     }
-    else
-    {
+    else {
       return false;
     }
   }
@@ -283,12 +308,12 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   getDashboardDetail() {
     this.studentDashboardService.getDashboardDetail().subscribe((res) => {
       this.dashboard = res;
-     // console.log("header : ");
+      // console.log("header : ");
     });
   }
 
   // get user rewards points data in observable
-  
+
   // getUserRewardPoints() { 
   //   let creditRewardPoint ={
   //     "user_id": this.userInfo?._id, 
@@ -305,14 +330,14 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   // }
 
   // getUserRewardPoints() {    
-    // const rewardData = this.authService.getReward();
-    //   // this.resData = res;
-    //   this.creditPoints = rewardData.rewardsPointobjects;
-    //   this.creditPoints.forEach(element => {
-    //     this.rewardPoint = parseFloat(this.rewardPoint) + parseFloat(element.rewardCreditPoint);
-    //     this.totalDebitRewardPoint  = parseFloat(this.totalDebitRewardPoint) + parseFloat(element.rewardDebitPoint);
-    //   });
-    //   this.totalLeftRewardPoint = parseFloat(this.rewardPoint) - parseFloat(this.totalDebitRewardPoint);
+  // const rewardData = this.authService.getReward();
+  //   // this.resData = res;
+  //   this.creditPoints = rewardData.rewardsPointobjects;
+  //   this.creditPoints.forEach(element => {
+  //     this.rewardPoint = parseFloat(this.rewardPoint) + parseFloat(element.rewardCreditPoint);
+  //     this.totalDebitRewardPoint  = parseFloat(this.totalDebitRewardPoint) + parseFloat(element.rewardDebitPoint);
+  //   });
+  //   this.totalLeftRewardPoint = parseFloat(this.rewardPoint) - parseFloat(this.totalDebitRewardPoint);
   // }
 
 }

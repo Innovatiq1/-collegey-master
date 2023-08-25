@@ -106,6 +106,39 @@ return this.http
     );
 }
 
+getUserList() { 
+  const apiUrl = `${environment.apiEndpoint}admin/projects/usernotification`;
+return this.http
+    .get(apiUrl)
+    .pipe(
+      map((response) => {
+        return response;
+      })
+    );
+}
+getunReadCount() { 
+  const apiUrl = `${environment.apiEndpoint}admin/projects/unreadnotificationCount`;
+return this.http
+    .get(apiUrl)
+    .pipe(
+      map((response) => {
+        return response;
+      })
+    );
+}
+notificationupdate(id) { 
+  const apiUrl = `${environment.apiEndpoint}admin/projects/notificationstatusUpdate/${id}`;
+return this.http
+    .get(apiUrl)
+    .pipe(
+      map((response) => {
+        return response;
+      })
+    );
+}
+
+
+
 
   updateMentorProfileStep01 = (data:any): Observable<any> => {
     const endpoint = environment.apiEndpoint+'profile/updateMentorProfileStep01';

@@ -2,6 +2,145 @@
   box-sizing: border-box;
 }
 
+/* Bell Css part */
+.notification-container {
+  position: relative;
+  cursor: pointer;
+}
+.notification-container.active i{
+  color: #3f89fc;
+}
+.unread{
+  font-weight: 200;
+  background-color: #AFAFAF;
+}
+
+i {
+  font-size: 25px;
+  margin: 10px;
+}
+
+
+.notification-icon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  background-size: cover;
+  display: inline-block;
+  cursor: pointer;
+}
+.notification-badge{
+  position: absolute;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0px 3px;
+  top: 4px;
+  right: 5px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: max-content;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 1;
+}
+
+.dropdown.active {
+  display: block;
+  width: fit-content;
+  border-radius: 15px;
+  overflow-y: auto;
+}
+
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.notification-header {
+  color: #3f89fc;
+  font-family: "Nunito";
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.notification-text {
+  color: black;
+  width: 250px;
+  font-family: "Nunito";
+  margin-left: 0px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+
+}
+.notification-text.extended{
+  white-space: normal;
+  text-overflow: initial;
+}
+
+.notification-text1 {
+  margin-top: 10px;
+  margin-left: 0px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.notification-date {
+  color: #3f89fc;
+  font-family: "Nunito";
+  font-size: 10px;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 14px;
+}
+
+
+/* .container{
+  border: 1px solid #7a7a7a;
+  border-radius: 20px;
+  background-color: white;
+  width: fit-content;
+  height: fit-content;
+}
+.num-count{
+  padding: 10px;
+}
+.fa{
+  margin-right: 17px;
+} */
+
+/* .notification-icon{
+
+  cursor: pointer;
+}
+.dropdown{
+  display: none;
+  padding: 0px 10px;
+}
+.dropdown.show{
+  display: block;
+} */
+
 .navbar-expand-lg {
   background-color: #fff;
   padding: 15px 30px;
@@ -137,8 +276,16 @@ ul.link-list {
 
 .notification ul span {
   position: absolute;
-  top: -6px;
-  left: 12px;
+  top: -13px;
+  left: 45px;
+}
+
+.notification ul span i p {
+  position: absolute;
+  top: 6px;
+  left: 3px;
+  font-size: 10px;
+  color: white !important;
 }
 
 .notification ul span i {
@@ -503,19 +650,24 @@ ul.link-list {
   .navbar-expand-lg {
     padding: 15px;
   }
+
   .top_search {
     max-width: 200px;
   }
+
   .navbar-brand {
     margin-right: 0;
   }
+
   .navbar-nav .nav-item {
     margin: 4px;
   }
+
   .navbar-nav .nav-item a {
     font-size: 14px;
   }
 }
+
 @media screen and (max-width: 991px) {
   .top_search {
     width: 100%;
@@ -529,21 +681,26 @@ ul.link-list {
 }
 
 @media screen and (max-width: 640px) {
+
   /* .notification {
     display: none;
   } */
-  .rewards-title{
+  .rewards-title {
     font-size: 12px;
   }
+
   .notification {
     margin-left: 5px;
     margin-right: 5px;
   }
-  .user-header-menu button.user-icon-button img{
-    width: 40px; 
+
+  .user-header-menu button.user-icon-button img {
+    width: 40px;
     height: 40px;
   }
+
   .navbar-light .navbar-brand img {
     max-width: 100px;
   }
+  
 }

@@ -95,6 +95,17 @@ getMentorList(filterName) {
       })
     );
 }
+getUniversityList(filterName) { 
+  const apiUrl = `${environment.apiEndpointNew}user/mentor/getUniversity?filterName=${filterName}`;
+return this.http
+    .get(apiUrl)
+    .pipe(
+      map((response) => {
+        return response;
+      })
+    );
+}
+
 
   updateMentorProfileStep01 = (data:any): Observable<any> => {
     const endpoint = environment.apiEndpoint+'profile/updateMentorProfileStep01';

@@ -46,9 +46,10 @@ import { TagBlogComponent } from './components/blogs/tag-blog/tag-blog.component
 import {NgxPaginationModule} from 'ngx-pagination';
 import { PaginationComponent } from '../../pagination/pagination.component';
 import { ProgramsComponent } from './components/programs/programs.component';
+import { BulletPointsPipe } from 'src/app/core/pipes/bulletpoints.pipe';
 
 @NgModule({
-  declarations: [SearchPipe,MentorProfileidComponent,PaginationComponent,DashboardComponent,GroupsFeedComponent, ProjectsComponent,MentorComponent, CollegeyFeedComponent, GroupsComponent, AcademyComponent,BlogsComponent, QaformsComponent, EventsComponent,UniversityComponent, ViewAnnoucementComponent, DashHeaderComponent, ProfileDetailsComponent, MentorChatComponent,PaymentDialogComponent, GlobalProfileUploadComponent, NewsresourceComponent, TagBlogComponent, ProgramsComponent],
+  declarations: [SearchPipe,BulletPointsPipe,MentorProfileidComponent,PaginationComponent,DashboardComponent,GroupsFeedComponent, ProjectsComponent,MentorComponent, CollegeyFeedComponent, GroupsComponent, AcademyComponent,BlogsComponent, QaformsComponent, EventsComponent,UniversityComponent, ViewAnnoucementComponent, DashHeaderComponent, ProfileDetailsComponent, MentorChatComponent,PaymentDialogComponent, GlobalProfileUploadComponent, NewsresourceComponent, TagBlogComponent, ProgramsComponent],
   imports: [
     CommonModule,
     StudentDashboardRoutingModule,

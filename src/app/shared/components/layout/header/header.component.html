@@ -13,11 +13,20 @@
           </a>
         </div>
 
-        <div class="notification">
-          <ul>
-            <li><a routerLink="#"><i class="fa fa-bell"></i></a></li>
-            <span class="num-count"><i class="fa fa-circle"></i></span>
-          </ul>
+        <div class="notification-container" [class.active]="dropdownVisible"(click)="toggleDropdown()">
+          <i class="fa fa-bell"></i>
+          <div class="notification-badge" *ngIf="notificationCount">{{notificationCount}}</div>
+          <div class="dropdown" [class.active]="dropdownVisible">
+            <ul class="notification-list">
+              <li class="notification-header">{{ntitile}}</li>
+              <li *ngFor="let notification of notifications">
+                <div class="notification-text" [ngClass]="{'expanded' : isExpanded}" (click)="toggleExpansion()">{{ notification.text }}</div>
+                <div class="notification-text1">{{ notification.course }}</div>
+                <div class="notification-date">{{ notification.time }}</div>
+              </li>
+            </ul>
+            <div class="text-center mb-2 mt-2" ><a href="#"> More...</a> </div>
+          </div>
         </div>
       </div>
       <button dropdownToggle type="button" class="user-icon-button">

@@ -44,6 +44,7 @@ export class UniversityComponent implements OnInit {
   inviteFormGroup: FormGroup;
   inviteSubmitted = false;
   userInfo: any;
+  test: any;
 
   //dynamic learning box
   lernBoxCollection:any
@@ -127,10 +128,12 @@ export class UniversityComponent implements OnInit {
 
     this.mentorService.getMentorList(filterName).subscribe((response: any) => {
       this.mentorList1 = response.response
+      console.log("submit",this.mentorList1)
       this.totalGroupItems = response.response
       this.totalGroupItemsMy = response.response.length;
       // console.log(" totalGroupItems : ",this.totalGroupItems);
       this.mentorList1 = this.totalGroupItems.slice(0, 10);
+
 
       //   if(response.totalDocs - (+filters.limit) < -11) {
       //     this._showSnackbar("No more data found")
@@ -144,6 +147,8 @@ export class UniversityComponent implements OnInit {
 
     this.mentorService.getUniversityList(filterName).subscribe((response: any) => {
       this.universeList = response.response
+      console.log("submit",this.universeList)
+      this.test=this.universeList.map(data => data.description)
       this.totalGroupItems1 = response.response
       this.totalGroupItemsMy1 = response.response.length;
       // console.log(" totalGroupItems : ",this.totalGroupItems);

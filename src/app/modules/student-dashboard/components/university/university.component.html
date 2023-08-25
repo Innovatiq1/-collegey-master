@@ -352,7 +352,7 @@
     <div class="social-feed-container" *ngIf="University==true">
         <div class="middle-section">
             <div class="social-feed-box">
-                <div  *ngFor="let ele of universeList; let i = index"class="social-feed-list">
+                <div  *ngFor="let ele of universeList; let j = index"class="social-feed-list">
                     <div class="row top-box">
                         <div class="join-author">
                             <span class="circle"><img style="width: 100% !important;height: 100% !important;"
@@ -385,9 +385,13 @@
                         <br><br>
                     </div>
                     <div class="row top-box">
-                        <div class="col-md-12">
-                            <span>{{ele.description}}
-                                </span>
+                        <div class="col-md-12" *ngFor="let data of test; let i = index;">
+                            <div *ngIf="i===j" >
+                                <!-- <span [innerHTML]="data | bulletPoints"></span> -->
+                                <span [innerHTML]="data | bulletPoints"></span>
+
+                            </div>
+                                
                         </div>
                         <br><br>
                     </div>

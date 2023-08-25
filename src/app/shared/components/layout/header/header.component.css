@@ -10,11 +10,16 @@
 .notification-container.active i{
   color: #3f89fc;
 }
+.unread{
+  font-weight: 200;
+  background-color: #AFAFAF;
+}
 
 i {
   font-size: 25px;
   margin: 10px;
 }
+
 
 .notification-icon {
   width: 30px;
@@ -697,4 +702,5 @@ ul.link-list {
   .navbar-light .navbar-brand img {
     max-width: 100px;
   }
+  
 }

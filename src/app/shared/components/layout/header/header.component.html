@@ -19,8 +19,9 @@
           <div class="dropdown" [class.active]="dropdownVisible">
             <ul class="notification-list">
               <li class="notification-header">{{ntitile}}</li>
-              <li *ngFor="let notification of notifications">
-                <div class="notification-text" [ngClass]="{'expanded' : isExpanded}" (click)="toggleExpansion()">{{ notification.text }}</div>
+              <li *ngFor="let notification of notifications" [class.unread] = "!notification.isRead" (click)="markAsRead(notification._id)">
+                <div class="notification-text"  [ngClass]="{'expanded' : isExpanded}" (click)="toggleExpansion()">
+                  {{ notification.title }}</div>
                 <div class="notification-text1">{{ notification.course }}</div>
                 <div class="notification-date">{{ notification.time }}</div>
               </li>

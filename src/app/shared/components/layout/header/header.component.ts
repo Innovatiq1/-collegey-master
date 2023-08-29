@@ -37,6 +37,7 @@ import {
   BsModalService,
   ModalDirective,
 } from 'ngx-bootstrap/modal';
+import { MentorService } from 'src/app/core/services/mentor.service';
 
 enum RoutesUrl {
   LOGIN = '/login',
@@ -74,6 +75,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   rewardPoint: any = 0;
   totalDebitRewardPoint: any = 0;
   totalLeftRewardPoint: any = 0;
+ notifications=[]
+ notificationCount:number
 
   topSearchResult: any;
   showSearchResultDrop: boolean = false;
@@ -81,6 +84,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private router: Router,
     public authService: AuthService,
     private studentDashboardService: StudentDashboardService,
+    private mentorService:MentorService,
     public configService: ConfigService,
     private cdr: ChangeDetectorRef,
     public commonService: CommonService,
@@ -122,6 +126,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     //
+    this.userList();
+    this.getunReadCout();
     this.userSubscription.add(
       this.authService.currentUser$.subscribe((userInfo) => {
         if (userInfo) {
@@ -169,20 +175,52 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     );
   }
+  userList() {
+
+    this.mentorService.getUserList().subscribe((response: any) => {
+      console.log("===========",response)
+      this.notifications = response.data[0].notification
+      
+    });
+  }
+  markAsRead(id:any){
+    this.mentorService.notificationupdate(id).subscribe((response: any) => {
+      //console.log("response",response)
+      if(response.status=='success'){
+        this.userList()
+       this.getunReadCout()
+      }
+
+    }) 
+  }
+  getunReadCout(){
+    this.mentorService.getunReadCount().subscribe((response: any) => {
+      if(response.status=='success'){
+        //co
+        this.notificationCount=response.data
+        this.userList()
+       //this.getunReadCout()
+      }    
+    }) 
+  }
+
+  // markAsRead(notification) : void{
+  //   notification.isRead = true;
+  // }
 
   dropdownVisible = false;
 
   ntitile : string = "New Notifications";
-  notificationCount = 5;
+  //notificationCount = 5;
 
-  notifications = [
-    { text: 'New Instructor', course:'Advanced Java', time: '30 Min ago.' },
-    {  text: 'Student Programs', course: 'Skills, Council Membership', time: '15 Min ago.' },
-    {  text: 'Global Education Program', course:'Global Programs', time: '02 Days ago.' },
-    {  text: 'Undergraduate Recruitment tours : Spring 2023', course:'Tour & In Detail program', time: '2 days ago.' }
+  // notifications = [
+  //   { text: 'New Instructor', course:'Advanced Java', time: '30 Min ago.' },
+  //   {  text: 'Student Programs', course: 'Skills, Council Membership', time: '15 Min ago.' },
+  //   {  text: 'Global Education Program', course:'Global Programs', time: '02 Days ago.' },
+  //   {  text: 'Undergraduate Recruitment tours : Spring 2023', course:'Tour & In Detail program', time: '2 days ago.' }
     
-    // Add more notifications here
-  ];
+  //   // Add more notifications here
+  // ];
 
   toggleDropdown() {
     this.dropdownVisible = !this.dropdownVisible;

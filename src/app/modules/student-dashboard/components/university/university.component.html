@@ -3,10 +3,16 @@
     <div class="container first-section" style="margin-top: -30px;">
         <div class="dashboard-menu">
             <div class="col-8 col-md-9 col-lg-10">
-                <div class="search-box d-flex align-items-center">
+                <div  *ngIf="University==true" class="search-box d-flex align-items-center">
                     <span>Mentor/University</span>&nbsp;&nbsp;&nbsp;
                     <input class="search" type="text" placeholder="What do you want to learn…"
                         (keyup)="searchByMentor($event)" />
+                    <img src="assets/images/search-2-line.svg" class="search-icon" />
+                </div>
+                <div  *ngIf="Mentor==true" class="search-box d-flex align-items-center">  
+                    <span>Mentor/University</span>&nbsp;&nbsp;&nbsp;
+                    <input class="search" type="text" placeholder="What do you want to learn…"
+                        (keyup)="searchByUniversity($event)" />
                     <img src="assets/images/search-2-line.svg" class="search-icon" />
                 </div>
             </div>
@@ -346,32 +352,53 @@
     <div class="social-feed-container" *ngIf="University==true">
         <div class="middle-section">
             <div class="social-feed-box">
-                <div class="social-feed-list">
+                <div  *ngFor="let ele of universeList; let j = index"class="social-feed-list">
                     <div class="row top-box">
                         <div class="join-author">
                             <span class="circle"><img style="width: 100% !important;height: 100% !important;"
-                                src="./../../../assets/images/logo_image/new-collegey-home.png" alt=""
+                                src={{ele.imagePath}}
+                                 
+                                alt=""
                                 class="group-img"></span>
-                            <h6>San Francisco (Virtual) VC Fast Pitch
-                                <br>
-                                Chailchowk
+                                
+                            <h6>
+                                <!-- {{ele.name}} -->
+                                <a  href=""(click)='weblink(ele?.weblink)'target="_blank">{{ele?.name}}</a>
+                                
                             </h6>
-                            <i class="fa fa-users" style="color: gray;font-size: 17px;font-weight: 600;">&nbsp;12,747
-                                attendees</i>
+                            <div>
+                                <i *ngIf="!CheckMentorFollow(ele?.mentorFollow)" class="fa fa-users pull-left"
+                                    style="color: gray;"></i>
+                                <i *ngIf="CheckMentorFollow(ele?.mentorFollow)" class="fa fa-users pull-left"
+                                    style="color: #10E66D;"></i>
+                                <span>{{ele?.mentorFollow?.length}} followers</span>
+                            </div><br><br>
+                            <!-- <i class="fa fa-users" style="color: gray;font-size: 17px;font-weight: 600;">&nbsp;12,747
+                                attendees</i> -->
                         </div>
-                        <a href="javascript:;" class="btn follow-btn cl-unfollow-btn">Follow</a>
+                        <!-- <a class="btn follow-btn cl-unfollow-btn" (click)='saveFollwer1(ele?._id)'>Follow</a>
+                        <br><br> -->
+                        <a *ngIf="!CheckMentorFollow(ele?.mentorFollow)" (click)='saveFollwer1(ele?._id)'
+                            class="btn follow-btn cl-unfollow-btn">Follow</a>
+                        <a *ngIf="CheckMentorFollow(ele?.mentorFollow)" (click)='saveUnFollwer1(ele?._id)'
+                            class="btn follow-btn cl-follow-btn">Unfollow</a>
                         <br><br>
                     </div>
                     <div class="row top-box">
-                        <div class="col-md-9">
-                            <span>Pitch and network with venture capitalists, angels and accredited investors from
-                                Silicon Valley and throughout the country at the San Francisco (Virtual) Venture Capital
-                                Fast Pitch Conference...(more)</span>
+                        <div class="col-md-12" *ngFor="let data of test; let i = index;">
+                            <div *ngIf="i===j" >
+                                <!-- <span [innerHTML]="data | bulletPoints"></span> -->
+                                <span [innerHTML]="data | bulletPoints"></span>
+
+                            </div>
+                                
                         </div>
                         <br><br>
                     </div>
                 </div>
-                <div class="social-feed-list">
+                <pagination [totalItems]="totalGroupItemsMy1" [itemsPerPage]="10" (pageChanged)="pageChangedUni($event)">
+                </pagination>
+                <!-- <div class="social-feed-list">
                     <div class="row top-box">
                         <div class="join-author">
                          <span class="circle"><img style="width: 100% !important;height: 100% !important;"
@@ -395,7 +422,7 @@
                         </div>
                         <br><br>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="right-sidebar">

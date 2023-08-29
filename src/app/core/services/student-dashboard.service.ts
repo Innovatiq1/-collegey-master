@@ -361,6 +361,24 @@ export class StudentDashboardService {
         return response;
       }));
   }
+  saveFollower1(data): Observable<any> {
+    return this.http.post<ApiGenericResponse<any>>(`${environment.apiEndpointNew}user/event/univercityFollowCount`, data).pipe(
+      map((response) => {
+        Logging.debug(response);
+        return response;
+      }));
+  }
+  saveunFollower1 = (data:any): Observable<any> => {
+    const endpoint = environment.apiEndpointNew+'user/event/UniVersityunFollower';
+    return this.http.post(endpoint, data).pipe(
+      catchError((err) => {
+        return throwError(err);
+      })
+    );
+  };
+
+  
+
 
   saveunFollower = (data:any): Observable<any> => {
     const endpoint = environment.apiEndpointNew+'user/event/UnFollower';

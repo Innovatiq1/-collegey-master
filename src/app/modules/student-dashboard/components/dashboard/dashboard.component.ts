@@ -31,7 +31,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 
 import * as moment from 'moment';
 import * as moment_timezone from 'moment-timezone';
-import { HeaderComponent } from 'src/app/shared/components/layout/header/header.component';
+//import { HeaderComponent } from 'src/app/shared/components/layout/header/header.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,9 +41,9 @@ import { HeaderComponent } from 'src/app/shared/components/layout/header/header.
 })
 export class DashboardComponent implements OnInit, OnDestroy{
   //@ViewChild(HeaderComponent) headerComponent:HeaderComponent
-  @ViewChild(HeaderComponent) headerComponent :HeaderComponent
-  appConfig: AppConfig;
-  onConfigChanged: Subscription;
+  //@ViewChild(HeaderComponent) headerComponent :HeaderComponent
+  //appConfig: AppConfig;
+  //onConfigChanged: Subscription;
 
   modalRef: BsModalRef;
   modalRef1: BsModalRef;
@@ -354,7 +354,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
     this.getCurrentUserData();
     this.getProgramesData();
     this.getCompletedProgramesData();
-    this.userList()
+    //this.userList()
     //this.headerComponent.user()
     console.log("this.projectStartDate",this.projectStartDate)
     /*  this.getUserInfo();
@@ -372,16 +372,16 @@ export class DashboardComponent implements OnInit, OnDestroy{
      this.initialFormDataStudent();
      this.getBannerImage(); */
   }
-  userList(){
-    console.log("==============test11111111111111111111111")
+  // userList(){
+  //   console.log("==============test11111111111111111111111")
    
-      if (this.headerComponent) {
-        console.log("==============test1sssss1111111111111111111111")
-        this.headerComponent.childFunction(); // Call the function in the child component
-      }
+  //     if (this.headerComponent) {
+  //       console.log("==============test1sssss1111111111111111111111")
+  //       this.headerComponent.childFunction(); // Call the function in the child component
+  //     }
     
-    //this.router.navigateByUrl("//student-dashboard/$/header")
-  }
+  //   //this.router.navigateByUrl("//student-dashboard/$/header")
+  // }
 
   getCurrentUserData() {
     let educationSchoolFormArray = [];

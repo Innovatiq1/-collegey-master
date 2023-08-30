@@ -1,4 +1,4 @@
-import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject, ChangeDetectorRef } from '@angular/core';
 import { Subject, Observable, BehaviorSubject,throwError } from 'rxjs';
 import { AuthModalType } from '../enums/login.enum';
 import { Logger } from './logger.service';
@@ -18,11 +18,13 @@ import { User, Student } from '../models/user.model';
 import { UserType } from '../enums/user-type.enum';
 import { catchError } from 'rxjs/operators';
 import { StudentService } from 'src/app/core/services/student.service';
+import { MentorService } from './mentor.service';
 
 interface AuthModalSubject {
   show: boolean;
   type: AuthModalType;
   redirectUrl?: string;
+
 }
 
 const log = new Logger('AuthService');
@@ -34,6 +36,12 @@ export class AuthService {
   authModal$: Subject<AuthModalSubject> = new Subject();
   private authModalRef: BsModalRef;
   private successModalRef: BsModalRef;
+  itemsPerLoad = 10; // Number of items to load per click
+  currentPage = 1;
+  notificationCount:number
+  dropdownVisible = false;
+  notifications=[]
+  displayedNotifications=[]
   authModalConfig = {
     backdrop: true,
     keyboard: false,
@@ -57,6 +65,8 @@ export class AuthService {
     private router: Router,
     private toastrService: ToastrService,
     private studentService: StudentService,
+    private mentorService:MentorService,
+    //private cdr: ChangeDetectorRef,
   ) {
     this.currentUser$ = this.currentUser.asObservable();
   }
@@ -154,11 +164,102 @@ export class AuthService {
           var user_id = res.data.user._id;
           this.saveUserInfo(res.data);
           this.setReward(user_id);
+          this.userList()
+          this.getunReadCount()
           // this.saveUserIn(res);
           return res;
         })
       );
   }
+  userList() {
+    this.mentorService.getUserList().subscribe((response: any) => {
+     const currentTime :any= new Date();
+      this.notifications = response.data[0].notification
+      for (let f = 0; f < this.notifications.length; f++) {
+        var groupTimeAgo = this.notifications[f].createdAt;
+        this.notifications[f].timeago = this.timeDifference(groupTimeAgo);
+      }
+     
+      this.loadMoreNotifications()
+    });
+  //}
+  }
+  loadMoreNotifications() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerLoad;
+    const endIndex = startIndex + this.itemsPerLoad;
+    this.displayedNotifications = this.notifications.slice(startIndex, endIndex);
+    this.dropdownVisible=false
+
+    if(this.displayedNotifications.length===0){
+      this.currentPage=1
+     this.userList()
+     this.loadMoreNotifications()
+      
+    }
+  }
+  timeDifference(previous) {
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+    var preDate = new Date(previous);
+    var curDate = new Date();
+    var elapsed = curDate.valueOf() - preDate.valueOf();
+    if (elapsed < msPerMinute) {
+      return Math.round(elapsed / 1000) + ' seconds ago';
+    } else if (elapsed < msPerHour) {
+      return Math.round(elapsed / msPerMinute) + 'm ago';
+    } else if (elapsed < msPerDay) {
+      return Math.round(elapsed / msPerHour) + 'h ago';
+    } else if (elapsed < msPerMonth) {
+      return Math.round(elapsed / msPerDay) + 'd ago';
+    } else if (elapsed < msPerYear) {
+      return Math.round(elapsed / msPerMonth) + 'mth ago';
+    } else {
+      return Math.round(elapsed / msPerYear) + 'yrs ago';
+    }
+  }
+  loadMore() {
+  if (this.displayedNotifications.length < this.notifications.length) {
+      
+      this.currentPage++;
+      this.loadMoreNotifications();
+    } else {
+      
+      this.currentPage=1
+    }
+  }
+  toggleDropddown(){
+    this.dropdownVisible = !this.dropdownVisible;
+
+  }
+  markAsRead(id:any){
+  this.mentorService.notificationupdate(id).subscribe((response: any) => {
+    //console.log("response",response)
+    if(response.status=='success'){
+      this.getunReadCount()
+      //this.router.navigateByUrl("/")
+      this.userList()
+     
+    }
+
+  })
+}
+getunReadCount(){
+this.mentorService.getunReadCount().subscribe((response: any) => {
+  if(response.status=='success'){
+    console.log("======response.data==",response.data)
+    //co
+    this.notificationCount=response.data
+    // Trigger change detection
+
+    //this.userList()
+   //this.getunReadCout()
+  }    
+})
+}
+
 
   checkloginpassword = (data:any): Observable<any> => {
     const endpoint = environment.apiNewEndpoint+'forget/profile/checkloginpassword';

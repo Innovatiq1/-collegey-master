@@ -12,7 +12,7 @@ import {
   Input,
   ViewChild,
   ElementRef,
-} from '@angular/core';
+  } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AuthType } from 'src/app/core/enums/auth-type.enum';
@@ -52,6 +52,7 @@ enum RoutesUrl {
 })
 
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
+  
   @ViewChild('searchBox') searchBox: ElementRef;
   dashboard: Dashboard = new Dashboard();
   @Output()
@@ -62,6 +63,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   appConfig: AppConfig;
   onConfigChanged: Subscription;
   isProfileCompleted = false;
+  itemsPerLoad = 10; // Number of items to load per click
+  currentPage = 1; // Current page number
 
   userSubscription = new Subscription();
 
@@ -75,12 +78,14 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   rewardPoint: any = 0;
   totalDebitRewardPoint: any = 0;
   totalLeftRewardPoint: any = 0;
- notifications=[]
- notificationCount:number
+  notifications: any[] = [];
+  displayedNotifications: any[] = [];
+  notificationCount:number
 
   topSearchResult: any;
   showSearchResultDrop: boolean = false;
   constructor(
+  
     private router: Router,
     public authService: AuthService,
     private studentDashboardService: StudentDashboardService,
@@ -95,11 +100,20 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     @Inject(PLATFORM_ID) private platformId: any
   ) {
     const loggedInInfo = this.authService.getUserInfo();
+    console.log("======Testssssssssss=====",loggedInInfo)
+    console.log("======Testssssssssssffffffffffffffffffffff=====",)
+     //this.userList()
+
     if (loggedInInfo?.user?.forgetPasswordChange == true) {
       this.router.navigateByUrl('/reset-password');
+      //console.log("========sssssssssssssssssss=====Test")
     }
   }
 
+  childFunction() {
+    console.log('Child function called!');
+    // Add your logic here
+  }
   @HostListener('document:click', ['$event'])
   clickOutsideCurrentPopup(event: Event) {
     if (!this.searchBox.nativeElement.contains(event.target)) {
@@ -107,8 +121,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       this.searchBox.nativeElement.value = '';
     }
   }
-
-  // Add white background on home page when page scrolled
+ // Add white background on home page when page scrolled
   @HostListener('window:scroll', ['$event'])
   updateHeader($event) {
     if (isPlatformBrowser(this.platformId)) {
@@ -125,9 +138,11 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    //
+    console.log("===========test")
+    if (this.isAuthenticated()) {
     this.userList();
     this.getunReadCout();
+    }
     this.userSubscription.add(
       this.authService.currentUser$.subscribe((userInfo) => {
         if (userInfo) {
@@ -175,33 +190,62 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     );
   }
+  
+
+  
   userList() {
-
-    this.mentorService.getUserList().subscribe((response: any) => {
-      console.log("===========",response)
-      this.notifications = response.data[0].notification
-      
-    });
+    
+    if (this.isAuthenticated()) {
+      this.authService.userList()
+     
+    
+     }
   }
+  
   markAsRead(id:any){
-    this.mentorService.notificationupdate(id).subscribe((response: any) => {
-      //console.log("response",response)
-      if(response.status=='success'){
-        this.userList()
-       this.getunReadCout()
-      }
+    if (this.isAuthenticated()) {
+      this.authService.markAsRead(id)
+     
+  }
+  }
+  loadMoreNotifications() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerLoad;
+    const endIndex = startIndex + this.itemsPerLoad;
+    this.displayedNotifications = this.notifications.slice(startIndex, endIndex);
+    console.log("ssssssssssssssssssss",this.displayedNotifications.length)
+    this.dropdownVisible=false
 
-    }) 
+    if(this.displayedNotifications.length===0){
+      this.currentPage=1
+     this.userList()
+     this.loadMoreNotifications()
+      
+    }
+  }
+  loadMore() {
+    this.authService.loadMore()
+    // console.log("displayed",this.displayedNotifications.length)
+    // console.log("sssssssss",this.notifications.length)
+    // if (this.displayedNotifications.length < this.notifications.length) {
+    //   console.log("kkkkkkkkkkkkk")
+    //   this.currentPage++;
+    //   this.loadMoreNotifications();
+    // } else {
+    //   console.log("mmmmmmmmmmmm")
+    //   this.currentPage=1
+    // }
+  }
+  onPageChange(newPage: number): void {
+    this.currentPage = newPage;
+    this.loadMoreNotifications();
   }
   getunReadCout(){
-    this.mentorService.getunReadCount().subscribe((response: any) => {
-      if(response.status=='success'){
-        //co
-        this.notificationCount=response.data
-        this.userList()
-       //this.getunReadCout()
-      }    
-    }) 
+    if (this.isAuthenticated()) {
+      this.authService.getunReadCount()
+      this.cdr.detectChanges();
+
+     
+  }
   }
 
   // markAsRead(notification) : void{
@@ -223,7 +267,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   // ];
 
   toggleDropdown() {
-    this.dropdownVisible = !this.dropdownVisible;
+    this.authService.toggleDropddown()
+    
   }
   toggleExpansion(){
     this.isExpanded =! this.isExpanded;
@@ -272,7 +317,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   openNewLink() {
 
-    window.open("/event", '_blank');
+    window.open("/events", '_blank');
 
   }
   setUserData() {

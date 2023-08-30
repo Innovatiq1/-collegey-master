@@ -164,8 +164,8 @@ export class AuthService {
           var user_id = res.data.user._id;
           this.saveUserInfo(res.data);
           this.setReward(user_id);
-          this.userList()
-          this.getunReadCount()
+          ////this.userList()
+          //this.getunReadCount()
           // this.saveUserIn(res);
           return res;
         })

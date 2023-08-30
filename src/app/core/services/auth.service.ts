@@ -6,7 +6,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ApiGenericResponse } from '../models/response.model';
 import { map } from 'rxjs/operators';
-import { AppConstants } from 'src/app/shared/constants/app.constants';
+import { AppConstants } from 'src/app/shared/constants/app.constants';  
 import { AuthType } from '../enums/auth-type.enum';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AuthDialogComponent } from 'src/app/shared/components/auth-dialog/auth-dialog.component';

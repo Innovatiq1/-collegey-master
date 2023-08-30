@@ -2,7 +2,7 @@
   <a class="navbar-brand" routerLink="/">
     <img src="assets/images/logo_image/new-collegylogo-22.png" width="140" />
   </a>
-  <div class="order-lg-1 ml-auto" *ngIf="isAuthenticated()">
+  <div class="order-lg-1 ml-auto" *ngIf="isAuthenticated()">    
     <div class="btn-group user-header-menu" dropdown>
       <div class="header-reward-notificatio">
 
@@ -13,20 +13,20 @@
           </a>
         </div>
 
-        <div class="notification-container" [class.active]="dropdownVisible"(click)="toggleDropdown()">
+        <div class="notification-container" [class.active]="authService?.dropdownVisible"(click)="toggleDropdown()">
           <i class="fa fa-bell"></i>
-          <div class="notification-badge" *ngIf="notificationCount">{{notificationCount}}</div>
-          <div class="dropdown" [class.active]="dropdownVisible">
+          <div class="notification-badge" *ngIf="authService?.notificationCount">{{authService?.notificationCount}}</div>
+          <div class="dropdown" [class.active]="authService?.dropdownVisible">
             <ul class="notification-list">
               <li class="notification-header">{{ntitile}}</li>
-              <li *ngFor="let notification of notifications" [class.unread] = "!notification.isRead" (click)="markAsRead(notification._id)">
+              <li *ngFor="let notification of authService?.displayedNotifications" [class.unread] = "!notification.isRead" (click)="markAsRead(notification._id)">
                 <div class="notification-text"  [ngClass]="{'expanded' : isExpanded}" (click)="toggleExpansion()">
                   {{ notification.title }}</div>
                 <div class="notification-text1">{{ notification.course }}</div>
-                <div class="notification-date">{{ notification.time }}</div>
+                <div class="notification-date">{{ notification.timeago }}</div>
               </li>
             </ul>
-            <div class="text-center mb-2 mt-2" ><a href="#"> More...</a> </div>
+            <div *ngIf="authService?.displayedNotifications.length>10" class="text-center mb-2 mt-2"  ><a (click)="loadMore()"> More...</a> </div>
           </div>
         </div>
       </div>

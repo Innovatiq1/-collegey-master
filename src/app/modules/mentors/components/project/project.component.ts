@@ -344,7 +344,7 @@ export class ProjectComponent implements OnInit {
       this.projectinfo = res.data;
       if (this.stateProjectId) {
         // console.log("this.stateProjectId===",this.stateProjectId);        
-        const index = this.projectinfo.projectDashboardProjects.findIndex(x => x.project_id === this.stateProjectId.projectId);
+        const index = this.projectinfo.projectDashboardProjects.findIndex(x => x.project._id === this.stateProjectId.projectId);
         // console.log("index====",index);        
         if (index != -1) {
           this.projectdescp(this.stateProjectId.projectId, index)
@@ -352,8 +352,8 @@ export class ProjectComponent implements OnInit {
           this.router.navigate(['/mentors/project']);
         }
       }
-      this.currentProjectId = this.projectinfo.projectDashboardProjects[this.selectedProejctIndex].project_id;
-      this.projectService.project_detail(this.projectinfo.projectDashboardProjects[this.selectedProejctIndex].project_id).subscribe((res: any) => {
+      this.currentProjectId = this.projectinfo.projectDashboardProjects[this.selectedProejctIndex].project._id;
+      this.projectService.project_detail(this.projectinfo.projectDashboardProjects[this.selectedProejctIndex].project._id).subscribe((res: any) => {
         this.result = res.results;
         this.userList = res.data.projectDetails.projectDetail.projectMembers;
         this.allProjectPost = res.data.projectDetails.projectDetail.projectPost;

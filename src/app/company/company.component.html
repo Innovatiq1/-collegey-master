@@ -1,10 +1,12 @@
-<section class="section-padding">
+<section class="fixed-container">
     <div class="main">
-        <div class="iframe">
-            
-        <iframe title="Sequel event" 
- [src]="transform()" frameborder="0" allow="camera *; microphone *; autoplay; display-capture *" allowfullscreen style=" height: 80vh; border-radius: 12px; border: 1px solid #dbdfec; box-shadow: 3px 3px 10px 0 rgb(20 20 43 / 4%); width:100% " > </iframe>
-    
-</div>   
+        <div class="iframe" *ngIf="iframeSrc">
+
+            <iframe title="Sequel event" [src]="iframeSrc" frameborder="0" scrolling="no"
+                allow="camera *; microphone *; autoplay; display-capture *" allowfullscreen
+                style="height: 80vh; border-radius: 12px; border: 1px solid #dbdfec; box-shadow: 3px 3px 10px 0 rgb(20 20 43 / 4%); width: 100%">
+            </iframe>
+
+        </div>
     </div>
 </section>

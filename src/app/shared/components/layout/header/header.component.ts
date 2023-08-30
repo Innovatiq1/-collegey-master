@@ -126,8 +126,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     //
-    this.userList();
-    this.getunReadCout();
+    // this.userList();
+    // this.getunReadCout();
     this.userSubscription.add(
       this.authService.currentUser$.subscribe((userInfo) => {
         if (userInfo) {

@@ -352,7 +352,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'event',
+    path: 'events',
     component: SequelEventComponent,
 
   },

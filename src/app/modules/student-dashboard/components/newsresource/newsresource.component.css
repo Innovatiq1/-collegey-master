@@ -2720,7 +2720,9 @@ figure img {
 
 .slide_pagignation {
     position: absolute;
-    right: -25px;
+    left:98.6%;
+
+    /*right: -25px;*/
     top: 50%;
     font-size: 26px;
     cursor: pointer;
@@ -2729,7 +2731,7 @@ figure img {
 
 .slide_left_pagignation {
     position: absolute;
-    left: -25px;
+    left: -30px;
     top: 50%;
     font-size: 26px;
     cursor: pointer;

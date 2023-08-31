@@ -19,17 +19,19 @@
           <div class="dropdown" [class.active]="dropdownVisible">
             <ul class="notification-list">
               <li class="notification-header">{{ntitile}}</li>
-              <li *ngFor="let notification of notifications" [class.unread] = "!notification.isRead" (click)="markAsRead(notification._id)">
+              <li *ngFor="let notification of displayedNotifications" [class.unread] = "!notification.isRead" (click)="markAsRead(notification)">
                 <div class="notification-text"  [ngClass]="{'expanded' : isExpanded}" (click)="toggleExpansion()">
-                  {{ notification.title }}</div>
+                  {{ notification.title }} - {{notification.projectType?notification.projectType:''}}</div>
                 <div class="notification-text1">{{ notification.course }}</div>
-                <div class="notification-date">{{ notification.time }}</div>
+                <div class="notification-date">{{ notification.timeago }}</div>
               </li>
             </ul>
-            <div class="text-center mb-2 mt-2" ><a href="#"> More...</a> </div>
+            <div *ngIf="displayedNotifications.length>10" class="text-center mb-2 mt-2"  ><a (click)="loadMore()"> More...</a> </div>
           </div>
         </div>
       </div>
+
+      
       <button dropdownToggle type="button" class="user-icon-button">
         <ng-container *ngIf="userInfo.avatar; then avatarImage; else  placeholder">
         </ng-container>

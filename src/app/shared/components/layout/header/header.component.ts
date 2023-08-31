@@ -77,6 +77,17 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   totalLeftRewardPoint: any = 0;
  notifications=[]
  notificationCount:number
+ itemsPerLoad = 10; // Number of items to load per click
+ currentPage = 1;
+ dropdownVisible = false;
+ private isApiCallInProgress = false;
+
+
+ 
+// notificationCount:number
+ //dropdownVisible = false;
+ //notifications=[]
+ displayedNotifications=[]
 
   topSearchResult: any;
   showSearchResultDrop: boolean = false;
@@ -125,9 +136,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.methodToCallOnce();
     //
-    // this.userList();
-    // this.getunReadCout();
+    
     this.userSubscription.add(
       this.authService.currentUser$.subscribe((userInfo) => {
         if (userInfo) {
@@ -175,40 +186,123 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     );
   }
+  private methodToCallOnce(): void {
+    this.userList();
+    this.getunReadCout();
+    // Your code to be executed only once
+    console.log('Method called once during component loading.');
+  }
   userList() {
-
-    this.mentorService.getUserList().subscribe((response: any) => {
-      console.log("===========",response)
-      this.notifications = response.data[0].notification
+    
+     if (!this.isApiCallInProgress) {
       
+    this.mentorService.getUserList().subscribe((response: any) => {
+     const currentTime :any= new Date();
+      this.notifications = response.data[0].notification
+      for (let f = 0; f < this.notifications.length; f++) {
+        var groupTimeAgo = this.notifications[f].createdAt;
+        this.notifications[f].timeago = this.timeDifference(groupTimeAgo);
+      }
+     
+      this.loadMoreNotifications()
+      this.isApiCallInProgress=true
     });
   }
-  markAsRead(id:any){
-    this.mentorService.notificationupdate(id).subscribe((response: any) => {
-      //console.log("response",response)
-      if(response.status=='success'){
-        this.userList()
-       this.getunReadCout()
-      }
+  //}
+  }
+  loadMoreNotifications() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerLoad;
+    const endIndex = startIndex + this.itemsPerLoad;
+    this.displayedNotifications = this.notifications.slice(startIndex, endIndex);
+    this.dropdownVisible=false
 
-    }) 
+    if(this.displayedNotifications.length===0){
+      this.currentPage=1
+     //this.userList()
+     this.loadMoreNotifications()
+      
+    }
   }
-  getunReadCout(){
-    this.mentorService.getunReadCount().subscribe((response: any) => {
-      if(response.status=='success'){
-        //co
-        this.notificationCount=response.data
-        this.userList()
-       //this.getunReadCout()
-      }    
-    }) 
+  timeDifference(previous) {
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+    var preDate = new Date(previous);
+    var curDate = new Date();
+    var elapsed = curDate.valueOf() - preDate.valueOf();
+    if (elapsed < msPerMinute) {
+      return Math.round(elapsed / 1000) + ' seconds ago';
+    } else if (elapsed < msPerHour) {
+      return Math.round(elapsed / msPerMinute) + 'm ago';
+    } else if (elapsed < msPerDay) {
+      return Math.round(elapsed / msPerHour) + 'h ago';
+    } else if (elapsed < msPerMonth) {
+      return Math.round(elapsed / msPerDay) + 'd ago';
+    } else if (elapsed < msPerYear) {
+      return Math.round(elapsed / msPerMonth) + 'mth ago';
+    } else {
+      return Math.round(elapsed / msPerYear) + 'yrs ago';
+    }
   }
+  loadMore() {
+  if (this.displayedNotifications.length < this.notifications.length) {
+      
+      this.currentPage++;
+      this.loadMoreNotifications();
+    } else {
+      
+      this.currentPage=1
+    }
+  }
+  toggleDropddown(){
+    this.dropdownVisible = !this.dropdownVisible;
+
+  }
+  markAsRead(notification:any){
+    notification.isRead = true;
+  
+
+
+
+    //displayedNotifications
+  this.mentorService.notificationupdate(notification._id).subscribe((response: any) => {
+
+    //console.log("response",response)
+    if(response.status=='success'){
+      //notification.read = true; 
+      const notificationIndex = this.displayedNotifications.findIndex(n => n.id === notification._id);
+          if (notificationIndex !== -1) {
+            this.displayedNotifications[notificationIndex].isRead = true; 
+          }
+      this.getunReadCout()
+      //this.router.navigateByUrl("/")
+      //this.userList()
+     
+    }
+
+  })
+}
+getunReadCout(){
+this.mentorService.getunReadCount().subscribe((response: any) => {
+  if(response.status=='success'){
+    console.log("======response.data==",response.data)
+    //co
+    this.notificationCount=response.data
+
+    // Trigger change detection
+
+    //this.userList()
+   //this.getunReadCout()
+  }    
+})
+}
+
 
   // markAsRead(notification) : void{
   //   notification.isRead = true;
   // }
-
-  dropdownVisible = false;
 
   ntitile : string = "New Notifications";
   //notificationCount = 5;

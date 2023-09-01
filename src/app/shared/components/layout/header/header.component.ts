@@ -193,7 +193,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     console.log('Method called once during component loading.');
   }
   userList() {
-    
+    if(this.isAuthenticated()){
+
      if (!this.isApiCallInProgress) {
       
     this.mentorService.getUserList().subscribe((response: any) => {
@@ -208,6 +209,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       this.isApiCallInProgress=true
     });
   }
+}
   //}
   }
   loadMoreNotifications() {
@@ -285,6 +287,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   })
 }
 getunReadCout(){
+  if(this.isAuthenticated()){
+
+  
 this.mentorService.getunReadCount().subscribe((response: any) => {
   if(response.status=='success'){
     console.log("======response.data==",response.data)
@@ -297,6 +302,7 @@ this.mentorService.getunReadCount().subscribe((response: any) => {
    //this.getunReadCout()
   }    
 })
+}
 }
 
 

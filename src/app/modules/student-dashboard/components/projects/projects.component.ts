@@ -374,8 +374,8 @@ export class ProjectsComponent implements OnInit {
         }
       }
 
-      this.currentProjectId = this.projectinfo.projectDashboardProjects[this.selectedProejctIndex].project_id;
-      this.projectService.project_detail(this.projectinfo.projectDashboardProjects[this.selectedProejctIndex].project_id).subscribe((res: any) => {
+      this.currentProjectId = this.projectinfo.projectDashboardProjects[this.selectedProejctIndex].project._id;
+      this.projectService.project_detail(this.projectinfo.projectDashboardProjects[this.selectedProejctIndex].project._id).subscribe((res: any) => {
         this.result = res.results;
         this.userList = res.data.projectDetails.projectDetail.projectMembers;
         this.allProjectPost = res.data.projectDetails.projectDetail.projectPost;

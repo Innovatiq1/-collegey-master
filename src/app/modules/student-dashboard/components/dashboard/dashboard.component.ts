@@ -13,6 +13,7 @@ import { User } from 'src/app/core/models/user.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CommonService } from 'src/app/core/services/common.service';
 import { StudentDashboardService } from 'src/app/core/services/student-dashboard.service';
+//import { ConfigService, AppConfig } from '../../../../core/services/config.service';
 import { StudentService } from 'src/app/core/services/student.service';
 import { ProjectService } from '../../../../core/services/project.service';
 import { CertificateComponent } from '../../../../certificate/certificate.component';
@@ -21,6 +22,7 @@ import { PaymentDialogComponent } from '../../../student-dashboard/components/pa
 // Load City, State and Country
 import { Countries, State, Cities } from 'src/app/core/models/static-data.model';
 import { AppConstants } from 'src/app/shared/constants/app.constants';
+import { ConfigService, AppConfig } from '../../../../core/services/config.service';
 
 // Load library for pdf
 import { jsPDF } from 'jspdf';
@@ -29,6 +31,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 
 import * as moment from 'moment';
 import * as moment_timezone from 'moment-timezone';
+//import { HeaderComponent } from 'src/app/shared/components/layout/header/header.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,7 +39,11 @@ import * as moment_timezone from 'moment-timezone';
   styleUrls: ['./dashboard.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit, OnDestroy{
+  //@ViewChild(HeaderComponent) headerComponent:HeaderComponent
+  //@ViewChild(HeaderComponent) headerComponent :HeaderComponent
+  //appConfig: AppConfig;
+  //onConfigChanged: Subscription;
 
   modalRef: BsModalRef;
   modalRef1: BsModalRef;
@@ -55,6 +62,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   MentoyByToolTrip: boolean = false;
   isActive: boolean = false;
   show_loader: boolean = false;
+  //ConfigService
 
   // Country Object 
   countries: Countries[] = JSON.parse(localStorage.getItem(AppConstants.KEY_COUNTRIES_DATA));
@@ -268,6 +276,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private datePipe: DatePipe,
     private clipboard: Clipboard,
   ) {
+    
+    
+
+
     const loggedInInfo = this.authService.getUserInfo();
     this.userid = loggedInInfo?.user._id;
     if (this.router.url.indexOf('/blog') > -1) {
@@ -342,6 +354,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.getCurrentUserData();
     this.getProgramesData();
     this.getCompletedProgramesData();
+    //this.userList()
+    //this.headerComponent.user()
     console.log("this.projectStartDate",this.projectStartDate)
     /*  this.getUserInfo();
      this.checkIsProfileCompleted();
@@ -358,6 +372,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
      this.initialFormDataStudent();
      this.getBannerImage(); */
   }
+  // userList(){
+  //   console.log("==============test11111111111111111111111")
+   
+  //     if (this.headerComponent) {
+  //       console.log("==============test1sssss1111111111111111111111")
+  //       this.headerComponent.childFunction(); // Call the function in the child component
+  //     }
+    
+  //   //this.router.navigateByUrl("//student-dashboard/$/header")
+  // }
 
   getCurrentUserData() {
     let educationSchoolFormArray = [];

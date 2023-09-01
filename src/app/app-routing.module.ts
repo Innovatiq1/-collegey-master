@@ -352,16 +352,16 @@ const routes: Routes = [
   },
 
   {
-    path: 'event',
+    path: 'events',
     component: SequelEventComponent,
 
   },
 
-  {
-    path: 'events',
-    component: CardsComponent,
+  // {
+  //   path: 'events',
+  //   component: CardsComponent,
 
-  },
+  // },
   {
     path: 'event/:id',
     component: CompanyComponent,

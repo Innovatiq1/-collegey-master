@@ -399,7 +399,7 @@ export class ProjectComponent implements OnInit {
 
       });
     });
-
+     
     this.sdg_selection = [
       'Goal 1 - No Poverty',
       'Goal 2 - Zero Hunger',
@@ -474,6 +474,12 @@ export class ProjectComponent implements OnInit {
       template,
       Object.assign({}, { class: 'gray modal-lg' })
     );
+  }
+  openmetting(){
+    //let id=url.uid
+    this.router.navigateByUrl('/network')
+    
+
   }
 
   onChangeProjectStatus() {

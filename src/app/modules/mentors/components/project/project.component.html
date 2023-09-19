@@ -396,6 +396,48 @@
                 </div>
               </ng-template>
             </ngb-tab>
+            <ngb-tab title="Start A Meeting">
+              <ng-template ngbTabContent>
+                <div class="event-schedule">
+                  <button class="add-event-btn" (click)="openmetting()">Join a meeting</button>
+                  
+                  <!-- <hr style="border-color: #DBDBDB;">
+                  <div class="schedule-meetings-box" *ngFor="let listevent of allProjectEvent; let i=index;">
+                    <h6>{{listevent?.eventName}} <span class="pull-right"> <i *ngIf="userid == listevent?.eventBy"
+                          style="font-size: 20px;" class="fa fa-edit" (click)="openEditEvent(openAddScheduleEvent,i)"
+                          aria-hidden="true" title="Edit Event"></i> &nbsp;&nbsp;&nbsp;<i
+                          *ngIf="userid == listevent?.eventBy" style="color:red;font-size: 20px;margin-top:5px;"
+                          class="fa fa-trash"
+                          (click)="openRemoveEventScheduleDialog(openDeleteScheduleEvent,'remove',i,'')"
+                          aria-hidden="true" title="Delete Event"></i> </span> </h6>
+                    <div class="project-timing-box">
+                      <p class="mg-r20"><span class="cal-icon"></span>&nbsp; {{listevent?.event_schedule}}</p>
+                      <p class="mg-r20"><span class="fa fa-globe"></span>&nbsp; Time Zone: {{listevent?.timezone}}</p>
+                      <p><span class="cloak-icon"></span>{{ listevent.startDate | date: "d MMM y" }} {{
+                        listevent.startTime}} - {{ listevent.endDate | date: "d MMM y" }} {{ listevent.endTime}}
+                      </p>
+                    </div>
+                    <div class="event-guest">
+                      <ul>
+                        <li *ngFor="let listGuest of listevent?.eventGuest; let e=index;">
+                          <img *ngIf="listGuest?.avatar" [src]="commonService.imagePathS3(listGuest?.avatar)" alt="">
+                          <img *ngIf="!listGuest?.avatar" src="/assets/images/profile-picture.png" alt="">
+                          <i *ngIf="userid == listevent?.eventBy && userid != listGuest?._id"
+                            (click)="removeEventScheduleUser('remove_user',i,e)" class="fa fa-times-circle"
+                            aria-hidden="true" title="Remove User"></i>
+                        </li>
+                      </ul>
+                      <a *ngIf="listevent?.eventGuest.length > 5" href="javascript:;"
+                        (click)="openEventUserList(openScheduleEventUser,i)" class="more-link">+5 more</a>
+                    </div>
+                    <!-- <img src="./../../../assets/images/more.svg" alt="" class="file-action"> -->
+                  
+                  <!-- </div> -->
+
+
+                </div>
+              </ng-template>
+            </ngb-tab>
           </ngb-tabset>
         </div>
         <div class="social-items">

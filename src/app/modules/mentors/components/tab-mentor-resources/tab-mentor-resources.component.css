@@ -2391,10 +2391,11 @@ th, td {
 .slide_pagignation {
     z-index: 1;
     position: absolute;
-    right: -30px;
+    left: 98.6%;
     top: 47%;
-    font-size: 35px;
+    font-size: 26px;
     cursor: pointer;
+
 }
 .slide_left_pagignation {
     position: absolute;

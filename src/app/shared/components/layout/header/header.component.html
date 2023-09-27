@@ -20,8 +20,11 @@
             <ul class="notification-list">
               <li class="notification-header">{{ntitile}}</li>
               <li *ngFor="let notification of displayedNotifications" [class.unread] = "!notification.isRead" (click)="markAsRead(notification)">
-                <div class="notification-text"  [ngClass]="{'expanded' : isExpanded}" (click)="toggleExpansion()">
+                <div  *ngIf="notification.projectType"class="notification-text"  [ngClass]="{'expanded' : isExpanded}" (click)="toggleExpansion()">
                   {{ notification.title }} - {{notification.projectType?notification.projectType:''}}</div>
+
+                <div class="notification-text"  [ngClass]="{'expanded' : isExpanded}" (click)="toggleExpansion()">
+                    {{ notification.title }}</div>
                 <div class="notification-text1">{{ notification.course }}</div>
                 <div class="notification-date">{{ notification.timeago }}</div>
               </li>

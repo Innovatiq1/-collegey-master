@@ -37,7 +37,7 @@ export class LinkedinLoginResponseComponent implements OnInit {
       client_id: '86ggwpa949d3u5', //77u10423gsm7cx
       client_secret: '1RBrwnMzpai8KdLU', //neoGgtcYWNGZiu8k
       //redirect_uri: `${DEFAULT_CONFIG.frontEndUrl}linkedInLogin`,
-      redirect_uri: 'http://3.0.100.217/linkedInLogin',      
+      redirect_uri: 'http://54.254.159.3/linkedInLogin',      
     };
     this.authService.getLinkedinAccessToken(obj).subscribe(
       (response) => {

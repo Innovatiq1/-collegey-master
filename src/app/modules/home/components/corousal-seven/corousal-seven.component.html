@@ -26,7 +26,7 @@
 
         <div class="clg-footer-text">{{homepageContent?.bottomTitle}}</div>
         <div class="d-flex align-items-center">
-          <button [routerLink]="['blog']" class="explore">{{homepageContent?.bottomButtonText}}</button>
+          <button (click)="openURL()"[routerLink]="['https://form.typeform.com/to/QCfOu6ND']" class="explore">{{homepageContent?.bottomButtonText}}</button>
           <div class="d-flex align-items-center navigator">
             <img class="prev" (click)="previousSlide()" />
             <div class="first-bl"></div>

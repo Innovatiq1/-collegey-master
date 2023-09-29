@@ -71,6 +71,10 @@ export class CorousalSevenComponent implements OnInit {
       this.mobileView = false;
     }
   }
+  openURL() {
+    const urlToOpen = 'https://form.typeform.com/to/QCfOu6ND'; // Replace with your desired URL
+    window.open(urlToOpen, '_blank');
+  }
 
   ngOnInit(): void {
     this.cardsSlider();

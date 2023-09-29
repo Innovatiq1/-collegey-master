@@ -2,7 +2,7 @@
     "name": "Collegey",
     "short_name": "Collegey",
     "description": "",
-    "start_url": "/http://54.254.159.3/",
+    "start_url": "/https://www.collegey.com/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",

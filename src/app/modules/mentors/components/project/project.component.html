@@ -36,7 +36,7 @@
             style="padding: 5px 10px;font-size: 10px;">Completed</span>
 
           <select
-            *ngIf="selectedProjectData?.projectOwner?.id == userid && selectedProjectData?.projectStatus != 'completed'"
+            *ngIf="selectedProjectData?.projectOwner?.id == userid  || selectedProjectData?.mentor?.id == userid && selectedProjectData?.projectStatus != 'completed'"
             class="update_projectStatus form-control"
             style="display: inline-block;width: auto;margin-left: 15px;height: auto;"
             (change)="projectStatusConformation(openStatusDialog)">

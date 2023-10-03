@@ -26,6 +26,11 @@ export class MentorComponent implements OnInit {
   totalGroupItems: any;
   totalGroupItemsMy: any;
   ele: any
+  universeList: any = [];
+  
+
+  totalGroupItems1: any;
+  totalGroupItemsMy1: any;
 
   inviteFormGroup: FormGroup;
   inviteSubmitted = false;
@@ -45,6 +50,7 @@ export class MentorComponent implements OnInit {
 
   // Feeds Questions
   collegyFeedsQuestions:any;
+  test: any;
   constructor(
     private modalService: BsModalService,
     public commonService: CommonService,
@@ -68,12 +74,90 @@ export class MentorComponent implements OnInit {
     this.mentor(2);
     // this.activatedRoute.queryParams.subscribe(params => {
     this.mentorList2('');
+    this.universityList('')
     this.showUnive();
     this.inviteForm();
     //});
     this.dynamicLernBox();
     this.fetchSidebarQuetion();
   }
+  weblink(url: string){
+    console.log("url",url)
+
+    window.open(url);
+}
+pageChangedUni(event: PageChangedEvent): void {
+  const startItem = (event.page - 1) * event.itemsPerPage;
+  const endItem = event.page * event.itemsPerPage;
+  this.universeList = this.totalGroupItems1.slice(startItem, endItem);
+}
+saveFollwer1(id: any) {
+  //console.log("====ssssssssssssssssss",id)
+  const obj = {
+    userid: this.userid,
+    id: id
+  };
+  this.studentDashboardService.saveFollower1(obj).subscribe((res) => {
+    //console.log("dddddddddddddd",res)
+    if (res.results == 'user Id AllreadyExist') {
+      // this.showErrorMessage = false;
+      this.toastrService.success(`This User Already Follow`);
+      this.universityList('');
+      // console.log("dddddUsrs")
+    } else if (res.status == 'success') {
+      this.toastrService.success(`User Follow Sucessfully`);
+      this.universityList('');
+    }
+    // if (res) {
+    //   this.getAllEvents()
+    //   // mixpanel.init('089a065ddf055461542dbc6154555107', {debug: true, ignore_dnt: true}); 
+    //   // mixpanel.track('Create Student Event', {
+    //   //   "eventName": res.data.eventName,
+    //   //   "Host Email": this.userEmail,
+    //   //   "Host Name": this.userName,
+    //   //   "timezone": res.data.timezone,
+    //   //   "startDate": res.data.startDate,
+    //   //   "startTime": res.data.startTime,
+    //   //   "endDate": res.data.endDate,
+    //   //   "endTime": res.data.endTime,
+    //   // });
+    //   // console.log(res, 'Dashboard Details');
+    //   // this.form.reset();
+    //   // this.modalRef.hide();
+    //   // this.getAllEvents();
+
+    // } else if(res.results==='user Id AllreadyExist'){
+    //   console.log("======AllreadyHave a User====",)
+
+    // }
+    // console.log(res, 'Dashboard Details');
+  });
+}
+saveUnFollwer1(id: any) {
+  const obj = {
+    userid: this.userid,
+    id: id
+  };
+  this.studentDashboardService.saveunFollower1(obj).subscribe(
+    (response) => {
+      this.toastrService.success(response.message);
+      this.universityList('');
+    },
+    (err) => {
+      this.toastrService.error('not updated');
+    },
+  );
+}
+searchByUniversity(event:any){
+  var filterName = event.currentTarget.value;
+  this.mentorList2(filterName);
+
+}
+searchByMentor(event: any) {
+  var filterName = event.currentTarget.value;
+  this.universityList(filterName);
+}
+
 
   fetchSidebarQuetion() {
     const obj = {
@@ -87,6 +171,29 @@ export class MentorComponent implements OnInit {
 
       },
     );
+  }
+  // searchByMentor(event: any) {
+  //   var filterName = event.currentTarget.value;
+  //   this.universityList(filterName);
+  // }
+  universityList(filterName: any) {
+
+    this.mentorService.getUniversityList(filterName).subscribe((response: any) => {
+      this.universeList = response.response
+      console.log("submit",this.universeList)
+      this.test=this.universeList.map(data => data.description)
+      this.totalGroupItems1 = response.response
+      this.totalGroupItemsMy1 = response.response.length;
+      // console.log(" totalGroupItems : ",this.totalGroupItems);
+      this.universeList = this.totalGroupItems1.slice(0, 10);
+
+      //   if(response.totalDocs - (+filters.limit) < -11) {
+      //     this._showSnackbar("No more data found")
+      //   }
+      // }, error => {
+      //   this.isLoading = false;
+      //   this.snackbar.open(error.message, null , {duration: 3000});
+    });
   }
   
   inviteForm() {
@@ -130,10 +237,10 @@ export class MentorComponent implements OnInit {
   };
 
 
-  searchByMentor(event: any) {
-    var filterName = event.currentTarget.value;
-    this.mentorList2(filterName);
-  }
+  // searchByMentor(event: any) {
+  //   var filterName = event.currentTarget.value;
+  //   this.mentorList2(filterName);
+  // }
 
   mentorList2(filterName: any) {
     this.mentorService.getMentorList(filterName).subscribe((response: any) => {

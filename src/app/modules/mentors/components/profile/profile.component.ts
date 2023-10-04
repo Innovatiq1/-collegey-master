@@ -46,6 +46,7 @@ export class ProfileComponent implements OnInit {
   // Profile and office hours completed
   profilefirstStepCompleted: boolean = false;
   profilesecondStepCompleted: boolean = false;
+  profilethirdStepCompleted: boolean = false;
 
   constructor(
     private mentorService: MentorService,
@@ -82,8 +83,10 @@ export class ProfileComponent implements OnInit {
     this.mentorService.getMentorProfile().subscribe((profile) => {
       // this.commonService.getUserDetails().subscribe((user)=>{
       this.mentorProfileData = profile;
+      
       this.profilefirstStepCompleted = profile?.mentor_profile?.profile?.is_completed;
       this.profilesecondStepCompleted = profile?.mentor_profile?.officeTimezone?.is_completed;
+      this.profilethirdStepCompleted = profile?.mentor_profile?.projects?.is_completed;
       if (this.profilefirstStepCompleted && (!this.profilesecondStepCompleted || this.profilesecondStepCompleted)) {
         this.stepClassActive = 'office-step';
       }

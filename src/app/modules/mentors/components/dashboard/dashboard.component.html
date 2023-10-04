@@ -104,8 +104,8 @@ font-size: small;">{{profileText}}
             </g>
           </svg>
         </div>
-      </li>
-      <li>
+      </li >
+      <li [class]="profilethirdStepCompleted == true ? 'is-active' : ''">
         <hr>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -132,10 +132,17 @@ font-size: small;">{{profileText}}
       </li>
     </ul>
   </div>
-  <div class="portfolio-progress-text">
-    <a [routerLink]="['/mentors/profile']">
+  <div *ngIf="profilethirdStepCompleted==false" class="portfolio-progress-text">
+    <a  [routerLink]="['/mentors/profile']">
       <h6>COMPLETE YOUR PROFILE</h6>
     </a>
+    <p class="port-desc">In your Collegey portfolio below, please list all of your profile details, office hours, and
+      project information.</p>
+  </div>
+  <div class="portfolio-progress-text1" *ngIf="profilethirdStepCompleted==true" >
+    
+      <h6>COMPLETE YOUR PROFILE</h6>
+    
     <p class="port-desc">In your Collegey portfolio below, please list all of your profile details, office hours, and
       project information.</p>
   </div>

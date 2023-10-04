@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   // Profile and office hours completed
   profilefirstStepCompleted: boolean = false;
   profilesecondStepCompleted: boolean = false;
+  profilethirdStepCompleted:boolean =false
 
   firstname: any;
   lastname: any;
@@ -300,6 +301,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.profileText = this.dashboard.profile.mentor_profile_completion.profile_text;
       this.profilefirstStepCompleted = this.dashboard.profile?.mentor_profile?.profile?.is_completed;
       this.profilesecondStepCompleted = this.dashboard.profile?.mentor_profile?.officeTimezone?.is_completed;
+      this.profilethirdStepCompleted = this.dashboard.profile?.mentor_profile?.projects?.is_completed;
 
       if (res.pendingProjects.length == 0) { this.pendingprojectsNotfound = true; }
       if (res.completedProjects.length == 0) { this.compltprojectNotfound = true; }
@@ -395,6 +397,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   openModalWithClass(template: TemplateRef<any>, project, projectlink: boolean,showInviteAccept:boolean) {
+    console.log("=======",project)
     this.projectDialog = project;
 
     this.projectDialog.availableSlot = project?.remainingSlot - project?.projectMembers?.length;

@@ -2121,6 +2121,16 @@
     margin-right: 10px;
 }
 
+.pdf-bg{
+    background-image: url(/assets/images/resources/pdf-bg.jpeg);
+    background-repeat: no-repeat;
+    display: block;
+    background-size:     cover; 
+    background-position: center center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
 @media only screen and (max-width: 991px) {
     .project-img img {
         width: 180px;

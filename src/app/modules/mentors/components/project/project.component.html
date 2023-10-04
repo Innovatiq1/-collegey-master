@@ -934,15 +934,9 @@
   </div>
 </ng-template>
 
-<div class="container" style="margin-top: 100px" *ngFor="let listpdfData of pdfData; let i=index">
+<div class="container" style="margin-top: 100px;" *ngFor="let listpdfData of pdfData; let i=index">
   <div *ngIf="dafaultGenratepdf" id="contentToConvert_{{i}}" style="padding: 30px 0">
-    <table width="800px" style="
-          margin: 0 auto;
-          background-image: url(../../assets/images/resources/pdf-bg.jpeg);
-          background-repeat: no-repeat;
-          background-position: center right;
-          background-size: 100% 100%;
-        ">
+    <table class="pdf-bg">
       <tbody>
         <tr>
           <td width="11%"></td>

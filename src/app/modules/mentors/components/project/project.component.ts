@@ -502,10 +502,10 @@ export class ProjectComponent implements OnInit {
         this.toastrService.success(response.message);
         this.modalRef.hide();
         
-        // setTimeout(() => {
-        //   this.router.navigateByUrl('/mentors/dashboard'); 
-        //  // window.location.reload();
-        // },5000);
+        setTimeout(() => {
+          //this.router.navigateByUrl('/mentors/dashboard'); 
+          window.location.reload();
+        },5000);
         // //this.router.navigateByUrl("men")
       },
       (err) => {

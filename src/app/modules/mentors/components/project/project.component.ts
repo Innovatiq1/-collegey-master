@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml,SafeStyle } from '@angular/platform-browser';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, TemplateRef ,ChangeDetectorRef} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -18,6 +18,7 @@ import { StudentProfileStatusText } from 'src/app/core/enums/student-profile-sta
 import { MentorService } from 'src/app/core/services/mentor.service';
 import { Router } from '@angular/router';
 import { AnnouncementService } from 'src/app/core/services/announcement.service';
+//import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 
@@ -25,13 +26,15 @@ import * as _ from 'lodash';
 import { jsPDF } from 'jspdf';
 import domtoimage from 'dom-to-image';
 
+
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
- backgroundImageUrl: string = '../../assets/images/resources/pdf-bg.jpeg'
+ //backgroundImageUrl: string = '../../assets/images/resources/pdf-bg.jpeg'
+ backgroundImage: SafeStyle;
 
   removePostImageFile: Boolean = false;
   imageSelect: boolean = false;
@@ -193,8 +196,10 @@ export class ProjectComponent implements OnInit {
     private announcementService: AnnouncementService,
     private datePipe: DatePipe,
     private cdr: ChangeDetectorRef,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    //private sanitizer: DomSanitizer
   ) {
+    this.backgroundImage = this.sanitizer.bypassSecurityTrustStyle('url("../../assets/images/resources/pdf-bg.jpeg")');
     this.bannerFor = "mentor";
     this.timeZoneList = timezone;
     const loggedInInfo = this.authService.getUserInfo();
@@ -223,6 +228,7 @@ export class ProjectComponent implements OnInit {
       monthDuration: [''],
       range_price: [this.projectFeedData?.default_price],
       isPaid: [''],
+      
     });
 
     this.postForm = this.fb.group({
@@ -489,14 +495,18 @@ export class ProjectComponent implements OnInit {
       project_id: this.currentProjectId,
       user_id: this.userid,
     };
+    this.genrateCertificateUserWise();
     this.mentorService.updateMenprojectStatus(obj).subscribe(
       (response) => {
         this.genrateCertificateUserWise();
         this.toastrService.success(response.message);
         this.modalRef.hide();
-        setTimeout(() => {
-          window.location.reload();
-        },5000);
+        
+        // setTimeout(() => {
+        //   this.router.navigateByUrl('/mentors/dashboard'); 
+        //  // window.location.reload();
+        // },5000);
+        // //this.router.navigateByUrl("men")
       },
       (err) => {
         this.toastrService.error('project status not update');

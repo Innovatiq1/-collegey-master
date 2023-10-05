@@ -31,6 +31,7 @@ import domtoimage from 'dom-to-image';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
+ backgroundImageUrl: string = '../../assets/images/resources/pdf-bg.jpeg'
 
   removePostImageFile: Boolean = false;
   imageSelect: boolean = false;

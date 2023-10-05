@@ -936,7 +936,7 @@
 
 <div class="container" style="margin-top: 100px;" *ngFor="let listpdfData of pdfData; let i=index">
   <div *ngIf="dafaultGenratepdf" id="contentToConvert_{{i}}" style="padding: 30px 0">
-    <table class="pdf-bg" style="background-image: url(../../assets/images/resources/pdf-bg.jpeg);">
+    <table class="pdf-bg" [ngStyle]="{'background-image': 'url(' + backgroundImageUrl + ')'}">
       <tbody>
         <tr>
           <td width="11%"></td>

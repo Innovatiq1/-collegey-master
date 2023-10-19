@@ -847,6 +847,7 @@ export class ProjectComponent implements OnInit {
     this.projectService.project_detail(id).subscribe((res: any) => {
       this.result = res.results;
       this.selectedProjectData = res.data.projectDetails.projectDetail;
+
       this.allchatdetail = res.data.projectDetails.projectChat;
       this.projectfile = res.data.projectDetails.projectFiles;
       this.allProjectPost = res.data.projectDetails.projectDetail.projectPost;
@@ -1169,6 +1170,7 @@ export class ProjectComponent implements OnInit {
         (response) => {
           this.toastrService.success(response.message);
           this.postForm.reset();
+          this.PostEditImage = '';
           this.submittedPost = false;
           this.projectService.project_detail(this.selectedProjectData._id).subscribe((res: any) => {
             this.allProjectPost = res.data.projectDetails.projectDetail.projectPost;
